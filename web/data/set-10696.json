@@ -1,0 +1,1296 @@
+{
+"set": "10696-1",
+"name": "LEGO Classic Medium Creative Brick Box",
+"pieces": 484,
+"source": "BrickLink catalog inventory for 10696-1, fetched 2026-10-24 (484 pieces, spares excluded)",
+"parts": [
+{
+"qty": 1,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Bracket 1 x 2 - 2 x 2",
+"brick": false
+},
+{
+"qty": 3,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Brick 1 x 1",
+"brick": true
+},
+{
+"qty": 1,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Brick, Modified 1 x 2 with Bar Handle on Side",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Brick, Round 1 x 1",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Brick, Round 2 x 2 with Axle Hole and Grille / Fluted Profile",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Cone 2 x 2 Truncated",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Plate 2 x 4",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Plate, Modified 1 x 2 with Clip on End (Horizontal Grip)",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Plate, Modified 1 x 4 with Tow Ball",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Plate, Modified 1 x 4 with Wheels Holder",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Plate, Modified 2 x 2 with Wheels Holder",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Plate, Round 1 x 1",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Propeller 4 Blade 5 Diameter with Rounded Ends and Open Hub",
+"brick": false
+},
+{
+"qty": 8,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Slope 45 2 x 1",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Slope, Inverted 45 2 x 1",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Tire 15mm D. x 6mm Offset Tread Small - Band Around Center of Tread",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Tire 21mm D. x 12mm - Offset Tread Small Wide, Band Around Center of Tread",
+"brick": false
+},
+{
+"qty": 10,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Tire 24mm D. x 7mm Offset Tread - Band Around Center of Tread",
+"brick": false
+},
+{
+"qty": 10,
+"color": "Black",
+"hex": "#1B2A34",
+"part": "Window 1 x 2 x 2 Plane, Single Hole Top and Bottom for Glass",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Blue",
+"hex": "#0055BF",
+"part": "Brick 1 x 1",
+"brick": true
+},
+{
+"qty": 6,
+"color": "Blue",
+"hex": "#0055BF",
+"part": "Brick 1 x 4",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Blue",
+"hex": "#0055BF",
+"part": "Brick 2 x 4",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Blue",
+"hex": "#0055BF",
+"part": "Plate 4 x 4",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Blue",
+"hex": "#0055BF",
+"part": "Plate, Modified 2 x 2 with Groove and 1 Stud in Center (Jumper)",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Blue",
+"hex": "#0055BF",
+"part": "Slope 45 2 x 1",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Blue",
+"hex": "#0055BF",
+"part": "Slope 45 2 x 2",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Blue",
+"hex": "#0055BF",
+"part": "Slope, Curved 2 x 4 x 2/3 with Bottom Tubes",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Blue",
+"hex": "#0055BF",
+"part": "Slope, Curved 4 x 1 x 2/3 Double",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Blue",
+"hex": "#0055BF",
+"part": "Slope, Inverted 45 2 x 1",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Blue",
+"hex": "#0055BF",
+"part": "Slope, Inverted 45 2 x 2 with Flat Bottom Pin",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Bright Green",
+"hex": "#4B9F4A",
+"part": "Plate 4 x 4",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Bright Green",
+"hex": "#4B9F4A",
+"part": "Plate 8 x 16",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Bright Light Orange",
+"hex": "#F8BB3D",
+"part": "Brick 1 x 2",
+"brick": true
+},
+{
+"qty": 3,
+"color": "Bright Light Orange",
+"hex": "#F8BB3D",
+"part": "Brick 2 x 4",
+"brick": true
+},
+{
+"qty": 4,
+"color": "Bright Light Yellow",
+"hex": "#FFF03A",
+"part": "Brick 1 x 2",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Bright Pink",
+"hex": "#E4ADC8",
+"part": "Brick 2 x 4",
+"brick": true
+},
+{
+"qty": 4,
+"color": "Bright Pink",
+"hex": "#E4ADC8",
+"part": "Slope 45 2 x 1",
+"brick": false
+},
+{
+"qty": 16,
+"color": "Dark Azure",
+"hex": "#078BC9",
+"part": "Brick 1 x 2",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Dark Azure",
+"hex": "#078BC9",
+"part": "Brick 2 x 4",
+"brick": true
+},
+{
+"qty": 4,
+"color": "Dark Azure",
+"hex": "#078BC9",
+"part": "Brick, Modified 1 x 1 with Stud on Side",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Dark Blue",
+"hex": "#0A3463",
+"part": "Brick 1 x 2",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Dark Blue",
+"hex": "#0A3463",
+"part": "Plate 1 x 4",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Dark Blue",
+"hex": "#0A3463",
+"part": "Plate 4 x 6",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Dark Blue",
+"hex": "#0A3463",
+"part": "Tile 2 x 4",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Dark Bluish Gray",
+"hex": "#6C6E68",
+"part": "Brick 2 x 4",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Dark Bluish Gray",
+"hex": "#6C6E68",
+"part": "Brick, Modified 1 x 1 with Headlight",
+"brick": false
+},
+{
+"qty": 5,
+"color": "Dark Bluish Gray",
+"hex": "#6C6E68",
+"part": "Brick, Modified 2 x 2 with Pins and Axle Hole",
+"brick": false
+},
+{
+"qty": 3,
+"color": "Dark Bluish Gray",
+"hex": "#6C6E68",
+"part": "Cone 1 x 1 with Top Groove",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Dark Bluish Gray",
+"hex": "#6C6E68",
+"part": "Plate 6 x 8",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Dark Bluish Gray",
+"hex": "#6C6E68",
+"part": "Slope, Inverted 45 2 x 1",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Dark Brown",
+"hex": "#352100",
+"part": "Arch 1 x 4",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Dark Brown",
+"hex": "#352100",
+"part": "Slope 65 2 x 1 x 2",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Dark Green",
+"hex": "#184632",
+"part": "Brick 1 x 2",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Dark Green",
+"hex": "#184632",
+"part": "Brick 2 x 4",
+"brick": true
+},
+{
+"qty": 4,
+"color": "Dark Green",
+"hex": "#184632",
+"part": "Slope 30 1 x 1 x 2/3",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Dark Green",
+"hex": "#184632",
+"part": "Slope 45 2 x 1",
+"brick": false
+},
+{
+"qty": 8,
+"color": "Dark Orange",
+"hex": "#A95500",
+"part": "Brick 1 x 2",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Dark Orange",
+"hex": "#A95500",
+"part": "Brick, Round 1 x 1",
+"brick": false
+},
+{
+"qty": 5,
+"color": "Dark Orange",
+"hex": "#A95500",
+"part": "Plate 1 x 4",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Dark Orange",
+"hex": "#A95500",
+"part": "Slope 45 2 x 1",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Dark Pink",
+"hex": "#C870A0",
+"part": "Brick 2 x 2",
+"brick": true
+},
+{
+"qty": 4,
+"color": "Dark Pink",
+"hex": "#C870A0",
+"part": "Slope, Curved 2 x 1 x 1 1/3 with Recessed Stud",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Dark Purple",
+"hex": "#3F3691",
+"part": "Brick 2 x 4",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Dark Purple",
+"hex": "#3F3691",
+"part": "Brick, Round 2 x 2 with Axle Hole",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Dark Purple",
+"hex": "#3F3691",
+"part": "Plate 1 x 2",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Dark Red",
+"hex": "#720E0F",
+"part": "Brick 1 x 2",
+"brick": true
+},
+{
+"qty": 3,
+"color": "Dark Red",
+"hex": "#720E0F",
+"part": "Brick 2 x 2",
+"brick": true
+},
+{
+"qty": 3,
+"color": "Dark Red",
+"hex": "#720E0F",
+"part": "Plate 1 x 2",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Dark Red",
+"hex": "#720E0F",
+"part": "Plate 1 x 4",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Dark Red",
+"hex": "#720E0F",
+"part": "Slope 45 2 x 4",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Green",
+"hex": "#237841",
+"part": "Brick 2 x 2",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Green",
+"hex": "#237841",
+"part": "Brick 2 x 4",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Green",
+"hex": "#237841",
+"part": "Brick, Modified 1 x 1 with Headlight",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Green",
+"hex": "#237841",
+"part": "Brick, Round 2 x 2 with Axle Hole",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Green",
+"hex": "#237841",
+"part": "Plate 2 x 3",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Green",
+"hex": "#237841",
+"part": "Plate 2 x 8",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Green",
+"hex": "#237841",
+"part": "Slope 33 3 x 1",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Green",
+"hex": "#237841",
+"part": "Slope 45 2 x 1",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Green",
+"hex": "#237841",
+"part": "Slope, Inverted 45 2 x 2 with Flat Bottom Pin",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Lavender",
+"hex": "#E1D5ED",
+"part": "Brick 1 x 4",
+"brick": true
+},
+{
+"qty": 4,
+"color": "Lavender",
+"hex": "#E1D5ED",
+"part": "Slope, Curved 4 x 1",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Light Aqua",
+"hex": "#ADC3C0",
+"part": "Brick 1 x 2",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Light Aqua",
+"hex": "#ADC3C0",
+"part": "Brick, Modified 1 x 1 with Stud on Side",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Light Aqua",
+"hex": "#ADC3C0",
+"part": "Slope 30 1 x 2 x 2/3",
+"brick": false
+},
+{
+"qty": 3,
+"color": "Light Bluish Gray",
+"hex": "#A0A5A9",
+"part": "Brick 2 x 2",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Light Bluish Gray",
+"hex": "#A0A5A9",
+"part": "Brick 2 x 8",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Light Bluish Gray",
+"hex": "#A0A5A9",
+"part": "Plate 1 x 4",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Light Bluish Gray",
+"hex": "#A0A5A9",
+"part": "Plate 2 x 4",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Light Bluish Gray",
+"hex": "#A0A5A9",
+"part": "Plate, Modified 1 x 4 with Tow Ball Socket, Flattened with Holes",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Light Bluish Gray",
+"hex": "#A0A5A9",
+"part": "Slope 75 2 x 1 x 3 - Hollow Stud",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Light Bluish Gray",
+"hex": "#A0A5A9",
+"part": "Slope 75 2 x 2 x 3 - Solid Studs",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Light Bluish Gray",
+"hex": "#A0A5A9",
+"part": "Slope, Curved 3 x 1",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Light Bluish Gray",
+"hex": "#A0A5A9",
+"part": "Tile, Modified 1 x 2 Grille with Bottom Groove",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Light Bluish Gray",
+"hex": "#A0A5A9",
+"part": "Turntable 2 x 2 Plate, Top",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Light Bluish Gray",
+"hex": "#A0A5A9",
+"part": "Wheel 8mm D. x 6mm",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Light Bluish Gray",
+"hex": "#A0A5A9",
+"part": "Wheel 11mm D. x 12mm, Hole Notched for Wheels Holder Pin",
+"brick": false
+},
+{
+"qty": 10,
+"color": "Light Bluish Gray",
+"hex": "#A0A5A9",
+"part": "Wheel 18mm D. x 8mm with Fake Bolts and Deep Spokes with Inner Ring",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Lime",
+"hex": "#BBE90B",
+"part": "Brick 1 x 2",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Lime",
+"hex": "#BBE90B",
+"part": "Brick 1 x 4",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Lime",
+"hex": "#BBE90B",
+"part": "Brick 2 x 4",
+"brick": true
+},
+{
+"qty": 1,
+"color": "Lime",
+"hex": "#BBE90B",
+"part": "Plate 2 x 6",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Lime",
+"hex": "#BBE90B",
+"part": "Plate, Modified 2 x 2 with Groove and 1 Stud in Center (Jumper)",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Lime",
+"hex": "#BBE90B",
+"part": "Slope 45 2 x 1",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Lime",
+"hex": "#BBE90B",
+"part": "Tile 1 x 4",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Magenta",
+"hex": "#923978",
+"part": "Brick 1 x 4",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Magenta",
+"hex": "#923978",
+"part": "Cone 1 x 1 with Top Groove",
+"brick": false
+},
+{
+"qty": 8,
+"color": "Medium Azure",
+"hex": "#36AEBF",
+"part": "Brick 1 x 4",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Medium Azure",
+"hex": "#36AEBF",
+"part": "Brick 1 x 6",
+"brick": true
+},
+{
+"qty": 4,
+"color": "Medium Azure",
+"hex": "#36AEBF",
+"part": "Plate 1 x 6",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Medium Azure",
+"hex": "#36AEBF",
+"part": "Slope, Curved 2 x 1 x 1 1/3 with Recessed Stud",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Medium Azure",
+"hex": "#36AEBF",
+"part": "Tile 1 x 4",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Medium Lavender",
+"hex": "#AC78BA",
+"part": "Brick 2 x 4",
+"brick": true
+},
+{
+"qty": 4,
+"color": "Medium Lavender",
+"hex": "#AC78BA",
+"part": "Slope 45 2 x 1",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Orange",
+"hex": "#FE8A18",
+"part": "Bracket 1 x 2 - 2 x 2",
+"brick": false
+},
+{
+"qty": 3,
+"color": "Orange",
+"hex": "#FE8A18",
+"part": "Brick 1 x 1",
+"brick": true
+},
+{
+"qty": 7,
+"color": "Orange",
+"hex": "#FE8A18",
+"part": "Brick 1 x 2",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Orange",
+"hex": "#FE8A18",
+"part": "Brick 1 x 3",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Orange",
+"hex": "#FE8A18",
+"part": "Brick 2 x 3",
+"brick": true
+},
+{
+"qty": 1,
+"color": "Orange",
+"hex": "#FE8A18",
+"part": "Brick and Axle Separator",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Orange",
+"hex": "#FE8A18",
+"part": "Plate 2 x 4",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Orange",
+"hex": "#FE8A18",
+"part": "Plate, Modified 1 x 2 with 1 Stud with Groove and Bottom Stud Holder (Jumper)",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Orange",
+"hex": "#FE8A18",
+"part": "Slope 30 1 x 1 x 2/3",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Orange",
+"hex": "#FE8A18",
+"part": "Slope 45 2 x 1",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Orange",
+"hex": "#FE8A18",
+"part": "Slope 45 2 x 2",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Orange",
+"hex": "#FE8A18",
+"part": "Slope, Inverted 33 3 x 2 with Flat Bottom Pin and Connections between Studs",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Red",
+"hex": "#C91A09",
+"part": "Brick 2 x 4",
+"brick": true
+},
+{
+"qty": 1,
+"color": "Red",
+"hex": "#C91A09",
+"part": "Brick 2 x 8",
+"brick": true
+},
+{
+"qty": 3,
+"color": "Red",
+"hex": "#C91A09",
+"part": "Brick, Round 2 x 2 with Axle Hole",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Red",
+"hex": "#C91A09",
+"part": "Plate 1 x 2",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Red",
+"hex": "#C91A09",
+"part": "Plate 2 x 2",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Red",
+"hex": "#C91A09",
+"part": "Slope 30 1 x 2 x 2/3",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Red",
+"hex": "#C91A09",
+"part": "Slope 45 2 x 1",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Red",
+"hex": "#C91A09",
+"part": "Slope, Curved 2 x 1 x 1 1/3 with Recessed Stud",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Red",
+"hex": "#C91A09",
+"part": "Slope, Curved 2 x 1 x 2/3",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Red",
+"hex": "#C91A09",
+"part": "Slope, Curved 3 x 2 with 4 Studs",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Red",
+"hex": "#C91A09",
+"part": "Tile 1 x 4",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Red",
+"hex": "#C91A09",
+"part": "Tile, Modified 1 x 2 Grille with Bottom Groove",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Red",
+"hex": "#C91A09",
+"part": "Turntable 2 x 2 Plate, Base",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Reddish Brown",
+"hex": "#582A12",
+"part": "Brick 2 x 3",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Reddish Brown",
+"hex": "#582A12",
+"part": "Brick 2 x 4",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Reddish Brown",
+"hex": "#582A12",
+"part": "Brick, Round 2 x 2 with Axle Hole",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Reddish Brown",
+"hex": "#582A12",
+"part": "Shutter for Window 1 x 2 x 2 2/3 with Rounded Top",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Tan",
+"hex": "#E4CD9E",
+"part": "Brick 1 x 4",
+"brick": true
+},
+{
+"qty": 1,
+"color": "Tan",
+"hex": "#E4CD9E",
+"part": "Brick, Modified 2 x 2 with Pin and Axle Hole",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Tan",
+"hex": "#E4CD9E",
+"part": "Plate 1 x 3",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Tan",
+"hex": "#E4CD9E",
+"part": "Slope 45 2 x 1",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Tan",
+"hex": "#E4CD9E",
+"part": "Window 1 x 2 x 2 2/3 with Rounded Top",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Tan",
+"hex": "#E4CD9E",
+"part": "Window 1 x 2 x 2 Plane, Single Hole Top and Bottom for Glass",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Trans-Bright Green",
+"hex": "#D9E4A7",
+"part": "Brick 1 x 2 without Bottom Tube",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Trans-Clear",
+"hex": "#EEEEEE",
+"part": "Plate, Round 1 x 1",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Trans-Clear",
+"hex": "#EEEEEE",
+"part": "Slope 45 2 x 2",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Trans-Dark Pink",
+"hex": "#DF6695",
+"part": "Brick 1 x 2 without Bottom Tube",
+"brick": true
+},
+{
+"qty": 3,
+"color": "Trans-Red",
+"hex": "#C91A09",
+"part": "Plate, Round 1 x 1",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Trans-Yellow",
+"hex": "#F5CD2F",
+"part": "Brick 1 x 2 without Bottom Tube",
+"brick": true
+},
+{
+"qty": 1,
+"color": "White",
+"hex": "#FFFFFF",
+"part": "Arch 1 x 3 x 2 with Curved End",
+"brick": false
+},
+{
+"qty": 4,
+"color": "White",
+"hex": "#FFFFFF",
+"part": "Brick 1 x 2",
+"brick": true
+},
+{
+"qty": 2,
+"color": "White",
+"hex": "#FFFFFF",
+"part": "Brick 2 x 4",
+"brick": true
+},
+{
+"qty": 2,
+"color": "White",
+"hex": "#FFFFFF",
+"part": "Plate 2 x 4",
+"brick": false
+},
+{
+"qty": 1,
+"color": "White",
+"hex": "#FFFFFF",
+"part": "Plate 2 x 6",
+"brick": false
+},
+{
+"qty": 2,
+"color": "White",
+"hex": "#FFFFFF",
+"part": "Plate, Modified 1 x 1 with Tooth Horizontal",
+"brick": false
+},
+{
+"qty": 1,
+"color": "White",
+"hex": "#FFFFFF",
+"part": "Plate, Modified 1 x 2 with Bar Handle on End",
+"brick": false
+},
+{
+"qty": 1,
+"color": "White",
+"hex": "#FFFFFF",
+"part": "Plate, Modified 2 x 2 with Bar Frame Octagonal, Reinforced, Completely Round Studs",
+"brick": false
+},
+{
+"qty": 1,
+"color": "White",
+"hex": "#FFFFFF",
+"part": "Plate, Modified 3 x 3 Cross",
+"brick": false
+},
+{
+"qty": 6,
+"color": "White",
+"hex": "#FFFFFF",
+"part": "Plate, Round 1 x 1",
+"brick": false
+},
+{
+"qty": 5,
+"color": "White",
+"hex": "#FFFFFF",
+"part": "Slope 45 2 x 2",
+"brick": false
+},
+{
+"qty": 1,
+"color": "White",
+"hex": "#FFFFFF",
+"part": "Slope, Curved 3 x 2 with 4 Studs",
+"brick": false
+},
+{
+"qty": 2,
+"color": "White",
+"hex": "#FFFFFF",
+"part": "Slope, Inverted 33 3 x 2 with Flat Bottom Pin and Connections between Studs",
+"brick": false
+},
+{
+"qty": 2,
+"color": "White",
+"hex": "#FFFFFF",
+"part": "Tile, Round 1 x 1 with Black Eye Closed with 7 Eyelashes Pattern",
+"brick": false
+},
+{
+"qty": 2,
+"color": "White",
+"hex": "#FFFFFF",
+"part": "Tile, Round 1 x 1 with Black Eye Partially Closed with Off-Center Pupil Pattern",
+"brick": false
+},
+{
+"qty": 2,
+"color": "White",
+"hex": "#FFFFFF",
+"part": "Tile, Round 1 x 1 with Black Eye with Pupil Pattern",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Yellow",
+"hex": "#F2CD37",
+"part": "Brick 1 x 6",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Yellow",
+"hex": "#F2CD37",
+"part": "Brick 2 x 2",
+"brick": true
+},
+{
+"qty": 2,
+"color": "Yellow",
+"hex": "#F2CD37",
+"part": "Brick, Modified 1 x 4 with Studs on Side",
+"brick": false
+},
+{
+"qty": 3,
+"color": "Yellow",
+"hex": "#F2CD37",
+"part": "Brick, Round 2 x 2 with Axle Hole",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Yellow",
+"hex": "#F2CD37",
+"part": "Plate 1 x 4",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Yellow",
+"hex": "#F2CD37",
+"part": "Plate 2 x 3",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Yellow",
+"hex": "#F2CD37",
+"part": "Plate 4 x 8",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Yellow",
+"hex": "#F2CD37",
+"part": "Plate, Modified 1 x 1 with Open O Clip (Horizontal Grip)",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Yellow",
+"hex": "#F2CD37",
+"part": "Plate, Modified 1 x 2 with Clip on End (Horizontal Grip)",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Yellow",
+"hex": "#F2CD37",
+"part": "Plate, Modified 4 x 4 with 2 x 2 Open Center",
+"brick": false
+},
+{
+"qty": 2,
+"color": "Yellow",
+"hex": "#F2CD37",
+"part": "Plate, Round 1 x 1",
+"brick": false
+},
+{
+"qty": 1,
+"color": "Yellow",
+"hex": "#F2CD37",
+"part": "Plate, Round 2 x 2 with Axle Hole",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Yellow",
+"hex": "#F2CD37",
+"part": "Tile 1 x 2",
+"brick": false
+},
+{
+"qty": 4,
+"color": "Yellowish Green",
+"hex": "#DFEEA5",
+"part": "Brick 1 x 2",
+"brick": true
+}
+]
+}

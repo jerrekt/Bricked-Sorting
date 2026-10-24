@@ -1,0 +1,127 @@
+{
+ "version": 1,
+ "note": "Shared bin table for the website, Kratos and the Indicate controller. Code is floor-slot. Physical positions are placeholders until the hardware is measured.",
+ "codeFormat": "{floor}-{slot}",
+ "floors": [
+  {
+   "floor": 2,
+   "position": "top",
+   "category": "other",
+   "label": "Other pieces"
+  },
+  {
+   "floor": 1,
+   "position": "bottom",
+   "category": "brick",
+   "label": "Bricks"
+  }
+ ],
+ "rules": {
+  "brickPattern": "Regular rectangular brick (Brick N x M). Plates, tiles, slopes, round and modified bricks go to floor 2.",
+  "platesAreBricks": false,
+  "unknownSlot": 8
+ },
+ "slots": [
+  {
+   "slot": 1,
+   "key": "red-orange",
+   "label": "Red / Orange",
+   "swatch": "#D6372B"
+  },
+  {
+   "slot": 2,
+   "key": "yellow",
+   "label": "Yellow",
+   "swatch": "#F2C21B"
+  },
+  {
+   "slot": 3,
+   "key": "green",
+   "label": "Green / Lime",
+   "swatch": "#3E9B45"
+  },
+  {
+   "slot": 4,
+   "key": "blue",
+   "label": "Blue / Azure",
+   "swatch": "#2F74C8"
+  },
+  {
+   "slot": 5,
+   "key": "pink-purple",
+   "label": "Pink / Purple",
+   "swatch": "#B65FA8"
+  },
+  {
+   "slot": 6,
+   "key": "black",
+   "label": "Black / Dark Gray",
+   "swatch": "#2A2B2E"
+  },
+  {
+   "slot": 7,
+   "key": "white",
+   "label": "White / Light Gray",
+   "swatch": "#E9E7E1"
+  },
+  {
+   "slot": 8,
+   "key": "unknown",
+   "label": "Unknown color",
+   "swatch": null
+  }
+ ],
+ "colorMap": {
+  "Red": "red-orange",
+  "Dark Red": "red-orange",
+  "Orange": "red-orange",
+  "Dark Orange": "red-orange",
+  "Bright Light Orange": "red-orange",
+  "Yellow": "yellow",
+  "Bright Light Yellow": "yellow",
+  "Green": "green",
+  "Bright Green": "green",
+  "Dark Green": "green",
+  "Lime": "green",
+  "Yellowish Green": "green",
+  "Blue": "blue",
+  "Dark Blue": "blue",
+  "Dark Azure": "blue",
+  "Medium Azure": "blue",
+  "Light Aqua": "blue",
+  "Bright Pink": "pink-purple",
+  "Dark Pink": "pink-purple",
+  "Magenta": "pink-purple",
+  "Dark Purple": "pink-purple",
+  "Lavender": "pink-purple",
+  "Medium Lavender": "pink-purple",
+  "Black": "black",
+  "Dark Bluish Gray": "black",
+  "White": "white",
+  "Light Bluish Gray": "white",
+  "Tan": "unknown",
+  "Reddish Brown": "unknown",
+  "Dark Brown": "unknown",
+  "Trans-Clear": "unknown",
+  "Trans-Red": "unknown",
+  "Trans-Yellow": "unknown",
+  "Trans-Bright Green": "unknown",
+  "Trans-Dark Pink": "unknown"
+ },
+ "physical": {
+  "zByFloorMm": {
+   "1": null,
+   "2": null
+  },
+  "yawBySlotDeg": {
+   "1": null,
+   "2": null,
+   "3": null,
+   "4": null,
+   "5": null,
+   "6": null,
+   "7": null,
+   "8": null
+  }
+ }
+}

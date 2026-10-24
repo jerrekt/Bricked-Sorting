@@ -1,0 +1,9 @@
+# Copy to /etc/cloudflared/config.yml in CT 150 and fill in the tunnel ID.
+# The credentials file stays in /root/.cloudflared (root only). Never commit it.
+tunnel: <TUNNEL-ID>
+credentials-file: /root/.cloudflared/<TUNNEL-ID>.json
+ingress:
+  - hostname: bricked-01.adsuaracloud.com
+    service: http://localhost:8090
+  # Must stay last. Never point anything at port 5000 (inference server).
+  - service: http_status:404

@@ -34,6 +34,12 @@ Kratos result → controller → motors and chute
 2. Add file → Upload files (or click a file and use the pencil icon to edit).
 3. Write a short commit message and commit.
 
+## Website
+- `web/` is the public site (bricked-01.adsuaracloud.com): landing page plus a simulated demo dashboard.
+- It deploys itself: CT 150 pulls `main` every 60 seconds. Anything merged to `main` goes live within a minute.
+- Bin codes and color groups: `docs/bin-system.md` and `web/data/bins.json`.
+- `deploy/` holds the server setup. Changes there do not auto-deploy; they are installed by hand.
+
 ## Notes
 - Add a short `README.md` in your folder: what it does, how to run it, wiring/pins.
 - Don't commit passwords, Wi-Fi credentials, or API keys.

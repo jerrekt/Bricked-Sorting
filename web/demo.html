@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bricked Sorting Demo</title>
+<meta name="description" content="Simulated dashboard for the Bricked Sorting LEGO sorter: sort a box, pull bins, find what's missing.">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/demo.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="./"><i></i>Bricked Sorting</a>
+  <span class="badge" title="No hardware connected. Everything runs in your browser.">Simulated</span>
+  <nav><a href="./">About</a><a href="demo.html" aria-current="page">Demo</a></nav>
+</div></header>
+
+<main class="wrap demo">
+  <section class="bar card">
+    <div class="bar-row">
+      <button class="btn primary big" id="startBtn">Start sort</button>
+      <button class="btn danger" id="stopBtn" hidden>Stop</button>
+      <label class="speed">Speed
+        <input type="range" id="speed" min="1" max="40" value="16" aria-describedby="speedOut">
+        <output id="speedOut">16 pcs/s</output>
+      </label>
+      <div class="mode" role="group" aria-label="View mode">
+        <button class="seg" data-mode="simple" aria-pressed="true">Simple</button>
+        <button class="seg" data-mode="advanced" aria-pressed="false">Advanced</button>
+      </div>
+    </div>
+    <div class="pipeline" aria-live="polite">
+      <div class="stage" id="stIsolate"><span class="st-name">Isolate</span><span class="st-val">Idle</span></div>
+      <div class="stage" id="stIdentify"><span class="st-name">Identify</span><span class="st-val">–</span></div>
+      <div class="stage" id="stIndicate"><span class="st-name">Indicate</span><span class="st-val">–</span></div>
+    </div>
+    <div class="progress" hidden><div class="progress-fill" id="progFill"></div><span id="progText"></span></div>
+    <p class="hint" id="hint"></p>
+  </section>
+
+  <section class="floors" aria-label="Bins in machine order">
+    <div class="floor" data-floor="2">
+      <div class="floor-head"><h2>Floor 2 · Other pieces</h2><span class="muted" id="f2sum"></span></div>
+      <div class="bins" id="floor2"></div>
+    </div>
+    <div class="floor" data-floor="1">
+      <div class="floor-head"><h2>Floor 1 · Bricks</h2><span class="muted" id="f1sum"></span></div>
+      <div class="bins" id="floor1"></div>
+    </div>
+  </section>
+
+  <section class="side">
+    <div class="card inv">
+      <h2>Inventory</h2>
+      <dl class="stats">
+        <div><dt>Collection total</dt><dd id="totalOut">Not set</dd></div>
+        <div><dt>In bins</dt><dd id="inBinsOut">0</dd></div>
+        <div><dt>Out of machine</dt><dd id="outOut">0</dd></div>
+        <div><dt>Bins opened</dt><dd id="flagOut">None</dd></div>
+      </dl>
+      <div class="inv-btns">
+        <button class="btn" data-action="count">Count Everything</button>
+        <button class="btn" data-action="add">Add New LEGO</button>
+        <button class="btn" data-action="audit">Find What's Missing</button>
+      </div>
+      <div class="out-tray" id="outTray" hidden>
+        <p><strong id="outCount">0</strong> pieces are out of the machine.</p>
+        <button class="btn small" data-action="return">Put them back (normal sort)</button>
+      </div>
+    </div>
+
+    <div class="card adv" data-adv>
+      <h2>Advanced</h2>
+      <label class="row">Misread rate
+        <input type="range" id="misread" min="0" max="10" value="3">
+        <output id="misreadOut">3%</output>
+      </label>
+      <p class="muted small">Share of pieces the camera can't place, sent to that floor's unknown bin (slot 8).</p>
+      <p class="small">Data source: <strong>Simulated</strong>. Live data from Kratos is not connected yet.</p>
+      <h3>Log</h3>
+      <ol class="log" id="log"></ol>
+      <button class="btn small danger" id="resetBtn">Reset demo</button>
+    </div>
+  </section>
+</main>
+
+<dialog id="sheet" aria-labelledby="sheetTitle">
+  <form method="dialog" class="sheet-inner">
+    <header><h2 id="sheetTitle"></h2><button class="x" value="close" aria-label="Close">×</button></header>
+    <div id="sheetBody"></div>
+    <footer id="sheetFoot"></footer>
+  </form>
+</dialog>
+
+<footer class="foot"><div class="wrap">Simulated with the real parts list of one LEGO Classic 10696 box (484 pieces). Bin sizes are placeholders: capacity shown is 3 boxes.</div></footer>
+<script src="assets/demo.js"></script>
+</body>
+</html>

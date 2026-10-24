@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bricked Sorting</title>
+<meta name="description" content="Bricked Sorting: a camera-based LEGO sorter and inventory tracker. SJSU Tech 190A senior project.">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.hero{display:grid;gap:24px;padding:32px 0 8px;align-items:start}
+@media (min-width:820px){.hero>div:first-child{padding-top:72px}}
+@media (min-width:820px){.hero{grid-template-columns:1.1fr .9fr}}
+.hero h1{font-size:clamp(30px,6vw,46px);margin-bottom:12px}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:52ch;margin:0 0 20px}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.cta a.btn{text-decoration:none;display:inline-flex;align-items:center}
+.anim{display:flex;flex-direction:column;align-items:center;gap:10px}
+.anim canvas{width:100%;max-width:340px;height:auto}
+.steps{display:grid;gap:12px;margin-top:32px}
+@media (min-width:720px){.steps{grid-template-columns:repeat(3,1fr)}}
+.steps .card h3{display:flex;align-items:center;gap:8px}
+.steps .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--accent-fg);font-size:14px}
+.steps p{margin:0;color:var(--muted)}
+.codes{margin-top:32px}
+.codes table{border-collapse:collapse;width:100%;font-size:14px}
+.codes th,.codes td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left}
+.codes .tbl{overflow-x:auto}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px;border:1px solid rgba(0,0,0,.25)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="./" aria-current="page"><i></i>Bricked Sorting</a>
+  <nav><a href="./" aria-current="page">About</a><a href="demo.html">Demo</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <span class="badge">SJSU Tech 190A · Senior project</span>
+      <h1>A LEGO sorter that keeps count.</h1>
+      <p class="lead">Pour in a box of LEGO. A camera identifies each piece, a rotating chute drops it into one of 16 bins, and the dashboard keeps track of what you own and what has gone missing.</p>
+      <div class="cta">
+        <a class="btn primary" href="demo.html">Try the demo</a>
+        <a class="btn" href="#how">How it works</a>
+      </div>
+    </div>
+    <div class="anim">
+      <canvas id="binAnim" width="340" height="804" role="img" aria-label="Animation of LEGO pieces dropping into 16 bins: other pieces on the top floor, bricks on the bottom floor, sorted by color."></canvas>
+      <button class="btn small" id="replay">Replay</button>
+    </div>
+  </section>
+
+  <section class="steps" id="how">
+    <div class="card"><h3><span class="num">1</span>Isolate</h3><p>A vibratory feeder spreads the pile out and sends one piece at a time to the inspection spot.</p></div>
+    <div class="card"><h3><span class="num">2</span>Identify</h3><p>A camera takes a picture. A server on our home lab decides: brick or other piece, and which color group.</p></div>
+    <div class="card"><h3><span class="num">3</span>Indicate</h3><p>A chute moves to the right floor and bin, and the piece drops in. Each bin has a switch that notes when it is opened.</p></div>
+  </section>
+
+  <section class="codes card">
+    <h2>Bin codes</h2>
+    <p class="muted">Every bin has a code: floor, then slot. Floor 1 is the bottom row (bricks), floor 2 is the top row (everything else). Slot 8 catches colors the camera can't place.</p>
+    <div class="tbl"><table id="codeTable"><thead><tr><th>Slot</th><th>Color group</th><th>Floor 2 (other)</th><th>Floor 1 (bricks)</th></tr></thead><tbody></tbody></table></div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap">Bricked Sorting · SJSU Tech 190A. Sample set: LEGO Classic 10696 (484 pieces).</div></footer>
+<script>
+fetch('data/bins.json').then(function(r){return r.json()}).then(function(b){
+  var tb=document.querySelector('#codeTable tbody');
+  b.slots.forEach(function(s){
+    var tr=document.createElement('tr');
+    var sw=s.swatch?'<span class="sw" style="background:'+s.swatch+'"></span>':'<span class="sw"></span>';
+    tr.innerHTML='<td>'+s.slot+'</td><td>'+sw+s.label+'</td><td>2-'+s.slot+'</td><td>1-'+s.slot+'</td>';
+    tb.appendChild(tr);
+  });
+});
+</script>
+<script src="assets/bin-anim.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+[Unit]
+Description=Bricked Sorting site: pull GitHub main
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=bricksite
+Group=bricksite
+ExecStart=/usr/local/sbin/bricked-site-autodeploy
+NoNewPrivileges=yes
+ProtectSystem=strict
+ReadWritePaths=/opt/bricked-site
+PrivateTmp=yes
