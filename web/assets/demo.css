@@ -38,7 +38,9 @@
 .bin-sw.unk{background:repeating-linear-gradient(45deg,var(--surface-2) 0 3px,var(--line) 3px 6px)}
 .bin-count{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
 .bin-total{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
-.fill{height:6px;border-radius:3px;background:var(--surface-2);overflow:hidden;margin-top:auto}
+.pile{display:block;width:100%;height:auto;aspect-ratio:5/4;margin-top:auto;background:var(--surface-2);border:2px solid var(--line);border-top:0;border-radius:0 0 7px 7px}
+.bin.full .pile{border-color:var(--warn)}
+.fill{height:6px;border-radius:3px;background:var(--surface-2);overflow:hidden;margin-top:6px}
 .fill i{display:block;height:100%;background:var(--accent);width:0;transition:width .2s}
 .bin.full .fill i{background:var(--warn)}
 .flag{position:absolute;top:-8px;left:-6px;font-size:11px;font-weight:700;background:var(--flag);color:#1b1400;border-radius:6px;padding:1px 6px}

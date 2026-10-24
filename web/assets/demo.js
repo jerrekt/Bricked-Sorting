@@ -45,6 +45,76 @@
     return c;
   }
 
+
+  /* ---------- bin piles: pieces drop in and stack (height-map packing) ---------- */
+  var PW = 80, PH = 64, piles = {}, animating = false;
+  var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function shapeOf(p) {
+    if (/^Brick \d+ x \d+/.test(p.part)) return [20, 9];
+    if (/Tire|Wheel/.test(p.part)) return [10, 10];
+    if (/Round|Cone/.test(p.part)) return [8, 9];
+    if (/^Plate|^Tile/.test(p.part)) return [20, 4];
+    if (/Slope/.test(p.part)) return [14, 8];
+    return [16, 7];
+  }
+  function pileInit() {
+    codes().forEach(function (c) {
+      var cv = document.querySelector('.bin[data-code="' + c + '"] .pile');
+      var sc = Math.sqrt((PW * PH * 0.5) / CAP[c] / 120);
+      piles[c] = { cv: cv, x: cv.getContext('2d'), hm: new Array(PW).fill(0), items: [], sc: Math.min(1, sc) };
+    });
+  }
+  function place(pl, p) {
+    var d = shapeOf(p), w = Math.max(3, d[0] * pl.sc), h = Math.max(2, d[1] * pl.sc), best = 1e9, xs = [];
+    for (var x0 = 0; x0 <= PW - w; x0 += 1) {
+      var m = 0; for (var i = Math.floor(x0); i < Math.ceil(x0 + w); i++) if (pl.hm[i] > m) m = pl.hm[i];
+      xs.push([x0, m]); if (m < best) best = m;
+    }
+    var near = xs.filter(function (q) { return q[1] <= best + h * 0.3; }), pk = near[Math.floor(Math.random() * near.length)];
+    var top = Math.min(pk[1] + h, PH + 40);
+    for (var j = Math.floor(pk[0]); j < Math.ceil(pk[0] + w); j++) pl.hm[j] = top;
+    return { x: pk[0], y: pk[1], w: w, h: h, hex: p.hex, rot: (Math.random() - 0.5) * 0.12, t0: 0, studs: /^(Brick|Plate) \d/.test(p.part) && w > 8 };
+  }
+  function pileAdd(c, p, anim) {
+    var pl = piles[c]; if (!pl) return;
+    var it = place(pl, p); it.t0 = anim && !reduceMotion ? performance.now() : 0;
+    pl.items.push(it); pl.dirty = true;
+    if (it.t0) kick(); else drawPile(c);
+  }
+  function pileRebuild(c) {
+    var pl = piles[c]; pl.hm.fill(0); pl.items = [];
+    S.bins[c].forEach(function (p) { pl.items.push(place(pl, p)); });
+    drawPile(c);
+  }
+  function kick() { if (!animating) { animating = true; requestAnimationFrame(frame); } }
+  function frame(t) {
+    var any = false;
+    codes().forEach(function (c) { var pl = piles[c]; if (pl.dirty) { if (drawPile(c, t)) any = true; else pl.dirty = false; } });
+    if (any) requestAnimationFrame(frame); else animating = false;
+  }
+  var DROP = 280;
+  function drawPile(c, t) {
+    var pl = piles[c], x = pl.x, k = pl.cv.width / PW, moving = false;
+    t = t || performance.now();
+    x.setTransform(k, 0, 0, k, 0, 0); x.clearRect(0, 0, PW, PH);
+    var cut = Math.max(0, pl.items.length - 400);
+    for (var i = cut; i < pl.items.length; i++) {
+      var it = pl.items[i], yb = PH - it.y, rot = it.rot;
+      if (it.t0) {
+        var u = (t - it.t0) / DROP;
+        if (u < 1) { moving = true; yb = -2 + (yb + 2) * u * u; rot = it.rot * u; } else it.t0 = 0;
+      }
+      if (yb - it.h > PH) continue;
+      x.save(); x.translate(it.x + it.w / 2, yb - it.h / 2); x.rotate(rot);
+      x.fillStyle = it.hex; x.fillRect(-it.w / 2, -it.h / 2, it.w, it.h);
+      x.strokeStyle = 'rgba(0,0,0,.35)'; x.lineWidth = 0.6; x.strokeRect(-it.w / 2 + 0.3, -it.h / 2 + 0.3, it.w - 0.6, it.h - 0.6);
+      if (it.h > 3) { x.fillStyle = 'rgba(255,255,255,.28)'; x.fillRect(-it.w / 2 + 1, -it.h / 2 + 0.8, it.w - 2, Math.max(0.6, it.h * 0.15)); }
+      if (it.studs) { x.fillStyle = it.hex; var sw = Math.max(1.5, it.w * 0.18), sh = Math.max(1, it.h * 0.3); x.fillRect(-it.w * 0.3 - sw / 2, -it.h / 2 - sh, sw, sh); x.fillRect(it.w * 0.3 - sw / 2, -it.h / 2 - sh, sw, sh); }
+      x.restore();
+    }
+    return moving;
+  }
+
   /* ---------- rendering ---------- */
   function binCard(c) {
     var f = +c[0], slot = +c.split('-')[1], info = BINS.slots[slot - 1];
@@ -54,7 +124,7 @@
     b.innerHTML = '<span class="bin-code">' + c + '</span>' +
       (info.swatch ? '<span class="bin-sw" style="background:' + info.swatch + '"></span>' : '<span class="bin-sw unk"></span>') +
       '<span class="bin-label">' + esc(slot === 8 ? (f === 1 ? 'Unknown brick' : 'Unknown other') : info.label) + '</span>' +
-      '<span class="bin-count">0</span><span class="bin-total"></span><span class="fill"><i></i></span>';
+      '<span class="bin-count">0</span><span class="bin-total"></span><canvas class="pile" width="160" height="128" aria-hidden="true"></canvas><span class="fill"><i></i></span>';
     b.addEventListener('click', function () { if (!run) openBin(c); });
     return b;
   }
@@ -71,6 +141,7 @@
       el.querySelector('.bin-total').textContent = S.total ? 'total ' + S.total[c] : '';
       var pct = Math.min(100, Math.round(n / CAP[c] * 100));
       el.querySelector('.fill i').style.width = pct + '%';
+      if (piles[c] && piles[c].items.length !== n) pileRebuild(c);
       el.classList.toggle('full', pct >= 80);
       el.classList.toggle('flagged', !!S.flags[c]);
       var fl = el.querySelector('.flag');
@@ -193,7 +264,7 @@
     var lastCode = null, p;
     while (run.acc >= 1 && run.i < run.q.length) {
       run.acc -= 1; p = run.q[run.i++];
-      var c = identify(p); S.bins[c].push(p); run.added[c]++; lastCode = c;
+      var c = identify(p); S.bins[c].push(p); pileAdd(c, p, true); run.added[c]++; lastCode = c;
       stage('#stIsolate', 'Piece #' + run.i, true);
       stage('#stIdentify', '<span class="dot" style="background:' + p.hex + '"></span>' + esc(p.color + ' ' + p.part), true);
       stage('#stIndicate', '→ bin <strong>' + c + '</strong>', true);
@@ -333,8 +404,10 @@
     codes().forEach(function (c) { EXPECT[c] = 0; });
     SET.parts.forEach(function (p) { EXPECT[trueCode(p)] += p.qty; });
     codes().forEach(function (c) { CAP[c] = Math.max(10, EXPECT[c] * BOXES_CAPACITY); });
+    // Unknown bins also catch misreads: leave room for 5% of that floor's color pieces.
+    [1, 2].forEach(function (f) { var n = 0; for (var s = 1; s <= 7; s++) n += EXPECT[code(f, s)]; CAP[code(f, 8)] += Math.ceil(n * 0.05 * BOXES_CAPACITY); });
     S = load();
-    buildBins(); wire(); setView(S.view || 'simple'); idleStages(); render();
+    buildBins(); pileInit(); wire(); setView(S.view || 'simple'); idleStages(); render();
   }
 
   Promise.all([fetch('data/bins.json').then(function (r) { return r.json(); }), fetch('data/set-10696.json').then(function (r) { return r.json(); })])
