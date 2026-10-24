@@ -9,13 +9,13 @@ SJSU senior project (Tech 190A). An automated system that feeds, identifies, sor
 | Folder | Owner | What goes here |
 |---|---|---|
 | `isolate/` | Vivek | Feeder stage: circular vibrator, V1/V2 vibrators, one piece at a time to the inspection spot |
-| `identify/` | Ethan | Camera capture, Pi code, Kratos API integration |
+| `identify/` | Ethan | Camera capture and Pi code for identifying pieces |
 | `indicate/` | Marshall | Rotating chute, servo, homing, limit switches, bins |
 | `web/` | Branden | Web dashboard |
-| `kratos/` | Branden | Classification service, deploy scripts |
-| `docs/` | Branden | Slides, BOM, Gantt, diagrams |
+| `kratos/` | Branden | Kratos server: classification service and its API |
+| `docs/` | Marshall | Slides, reports, Gantt, diagrams |
 
-Work only in your own folder so changes don't collide.
+Work only in your own folder so changes don't collide. Branden (lead) helps across every folder and owns the Kratos server and the website.
 
 ## How data flows
 
