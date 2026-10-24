@@ -6,3 +6,4 @@ node_modules/
 secrets.yaml
 *.log
 .DS_Store
+web/data/live.json

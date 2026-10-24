@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bricked Sorting Live</title>
+<meta name="description" content="Live status of the Bricked Sorting machine: stages, last piece and bin counts.">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/demo.css">
+<style>
+.badge.on{background:var(--ok);color:#fff;border-color:var(--ok)}
+.badge.warn{background:var(--flag);color:#1b1400;border-color:var(--flag)}
+.badge.off{background:var(--surface-2);color:var(--muted)}
+.live-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.live-top .age{color:var(--muted);font-size:14px}
+.stage .note{display:block;font-size:12px;color:var(--muted);min-height:16px}
+.st-val.ok{color:var(--ok)}.st-val.bad{color:var(--warn)}
+.empty{padding:14px;border-radius:10px;background:var(--surface-2)}
+.empty p{margin:0 0 6px}
+.last{font-size:18px;font-weight:700;font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="./"><i></i>Bricked Sorting</a>
+  <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="live.html" aria-current="page">Live</a></nav>
+</div></header>
+
+<main class="wrap demo">
+  <section class="card">
+    <div class="live-top"><h2 style="margin:0">Machine status</h2><span class="badge off" id="state">Not connected</span><span class="age" id="age"></span></div>
+    <div class="empty" id="empty">
+      <p><strong>No live data yet.</strong></p>
+      <p class="muted small">This page shows the real machine once CT 150 writes <code>data/live.json</code>. Until then every bin reads 0. The simulated version is on the Demo page.</p>
+    </div>
+    <div class="pipeline" id="stages" hidden>
+      <div class="stage"><span class="st-name">Isolate</span><span class="st-val" id="st-isolate">–</span><span class="note" id="st-isolate-note"></span></div>
+      <div class="stage"><span class="st-name">Identify</span><span class="st-val" id="st-identify">–</span><span class="note" id="st-identify-note"></span></div>
+      <div class="stage"><span class="st-name">Indicate</span><span class="st-val" id="st-indicate">–</span><span class="note" id="st-indicate-note"></span></div>
+    </div>
+    <p class="hint">Last piece: <span class="last" id="last">None yet</span></p>
+  </section>
+
+  <section class="floors" aria-label="Bins in machine order">
+    <div class="floor"><div class="floor-head"><h2>Floor 2 · Other pieces</h2></div><div class="bins" id="floor2"></div></div>
+    <div class="floor"><div class="floor-head"><h2>Floor 1 · Bricks</h2></div><div class="bins" id="floor1"></div></div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap">Bricked Sorting · SJSU Tech 190A. Reads data/live.json every 5 seconds.</div></footer>
+<script src="assets/live.js"></script>
+</body>
+</html>

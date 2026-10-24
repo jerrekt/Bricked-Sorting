@@ -1,0 +1,17 @@
+code,floor,slot,category,group,label
+2-1,2,1,other,red-orange,Red / Orange
+2-2,2,2,other,yellow,Yellow
+2-3,2,3,other,green,Green / Lime
+2-4,2,4,other,blue,Blue / Azure
+2-5,2,5,other,pink-purple,Pink / Purple
+2-6,2,6,other,black,Black / Dark Gray
+2-7,2,7,other,white,White / Light Gray
+2-8,2,8,other,unknown,Unknown color
+1-1,1,1,brick,red-orange,Red / Orange
+1-2,1,2,brick,yellow,Yellow
+1-3,1,3,brick,green,Green / Lime
+1-4,1,4,brick,blue,Blue / Azure
+1-5,1,5,brick,pink-purple,Pink / Purple
+1-6,1,6,brick,black,Black / Dark Gray
+1-7,1,7,brick,white,White / Light Gray
+1-8,1,8,brick,unknown,Unknown color
