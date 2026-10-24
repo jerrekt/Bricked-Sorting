@@ -1,0 +1,14 @@
+[Unit]
+Description=Pi 1 Brickognize Server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=ethan
+WorkingDirectory=/home/ethan
+ExecStart=/home/ethan/env/bin/python /home/ethan/brick_server.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+[Unit]
+Description=Bricked Sorting inference server (Pi /identify + 16-bin dashboard, port 5000)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/bricked-sorting
+ExecStart=/opt/bricked-sorting/venv/bin/python /opt/bricked-sorting/brick_server.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

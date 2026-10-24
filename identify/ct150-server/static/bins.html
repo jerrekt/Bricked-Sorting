@@ -1,0 +1,2821 @@
+<!doctype html>
+<!--
+=====================================================================================
+BRICKED SORTING DASHBOARD  (single file, no build step, no dependencies)
+=====================================================================================
+NOTES FOR AN AI ASSISTANT READING THIS FILE
+-------------------------------------------
+GOAL      The main screen ("Sorter" tab) shows exactly 16 bins = 2 shape groups x 8 colors. Nothing else is sorted.
+          Two read-only extra tabs ("Parts", "Sets") show part number + quantity and are searchable.
+
+LAYOUT    Matches the physical machine 1:1 (top floor drawn on top):
+            TOP    row  "Everything Else"  (OTHER)  floor 2, 4-inch bins, numbered 1-8 left to right
+            BOTTOM row  "Bricks"           (BRICK)  floor 1, 6-inch bins, numbered 1-8 left to right
+ART       Bricks row: each card shows a plain 3D rectangular box (brickArt()) in the family colors, no studs.
+          Everything Else row: each card shows STUDS = round cylinders, one per color of the family (a red stud and an
+          orange stud for Red / Orange; Special gets rainbow studs). See studArt().
+BINS      BRICK = plain "Brick N x N" only.  OTHER = everything else (curved, studs, plates, tiles, unknown).
+          Each bin is a color FAMILY, so look-alike colors share a bin and the camera only has to get the family right.
+          Slot order (1-8, left to right) and ID (must match COLORS in classify.py):
+            1 RED     Red / Orange          5 BROWN   Brown / Tan
+            2 YELLOW  Yellow                6 BLACK   Black / Dark Gray
+            3 GREEN   Green / Lime          7 WHITE   White / Light Gray
+            4 BLUE    Blue / Aqua           8 SPECIAL purple, pink, transparent, metallic, unknown
+          Bin ID = SHAPE_COLOR, e.g. BRICK_RED, OTHER_SPECIAL (the `bin` key the sorter returns).
+          THIS PAGE NEVER CLASSIFIES. Sorting logic lives only in classify.py on the server.
+
+ENDPOINTS (all GET unless noted; all optional except /bins; page falls back to DEMO DATA if /bins fails)
+          {API_BASE}/bins          -> {"BRICK_RED": 12, ... "OTHER_SPECIAL": 7}  pieces EVER put in each bin (raw count)
+                                      SQL: SELECT bin_name, COUNT(*) FROM scans GROUP BY bin_name;
+          {API_BASE}/recent        -> [{"name","bin","confidence","image_url"?,"created_at"}], newest first
+          {API_BASE}/tamper        -> bins whose lid/limit switch was opened since last cleared. Any of:
+                                      ["BRICK_RED"]  |  {"BRICK_RED": true}  |  {"opened": ["BRICK_RED"]}
+          POST {API_BASE}/tamper/clear  body {"bins":["BRICK_RED"]}  called when the user resolves a flagged bin
+          {API_BASE}/fill          -> OPTIONAL measured fill percent per bin {"BRICK_RED": 74, ...}. If a bin is present it
+                                      overrides the estimate below (use this if fill sensors are added later).
+          {PARTS_URL} (/api/parts) -> list of parts. Any common field names are accepted, see normPart():
+                                      part number, name, color, quantity, (optional) sets, image
+          {SETS_URL}  (/api/sets)  -> list of sets, see normSet(): set number, name, pieces, quantity, year
+          If API_BASE is another origin/port, that server must send CORS headers (Access-Control-Allow-Origin: *).
+
+THE 3 BUTTONS (all logic is in this file; NO backend or Pi change needed)
+          The sorter just keeps counting scans. This page keeps small state in localStorage (key bricked_inventory_v2):
+              display = raw - offset[bin]
+              S = { mode, scope, offset{}, start{}|null, expected{}|null, pending|null, last|null, tamper{}, fillBase{}, cap{} }
+          mode "sort"  default; every scan adds to the collection.
+          [Add New LEGO]     mode "add": same as sort but shows "+N new this session". Button becomes "Done Adding".
+          [Count Everything] mode "count", scope null (all 16 bins). User confirms, expected = display now, start = raw snapshot,
+                             user re-feeds the WHOLE collection, counted[bin] = raw[bin]-start[bin].
+          [Find What's Missing] during a count: finishes it (warns if <90% counted), compares counted vs expected per bin ->
+                             Missing (expected>counted) and Extra (counted>expected). Outside a count: re-opens a pending
+                             result or shows the last check.   Dialog choices:
+                               Update my totals -> offset = start                  (display becomes what was counted)
+                               Keep old totals  -> offset = finish - expected      (display stays at old totals)
+          Cancel count: offset = raw - expected (totals return to what they were).
+          Server count resets are healed by clamping offset/start to raw.
+
+TAMPER   (a kid opens a bin) A flagged bin shows a "!" badge, an amber outline and an alert strip:
+          "Red Bricks was opened. Dump out everything in it and put it back through the machine to recount."
+          [Recount this bin] runs the SAME count flow with scope = [that bin] (only those bins are compared/updated;
+          pieces that land in other bins just add normally). [False alarm] clears the flag with no recount.
+          Flags come from GET /tamper (hardware limit switch), from the "I opened this bin" button in the bin dialog,
+          or from the demo button. Flags clear when a recount is accepted/kept, or on False alarm.
+
+FILL     Each bin card has a status dot + bar = estimated fill level (legend: green Normal, yellow Getting full, red Near full).
+          fill% = (raw - fillBase[bin]) / capacity, capacity = cap[bin] || CAP_DEFAULT[shape]   (an ESTIMATE, not a sensor)
+          Thresholds FILL_WARN / FILL_FULL. [I emptied this bin] sets fillBase = raw (collection totals do NOT change).
+          [It's full now] calibrates cap[bin] to the current fill count. A red bin also shows a "nearly full" strip.
+          Starting a count/recount sets fillBase = raw for the counted bins (the user dumps them back into the machine).
+          The dot is ONLY fill level. Tamper is shown separately (badge + outline), counting by the blue progress bar.
+
+DEMO      The "Demo" button (Pro mode) switches to demo data (the parts of LEGO set 10696 Medium Creative Brick Box) so the whole dashboard can be shown with no server or Pi.
+          Demo state is stored separately (localStorage key ..._demo) and never touches the real collection. A panel appears:
+            Start/Pause sorting (one piece every 0.8 s) | +25 pieces | Fill a bin (triggers the near-full strip) |
+            Open a bin (triggers the tamper alert) | Re-feed for a count (use while Count Everything is running; a few bins
+            come up short so Find What's Missing has something to show) | Reset.
+          The page also enters demo by itself if GET /bins fails, and returns to live data when the server comes back.
+          ?demo=1 in the URL starts in demo mode.
+
+SEARCH    Top search box: matches part number, name or color on the Parts/Sets tabs (all words must match, e.g. "3001 red").
+
+MODES     Header switch Simple / Pro (default Simple) and a 3-way look picker (Classic / Bright / Cabinet). See "SIMPLE / PRO + DESIGN" in the script.
+          Simple = what a parent needs. Pro adds search, Parts/Sets, fill legend, recent scans, demo, "It's full now", "I opened this bin".
+
+EDIT MAP  CONFIG (API_BASE, PARTS_URL, SETS_URL, POLL_MS) | BINS | STATE | render() | ui() | tamper | actions |
+          parts/sets (normPart, normSet, renderParts, renderSets) | DEMO MODE (setDemo, demoSort, panel buttons) | tick()
+=====================================================================================
+-->
+<html lang="en" data-mode="simple" data-design="a">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bricked Sorting · Dashboard</title>
+<style>
+  :root{
+    --bg:#10151f; --panel:#181f2d; --panel2:#1e2738; --line:#2a3550; --ink:#eef1f8; --muted:#8e99b5;
+    --red:#e10a01; --blue:#0068fb; --yellow:#ffc001; --navy:#1c2438; --ok:#2fd27a; --warn:#ffb020;
+  }
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 16px 40px}
+  header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:18px 0 6px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:.2px}
+  .studs{display:flex;gap:4px}
+  .studs i{width:12px;height:12px;border-radius:50%;display:block}
+  .studs i:nth-child(1){background:var(--red)} .studs i:nth-child(2){background:var(--blue)} .studs i:nth-child(3){background:var(--yellow)}
+  .search{flex:1;min-width:200px;max-width:460px;margin-left:8px}
+  .search input{width:100%;background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:9px 16px;font:inherit;outline:none}
+  .search input:focus{border-color:var(--blue)}
+  .spacer{flex:1}
+  .badge{display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;background:var(--panel);border:1px solid var(--line);font-size:13px;color:var(--muted)}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--muted)}
+  .badge.live .dot{background:var(--ok);box-shadow:0 0 0 3px rgba(47,210,122,.18)}
+  .badge.demo .dot{background:var(--warn)}
+  .tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-top:8px}
+  .tab{background:none;border:0;color:var(--muted);font:600 15px system-ui;padding:10px 16px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}
+  .tab:hover{color:var(--ink)}
+  .tab.on{color:var(--ink);border-bottom-color:var(--blue)}
+  .tab small{color:var(--muted);font-weight:500;margin-left:4px}
+  .view[hidden]{display:none}
+
+  /* ---- the 3 buttons ---- */
+  .actions{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 0}
+  .abtn{position:relative;text-align:left;cursor:pointer;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-left-width:6px;border-radius:14px;padding:13px 16px;font:inherit;transition:transform .12s,background .15s,opacity .15s}
+  .abtn:hover:not(:disabled){transform:translateY(-1px);background:var(--panel2)}
+  .abtn:disabled{opacity:.45;cursor:not-allowed}
+  .abtn b{display:block;font-size:17px}
+  .abtn span{display:block;color:var(--muted);font-size:12.8px;margin-top:2px}
+  .abtn.blue{border-left-color:var(--blue)} .abtn.yellow{border-left-color:var(--yellow)} .abtn.red{border-left-color:var(--red)}
+  .abtn em{position:absolute;top:10px;right:12px;min-width:22px;height:22px;border-radius:11px;background:var(--red);color:#fff;font:700 12px/22px system-ui;text-align:center;font-style:normal;padding:0 6px}
+  .banner{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px;padding:12px 16px;border-radius:14px;border:1px solid var(--line);background:var(--panel)}
+  .banner.count{border-color:var(--blue);background:rgba(0,104,251,.12)}
+  .banner.add{border-color:var(--yellow);background:rgba(255,192,1,.10)}
+  .banner.alert{border-color:var(--warn);background:rgba(255,176,32,.12)}
+  .banner.full{border-color:#ff5a4f;background:rgba(255,90,79,.10)}
+  .banner.full .ico{background:#ff5a4f;color:#fff}
+  .btn.on{background:var(--warn);border-color:var(--warn);color:#201400}
+  .demo{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px;padding:10px 14px;border:1px dashed var(--warn);border-radius:14px;background:rgba(255,176,32,.07)}
+  .demo b{color:var(--warn);margin-right:4px}
+  .demo .tip{color:var(--muted);font-size:12.5px;flex-basis:100%}
+  .banner .msg{flex:1;min-width:220px}
+  .banner .ico{width:30px;height:30px;border-radius:50%;background:var(--warn);color:#201400;font:800 18px/30px system-ui;text-align:center;flex:none}
+  .btn{cursor:pointer;border:1px solid var(--line);background:var(--panel2);color:var(--ink);border-radius:10px;padding:8px 14px;font:600 14px system-ui}
+  .btn:hover{border-color:var(--muted)}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+  .btn.warn{background:var(--red);border-color:var(--red);color:#fff}
+
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 8px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+  .stat .k{color:var(--muted);font-size:12.5px;text-transform:uppercase;letter-spacing:.8px}
+  .stat .v{font-size:30px;font-weight:800;margin-top:2px}
+  .legend{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:12px 0 0;padding:10px 16px;background:var(--panel);border:1px solid var(--line);border-radius:14px;color:var(--muted);font-size:13.5px}
+  .legend span{display:inline-flex;align-items:center;gap:8px;color:var(--ink)}
+  .legend .lt{color:var(--muted);font-weight:600}
+  .legend .note{margin-left:auto;color:var(--muted);font-size:12.5px}
+  section.group{margin-top:18px;background:rgba(24,31,45,.55);border:1px solid var(--line);border-radius:18px;padding:14px}
+  .ghead{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+  .ghead h2{margin:0;font-size:18px}
+  .ghead .sub{color:var(--muted);font-size:13px}
+  .ghead .tot{margin-left:auto;font-weight:700}
+  .grid{display:grid;grid-template-columns:repeat(8,1fr);gap:10px}
+
+  /* ---- bin card ---- */
+  .bin{position:relative;cursor:pointer;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .2s,border-color .2s;text-align:left;padding:0;color:inherit;font:inherit}
+  .bin:hover{border-color:var(--muted)}
+  .bin .hd{display:flex;align-items:center;gap:8px;padding:9px 12px 0}
+  .bin .num{font-size:20px;font-weight:800}
+  .sd{display:inline-block;flex:none;width:11px;height:11px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px rgba(47,210,122,.15)}
+  .sd.warn{background:var(--warn);box-shadow:0 0 0 3px rgba(255,176,32,.25)}
+  .sd.full{background:#ff5a4f;box-shadow:0 0 0 3px rgba(255,90,79,.25)}
+  .bin .bang{margin-left:auto;width:24px;height:24px;border-radius:50%;background:var(--warn);color:#201400;font:800 15px/24px system-ui;text-align:center}
+  .bin .bang[hidden]{display:none}
+  .bin.flagged{border-color:var(--warn);box-shadow:0 0 0 1px var(--warn) inset;animation:shake .5s}
+  @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-4px)}40%{transform:translateX(4px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+  .bin .tray{height:56px;margin:8px 12px 0;border-radius:9px 9px 14px 14px;border:1px solid rgba(255,255,255,.10);
+    background-image:radial-gradient(circle at 22% 38%,rgba(255,255,255,.30) 0 6px,transparent 7px),
+                     radial-gradient(circle at 50% 38%,rgba(255,255,255,.30) 0 6px,transparent 7px),
+                     radial-gradient(circle at 78% 38%,rgba(255,255,255,.30) 0 6px,transparent 7px),
+                     linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.28)),
+                     linear-gradient(90deg,var(--c1) 50%,var(--c2) 50%)}
+  .bin .tray.rainbow{background-image:conic-gradient(from 0deg,#e10a01,#ff8a00,#ffc001,#2fd27a,#0068fb,#8a3ffc,#e10a01)}
+  .bin .studart{height:56px;margin:8px 12px 0;display:flex;align-items:center;justify-content:center;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
+  .bin .studart svg{height:52px;width:auto;max-width:100%;display:block}
+  .bin .custom-bin-art img{height:52px;width:100%;object-fit:contain;display:block}
+
+  .bin .body{padding:8px 12px 12px}
+  .bin .lab{font-size:12.5px;color:var(--muted);letter-spacing:.6px;text-transform:uppercase;line-height:1.25;min-height:2.5em}
+  .bin .cnt{font-size:30px;font-weight:800;line-height:1.1;margin-top:2px}
+  .bin .pct{font-size:12px;color:var(--muted)}
+  .bin .bar{height:5px;background:var(--panel2);border-radius:5px;margin-top:8px;overflow:hidden}
+  .bin .bar i{display:block;height:100%;background:var(--ok);border-radius:5px;transition:width .4s}
+  .bin[data-fill=warn] .bar i{background:var(--warn)}
+  .bin[data-fill=full] .bar i{background:#ff5a4f}
+  .bin[data-mode=count] .bar i{background:var(--blue)}
+  .bin.pulse{animation:pulse .9s ease-out}
+  @keyframes pulse{0%{transform:scale(1.04);border-color:var(--yellow)}100%{transform:scale(1);border-color:var(--line)}}
+  #recentWrap{margin-top:26px}
+  #recentWrap h2{font-size:18px;margin:0 0 10px}
+  .recent{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+  .item{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 10px}
+  .item img{width:44px;height:44px;border-radius:8px;object-fit:cover;background:var(--panel2)}
+  .item .ph{width:44px;height:44px;border-radius:8px;background:var(--panel2)}
+  .item .n{font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .item .m{font-size:12px;color:var(--muted)}
+  .item .t{min-width:0}
+  footer{margin-top:28px;color:var(--muted);font-size:12.5px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+
+  /* ---- parts / sets tables ---- */
+  .tbar{display:flex;align-items:center;gap:12px;margin:16px 0 10px;flex-wrap:wrap}
+  .tbar h2{margin:0;font-size:18px}
+  .tbar .meta{color:var(--muted);font-size:13px;margin-left:auto}
+  .tbl{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .tbl th{background:var(--panel2);color:var(--muted);font:600 12px system-ui;text-transform:uppercase;letter-spacing:.8px;text-align:left;padding:10px 12px;cursor:pointer;user-select:none;white-space:nowrap}
+  .tbl th.num,.tbl td.num{text-align:right}
+  .tbl td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:middle}
+  .tbl tr:hover td{background:rgba(255,255,255,.03)}
+  .tbl .pn{font-weight:700;font-variant-numeric:tabular-nums}
+  .tbl .q{font-weight:800;font-variant-numeric:tabular-nums}
+  .cdot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:8px;vertical-align:-1px;border:1px solid rgba(255,255,255,.25)}
+  .empty{padding:30px;text-align:center;color:var(--muted)}
+  .more{display:block;margin:14px auto 0}
+  .tscroll{overflow-x:auto}
+
+  /* ---- dialog ---- */
+  .ov{position:fixed;inset:0;background:rgba(5,8,14,.72);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10}
+  .ov[hidden]{display:none}
+  .dlg{width:100%;max-width:520px;max-height:88vh;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+  .dlg h3{margin:0 0 8px;font-size:20px}
+  .dlg p{margin:8px 0}
+  .dlg h4{margin:16px 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted)}
+  .dlg ul{list-style:none;margin:0;padding:0}
+  .dlg li{display:flex;gap:8px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--line)}
+  .dlg li b{margin-left:auto;font-size:16px}
+  .dlg li b.neg{color:#ff6b61} .dlg li b.pos{color:var(--ok)}
+  .dlg li small{color:var(--muted);font-size:12px}
+  .dlg .good{color:var(--ok);font-weight:700;font-size:16px}
+  .dlg .help{color:var(--muted);font-size:12.8px}
+  .dlg .big{font-size:34px;font-weight:800}
+  .dBtns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;justify-content:flex-end}
+
+
+  /* ---- SIMPLE / PRO mode: anything marked .pro-only is hidden in Simple mode (the default) ---- */
+  html[data-mode=simple] .pro-only{display:none!important}
+  html[data-mode=pro] .simple-only{display:none!important}
+  html[data-mode=simple] .stats{grid-template-columns:1fr}
+  html[data-mode=simple] .bin .pct{display:none}
+  .hint{margin:12px 0 0;color:var(--muted);font-size:15px}
+  .ctl{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .mode{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-weight:700;font-size:13.5px;color:var(--muted);user-select:none}
+  .mode input{position:absolute;opacity:0;width:0;height:0}
+  .mode .trk{position:relative;width:46px;height:26px;border-radius:13px;background:var(--panel2);border:1px solid var(--line);transition:background .2s}
+  .mode .trk::after{content:"";position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:var(--ink);transition:transform .2s}
+  .mode input:checked + .trk{background:var(--blue);border-color:var(--blue)}
+  .mode input:checked + .trk::after{transform:translateX(20px);background:#fff}
+  .mode input:focus-visible + .trk{outline:2px solid var(--yellow);outline-offset:2px}
+  html[data-mode=simple] .mode .ls, html[data-mode=pro] .mode .lp{color:var(--ink)}
+  .looks{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--panel)}
+  .looks button{border:0;background:none;color:var(--muted);font:600 13px system-ui;padding:6px 12px;cursor:pointer}
+  .looks button.on{background:var(--ink);color:var(--bg)}
+
+  /* ---- DESIGN 2 "Bright": light, big and friendly ---- */
+  html[data-design=b]{--bg:#f3f5fb;--panel:#ffffff;--panel2:#edf1f9;--line:#d9e0ee;--ink:#18203a;--muted:#5d6987;--ok:#12b76a;--warn:#f59e0b}
+  html[data-design=b] body{background:linear-gradient(#eef2fb,#f9faff) fixed}
+  html[data-design=b] .abtn{border-radius:22px;padding:20px 22px;box-shadow:0 4px 14px rgba(24,32,58,.08)}
+  html[data-design=b] .abtn b{font-size:20px}
+  html[data-design=b] .abtn span{font-size:14px}
+  html[data-design=b] section.group{background:#fff;border-radius:26px;box-shadow:0 6px 22px rgba(24,32,58,.07)}
+  html[data-design=b] .bin{border-radius:20px;box-shadow:0 2px 8px rgba(24,32,58,.07)}
+  html[data-design=b] .bin .cnt{font-size:36px}
+  html[data-design=b] .bin .studart{background:#f1f4fb;border-color:#e2e8f4}
+  html[data-design=b] .bin .studart svg{filter:drop-shadow(0 0 1px rgba(24,32,58,.55))}
+  html[data-design=b] .stat{border-radius:22px;box-shadow:0 2px 8px rgba(24,32,58,.05)}
+  html[data-design=b] .banner{border-radius:20px}
+  html[data-design=b] .dlg{border-radius:24px;box-shadow:0 20px 60px rgba(24,32,58,.25)}
+  html[data-design=b] .ov{background:rgba(20,26,45,.45)}
+  html[data-design=b] .btn.primary,html[data-design=b] .btn.warn{color:#fff}
+  html[data-design=b] .tbl tr:hover td{background:rgba(24,32,58,.04)}
+  html[data-design=b] .looks button.on{color:#fff}
+
+  /* ---- DESIGN 3 "Cabinet": looks like the machine - drawers, LED numbers, big push buttons ---- */
+  html[data-design=c]{--bg:#0a0c0f;--panel:#1a1d23;--panel2:#242831;--line:#343a46;--ink:#f1f3f7;--muted:#9aa3b5}
+  html[data-design=c] .brand{text-transform:uppercase;letter-spacing:2px;font-size:18px}
+  html[data-design=c] .actions{gap:14px}
+  html[data-design=c] .abtn{border:0;border-bottom:6px solid rgba(0,0,0,.35);border-radius:16px;padding:22px 18px;text-align:center;color:#fff}
+  html[data-design=c] .abtn.blue{background:#0068fb} html[data-design=c] .abtn.red{background:#e10a01}
+  html[data-design=c] .abtn.yellow{background:#ffc001;color:#1a1400}
+  html[data-design=c] .abtn.blue:hover:not(:disabled){background:#2b84ff} html[data-design=c] .abtn.red:hover:not(:disabled){background:#ff3a30} html[data-design=c] .abtn.yellow:hover:not(:disabled){background:#ffd13d}
+  html[data-design=c] .abtn:active:not(:disabled){transform:translateY(3px);border-bottom-width:3px}
+  html[data-design=c] .abtn b{font-size:21px} html[data-design=c] .abtn span{color:inherit;opacity:.85}
+  html[data-design=c] .abtn em{background:#fff;color:#e10a01}
+  html[data-design=c] section.group{background:linear-gradient(#272b33,#1a1d23);border:3px solid #3d4350;border-radius:12px;padding:18px;box-shadow:inset 0 0 0 2px #121418,0 8px 22px rgba(0,0,0,.45)}
+  html[data-design=c] .ghead h2{text-transform:uppercase;letter-spacing:1.5px;font-size:16px}
+  html[data-design=c] .grid{gap:14px}
+  html[data-design=c] .bin{border-radius:6px;border:2px solid #474f5e;background:linear-gradient(#2d323c,#20242c)}
+  html[data-design=c] .bin::after{content:"";display:block;width:44%;height:8px;border-radius:4px;background:linear-gradient(#a7afc0,#5b6475);margin:0 auto 12px}
+  html[data-design=c] .bin .body{padding-bottom:6px}
+  html[data-design=c] .bin .cnt,html[data-design=c] .stat .v{font-family:ui-monospace,Menlo,Consolas,monospace;color:#7dffb0;text-shadow:0 0 10px rgba(125,255,176,.35)}
+  html[data-design=c] .bin[data-fill=warn] .cnt{color:#ffc15a;text-shadow:0 0 10px rgba(255,193,90,.35)}
+  html[data-design=c] .bin[data-fill=full] .cnt{color:#ff8077;text-shadow:0 0 10px rgba(255,128,119,.35)}
+  html[data-design=c] .bin[data-mode=count] .cnt{color:#7ab4ff;text-shadow:0 0 10px rgba(122,180,255,.35)}
+  html[data-design=c] .bin .studart{background:#12151a;border-color:#2c313b}
+  html[data-design=c] .stat{border-radius:8px;background:#12151a}
+
+  @media (max-width:980px){.grid{grid-template-columns:repeat(4,1fr)}}
+  @media (max-width:700px){.actions{grid-template-columns:1fr}.search{order:3;max-width:none;flex-basis:100%;margin-left:0}}
+  @media (max-width:520px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .stats{grid-template-columns:1fr}
+    .stat .v{font-size:26px}
+    .tbl .hide-sm{display:none}
+  }
+</style>
+
+<style id="user-friendly-controls-style">
+.camera-nav{
+  margin-left:10px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:9px 14px;
+  background:var(--panel2);
+  color:var(--ink);
+  font-weight:700;
+  cursor:pointer;
+}
+.camera-nav:hover,
+.camera-nav.on{
+  background:var(--accent,#2563eb);
+  color:#fff;
+}
+.section-status{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-left:10px;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:500;
+  vertical-align:middle;
+}
+.section-status .sd{
+  display:inline-block;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#22d978;
+}
+.bin .sd[title]{cursor:help}
+@media(max-width:700px){
+  .camera-nav{margin-left:4px;padding:8px 10px}
+}
+</style>
+
+
+
+
+
+<style id="camera-multi-box-style">
+.camera-stage {
+  position: relative !important;
+}
+
+.camera-multi-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.camera-multi-box {
+  position: absolute;
+  border: 2px solid #22d978;
+  border-radius: 6px;
+  box-sizing: border-box;
+  background: rgba(34, 217, 120, .08);
+}
+
+.camera-multi-label {
+  position: absolute;
+  left: 0;
+  top: -25px;
+  max-width: 220px;
+  padding: 4px 7px;
+  border-radius: 5px;
+  background: #071a12;
+  color: #fff;
+  font-size: 11px;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-shadow: 0 2px 7px #0008;
+}
+</style>
+
+
+<style id="yellow-calibrate-style">
+.camera-pip #cameraCalibrateButton {
+  background: #ffc001 !important;
+  color: #1a1400 !important;
+  border: 0 !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+
+.camera-pip #cameraCalibrateButton:hover {
+  background: #ffd13d !important;
+}
+</style>
+
+<style id="hide-recent-scans">
+#recentWrap {
+  display: none !important;
+}
+</style>
+
+
+<style id="light-neon-numbers">
+html[data-design="b"] .stat .v,
+html[data-design="b"] .stat strong,
+html[data-design="b"] .bin .cnt {
+  color: #39ff88 !important;
+  text-shadow: 0 0 9px rgba(57, 255, 136, .45) !important;
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+<style id="smooth-theme-layout">
+.actions .abtn{
+  height:93px !important;
+  min-height:93px !important;
+  box-sizing:border-box !important;
+}
+
+.bin .cnt{
+  font-size:30px !important;
+  line-height:1.1 !important;
+}
+
+section.group,
+section.group .bin{
+  transition:
+    background-color .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease,
+    color .25s ease;
+}
+</style>
+
+
+<style id="smooth-button-text">
+.actions .abtn b{
+  font-size:17px !important;
+  line-height:24.65px !important;
+}
+
+.actions .abtn span{
+  font-size:12.8px !important;
+  line-height:18.56px !important;
+}
+
+.actions .abtn{
+  height:93px !important;
+  min-height:93px !important;
+  box-sizing:border-box !important;
+}
+</style>
+
+
+<style id="smooth-horizontal-button-text">
+.actions .abtn{
+  padding-left:22px !important;
+  padding-right:22px !important;
+  text-align:left !important;
+}
+</style>
+
+
+<style id="final-smooth-themes">
+.actions .abtn{
+  height:93px !important;
+  min-height:93px !important;
+  box-sizing:border-box !important;
+  padding:20px 22px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  align-items:flex-start !important;
+  text-align:left !important;
+}
+
+.actions .abtn b{
+  font-size:20px !important;
+  line-height:29px !important;
+}
+
+.actions .abtn span{
+  font-size:14px !important;
+  line-height:20.3px !important;
+}
+
+.bin .cnt{
+  font-size:36px !important;
+  line-height:1.1 !important;
+}
+
+.bin .num{
+  font-size:20px !important;
+}
+</style>
+
+
+<style id="bin-image-sizing">
+.bin .studart {
+  width: 100% !important;
+  aspect-ratio: 1 / 1 !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.bin .custom-bin-art img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+</style>
+
+<style id="mobile-phone-layout">
+@media (max-width: 700px) {
+  body {
+    overflow-x: hidden !important;
+  }
+
+  .wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  header {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    align-items: center !important;
+  }
+
+  .brand {
+    flex: 1 1 100% !important;
+  }
+
+  .looks,
+  .mode,
+  #cameraBtn {
+    margin: 0 !important;
+  }
+
+  .actions {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .actions .abtn {
+    min-height: 76px !important;
+    padding: 14px 16px !important;
+  }
+
+  section.group {
+    padding: 10px !important;
+    margin-top: 14px !important;
+    border-radius: 14px !important;
+  }
+
+  .ghead {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 5px 8px !important;
+  }
+
+  .ghead h2 {
+    font-size: 18px !important;
+  }
+
+  .ghead .sub {
+    flex: 1 1 100% !important;
+    font-size: 11px !important;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .bin {
+    min-width: 0 !important;
+    border-radius: 12px !important;
+  }
+
+  .bin .hd {
+    padding: 7px 9px 0 !important;
+  }
+
+  .bin .num {
+    font-size: 18px !important;
+  }
+
+  .bin .studart {
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
+    margin: 6px 7px 0 !important;
+  }
+
+  .bin .custom-bin-art img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  .bin .body {
+    padding: 7px 9px 10px !important;
+  }
+
+  .bin .lab {
+    font-size: 10px !important;
+    letter-spacing: .3px !important;
+  }
+
+  .bin .cnt {
+    font-size: 27px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .bin .studart {
+    max-height: 210px !important;
+  }
+}
+</style>
+
+<style id="hide-phone-full-alert">
+@media (max-width: 700px) {
+  #fullAlert {
+    display: none !important;
+  }
+}
+</style>
+
+<style id="phone-camera-layout">
+@media (max-width: 700px) {
+  .camera-page.camera-pip {
+    left: 10px !important;
+    right: 10px !important;
+    bottom: 10px !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: calc(100dvh - 20px) !important;
+    box-sizing: border-box !important;
+    padding: 12px !important;
+    border-radius: 16px !important;
+    overflow-y: auto !important;
+  }
+
+  .camera-page.camera-pip h1 {
+    font-size: 19px !important;
+    margin: 0 0 8px !important;
+  }
+
+  .camera-page.camera-pip .camera-stage {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+    max-height: 42dvh !important;
+  }
+
+  .camera-page.camera-pip #cameraStream,
+  .camera-page.camera-pip #cameraFrame {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  .camera-page.camera-pip .camera-result {
+    font-size: 14px !important;
+    padding: 9px !important;
+    margin-top: 8px !important;
+  }
+
+  .camera-page.camera-pip .camera-page-note {
+    font-size: 11px !important;
+    margin: 7px 0 !important;
+  }
+
+  .camera-page.camera-pip .camera-controls {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 7px !important;
+  }
+
+  .camera-page.camera-pip .camera-controls button {
+    float: none !important;
+    margin: 0 !important;
+    width: 100% !important;
+    min-height: 40px !important;
+    padding: 8px 4px !important;
+    font-size: 12px !important;
+  }
+}
+</style>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="studShade" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity=".42"/><stop offset=".32" stop-color="#fff" stop-opacity=".22"/>
+      <stop offset=".62" stop-color="#000" stop-opacity=".05"/><stop offset="1" stop-color="#000" stop-opacity=".45"/>
+    </linearGradient>
+    <linearGradient id="studRainbow" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#e10a01"/><stop offset=".2" stop-color="#ff8a00"/><stop offset=".4" stop-color="#ffc001"/>
+      <stop offset=".6" stop-color="#2fd27a"/><stop offset=".8" stop-color="#0068fb"/><stop offset="1" stop-color="#8a3ffc"/>
+    </linearGradient>
+  </defs>
+</svg>
+<div class="wrap">
+  <header>
+    <div class="brand"><span class="studs"><i></i><i></i><i></i></span> Bricked Sorting</div>
+    <div class="search pro-only"><input id="q" type="search" placeholder="Search part number or color…" autocomplete="off" aria-label="Search part number or color"></div>
+    <div class="spacer"></div>
+    <div class="ctl">
+      <div class="looks" id="looks" role="group" aria-label="Look"><button data-d="a" title="Dark, compact">Dark</button><button data-d="b" title="Light, big and friendly">Light</button><button data-d="c" title="Looks like the machine">Machine View</button></div>
+<button class="camera-nav" id="cameraBtn" type="button"
+        title="Open the LEGO scanning camera">📷 Scan Camera</button>
+
+      <label class="mode" title="Simple is made for everyone. Pro shows every option."><span class="ls">Simple</span><input type="checkbox" id="proSw" role="switch" aria-label="Pro mode"><i class="trk"></i><span class="lp">Pro</span></label>
+    </div>
+    <span id="status" class="badge"><span class="dot"></span><span id="statusTxt">Connecting…</span></span>
+    <button class="btn pro-only" id="demoBtn" title="Try the dashboard with fake data">Demo</button>
+  </header>
+
+  <nav class="tabs pro-only" role="tablist">
+    <button class="tab on" data-v="sorter" role="tab">Sorter</button>
+    <button class="tab" data-v="parts" role="tab">Parts<small id="nParts"></small></button>
+    <button class="tab" data-v="sets" role="tab">Sets<small id="nSets"></small></button>
+  </nav>
+
+  <!-- ============ SORTER ============ -->
+  <div class="view" id="v_sorter">
+    <p class="hint simple-only">Your LEGO sorts itself. Tap any bin to look inside.</p>
+    <div class="demo pro-only" id="demoPanel" hidden>
+      <b>Demo mode</b>
+      <button class="btn" id="dAuto">Start sorting</button>
+      <button class="btn" id="dBurst">+25 pieces</button>
+      <button class="btn" id="dFill">Fill a bin</button>
+      <button class="btn" id="dOpen">Open a bin</button>
+      <button class="btn" id="dRefeed">Re-feed for a count</button>
+      <button class="btn" id="dReset">Reset</button>
+      <span class="badge" id="dBox"></span>
+      <span class="tip">Demo only sorts the parts from LEGO Classic Medium Creative Brick Box 10696; nothing here touches your real collection. Try: press Count Everything, then Re-feed for a count, then Find What's Missing.</span>
+    </div>
+    <div class="actions">
+      <button class="abtn blue"   id="bCount"><b></b><span></span></button>
+      <button class="abtn yellow" id="bAdd"><b></b><span></span></button>
+      <button class="abtn red"    id="bMissing"><b></b><span></span><em id="pendDot" hidden>1</em></button>
+    </div>
+    <div id="alert" class="banner alert" hidden></div>
+    <div id="fullAlert" class="banner full" hidden></div>
+    <div id="banner" class="banner" hidden></div>
+
+    <div class="stats">
+      <div class="stat"><div class="k" id="k1">Total sorted</div><div class="v" id="tTotal">0</div></div>
+      <div class="stat pro-only"><div class="k" id="k2">Bricks</div><div class="v" id="tBrick">0</div></div>
+      <div class="stat pro-only"><div class="k" id="k3">Everything else</div><div class="v" id="tOther">0</div></div>
+    </div>
+    <div class="legend pro-only">
+      <span class="lt">Fill level</span>
+      <span><i class="sd ok" title="Bin ready" aria-label="Bin ready"></i>Normal</span>
+      <span><i class="sd warn"></i>Getting full</span>
+      <span><i class="sd full"></i>Near full</span>
+      <span class="note">Estimated from piece count</span>
+    </div>
+
+    <!-- top floor first, exactly like the machine -->
+    <section class="group" id="grpOTHER">
+      <div class="ghead"><h2>Top Row — Everything Else <span class="section-status"><i class="sd ok" title="Bin ready" aria-label="Bin ready"></i> Ready</span></h2><span class="sub">curved, studs, plates, tiles, anything else · top floor</span><span class="tot" id="totOTHER"></span></div>
+      <div class="grid" id="gridOTHER"></div>
+    </section>
+    <section class="group" id="grpBRICK">
+      <div class="ghead"><h2>Bottom Row — Bricks <span class="section-status"><i class="sd ok" title="Bin ready" aria-label="Bin ready"></i> Ready</span></h2><span class="sub">plain Brick N × N only · bottom floor</span><span class="tot" id="totBRICK"></span></div>
+      <div class="grid" id="gridBRICK"></div>
+    </section>
+
+    <div id="recentWrap" class="pro-only" hidden>
+      <h2>Recent scans</h2>
+      <div class="recent" id="recent"></div>
+    </div>
+
+    <footer class="pro-only">
+      <span>16 bins = 2 shapes × 8 color families. Look-alike colors share a bin (Red / Orange, Black / Dark Gray…). Special holds purple, pink, transparent and anything else. Tap a bin for details.</span>
+    </footer>
+  </div>
+
+  <!-- ============ PARTS ============ -->
+  <div class="view" id="v_parts" hidden>
+    <div class="tbar"><h2>Parts</h2><span class="meta" id="partsMeta"></span></div>
+    <div class="tscroll"><table class="tbl" id="partsTbl"></table></div>
+    <button class="btn more" id="partsMore" hidden>Show more</button>
+  </div>
+
+  <!-- ============ SETS ============ -->
+  <div class="view" id="v_sets" hidden>
+    <div class="tbar"><h2>Sets</h2><span class="meta" id="setsMeta"></span></div>
+    <div class="tscroll"><table class="tbl" id="setsTbl"></table></div>
+    <button class="btn more" id="setsMore" hidden>Show more</button>
+  </div>
+</div>
+
+<div class="ov" id="ov" hidden>
+  <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="dT">
+    <h3 id="dT"></h3><div id="dB"></div><div class="dBtns" id="dF"></div>
+  </div>
+</div>
+
+<script>
+/* ================= CONFIG ================= */
+const API_BASE  = "";            // "" = same origin as this page. Example: "http://<CT150_LAN_IP>:5000" (needs CORS on that server)
+const PARTS_URL = "/api/parts";  // existing BrickBase endpoint (or build one from sort_history.db, see header)
+const SETS_URL  = "/api/sets";
+const POLL_MS   = Number(new URLSearchParams(location.search).get("poll")) || 2000;
+const CAP_DEFAULT = {BRICK:150, OTHER:250};   // pieces a bin holds when full. sized so the whole sorter holds ~3,200 pieces (2-3 medium kits). PLACEHOLDER: calibrate with "It's full now" in the bin dialog
+const FILL_WARN = 75, FILL_FULL = 90;          // % at which the dot/bar turns yellow / red
+
+/* ================= BINS ================= */
+/* Order here = slot order (1-8, left to right) and MUST match COLORS in classify.py */
+const BINS = [   /* swatch = [left, right] colors of the family; null = rainbow */
+  {id:"RED",     label:"Red / Orange",       swatch:["#e10a01","#ff7a00"]},
+  {id:"YELLOW",  label:"Yellow",             swatch:["#ffc001","#ffc001"]},
+  {id:"GREEN",   label:"Green / Lime",       swatch:["#1fa855","#a6d609"]},
+  {id:"BLUE",    label:"Blue / Aqua",        swatch:["#0068fb","#30c8d8"]},
+  {id:"BROWN",   label:"Brown / Tan",        swatch:["#6d3b1e","#d9bb7b"]},
+  {id:"BLACK",   label:"Black / Dark Gray",  swatch:["#1a1d24","#555c68"]},
+  {id:"WHITE",   label:"White / Light Gray", swatch:["#f4f6fb","#a9b0bc"]},
+  {id:"SPECIAL", label:"Special",            swatch:null}   /* purple, pink, transparent, metallic, unknown, anything else */
+];
+const SHAPES = ["BRICK","OTHER"];                    /* index = floor: BRICK 0 (bottom), OTHER 1 (top) */
+const KEYS = []; SHAPES.forEach(s=>BINS.forEach(b=>KEYS.push(s+"_"+b.id)));
+
+const $ = (id)=>document.getElementById(id);
+const zero = ()=>Object.fromEntries(KEYS.map(k=>[k,0]));
+const sumK = (o,keys)=>keys.reduce((a,k)=>a+(o[k]||0),0);
+const keysOf = (shape)=>KEYS.filter(k=>k.startsWith(shape+"_"));
+const copy = (o)=>Object.assign({},o);
+const fmt  = (n)=>Number(n).toLocaleString();
+const splitKey = (k)=>{ const i = k.indexOf("_"); return [k.slice(0,i), k.slice(i+1)]; };
+const binName = (k)=>{const [s,c]=splitKey(k); const l=BINS.find(b=>b.id===c).label; return s==="BRICK" ? l+" Bricks" : l+" (Everything Else)";};
+
+/* ================= STATE (per browser, see header) ================= */
+const STORE = "bricked_inventory_v2";
+let DEMO = false, DEMO_AUTO = false;       // DEMO_AUTO = entered by itself because the server is unreachable
+try{ DEMO = new URLSearchParams(location.search).get("demo")==="1" || localStorage.getItem(STORE+"_demoOn")==="1"; }catch(e){}
+const storeKey = ()=> DEMO ? STORE+"_demo" : STORE;   // demo never shares state with the real collection
+const defaults = ()=>({mode:"sort", scope:null, offset:zero(), start:null, expected:null, pending:null, last:null, tamper:{}, fillBase:zero(), cap:{}, demo:null});
+function load(){
+  try{ const o = JSON.parse(localStorage.getItem(storeKey())||"null"); if(o && o.offset) return Object.assign(defaults(), o); }catch(e){}
+  return defaults();
+}
+function save(){ try{ localStorage.setItem(storeKey(), JSON.stringify(S)); }catch(e){} }
+let S = load();
+let RAW = zero(), READY = false, LIVE = false;
+let shown = {};          // last displayed number per bin, used to pulse bins that went up
+const scopeKeys = ()=> S.scope || KEYS;
+const dispOf = (k)=> RAW[k]-(S.offset[k]||0);
+const flagged = ()=> KEYS.filter(k=>S.tamper[k]);
+
+/* fill level: estimate = pieces since the bin was last emptied / capacity (or a measured value from GET /fill) */
+let FILLSRV = {};
+const capOf     = (k)=> S.cap[k] || CAP_DEFAULT[splitKey(k)[0]];
+const fillCount = (k)=> Math.max(0, RAW[k]-(S.fillBase[k]||0));
+const fillPct   = (k)=> (k in FILLSRV) ? FILLSRV[k] : Math.min(100, Math.round(fillCount(k)/capOf(k)*100));
+const fillLevel = (p)=> p>=FILL_FULL ? "full" : (p>=FILL_WARN ? "warn" : "ok");
+const fullBins  = ()=> KEYS.filter(k=>fillLevel(fillPct(k))==="full");
+
+/* ================= GRID ================= */
+/* One cylinder ("stud") with a lit top face. fill is a color or url(#gradient). */
+function stud(x, fill){
+  const w = 40, r = w/2, top = 14, bot = 42;
+  return `<path d="M${x},${top} L${x},${bot} A${r},6 0 0 0 ${x+w},${bot} L${x+w},${top} Z" fill="${fill}"/>`+
+         `<path d="M${x},${top} L${x},${bot} A${r},6 0 0 0 ${x+w},${bot} L${x+w},${top} Z" fill="url(#studShade)" stroke="rgba(255,255,255,.14)" stroke-width="1"/>`+
+         `<ellipse cx="${x+r}" cy="${top}" rx="${r}" ry="6" fill="${fill}"/>`+
+         `<ellipse cx="${x+r}" cy="${top}" rx="${r}" ry="6" fill="#fff" fill-opacity=".28" stroke="rgba(255,255,255,.22)" stroke-width="1"/>`;
+}
+function brickArt(b){ const c1 = b.swatch ? b.swatch[0] : "url(#studRainbow)", c2 = b.swatch ? b.swatch[1] : "url(#studRainbow)";
+  const tl = "M14,22 L34,10 L68,10 L48,22 Z", tr = "M48,22 L68,10 L102,10 L82,22 Z";   // top face, split 50/50
+  return `<div class="studart"><svg viewBox="0 0 120 56" role="img" aria-label="${b.label}">`+
+    `<path d="${tl}" fill="${c1}"/><path d="${tr}" fill="${c2}"/><path d="${tl} ${tr}" fill="#fff" fill-opacity=".30"/>`+
+    `<rect x="14" y="22" width="34" height="26" fill="${c1}"/><rect x="48" y="22" width="34" height="26" fill="${c2}"/>`+
+    `<path d="M82,22 L102,10 L102,36 L82,48 Z" fill="${c2}"/><path d="M82,22 L102,10 L102,36 L82,48 Z" fill="#000" fill-opacity=".30"/>`+
+    `<path d="M14,22 L34,10 L102,10 L102,36 L82,48 L14,48 Z M14,22 L82,22 L102,10 M82,22 L82,48" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1" stroke-linejoin="round"/>`+
+    `</svg></div>`; }
+function studArt(b){            // two studs, one per color of the family (rainbow for Special)
+  const [c1,c2] = b.swatch ? b.swatch : ["url(#studRainbow)","url(#studRainbow)"];
+  return `<div class="studart"><svg viewBox="0 0 120 56" role="img" aria-label="${b.label}">${stud(14,c1)}${stud(66,c2)}</svg></div>`;
+}
+function customOtherRedArt(b){
+  return `<div class="studart custom-bin-art">
+    <img src="/assets/top-red-orange-bin-v2.webp" alt="${b.label}">
+  </div>`;
+}
+function build(){
+  SHAPES.forEach(shape=>{
+    const grid = $("grid"+shape); grid.innerHTML = "";
+    BINS.forEach((b,i)=>{
+      const k = shape+"_"+b.id, el = document.createElement("button");
+      el.className = "bin"; el.id = "bin_"+k; el.type = "button"; el.dataset.key = k;
+      el.innerHTML =
+        `<div class="hd"><span class="num">${i+1}</span><i class="sd ok" title="Bin ready" aria-label="Bin ready"></i><span class="bang" hidden title="Bin was opened">!</span></div>`+
+        (shape==="OTHER"
+          ? (b.id==="RED"
+              ? '<div class="studart custom-bin-art"><img src="/static/assets/top-red-orange-bin-v5.webp" alt="Red / Orange"></div>'
+              : b.id==="YELLOW"
+                ? '<div class="studart custom-bin-art"><img src="/static/assets/top-yellow-bin-v1.webp" alt="Yellow"></div>'
+                : b.id==="GREEN"
+                  ? '<div class="studart custom-bin-art"><img src="/static/assets/top-green-lime-bin.webp" alt="Green / Lime"></div>'
+                  : b.id==="BLUE"
+                    ? '<div class="studart custom-bin-art"><img src="/static/assets/top-blue-aqua-bin.webp" alt="Blue / Aqua"></div>'
+                    : b.id==="BROWN"
+                      ? '<div class="studart custom-bin-art"><img src="/static/assets/top-brown-tan-bin.webp" alt="Brown / Tan"></div>'
+                      : b.id==="BLACK"
+                        ? '<div class="studart custom-bin-art"><img src="/static/assets/top-black-gray-bin.webp" alt="Black / Dark Gray"></div>'
+                        : b.id==="WHITE"
+                          ? '<div class="studart custom-bin-art"><img src="/static/assets/top-white-gray-bin.webp" alt="White / Light Gray"></div>'
+                          : b.id==="SPECIAL"
+                          ? '<div class="studart custom-bin-art"><img src="/static/assets/top-special-bin.webp" alt="Special"></div>'
+                          : '<div class="studart empty-bin-art"></div>')
+          : (b.id==="RED"
+              ? '<div class="studart custom-bin-art"><img src="/static/assets/bottom-red-bricks.webp" alt="Red bricks"></div>'
+              : b.id==="YELLOW"
+                ? '<div class="studart custom-bin-art"><img src="/static/assets/bottom-yellow-bricks.webp" alt="Yellow bricks"></div>'
+                : b.id==="GREEN"
+                  ? '<div class="studart custom-bin-art"><img src="/static/assets/bottom-green-bricks.webp" alt="Green bricks"></div>'
+                  : b.id==="BLUE"
+                    ? '<div class="studart custom-bin-art"><img src="/static/assets/bottom-blue-bricks.webp" alt="Blue bricks"></div>'
+                    : b.id==="BROWN"
+                      ? '<div class="studart custom-bin-art"><img src="/static/assets/bottom-brown-bricks.webp" alt="Brown bricks"></div>'
+                      : b.id==="BLACK"
+                        ? '<div class="studart custom-bin-art"><img src="/static/assets/bottom-black-bricks.webp" alt="Black bricks"></div>'
+                        : b.id==="WHITE"
+                          ? '<div class="studart custom-bin-art"><img src="/static/assets/bottom-white-bricks.webp" alt="White bricks"></div>'
+                          : b.id==="SPECIAL"
+                            ? '<div class="studart custom-bin-art"><img src="/static/assets/bottom-special-bricks.webp" alt="Special bricks"></div>'
+                            : '<div class="studart empty-bin-art"></div>'))+
+        `<div class="body"><div class="lab">${b.id==="SPECIAL" ? (shape==="OTHER" ? "Unknown" : "Transparent / Special") : b.label}</div><div class="cnt">0</div><div class="pct">0%</div><div class="bar"><i style="width:0%"></i></div></div>`;
+      el.onclick = ()=>openBin(k);
+      grid.appendChild(el);
+    });
+  });
+}
+
+/* ================= RENDER ================= */
+function render(counts){
+  const raw = zero(); KEYS.forEach(k=>raw[k] = Number(counts[k])||0);
+  RAW = raw; READY = true;
+
+  // heal if the server's counts were reset below our saved snapshots
+  let dirty = false;
+  KEYS.forEach(k=>{
+    if (raw[k] < (S.offset[k]||0))           { S.offset[k] = raw[k]; dirty = true; }
+    if (S.start && raw[k] < (S.start[k]||0)) { S.start[k]  = raw[k]; dirty = true; }
+    if (raw[k] < (S.fillBase[k]||0))         { S.fillBase[k] = raw[k]; dirty = true; }
+  });
+  if (dirty) save();
+
+  const disp = zero(), counted = zero();
+  KEYS.forEach(k=>{ disp[k] = raw[k]-(S.offset[k]||0); if (S.start) counted[k] = raw[k]-S.start[k]; });
+  const mode = S.mode, E = S.expected || zero(), sk = scopeKeys();
+  const inCount = (k)=> mode==="count" && sk.includes(k);
+
+  // top stats
+  if (mode==="count"){
+    const C = sumK(counted,sk), T = sumK(E,sk);
+    setStats(["Counted so far","Expected","Progress"], [fmt(C), fmt(T), (T?Math.min(100,Math.round(C/T*100)):0)+"%"]);
+  } else if (mode==="add"){
+    setStats(["Added this session","New bricks","New everything else"], ["+"+fmt(sumK(counted,KEYS)), "+"+fmt(sumK(counted,keysOf("BRICK"))), "+"+fmt(sumK(counted,keysOf("OTHER")))]);
+  } else {
+    setStats(["Total sorted","Bricks","Everything else"], [fmt(sumK(disp,KEYS)), fmt(sumK(disp,keysOf("BRICK"))), fmt(sumK(disp,keysOf("OTHER")))]);
+  }
+
+  // group totals
+  SHAPES.forEach(s=>{
+    const ks = keysOf(s);
+    $("tot"+s).textContent = (mode==="count" && !S.scope) ? `${fmt(sumK(counted,ks))} / ${fmt(sumK(E,ks))} counted` : `${fmt(sumK(disp,ks))} pcs`;
+  });
+
+  // 16 cards
+  SHAPES.forEach(s=>{
+    BINS.forEach(b=>{
+      const k = s+"_"+b.id, el = $("bin_"+k);
+      const m = inCount(k) ? "count" : (mode==="add" ? "add" : "sort");
+      el.dataset.mode = m;
+      const fl = !!S.tamper[k];
+      const fp = fillPct(k), lvl = fillLevel(fp);
+      el.dataset.fill = lvl;
+      el.querySelector(".sd").className = "sd " + lvl;
+      el.classList.toggle("flagged", fl);
+      el.querySelector(".bang").hidden = !fl;
+      let big, line, bar;
+      if (m==="count"){
+        big = counted[k]; line = "of "+fmt(E[k]||0)+" expected"; bar = E[k] ? Math.min(100, counted[k]/E[k]*100) : 0;
+      } else {
+        big = disp[k]; bar = fp;
+        line = (m==="add" && counted[k]>0 ? "+"+fmt(counted[k])+" new · " : "") + fp+"% full";
+      }
+      el.querySelector(".cnt").textContent = fmt(big);
+      el.querySelector(".pct").textContent = (fl && m!=="count") ? "Opened · recount needed" : line;
+      el.querySelector(".bar i").style.width = bar+"%";
+      if (k in shown && big > shown[k]){ el.classList.remove("pulse"); void el.offsetWidth; el.classList.add("pulse"); }
+      shown[k] = big;
+    });
+  });
+  ui();
+}
+function setStats(labels, vals){
+  ["k1","k2","k3"].forEach((id,i)=>$(id).textContent = labels[i]);
+  ["tTotal","tBrick","tOther"].forEach((id,i)=>$(id).textContent = vals[i]);
+}
+
+/* ================= BUTTONS + BANNERS ================= */
+function setBtn(id, title, sub, disabled){
+  const b = $(id); b.querySelector("b").textContent = title; b.querySelector("span").textContent = sub; b.disabled = !!disabled;
+}
+function ui(){
+  const m = S.mode;
+  if (m==="count") setBtn("bCount","Counting…", S.scope ? "Recounting a bin" : "Re-scan in progress", true);
+  else             setBtn("bCount","Count Everything","Re-scan your whole collection", m==="add");
+  if (m==="add")   setBtn("bAdd","Done Adding","Stop adding new pieces",false);
+  else             setBtn("bAdd","Add New LEGO","Scan new pieces into your collection", m==="count");
+  setBtn("bMissing","Find What's Missing",
+         m==="count" ? "Finish counting and see results" : (S.pending ? "Review your results" : "See what didn't come back"), false);
+  $("pendDot").hidden = !S.pending;
+
+  // NOTE: banner/alert are only rebuilt when their content changes. Rebuilding on every poll
+  // can swallow a click that lands mid-rebuild (mousedown and mouseup hit different elements).
+  const paint = (el, cls, html, bind)=>{
+    if (!html){ el.hidden = true; el.innerHTML = ""; el.dataset.h = ""; return; }
+    el.hidden = false;
+    if (el.dataset.h === html) return;
+    el.className = cls; el.innerHTML = html; el.dataset.h = html; bind();
+  };
+  if (m==="count"){
+    const what = S.scope ? "Recounting " + S.scope.map(binName).join(", ") + "." : "Counting everything.";
+    const how  = S.scope ? "Dump it all back through the sorter." : "Put ALL your LEGO back through the sorter.";
+    paint($("banner"), "banner count",
+      `<div class="msg"><b>${what}</b> ${how} When the pile is empty, press <b>Find Missing Pieces</b>.</div><button class="btn" id="bnCancel">Cancel count</button>`,
+      ()=>{ $("bnCancel").onclick = cancelCount; });
+  } else if (m==="add"){
+    paint($("banner"), "banner add",
+      `<div class="msg"><b>Adding new LEGO.</b> Every piece you scan now is added to your collection.</div><button class="btn primary" id="bnDone">Done adding</button>`,
+      ()=>{ $("bnDone").onclick = doneAdd; });
+  } else paint($("banner"), "", "");
+
+  // tamper alert strip
+  const fl = flagged();
+  if (fl.length && m!=="count"){
+    const many = fl.length>1;
+    paint($("alert"), "banner alert",
+      `<div class="ico">!</div><div class="msg"><b>${fl.map(binName).join(", ")}</b> ${many?"were":"was"} opened. Dump out everything ${many?"in them":"in it"} and put it back through the machine to recount.</div>`+
+      `<button class="btn primary" id="alRecount" ${m==="sort"?"":"disabled"}>Recount ${many?"these bins":"this bin"}</button><button class="btn" id="alIgnore">False alarm</button>`,
+      ()=>{ $("alRecount").onclick = ()=>startCount(flagged()); $("alIgnore").onclick = ()=>clearFlags(flagged()); });
+  } else paint($("alert"), "", "");
+
+  // near-full strip
+  const fb = fullBins();
+  if (fb.length && m!=="count"){
+    const many = fb.length>1;
+    paint($("fullAlert"), "banner full",
+      `<div class="ico">!</div><div class="msg"><b>${fb.map(binName).join(", ")}</b> ${many?"are":"is"} nearly full. Empty ${many?"them":"it"} soon so ${many?"they don't":"it doesn't"} overflow.</div>`+
+      `<button class="btn primary" id="faEmptied">I emptied ${many?"them":"it"}</button>`,
+      ()=>{ $("faEmptied").onclick = ()=>markEmptied(fullBins()); });
+  } else paint($("fullAlert"), "", "");
+  syncDemoUI();
+}
+function setMode(m){ S.mode = m; shown = {}; save(); }
+
+/* ================= DIALOG ================= */
+function modal(title, html, btns){
+  $("dT").textContent = title; $("dB").innerHTML = html;
+  const f = $("dF"); f.innerHTML = "";
+  (btns||[{t:"Close"}]).forEach(b=>{
+    const x = document.createElement("button"); x.className = "btn "+(b.cls||""); x.textContent = b.t;
+    x.onclick = ()=>{ closeModal(); if (b.fn) b.fn(); }; f.appendChild(x);
+  });
+  $("ov").hidden = false;
+}
+function closeModal(){ $("ov").hidden = true; }
+document.addEventListener("keydown", e=>{ if (e.key==="Escape") closeModal(); });
+$("ov").addEventListener("click", e=>{ if (e.target===$("ov")) closeModal(); });
+
+/* ================= TAMPER ================= */
+function flagBin(k){ if (!S.tamper[k]){ S.tamper[k] = new Date().toISOString(); shown = {}; save(); render(RAW); } }
+function clearFlags(keys){
+  keys.forEach(k=>delete S.tamper[k]); save();
+  if (LIVE) fetch(API_BASE+"/tamper/clear", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({bins:keys})}).catch(()=>{});
+  shown = {}; render(RAW);
+}
+function normTamper(j){
+  if (Array.isArray(j)) return j;
+  if (j && Array.isArray(j.opened)) return j.opened;
+  return Object.keys(j||{}).filter(k=>j[k]===true || j[k]==="opened" || j[k]===1);
+}
+function markEmptied(keys){ keys.forEach(k=>S.fillBase[k] = RAW[k]); shown = {}; save(); render(RAW); }
+function markFull(k){ S.cap[k] = Math.max(10, fillCount(k)); shown = {}; save(); render(RAW); }
+function openBin(k){
+  const fl = !!S.tamper[k], n = dispOf(k), fp = fillPct(k), lvl = fillLevel(fp);
+  const PRO = MODE==="pro";
+  const btns = [{t:"Close"}, {t:"I emptied this bin", fn:()=>markEmptied([k])}];
+  if (PRO) btns.push({t:"It's full now", fn:()=>markFull(k)});
+  if (fl){ btns.push({t:"False alarm", fn:()=>clearFlags([k])}); btns.push({t:"Recount this bin", cls:"primary", fn:()=>{ if (S.mode==="sort") startCount([k]); }}); }
+  else if (PRO) btns.push({t:"I opened this bin", fn:()=>flagBin(k)});
+  modal(binName(k),
+    `<p class="big">${fmt(n)} <small class="help">pieces</small></p>`+
+    `<p><i class="sd ${lvl}"></i> &nbsp;<b>${fp}% full</b>${PRO ? ` <small class="help">· ${fmt(fillCount(k))} of about ${fmt(capOf(k))} pieces</small>` : ""}</p>`+
+    (fl ? `<p><b>This bin was opened.</b> Dump out everything in it and put it back through the machine to recount.</p>`
+        : `<p class="help">Bin ${BINS.findIndex(b=>b.id===splitKey(k)[1])+1} · ${k.startsWith("BRICK")?"bottom floor":"top floor"} · looks untouched.</p>`)+
+    (PRO ? `<p class="help"><b>I emptied this bin:</b> resets the fill bar (your collection total stays the same).<br><b>It's full now:</b> teaches the page how many pieces this bin really holds.</p>`
+         : `<p class="help">Emptied this bin? Press <b>I emptied this bin</b> and the bar starts over. Your collection total stays the same.</p>`),
+    btns);
+}
+
+/* ================= ACTIONS ================= */
+/* Add New LEGO */
+function startAdd(){
+  if (!READY) return;
+  if (S.pending){ showResult(); return; }
+  S.start = copy(RAW); S.expected = null; S.scope = null; setMode("add"); render(RAW);
+}
+function doneAdd(){ S.start = null; setMode("sort"); render(RAW); }
+
+/* Count Everything (scope = null) or Recount specific bins (scope = [keys]) */
+function startCount(scope){
+  if (!READY) return;
+  if (S.pending){ showResult(); return; }
+  scope = (Array.isArray(scope) && scope.length) ? scope : null;
+  const keys = scope || KEYS, have = keys.reduce((a,k)=>a+dispOf(k),0);
+  if (have <= 0){
+    modal("Nothing to count yet",
+      scope ? `<p>${scope.map(binName).join(", ")} ${scope.length>1?"are":"is"} empty, so there is nothing to recount.</p>`
+            : `<p>Your collection is empty, so there is nothing to compare against. Sort some LEGO first, then run a count.</p>`,
+      scope ? [{t:"Close"},{t:"Clear the alert", cls:"primary", fn:()=>clearFlags(scope)}] : undefined);
+    return;
+  }
+  modal(scope ? "Recount "+(scope.length>1?"these bins":"this bin")+"?" : "Count everything?",
+    scope ? `<p>Dump out everything in <b>${scope.map(binName).join(", ")}</b> and put it back through the sorter.</p>
+             <p>We will count it and compare to what was there (<b>${fmt(have)}</b> pieces). When it is empty, press <b>Find Missing Pieces</b>.</p>`
+          : `<p>Put <b>all</b> your LEGO back through the sorter.</p>
+             <p>We will count every piece and compare it to your collection (<b>${fmt(have)}</b> pieces). When the pile is empty, press <b>Find Missing Pieces</b>.</p>`,
+    [{t:"Cancel"},{t:"Start counting", cls:"primary", fn:()=>beginCount(scope)}]);
+}
+function beginCount(scope){
+  const E = zero(); KEYS.forEach(k=>E[k] = dispOf(k));
+  (scope||KEYS).forEach(k=>S.fillBase[k] = RAW[k]);   // the user dumps these bins back into the machine, so they start empty
+  S.expected = E; S.start = copy(RAW); S.scope = scope; setMode("count"); render(RAW);
+}
+function cancelCount(){
+  modal("Cancel the count?", `<p>Your totals go back to what they were before you started counting. Nothing is lost.</p>`,
+    [{t:"Keep counting"},{t:"Cancel count", cls:"warn", fn:()=>{
+      scopeKeys().forEach(k=>S.offset[k] = Math.max(0, RAW[k]-(S.expected[k]||0)));
+      S.start = null; S.expected = null; S.scope = null; setMode("sort"); render(RAW);
+    }}]);
+}
+
+/* Find What's Missing */
+function onMissing(){
+  if (!READY) return;
+  if (S.mode==="count") return finishCount();
+  if (S.pending) return showResult();
+  const L = S.last;
+  modal("Find What's Missing",
+    L ? `<p>Last check (${new Date(L.at).toLocaleString([], {month:"short",day:"numeric",hour:"numeric",minute:"2-digit"})}): <b>${fmt(L.missing)}</b> missing, <b>${fmt(L.extra)}</b> extra · ${L.decision}.</p>
+         <p class="help">To check again, press <b>Count My Collection</b>.</p>`
+      : `<p>No check has been run yet.</p><p class="help">Press <b>Count My Collection</b> and re-scan your whole collection. Then come back here to see what didn't make it back.</p>`);
+}
+function finishCount(){
+  const sk = scopeKeys(), C = sk.reduce((a,k)=>a+(RAW[k]-S.start[k]),0), T = sumK(S.expected,sk), p = T ? C/T : 1;
+  if (p < 0.9){
+    modal("Not finished yet?",
+      `<p>Only <b>${Math.round(p*100)}%</b> counted (${fmt(C)} of ${fmt(T)}). Anything not scanned yet will show up as missing.</p>`,
+      [{t:"Keep scanning", cls:"primary"},{t:"Show results anyway", fn:computeResult}]);
+  } else computeResult();
+}
+function computeResult(){
+  const rows = scopeKeys().map(k=>({k, e:S.expected[k]||0, c:RAW[k]-(S.start[k]||0)}));
+  S.pending = {at:new Date().toISOString(), rows, finish:copy(RAW), start:copy(S.start), expected:copy(S.expected)};
+  S.start = null; S.expected = null; S.scope = null; setMode("sort"); render(RAW); showResult();
+}
+function showResult(){
+  const P = S.pending; if (!P) return;
+  const miss = P.rows.filter(r=>r.e>r.c), extra = P.rows.filter(r=>r.c>r.e);
+  const C = P.rows.reduce((a,r)=>a+r.c,0), T = P.rows.reduce((a,r)=>a+r.e,0);
+  let h = `<p>Counted <b>${fmt(C)}</b> of <b>${fmt(T)}</b> pieces.</p>`;
+  if (!miss.length && !extra.length) h += `<p class="good">Everything came back. Nothing is missing.</p>`;
+  if (miss.length){
+    h += `<h4>Missing (${fmt(miss.reduce((a,r)=>a+r.e-r.c,0))})</h4><ul>` +
+         miss.map(r=>`<li>${binName(r.k)} <small>${fmt(r.e)} expected, ${fmt(r.c)} found</small><b class="neg">−${fmt(r.e-r.c)}</b></li>`).join("") + `</ul>`;
+  }
+  if (extra.length){
+    h += `<h4>Extra found (${fmt(extra.reduce((a,r)=>a+r.c-r.e,0))})</h4><ul>` +
+         extra.map(r=>`<li>${binName(r.k)} <small>${fmt(r.e)} expected, ${fmt(r.c)} found</small><b class="pos">+${fmt(r.c-r.e)}</b></li>`).join("") + `</ul>`;
+  }
+  if (miss.length || extra.length){
+    h += `<p class="help"><b>Update my totals:</b> your collection becomes what was just counted.<br><b>Keep old totals:</b> ignore this check (maybe pieces are still in a drawer).</p>`;
+    modal("Find What's Missing", h, [{t:"Keep old totals", fn:dismissResult},{t:"Update my totals", cls:"primary", fn:acceptResult}]);
+  } else {
+    modal("Find What's Missing", h, [{t:"Done", cls:"primary", fn:acceptResult}]);
+  }
+}
+function finishPending(decision){
+  const P = S.pending, d = P.rows, keys = d.map(r=>r.k);
+  S.last = {at:P.at, decision, missing:d.reduce((a,r)=>a+Math.max(0,r.e-r.c),0), extra:d.reduce((a,r)=>a+Math.max(0,r.c-r.e),0)};
+  S.pending = null; save(); clearFlags(keys);   // a recounted bin is no longer "opened"
+}
+function acceptResult(){ S.pending.rows.forEach(r=>S.offset[r.k] = S.pending.start[r.k]); finishPending("totals updated"); }
+function dismissResult(){ S.pending.rows.forEach(r=>S.offset[r.k] = Math.max(0, S.pending.finish[r.k]-S.pending.expected[r.k])); finishPending("old totals kept"); }
+
+$("bCount").onclick   = ()=>startCount(null);
+$("bAdd").onclick     = ()=> S.mode==="add" ? doneAdd() : startAdd();
+$("bMissing").onclick = onMissing;
+
+/* demo-only: pretend a lid switch fired */
+
+/* ================= TABS + SEARCH ================= */
+let VIEW = "sorter", Q = "";
+function go(v){
+  VIEW = v;
+  document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("on", t.dataset.v===v));
+  ["sorter","parts","sets"].forEach(x=>$("v_"+x).hidden = x!==v);
+  if (v==="parts") loadParts().then(renderParts);
+  if (v==="sets")  loadSets().then(renderSets);
+}
+document.querySelectorAll(".tab").forEach(t=>t.onclick = ()=>go(t.dataset.v));
+let qT = null;
+$("q").addEventListener("input", e=>{
+  Q = e.target.value.trim().toLowerCase(); clearTimeout(qT);
+  qT = setTimeout(()=>{
+    if (Q && VIEW==="sorter") return go("parts");
+    partsLimit = SETS_LIMIT = 100;
+    if (VIEW==="parts") renderParts(); if (VIEW==="sets") renderSets();
+  }, 120);
+});
+const matches = (hay)=> !Q || Q.split(/\s+/).every(w=>hay.includes(w));
+
+/* cosmetic only: little color dot next to a color NAME (never used for sorting) */
+function colorHex(name){
+  const c = String(name||"").toLowerCase();
+  const map = [["trans","#cfe8f5"],["clear","#e8eef5"],["red","#e10a01"],["orange","#ff8a00"],["yellow","#ffc001"],["lime","#a6d609"],["green","#1fa855"],
+               ["aqua","#30c8d8"],["turquoise","#30c8d8"],["blue","#0068fb"],["purple","#8a3ffc"],["magenta","#c2278f"],["pink","#ff7fb8"],["brown","#6d3b1e"],
+               ["tan","#d9bb7b"],["black","#1a1d24"],["white","#f4f6fb"],["gray","#8a919c"],["grey","#8a919c"],["silver","#b8bfc9"]];
+  for (const [w,h] of map) if (c.includes(w)) return h;
+  return "#5b6275";
+}
+
+/* ---------- parts ---------- */
+const listOf = (j)=>{ if (Array.isArray(j)) return j; if (j && typeof j==="object"){ for (const k of ["items","parts","sets","results","rows","data"]) if (Array.isArray(j[k])) return j[k]; const v = Object.values(j).find(Array.isArray); if (v) return v; } return []; };
+function normPart(o){
+  const sets = o.sets ?? o.in_sets ?? o.set_count ?? o.inSets ?? null;
+  return {
+    num:   String(o.part_num ?? o.part_number ?? o.partNumber ?? o.part ?? o.number ?? o.id ?? ""),
+    name:  String(o.name ?? o.part_name ?? o.title ?? ""),
+    color: String(o.color ?? o.color_name ?? o.colour ?? ""),
+    qty:   Number(o.quantity ?? o.qty ?? o.count ?? o.total ?? o.total_quantity ?? 0) || 0,
+    sets:  Array.isArray(sets) ? sets.length : (sets==null ? null : Number(sets))
+  };
+}
+function normSet(o){
+  return {
+    num:    String(o.set_num ?? o.set_number ?? o.setNumber ?? o.number ?? o.id ?? ""),
+    name:   String(o.name ?? o.set_name ?? o.title ?? ""),
+    pieces: Number(o.num_parts ?? o.pieces ?? o.parts ?? o.total_parts ?? 0) || 0,
+    qty:    Number(o.quantity ?? o.qty ?? o.owned ?? 1) || 1,
+    year:   String(o.year ?? "")
+  };
+}
+const DEMO_PARTS = [
+  ["3001","Brick 2 x 4","Red",342,12],["3001","Brick 2 x 4","Blue",210,9],["3001","Brick 2 x 4","Yellow",188,8],["3001","Brick 2 x 4","White",160,7],
+  ["3002","Brick 2 x 3","Red",96,5],["3003","Brick 2 x 2","Green",140,6],["3004","Brick 1 x 2","Black",255,11],["3005","Brick 1 x 1","Light Bluish Gray",301,10],
+  ["3010","Brick 1 x 4","Orange",44,3],["3020","Plate 2 x 4","Dark Bluish Gray",120,8],["3069b","Tile 1 x 2 with Groove","Trans-Clear",64,4],["3039","Slope 45 2 x 2","Reddish Brown",58,4],
+  ["3622","Brick 1 x 3","Lime",31,2],["3009","Brick 1 x 6","Tan",27,2]
+].map(a=>({num:a[0],name:a[1],color:a[2],qty:a[3],sets:a[4]}));
+const DEMO_SETS = [
+  {num:"10696-1",name:"LEGO Classic Medium Creative Brick Box",pieces:484,qty:1,year:"2015"},
+  {num:"10698-1",name:"LEGO Classic Large Creative Brick Box",pieces:790,qty:1,year:"2015"},
+  {num:"11030-1",name:"LEGO Classic Creative Bricks",pieces:200,qty:2,year:"2022"}
+];
+let PARTS = null, PARTS_DEMO = false, SETS = null, SETS_DEMO = false;
+let partsLimit = 100, SETS_LIMIT = 100, sortP = {key:"qty",dir:-1}, sortS = {key:"pieces",dir:-1};
+async function loadParts(){
+  if (PARTS) return;
+  try{ const r = await fetch(API_BASE+PARTS_URL); if(!r.ok) throw 0; PARTS = listOf(await r.json()).map(normPart); }
+  catch(e){ PARTS = DEMO_PARTS; PARTS_DEMO = true; }
+  $("nParts").textContent = fmt(PARTS.length);
+}
+async function loadSets(){
+  if (SETS) return;
+  try{ const r = await fetch(API_BASE+SETS_URL); if(!r.ok) throw 0; SETS = listOf(await r.json()).map(normSet); }
+  catch(e){ SETS = DEMO_SETS; SETS_DEMO = true; }
+  $("nSets").textContent = fmt(SETS.length);
+}
+const cmp = (key,dir)=>(a,b)=>{ const x=a[key], y=b[key]; return (typeof x==="number" ? x-y : String(x).localeCompare(String(y),undefined,{numeric:true})) * dir; };
+function table(el, cols, rows, sort, onSort){
+  el.innerHTML = `<thead><tr>${cols.map(c=>`<th class="${c.cls||''}" data-k="${c.k}">${c.t}${sort.key===c.k?(sort.dir>0?" ▲":" ▼"):""}</th>`).join("")}</tr></thead>`+
+    `<tbody>${rows.length ? rows.map(r=>`<tr>${cols.map(c=>`<td class="${c.cls||''}">${c.f(r)}</td>`).join("")}</tr>`).join("") : `<tr><td colspan="${cols.length}" class="empty">Nothing matches “${esc(Q)}”.</td></tr>`}</tbody>`;
+  el.querySelectorAll("th").forEach(th=>th.onclick = ()=>onSort(th.dataset.k));
+}
+const esc = (s)=>String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function renderParts(){
+  if (!PARTS) return;
+  const rows = PARTS.filter(p=>matches((p.num+" "+p.name+" "+p.color).toLowerCase())).sort(cmp(sortP.key,sortP.dir));
+  table($("partsTbl"), [
+    {k:"num",t:"Part #",f:r=>`<span class="pn">${esc(r.num)}</span>`},
+    {k:"name",t:"Name",f:r=>esc(r.name),cls:"hide-sm"},
+    {k:"color",t:"Color",f:r=>`<i class="cdot" style="background:${colorHex(r.color)}"></i>${esc(r.color)}`},
+    {k:"qty",t:"Quantity",cls:"num",f:r=>`<span class="q">${fmt(r.qty)}</span>`},
+    {k:"sets",t:"In sets",cls:"num hide-sm",f:r=>r.sets==null?"–":fmt(r.sets)}
+  ], rows.slice(0,partsLimit), sortP, k=>{ sortP = {key:k, dir: sortP.key===k ? -sortP.dir : (k==="qty"||k==="sets"?-1:1)}; renderParts(); });
+  $("partsMeta").textContent = `${fmt(rows.length)} part${rows.length===1?"":"s"} · ${fmt(rows.reduce((a,r)=>a+r.qty,0))} pieces`+(PARTS_DEMO?" · demo data":"");
+  $("partsMore").hidden = rows.length <= partsLimit;
+  $("partsMore").textContent = `Show ${Math.min(100, rows.length-partsLimit)} more`;
+}
+$("partsMore").onclick = ()=>{ partsLimit += 100; renderParts(); };
+function renderSets(){
+  if (!SETS) return;
+  const rows = SETS.filter(s=>matches((s.num+" "+s.name+" "+s.year).toLowerCase())).sort(cmp(sortS.key,sortS.dir));
+  table($("setsTbl"), [
+    {k:"num",t:"Set #",f:r=>`<span class="pn">${esc(r.num)}</span>`},
+    {k:"name",t:"Name",f:r=>esc(r.name)},
+    {k:"year",t:"Year",cls:"hide-sm",f:r=>esc(r.year||"–")},
+    {k:"pieces",t:"Pieces",cls:"num",f:r=>fmt(r.pieces)},
+    {k:"qty",t:"Quantity",cls:"num",f:r=>`<span class="q">${fmt(r.qty)}</span>`}
+  ], rows.slice(0,SETS_LIMIT), sortS, k=>{ sortS = {key:k, dir: sortS.key===k ? -sortS.dir : (k==="pieces"||k==="qty"?-1:1)}; renderSets(); });
+  $("setsMeta").textContent = `${fmt(rows.length)} set${rows.length===1?"":"s"}`+(SETS_DEMO?" · demo data":"");
+  $("setsMore").hidden = rows.length <= SETS_LIMIT;
+  $("setsMore").textContent = `Show ${Math.min(100, rows.length-SETS_LIMIT)} more`;
+}
+$("setsMore").onclick = ()=>{ SETS_LIMIT += 100; renderSets(); };
+
+/* ================= RECENT SCANS ================= */
+function renderRecent(list){
+  const box = $("recent"), wrap = $("recentWrap");
+  if (!Array.isArray(list) || !list.length){ wrap.hidden = true; return; }
+  wrap.hidden = false; box.innerHTML = "";
+  list.slice(0,12).forEach(r=>{
+    const d = document.createElement("div"); d.className = "item";
+    const img = r.image_url ? `<img src="${API_BASE}${r.image_url}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph'}))">` : `<div class="ph"></div>`;
+    const conf = (r.confidence!=null) ? Math.round(r.confidence<=1?r.confidence*100:r.confidence)+"%" : "";
+    const t = r.created_at ? new Date(r.created_at).toLocaleTimeString([], {hour:"numeric",minute:"2-digit"}) : "";
+    d.innerHTML = img + `<div class="t"><div class="n"></div><div class="m"></div></div>`;
+    d.querySelector(".n").textContent = r.name || "Unknown";
+    d.querySelector(".m").textContent = [String(r.bin||"").replace("_"," · "), conf, t].filter(Boolean).join(" · ");
+    box.appendChild(d);
+  });
+}
+function setStatus(mode, txt){ const s = $("status"); s.className = "badge "+mode; $("statusTxt").textContent = txt; }
+
+/* ================= DEMO MODE ================= */
+/* DEMO DATA = exactly the parts in LEGO Classic Medium Creative Brick Box 10696 (483 pieces, 184 part/color lots, from BrickLink).
+   Each lot is [part name, bin it sorts into (via classify.py rules), quantity]. The demo starts with ~60% of the box already sorted
+   (DEMO_BASE) and the rest waiting in DEMO_LEFT; Start sorting / +25 pieces feed DEMO_LEFT through the sorter until the box is empty. */
+const DEMO_TOTAL = 483;
+const DEMO_BASE = {"BRICK_RED":15,"BRICK_YELLOW":5,"BRICK_GREEN":7,"BRICK_BLUE":27,"BRICK_BROWN":12,"BRICK_BLACK":1,"BRICK_WHITE":6,"BRICK_SPECIAL":9,"OTHER_RED":33,"OTHER_YELLOW":15,"OTHER_GREEN":14,"OTHER_BLUE":27,"OTHER_BROWN":15,"OTHER_BLACK":42,"OTHER_WHITE":36,"OTHER_SPECIAL":25};
+const DEMO_LEFT = [["Arch 1 x 4","OTHER_BROWN",1],["Brick 1 x 1","BRICK_BLACK",3],["Brick 1 x 1","BRICK_RED",2],["Brick 1 x 2","BRICK_BLUE",8],["Brick 1 x 2","BRICK_BROWN",2],["Brick 1 x 2","BRICK_GREEN",4],["Brick 1 x 2","BRICK_RED",7],["Brick 1 x 2","BRICK_WHITE",1],["Brick 1 x 2","BRICK_YELLOW",2],["Brick 1 x 2 without Bottom Tube","OTHER_SPECIAL",1],["Brick 1 x 4","BRICK_BLUE",5],["Brick 1 x 4","BRICK_BROWN",2],["Brick 1 x 4","BRICK_GREEN",2],["Brick 1 x 4","BRICK_SPECIAL",1],["Brick 1 x 6","BRICK_BLUE",1],["Brick 1 x 6","BRICK_YELLOW",1],["Brick 2 x 2","BRICK_GREEN",1],["Brick 2 x 2","BRICK_RED",1],["Brick 2 x 2","BRICK_WHITE",2],["Brick 2 x 3","BRICK_RED",1],["Brick 2 x 4","BRICK_BLACK",1],["Brick 2 x 4","BRICK_BLUE",3],["Brick 2 x 4","BRICK_GREEN",4],["Brick 2 x 4","BRICK_RED",2],["Brick 2 x 4","BRICK_SPECIAL",2],["Brick 2 x 4","BRICK_WHITE",2],["Brick, Modified 1 x 1 with Headlight","OTHER_BLACK",1],["Brick, Modified 1 x 1 with Stud on Side","OTHER_BLUE",1],["Brick, Modified 1 x 2 with Bar Handle on Side","OTHER_BLACK",1],["Brick, Modified 1 x 4 with Studs on Side","OTHER_YELLOW",1],["Brick, Modified 2 x 2 with Pin and Axle Hole","OTHER_BROWN",1],["Brick, Modified 2 x 2 with Pins and Axle Hole","OTHER_BLACK",2],["Brick, Round 1 x 1","OTHER_BLACK",1],["Brick, Round 1 x 1","OTHER_BROWN",1],["Brick, Round 2 x 2 with Axle Hole","OTHER_BROWN",1],["Brick, Round 2 x 2 with Axle Hole","OTHER_GREEN",1],["Brick, Round 2 x 2 with Axle Hole","OTHER_RED",2],["Brick, Round 2 x 2 with Axle Hole","OTHER_YELLOW",1],["Cone 1 x 1 with Top Groove","OTHER_BLACK",2],["Plate 1 x 2","OTHER_RED",2],["Plate 1 x 2","OTHER_SPECIAL",2],["Plate 1 x 3","OTHER_BROWN",1],["Plate 1 x 4","OTHER_BROWN",2],["Plate 1 x 4","OTHER_YELLOW",1],["Plate 1 x 6","OTHER_BLUE",2],["Plate 2 x 3","OTHER_GREEN",1],["Plate 2 x 3","OTHER_YELLOW",1],["Plate 2 x 4","OTHER_BLACK",1],["Plate 2 x 4","OTHER_WHITE",1],["Plate 4 x 4","OTHER_GREEN",1],["Plate 4 x 6","OTHER_BLUE",1],["Plate, Modified 1 x 1 with Open O Clip (Horizontal Grip)","OTHER_YELLOW",1],["Plate, Modified 1 x 1 with Tooth Horizontal","OTHER_WHITE",2],["Plate, Modified 1 x 2 with Clip on End (Horizontal Grip)","OTHER_BLACK",1],["Plate, Modified 1 x 2 with Clip on End (Horizontal Grip)","OTHER_YELLOW",1],["Plate, Modified 1 x 4 with Tow Ball","OTHER_BLACK",1],["Plate, Modified 1 x 4 with Tow Ball Socket, Flattened with Holes","OTHER_WHITE",1],["Plate, Modified 2 x 2 with Groove and 1 Stud in Center (Jumper)","OTHER_BLUE",1],["Plate, Modified 2 x 2 with Groove and 1 Stud in Center (Jumper)","OTHER_GREEN",1],["Plate, Modified 2 x 2 with Wheels Holder","OTHER_BLACK",1],["Plate, Modified 3 x 3 Cross","OTHER_WHITE",1],["Plate, Modified 4 x 4 with 2 x 2 Open Center","OTHER_YELLOW",1],["Plate, Round 1 x 1","OTHER_SPECIAL",4],["Plate, Round 1 x 1","OTHER_WHITE",4],["Plate, Round 1 x 1","OTHER_YELLOW",1],["Plate, Round 2 x 2 with Axle Hole","OTHER_YELLOW",1],["Propeller 4 Blade 5 Diameter with Rounded Ends and Open Hub","OTHER_BLACK",1],["Shutter for Window 1 x 2 x 2 2/3 with Rounded Top","OTHER_BROWN",1],["Slope 30 1 x 1 x 2/3","OTHER_GREEN",3],["Slope 30 1 x 2 x 2/3","OTHER_BLUE",1],["Slope 33 3 x 1","OTHER_GREEN",1],["Slope 45 2 x 1","OTHER_BLACK",3],["Slope 45 2 x 1","OTHER_BLUE",1],["Slope 45 2 x 1","OTHER_BROWN",6],["Slope 45 2 x 1","OTHER_GREEN",4],["Slope 45 2 x 1","OTHER_RED",2],["Slope 45 2 x 1","OTHER_SPECIAL",4],["Slope 45 2 x 2","OTHER_SPECIAL",1],["Slope 45 2 x 2","OTHER_WHITE",4],["Slope 65 2 x 1 x 2","OTHER_BROWN",2],["Slope 75 2 x 1 x 3 - Hollow Stud","OTHER_WHITE",1],["Slope 75 2 x 2 x 3 - Solid Studs","OTHER_WHITE",1],["Slope, Curved 2 x 1 x 1 1/3 with Recessed Stud","OTHER_BLUE",1],["Slope, Curved 2 x 1 x 1 1/3 with Recessed Stud","OTHER_SPECIAL",1],["Slope, Curved 3 x 1","OTHER_WHITE",3],["Slope, Curved 3 x 2 with 4 Studs","OTHER_WHITE",1],["Slope, Curved 4 x 1","OTHER_SPECIAL",1],["Slope, Curved 4 x 1 x 2/3 Double","OTHER_BLUE",2],["Slope, Inverted 45 2 x 1","OTHER_BLACK",5],["Slope, Inverted 45 2 x 2 with Flat Bottom Pin","OTHER_GREEN",2],["Tile 1 x 2","OTHER_YELLOW",2],["Tile 2 x 4","OTHER_BLUE",2],["Tile, Modified 1 x 2 Grille with Bottom Groove","OTHER_RED",1],["Tile, Modified 1 x 2 Grille with Bottom Groove","OTHER_WHITE",2],["Tile, Round 1 x 1 with Black Eye Closed with 7 Eyelashes Pattern","OTHER_WHITE",1],["Tile, Round 1 x 1 with Black Eye Partially Closed with Off-Center Pupil Pattern","OTHER_WHITE",1],["Tire 21mm D. x 12mm Offset Tread Small Wide","OTHER_BLACK",2],["Tire 24mm D. x 7mm Offset Tread","OTHER_BLACK",5],["Turntable 2 x 2 Plate, Top","OTHER_WHITE",1],["Wheel 11mm D. x 12mm, Hole Notched for Wheels Holder Pin","OTHER_WHITE",2],["Wheel 18mm D. x 8mm with Fake Bolts and Deep Spokes with Inner Ring","OTHER_WHITE",3],["Wheel 8mm D. x 6mm","OTHER_WHITE",1],["Window 1 x 2 x 2 Plane, Single Hole Top and Bottom for Glass","OTHER_BLACK",3]];
+const demoFresh = ()=>({counts:copy(DEMO_BASE), left:DEMO_LEFT.map(x=>x.slice()), recent:[]});
+const DEMO_OPEN_ORDER = ["BRICK_RED","OTHER_BLUE","BRICK_BLACK","OTHER_SPECIAL","BRICK_WHITE","OTHER_BLACK"];
+let autoT = null, refeedT = null, openIdx = 0, fillIdx = 0;
+function ensureDemo(){ if (!S.demo || !S.demo.counts || !S.demo.left){ S.demo = demoFresh(); save(); } }
+const demoLeftN = ()=>S.demo.left.reduce((a,x)=>a+x[2],0);
+function demoBox(){ if (!S.demo || !S.demo.left) return; const l = demoLeftN(); $("dBox").textContent = l ? `Box 10696: ${DEMO_TOTAL-l} of ${DEMO_TOTAL} sorted` : `Box 10696: all ${DEMO_TOTAL} sorted`; }
+function stopAuto(){ if (autoT){ clearInterval(autoT); autoT = null; } }
+function stopRefeed(){ if (refeedT){ clearInterval(refeedT); refeedT = null; } }
+function syncDemoUI(){
+  const manual = DEMO && !DEMO_AUTO;
+  $("demoBtn").classList.toggle("on", manual);
+  $("demoBtn").textContent = manual ? "Demo: ON" : "Demo";
+  $("demoPanel").hidden = !DEMO;
+  $("dAuto").textContent = autoT ? "Pause sorting" : "Start sorting";
+  $("dRefeed").disabled = S.mode !== "count";
+}
+function setDemo(on, auto, retick){
+  if (on === DEMO) return;
+  stopAuto(); stopRefeed();
+  DEMO = on; DEMO_AUTO = on && !!auto;
+  if (!auto){ try{ localStorage.setItem(STORE+"_demoOn", on ? "1" : "0"); }catch(e){} }
+  S = load(); if (DEMO) ensureDemo();
+  shown = {}; RAW = zero(); READY = false; FILLSRV = {};
+  ui(); if (retick !== false) tick();
+}
+function demoSort(n){
+  ensureDemo();
+  for (let i=0;i<n;i++){
+    const l = demoLeftN(); if (!l){ stopAuto(); syncDemoUI(); break; }       // box is empty
+    let r = Math.floor(Math.random()*l), j = 0; while (r >= S.demo.left[j][2]){ r -= S.demo.left[j][2]; j++; }
+    const lot = S.demo.left[j]; lot[2]--; if (!lot[2]) S.demo.left.splice(j,1);
+    S.demo.counts[lot[1]] = (S.demo.counts[lot[1]]||0) + 1;
+    S.demo.recent.unshift({name:lot[0], bin:lot[1], confidence: 78+Math.round(Math.random()*20), created_at:new Date().toISOString()});
+  }
+  S.demo.recent = S.demo.recent.slice(0,12); save(); render(S.demo.counts); renderRecent(S.demo.recent); demoBox();
+}
+function startRefeed(){            // while a count is running: put the collection back through, a few bins come up short
+  stopRefeed(); const sk = scopeKeys(), target = {};
+  sk.forEach((k,i)=>{ target[k] = Math.max(0, (S.expected[k]||0) - (i%3===0 ? 2+(i%4) : 0)); });
+  refeedT = setInterval(()=>{
+    if (S.mode !== "count"){ stopRefeed(); return; }
+    let moved = false;
+    sk.forEach(k=>{
+      const c = S.demo.counts[k] - (S.start[k]||0);
+      if (c < target[k]){ S.demo.counts[k] += Math.min(target[k]-c, Math.max(1, Math.ceil(target[k]/25))); moved = true; }
+    });
+    save(); render(S.demo.counts);
+    if (!moved) stopRefeed();
+  }, 120);
+}
+$("demoBtn").onclick = ()=>{
+  const manual = DEMO && !DEMO_AUTO;
+  if (manual) setDemo(false, false);
+  else if (DEMO){ DEMO_AUTO = false; try{ localStorage.setItem(STORE+"_demoOn","1"); }catch(e){} syncDemoUI(); tick(); }
+  else setDemo(true, false);
+};
+$("dAuto").onclick   = ()=>{ if (autoT) stopAuto(); else autoT = setInterval(()=>demoSort(1), 800); syncDemoUI(); };
+$("dBurst").onclick  = ()=>demoSort(25);
+$("dFill").onclick   = ()=>{
+  ensureDemo(); const cand = KEYS.filter(k=>fillLevel(fillPct(k))!=="full" && fillCount(k)>=10); if (!cand.length) return;
+  const k = cand[fillIdx++ % cand.length];                 // no fake pieces: shrink this bin's capacity so it reads as ~92% full
+  S.cap[k] = Math.max(10, Math.floor(fillCount(k)/0.93));
+  shown = {}; save(); render(S.demo.counts);
+};
+$("dOpen").onclick   = ()=>flagBin(DEMO_OPEN_ORDER[openIdx++ % DEMO_OPEN_ORDER.length]);
+$("dRefeed").onclick = ()=>{ if (S.mode==="count") startRefeed(); };
+$("dReset").onclick  = ()=>{
+  stopAuto(); stopRefeed(); S = defaults(); S.demo = demoFresh();
+  shown = {}; save(); render(S.demo.counts); renderRecent([]); demoBox();
+};
+
+function demoTick_(){
+  ensureDemo(); LIVE = false; FILLSRV = {};
+  render(S.demo.counts); renderRecent(S.demo.recent); demoBox();
+  setStatus("demo", DEMO_AUTO ? "Demo data · server not reachable" : "Demo mode");
+}
+
+async function tick(){
+  if (DEMO && !DEMO_AUTO){ demoTick_(); return; }
+  try{
+    const r = await fetch(API_BASE+"/bins", {cache:"no-store"});
+    if(!r.ok) throw new Error(r.status);
+    const counts = await r.json();
+    if (DEMO && !DEMO_AUTO) return;                 // the user switched demo on while this request was in flight
+    if (DEMO) setDemo(false, true, false);          // server is back: leave the automatic demo
+    LIVE = true;
+    render(counts);
+    setStatus("live","Live");
+    try{
+      const tr = await fetch(API_BASE+"/tamper", {cache:"no-store"});
+      if (tr.ok){ let ch = false; normTamper(await tr.json()).forEach(k=>{ if (KEYS.includes(k) && !S.tamper[k]){ S.tamper[k] = new Date().toISOString(); ch = true; } }); if (ch){ save(); shown = {}; render(RAW); } }
+    }catch(_){}
+    try{
+      const fr = await fetch(API_BASE+"/fill", {cache:"no-store"});
+      const o = {}; if (fr.ok){ const j = await fr.json(); KEYS.forEach(k=>{ if (j && j[k]!=null && !isNaN(Number(j[k]))) o[k] = Math.max(0, Math.min(100, Math.round(Number(j[k])))); }); }
+      FILLSRV = o;
+    }catch(_){ FILLSRV = {}; }
+    try{
+      const rr = await fetch(API_BASE+"/recent", {cache:"no-store"});
+      renderRecent(rr.ok ? await rr.json() : []);
+    }catch(_){ renderRecent([]); }
+  }catch(e){
+    if (DEMO && !DEMO_AUTO) return;
+    if (!DEMO) setDemo(true, true, false);          // server unreachable: show demo data instead of a blank page
+    demoTick_();
+  }
+}
+/* ================= SIMPLE / PRO + DESIGN (look) ================= */
+/* Simple (default) = 3 buttons, alerts, bins. Pro adds search, Parts/Sets, fill legend, recent scans, demo, extra bin options.
+   Anything in the HTML with class "pro-only" is hidden in Simple. Design a = Classic, b = Bright, c = Cabinet (CSS only).
+   URL: ?mode=pro  ?design=b   (remembered in localStorage) */
+const UIKEY = "bricked_ui_v1";
+let MODE = "simple", DESIGN = "a";
+(function(){
+  try{ const u = JSON.parse(localStorage.getItem(UIKEY)||"{}"); if (u.mode) MODE = u.mode; if (u.design) DESIGN = u.design; }catch(e){}
+  const q = new URLSearchParams(location.search);
+  if (q.get("mode")==="pro"||q.get("mode")==="simple") MODE = q.get("mode");
+  if (["a","b","c"].includes(q.get("design"))) DESIGN = q.get("design");
+  if (q.get("demo")==="1" && !q.get("mode") && MODE==="simple") MODE = "pro";   // demo controls live in Pro
+})();
+function applyUI(){
+  document.documentElement.dataset.mode = MODE; document.documentElement.dataset.design = DESIGN;
+  $("proSw").checked = MODE==="pro";
+  document.querySelectorAll("#looks button").forEach(b=>b.classList.toggle("on", b.dataset.d===DESIGN));
+  try{ localStorage.setItem(UIKEY, JSON.stringify({mode:MODE, design:DESIGN})); }catch(e){}
+  if (MODE==="simple" && VIEW!=="sorter") go("sorter");
+}
+$("proSw").onchange = e=>{ MODE = e.target.checked ? "pro" : "simple"; applyUI(); };
+document.querySelectorAll("#looks button").forEach(b=>b.onclick = ()=>{ DESIGN = b.dataset.d; applyUI(); });
+
+applyUI();
+build(); ui(); tick(); setInterval(tick, POLL_MS);
+loadParts(); loadSets();      // preload so the tab counts show up
+</script>
+
+
+
+
+
+<style id="camera-inpage-style">
+.camera-page{
+  margin-top:24px;padding:24px;background:var(--panel);
+  border:1px solid var(--line);border-radius:20px;
+  animation:cameraPageIn .25s ease-out
+}
+.camera-page h1{margin:0 0 18px}
+.camera-stage{
+  position:relative;width:min(1100px,100%);margin:0 auto;
+  overflow:hidden;background:#000;border:2px solid var(--line);
+  border-radius:16px;line-height:0
+}
+.camera-stage img{display:block;width:100%;height:auto}
+.camera-stage img[hidden]{display:none}
+.camera-box{
+  position:absolute;border:4px solid #22e878;
+  box-shadow:0 0 0 2px #07140d,0 0 20px #22e878;
+  pointer-events:none
+}
+.camera-box-label{
+  position:absolute;left:-4px;top:-34px;
+  padding:7px 10px;background:#22e878;color:#03130a;
+  font:800 14px/1.1 Arial,sans-serif;white-space:nowrap;
+  border-radius:7px 7px 0 0
+}
+.camera-result{
+  width:min(1100px,100%);margin:14px auto 0;
+  padding:14px 16px;background:var(--panel2);
+  border-radius:12px;color:var(--ink);font-size:16px
+}
+.camera-result small{display:block;color:var(--muted);margin-top:5px}
+.camera-page-note{color:var(--muted);margin:14px auto 0;width:min(1100px,100%)}
+#cameraBtn.on{color:var(--ink);background:var(--panel2)}
+@keyframes cameraPageIn{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+
+
+
+
+
+
+
+
+<script id="move-calibrate-bottom">
+(function () {
+  function moveCalibrateButton() {
+    const pip = document.querySelector(".camera-pip");
+    if (!pip) return;
+
+    const note = pip.querySelector(".camera-page-note");
+    const calibrate = pip.querySelector("#cameraCalibrateButton");
+
+    if (!note || !calibrate) return;
+
+    let controls = pip.querySelector(".camera-controls");
+
+    if (!controls) {
+      controls = document.createElement("div");
+      controls.className = "camera-controls";
+      note.insertAdjacentElement("afterend", controls);
+    }
+
+    if (!controls.contains(calibrate)) {
+      controls.appendChild(calibrate);
+      calibrate.textContent = "Calibrate";
+    }
+  }
+
+  setInterval(moveCalibrateButton, 300);
+})();
+</script>
+
+<script id="camera-calibration-script">
+(function () {
+  document.addEventListener("click", async function (event) {
+    const button = event.target.closest("#cameraCalibrateButton");
+    if (!button) return;
+
+    const output = document.getElementById("cameraResult");
+    button.disabled = true;
+    button.textContent = "Calibrating…";
+
+    try {
+      const snapshot = await fetch(
+        "/api/live-camera-snapshot?t=" + Date.now(),
+        { cache: "no-store" }
+      );
+
+      const blob = await snapshot.blob();
+      const form = new FormData();
+      form.append("image", blob, "empty-background.jpg");
+
+      const response = await fetch("/api/calibrate-background", {
+        method: "POST",
+        body: form,
+        cache: "no-store"
+      });
+
+      if (!response.ok) {
+        throw new Error("Calibration failed");
+      }
+
+      if (output) {
+        output.textContent =
+          "Background calibrated. Place LEGO pieces in the camera.";
+      }
+    } catch (error) {
+      if (output) output.textContent = "Calibration failed";
+    } finally {
+      button.disabled = false;
+      button.textContent = "Calibrate Empty Area";
+    }
+  });
+})();
+</script>
+
+
+<style id="calibrate-button-direct-style">
+.camera-pip .camera-controls {
+  display: flex !important;
+  gap: 8px !important;
+  width: 100% !important;
+  margin-top: 10px !important;
+  order: 99 !important;
+}
+
+.camera-pip .camera-controls button {
+  flex: 1 !important;
+  position: static !important;
+  float: none !important;
+  margin: 0 !important;
+}
+
+.camera-pip #cameraCalibrateButton {
+  background: #ffc001 !important;
+  color: #1a1400 !important;
+  border: 0 !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+</style>
+
+<script id="calibrate-button-direct-script">
+(function () {
+  function installCalibrateButton() {
+    const pip = document.querySelector(".camera-pip");
+    if (!pip) return;
+
+    const note = pip.querySelector(".camera-page-note");
+    if (!note) return;
+
+    let controls = pip.querySelector(".camera-controls");
+
+    if (!controls) {
+      controls = document.createElement("div");
+      controls.className = "camera-controls";
+      note.insertAdjacentElement("afterend", controls);
+    }
+
+    const close = pip.querySelector(".camera-pip-close");
+    const expand = pip.querySelector(".camera-expand");
+
+    if (expand && !controls.contains(expand)) {
+      controls.appendChild(expand);
+    }
+
+    if (close && !controls.contains(close)) {
+      controls.appendChild(close);
+    }
+
+    let calibrate = pip.querySelector("#cameraCalibrateButton");
+
+    if (!calibrate) {
+      calibrate = document.createElement("button");
+      calibrate.id = "cameraCalibrateButton";
+      calibrate.type = "button";
+      calibrate.textContent = "Calibrate";
+      controls.appendChild(calibrate);
+    }
+
+    if (calibrate.dataset.bound === "yes") return;
+    calibrate.dataset.bound = "yes";
+
+    calibrate.addEventListener("click", async function () {
+      const output = pip.querySelector("#cameraResult");
+
+      calibrate.disabled = true;
+      calibrate.textContent = "Calibrating…";
+
+      try {
+        const snapshot = await fetch(
+          "/api/live-camera-snapshot?t=" + Date.now(),
+          { cache: "no-store" }
+        );
+
+        const image = await snapshot.blob();
+        const form = new FormData();
+        form.append("image", image, "empty-background.jpg");
+
+        const response = await fetch("/api/calibrate-background", {
+          method: "POST",
+          body: form,
+          cache: "no-store"
+        });
+
+        if (!response.ok) {
+          throw new Error("Calibration failed");
+        }
+
+        if (window.resetCameraTracking) {
+          window.resetCameraTracking();
+        }
+
+        if (output) {
+          output.textContent =
+            "Calibrated. Put LEGO pieces in the camera now.";
+        }
+      } catch (error) {
+        if (output) output.textContent = "Calibration failed";
+      } finally {
+        calibrate.disabled = false;
+        calibrate.textContent = "Calibrate";
+      }
+    });
+  }
+
+  setInterval(installCalibrateButton, 250);
+})();
+</script>
+
+
+<style id="lightModeNeonPersistentFix">
+html[data-design="b"] .stat .v,
+html[data-design="b"] .stat strong,
+html[data-design="b"] .bin .cnt {
+  color: #39ff88 !important;
+  text-shadow: 0 0 10px rgba(57,255,136,.55) !important;
+}
+</style>
+
+<script id="lightModeNeonPersistentFixScript">
+(function () {
+  function syncDesign() {
+    var active = document.querySelector("#looks button.on[data-d]");
+    if (active) {
+      document.documentElement.setAttribute("data-design", active.dataset.d);
+    }
+  }
+
+  document.addEventListener("click", function (event) {
+    var button = event.target.closest("#looks button[data-d]");
+    if (!button) return;
+
+    setTimeout(syncDesign, 0);
+    setTimeout(syncDesign, 150);
+  }, true);
+
+  var looks = document.querySelector("#looks");
+  if (looks) {
+    new MutationObserver(syncDesign).observe(looks, {
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["class"]
+    });
+  }
+
+  syncDesign();
+})();
+</script>
+
+
+<style id="persistentNeonNumberFix">
+/* Light mode: softer neon */
+html[data-design="b"] .stat .v,
+html[data-design="b"] .stat strong,
+html[data-design="b"] .bin .cnt {
+  color: #22c55e !important;
+  text-shadow: 0 0 5px rgba(34,197,94,.28) !important;
+}
+
+/* Dark and Machine modes: brighter neon */
+html[data-design="a"] .stat .v,
+html[data-design="a"] .stat strong,
+html[data-design="a"] .bin .cnt,
+html[data-design="c"] .stat .v,
+html[data-design="c"] .stat strong,
+html[data-design="c"] .bin .cnt {
+  color: #7dffb0 !important;
+  text-shadow: 0 0 10px rgba(125,255,176,.35) !important;
+}
+</style>
+
+
+<script id="syncLightModeDesignV2">
+(function () {
+  function syncMode() {
+    var active = document.querySelector("#looks button.on[data-d]");
+    if (active) {
+      document.documentElement.setAttribute("data-design", active.dataset.d);
+    }
+  }
+
+  document.addEventListener("click", function (event) {
+    var button = event.target.closest("#looks button[data-d]");
+    if (!button) return;
+
+    setTimeout(function () {
+      document.documentElement.setAttribute("data-design", button.dataset.d);
+    }, 100);
+  }, true);
+
+  var looks = document.querySelector("#looks");
+  if (looks) {
+    new MutationObserver(syncMode).observe(looks, {
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["class"]
+    });
+  }
+
+  syncMode();
+})();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+<style id="machine-theme-safe">
+html[data-design="c"][data-theme="light"] {
+  --bg: #f3f6fa;
+  --panel: #ffffff;
+  --panel2: #eef3f8;
+  --line: #d5dde8;
+  --ink: #1d2735;
+  --muted: #64748b;
+}
+
+#looks button[data-d="c"] {
+  pointer-events: auto;
+  cursor: default;
+  opacity: 1 !important;
+  background: var(--panel2) !important;
+  color: var(--ink) !important;
+  border-color: #20d889 !important;
+}
+
+#looks button[data-d="c"]::before {
+  content: "✓ ";
+  color: #20d889;
+}
+
+html[data-design="c"][data-theme="light"] body {
+  background: #f3f6fa !important;
+  color: #1d2735 !important;
+}
+
+html[data-design="c"][data-theme="light"] .bin,
+html[data-design="c"][data-theme="light"] .stat,
+html[data-design="c"][data-theme="light"] .panel,
+html[data-design="c"][data-theme="light"] .banner {
+  background: #ffffff !important;
+  color: #1d2735 !important;
+  border-color: #d5dde8 !important;
+  box-shadow: 0 8px 22px rgba(31,45,61,.12) !important;
+}
+
+html[data-design="c"][data-theme="light"] .bin .tray {
+  background: #eef3f8 !important;
+  border-color: #c9d3df !important;
+}
+
+html[data-design="c"][data-theme="light"] .bin .lab,
+html[data-design="c"][data-theme="light"] .muted {
+  color: #64748b !important;
+}
+
+html[data-design="c"][data-theme="light"] .bin .cnt,
+html[data-design="c"][data-theme="light"] h1,
+html[data-design="c"][data-theme="light"] h2,
+html[data-design="c"][data-theme="light"] h3 {
+  color: #1d2735 !important;
+}
+</style>
+
+<script id="machine-theme-safe">
+(function () {
+  const root = document.documentElement;
+
+  function applyTheme(theme) {
+    const dark = document.querySelector('#looks button[data-d="a"]');
+    const light = document.querySelector('#looks button[data-d="b"]');
+    const machine = document.querySelector('#looks button[data-d="c"]');
+
+    if (!dark || !light || !machine) return;
+
+    root.dataset.design = "c";
+    root.dataset.theme = theme;
+
+    dark.textContent = theme === "dark"
+      ? "Dark"
+      : "Dark";
+
+    light.textContent = theme === "light"
+      ? "Light"
+      : "Light";
+
+    machine.textContent = "Machine View";
+    machine.disabled = false;
+    machine.classList.remove("on");
+
+    dark.classList.toggle("on", theme === "dark");
+    light.classList.toggle("on", theme === "light");
+
+    localStorage.setItem("bricked_machine_theme", theme);
+
+    try {
+      const ui = JSON.parse(localStorage.getItem("bricked_ui_v1") || "{}");
+      ui.design = "c";
+      localStorage.setItem("bricked_ui_v1", JSON.stringify(ui));
+    } catch (e) {}
+  }
+
+  document.addEventListener("click", function (event) {
+    const button = event.target.closest("#looks button");
+    if (!button) return;
+
+    if (button.dataset.d === "a" || button.dataset.d === "b") {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+
+      applyTheme(button.dataset.d === "a" ? "dark" : "light");
+    }
+  }, true);
+
+  const saved = localStorage.getItem("bricked_machine_theme") || "dark";
+  setTimeout(function () {
+    applyTheme(saved);
+  }, 100);
+})();
+</script>
+
+<style id="machine-light-override">
+html[data-design="c"][data-theme="light"] {
+  color-scheme: light;
+}
+
+html[data-design="c"][data-theme="light"] body,
+html[data-design="c"][data-theme="light"] .wrap,
+html[data-design="c"][data-theme="light"] main {
+  background: #f3f6fa !important;
+  color: #1d2735 !important;
+}
+
+html[data-design="c"][data-theme="light"] section,
+html[data-design="c"][data-theme="light"] .group,
+html[data-design="c"][data-theme="light"] [id^="grp"],
+html[data-design="c"][data-theme="light"] .stat,
+html[data-design="c"][data-theme="light"] .panel,
+html[data-design="c"][data-theme="light"] .banner,
+html[data-design="c"][data-theme="light"] .recent {
+  background: #ffffff !important;
+  color: #1d2735 !important;
+  border-color: #d5dde8 !important;
+  box-shadow: 0 8px 22px rgba(31,45,61,.12) !important;
+}
+
+html[data-design="c"][data-theme="light"] .bin {
+  background: #ffffff !important;
+  color: #1d2735 !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 4px 12px rgba(31,45,61,.12) !important;
+}
+
+html[data-design="c"][data-theme="light"] .bin .tray {
+  background: #eef3f8 !important;
+  border-color: #cbd5e1 !important;
+}
+
+html[data-design="c"][data-theme="light"] .bin .lab,
+html[data-design="c"][data-theme="light"] .muted,
+html[data-design="c"][data-theme="light"] small {
+  color: #64748b !important;
+}
+
+html[data-design="c"][data-theme="light"] h1,
+html[data-design="c"][data-theme="light"] h2,
+html[data-design="c"][data-theme="light"] h3,
+html[data-design="c"][data-theme="light"] .bin .cnt {
+  color: #1d2735 !important;
+}
+
+html[data-design="c"][data-theme="light"] .bin .bar {
+  background: #e2e8f0 !important;
+}
+
+html[data-design="c"][data-theme="light"] input,
+html[data-design="c"][data-theme="light"] .search {
+  background: #ffffff !important;
+  color: #1d2735 !important;
+  border-color: #cbd5e1 !important;
+}
+</style>
+
+<style id="camera-pip-style">
+.camera-pip {
+  position: fixed !important;
+  right: 24px !important;
+  bottom: 24px !important;
+  width: 430px !important;
+  max-width: calc(100vw - 32px) !important;
+  z-index: 9999 !important;
+  margin: 0 !important;
+  padding: 14px !important;
+  border: 2px solid #20d889 !important;
+  border-radius: 18px !important;
+  background: var(--panel, #151a20) !important;
+  box-shadow: 0 18px 50px rgba(0,0,0,.45) !important;
+}
+
+.camera-pip .camera-stage {
+  height: 245px !important;
+  margin: 0 !important;
+}
+
+.camera-pip .camera-stage img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.camera-pip h1 {
+  font-size: 18px !important;
+  margin: 0 0 8px !important;
+}
+
+.camera-pip .camera-result {
+  margin-top: 10px !important;
+  font-size: 15px !important;
+}
+
+.camera-pip .camera-page-note {
+  margin: 6px 0 0 !important;
+  font-size: 12px !important;
+}
+
+.camera-pip-close {
+  float: right;
+  border: 0;
+  border-radius: 8px;
+  padding: 5px 9px;
+  background: #e10a01;
+  color: white;
+  cursor: pointer;
+}
+</style>
+
+<script id="camera-inpage-script">
+(function () {
+  const cameraButton = document.getElementById("cameraBtn");
+  const wrap = document.querySelector(".wrap");
+  const header = wrap && wrap.querySelector("header");
+
+  if (!cameraButton || !wrap || !header) return;
+
+  let cameraPage = null;
+  let timer = null;
+  let stopped = true;
+  let identifying = false;
+  let currentUrl = null;
+  let directPresent = false;
+  let directBusy = false;
+  let directMisses = 0;
+
+  function stopCamera() {
+    stopped = true;
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+
+    identifying = false;
+
+    if (currentUrl) {
+      URL.revokeObjectURL(currentUrl);
+      currentUrl = null;
+    }
+  }
+
+  async function updateCounts() {
+    try {
+      const response = await fetch("/bins?t=" + Date.now(), {
+        cache: "no-store"
+      });
+
+      const counts = await response.json();
+      let total = 0;
+
+      Object.keys(counts).forEach(function (key) {
+        const value = Number(counts[key] || 0);
+        total += value;
+
+        const bin = document.getElementById("bin_" + key);
+
+        if (bin) {
+          const count = bin.querySelector(".cnt");
+          if (count) count.textContent = value;
+        }
+      });
+
+      const totalElement = document.getElementById("tTotal");
+      if (totalElement) totalElement.textContent = total;
+    } catch (error) {}
+  }
+
+  function setBox(result) {
+    const box = document.getElementById("cameraBox");
+    const label = document.getElementById("cameraBoxLabel");
+    const frame = document.getElementById("cameraStream");
+
+    if (!box || !label || !frame || !result || !result.box) {
+      if (box) box.hidden = true;
+      return;
+    }
+
+    const b = result.box;
+    let x, y, w, h;
+
+    if (Array.isArray(b)) {
+      [x, y, w, h] = b;
+
+      if (w > x && h > y && (w > 1 || h > 1)) {
+        w -= x;
+        h -= y;
+      }
+    } else {
+      x = b.x ?? b.left ?? b.x1;
+      y = b.y ?? b.top ?? b.upper ?? b.y1;
+      w = b.width ?? (b.right != null ? b.right - x : null);
+      h = b.height ?? (b.lower != null ? b.lower - y : null);
+
+      if ((w == null || h == null) && b.x2 != null && b.y2 != null) {
+        w = b.x2 - x;
+        h = b.y2 - y;
+      }
+    }
+
+    if ([x, y, w, h].some(function (v) {
+      return typeof v !== "number" || !isFinite(v);
+    })) {
+      box.hidden = true;
+      return;
+    }
+
+    if (Math.max(x, y, w, h) <= 1) {
+      x *= 100;
+      y *= 100;
+      w *= 100;
+      h *= 100;
+    } else {
+      x = x / frame.naturalWidth * 100;
+      y = y / frame.naturalHeight * 100;
+      w = w / frame.naturalWidth * 100;
+      h = h / frame.naturalHeight * 100;
+    }
+
+    box.style.left = Math.max(0, x) + "%";
+    box.style.top = Math.max(0, y) + "%";
+    box.style.width = Math.max(0, w) + "%";
+    box.style.height = Math.max(0, h) + "%";
+
+    label.textContent =
+      (result.name || "LEGO piece") +
+      " · " +
+      (result.color || "Unknown");
+
+    box.hidden = false;
+  }
+
+  async function identify(blob) {
+    if (identifying) return;
+    identifying = true;
+
+    try {
+      const form = new FormData();
+      form.append("image", blob, "camera.jpg");
+
+      const response = await fetch("/identify", {
+        method: "POST",
+        body: form,
+        cache: "no-store"
+      });
+
+      const result = await response.json();
+      const output = document.getElementById("cameraResult");
+
+      if (result.error) {
+        output.textContent = "Detection error";
+        setBox(null);
+      } else if (result.lego_detected === false) {
+        output.textContent = "No LEGO piece detected";
+        setBox(null);
+      } else {
+        output.innerHTML =
+          (result.name || "Unknown LEGO") +
+          " · " +
+          (result.color || "Unknown") +
+          "<small>" +
+          (result.confidence || 0) +
+          "% confidence · Bin " +
+          (result.bin_number || 0) +
+          "</small>";
+
+        setBox(result);
+        updateCounts();
+      }
+    } catch (error) {
+      const output = document.getElementById("cameraResult");
+      if (output) output.textContent = "Waiting for detection…";
+    } finally {
+      identifying = false;
+    }
+  }
+
+  let multiTracks = [];
+  let multiTrackId = 1;
+
+  window.resetCameraTracking = function () {
+    multiTracks = [];
+    multiTrackId = 1;
+
+    const overlay = document.querySelector(".camera-multi-overlay");
+    if (overlay) overlay.innerHTML = "";
+  };
+
+  function boxOverlap(a, b) {
+    const ax = a.x, ay = a.y;
+    const aw = a.width, ah = a.height;
+    const bx = b.x, by = b.y;
+    const bw = b.width, bh = b.height;
+
+    const left = Math.max(ax, bx);
+    const top = Math.max(ay, by);
+    const right = Math.min(ax + aw, bx + bw);
+    const bottom = Math.min(ay + ah, by + bh);
+
+    if (right <= left || bottom <= top) return 0;
+
+    const intersection = (right - left) * (bottom - top);
+    const union = aw * ah + bw * bh - intersection;
+
+    return union > 0 ? intersection / union : 0;
+  }
+
+  function findTrack(box) {
+    let best = null;
+    let bestScore = 0;
+
+    multiTracks.forEach(function (track) {
+      const score = boxOverlap(track.box, box);
+
+      if (score > bestScore) {
+        bestScore = score;
+        best = track;
+      }
+    });
+
+    return bestScore >= 0.20 ? best : null;
+  }
+
+  function ensureMultiOverlay() {
+    const stage = document.querySelector(".camera-stage");
+    if (!stage) return null;
+
+    let overlay = stage.querySelector(".camera-multi-overlay");
+
+    if (!overlay) {
+      overlay = document.createElement("div");
+      overlay.className = "camera-multi-overlay";
+      stage.appendChild(overlay);
+    }
+
+    return overlay;
+  }
+
+  function renderMultiBoxes(frameWidth, frameHeight) {
+    const overlay = ensureMultiOverlay();
+    if (!overlay) return;
+
+    overlay.innerHTML = "";
+
+    multiTracks.forEach(function (track) {
+      const box = track.box;
+      const element = document.createElement("div");
+
+      element.className = "camera-multi-box";
+      element.style.left = (box.x / frameWidth * 100) + "%";
+      element.style.top = (box.y / frameHeight * 100) + "%";
+      element.style.width = (box.width / frameWidth * 100) + "%";
+      element.style.height = (box.height / frameHeight * 100) + "%";
+
+      const label = document.createElement("div");
+      label.className = "camera-multi-label";
+
+      if (track.result) {
+        label.textContent =
+          (track.result.name || "LEGO piece") +
+          " · " +
+          (track.result.color || "Unknown");
+      } else {
+        label.textContent = "Scanning…";
+      }
+
+      element.appendChild(label);
+      overlay.appendChild(element);
+    });
+  }
+
+  function cropBlob(blob, box, imageWidth, imageHeight) {
+    return new Promise(function (resolve, reject) {
+      const image = new Image();
+      const imageUrl = URL.createObjectURL(blob);
+
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        const x = Math.max(0, Math.floor(box.x));
+        const y = Math.max(0, Math.floor(box.y));
+        const width = Math.min(
+          imageWidth - x,
+          Math.max(1, Math.floor(box.width))
+        );
+        const height = Math.min(
+          imageHeight - y,
+          Math.max(1, Math.floor(box.height))
+        );
+
+        canvas.width = width;
+        canvas.height = height;
+
+        canvas.getContext("2d").drawImage(
+          image,
+          x, y, width, height,
+          0, 0, width, height
+        );
+
+        URL.revokeObjectURL(imageUrl);
+
+        canvas.toBlob(function (cropped) {
+          if (cropped) resolve(cropped);
+          else reject(new Error("Could not crop image"));
+        }, "image/jpeg", 0.85);
+      };
+
+      image.onerror = function () {
+        URL.revokeObjectURL(imageUrl);
+        reject(new Error("Could not load camera image"));
+      };
+
+      image.src = imageUrl;
+    });
+  }
+
+  async function identifyNewTrack(track, blob, frameWidth, frameHeight) {
+    try {
+      const cropped = await cropBlob(
+        blob,
+        track.box,
+        frameWidth,
+        frameHeight
+      );
+
+      const form = new FormData();
+      form.append("image", cropped, "lego-crop.jpg");
+
+      const response = await fetch("/identify", {
+        method: "POST",
+        body: form,
+        cache: "no-store"
+      });
+
+      track.result = await response.json();
+      renderMultiBoxes(frameWidth, frameHeight);
+    } catch (error) {
+      track.result = {
+        name: "Unknown LEGO",
+        color: "Unknown"
+      };
+
+      renderMultiBoxes(frameWidth, frameHeight);
+    }
+  }
+
+  async function directBrickognize(blob, preview) {
+    if (directBusy) return;
+
+    directBusy = true;
+
+    try {
+      const response = await fetch(
+        "/identify" + (preview ? "?preview=1" : ""),
+        {
+          method: "POST",
+          body: (() => {
+            const form = new FormData();
+            form.append("image", blob, "camera.jpg");
+            return form;
+          })(),
+          cache: "no-store"
+        }
+      );
+
+      const result = await response.json();
+      const output = document.getElementById("cameraResult");
+
+      if (result.error || result.lego_detected === false) {
+        directMisses++;
+
+        if (!directPresent || directMisses >= 2) {
+          directPresent = false;
+          setBox(null);
+
+          if (output) {
+            output.textContent = "Waiting for LEGO piece…";
+          }
+        }
+
+        return;
+      }
+
+      directMisses = 0;
+      directPresent = true;
+
+      if (output) {
+        output.innerHTML =
+          (result.name || "Unknown LEGO") +
+          " · " +
+          (result.color || "Unknown") +
+          "<small>" +
+          (result.confidence || 0) +
+          "% confidence · Bin " +
+          (result.bin_number || 0) +
+          "</small>";
+      }
+
+      setBox(result);
+
+      if (!preview) {
+        updateCounts();
+      }
+    } catch (error) {
+      const output = document.getElementById("cameraResult");
+      if (output) output.textContent = "Waiting for LEGO piece…";
+    } finally {
+      directBusy = false;
+    }
+  }
+
+  async function updateFrame() {
+    if (stopped) return;
+
+    try {
+      const response = await fetch(
+        "/api/live-camera-snapshot?t=" + Date.now(),
+        { cache: "no-store" }
+      );
+
+      const blob = await response.blob();
+      const frame = document.getElementById("cameraFrame");
+
+      if (frame) {
+        const nextUrl = URL.createObjectURL(blob);
+
+        frame.onload = function () {
+          if (currentUrl) URL.revokeObjectURL(currentUrl);
+          currentUrl = nextUrl;
+        };
+
+        frame.src = nextUrl;
+
+        // First call counts the piece.
+        // Later calls only check whether it is still present.
+        directBrickognize(blob, directPresent);
+      }
+    } catch (error) {
+      const output = document.getElementById("cameraResult");
+      if (output) output.textContent = "Camera connection unavailable";
+    }
+
+    if (!stopped) {
+      timer = setTimeout(updateFrame, 1500);
+    }
+  }
+
+  function closeCamera() {
+    stopCamera();
+
+    if (cameraPage) {
+      cameraPage.remove();
+      cameraPage = null;
+    }
+
+    cameraButton.classList.remove("on");
+  }
+
+  function showCamera() {
+    if (cameraPage) {
+      closeCamera();
+      return;
+    }
+
+    cameraPage = document.createElement("section");
+    cameraPage.className = "camera-page camera-pip";
+
+    cameraPage.innerHTML =
+      '<button class="camera-pip-close" type="button">Close</button>' +
+      "<h1>Live Camera</h1>" +
+      '<div class="camera-stage">' +
+        '<img id="cameraStream" src="/api/live-camera" alt="Live LEGO camera feed">' +
+        '<img id="cameraFrame" hidden alt="">' +
+        '<div id="cameraBox" class="camera-box" hidden>' +
+          '<div id="cameraBoxLabel" class="camera-box-label"></div>' +
+        "</div>" +
+      "</div>" +
+      '<div id="cameraResult" class="camera-result">Waiting for LEGO piece…</div>' +
+      '<p class="camera-page-note">Hold one LEGO piece in the center of the camera.</p>';
+
+    document.body.appendChild(cameraPage);
+
+    cameraPage.querySelector(".camera-pip-close").onclick = closeCamera;
+    cameraButton.classList.add("on");
+
+    stopped = false;
+    updateFrame();
+  }
+
+  cameraButton.onclick = showCamera;
+})();
+</script>
+
+<style id="camera-drag-style">
+.camera-pip {
+  cursor: move !important;
+  user-select: none;
+}
+
+.camera-pip button,
+.camera-pip img {
+  cursor: default !important;
+}
+
+.camera-pip-close {
+  cursor: pointer !important;
+}
+</style>
+
+<script id="camera-drag-script">
+(function () {
+  let dragging = null;
+
+  document.addEventListener("pointerdown", function (event) {
+    const pip = event.target.closest(".camera-pip");
+
+    if (!pip) return;
+    if (event.target.closest("button")) return;
+    if (event.target.closest("img")) return;
+
+    const rect = pip.getBoundingClientRect();
+
+    pip.style.left = rect.left + "px";
+    pip.style.top = rect.top + "px";
+    pip.style.right = "auto";
+    pip.style.bottom = "auto";
+
+    dragging = {
+      pip: pip,
+      offsetX: event.clientX - rect.left,
+      offsetY: event.clientY - rect.top
+    };
+
+    pip.setPointerCapture?.(event.pointerId);
+  });
+
+  document.addEventListener("pointermove", function (event) {
+    if (!dragging) return;
+
+    const pip = dragging.pip;
+    const width = pip.offsetWidth;
+    const height = pip.offsetHeight;
+
+    let left = event.clientX - dragging.offsetX;
+    let top = event.clientY - dragging.offsetY;
+
+    left = Math.max(8, Math.min(left, window.innerWidth - width - 8));
+    top = Math.max(8, Math.min(top, window.innerHeight - height - 8));
+
+    pip.style.left = left + "px";
+    pip.style.top = top + "px";
+  });
+
+  document.addEventListener("pointerup", function () {
+    dragging = null;
+  });
+})();
+</script>
+
+<style id="camera-pip-height-fix">
+.camera-pip {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: 90vh !important;
+  overflow: hidden !important;
+}
+
+.camera-pip .camera-page-note {
+  margin-bottom: 0 !important;
+}
+
+.camera-pip .camera-stage {
+  height: 245px !important;
+}
+</style>
+
+<style id="camera-pip-height-fix2">
+.camera-pip {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  height: fit-content !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  flex: 0 0 auto !important;
+  overflow: hidden !important;
+}
+
+.camera-pip > * {
+  flex: 0 0 auto !important;
+}
+
+.camera-pip h1 {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.camera-pip .camera-stage {
+  height: 245px !important;
+  min-height: 0 !important;
+  flex: 0 0 245px !important;
+}
+
+.camera-pip .camera-result,
+.camera-pip .camera-page-note {
+  height: auto !important;
+  min-height: 0 !important;
+  flex: 0 0 auto !important;
+}
+</style>
+
+<style id="camera-pip-size-fix">
+.camera-pip {
+  width: 320px !important;
+  max-width: 30vw !important;
+  padding: 10px !important;
+}
+
+.camera-pip .camera-stage {
+  height: 180px !important;
+  flex-basis: 180px !important;
+}
+
+.camera-pip h1 {
+  font-size: 16px !important;
+  margin-bottom: 6px !important;
+}
+
+.camera-pip .camera-result {
+  font-size: 13px !important;
+  margin-top: 7px !important;
+}
+
+.camera-pip .camera-page-note {
+  font-size: 11px !important;
+  margin-top: 5px !important;
+}
+</style>
+
+<style id="camera-both-modes">
+.camera-pip.camera-expanded {
+  left: 16px !important;
+  top: 16px !important;
+  right: 16px !important;
+  bottom: 16px !important;
+  width: auto !important;
+  max-width: none !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+.camera-pip.camera-expanded .camera-stage {
+  height: calc(100vh - 190px) !important;
+  flex: 1 1 auto !important;
+  min-height: 300px !important;
+}
+
+.camera-pip.camera-expanded .camera-result {
+  font-size: 17px !important;
+}
+
+.camera-pip.camera-expanded .camera-page-note {
+  font-size: 14px !important;
+}
+</style>
+
+<script id="camera-both-modes-script">
+(function () {
+  function addExpandButton() {
+    const pip = document.querySelector(".camera-pip");
+    if (!pip || pip.querySelector(".camera-expand")) return;
+
+    const close = pip.querySelector(".camera-pip-close");
+    if (!close) return;
+
+    const expand = document.createElement("button");
+    expand.className = "camera-expand";
+    expand.type = "button";
+    expand.textContent = "Expand";
+
+    expand.style.cssText =
+      "float:right;margin-right:6px;border:0;border-radius:8px;" +
+      "padding:5px 9px;background:#1677ff;color:white;cursor:pointer;";
+
+    expand.onclick = function () {
+      const expanded = pip.classList.toggle("camera-expanded");
+      expand.textContent = expanded ? "Shrink" : "Expand";
+    };
+
+    close.insertAdjacentElement("beforebegin", expand);
+  }
+
+  document.addEventListener("click", function (event) {
+    if (event.target.closest("#cameraBtn")) {
+      setTimeout(addExpandButton, 50);
+    }
+  });
+
+  setInterval(addExpandButton, 500);
+})();
+</script>
+
+<style id="camera-buttons-bottom">
+.camera-pip .camera-controls {
+  display: flex !important;
+  gap: 8px !important;
+  width: 100% !important;
+  margin-top: 10px !important;
+  order: 99 !important;
+}
+
+.camera-pip .camera-controls button {
+  position: static !important;
+  float: none !important;
+  flex: 1 !important;
+  margin: 0 !important;
+}
+
+.camera-pip .camera-pip-close,
+.camera-pip .camera-expand {
+  cursor: pointer !important;
+}
+</style>
+
+<script id="camera-buttons-bottom-script">
+(function () {
+  function moveButtonsToBottom() {
+    const pip = document.querySelector(".camera-pip");
+    if (!pip) return;
+
+    const expand = pip.querySelector(".camera-expand");
+    const close = pip.querySelector(".camera-pip-close");
+    const note = pip.querySelector(".camera-page-note");
+
+    if (!expand || !close || !note) return;
+
+    let controls = pip.querySelector(".camera-controls");
+
+    if (!controls) {
+      controls = document.createElement("div");
+      controls.className = "camera-controls";
+      note.insertAdjacentElement("afterend", controls);
+    }
+
+    controls.appendChild(expand);
+    controls.appendChild(close);
+  }
+
+  setInterval(moveButtonsToBottom, 300);
+})();
+</script>

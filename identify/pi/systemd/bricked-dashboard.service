@@ -1,0 +1,15 @@
+[Unit]
+Description=Bricked Sorting Dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ethan
+WorkingDirectory=/home/ethan
+ExecStart=/home/ethan/env/bin/python /home/ethan/dashboard_server.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
