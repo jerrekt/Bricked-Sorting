@@ -38,6 +38,7 @@ Kratos result → controller → motors and chute
 - `web/` is the public site (bricked-01.adsuaracloud.com): landing page plus a simulated demo dashboard.
 - It deploys itself: CT 150 pulls `main` every 60 seconds. Anything merged to `main` goes live within a minute.
 - Bin codes and color groups: `docs/bin-system.md` and `web/data/bins.json`.
+- Team task chart (not built yet): `docs/task-chart-handoff.md` covers how to add one, based on the Ain't No Waymo project's board.
 - `deploy/` holds the server setup. Changes there do not auto-deploy; they are installed by hand.
 
 ## Notes
