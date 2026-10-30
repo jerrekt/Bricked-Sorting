@@ -1,55 +1,278 @@
 {
-  "schema": "bricked-sorting-tasks",
-  "version": 1,
-  "note": "Static task chart. Edit this file and open a pull request to change a task. See docs/task-chart-handoff.md for why this is static instead of live.",
-  "milestone_labels": {
-    "repo": "Repo and site setup",
-    "bins": "Bin system",
-    "isolate": "Isolate",
-    "identify": "Identify",
-    "indicate": "Indicate",
-    "dashboard": "Dashboard and inventory",
-    "hardware": "Hardware and enclosure",
-    "course": "Course deliverables"
+ "schema": "bricked-sorting-tasks",
+ "version": 1,
+ "note": "Static task chart. Edit this file and open a pull request to change a task. See docs/task-chart-handoff.md for why this is static instead of live. When a new feature is added to the project, add a task for it here, and update the BOM sheet and the slide deck too (see hw-04, course-04).",
+ "milestone_labels": {
+  "repo": "Repo and site setup",
+  "bins": "Bin system",
+  "isolate": "Isolate",
+  "identify": "Identify",
+  "indicate": "Indicate",
+  "dashboard": "Dashboard and inventory",
+  "hardware": "Hardware and enclosure",
+  "course": "Course deliverables"
+ },
+ "tasks": [
+  {
+   "id": "repo-01",
+   "milestone": "repo",
+   "title": "Create the project GitHub repo",
+   "status": "done",
+   "owner": "Branden",
+   "detail": "jerrekt/Bricked-Sorting, public, scaffolded with per-stage folders."
   },
-  "tasks": [
-    {"id":"repo-01","milestone":"repo","title":"Create the project GitHub repo","status":"done","owner":"Branden","detail":"jerrekt/Bricked-Sorting, public, scaffolded with per-stage folders."},
-    {"id":"repo-02","milestone":"repo","title":"Public site live at bricked-01.adsuaracloud.com","status":"done","owner":"Branden","detail":"nginx on CT 150, 60 s pull from main, Cloudflare tunnel."},
-    {"id":"repo-03","milestone":"repo","title":"No-terminal upload workflow for teammates","status":"done","owner":"Branden","detail":"Upload + pull request steps in the README."},
-    {"id":"repo-04","milestone":"repo","title":"Add Ethan, Marshall and Vivek as collaborators","status":"todo","owner":"Branden"},
-    {"id":"repo-05","milestone":"repo","title":"Turn on branch protection for main","status":"todo","owner":"Branden","detail":"Repo is public; main auto-deploys."},
-
-    {"id":"bins-01","milestone":"bins","title":"Decide the 16-bin layout and floor-slot code system","status":"done","owner":"Branden","detail":"Floor 1 = bricks, floor 2 = other; slots 1-7 color groups, slot 8 unknown."},
-    {"id":"bins-02","milestone":"bins","title":"Pick the 7 color groups from the real 10696 inventory","status":"done","owner":"Branden","detail":"BrickLink, 484 pieces. bins.json is the shared source for site, Kratos and Indicate."},
-    {"id":"bins-03","milestone":"bins","title":"Decide whether plates count as bricks (floor 1 or 2)","status":"blocked","owner":"Branden","detail":"Open question q26."},
-    {"id":"bins-04","milestone":"bins","title":"Decide bin sizes from the loose volume of one 10696 set","status":"blocked","owner":"Branden","detail":"Open question q27."},
-
-    {"id":"isolate-01","milestone":"isolate","title":"Vibratory feeder design","status":"todo","owner":"Vivek"},
-    {"id":"isolate-02","milestone":"isolate","title":"Feeder prototype test","status":"todo","owner":"Vivek"},
-
-    {"id":"identify-01","milestone":"identify","title":"/identify endpoint on CT 150","status":"done","owner":"Ethan","detail":"Flask app, calls Brickognize, returns floor/slot/bin_number. Confirmed by a read-only look at CT 150."},
-    {"id":"identify-02","milestone":"identify","title":"Pi camera service (camera_service.py)","status":"in_progress","owner":"Ethan","detail":"Rewritten on purpose after the old one only detected bricks mid-sort; not finished. The Pi still runs the old service meanwhile."},
-    {"id":"identify-03","milestone":"identify","title":"Decide color ID: Brickognize prediction vs the Pi's APDS-9960 sensor","status":"blocked","owner":"Ethan","detail":"Open question q28. Server currently uses Brickognize only."},
-    {"id":"identify-04","milestone":"identify","title":"Time 20 real pieces through /identify: seconds and accuracy","status":"todo","owner":"Ethan","detail":"No real numbers yet; needed before trusting the demo's 16 pcs/s."},
-    {"id":"identify-05","milestone":"identify","title":"Confirm the server's slot numbers match web/data/bins.json","status":"todo","owner":"Ethan"},
-
-    {"id":"indicate-01","milestone":"indicate","title":"Chute geometry: Z rods, floor heights, yaw mechanism","status":"in_progress","owner":"Marshall","detail":"Leaning to 12 mm Z rods; servo vs second NEMA for yaw not decided."},
-    {"id":"indicate-02","milestone":"indicate","title":"Build the bin-code lookup table for Indicate","status":"done","owner":"Branden","detail":"indicate/bin-lookup.json and .csv, generated from bins.json, on branch live."},
-    {"id":"indicate-03","milestone":"indicate","title":"Fake /identify server for testing Indicate without a camera","status":"done","owner":"Branden","detail":"identify/fake_identify.py on branch live."},
-    {"id":"indicate-04","milestone":"indicate","title":"Wire and test the bin limit switches","status":"todo","owner":"Marshall"},
-    {"id":"indicate-05","milestone":"indicate","title":"Build and test the chute hardware","status":"todo","owner":"Marshall"},
-
-    {"id":"dash-01","milestone":"dashboard","title":"Browser-only demo (Start sort, bins, three inventory buttons)","status":"done","owner":"Branden","detail":"web/demo.html, simulates one 10696 box."},
-    {"id":"dash-02","milestone":"dashboard","title":"Live status page (data/live.json)","status":"in_progress","owner":"Branden","detail":"web/live.html built on branch live; nothing writes live.json yet."},
-    {"id":"dash-03","milestone":"dashboard","title":"Decide who writes live.json on CT 150","status":"blocked","owner":"Branden","detail":"Open question q31."},
-    {"id":"dash-04","milestone":"dashboard","title":"Swap the demo for real Kratos data","status":"todo","owner":"Branden"},
-
-    {"id":"hw-01","milestone":"hardware","title":"Full BOM for the Indicate stage","status":"todo","owner":"Marshall"},
-    {"id":"hw-02","milestone":"hardware","title":"Enclosure: scaled LEGO-brick shell, red PLA","status":"todo","owner":"Branden"},
-    {"id":"hw-03","milestone":"hardware","title":"Decide prototype controller (Arduino vs Pi)","status":"todo","owner":"Branden"},
-
-    {"id":"course-01","milestone":"course","title":"Design Sprint with Industrial Design students","status":"done","owner":"Marshall","detail":"Oct 7, 2026, IS216."},
-    {"id":"course-02","milestone":"course","title":"Team task chart on the site","status":"in_progress","owner":"Branden","detail":"This file plus progress.json and the Tasks page."},
-    {"id":"course-03","milestone":"course","title":"Keep docs/ updated with meeting notes and decisions","status":"in_progress","owner":"Marshall"}
-  ]
+  {
+   "id": "repo-02",
+   "milestone": "repo",
+   "title": "Public site live at bricked-01.adsuaracloud.com",
+   "status": "done",
+   "owner": "Branden",
+   "detail": "nginx on CT 150, 60 s pull from main, Cloudflare tunnel."
+  },
+  {
+   "id": "repo-03",
+   "milestone": "repo",
+   "title": "No-terminal upload workflow for teammates",
+   "status": "done",
+   "owner": "Branden",
+   "detail": "Upload + pull request steps in the README."
+  },
+  {
+   "id": "repo-04",
+   "milestone": "repo",
+   "title": "Add Ethan, Marshall and Vivek as collaborators",
+   "status": "todo",
+   "owner": "Branden"
+  },
+  {
+   "id": "repo-05",
+   "milestone": "repo",
+   "title": "Turn on branch protection for main",
+   "status": "todo",
+   "owner": "Branden",
+   "detail": "Repo is public; main auto-deploys."
+  },
+  {
+   "id": "bins-01",
+   "milestone": "bins",
+   "title": "Decide the 16-bin layout and floor-slot code system",
+   "status": "done",
+   "owner": "Branden",
+   "detail": "Floor 1 = bricks, floor 2 = other; slots 1-7 color groups, slot 8 unknown."
+  },
+  {
+   "id": "bins-02",
+   "milestone": "bins",
+   "title": "Pick the 7 color groups from the real 10696 inventory",
+   "status": "done",
+   "owner": "Branden",
+   "detail": "BrickLink, 484 pieces. bins.json is the shared source for site, Kratos and Indicate."
+  },
+  {
+   "id": "bins-03",
+   "milestone": "bins",
+   "title": "Decide whether plates count as bricks (floor 1 or 2)",
+   "status": "blocked",
+   "owner": "Branden",
+   "detail": "Open question q26."
+  },
+  {
+   "id": "bins-04",
+   "milestone": "bins",
+   "title": "Decide bin sizes from the loose volume of one 10696 set",
+   "status": "blocked",
+   "owner": "Branden",
+   "detail": "Open question q27."
+  },
+  {
+   "id": "isolate-01",
+   "milestone": "isolate",
+   "title": "Vibratory feeder design",
+   "status": "todo",
+   "owner": "Vivek"
+  },
+  {
+   "id": "isolate-02",
+   "milestone": "isolate",
+   "title": "Feeder prototype test",
+   "status": "todo",
+   "owner": "Vivek"
+  },
+  {
+   "id": "identify-01",
+   "milestone": "identify",
+   "title": "/identify endpoint on CT 150",
+   "status": "done",
+   "owner": "Ethan",
+   "detail": "Flask app, calls Brickognize, returns floor/slot/bin_number. Confirmed by a read-only look at CT 150."
+  },
+  {
+   "id": "identify-02",
+   "milestone": "identify",
+   "title": "Pi camera service (camera_service.py)",
+   "status": "in_progress",
+   "owner": "Ethan",
+   "detail": "Rewritten on purpose after the old one only detected bricks mid-sort; not finished. The Pi still runs the old service meanwhile."
+  },
+  {
+   "id": "identify-03",
+   "milestone": "identify",
+   "title": "Decide color ID: Brickognize prediction vs the Pi's APDS-9960 sensor",
+   "status": "blocked",
+   "owner": "Ethan",
+   "detail": "Open question q28. Server currently uses Brickognize only."
+  },
+  {
+   "id": "identify-04",
+   "milestone": "identify",
+   "title": "Time 20 real pieces through /identify: seconds and accuracy",
+   "status": "todo",
+   "owner": "Ethan",
+   "detail": "No real numbers yet; needed before trusting the demo's 16 pcs/s."
+  },
+  {
+   "id": "identify-05",
+   "milestone": "identify",
+   "title": "Confirm the server's slot numbers match web/data/bins.json",
+   "status": "todo",
+   "owner": "Ethan"
+  },
+  {
+   "id": "indicate-01",
+   "milestone": "indicate",
+   "title": "Chute geometry: Z rods, floor heights, yaw mechanism",
+   "status": "in_progress",
+   "owner": "Marshall",
+   "detail": "Leaning to 12 mm Z rods; servo vs second NEMA for yaw not decided."
+  },
+  {
+   "id": "indicate-02",
+   "milestone": "indicate",
+   "title": "Build the bin-code lookup table for Indicate",
+   "status": "done",
+   "owner": "Branden",
+   "detail": "indicate/bin-lookup.json and .csv, generated from bins.json, on branch live."
+  },
+  {
+   "id": "indicate-03",
+   "milestone": "indicate",
+   "title": "Fake /identify server for testing Indicate without a camera",
+   "status": "done",
+   "owner": "Branden",
+   "detail": "identify/fake_identify.py on branch live."
+  },
+  {
+   "id": "indicate-04",
+   "milestone": "indicate",
+   "title": "Wire and test the bin limit switches",
+   "status": "todo",
+   "owner": "Marshall"
+  },
+  {
+   "id": "indicate-05",
+   "milestone": "indicate",
+   "title": "Build and test the chute hardware",
+   "status": "todo",
+   "owner": "Marshall"
+  },
+  {
+   "id": "dash-01",
+   "milestone": "dashboard",
+   "title": "Browser-only demo (Start sort, bins, three inventory buttons)",
+   "status": "done",
+   "owner": "Branden",
+   "detail": "web/demo.html, simulates one 10696 box."
+  },
+  {
+   "id": "dash-02",
+   "milestone": "dashboard",
+   "title": "Live status page (data/live.json)",
+   "status": "in_progress",
+   "owner": "Branden",
+   "detail": "web/live.html built on branch live; nothing writes live.json yet."
+  },
+  {
+   "id": "dash-03",
+   "milestone": "dashboard",
+   "title": "Decide who writes live.json on CT 150",
+   "status": "blocked",
+   "owner": "Branden",
+   "detail": "Open question q31."
+  },
+  {
+   "id": "dash-04",
+   "milestone": "dashboard",
+   "title": "Swap the demo for real Kratos data",
+   "status": "todo",
+   "owner": "Branden"
+  },
+  {
+   "id": "hw-01",
+   "milestone": "hardware",
+   "title": "Full BOM for the Indicate stage",
+   "status": "todo",
+   "owner": "Marshall"
+  },
+  {
+   "id": "hw-02",
+   "milestone": "hardware",
+   "title": "Enclosure: scaled LEGO-brick shell, red PLA",
+   "status": "todo",
+   "owner": "Branden"
+  },
+  {
+   "id": "hw-03",
+   "milestone": "hardware",
+   "title": "Decide prototype controller (Arduino vs Pi)",
+   "status": "todo",
+   "owner": "Branden"
+  },
+  {
+   "id": "course-01",
+   "milestone": "course",
+   "title": "Design Sprint with Industrial Design students",
+   "status": "done",
+   "owner": "Marshall",
+   "detail": "Oct 7, 2026, IS216."
+  },
+  {
+   "id": "course-02",
+   "milestone": "course",
+   "title": "Team task chart on the site",
+   "status": "in_progress",
+   "owner": "Branden",
+   "detail": "This file plus progress.json and the Tasks page."
+  },
+  {
+   "id": "course-03",
+   "milestone": "course",
+   "title": "Keep docs/ updated with meeting notes and decisions",
+   "status": "in_progress",
+   "owner": "Marshall"
+  },
+  {
+   "id": "bins-05",
+   "milestone": "bins",
+   "title": "Cardboard-box method to size the bins (q27)",
+   "status": "todo",
+   "owner": "Branden",
+   "detail": "Pack one 10696 set's floor-1 bricks (149 pieces) into a cardboard box, no bigger than needed to fit them. Do the same for the floor-2 other pieces (335). Record each box's L x W x H and volume. Double each volume to size for 2 sets (earlier note said 2 to 3 sets; confirm which with BJ). Those two doubled volumes become the floor 1 and floor 2 bin targets."
+  },
+  {
+   "id": "hw-04",
+   "milestone": "hardware",
+   "title": "Keep the BOM spreadsheet updated",
+   "status": "todo",
+   "owner": "Marshall",
+   "detail": "Google Sheet, not yet linked here. Add a row whenever a part is chosen or a feature changes the parts list."
+  },
+  {
+   "id": "course-04",
+   "milestone": "course",
+   "title": "Keep the presentation deck updated",
+   "status": "todo",
+   "owner": "Marshall",
+   "detail": "Google Slides, not yet linked here. Update it whenever a feature is added or a decision changes."
+  }
+ ]
 }
