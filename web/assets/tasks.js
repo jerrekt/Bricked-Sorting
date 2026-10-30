@@ -5,6 +5,26 @@
   var STATUS_LABEL = { todo: 'To do', in_progress: 'In progress', blocked: 'Blocked', done: 'Done' };
   var filter = 'all';
 
+  function dueLabel(due) {
+    var days = Math.round((new Date(due + 'T00:00:00') - new Date(new Date().toDateString())) / 86400000);
+    var when = days < 0 ? 'past due' : days === 0 ? 'today' : days === 1 ? 'tomorrow' : 'in ' + days + ' days';
+    return { text: due + ' · ' + when, soon: days <= 7, past: days < 0 };
+  }
+
+  function renderDeadlines(d) {
+    var box = $('deadlines'); if (!box) return;
+    var items = d.tasks.filter(function (t) { return t.due && t.status !== 'done'; })
+      .sort(function (a, b) { return a.due < b.due ? -1 : 1; });
+    box.hidden = !items.length;
+    var ul = $('dl-list'); if (!ul) return; ul.innerHTML = '';
+    items.forEach(function (t) {
+      var dl = dueLabel(t.due);
+      var li = document.createElement('li'); li.className = 'dl-row' + (dl.past ? ' past' : dl.soon ? ' soon' : '');
+      li.innerHTML = '<span class="dl-date">' + esc(dl.text) + '</span><span class="dl-title">' + esc(t.title) + '</span><span class="t-owner">' + esc(t.owner || '') + '</span>';
+      ul.appendChild(li);
+    });
+  }
+
   function renderProgress(p) {
     var done = p.milestones.filter(function (m) { return m.complete; }).length;
     var pct = Math.round((done / p.milestones.length) * 100);
@@ -32,6 +52,7 @@
         var li = document.createElement('li'); li.className = 'task st-' + t.status;
         li.innerHTML = '<span class="t-status">' + STATUS_LABEL[t.status] + '</span><span class="t-title">' + esc(t.title) + '</span>' +
           (t.owner ? '<span class="t-owner">' + esc(t.owner) + '</span>' : '') +
+          (t.due ? '<span class="t-due">Due ' + esc(dueLabel(t.due).text) + '</span>' : '') +
           (t.detail ? '<span class="t-detail">' + esc(t.detail) + '</span>' : '');
         ul.appendChild(li);
       });
@@ -49,5 +70,5 @@
   document.querySelectorAll('.filters button').forEach(function (b) { b.addEventListener('click', function () { setFilter(b.dataset.f); }); });
 
   fetch('data/progress.json').then(function (r) { return r.json(); }).then(renderProgress);
-  fetch('data/tasks.json').then(function (r) { return r.json(); }).then(function (d) { TASKS = d; renderTasks(d); });
+  fetch('data/tasks.json').then(function (r) { return r.json(); }).then(function (d) { TASKS = d; renderTasks(d); renderDeadlines(d); });
 })();

@@ -39,6 +39,15 @@
 :root[data-theme="dark"] .st-done .t-status{background:#123a1f;color:#8fe0a8}
 .t-title{font-weight:600}
 .t-owner{font-size:12px;color:var(--muted);white-space:nowrap}
+.t-due{grid-column:1/-1;font-size:12px;color:var(--flag);font-weight:600}
+.dl-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.dl-row{display:grid;grid-template-columns:auto 1fr auto;gap:6px 10px;align-items:baseline;background:var(--surface-2);border-radius:8px;padding:7px 10px;font-size:14px}
+.dl-row.soon{outline:1px solid var(--flag)}
+.dl-row.past{outline:1px solid var(--warn)}
+.dl-date{font-size:12px;font-weight:700;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.dl-row.soon .dl-date{color:var(--flag)}
+.dl-row.past .dl-date{color:var(--warn)}
+.dl-title{font-weight:600}
 </style>
 </head>
 <body>
@@ -53,6 +62,11 @@
     <div class="pg-bar"><i id="pg-fill" style="width:0"></i></div>
     <p class="pg-note" id="pg-note"></p>
     <ul class="pg-list" id="pg-list"></ul>
+  </section>
+
+  <section class="card" id="deadlines" hidden>
+    <h2>Deadlines</h2>
+    <ul class="dl-list" id="dl-list"></ul>
   </section>
 
   <section class="card">

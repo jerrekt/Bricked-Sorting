@@ -281,6 +281,58 @@
    "status": "blocked",
    "owner": "Marshall",
    "detail": "Current plan has floor 1 (bricks, bottom) at 6in tall and floor 2 (other, top) at 4in tall. But floor 2's biggest color group (black, 72 pieces) is far bigger than floor 1's (blue, 44 pieces), so floor 2 likely needs the taller row, not the shorter one. Flagged since Oct 24, still unresolved. Do not build to 6in/4in until bins-05 gives real numbers."
+  },
+  {
+   "id": "identify-06",
+   "milestone": "identify",
+   "title": "Agree the camera design with Ethan before touching the running Pi service",
+   "status": "blocked",
+   "owner": "Ethan",
+   "detail": "The current Pi service still feeds /snapshot and /stream to the dashboard. His new camera script does not have those yet and would fight it for the camera if swapped in now."
+  },
+  {
+   "id": "repo-06",
+   "milestone": "repo",
+   "title": "Finish the CT 150 access lockdown for Ethan",
+   "status": "in_progress",
+   "owner": "Branden",
+   "detail": "Login and firewall checks for teammate access to the inference container. Private details are in Mnemosyne, not here."
+  },
+  {
+   "id": "course-05",
+   "milestone": "course",
+   "title": "First development drafts + initial BOM due",
+   "status": "todo",
+   "owner": "Branden",
+   "due": "2026-11-03",
+   "detail": "Canvas, 20 points."
+  },
+  {
+   "id": "course-06",
+   "milestone": "course",
+   "title": "Written report due",
+   "status": "todo",
+   "owner": "Marshall",
+   "due": "2026-12-01",
+   "detail": "Canvas, 300 points."
+  },
+  {
+   "id": "course-07",
+   "milestone": "course",
+   "title": "Proof of concept + one-pager due",
+   "status": "todo",
+   "owner": "Branden",
+   "due": "2026-12-02",
+   "detail": "Canvas, 50 points. First semester only needs a proof of concept, not a refined machine."
+  },
+  {
+   "id": "course-08",
+   "milestone": "course",
+   "title": "Peer evaluation due",
+   "status": "todo",
+   "owner": "All",
+   "due": "2026-12-06",
+   "detail": "Canvas."
   }
  ]
 }
