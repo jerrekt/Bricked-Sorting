@@ -253,10 +253,10 @@
   {
    "id": "bins-05",
    "milestone": "bins",
-   "title": "Cardboard-box method to size the bins (q27)",
+   "title": "Cardboard method to size the bins (q27): box the biggest color group per floor, double it",
    "status": "todo",
    "owner": "Branden",
-   "detail": "Pack one 10696 set's floor-1 bricks (149 pieces) into a cardboard box, no bigger than needed to fit them. Do the same for the floor-2 other pieces (335). Record each box's L x W x H and volume. Double each volume to size for 2 sets (earlier note said 2 to 3 sets; confirm which with BJ). Those two doubled volumes become the floor 1 and floor 2 bin targets."
+   "detail": "One size per floor, not a box per bin. Steps: 1) Count this set's pieces by color group, separately for floor 1 (bricks) and floor 2 (other) -- web/data/bins.json plus web/data/set-10696.json already give this. 2) Find the LARGEST color group on each floor; that is the worst case every bin on that floor must fit. From the real 10696 counts: floor 1's biggest group is blue (44 pieces); floor 2's biggest is black (72 pieces). 3) Pack only that one group's real pieces into a cardboard box, no bigger than needed to fit them. Do this once for floor 1 (the blue bricks) and once for floor 2 (the black other-pieces). 4) Record each box's length, width, height and volume. 5) Double each volume (for 2 sets; earlier note said 2 to 3 sets, confirm with BJ). 6) That doubled size becomes the ONE standard bin size for every bin on that floor -- every other color group is smaller, so it already fits. Floor 1 gets one bin size, floor 2 gets a different (bigger) one."
   },
   {
    "id": "hw-04",
