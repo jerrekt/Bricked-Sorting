@@ -273,6 +273,14 @@
    "status": "todo",
    "owner": "Marshall",
    "detail": "Google Slides, not yet linked here. Update it whenever a feature is added or a decision changes."
+  },
+  {
+   "id": "indicate-06",
+   "milestone": "indicate",
+   "title": "Resolve floor height conflict: 6in bottom / 4in top vs which floor needs more volume",
+   "status": "blocked",
+   "owner": "Marshall",
+   "detail": "Current plan has floor 1 (bricks, bottom) at 6in tall and floor 2 (other, top) at 4in tall. But floor 2's biggest color group (black, 72 pieces) is far bigger than floor 1's (blue, 44 pieces), so floor 2 likely needs the taller row, not the shorter one. Flagged since Oct 24, still unresolved. Do not build to 6in/4in until bins-05 gives real numbers."
   }
  ]
 }
