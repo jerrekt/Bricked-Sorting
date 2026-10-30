@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bricked Sorting Tasks</title>
+<meta name="description" content="Team task chart and project progress for Bricked Sorting. Edited by pull request; see the README to add or update a task.">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.tasks{padding-top:16px;padding-bottom:24px;display:grid;gap:20px}
+.pg-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.pg-head h2{margin:0}
+.pg-pct{font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent)}
+.pg-bar{height:10px;border-radius:6px;background:var(--surface-2);overflow:hidden;margin:8px 0}
+.pg-bar i{display:block;height:100%;background:var(--accent)}
+.pg-note{font-size:13px;color:var(--muted);margin:0 0 10px}
+.pg-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.pg-row{display:grid;grid-template-columns:14px 1fr;gap:8px 10px;font-size:14px;align-items:baseline}
+.pg-row .pg-ev{grid-column:2;color:var(--muted);font-size:13px}
+.pg-dot{width:10px;height:10px;border-radius:50%;background:var(--surface-2);border:2px solid var(--line);margin-top:4px}
+.pg-row.done .pg-dot{background:var(--ok);border-color:var(--ok)}
+.pg-row.done .pg-label{font-weight:600}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 2px}
+.filters button{font:inherit;font-size:13px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--surface-2);color:var(--fg);font-weight:600;border-color:var(--muted)}
+.ms{margin-top:6px}
+.ms h3{font-size:15px;margin:0 0 8px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.tlist{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:6px}
+.task{display:grid;grid-template-columns:auto 1fr auto;gap:4px 10px;align-items:baseline;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 12px;box-shadow:var(--shadow)}
+.task .t-detail{grid-column:1/-1;font-size:13px;color:var(--muted)}
+.t-status{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 7px;border-radius:999px;white-space:nowrap}
+.st-todo .t-status{background:var(--surface-2);color:var(--muted)}
+.st-in_progress .t-status{background:#fff4cf;color:#6b4e00}
+.st-blocked .t-status{background:#fde1df;color:var(--warn)}
+.st-done .t-status{background:#e1f3e7;color:var(--ok)}
+@media (prefers-color-scheme:dark){.st-in_progress .t-status{background:#3a2e08;color:#ffd966}.st-blocked .t-status{background:#3a1512;color:#ff9d96}.st-done .t-status{background:#123a1f;color:#8fe0a8}}
+:root[data-theme="dark"] .st-in_progress .t-status{background:#3a2e08;color:#ffd966}
+:root[data-theme="dark"] .st-blocked .t-status{background:#3a1512;color:#ff9d96}
+:root[data-theme="dark"] .st-done .t-status{background:#123a1f;color:#8fe0a8}
+.t-title{font-weight:600}
+.t-owner{font-size:12px;color:var(--muted);white-space:nowrap}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="./"><i></i>Bricked Sorting</a>
+  <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="tasks.html" aria-current="page">Tasks</a></nav>
+</div></header>
+
+<main class="wrap tasks">
+  <section class="card">
+    <div class="pg-head"><h2>Progress</h2><span class="pg-pct" id="pg-pct">–</span></div>
+    <div class="pg-bar"><i id="pg-fill" style="width:0"></i></div>
+    <p class="pg-note" id="pg-note"></p>
+    <ul class="pg-list" id="pg-list"></ul>
+  </section>
+
+  <section class="card">
+    <h2>Task board</h2>
+    <div class="filters" role="group" aria-label="Filter by status">
+      <button data-f="all" aria-pressed="true">All</button>
+      <button data-f="todo" aria-pressed="false">To do</button>
+      <button data-f="in_progress" aria-pressed="false">In progress</button>
+      <button data-f="blocked" aria-pressed="false">Blocked</button>
+      <button data-f="done" aria-pressed="false">Done</button>
+    </div>
+    <p class="muted small">Static, not live. To change a task, edit <code>web/data/tasks.json</code> and open a pull request. See the README.</p>
+    <div id="board"></div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap">Bricked Sorting · SJSU Tech 190A. Task chart is static; see docs/task-chart-handoff.md for why.</div></footer>
+<script src="assets/tasks.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "note": "Edited by hand, not computed from tasks.json. Percent counts only fully verified complete milestones; a simulation is not proof of working hardware.",
+  "basis": "A milestone counts as complete only once it is confirmed working, not just coded or planned.",
+  "updated": "2026-10-30",
+  "milestones": [
+    {"id":"repo","label":"Repo and site setup","complete":true,"evidence":"Public site live at bricked-01.adsuaracloud.com, deploying from GitHub main every 60 s."},
+    {"id":"bins","label":"Bin system","complete":false,"evidence":"Floor-slot codes and 7 color groups decided; plates and bin sizes still open (q26, q27)."},
+    {"id":"isolate","label":"Isolate","complete":false,"evidence":"Feeder design not started."},
+    {"id":"identify","label":"Identify","complete":false,"evidence":"/identify works on CT 150 via Brickognize, confirmed by a read-only check; the Pi camera service is being rewritten and no real piece has been timed through it yet."},
+    {"id":"indicate","label":"Indicate","complete":false,"evidence":"Chute geometry not finalized; no hardware built; bin-lookup table and a fake test server exist."},
+    {"id":"dashboard","label":"Dashboard and inventory","complete":false,"evidence":"Simulated demo works; the live status page exists but nothing writes real data to it yet."},
+    {"id":"hardware","label":"Hardware and enclosure","complete":false,"evidence":"BOM, enclosure and controller choice not finalized."},
+    {"id":"course","label":"Course deliverables","complete":false,"evidence":"Design Sprint with Industrial Design students done (Oct 7); this task chart is in progress."}
+  ]
+}
