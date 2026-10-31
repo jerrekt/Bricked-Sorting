@@ -1,0 +1,18 @@
+# /etc/pve/firewall/<CTID>.fw on the Proxmox host. Same pattern as CT 312.
+# Replace GATEWAY_IP with the router's address (kept out of this public repo).
+# Rules run top to bottom; the two DNS lines must stay above the 10/8 drop.
+[OPTIONS]
+enable: 1
+dhcp: 1
+policy_in: DROP
+policy_out: ACCEPT
+
+[RULES]
+OUT ACCEPT -dest GATEWAY_IP -p udp -dport 53
+OUT ACCEPT -dest GATEWAY_IP -p tcp -dport 53
+OUT DROP -dest 10.0.0.0/8
+OUT DROP -dest 172.16.0.0/12
+OUT DROP -dest 192.168.0.0/16
+OUT DROP -dest 100.64.0.0/10
+OUT DROP -dest fe80::/10
+OUT DROP -dest fc00::/7

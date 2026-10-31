@@ -1,7 +1,7 @@
 {
  "schema": "bricked-sorting-tasks",
  "version": 1,
- "note": "Static task chart. Edit this file and open a pull request to change a task. See docs/task-chart-handoff.md for why this is static instead of live. When a new feature is added to the project, add a task for it here, and update the BOM sheet and the slide deck too (see hw-04, course-04).",
+ "note": "Owner and status can be changed live from Discord or the Tasks page once the claim server is running. Titles, details and due dates are edited here by pull request. When a new feature is added to the project, add a task for it here, and update the BOM sheet and the slide deck too (see hw-04, course-04).",
  "milestone_labels": {
   "repo": "Repo and site setup",
   "bins": "Bin system",
@@ -338,9 +338,40 @@
    "id": "course-09",
    "milestone": "course",
    "title": "Claim system + Discord bot for the task chart",
+   "status": "in_progress",
+   "owner": "Branden",
+   "detail": "Server, Discord commands and site buttons built and tested locally (kratos/claim-bot). Not deployed yet."
+  },
+  {
+   "id": "repo-07",
+   "milestone": "repo",
+   "title": "Create the shared bots container and its firewall",
    "status": "todo",
    "owner": "Branden",
-   "detail": "Design handoff ready in docs/claim-system-handoff.md. Not started -- needs its own session, not yet begun."
+   "detail": "Steps in deploy/bots/README.md. Will also hold future bots."
+  },
+  {
+   "id": "repo-08",
+   "milestone": "repo",
+   "title": "Security review of the claim system",
+   "status": "done",
+   "owner": "Branden",
+   "detail": "Written before building, in the private notes."
+  },
+  {
+   "id": "course-10",
+   "milestone": "course",
+   "title": "Set up the Discord app, channel feed and commands",
+   "status": "todo",
+   "owner": "Branden",
+   "detail": "Needs everyone's Discord user ID."
+  },
+  {
+   "id": "course-11",
+   "milestone": "course",
+   "title": "Live test: one Discord command and one site click",
+   "status": "todo",
+   "owner": "Branden"
   }
  ]
 }

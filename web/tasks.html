@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Bricked Sorting Tasks</title>
-<meta name="description" content="Team task chart and project progress for Bricked Sorting. Edited by pull request; see the README to add or update a task.">
+<meta name="description" content="Team task chart and project progress for Bricked Sorting.">
+<!-- Address of the claim server (kratos/claim-bot). Empty = static, read-only board from data/tasks.json. -->
+<meta name="bricked-api" content="">
 <link rel="stylesheet" href="assets/site.css">
 <style>
 .tasks{padding-top:16px;padding-bottom:24px;display:grid;gap:20px}
@@ -37,6 +39,24 @@
 :root[data-theme="dark"] .st-in_progress .t-status{background:#3a2e08;color:#ffd966}
 :root[data-theme="dark"] .st-blocked .t-status{background:#3a1512;color:#ff9d96}
 :root[data-theme="dark"] .st-done .t-status{background:#123a1f;color:#8fe0a8}
+.t-acts{grid-column:1/-1;display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.t-acts button{font:inherit;font-size:12px;font-weight:600;padding:4px 10px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;min-height:30px}
+.t-acts button:hover{border-color:var(--muted)}
+.t-acts button.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.t-note{grid-column:1/-1;font-size:13px;color:var(--warn)}
+.mode-badge{font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:var(--surface-2)}
+.mode-badge.live{background:var(--ok);border-color:var(--ok);color:#fff}
+.board-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.board-head h2{margin:0}
+dialog{border:0;padding:0;border-radius:14px;background:var(--surface);color:var(--fg);width:min(420px,calc(100vw - 24px));box-shadow:0 10px 40px rgba(0,0,0,.3)}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+.dlg{display:grid;gap:12px;padding:16px}
+.dlg h3{margin:0;font-size:17px}
+.dlg label{display:grid;gap:4px;font-size:14px;font-weight:600}
+.dlg select,.dlg input{font:inherit;font-size:15px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);min-height:40px}
+.dlg .row{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.dlg [hidden]{display:none}
+.dlg .err{color:var(--warn);font-size:14px;margin:0;min-height:1em}
 .t-title{font-weight:600}
 .t-owner{font-size:12px;color:var(--muted);white-space:nowrap}
 .t-due{grid-column:1/-1;font-size:12px;color:var(--flag);font-weight:600}
@@ -70,7 +90,7 @@
   </section>
 
   <section class="card">
-    <h2>Task board</h2>
+    <div class="board-head"><h2>Task board</h2><span class="mode-badge" id="mode">Static</span></div>
     <div class="filters" role="group" aria-label="Filter by status">
       <button data-f="all" aria-pressed="true">All</button>
       <button data-f="todo" aria-pressed="false">To do</button>
@@ -78,10 +98,20 @@
       <button data-f="blocked" aria-pressed="false">Blocked</button>
       <button data-f="done" aria-pressed="false">Done</button>
     </div>
-    <p class="muted small">Static, not live. To change a task, edit <code>web/data/tasks.json</code> and open a pull request. See the README.</p>
+    <p class="muted small" id="how">To change a task, use the Discord commands (/claim, /start, /blocked, /done, /release) or edit <code>web/data/tasks.json</code> by pull request.</p>
     <div id="board"></div>
   </section>
 </main>
+<dialog id="dlg" aria-labelledby="dlg-title">
+  <form class="dlg" id="dlg-form" method="dialog">
+    <h3 id="dlg-title">Claim task</h3>
+    <label for="dlg-name">Your name<select id="dlg-name" required></select></label>
+    <label for="dlg-pass">Team password<input id="dlg-pass" type="password" autocomplete="current-password" required></label>
+    <label for="dlg-note" id="dlg-note-wrap" hidden>What is blocking it?<input id="dlg-note" maxlength="200"></label>
+    <p class="err" id="dlg-err" role="alert"></p>
+    <div class="row"><button class="btn small" type="button" id="dlg-cancel">Cancel</button><button class="btn small primary" type="submit" id="dlg-ok">Save</button></div>
+  </form>
+</dialog>
 <footer class="foot"><div class="wrap">Bricked Sorting · SJSU Tech 190A. Task chart is static; see docs/task-chart-handoff.md for why.</div></footer>
 <script src="assets/tasks.js"></script>
 </body>
