@@ -48,9 +48,9 @@
    "id": "repo-05",
    "milestone": "repo",
    "title": "Turn on branch protection for main",
-   "status": "todo",
+   "status": "done",
    "owner": "Branden",
-   "detail": "Repo is public; main auto-deploys."
+   "detail": "Ruleset \"Protect main\": pull request required, no force push, no deletion. Set 2026-11-01."
   },
   {
    "id": "bins-01",
