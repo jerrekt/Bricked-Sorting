@@ -60,6 +60,8 @@ class Config:
     @property
     def admin(self): return env("BRICKED_ADMIN", "Branden")
     @property
+    def team(self): return env("BOT_TEAM_NAME", "Bricked Sorting")
+    @property
     def webhook(self): return env("DISCORD_WEBHOOK_URL")
     @property
     def password_hash(self): return env("BRICKED_TEAM_PASSWORD_SHA256").lower()
@@ -223,7 +225,7 @@ def change(task_id: str, actor: str, via: str, action: str, *, is_admin: bool = 
             if old == "done":
                 raise HTTPException(409, f"{t['id']} is already done.")
             if not unowned(owner) and owner != actor:
-                raise HTTPException(409, f"{t['id']} is owned by {owner}. They can release it, or Branden can.")
+                raise HTTPException(409, f"{t['id']} is owned by {owner}. They can release it, or {CFG.admin} can.")
             new_owner, new_status = actor, ("in_progress" if old in ("todo", "blocked") else old)
         elif action == "status":
             if owner != actor and not is_admin:
@@ -412,7 +414,7 @@ def handle_command(data: dict, bg: BackgroundTasks) -> dict:
     user = (data.get("member") or {}).get("user") or data.get("user") or {}
     name = CFG.discord_users.get(str(user.get("id", "")))
     if not name:
-        return reply("You're not on the Bricked Sorting team list. Ask Branden to add you.")
+        return reply(f"You're not on the {CFG.team} team list. Ask {CFG.admin} to add you.")
     if LIMITS.over("discord:" + name, WRITE_LIMIT, WRITE_WINDOW):
         return reply("Too many commands. Wait a few minutes.")
 
@@ -431,7 +433,7 @@ def handle_command(data: dict, bg: BackgroundTasks) -> dict:
             return list_reply(mine, "You have no open tasks. Try /tasks and /claim one.")
         if cmd == "export":
             if not is_admin:
-                return reply("Only Branden can export.")
+                return reply(f"Only {CFG.admin} can export.")
             rows = overlay()
             text = json.dumps({k: {"owner": v["owner"], "status": v["status"]} for k, v in sorted(rows.items())})
             return reply("Live owners and statuses (copy into tasks.json by pull request):\n```json\n" + text[:1700] + "\n```")
