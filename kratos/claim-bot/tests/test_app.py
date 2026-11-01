@@ -87,6 +87,17 @@ def test_unknown_discord_user_refused(client):
     assert task(client, "open-01")["owner"] == ""
 
 
+def test_team_and_admin_names_from_env(client, monkeypatch):
+    # A second instance (another team) sets its own names; defaults stay Bricked Sorting / Branden.
+    monkeypatch.setenv("BOT_TEAM_NAME", "Ain't No Waymo")
+    monkeypatch.setenv("BRICKED_ADMIN", "Ethan")
+    r = discord(client, "Stranger", "mytasks")
+    assert "not on the Ain't No Waymo team list. Ask Ethan" in r.json()["data"]["content"]
+    assert "Only Ethan" in discord(client, "Marshall", "export").json()["data"]["content"]
+    discord(client, "Marshall", "claim", task="open-01")
+    assert "or Ethan can" in discord(client, "Branden", "claim", task="open-01").json()["data"]["content"]
+
+
 # ---- ownership rules ----
 
 def test_claim_unowned_then_feed(client):
