@@ -233,3 +233,15 @@ def test_cors_only_site_origin(client):
     assert r.headers.get("access-control-allow-origin") != "https://evil.example"
     r = client.options("/api/tasks", headers={"Origin": "https://bricked-01.adsuaracloud.com", "Access-Control-Request-Method": "GET"})
     assert r.headers.get("access-control-allow-origin") == "https://bricked-01.adsuaracloud.com"
+
+
+def test_old_discordapp_webhook_host_accepted(client, monkeypatch):
+    monkeypatch.setenv("DISCORD_WEBHOOK_URL", "https://discordapp.com/api/webhooks/0/test")
+    site(client, "open-01", "claim")
+    assert client.posts and client.posts[-1][0].startswith("https://discordapp.com/api/webhooks/")
+
+
+def test_lookalike_webhook_host_rejected(client, monkeypatch):
+    monkeypatch.setenv("DISCORD_WEBHOOK_URL", "https://discord.com.evil.example/api/webhooks/0/x")
+    site(client, "open-01", "claim")
+    assert client.posts == []

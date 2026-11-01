@@ -38,7 +38,8 @@ STATUS_WORD = {"todo": "to do", "in_progress": "in progress", "blocked": "blocke
 SEED_TTL = 60          # seconds between fetches of tasks.json
 MAX_NOTE = 200         # characters kept from a "blocked" reason
 DISCORD_MAX_AGE = 300  # seconds; older signed requests are rejected
-WEBHOOK_PREFIX = "https://discord.com/api/webhooks/"
+# Discord still hands out some webhook URLs on the old discordapp.com host; both are Discord.
+WEBHOOK_PREFIXES = ("https://discord.com/api/webhooks/", "https://discordapp.com/api/webhooks/")
 
 
 def env(name: str, default: str = "") -> str:
@@ -266,7 +267,7 @@ def feed_text(t: dict, actor: str, via: str, action: str) -> str:
 
 def post_feed(text: str):
     url = CFG.webhook
-    if not url.startswith(WEBHOOK_PREFIX):
+    if not url.startswith(WEBHOOK_PREFIXES):
         return
     if LIMITS.over("feed", FEED_LIMIT, FEED_WINDOW):
         log.warning("feed cap reached, not posting")
