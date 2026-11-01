@@ -38,7 +38,9 @@ def main():
     if not (app_id and guild and token):
         sys.exit("Set DISCORD_APP_ID, DISCORD_GUILD_ID and DISCORD_BOT_TOKEN for this one run.")
     r = httpx.put(f"https://discord.com/api/v10/applications/{app_id}/guilds/{guild}/commands",
-                  headers={"Authorization": f"Bot {token}"}, json=COMMANDS, timeout=15)
+                  headers={"Authorization": f"Bot {token}",
+                           # Discord refuses requests without a DiscordBot user agent (403, code 40333).
+                           "User-Agent": "DiscordBot (https://github.com/jerrekt/Bricked-Sorting, 1.0)"}, json=COMMANDS, timeout=15)
     if r.status_code >= 300:
         sys.exit(f"Discord said {r.status_code}: {r.text[:300]}")
     print("Registered:", ", ".join("/" + c["name"] for c in r.json()))
