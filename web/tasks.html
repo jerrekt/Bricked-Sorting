@@ -7,6 +7,11 @@
 <meta name="description" content="Team task chart and project progress for Bricked Sorting.">
 <!-- Address of the claim server (kratos/claim-bot). Empty = static, read-only board from data/tasks.json. -->
 <meta name="bricked-api" content="https://bricked-api.adsuaracloud.com">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#e3261c">
 <link rel="stylesheet" href="assets/site.css">
 <style>
 .tasks{padding-top:16px;padding-bottom:24px;display:grid;gap:20px}
@@ -72,7 +77,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <a class="logo" href="./"><i></i>Bricked Sorting</a>
+  <a class="logo" href="./"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
   <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="tasks.html" aria-current="page">Tasks</a></nav>
 </div></header>
 
