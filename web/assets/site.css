@@ -19,6 +19,8 @@ a{color:var(--accent)}
 .wrap{max-width:1040px;margin:0 auto;padding:0 16px}
 header.top{border-bottom:4px solid transparent;border-image:linear-gradient(90deg,var(--brand) 0 33.3%,var(--pop) 33.3% 66.6%,var(--accent) 66.6% 100%) 1;background:var(--surface)}
 header.top .wrap{display:flex;align-items:center;gap:12px;min-height:56px}
+.logo-img{display:block;height:40px;width:auto}
+@media (max-width:420px){.logo-img{height:32px}}
 .logo{white-space:nowrap;display:flex;align-items:center;gap:10px;font-weight:700;color:var(--fg);text-decoration:none;letter-spacing:-.01em}
 .logo i{width:22px;height:16px;border-radius:3px;background:var(--brand);position:relative;display:inline-block}
 .logo i::before,.logo i::after{content:"";position:absolute;top:-4px;width:6px;height:4px;border-radius:1px 1px 0 0;background:var(--brand)}

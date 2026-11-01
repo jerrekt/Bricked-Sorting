@@ -5,11 +5,17 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Bricked Sorting</title>
 <meta name="description" content="Bricked Sorting: a camera-based LEGO sorter and inventory tracker. SJSU Tech 190A senior project.">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#e3261c">
 <link rel="stylesheet" href="assets/site.css">
 <style>
 .hero{display:grid;gap:24px;padding:32px 0 8px;align-items:start}
 @media (min-width:820px){.hero>div:first-child{padding-top:72px}}
 @media (min-width:820px){.hero{grid-template-columns:1.1fr .9fr}}
+.hero-logo{display:block;width:min(360px,100%);height:auto;margin:0 0 14px}
 .hero h1{font-size:clamp(30px,6vw,46px);margin-bottom:12px}
 .hero p.lead{font-size:18px;color:var(--muted);max-width:52ch;margin:0 0 20px}
 .cta{display:flex;flex-wrap:wrap;gap:10px}
@@ -42,13 +48,14 @@
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <a class="logo" href="./" aria-current="page"><i></i>Bricked Sorting</a>
+  <a class="logo" href="./" aria-current="page"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
   <nav><a href="./" aria-current="page">About</a><a href="demo.html">Demo</a><a href="tasks.html">Tasks</a></nav>
 </div></header>
 
 <main class="wrap">
   <section class="hero">
     <div>
+      <img class="hero-logo" src="assets/logo-720.png" width="360" height="114" alt="">
       <span class="badge">SJSU Tech 190A · Senior project</span>
       <h1>A LEGO sorter that keeps count.</h1>
       <p class="lead">Pour in a box of LEGO. A camera identifies each piece, a rotating chute drops it into one of 16 bins, and the dashboard keeps track of what you own and what has gone missing.</p>

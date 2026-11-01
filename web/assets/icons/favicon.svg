@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Bricked Sorting icon: a red brick stacked on a blue brick -->
+  <rect x="4" y="38" width="56" height="20" rx="4" fill="#1e5fc9"/>
+  <rect x="4" y="52" width="56" height="6" rx="3" fill="#123f8c"/>
+  <rect x="12" y="16" width="40" height="22" rx="4" fill="#e3261c"/>
+  <rect x="12" y="32" width="40" height="6" rx="3" fill="#a5150f"/>
+  <rect x="17" y="8" width="12" height="9" rx="3" fill="#e3261c"/>
+  <rect x="35" y="8" width="12" height="9" rx="3" fill="#e3261c"/>
+  <rect x="19" y="9.5" width="8" height="2.5" rx="1.2" fill="#ff7a6e"/>
+  <rect x="37" y="9.5" width="8" height="2.5" rx="1.2" fill="#ff7a6e"/>
+  <rect x="15" y="19" width="22" height="3" rx="1.5" fill="#ff7a6e" opacity=".7"/>
+</svg>
