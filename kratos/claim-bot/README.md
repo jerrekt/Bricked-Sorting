@@ -26,5 +26,12 @@ The tests use a fake Discord signer and a fake webhook. No network, no real keys
 ## Deploy
 See `deploy/bots/README.md`.
 
+## Registering commands without Python (Windows)
+`register_commands.ps1` sends the same commands as `register_commands.py` from PowerShell:
+
+    powershell -ExecutionPolicy Bypass -File .\register_commands.ps1
+
+It asks for the Application ID, the server ID and the bot token (typed hidden, used once, never saved). It sends a `DiscordBot` user agent; with PowerShell's default one Discord answers 403 code 40333. Reset the bot token afterwards. If you change the commands, change both files.
+
 ## Keeping git in sync
 `/export` prints the live owners and statuses. Copy them into `web/data/tasks.json` by pull request now and then, so the static fallback matches.
