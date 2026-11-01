@@ -35,14 +35,15 @@
    "title": "No-terminal upload workflow for teammates",
    "status": "done",
    "owner": "Branden",
-   "detail": "Upload + pull request steps in the README."
+   "detail": "Browser upload, then a pull request Branden merges (main is protected). Steps in the README."
   },
   {
    "id": "repo-04",
    "milestone": "repo",
-   "title": "Add Ethan, Marshall and Vivek as collaborators",
-   "status": "todo",
-   "owner": "Branden"
+   "title": "Add teammates as GitHub collaborators",
+   "status": "in_progress",
+   "owner": "Branden",
+   "detail": "Ethan added 2026-11-01. Vivek and Marshall: send Branden your GitHub username."
   },
   {
    "id": "repo-05",
@@ -195,9 +196,9 @@
    "id": "dash-03",
    "milestone": "dashboard",
    "title": "Decide who writes live.json on CT 150",
-   "status": "blocked",
+   "status": "todo",
    "owner": "Branden",
-   "detail": "Open question q31."
+   "detail": "Not decided yet. Only matters once the live status page is merged."
   },
   {
    "id": "dash-04",
@@ -239,9 +240,9 @@
    "id": "course-02",
    "milestone": "course",
    "title": "Team task chart on the site",
-   "status": "in_progress",
+   "status": "done",
    "owner": "Branden",
-   "detail": "This file plus progress.json and the Tasks page."
+   "detail": "Live at /tasks.html with claiming from Discord and the site."
   },
   {
    "id": "course-03",
@@ -338,17 +339,17 @@
    "id": "course-09",
    "milestone": "course",
    "title": "Claim system + Discord bot for the task chart",
-   "status": "in_progress",
+   "status": "done",
    "owner": "Branden",
-   "detail": "Server, Discord commands and site buttons built and tested locally (kratos/claim-bot). Not deployed yet."
+   "detail": "Live 2026-11-01: Discord commands, site buttons and the #tasks feed."
   },
   {
    "id": "repo-07",
    "milestone": "repo",
    "title": "Create the shared bots container and its firewall",
-   "status": "todo",
+   "status": "done",
    "owner": "Branden",
-   "detail": "Steps in deploy/bots/README.md. Will also hold future bots."
+   "detail": "Built 2026-11-01 on Kratos, firewall tested, address reserved. Runs the claim bot and can hold other bots."
   },
   {
    "id": "repo-08",
@@ -362,16 +363,25 @@
    "id": "course-10",
    "milestone": "course",
    "title": "Set up the Discord app, channel feed and commands",
-   "status": "todo",
+   "status": "done",
    "owner": "Branden",
-   "detail": "Needs everyone's Discord user ID."
+   "detail": "App installed in the team server, 9 commands registered, #tasks feed set up."
   },
   {
    "id": "course-11",
    "milestone": "course",
    "title": "Live test: one Discord command and one site click",
+   "status": "done",
+   "owner": "Branden",
+   "detail": "Tested 2026-11-01: a site click marked course-09 done and the feed posted it."
+  },
+  {
+   "id": "repo-09",
+   "milestone": "repo",
+   "title": "Merge or close the old live and identify-backup branches",
    "status": "todo",
-   "owner": "Branden"
+   "owner": "Branden",
+   "detail": "live has the bin lookup and the fake /identify for Marshall; identify-backup has a copy of the server and Pi code."
   }
  ]
 }
