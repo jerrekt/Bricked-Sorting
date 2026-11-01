@@ -20,7 +20,8 @@ Only Branden logs in here. No teammate accounts.
 
 ## 1. Create the container (Proxmox, by hand)
 Unprivileged Debian 12 LXC, 1 CPU, 512 MB RAM, 4 GB disk, DHCP, `firewall=1`
-on net0. Pick the ID. Then write `/etc/pve/firewall/<ID>.fw` from
+on net0. Pick the ID.
+**Do not put it in the `sjsu/senior` pool** (or any pool a teammate has Proxmox rights on): those rights include the container console. Then write `/etc/pve/firewall/<ID>.fw` from
 `firewall.example.fw` (put the real gateway address in; it is not in this repo).
 Test as in Mnemosyne `private/mini-waymo-ct312-firewall.md`.
 
