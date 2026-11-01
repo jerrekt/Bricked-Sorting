@@ -6,3 +6,8 @@ node_modules/
 secrets.yaml
 *.log
 .DS_Store
+
+# claim bot local files
+kratos/claim-bot/.venv/
+*.db
+__pycache__/
