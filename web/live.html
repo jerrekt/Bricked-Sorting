@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bricked Sorting Live</title>
+<meta name="description" content="Live view of the Bricked Sorting machine: each piece the camera sees, and the bin it goes to.">
+<!-- Address of the Bricked Sorting API (kratos/claim-bot). Empty = page shows "Not connected". -->
+<meta name="bricked-api" content="https://bricked-api.adsuaracloud.com">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#e3261c">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/demo.css">
+<style>
+.live{padding-top:16px;padding-bottom:24px;display:grid;gap:16px}
+.top-grid{display:grid;gap:16px}
+@media (min-width:820px){.top-grid{grid-template-columns:1.2fr 1fr;align-items:start}}
+.head-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.head-row h1{font-size:22px;margin:0}
+.mode{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.mode.live{background:var(--ok);border-color:var(--ok);color:#fff}
+.mode.sim{background:var(--pop);border-color:var(--pop);color:var(--pop-fg)}
+.mode.off{background:var(--surface-2)}
+.sub{font-size:14px;color:var(--muted);margin:6px 0 0}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.ctl select{font:inherit;font-size:14px;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg);min-height:40px}
+.piece{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center}
+.thumb{width:120px;height:90px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden;display:grid;place-items:center}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb .blk{width:46px;height:30px;border-radius:5px;border:1px solid rgba(0,0,0,.3);position:relative}
+.thumb .blk::before,.thumb .blk::after{content:"";position:absolute;top:-7px;width:12px;height:7px;border-radius:3px 3px 0 0;background:inherit;border:1px solid rgba(0,0,0,.3);border-bottom:0}
+.thumb .blk::before{left:7px}.thumb .blk::after{right:7px}
+.p-code{font-size:34px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
+.p-name{font-weight:600;margin-top:4px;min-width:0;overflow-wrap:anywhere}
+.p-meta{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:999px;border:1px solid var(--line);text-transform:uppercase}
+.tag.sim{border-color:var(--pop)}
+.bin{cursor:default;overflow:hidden;min-height:96px}
+.bin-count{margin-top:auto}
+.drop{position:absolute;left:50%;top:-24px;width:22px;height:14px;margin-left:-11px;border-radius:3px;border:1px solid rgba(0,0,0,.35);animation:fall .55s cubic-bezier(.5,0,.9,.6) forwards;pointer-events:none}
+@keyframes fall{to{top:calc(100% - 22px);opacity:.15}}
+@media (prefers-reduced-motion:reduce){.drop{display:none}}
+.recent{list-style:none;margin:0;padding:0;display:grid;gap:4px;font-size:14px}
+.recent li{display:grid;grid-template-columns:auto auto 1fr auto;gap:10px;align-items:baseline;padding:4px 0;border-bottom:1px solid var(--line)}
+.recent .r-code{font-weight:700;font-variant-numeric:tabular-nums}
+.recent .r-time{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.recent .r-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.empty{color:var(--muted);font-size:14px;margin:0}
+dialog{border:0;padding:0;border-radius:14px;background:var(--surface);color:var(--fg);width:min(420px,calc(100vw - 24px));box-shadow:0 10px 40px rgba(0,0,0,.3)}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+.dlg{display:grid;gap:12px;padding:16px}
+.dlg h3{margin:0;font-size:17px}
+.dlg label{display:grid;gap:4px;font-size:14px;font-weight:600}
+.dlg select,.dlg input{font:inherit;font-size:15px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);min-height:40px}
+.dlg .row{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.dlg .err{color:var(--warn);font-size:14px;margin:0;min-height:1em}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="./"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
+  <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="live.html" aria-current="page">Live</a><a href="tasks.html">Tasks</a></nav>
+</div></header>
+
+<main class="wrap live">
+  <div class="top-grid">
+    <section class="card">
+      <div class="head-row"><h1>Live</h1><span class="mode off" id="mode">Connecting</span></div>
+      <p class="sub" id="sub">Each piece the camera sees shows up here and drops into its bin.</p>
+      <div class="ctl" id="ctl" hidden>
+        <button class="btn small primary" type="button" id="b-start">Start simulator</button>
+        <label class="sr" for="rate" hidden>Speed</label>
+        <select id="rate" aria-label="Simulator speed">
+          <option value="0.5">1 piece / 2 s</option>
+          <option value="1" selected>1 piece / s</option>
+          <option value="2">2 pieces / s</option>
+        </select>
+        <button class="btn small" type="button" id="b-stop">Stop</button>
+        <button class="btn small" type="button" id="b-reset">Reset counts</button>
+      </div>
+    </section>
+
+    <section class="card" aria-live="polite">
+      <div class="piece">
+        <div class="thumb" id="thumb"><span class="blk" style="background:var(--surface-2)"></span></div>
+        <div style="min-width:0">
+          <div class="p-code" id="p-code">–</div>
+          <div class="p-name" id="p-name">Waiting for a piece</div>
+          <div class="p-meta" id="p-meta"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="floors" aria-label="Bins in machine order">
+    <div class="floor"><div class="floor-head"><h2>Floor 2 · Other pieces</h2><span class="muted" id="f2sum"></span></div><div class="bins" id="floor2"></div></div>
+    <div class="floor"><div class="floor-head"><h2>Floor 1 · Bricks</h2><span class="muted" id="f1sum"></span></div><div class="bins" id="floor1"></div></div>
+  </section>
+
+  <section class="card">
+    <h2>Recent pieces</h2>
+    <ul class="recent" id="recent"></ul>
+    <p class="empty" id="recent-empty">None yet.</p>
+  </section>
+</main>
+
+<dialog id="dlg" aria-labelledby="dlg-title">
+  <form class="dlg" id="dlg-form" method="dialog">
+    <h3 id="dlg-title">Start simulator</h3>
+    <label for="dlg-name">Your name<select id="dlg-name" required></select></label>
+    <label for="dlg-pass">Team password<input id="dlg-pass" type="password" autocomplete="current-password" required></label>
+    <p class="err" id="dlg-err" role="alert"></p>
+    <div class="row"><button class="btn small" type="button" id="dlg-cancel">Cancel</button><button class="btn small primary" type="submit" id="dlg-ok">Go</button></div>
+  </form>
+</dialog>
+
+<footer class="foot"><div class="wrap">Bricked Sorting · Live view. Simulator pieces come from the real parts list of one LEGO Classic 10696 box.</div></footer>
+<script src="assets/live.js"></script>
+</body>
+</html>

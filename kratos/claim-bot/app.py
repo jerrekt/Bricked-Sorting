@@ -457,3 +457,9 @@ def handle_command(data: dict, bg: BackgroundTasks) -> dict:
 
     bg.add_task(post_feed, feed_text(t, name, "Discord", action))
     return reply("Done: " + task_line(t))
+
+
+# ---------- Live page routes (off unless BRICKED_LIVE_ENABLED=1) ----------
+from live import router as live_router  # noqa: E402  (needs the names above)
+
+app.include_router(live_router)

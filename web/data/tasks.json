@@ -187,18 +187,18 @@
   {
    "id": "dash-02",
    "milestone": "dashboard",
-   "title": "Live status page (data/live.json)",
-   "status": "in_progress",
+   "title": "Live status page",
+   "status": "done",
    "owner": "Branden",
-   "detail": "web/live.html built on branch live; nothing writes live.json yet."
+   "detail": "Replaced by the Live page (dash-06)."
   },
   {
    "id": "dash-03",
    "milestone": "dashboard",
    "title": "Decide who writes live.json on CT 150",
-   "status": "todo",
+   "status": "done",
    "owner": "Branden",
-   "detail": "Not decided yet. Only matters once the live status page is merged."
+   "detail": "Settled: CT 150 sends each piece to the Live service; no live.json file."
   },
   {
    "id": "dash-04",
@@ -381,7 +381,39 @@
    "title": "Merge or close the old live and identify-backup branches",
    "status": "todo",
    "owner": "Branden",
-   "detail": "live has the bin lookup and the fake /identify for Marshall; identify-backup has a copy of the server and Pi code."
+   "detail": "Bin lookup from the live branch is now in indicate/. live and identify-backup can be closed after a look."
+  },
+  {
+   "id": "dash-06",
+   "milestone": "dashboard",
+   "title": "Live page: camera pieces and the simulator drop into bins",
+   "status": "in_progress",
+   "owner": "Branden",
+   "detail": "live.html and the Live service built and tested locally. Next: turn it on in the bots container."
+  },
+  {
+   "id": "identify-07",
+   "milestone": "identify",
+   "title": "Install the Live hook on CT 150 so real pieces reach the Live page",
+   "status": "todo",
+   "owner": "Branden",
+   "detail": "kratos/live-hook/README.md. Branden installs it (root service)."
+  },
+  {
+   "id": "identify-08",
+   "milestone": "identify",
+   "title": "Camera sends every piece to /identify; check it on the Live page",
+   "status": "todo",
+   "owner": "Ethan",
+   "detail": "When a piece is under the camera it should show up on the Live page within a few seconds."
+  },
+  {
+   "id": "indicate-07",
+   "milestone": "indicate",
+   "title": "Bins follow the simulator: bridge + Arduino answer OK for each code",
+   "status": "todo",
+   "owner": "Marshall",
+   "detail": "indicate/README.md: dry run first, then the Arduino with the starter sketch."
   }
  ]
 }
