@@ -69,6 +69,10 @@ class Config:
     def site_writes(self): return env("BRICKED_SITE_WRITES") == "1"
     @property
     def origin(self): return env("BRICKED_ALLOWED_ORIGIN", "https://bricked-01.adsuaracloud.com")
+    @property
+    def parts_url(self): return env("BOT_PARTS_URL")    # e.g. Aint-No-WAYmo build_parts.json; empty = parts off
+    @property
+    def parts_path(self): return env("BOT_PARTS_PATH")  # local file instead of the URL (tests)
 
     @property
     def discord_users(self) -> dict[str, str]:
@@ -176,6 +180,8 @@ def db() -> sqlite3.Connection:
         id INTEGER PRIMARY KEY AUTOINCREMENT, task_id TEXT, actor TEXT, via TEXT,
         action TEXT, old_status TEXT, new_status TEXT, old_owner TEXT, new_owner TEXT,
         note TEXT, at REAL)""")
+    con.execute("""CREATE TABLE IF NOT EXISTS part_state(
+        part_id TEXT PRIMARY KEY, bought INTEGER NOT NULL, by TEXT NOT NULL, updated_at REAL NOT NULL)""")
     return con
 
 
@@ -251,6 +257,82 @@ def change(task_id: str, actor: str, via: str, action: str, *, is_admin: bool = 
     return t
 
 
+# ---------- parts (Build page "bought" flags; off unless BOT_PARTS_URL or BOT_PARTS_PATH is set) ----------
+
+_parts = {"data": None, "at": 0.0}
+_parts_lock = threading.Lock()
+
+
+def parts_on() -> bool:
+    return bool(CFG.parts_url or CFG.parts_path)
+
+
+def load_parts() -> dict:
+    if not parts_on():
+        raise HTTPException(404, "Parts list is not set up on this bot.")
+    with _parts_lock:
+        if _parts["data"] is not None and time.time() - _parts["at"] < SEED_TTL:
+            return _parts["data"]
+        try:
+            if CFG.parts_path:
+                data = json.loads(Path(CFG.parts_path).read_text())
+            else:
+                r = httpx.get(CFG.parts_url, timeout=2.5)
+                r.raise_for_status()
+                data = r.json()
+            if not isinstance(data.get("parts"), list):
+                raise ValueError("parts file has no part list")
+            _parts.update(data=data, at=time.time())
+        except Exception as e:  # keep serving the last good copy
+            log.warning("parts load failed: %s", e)
+            if _parts["data"] is None:
+                raise HTTPException(503, "Parts list is unavailable right now.")
+        return _parts["data"]
+
+
+def part_overlay() -> dict[str, dict]:
+    with _db_lock, db() as con:
+        rows = con.execute("SELECT part_id, bought, by, updated_at FROM part_state").fetchall()
+    return {r[0]: {"bought": bool(r[1]), "by": r[2], "updated_at": r[3]} for r in rows}
+
+
+def parts_merged() -> dict:
+    seed = load_parts()
+    over = part_overlay()
+    parts = []
+    for p in seed["parts"]:
+        p = dict(p)
+        o = over.get(p.get("id"))
+        if o:
+            p.update(bought=o["bought"], bought_by=o["by"], updated_at=o["updated_at"])
+        parts.append(p)
+    return {"versions": seed.get("versions", {}), "parts": parts}
+
+
+def set_bought(part_id: str, bought: bool, actor: str, via: str) -> dict:
+    part_id = clean(part_id, 40).lower()
+    with _db_lock:
+        part = next((p for p in parts_merged()["parts"] if p.get("id") == part_id), None)
+        if part is None:
+            raise HTTPException(404, f"No part called {part_id}.")
+        old = bool(part.get("bought"))
+        now = time.time()
+        with db() as con:
+            con.execute("""INSERT INTO part_state(part_id, bought, by, updated_at) VALUES(?,?,?,?)
+                ON CONFLICT(part_id) DO UPDATE SET bought=excluded.bought, by=excluded.by,
+                updated_at=excluded.updated_at""", (part_id, int(bought), actor, now))
+            con.execute("""INSERT INTO audit(task_id, actor, via, action, old_status, new_status,
+                old_owner, new_owner, note, at) VALUES(?,?,?,?,?,?,?,?,?,?)""",
+                        ("part:" + part_id, actor, via, "bought", str(old), str(bought), "", "", "", now))
+    part.update(bought=bought, bought_by=actor, updated_at=now)
+    return part
+
+
+def part_feed_text(p: dict, actor: str, via: str) -> str:
+    what = "marked bought" if p["bought"] else "marked not bought"
+    return f"**{actor}** {what} `{p['id']}` {clean(p.get('part', ''), 120)} (via {via})"
+
+
 # ---------- Discord channel feed ----------
 
 def feed_text(t: dict, actor: str, via: str, action: str) -> str:
@@ -313,7 +395,7 @@ class SiteBody(BaseModel):
     note: str = ""
 
 
-def site_gate(request: Request, body: SiteBody) -> str:
+def site_gate(request: Request, body: "SiteBody | PartBody") -> str:
     if not (CFG.site_writes and CFG.password_hash):
         raise HTTPException(503, "Changes from the website are turned off.")
     who = "site:" + visitor(request)
@@ -353,6 +435,29 @@ def site_status(task_id: str, body: SiteBody, request: Request, bg: BackgroundTa
 @app.post("/api/tasks/{task_id}/release")
 def site_release(task_id: str, body: SiteBody, request: Request, bg: BackgroundTasks):
     return site_action(task_id, "release", request, body, bg)
+
+
+@app.get("/api/parts")
+def api_parts():
+    data = parts_merged()
+    writes = CFG.site_writes and bool(CFG.password_hash)
+    data.update(live=True, writes=writes, names=CFG.names if writes else [])
+    return JSONResponse(data, headers={"Cache-Control": "no-store"})
+
+
+class PartBody(BaseModel):
+    name: str
+    password: str
+    bought: bool
+
+
+@app.post("/api/parts/{part_id}")
+def site_part(part_id: str, body: PartBody, request: Request, bg: BackgroundTasks):
+    load_parts()  # 404 before the password check when parts are off
+    name = site_gate(request, body)
+    p = set_bought(part_id, body.bought, name, "site")
+    bg.add_task(post_feed, part_feed_text(p, name, "site"))
+    return {"ok": True, "part": p}
 
 
 # ---------- Discord interactions ----------
@@ -436,7 +541,11 @@ def handle_command(data: dict, bg: BackgroundTasks) -> dict:
                 return reply(f"Only {CFG.admin} can export.")
             rows = overlay()
             text = json.dumps({k: {"owner": v["owner"], "status": v["status"]} for k, v in sorted(rows.items())})
-            return reply("Live owners and statuses (copy into tasks.json by pull request):\n```json\n" + text[:1700] + "\n```")
+            out = "Live owners and statuses (copy into tasks.json by pull request):\n```json\n" + text[:1700] + "\n```"
+            if parts_on():
+                bought = json.dumps({k: v["bought"] for k, v in sorted(part_overlay().items())})
+                out += "\nParts bought (copy into build_parts.json):\n```json\n" + bought[:1700] + "\n```"
+            return reply(out)
 
         LIMITS.add("discord:" + name)
         task_id = str(opts.get("task", ""))
