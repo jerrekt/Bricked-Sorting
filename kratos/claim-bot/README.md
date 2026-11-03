@@ -17,6 +17,9 @@ Replies are private to the person who typed the command. The channel feed is how
 - Only the Discord IDs in `DISCORD_USERS` can use commands. Every request's Discord signature is checked, and requests older than 5 minutes are rejected.
 - Site buttons need a name from the list plus the team password. 8 wrong tries locks that visitor out for 10 minutes. The buttons are off unless `BRICKED_SITE_WRITES=1`.
 
+## Build page parts (optional)
+Set `BOT_PARTS_URL` (the Waymo bot uses `https://raw.githubusercontent.com/jerrekt/Aint-No-WAYmo/main/build_parts.json`) to turn on `GET /api/parts` and `POST /api/parts/{id}` (`{name, password, bought}`). Same gate as site claims. The file stays the list; this server only keeps who marked each part bought, posts it to the feed, and `/export` lists it for a PR. Empty = off.
+
 ## Run the tests
     python3 -m venv .venv && .venv/bin/pip install -r requirements.txt pytest
     .venv/bin/python -m pytest -q tests

@@ -256,3 +256,60 @@ def test_lookalike_webhook_host_rejected(client, monkeypatch):
     monkeypatch.setenv("DISCORD_WEBHOOK_URL", "https://discord.com.evil.example/api/webhooks/0/x")
     site(client, "open-01", "claim")
     assert client.posts == []
+
+
+# ---- parts (Build page bought flags) ----
+
+def parts_on(client, monkeypatch, tmp_path):
+    seed = {"versions": {"v1": {"name": "V1"}}, "parts": [
+        {"id": "esp32-s3-sense", "part": "XIAO ESP32-S3 Sense", "versions": "both", "bought": False},
+        {"id": "waymo-shell", "part": "Waymo shell", "versions": "both", "bought": True},
+    ]}
+    p = tmp_path / "parts.json"
+    p.write_text(json.dumps(seed))
+    monkeypatch.setenv("BOT_PARTS_PATH", str(p))
+    appmod._parts.update(data=None, at=0)
+
+
+def mark(c, part, bought=True, name="Marshall", pw=PW, ip="1.1.1.1"):
+    return c.post(f"/api/parts/{part}", json={"name": name, "password": pw, "bought": bought},
+                  headers={"cf-connecting-ip": ip})
+
+
+def test_parts_off_by_default(client, monkeypatch):
+    monkeypatch.delenv("BOT_PARTS_PATH", raising=False)
+    monkeypatch.delenv("BOT_PARTS_URL", raising=False)
+    appmod._parts.update(data=None, at=0)
+    assert client.get("/api/parts").status_code == 404
+    assert mark(client, "waymo-shell").status_code == 404
+    assert "Parts bought" not in discord(client, "Branden", "export").json()["data"]["content"]
+
+
+def test_parts_mark_bought_live_and_feed(client, monkeypatch, tmp_path):
+    parts_on(client, monkeypatch, tmp_path)
+    data = client.get("/api/parts").json()
+    assert data["writes"] is True and "Marshall" in data["names"] and data["versions"]["v1"]["name"] == "V1"
+    r = mark(client, "esp32-s3-sense", True)
+    assert r.status_code == 200, r.text
+    p = next(x for x in client.get("/api/parts").json()["parts"] if x["id"] == "esp32-s3-sense")
+    assert p["bought"] is True and p["bought_by"] == "Marshall"
+    assert "marked bought `esp32-s3-sense`" in client.posts[-1][1]["content"]
+    assert client.posts[-1][1]["allowed_mentions"] == {"parse": []}
+    assert mark(client, "waymo-shell", False).status_code == 200
+    assert "marked not bought" in client.posts[-1][1]["content"]
+    out = discord(client, "Branden", "export").json()["data"]["content"]
+    assert '"esp32-s3-sense": true' in out and '"waymo-shell": false' in out
+
+
+def test_parts_same_gate_as_site_claims(client, monkeypatch, tmp_path):
+    parts_on(client, monkeypatch, tmp_path)
+    assert mark(client, "nope-99").status_code == 404
+    assert mark(client, "waymo-shell", name="Mallory").status_code == 400
+    for _ in range(8):
+        assert mark(client, "waymo-shell", pw="wrong").status_code == 401
+    assert mark(client, "waymo-shell").status_code == 429
+    assert client.post("/api/parts/waymo-shell", json={"name": "Ethan", "password": PW, "bought": "maybe"},
+                       headers={"cf-connecting-ip": "3.3.3.3"}).status_code == 422
+    monkeypatch.setenv("BRICKED_SITE_WRITES", "0")
+    assert mark(client, "waymo-shell", ip="4.4.4.4").status_code == 503
+    assert client.get("/api/parts").json()["writes"] is False
