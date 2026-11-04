@@ -7,6 +7,11 @@
 <meta name="description" content="Team task chart and project progress for Bricked Sorting.">
 <!-- Address of the claim server (kratos/claim-bot). Empty = static, read-only board from data/tasks.json. -->
 <meta name="bricked-api" content="https://bricked-api.adsuaracloud.com">
+<meta property="og:title" content="Bricked Sorting">
+<meta property="og:description" content="Team task board and progress for Bricked Sorting.">
+<meta property="og:image" content="https://bricked-01.adsuaracloud.com/assets/logo-720.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
@@ -121,7 +126,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 <script src="assets/intro.js"></script>
 <header class="top"><div class="wrap">
   <a class="logo" href="./"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
-  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.018</a>
+  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.019</a>
   <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="live.html">Live</a><a href="tasks.html" aria-current="page">Tasks</a><a href="parts.html">Parts</a></nav>
 </div></header>
 
@@ -163,7 +168,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
     <div class="row"><button class="btn small" type="button" id="dlg-cancel">Cancel</button><button class="btn small primary" type="submit" id="dlg-ok">Save</button></div>
   </form>
 </dialog>
-<footer class="foot"><div class="wrap">Bricked Sorting · SJSU Tech 190A.</div></footer>
+<footer class="foot"><div class="wrap"><span>Bricked Sorting task board.</span><nav class="foot-links"><a href="https://github.com/jerrekt/Bricked-Sorting" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://bja.adsuaracloud.com" target="_blank" rel="noopener noreferrer">bja.adsuaracloud.com</a><a href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Changelog</a></nav><span class="foot-course">SJSU Tech 190A, Senior Project I, Fall 2026 · Instructor Vlad Ionescu</span></div></footer>
 <script src="assets/tasks.js"></script>
 </body>
 </html>

@@ -390,8 +390,8 @@
     $('#stopBtn').onclick = stop;
     document.querySelectorAll('[data-action]').forEach(function (b) { b.onclick = function () { confirmAction(b.dataset.action); }; });
     document.querySelectorAll('.seg').forEach(function (b) { b.onclick = function () { setView(b.dataset.mode); }; });
-    var sp = $('#speed'); sp.value = S.speed; $('#speedOut').textContent = S.speed + ' pcs/s';
-    sp.oninput = function () { S.speed = +sp.value; $('#speedOut').textContent = S.speed + ' pcs/s'; save(); };
+    var sp = $('#speed'); sp.value = S.speed; $('#speedOut').textContent = S.speed + 'x';
+    sp.oninput = function () { S.speed = +sp.value; $('#speedOut').textContent = S.speed + 'x'; save(); };
     var mr = $('#misread'); mr.value = S.misread; $('#misreadOut').textContent = S.misread + '%';
     mr.oninput = function () { S.misread = +mr.value; $('#misreadOut').textContent = S.misread + '%'; save(); };
     $('#resetBtn').onclick = function () {
@@ -408,6 +408,9 @@
     [1, 2].forEach(function (f) { var n = 0; for (var s = 1; s <= 7; s++) n += EXPECT[code(f, s)]; CAP[code(f, 8)] += Math.ceil(n * 0.05 * BOXES_CAPACITY); });
     S = load();
     buildBins(); pileInit(); wire(); setView(S.view || 'simple'); idleStages(); render();
+    // First visit with an empty machine: run one box so the page is not 16 empty cards.
+    var fresh = false; try { fresh = !localStorage.getItem('bricked-demo-seen'); localStorage.setItem('bricked-demo-seen', '1'); } catch (e) {}
+    if (fresh && !S.total && inBins() === 0 && !S.out.length && !/[?&]noauto\b/.test(location.search)) setTimeout(function () { begin('count'); }, 600);
   }
 
   Promise.all([fetch('data/bins.json').then(function (r) { return r.json(); }), fetch('data/set-10696.json').then(function (r) { return r.json(); })])

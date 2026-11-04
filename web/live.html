@@ -7,6 +7,11 @@
 <meta name="description" content="Live view of the Bricked Sorting machine: each piece the camera sees, and the bin it goes to.">
 <!-- Address of the Bricked Sorting API (kratos/claim-bot). Empty = page shows "Not connected". -->
 <meta name="bricked-api" content="https://bricked-api.adsuaracloud.com">
+<meta property="og:title" content="Bricked Sorting">
+<meta property="og:description" content="Live view of the Bricked Sorting machine.">
+<meta property="og:image" content="https://bricked-01.adsuaracloud.com/assets/logo-720.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
@@ -63,14 +68,14 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 <script src="assets/intro.js"></script>
 <header class="top"><div class="wrap">
   <a class="logo" href="./"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
-  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.018</a>
+  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.019</a>
   <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="live.html" aria-current="page">Live</a><a href="tasks.html">Tasks</a><a href="parts.html">Parts</a></nav>
 </div></header>
 
 <main class="wrap live">
   <div class="top-grid">
     <section class="card">
-      <div class="head-row"><h1>Live</h1><span class="mode off" id="mode">Connecting</span></div>
+      <div class="head-row"><h1>Live</h1><span class="mode off" id="mode">Checking</span></div>
       <p class="sub" id="sub">Each piece the camera sees shows up here and drops into its bin.</p>
       <div class="ctl" id="ctl" hidden>
         <button class="btn small primary" type="button" id="b-start">Start simulator</button>
@@ -119,7 +124,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
   </form>
 </dialog>
 
-<footer class="foot"><div class="wrap">Bricked Sorting · Live view. Simulator pieces come from the real parts list of one LEGO Classic 10696 box.</div></footer>
+<footer class="foot"><div class="wrap"><span>Live view. Simulator pieces come from the real parts list of one LEGO Classic 10696 box.</span><nav class="foot-links"><a href="https://github.com/jerrekt/Bricked-Sorting" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://bja.adsuaracloud.com" target="_blank" rel="noopener noreferrer">bja.adsuaracloud.com</a><a href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Changelog</a></nav><span class="foot-course">SJSU Tech 190A, Senior Project I, Fall 2026 · Instructor Vlad Ionescu</span></div></footer>
 <script src="assets/live.js"></script>
 </body>
 </html>
