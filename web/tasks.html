@@ -18,15 +18,37 @@
 .pg-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .pg-head h2{margin:0}
 .pg-pct{font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent)}
-.pg-bar{height:10px;border-radius:6px;background:var(--surface-2);overflow:hidden;margin:8px 0}
-.pg-bar i{display:block;height:100%;background:var(--accent)}
-.pg-note{font-size:13px;color:var(--muted);margin:0 0 10px}
-.pg-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
-.pg-row{display:grid;grid-template-columns:14px 1fr;gap:8px 10px;font-size:14px;align-items:baseline}
-.pg-row .pg-ev{grid-column:2;color:var(--muted);font-size:13px}
-.pg-dot{width:10px;height:10px;border-radius:50%;background:var(--surface-2);border:2px solid var(--line);margin-top:4px}
-.pg-row.done .pg-dot{background:var(--ok);border-color:var(--ok)}
-.pg-row.done .pg-label{font-weight:600}
+.pg-big .zbar{height:14px;margin:10px 0 8px}
+.pg-note{font-size:13px;color:var(--muted);margin:0 0 12px}
+.pg-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.pg-row{display:grid;grid-template-columns:1fr auto;gap:4px 10px;font-size:14px;align-items:baseline}
+.pg-label{font-weight:700}
+.pg-val{font-weight:700;font-variant-numeric:tabular-nums}
+.pg-mini{grid-column:1/-1;height:6px;border-radius:4px;background:var(--line);overflow:hidden}
+.pg-mini i{display:block;height:100%}
+.ph-poc .pg-mini i{background:var(--brand)}
+.ph-final .pg-mini i{background:var(--ok)}
+.pg-row .pg-ev{grid-column:1/-1;color:var(--muted);font-size:13px}
+.pg-recent{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
+.pg-recent h3{font-size:13px;margin:0 0 6px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.pg-recent ul{list-style:none;margin:0;padding:0;display:grid;gap:4px;font-size:14px}
+/* two-zone bars: cardboard POC (semester 1) then final (semester 2); the line between is the checkpoint */
+.zbar{position:relative;display:flex;gap:3px;height:10px;grid-column:1/-1}
+.zbar .zone{position:relative;display:flex;height:100%;border-radius:5px;overflow:hidden;background:var(--line)}
+.zbar .zone i{display:block;height:100%}
+.zbar .z-poc .b-done{background:var(--brand)}
+.zbar .z-final .b-done{background:var(--ok)}
+.zbar .b-run{background:var(--flag);opacity:.55}
+.zbar .ckpt{position:absolute;top:-5px;bottom:-5px;width:3px;margin-left:-2px;border-radius:2px;background:var(--fg)}
+.zbar .ckpt::after{content:"";position:absolute;top:-4px;left:-3px;width:9px;height:9px;border-radius:50%;background:var(--fg)}
+.zbar .ckpt.hit,.zbar .ckpt.hit::after{background:var(--ok)}
+.sep{opacity:.6}
+.ph-head{display:flex;justify-content:space-between;align-items:baseline;margin:12px 2px 2px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.ph-head h3{font-size:15px;margin:0}
+.ph-head .ph-pct{font-weight:700;font-variant-numeric:tabular-nums}
+.ph-head.ph-poc h3{color:var(--brand)}
+.ph-head.ph-final h3{color:var(--ok)}
+.ms h4{font-size:12px;margin:8px 2px 6px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 .filters{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 2px}
 .filters button{font:inherit;font-size:13px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--surface-2);color:var(--fg);font-weight:600;border-color:var(--muted)}
@@ -39,10 +61,6 @@
 .grp-count{font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--muted)}
 .grp-chev{width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin:0 4px 4px}
 .grp.open .grp-chev{transform:rotate(225deg);margin:4px 4px 0}
-.grp-bar{grid-column:1/-1;height:8px;border-radius:6px;background:var(--line);overflow:hidden;display:flex}
-.grp-bar i{display:block;height:100%}
-.grp-bar .b-done{background:var(--ok)}
-.grp-bar .b-run{background:var(--flag);opacity:.55}
 .grp-count{font-size:16px;color:var(--fg)}
 .t-size{display:inline-block;min-width:18px;text-align:center;font-size:10px;font-weight:700;line-height:16px;border-radius:4px;margin-right:7px;vertical-align:1px;border:1px solid var(--line);color:var(--muted)}
 .t-size.sz-M{border-color:var(--muted)}
@@ -106,9 +124,10 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 <main class="wrap tasks">
   <section class="card">
     <div class="pg-head"><h2>Progress</h2><span class="pg-pct" id="pg-pct">–</span></div>
-    <div class="pg-bar"><i id="pg-fill" style="width:0"></i></div>
+    <div class="pg-big" id="pg-bar"></div>
     <p class="pg-note" id="pg-note"></p>
     <ul class="pg-list" id="pg-list"></ul>
+    <div class="pg-recent" id="pg-recent" hidden></div>
   </section>
 
   <section class="card" id="deadlines" hidden>
@@ -126,7 +145,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
       <button data-f="done" aria-pressed="false">Done</button>
     </div>
     <p class="muted small" id="how">Open a group to see its tasks. To change a task, use the Discord commands (/claim, /start, /blocked, /done, /release) or edit <code>web/data/tasks.json</code> by pull request.</p>
-    <p class="legend" aria-label="How the bars count"><span>Bars count work, not tasks:</span><span><span class="t-size sz-S">S</span>1 pt</span><span><span class="t-size sz-M">M</span>2 pts</span><span><span class="t-size sz-L">L</span>4 pts</span><span><i style="background:var(--ok)"></i>done</span><span><i style="background:var(--flag);opacity:.55"></i>in progress</span></p>
+    <p class="legend" aria-label="How the bars count"><span>Bars count work, not tasks:</span><span><span class="t-size sz-S">S</span>1 pt</span><span><span class="t-size sz-M">M</span>2 pts</span><span><span class="t-size sz-L">L</span>4 pts</span><span><i style="background:var(--brand)"></i>cardboard POC done</span><span><i style="background:var(--ok)"></i>final done</span><span><i style="background:var(--flag);opacity:.55"></i>in progress</span><span><b>|</b> POC checkpoint</span></p>
     <div id="board"></div>
   </section>
 </main>

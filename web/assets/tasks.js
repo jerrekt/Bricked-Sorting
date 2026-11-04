@@ -14,19 +14,75 @@
     return { text: due + ' · ' + when, soon: days <= 7, past: days < 0 };
   }
 
-  function renderProgress(p) {
-    var done = p.milestones.filter(function (m) { return m.complete; }).length;
-    var pct = Math.round((done / p.milestones.length) * 100);
-    $('pg-pct').textContent = pct + '%';
-    $('pg-fill').style.width = pct + '%';
-    $('pg-note').textContent = done + ' of ' + p.milestones.length + ' milestones complete · ' + p.note;
+  /* ---------- weighted progress ----------
+     Every task has a size (S/M/L -> size_points) and a phase: "poc" (cardboard proof of
+     concept, semester 1) or "final" (semester 2). Bars count points, not tasks. Each bar has
+     a POC zone and a Final zone; the line between them is the cardboard POC checkpoint. */
+  var PHASES = ['poc', 'final'];
+  function phaseOf(t) { return t.phase === 'final' ? 'final' : 'poc'; }
+  function phaseInfo(ph) {
+    var p = (DATA.phases || {})[ph] || {};
+    return { label: p.label || (ph === 'poc' ? 'Cardboard POC' : 'Final version'), when: p.when || (ph === 'poc' ? 'Semester 1' : 'Semester 2'), checkpoint: p.checkpoint };
+  }
+  function stats(list) {
+    var by = function (st) { return list.filter(function (t) { return t.status === st; }); };
+    var total = sum(list), done = sum(by('done')), run = sum(by('in_progress'));
+    return { n: list.length, nDone: by('done').length, total: total, done: done, run: run,
+             pct: total ? Math.round(done / total * 100) : 0 };
+  }
+  function zoneBar(list, label) {
+    var z = {}, total = sum(list);
+    PHASES.forEach(function (ph) { z[ph] = stats(list.filter(function (t) { return phaseOf(t) === ph; })); });
+    if (!total) return '<span class="zbar"></span>';
+    var html = '', left = 0;
+    PHASES.forEach(function (ph) {
+      var s = z[ph]; if (!s.total) return;
+      var w = s.total / total * 100, dw = s.done / s.total * 100, rw = s.run / s.total * 100;
+      html += '<span class="zone z-' + ph + (s.done === s.total ? ' full' : '') + '" style="width:' + w.toFixed(2) + '%">' +
+        '<i class="b-done" style="width:' + dw.toFixed(2) + '%"></i><i class="b-run" style="width:' + rw.toFixed(2) + '%"></i></span>';
+      if (ph === 'poc') left = w;
+    });
+    var ck = z.poc.total && z.final.total ? '<span class="ckpt' + (z.poc.done === z.poc.total ? ' hit' : '') + '" style="left:' + left.toFixed(2) + '%" title="Cardboard POC checkpoint"></span>' : '';
+    var aria = label + ': ' + Math.round(sum(list.filter(function (t) { return t.status === 'done'; })) / total * 100) + '% done. ' +
+      PHASES.filter(function (ph) { return z[ph].total; }).map(function (ph) { return phaseInfo(ph).label + ' ' + z[ph].pct + '%'; }).join(', ');
+    return '<span class="zbar" role="img" aria-label="' + esc(aria) + '">' + html + ck + '</span>';
+  }
+  function phaseLine(list) {
+    return PHASES.map(function (ph) {
+      var s = stats(list.filter(function (t) { return phaseOf(t) === ph; }));
+      return s.total ? '<span class="ph-' + ph + '">' + esc(phaseInfo(ph).label) + ' ' + s.pct + '%</span>' : '';
+    }).filter(Boolean).join('<span class="sep"> · </span>');
+  }
+
+  function renderProgress(d) {
+    var all = d.tasks, s = stats(all);
+    $('pg-pct').textContent = s.pct + '%';
+    $('pg-bar').innerHTML = zoneBar(all, 'Whole project');
+    var poc = stats(all.filter(function (t) { return phaseOf(t) === 'poc'; }));
+    var fin = stats(all.filter(function (t) { return phaseOf(t) === 'final'; }));
+    var ck = phaseInfo('poc').checkpoint, ckText = '';
+    if (ck) { var dl = dueLabel(ck); ckText = ' · checkpoint ' + dl.text; }
+    $('pg-note').innerHTML = s.nDone + ' of ' + s.n + ' tasks done · ' + s.done + ' of ' + s.total + ' points. Counted from the task board, weighted by size.';
+    var rows = [
+      ['poc', poc, poc.done === poc.total ? 'Checkpoint reached. On to the final version.' :
+        (poc.total - poc.done) + ' points left to the cardboard POC' + ckText + '.'],
+      ['final', fin, fin.done === fin.total ? 'Final version done.' : (fin.total - fin.done) + ' points left. Mostly CAD, printing and assembly.']
+    ];
     var list = $('pg-list'); list.innerHTML = '';
-    p.milestones.forEach(function (m) {
-      var li = document.createElement('li');
-      li.className = 'pg-row' + (m.complete ? ' done' : '');
-      li.innerHTML = '<span class="pg-dot"></span><span class="pg-label">' + esc(m.label) + '</span><span class="pg-ev">' + esc(m.evidence) + '</span>';
+    rows.forEach(function (r) {
+      var info = phaseInfo(r[0]), li = document.createElement('li'); li.className = 'pg-row ph-' + r[0];
+      li.innerHTML = '<span class="pg-label">' + esc(info.label) + ' <span class="muted">· ' + esc(info.when) + '</span></span><span class="pg-val">' + r[1].pct + '%</span>' +
+        '<span class="pg-mini"><i style="width:' + r[1].pct + '%"></i></span><span class="pg-ev">' + esc(r[2]) + '</span>';
       list.appendChild(li);
     });
+    // Encouragement: what got finished lately (live board only; the server stamps updated_at).
+    var recent = all.filter(function (t) { return t.status === 'done' && t.updated_at && (Date.now() / 1000 - t.updated_at) < 14 * 86400; })
+      .sort(function (a, b) { return b.updated_at - a.updated_at; }).slice(0, 4);
+    var box = $('pg-recent');
+    box.hidden = !recent.length;
+    box.innerHTML = recent.length ? '<h3>Finished in the last two weeks</h3><ul>' + recent.map(function (t) {
+      return '<li><span class="t-size sz-' + sizeOf(t) + '">' + sizeOf(t) + '</span>' + esc(t.title) + ' <span class="muted">· ' + esc(t.owner || 'Team') + ' · +' + points(t) + ' pt' + (points(t) > 1 ? 's' : '') + '</span></li>';
+    }).join('') + '</ul>' : '';
   }
 
   function renderDeadlines(d) {
@@ -105,25 +161,32 @@
       var all = d.tasks.filter(function (t) { return g.milestones.indexOf(t.milestone) >= 0; });
       if (!all.length) return;
       var n = function (st) { return all.filter(function (t) { return t.status === st; }).length; };
-      var of = function (st) { return all.filter(function (t) { return t.status === st; }); };
-      var total = sum(all), donePts = sum(of('done')), runPts = sum(of('in_progress'));
-      var pct = Math.round(donePts / total * 100), runPct = Math.round((donePts + runPts) / total * 100) - pct, open = !!OPEN[g.id];
-      var extra = [n('in_progress') && n('in_progress') + ' in progress', n('blocked') && n('blocked') + ' blocked', n('todo') && n('todo') + ' to do'].filter(Boolean).join(' · ');
+      var s = stats(all), open = !!OPEN[g.id];
+      var extra = [n('in_progress') && n('in_progress') + ' in progress', n('blocked') && n('blocked') + ' blocked'].filter(Boolean).join(' · ');
       var sec = document.createElement('section'); sec.className = 'grp' + (open ? ' open' : '');
       var pid = 'grp-' + esc(g.id);
       sec.innerHTML = '<button type="button" class="grp-btn" aria-expanded="' + open + '" aria-controls="' + pid + '" data-g="' + esc(g.id) + '">' +
-        '<span class="grp-name">' + esc(g.label) + '</span><span class="grp-count">' + pct + '%</span><span class="grp-chev" aria-hidden="true"></span>' +
-        '<span class="grp-bar" role="img" aria-label="' + pct + '% of the work done, ' + runPct + '% more in progress"><i class="b-done" style="width:' + pct + '%"></i><i class="b-run" style="width:' + runPct + '%"></i></span>' +
-        '<span class="grp-sub">' + n('done') + ' of ' + all.length + ' tasks done · ' + donePts + ' of ' + total + ' pts' + (extra ? ' · ' + extra : '') + '</span></button>';
+        '<span class="grp-name">' + esc(g.label) + '</span><span class="grp-count">' + s.pct + '%</span><span class="grp-chev" aria-hidden="true"></span>' +
+        zoneBar(all, g.label) +
+        '<span class="grp-sub">' + phaseLine(all) + '<span class="sep"> · </span>' + s.nDone + ' of ' + s.n + ' tasks' + (extra ? '<span class="sep"> · </span>' + extra : '') + '</span></button>';
       var panel = document.createElement('div'); panel.className = 'grp-panel'; panel.id = pid; panel.hidden = !open;
-      g.milestones.forEach(function (mid) {
-        var tasks = all.filter(function (t) { return t.milestone === mid && (filter === 'all' || t.status === filter); });
-        if (!tasks.length) return;
-        var ms = document.createElement('div'); ms.className = 'ms';
-        if (g.milestones.length > 1) ms.innerHTML = '<h3>' + esc(d.milestone_labels[mid]) + '</h3>';
-        var ul = document.createElement('ul'); ul.className = 'tlist';
-        tasks.forEach(function (t) { ul.appendChild(taskItem(t)); });
-        ms.appendChild(ul); panel.appendChild(ms);
+      PHASES.forEach(function (ph) {
+        var inPh = all.filter(function (t) { return phaseOf(t) === ph; });
+        var shown = inPh.filter(function (t) { return filter === 'all' || t.status === filter; });
+        if (!shown.length) return;
+        var info = phaseInfo(ph), ps = stats(inPh);
+        var head = document.createElement('div'); head.className = 'ph-head ph-' + ph;
+        head.innerHTML = '<h3>' + esc(info.label) + ' <span class="muted">· ' + esc(info.when) + '</span></h3><span class="ph-pct">' + ps.pct + '%</span>';
+        panel.appendChild(head);
+        var mids = g.milestones.filter(function (m) { return shown.some(function (t) { return t.milestone === m; }); });
+        mids.forEach(function (mid) {
+          var tasks = shown.filter(function (t) { return t.milestone === mid; });
+          var ms = document.createElement('div'); ms.className = 'ms';
+          if (mids.length > 1) ms.innerHTML = '<h4>' + esc(d.milestone_labels[mid]) + '</h4>';
+          var ul = document.createElement('ul'); ul.className = 'tlist';
+          tasks.forEach(function (t) { ul.appendChild(taskItem(t)); });
+          ms.appendChild(ul); panel.appendChild(ms);
+        });
       });
       if (!panel.children.length) panel.innerHTML = '<p class="muted small grp-empty">No ' + (filter === 'all' ? '' : STATUS_LABEL[filter].toLowerCase() + ' ') + 'tasks here.</p>';
       sec.appendChild(panel); wrap.appendChild(sec);
@@ -134,7 +197,7 @@
     DATA = d; live = isLive;
     $('mode').textContent = isLive ? 'Live' : 'Static';
     $('mode').className = 'mode-badge' + (isLive ? ' live' : '');
-    renderTasks(); renderDeadlines(d);
+    renderProgress(d); renderTasks(); renderDeadlines(d);
   }
 
   function getJSON(url, ms) {
@@ -211,7 +274,6 @@
   }
   document.querySelectorAll('.filters button').forEach(function (b) { b.addEventListener('click', function () { setFilter(b.dataset.f); }); });
 
-  getJSON('data/progress.json', 8000).then(renderProgress, function () {});
   load();
   if (API) setInterval(function () { if (!document.hidden && !$('dlg').open) load(); }, 30000);
 })();
