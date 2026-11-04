@@ -34,24 +34,7 @@
 .filters{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 2px}
 .filters button{font:inherit;font-size:13px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--surface-2);color:var(--fg);font-weight:600;border-color:var(--muted)}
-.stage h3{font-size:15px;margin:14px 0 8px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-.plist{list-style:none;margin:0;padding:0;display:grid;gap:6px}
-.part{display:grid;grid-template-columns:auto 1fr auto;gap:4px 10px;align-items:baseline;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 12px;box-shadow:var(--shadow)}
-.p-st{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 7px;border-radius:999px;white-space:nowrap}
-.need .p-st{background:#fff4cf;color:#6b4e00}
-.got .p-st{background:#e1f3e7;color:var(--ok)}
-@media (prefers-color-scheme:dark){.need .p-st{background:#3a2e08;color:#ffd966}.got .p-st{background:#123a1f;color:#8fe0a8}}
-:root[data-theme="dark"] .need .p-st{background:#3a2e08;color:#ffd966}
-:root[data-theme="dark"] .got .p-st{background:#123a1f;color:#8fe0a8}
-.p-name{font-weight:600}
-.p-price{font-size:13px;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
-.p-meta{grid-column:1/-1;font-size:12px;color:var(--muted);display:flex;gap:4px 12px;flex-wrap:wrap}
-.p-meta code{font-size:12px}
-.p-what{grid-column:1/-1;font-size:13px}
-.p-note{grid-column:1/-1;font-size:13px;color:var(--muted)}
-.p-acts{grid-column:1/-1;display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
-.p-acts button{font:inherit;font-size:12px;font-weight:600;padding:4px 10px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;min-height:30px}
-.p-acts button.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.need .got :root[data-theme="dark"] .need :root[data-theme="dark"] .got .p-acts button.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
 dialog{border:0;padding:0;border-radius:14px;background:var(--surface);color:var(--fg);width:min(420px,calc(100vw - 24px));box-shadow:0 10px 40px rgba(0,0,0,.3)}
 dialog::backdrop{background:rgba(0,0,0,.45)}
 .dlg{display:grid;gap:12px;padding:16px}
@@ -60,14 +43,40 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 .dlg select,.dlg input{font:inherit;font-size:15px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);min-height:40px}
 .dlg .row{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
 .dlg .err{color:var(--warn);font-size:14px;margin:0;min-height:1em}
-@media (max-width:700px){.vgrid{grid-template-columns:1fr}.part{grid-template-columns:auto 1fr}.p-price{grid-column:1/-1}}
+@media (max-width:700px){.vgrid{grid-template-columns:1fr}}
+/* buy list groups with prices */
+.money{font-size:22px;color:var(--accent);font-variant-numeric:tabular-nums}
+.cgrp{border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden;margin-top:10px}
+.cgrp-btn{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:1fr auto auto;gap:6px 12px;align-items:center;padding:12px 16px}
+.cgrp-btn:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.cg-name{font-size:17px;font-weight:700}
+.cg-cost{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums}
+.grp-chev{width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin:0 4px 4px}
+.cgrp.open .grp-chev{transform:rotate(225deg);margin:4px 4px 0}
+.cg-bar{grid-column:1/-1;height:8px;border-radius:5px;background:var(--line);overflow:hidden}
+.cg-bar i{display:block;height:100%;background:var(--ok)}
+.cg-sub{grid-column:1/-1;font-size:13px;color:var(--muted)}
+.clist{list-style:none;margin:0;padding:0 10px 10px;display:grid;gap:4px}
+.clist[hidden]{display:none}
+.crow{display:grid;grid-template-columns:12px 1fr auto auto auto;gap:4px 10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:14px}
+.crow:has(.cstore){grid-template-columns:12px 1fr auto auto auto auto}
+.cdot{width:10px;height:10px;border-radius:50%;border:2px solid var(--flag)}
+.crow.got .cdot{background:var(--ok);border-color:var(--ok)}
+.cname{font-weight:600;min-width:0}
+.cnote{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+.cqty,.cstore{font-size:12px;color:var(--muted);white-space:nowrap}
+.ccost{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right;min-width:56px}
+.cacts button{font:inherit;font-size:12px;font-weight:600;padding:3px 8px;border-radius:7px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.cacts button.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.cmeta{display:none}
+@media (max-width:700px){.crow,.crow:has(.cstore){grid-template-columns:12px 1fr auto;align-items:start}.cdot{margin-top:4px}.cqty,.cstore{display:none}.cmeta{display:block;font-size:12px;color:var(--muted);font-weight:400;margin-top:2px}.ccost{grid-column:3;grid-row:1}.cacts{grid-column:3;grid-row:2;justify-self:end}}
 </style>
 </head>
 <body>
 <script src="assets/intro.js"></script>
 <header class="top"><div class="wrap">
   <a class="logo" href="./"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
-  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.017</a>
+  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.018</a>
   <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="live.html">Live</a><a href="tasks.html">Tasks</a><a href="parts.html" aria-current="page">Parts</a></nav>
 </div></header>
 
@@ -93,7 +102,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
       <button data-v="v2" aria-pressed="false">V2</button>
       <button data-v="v3" aria-pressed="false">V3</button>
     </div>
-    <p class="muted small" id="how">Bought something? Use <code>/bought part:&lt;id&gt;</code> in Discord, or edit <code>web/data/build_parts.json</code> by pull request. Prices with ~ are typical, not checked listings.</p>
+    <p class="muted small" id="how">Groups show what each stage still costs for the V3 build (switch versions above). Bought something? Use <code>/bought part:&lt;id&gt;</code> in Discord, or edit <code>web/data/build_parts.json</code> by pull request. Prices with ~ are typical, not checked listings.</p>
     <div id="list"></div>
   </section>
 </main>

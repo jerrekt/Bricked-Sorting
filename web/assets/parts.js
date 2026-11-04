@@ -30,45 +30,72 @@
       (p.bought ? 'Mark not bought' : 'Mark bought') + '</button></span>';
   }
 
-  function renderList() {
-    var parts = DATA.parts.filter(inVersion);
-    var got = parts.filter(function (p) { return p.bought; }).length;
-    var pct = parts.length ? Math.round(got / parts.length * 100) : 0;
-    $('pct').textContent = pct + '%'; $('fill').style.width = pct + '%';
-    $('count').textContent = got + ' of ' + parts.length + ' on hand · ' + (parts.length - got) + ' to buy';
-    var wrap = $('list'); wrap.innerHTML = '';
+  /* ---------- buy list: groups by stage with prices (option A, picked by BJ 2026-11-03) ---------- */
+  // Totals only make sense for one build, so the page starts on the planned version (V3).
+  ver = 'v3'; document.querySelectorAll('.filters button[data-v]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-v') === 'v3' ? 'true' : 'false'); });
+  var OPEN = {};
+  function money(n, approx) { return n == null ? '' : (approx ? '~' : '') + '$' + (Math.round(n * 100) / 100).toFixed(n % 1 ? 2 : 0); }
+  function costOf(list) {
+    var t = 0, ap = false, un = 0;
+    list.forEach(function (p) { if (p.cost == null) { un++; return; } t += p.cost; if (p.approx) ap = true; });
+    return { total: t, approx: ap, unpriced: un, text: money(t, ap) + (un ? ' + ' + un + ' unpriced' : '') };
+  }
+  function shown(list) { return list.filter(function (p) { return filter === 'all' || (filter === 'need' ? !p.bought : p.bought); }); }
+  function storeLink(p) {
+    var link = safeLink(p.link);
+    return p.where ? (link ? '<a href="' + esc(link) + '" target="_blank" rel="noopener noreferrer">' + esc(p.where) + '</a>' : esc(p.where)) : '';
+  }
+  function row(p, cols) {
+    var c = '<li class="crow ' + (p.bought ? 'got' : 'need') + '" title="' + esc(p.what || '') + '">' +
+      '<span class="cdot" aria-label="' + (p.bought ? 'Have it' : 'To buy') + '"></span>' +
+      '<span class="cname">' + esc(p.part) + (p.note && !p.bought ? '<span class="cnote">' + esc(p.note) + '</span>' : '') +
+        '<span class="cmeta">' + [p.qty ? 'Qty ' + esc(p.qty) : '', cols.store ? storeLink(p) : ''].filter(Boolean).join(' · ') + '</span></span>' +
+      '<span class="cqty">' + esc(p.qty || '') + '</span>' +
+      (cols.store ? '<span class="cstore">' + storeLink(p) + '</span>' : '') +
+      '<span class="ccost">' + (p.cost == null ? '<span class="muted">n/a</span>' : money(p.cost, p.approx)) + '</span>' +
+      buttons(p).replace('p-acts', 'cacts') + '</li>';
+    return c;
+  }
+  function groupHtml(id, title, list, opts) {
+    var all = list, got = all.filter(function (p) { return p.bought; }), need = all.filter(function (p) { return !p.bought; });
+    var cAll = costOf(all), cGot = costOf(got), cNeed = costOf(need);
+    var pct = cAll.total ? Math.round(cGot.total / cAll.total * 100) : (all.length ? Math.round(got.length / all.length * 100) : 0);
+    var open = !!OPEN[id], items = shown(all);
+    return '<section class="cgrp' + (open ? ' open' : '') + '"><button type="button" class="cgrp-btn" aria-expanded="' + open + '" data-cg="' + esc(id) + '">' +
+      '<span class="cg-name">' + esc(title) + '</span>' +
+      '<span class="cg-cost">' + (need.length ? money(cNeed.total, cNeed.approx) + ' to buy' : 'All on hand') + '</span><span class="grp-chev" aria-hidden="true"></span>' +
+      '<span class="cg-bar"><i style="width:' + pct + '%"></i></span>' +
+      '<span class="cg-sub">' + got.length + ' of ' + all.length + ' on hand · ' + money(cGot.total, cGot.approx) + ' on hand' + (cNeed.unpriced ? ' · ' + cNeed.unpriced + ' unpriced' : '') + '</span></button>' +
+      '<ul class="clist"' + (open ? '' : ' hidden') + '>' + (items.length ? items.map(function (p) { return row(p, opts || {}); }).join('') : '<li class="muted small">Nothing here for this filter.</li>') + '</ul></section>';
+  }
+  function summary(parts) {
+    var need = parts.filter(function (p) { return !p.bought; }), got = parts.filter(function (p) { return p.bought; });
+    var cN = costOf(need), cG = costOf(got), cA = costOf(parts);
+    return { need: need, got: got, cN: cN, cG: cG, cA: cA, pct: cA.total ? Math.round(cG.total / cA.total * 100) : 0 };
+  }
+
+  function renderBuyList() {
+    // money totals count the machine only; the LEGO test set is listed but not added in
+    var all = DATA.parts.filter(inVersion), parts = all.filter(function (p) { return p.stage !== 'test'; }), s = summary(parts), wrap = $('list');
+    $('pct').textContent = s.pct + '%'; $('fill').style.width = s.pct + '%';
+    $('count').innerHTML = '<b class="money">' + money(s.cN.total, s.cN.approx) + '</b> left to buy' + (s.cN.unpriced ? ' + PLA (slice first)' : '') +
+      ' · ' + money(s.cG.total, s.cG.approx) + ' on hand · ' + s.got.length + ' of ' + parts.length + ' parts';
     var labels = DATA.stage_labels || STAGES;
-    Object.keys(labels).forEach(function (st) {
-      var items = parts.filter(function (p) { return p.stage === st && (filter === 'all' || (filter === 'need' ? !p.bought : p.bought)); });
-      if (!items.length) return;
-      var sec = document.createElement('section'); sec.className = 'stage';
-      sec.innerHTML = '<h3>' + esc(labels[st]) + '</h3>';
-      var ul = document.createElement('ul'); ul.className = 'plist';
-      items.forEach(function (p) {
-        var link = safeLink(p.link);
-        var where = p.where ? (link ? '<a href="' + esc(link) + '" target="_blank" rel="noopener noreferrer">' + esc(p.where) + '</a>' : esc(p.where)) : '';
-        var li = document.createElement('li'); li.className = 'part ' + (p.bought ? 'got' : 'need');
-        li.innerHTML = '<span class="p-st">' + (p.bought ? 'Have it' : 'To buy') + '</span><span class="p-name">' + esc(p.part) + '</span>' +
-          '<span class="p-price">' + esc(p.price || '') + '</span>' +
-          '<span class="p-meta">' + (p.qty ? '<span>Qty ' + esc(p.qty) + '</span>' : '') + (where ? '<span>' + where + '</span>' : '') +
-          '<span>' + esc(VLABEL[p.versions] || p.versions || '') + '</span><code>' + esc(p.id) + '</code>' +
-          (p.bought && p.bought_by ? '<span>by ' + esc(p.bought_by) + '</span>' : '') + '</span>' +
-          (p.what ? '<span class="p-what">' + esc(p.what) + '</span>' : '') +
-          (p.note ? '<span class="p-note">' + esc(p.note) + '</span>' : '') + buttons(p);
-        ul.appendChild(li);
-      });
-      sec.appendChild(ul); wrap.appendChild(sec);
-    });
-    if (!wrap.children.length) wrap.innerHTML = '<p class="muted">Nothing here.</p>';
+    var html = Object.keys(labels).map(function (st) {
+      var l = all.filter(function (p) { return p.stage === st; });
+      return l.length ? groupHtml('s-' + st, labels[st], l, { store: true }) : '';
+    }).join('');
+    wrap.innerHTML = html;
   }
 
   function show(d, isLive) {
     // The bot keeps only versions and parts; fill the rest from the static file.
-    if (STATIC) { d.stage_labels = d.stage_labels || STATIC.stage_labels; d.versions = d.versions || STATIC.versions; }
+    if (STATIC) { d.stage_labels = d.stage_labels || STATIC.stage_labels; d.versions = d.versions || STATIC.versions; d.type_labels = d.type_labels || STATIC.type_labels; }
     DATA = d; live = isLive;
     $('mode').textContent = isLive ? 'Live' : 'Static';
     $('mode').className = 'mode-badge' + (isLive ? ' live' : '');
-    renderVersions(d.versions || {}); renderList();
+    renderVersions(d.versions || {});
+    renderBuyList();
   }
 
   function getJSON(url, ms) {
@@ -121,6 +148,12 @@
   });
 
   $('list').addEventListener('click', function (e) {
+    var g = e.target.closest('button[data-cg]');
+    if (g) {
+      var open = g.getAttribute('aria-expanded') !== 'true'; OPEN[g.dataset.cg] = open;
+      g.setAttribute('aria-expanded', String(open)); g.parentNode.classList.toggle('open', open);
+      g.parentNode.querySelector('.clist').hidden = !open; return;
+    }
     var b = e.target.closest('button[data-id]'); if (!b) return;
     openDialog(b.dataset.id, b.dataset.b === '1');
   });
@@ -130,7 +163,7 @@
       b.addEventListener('click', function () {
         set(b.getAttribute(attr));
         document.querySelectorAll('.filters button[' + attr + ']').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-        if (DATA) renderList();
+        if (DATA) renderBuyList();
       });
     });
   }
