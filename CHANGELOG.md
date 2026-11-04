@@ -4,6 +4,9 @@ Site and repo version. One bump per merged pull request (see `tools/bump_version
 It counts updates to this repo, not how finished the machine is; the Tasks page shows that.
 V1.001 to V1.014 were numbered afterwards, in merge order.
 
+## V1.020 · 2026-11-03
+- V12 CAD: eight CAD tasks done, extrusion and T-nuts on the buy list
+
 ## V1.019 · 2026-11-03
 - Team: Vivek is Isolate, code and testing
 - Home: compact bin animation (2 rows of 8), wording matches the lift-and-scoop design, social preview tags

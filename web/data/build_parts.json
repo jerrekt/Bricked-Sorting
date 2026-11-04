@@ -571,6 +571,38 @@
       "note": "Skip if the M2 to M5 kit already has countersunk M3."
     },
     {
+      "id": "ext-2020",
+      "part": "2020 aluminum extrusion, 20.5 m cut to length",
+      "stage": "structure",
+      "versions": "all",
+      "what": "The machine frame: 8 x 1240, 4 x 650, 14 x 457, 12 x 132 mm. Replaces about 17 L of printed beams.",
+      "qty": "20.5 m",
+      "price": "~$65",
+      "cost": 65,
+      "approx": true,
+      "type": "materials",
+      "where": "AliExpress",
+      "link": "",
+      "bought": false,
+      "note": "Ask for ends cut square; tap M5 ourselves. Black or silver."
+    },
+    {
+      "id": "m5-tnuts",
+      "part": "M5 T-nuts and M5x8 screws for 2020",
+      "stage": "structure",
+      "versions": "all",
+      "what": "Corner fittings and the lift tie.",
+      "qty": "~60 each",
+      "price": "~$8",
+      "cost": 8,
+      "approx": true,
+      "type": "materials",
+      "where": "AliExpress",
+      "link": "",
+      "bought": false,
+      "note": "Drop-in (hammer) T-nuts are easiest after the frame is built."
+    },
+    {
       "id": "lego-10696",
       "part": "LEGO Classic 10696",
       "stage": "test",
