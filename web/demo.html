@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Bricked Sorting Demo</title>
 <meta name="description" content="Simulated dashboard for the Bricked Sorting LEGO sorter: sort a box, pull bins, find what's missing.">
+<meta property="og:title" content="Bricked Sorting">
+<meta property="og:description" content="Simulated dashboard for the Bricked Sorting LEGO sorter.">
+<meta property="og:image" content="https://bricked-01.adsuaracloud.com/assets/logo-720.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
@@ -27,9 +32,9 @@
     <div class="bar-row">
       <button class="btn primary big" id="startBtn">Start sort</button>
       <button class="btn danger" id="stopBtn" hidden>Stop</button>
-      <label class="speed">Speed
+      <label class="speed">Demo speed
         <input type="range" id="speed" min="1" max="40" value="16" aria-describedby="speedOut">
-        <output id="speedOut">16 pcs/s</output>
+        <output id="speedOut">16x</output>
       </label>
       <div class="mode" role="group" aria-label="View mode">
         <button class="seg" data-mode="simple" aria-pressed="true">Simple</button>
@@ -99,7 +104,7 @@
   </form>
 </dialog>
 
-<footer class="foot"><div class="wrap">Simulated with the real parts list of one LEGO Classic 10696 box (484 pieces). Bin sizes are placeholders: capacity shown is 3 boxes.</div></footer>
+<footer class="foot"><div class="wrap"><span>Simulated with the real parts list of one LEGO Classic 10696 box (484 pieces). Bin sizes are placeholders: capacity shown is 3 boxes.</span><nav class="foot-links"><a href="https://github.com/jerrekt/Bricked-Sorting" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://bja.adsuaracloud.com" target="_blank" rel="noopener noreferrer">bja.adsuaracloud.com</a><a href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Changelog</a></nav><span class="foot-course">SJSU Tech 190A, Senior Project I, Fall 2026 · Instructor Vlad Ionescu</span></div></footer>
 <script src="assets/demo.js"></script>
 </body>
 </html>

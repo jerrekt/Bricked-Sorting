@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Bricked Sorting</title>
 <meta name="description" content="Bricked Sorting: a camera-based LEGO sorter and inventory tracker. SJSU Tech 190A senior project.">
+<meta property="og:title" content="Bricked Sorting">
+<meta property="og:description" content="Bricked Sorting: a camera-based LEGO sorter and inventory tracker. SJSU Tech 190A senior project.">
+<meta property="og:image" content="https://bricked-01.adsuaracloud.com/assets/logo-720.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
@@ -13,7 +18,7 @@
 <link rel="stylesheet" href="assets/site.css">
 <style>
 .hero{display:grid;gap:24px;padding:32px 0 8px;align-items:start}
-@media (min-width:820px){.hero>div:first-child{padding-top:72px}}
+@media (min-width:820px){.hero>div:first-child{padding-top:24px}.anim{padding-top:40px}}
 @media (min-width:820px){.hero{grid-template-columns:1.1fr .9fr}}
 .hero-logo{display:block;width:min(360px,100%);height:auto;margin:0 0 14px}
 .hero h1{font-size:clamp(30px,6vw,46px);margin-bottom:12px}
@@ -21,7 +26,7 @@
 .cta{display:flex;flex-wrap:wrap;gap:10px}
 .cta a.btn{text-decoration:none;display:inline-flex;align-items:center}
 .anim{display:flex;flex-direction:column;align-items:center;gap:10px}
-.anim canvas{width:100%;max-width:340px;height:auto}
+.anim canvas{width:100%;max-width:420px;height:auto}
 .steps{display:grid;gap:12px;margin-top:32px}
 @media (min-width:720px){.steps{grid-template-columns:repeat(3,1fr)}}
 .steps .card h3{display:flex;align-items:center;gap:8px}
@@ -57,25 +62,25 @@
 <main class="wrap">
   <section class="hero">
     <div>
-      <img class="hero-logo" src="assets/logo-720.png" width="360" height="114" alt="">
+      <img class="hero-logo" src="assets/logo-720.png" width="360" height="114" alt="Bricked Sorting">
       <span class="badge">SJSU Tech 190A · Senior project</span>
       <h1>A LEGO sorter that keeps count.</h1>
-      <p class="lead">Pour in a box of LEGO. A camera identifies each piece, a rotating chute drops it into one of 16 bins, and the dashboard keeps track of what you own and what has gone missing.</p>
+      <p class="lead">Pour in a box of LEGO. A camera identifies each piece, a lift and turning scoop drop it into one of 16 bins, and the dashboard keeps track of what you own and what has gone missing.</p>
       <div class="cta">
         <a class="btn primary" href="demo.html">Try the demo</a>
         <a class="btn" href="#how">How it works</a>
       </div>
     </div>
     <div class="anim">
-      <canvas id="binAnim" width="340" height="804" role="img" aria-label="Animation of LEGO pieces dropping into 16 bins: other pieces on the top floor, bricks on the bottom floor, sorted by color."></canvas>
+      <canvas id="binAnim" width="420" height="330" role="img" aria-label="Animation of LEGO pieces dropping into 16 bins: other pieces on the top floor, bricks on the bottom floor, sorted by color."></canvas>
       <button class="btn small" id="replay">Replay</button>
     </div>
   </section>
 
   <section class="steps" id="how">
-    <div class="card"><h3><span class="num">1</span>Isolate</h3><p>A vibratory feeder spreads the pile out and sends one piece at a time to the inspection spot.</p></div>
+    <div class="card"><h3><span class="num">1</span>Isolate</h3><p>A drum and two vibrating trays spread the pile out and send one piece at a time onto the scanner.</p></div>
     <div class="card"><h3><span class="num">2</span>Identify</h3><p>A camera takes a picture. A server on our home lab decides: brick or other piece, and which color group.</p></div>
-    <div class="card"><h3><span class="num">3</span>Indicate</h3><p>A chute moves to the right floor and bin, and the piece drops in. Each bin has a switch that notes when it is opened.</p></div>
+    <div class="card"><h3><span class="num">3</span>Indicate</h3><p>A lift takes a scoop to the right floor, the scoop turns to the right bin, and trapdoors drop the piece in. Each bin has a switch that notes when it is opened.</p></div>
   </section>
 
   <section class="team" id="team">
@@ -96,7 +101,7 @@
   </section>
 </main>
 
-<footer class="foot"><div class="wrap">Bricked Sorting · SJSU Tech 190A. Sample set: LEGO Classic 10696 (484 pieces).</div></footer>
+<footer class="foot"><div class="wrap"><span>Bricked Sorting · Sample set: LEGO Classic 10696 (484 pieces).</span><nav class="foot-links"><a href="https://github.com/jerrekt/Bricked-Sorting" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://bja.adsuaracloud.com" target="_blank" rel="noopener noreferrer">bja.adsuaracloud.com</a><a href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Changelog</a></nav><span class="foot-course">SJSU Tech 190A, Senior Project I, Fall 2026 · Instructor Vlad Ionescu</span></div></footer>
 <script>
 fetch('data/bins.json').then(function(r){return r.json()}).then(function(b){
   var tb=document.querySelector('#codeTable tbody');

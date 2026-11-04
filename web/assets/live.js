@@ -37,7 +37,7 @@
   var MODE_TEXT = { live: ['Live camera', 'live', 'Pieces from the camera, identified on our server.'],
                     sim: ['Simulator', 'sim', 'Fake pieces from the real 10696 parts list. Marshall\'s bins can follow along.'],
                     idle: ['Idle', 'off', 'No pieces in the last minute. Start the simulator, or run the camera.'],
-                    off: ['Not connected', 'off', 'Can\'t reach the server right now. Retrying.'] };
+                    off: ['Machine off', 'off', 'The machine is not running right now. This page updates on its own when it comes back; try the Demo meanwhile.'] };
   function setMode(m, sim) {
     mode = m; var t = MODE_TEXT[m] || MODE_TEXT.idle;
     $('mode').textContent = t[0]; $('mode').className = 'mode ' + t[1];

@@ -1,6 +1,6 @@
 {
  "version": "V1.019",
  "date": "2026-11-03",
- "note": "Team: Vivek is Isolate, code and testing",
+ "note": "Vivek's role; compact home animation and wording; social preview; demo speed label and auto-run; Live offline wording; footer links",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }

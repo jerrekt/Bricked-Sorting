@@ -7,14 +7,15 @@
   'use strict';
   var cv = document.getElementById('binAnim'); if (!cv) return;
   var x = cv.getContext('2d');
-  var HT = { brick: 15, plate: 8, tile: 8, slope: 15, round: 15, technic: 13, wheel: 24, arch: 15 };
-  var HW = { brick: 25, plate: 25, tile: 25, slope: 18, round: 10, technic: 27, wheel: 12, arch: 18 };
-  var BW = 72, GAP = 8, X0 = 14, CAPH = 112, PITCH = 185, FULLH = 92;
+  var HT0 = { brick: 15, plate: 8, tile: 8, slope: 15, round: 15, technic: 13, wheel: 24, arch: 15 };
+  var HW0 = { brick: 25, plate: 25, tile: 25, slope: 18, round: 10, technic: 27, wheel: 12, arch: 18 };
+  var HT = {}, HW = {};
+  var SC = 0.58, BW = 46, GAP = 5, X0 = 7, CAPH = 64, PITCH = 150, FULLH = 52, W = 420, H = 330, WALL = 78, COLS = 8;
   var SL = 180, DR = 260, STT = 450, T = 420, HOLD = 2200, N = 64;
-  function rail(r) { return 34 + r * PITCH + (r >= 2 ? 24 : 0); }
-  function floorY(r) { return rail(r) + 150; }
-  function binX(b) { return X0 + (b % 4) * (BW + GAP); }
-  function binRow(b) { return Math.floor(b / 4); }
+  function rail(r) { return 30 + r * PITCH; }
+  function floorY(r) { return rail(r) + 100; }
+  function binX(b) { return X0 + (b % COLS) * (BW + GAP); }
+  function binRow(b) { return Math.floor(b / COLS); }
   function kindOf(part) {
     if (/^Brick \d+ x \d+/.test(part)) return 'brick';
     if (/Tire|Wheel/.test(part)) return 'wheel';
@@ -29,6 +30,7 @@
   var seq = [], binFull = [], swatch = [], STROKE = 'rgba(0,0,0,0.5)';
 
   function build(bins, set) {
+    Object.keys(HT0).forEach(function (k) { HT[k] = HT0[k] * SC; HW[k] = HW0[k] * SC; });
     var slotOf = {}; bins.slots.forEach(function (sl) { slotOf[sl.key] = sl.slot; swatch[sl.slot - 1] = sl.swatch; });
     var pool = []; set.parts.forEach(function (p) { for (var i = 0; i < p.qty; i++) pool.push(p); });
     var hm = []; for (var i = 0; i < 16; i++) { var a = []; for (var j = 0; j < BW; j++) a.push(0); hm.push(a); }
@@ -60,7 +62,7 @@
   function stud(cx, top, hex) { x.fillStyle = hex; x.fillRect(cx - 5, top - 4, 10, 4); x.strokeRect(cx - 4.5, top - 4.5, 9, 4); }
   function shade(w, h) { x.fillStyle = 'rgba(255,255,255,0.28)'; x.fillRect(-w / 2 + 3, -h / 2 + 2, w - 6, 2); x.fillStyle = 'rgba(0,0,0,0.12)'; x.fillRect(-w / 2 + 1, h / 2 - 3, w - 2, 2); }
   function piece(kind, hex) {
-    var h = HT[kind]; x.fillStyle = hex; x.strokeStyle = STROKE; x.lineWidth = 1;
+    var h = HT0[kind]; x.fillStyle = hex; x.strokeStyle = STROKE; x.lineWidth = 1;
     if (kind === 'brick' || kind === 'plate' || kind === 'tile' || kind === 'technic') {
       var w = kind === 'technic' ? 54 : 50;
       if (kind === 'brick' || kind === 'plate') { stud(-12, -h / 2, hex); stud(12, -h / 2, hex); }
@@ -72,40 +74,40 @@
     else if (kind === 'wheel') { x.fillStyle = '#2b2b2b'; x.beginPath(); x.arc(0, 0, 12, 0, 7); x.fill(); x.stroke(); x.fillStyle = hex; x.beginPath(); x.arc(0, 0, 6, 0, 7); x.fill(); x.stroke(); }
     else if (kind === 'arch') { stud(-9, -h / 2, hex); stud(9, -h / 2, hex); x.fillStyle = hex; x.beginPath(); x.rect(-18, -h / 2, 36, h); x.moveTo(8, h / 2); x.arc(0, h / 2, 8, 0, Math.PI, true); x.closePath(); x.fill('evenodd'); x.stroke(); }
   }
-  function place(cx, cy, rot, q) { x.save(); x.translate(cx, cy); x.rotate(rot); piece(q.kind, q.hex); x.restore(); }
+  function place(cx, cy, rot, q) { x.save(); x.translate(cx, cy); x.rotate(rot); x.scale(SC, SC); piece(q.kind, q.hex); x.restore(); }
   function css(v) { return getComputedStyle(document.documentElement).getPropertyValue(v).trim() || '#888780'; }
 
   function render(t) {
     var line = css('--muted'), warn = css('--warn');
-    x.clearRect(0, 0, 340, 804);
+    x.clearRect(0, 0, W, H);
     x.fillStyle = line; x.font = '600 12px system-ui,sans-serif'; x.textAlign = 'left';
-    x.fillText('Floor 2 · other pieces', 14, rail(0) - 20); x.fillText('Floor 1 · bricks', 14, rail(2) - 20);
-    for (var r = 0; r < 4; r++) {
+    x.fillText('Floor 2 · other pieces', X0, rail(0) - 14); x.fillText('Floor 1 · bricks', X0, rail(1) - 14);
+    for (var r = 0; r < 2; r++) {
       var ry = rail(r), fl = floorY(r);
-      x.strokeStyle = line; x.lineWidth = 1; x.setLineDash([4, 4]); x.beginPath(); x.moveTo(10, ry + 16); x.lineTo(330, ry + 16); x.stroke(); x.setLineDash([]);
-      for (var c = 0; c < 4; c++) {
-        var i = r * 4 + c, bx = X0 + c * (BW + GAP), k = i % 8;
+      x.strokeStyle = line; x.lineWidth = 1; x.setLineDash([4, 4]); x.beginPath(); x.moveTo(X0 - 4, ry + 12); x.lineTo(W - X0 + 4, ry + 12); x.stroke(); x.setLineDash([]);
+      for (var c = 0; c < COLS; c++) {
+        var i = r * COLS + c, bx = X0 + c * (BW + GAP), k = i % 8;
         var full = binFull[i] != null && t >= binFull[i];
         x.strokeStyle = full ? warn : line; x.lineWidth = 3;
-        x.beginPath(); x.moveTo(bx + 6, fl - 125); x.lineTo(bx, fl - 119); x.lineTo(bx, fl - 3); x.quadraticCurveTo(bx, fl + 3, bx + 6, fl + 3);
-        x.lineTo(bx + BW - 6, fl + 3); x.quadraticCurveTo(bx + BW, fl + 3, bx + BW, fl - 3); x.lineTo(bx + BW, fl - 119); x.lineTo(bx + BW - 6, fl - 125); x.stroke();
+        x.lineWidth = 2; x.beginPath(); x.moveTo(bx + 4, fl - WALL); x.lineTo(bx, fl - WALL + 4); x.lineTo(bx, fl - 3); x.quadraticCurveTo(bx, fl + 3, bx + 4, fl + 3);
+        x.lineTo(bx + BW - 4, fl + 3); x.quadraticCurveTo(bx + BW, fl + 3, bx + BW, fl - 3); x.lineTo(bx + BW, fl - WALL + 4); x.lineTo(bx + BW - 4, fl - WALL); x.stroke();
         if (full) {
           var pu = 1 + 0.12 * Math.sin((t - binFull[i]) / 160), pr = Math.min(1, (t - binFull[i]) / 150);
-          x.save(); x.translate(bx + BW / 2, fl - 123); x.scale(pu * pr, pu * pr);
+          x.save(); x.translate(bx + BW / 2, fl - WALL - 2); x.scale(pu * pr * 0.8, pu * pr * 0.8);
           x.fillStyle = warn; x.beginPath(); x.arc(0, 0, 10, 0, 7); x.fill();
           x.fillStyle = '#fff'; x.font = '700 15px system-ui,sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('!', 0, 1); x.restore(); x.textBaseline = 'alphabetic';
         }
         var codeTxt = (r < 2 ? '2-' : '1-') + (k + 1);
-        x.fillStyle = line; x.font = '600 11px system-ui,sans-serif'; x.textAlign = 'left'; x.fillText(codeTxt, bx + 2, fl + 22);
-        if (k === 7) { x.font = '600 15px system-ui,sans-serif'; x.textAlign = 'center'; x.fillText('?', bx + BW - 12, fl + 23); }
-        else { x.fillStyle = swatch[k]; x.beginPath(); x.arc(bx + BW - 12, fl + 18, 6, 0, 7); x.fill(); x.strokeStyle = line; x.lineWidth = 1; x.stroke(); }
+        x.fillStyle = line; x.font = '600 10px system-ui,sans-serif'; x.textAlign = 'left'; x.fillText(codeTxt, bx + 1, fl + 18);
+        if (k === 7) { x.font = '600 13px system-ui,sans-serif'; x.textAlign = 'center'; x.fillText('?', bx + BW - 8, fl + 19); }
+        else { x.fillStyle = swatch[k]; x.beginPath(); x.arc(bx + BW - 8, fl + 14, 4.5, 0, 7); x.fill(); x.strokeStyle = line; x.lineWidth = 1; x.stroke(); }
       }
     }
     for (var n = 0; n < seq.length; n++) {
       var q = seq[n]; if (t < q.st) break;
       var row = binRow(q.bin), bx2 = binX(q.bin), fl2 = floorY(row), y0 = rail(row), u = t - q.st;
       var yA = fl2 - q.s1 - q.h / 2 - 1, yB = fl2 - q.s2 - q.h / 2 - 1, cx, cy, rot, pp;
-      if (u < SL) { pp = u / SL; cx = 170 + (bx2 + q.x1 - 170) * pp; cy = y0; rot = 0; }
+      if (u < SL) { pp = u / SL; cx = W / 2 + (bx2 + q.x1 - W / 2) * pp; cy = y0; rot = 0; }
       else if (u < SL + DR) { pp = (u - SL) / DR; cx = bx2 + q.x1; cy = y0 + (yA - y0) * pp * pp; rot = q.rot1 * pp; }
       else if (u < SL + DR + STT) { pp = (u - SL - DR) / STT; var e = 1 - Math.pow(1 - pp, 3); cx = bx2 + q.x1 + (q.x2 - q.x1) * e; cy = yA + (yB - yA) * e; rot = q.rot1 + (q.rotF - q.rot1) * e; }
       else { cx = bx2 + q.x2; cy = yB; rot = q.rotF; }
