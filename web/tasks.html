@@ -18,30 +18,32 @@
 .pg-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .pg-head h2{margin:0}
 .pg-pct{font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent)}
-.pg-big .zbar{height:14px;margin:10px 0 8px}
 .pg-note{font-size:13px;color:var(--muted);margin:0 0 12px}
-.pg-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
-.pg-row{display:grid;grid-template-columns:1fr auto;gap:4px 10px;font-size:14px;align-items:baseline}
+.pg-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.pg-row{display:grid;gap:2px;font-size:14px}
 .pg-label{font-weight:700}
 .pg-val{font-weight:700;font-variant-numeric:tabular-nums}
-.pg-mini{grid-column:1/-1;height:6px;border-radius:4px;background:var(--line);overflow:hidden}
-.pg-mini i{display:block;height:100%}
-.ph-poc .pg-mini i{background:var(--brand)}
-.ph-final .pg-mini i{background:var(--ok)}
 .pg-row .pg-ev{grid-column:1/-1;color:var(--muted);font-size:13px}
 .pg-recent{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
 .pg-recent h3{font-size:13px;margin:0 0 6px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 .pg-recent ul{list-style:none;margin:0;padding:0;display:grid;gap:4px;font-size:14px}
-/* two-zone bars: cardboard POC (semester 1) then final (semester 2); the line between is the checkpoint */
-.zbar{position:relative;display:flex;gap:3px;height:10px;grid-column:1/-1}
-.zbar .zone{position:relative;display:flex;height:100%;border-radius:5px;overflow:hidden;background:var(--line)}
-.zbar .zone i{display:block;height:100%}
-.zbar .z-poc .b-done{background:var(--brand)}
-.zbar .z-final .b-done{background:var(--ok)}
-.zbar .b-run{background:var(--flag);opacity:.55}
-.zbar .ckpt{position:absolute;top:-5px;bottom:-5px;width:3px;margin-left:-2px;border-radius:2px;background:var(--fg)}
-.zbar .ckpt::after{content:"";position:absolute;top:-4px;left:-3px;width:9px;height:9px;border-radius:50%;background:var(--fg)}
-.zbar .ckpt.hit,.zbar .ckpt.hit::after{background:var(--ok)}
+/* phase rows: Sem 1 (cardboard POC, ends at the checkpoint flag) and Sem 2 (final) */
+.pbars{grid-column:1/-1;display:grid;gap:6px;margin:2px 0}
+.prow{display:grid;grid-template-columns:42px 1fr 76px 36px;gap:8px;align-items:center}
+@media (max-width:480px){.prow{grid-template-columns:36px 1fr 80px 34px;gap:6px}.pend,.plab{font-size:11px}.pend{gap:3px}}
+.plab{font-size:12px;font-weight:700;color:var(--muted);white-space:nowrap}
+.ptrack{display:flex;height:10px;border-radius:5px;overflow:hidden;background:var(--line)}
+.ptrack i{display:block;height:100%}
+.ph-poc .ptrack .b-done{background:var(--ok)}
+.ph-final .ptrack .b-done{background:var(--ok)}
+.ptrack .b-run{background:var(--flag);opacity:.55}
+.pend{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;white-space:nowrap;color:var(--muted)}
+.pend.flag{color:var(--brand)}
+.pend.hit{color:var(--ok)}
+.flag-ic{width:12px;height:14px;flex:none}
+.ppct{font-size:13px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.pg-big .ptrack{height:14px}
+.pg-big .pbars{gap:8px;margin:10px 0 8px}
 .sep{opacity:.6}
 .ph-head{display:flex;justify-content:space-between;align-items:baseline;margin:12px 2px 2px;border-bottom:1px solid var(--line);padding-bottom:4px}
 .ph-head h3{font-size:15px;margin:0}
@@ -119,7 +121,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 <script src="assets/intro.js"></script>
 <header class="top"><div class="wrap">
   <a class="logo" href="./"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
-  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.016</a>
+  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.017</a>
   <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="live.html">Live</a><a href="tasks.html" aria-current="page">Tasks</a><a href="parts.html">Parts</a></nav>
 </div></header>
 
@@ -147,7 +149,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
       <button data-f="done" aria-pressed="false">Done</button>
     </div>
     <p class="muted small" id="how">Open a group to see its tasks. To change a task, use the Discord commands (/claim, /start, /blocked, /done, /release) or edit <code>web/data/tasks.json</code> by pull request.</p>
-    <p class="legend" aria-label="How the bars count"><span>Bars count work, not tasks:</span><span><span class="t-size sz-S">S</span>1 pt</span><span><span class="t-size sz-M">M</span>2 pts</span><span><span class="t-size sz-L">L</span>4 pts</span><span><i style="background:var(--brand)"></i>cardboard POC done</span><span><i style="background:var(--ok)"></i>final done</span><span><i style="background:var(--flag);opacity:.55"></i>in progress</span><span><b>|</b> POC checkpoint</span></p>
+    <p class="legend" aria-label="How the bars count"><span>Bars count work, not tasks:</span><span><span class="t-size sz-S">S</span>1 pt</span><span><span class="t-size sz-M">M</span>2 pts</span><span><span class="t-size sz-L">L</span>4 pts</span><span><i style="background:var(--ok)"></i>done</span><span><i style="background:var(--flag);opacity:.55"></i>in progress</span><span style="color:var(--brand)">&#9873; POC checkpoint</span></p>
     <div id="board"></div>
   </section>
 </main>

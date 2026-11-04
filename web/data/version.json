@@ -1,6 +1,6 @@
 {
- "version": "V1.016",
+ "version": "V1.017",
  "date": "2026-11-03",
- "note": "Bigger Bricked Sorting logo on the intro on desktop",
+ "note": "Task board: each bar is now two rows, Sem 1 cardboard POC ending at the checkpoint flag, and Sem 2 final",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }
