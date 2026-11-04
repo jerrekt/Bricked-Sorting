@@ -457,7 +457,7 @@
    "milestone": "cad_isolate",
    "title": "Print one V tray with two leaf springs and a motor: does it move parts?",
    "status": "todo",
-   "owner": "",
+   "owner": "Branden",
    "detail": "Test before printing the rest. Needs a vibration motor (Parts page)."
   },
   {
@@ -473,7 +473,7 @@
    "milestone": "cad_isolate",
    "title": "Flow test: drum to V1 to V2 with real parts, then fix the CAD",
    "status": "todo",
-   "owner": "",
+   "owner": "Branden",
    "detail": "One piece at a time onto the scanner is the goal."
   },
   {
@@ -505,7 +505,7 @@
    "milestone": "cad_identify",
    "title": "Print the trapdoor set and test the slide and 55 deg opening",
    "status": "todo",
-   "owner": "",
+   "owner": "Branden",
    "detail": "Plate, two doors, slider post and slider, links, horn, servo."
   },
   {
@@ -553,7 +553,7 @@
    "milestone": "cad_indicate",
    "title": "Measure a KW11-3Z switch and fix the locator pocket",
    "status": "todo",
-   "owner": "",
+   "owner": "Branden",
    "detail": "Calipers on one of the 40 switches. Then print one locator before the other 15."
   },
   {
@@ -569,7 +569,7 @@
    "milestone": "cad_indicate",
    "title": "Print one bin of each floor and the scoop; slide 20 parts in by hand",
    "status": "todo",
-   "owner": "",
+   "owner": "Branden",
    "detail": "Checks the drop-in fit, the grip lip, the switch press and whether parts make it into the bin."
   },
   {
