@@ -306,7 +306,11 @@ def parts_merged() -> dict:
         if o:
             p.update(bought=o["bought"], bought_by=o["by"], updated_at=o["updated_at"])
         parts.append(p)
-    return {"versions": seed.get("versions", {}), "parts": parts}
+    # Pass the seed's other top-level keys through (versions, stage_labels...), never the _note.
+    out = {k: v for k, v in seed.items() if k not in ("parts", "_note")}
+    out.setdefault("versions", {})
+    out["parts"] = parts
+    return out
 
 
 def set_bought(part_id: str, bought: bool, actor: str, via: str) -> dict:
@@ -500,6 +504,27 @@ def list_reply(tasks: list[dict], empty: str) -> dict:
     return reply("\n".join(lines))
 
 
+def part_line(p: dict) -> str:
+    state = f"have it ({p['bought_by']})" if p.get("bought") and p.get("bought_by") else \
+        "have it" if p.get("bought") else "to buy"
+    extra = " · ".join(clean(str(p.get(k) or ""), 30) for k in ("qty", "price") if p.get(k))
+    return f"`{p.get('id')}` {clean(p.get('part', ''), 70)} · {state}" + (f" · {extra}" if extra else "")
+
+
+def part_list_reply(parts: list[dict], empty: str) -> dict:
+    if not parts:
+        return reply(empty)
+    lines, size = [], 0
+    for p in parts:
+        line = part_line(p)
+        if size + len(line) > 1800:
+            lines.append(f"…and {len(parts) - len(lines)} more. See the Parts page.")
+            break
+        lines.append(line)
+        size += len(line) + 1
+    return reply("\n".join(lines))
+
+
 @app.post("/discord/interactions")
 async def discord(request: Request, bg: BackgroundTasks):
     body = await request.body()
@@ -546,6 +571,21 @@ def handle_command(data: dict, bg: BackgroundTasks) -> dict:
                 bought = json.dumps({k: v["bought"] for k, v in sorted(part_overlay().items())})
                 out += "\nParts bought (copy into build_parts.json):\n```json\n" + bought[:1700] + "\n```"
             return reply(out)
+
+        if cmd == "parts":
+            show = opts.get("show") or "need"
+            parts = parts_merged()["parts"]  # 404 detail if parts are off on this bot
+            if show == "need":
+                parts = [p for p in parts if not p.get("bought")]
+            elif show == "have":
+                parts = [p for p in parts if p.get("bought")]
+            return part_list_reply(parts, "Nothing left to buy." if show == "need" else "No parts match.")
+        if cmd in ("bought", "notbought"):
+            load_parts()
+            LIMITS.add("discord:" + name)
+            p = set_bought(str(opts.get("part", "")), cmd == "bought", name, "Discord")
+            bg.add_task(post_feed, part_feed_text(p, name, "Discord"))
+            return reply("Done: " + part_line(p))
 
         LIMITS.add("discord:" + name)
         task_id = str(opts.get("task", ""))

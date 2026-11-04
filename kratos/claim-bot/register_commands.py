@@ -18,6 +18,9 @@ TASK = {"name": "task", "description": "Task id, like identify-02", "type": 3, "
 STATUS_CHOICES = [{"name": n, "value": v} for n, v in
                   [("to do", "todo"), ("in progress", "in_progress"), ("blocked", "blocked"), ("done", "done")]]
 
+PART = {"name": "part", "description": "Part id from the Parts page, like mcp23017", "type": 3, "required": True, "max_length": 40}
+SHOW_CHOICES = [{"name": n, "value": v} for n, v in [("to buy", "need"), ("have it", "have"), ("all", "all")]]
+
 COMMANDS = [
     {"name": "tasks", "description": "List open tasks (or one status)",
      "options": [{"name": "status", "description": "Only this status", "type": 3, "required": False, "choices": STATUS_CHOICES}]},
@@ -30,6 +33,10 @@ COMMANDS = [
     {"name": "todo", "description": "Move your task back to to do", "options": [TASK]},
     {"name": "release", "description": "Give up a task so someone else can claim it", "options": [TASK]},
     {"name": "export", "description": "Branden only: live owners and statuses for tasks.json"},
+    {"name": "parts", "description": "Buy list (what is left to buy, by default)",
+     "options": [{"name": "show", "description": "Which parts", "type": 3, "required": False, "choices": SHOW_CHOICES}]},
+    {"name": "bought", "description": "Mark a part bought", "options": [PART]},
+    {"name": "notbought", "description": "Mark a part not bought", "options": [PART]},
 ]
 
 
