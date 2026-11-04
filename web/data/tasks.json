@@ -8,6 +8,9 @@
   "isolate": "Isolate",
   "identify": "Identify",
   "indicate": "Indicate",
+  "cad_isolate": "CAD: Isolate",
+  "cad_identify": "CAD: Identify",
+  "cad_indicate": "CAD: Indicate",
   "dashboard": "Dashboard and inventory",
   "hardware": "Hardware and enclosure",
   "course": "Course deliverables"
@@ -144,7 +147,7 @@
    "title": "Chute geometry: Z rods, floor heights, yaw mechanism",
    "status": "in_progress",
    "owner": "Marshall",
-   "detail": "Leaning to 12 mm Z rods; servo vs second NEMA for yaw not decided."
+   "detail": "12 mm rods and a NEMA17 for yaw are picked; the V11 CAD has the full geometry. Still open: lift travel (needs about 400 mm rods, see cad-ind-03)."
   },
   {
    "id": "indicate-02",
@@ -211,15 +214,17 @@
    "id": "hw-01",
    "milestone": "hardware",
    "title": "Full BOM for the Indicate stage",
-   "status": "todo",
-   "owner": "Marshall"
+   "status": "done",
+   "owner": "Marshall",
+   "detail": "Indicate is section BS-1300 of the BOM (Rev A draft, three versions: Pi + Logitech, Pi + generic camera, ESP32). Buy list on the Parts page."
   },
   {
    "id": "hw-02",
    "milestone": "hardware",
    "title": "Enclosure: scaled LEGO-brick shell, red PLA",
-   "status": "todo",
-   "owner": "Branden"
+   "status": "in_progress",
+   "owner": "Branden",
+   "detail": "V11 CAD shape: two LEGO 2x1 bricks stacked, 1040 x 520 x 1248, studs on top, the loading funnel in one stud. Shell panels not drawn yet (cad-hw-01)."
   },
   {
    "id": "hw-03",
@@ -271,9 +276,9 @@
    "id": "hw-05",
    "milestone": "hardware",
    "title": "Parts page and buy list",
-   "status": "in_progress",
+   "status": "done",
    "owner": "Branden",
-   "detail": "web/parts.html reads web/data/build_parts.json. Mark parts bought on the site or with /bought in Discord once the bot's parts list is turned on."
+   "detail": "Live 2026-11-03: web/parts.html reads web/data/build_parts.json; /parts, /bought and /notbought work in Discord."
   },
   {
    "id": "course-04",
@@ -287,9 +292,9 @@
    "id": "indicate-06",
    "milestone": "indicate",
    "title": "Resolve floor height conflict: 6in bottom / 4in top vs which floor needs more volume",
-   "status": "blocked",
+   "status": "done",
    "owner": "Marshall",
-   "detail": "Current plan has floor 1 (bricks, bottom) at 6in tall and floor 2 (other, top) at 4in tall. But floor 2's biggest color group (black, 72 pieces) is far bigger than floor 1's (blue, 44 pieces), so floor 2 likely needs the taller row, not the shorter one. Flagged since Oct 24, still unresolved. Do not build to 6in/4in until bins-05 gives real numbers."
+   "detail": "Settled by the V10 bins: both floors are 140 mm tall, one size per floor. Floor 1 takes parts over a 70 mm sill; floor 2 holds about 65% of the volume."
   },
   {
    "id": "identify-06",
@@ -311,10 +316,10 @@
    "id": "course-05",
    "milestone": "course",
    "title": "First development drafts + initial BOM due",
-   "status": "todo",
+   "status": "done",
    "owner": "Branden",
    "due": "2026-11-03",
-   "detail": "Canvas, 20 points."
+   "detail": "Canvas, 20 points. Submitted (marked done on the live board)."
   },
   {
    "id": "course-06",
@@ -373,7 +378,7 @@
    "title": "Set up the Discord app, channel feed and commands",
    "status": "done",
    "owner": "Branden",
-   "detail": "App installed in the team server, 9 commands registered, #tasks feed set up."
+   "detail": "App installed in the team server, #tasks feed set up. 12 commands registered (tasks plus /parts, /bought, /notbought on 2026-11-03)."
   },
   {
    "id": "course-11",
@@ -422,6 +427,181 @@
    "status": "todo",
    "owner": "Marshall",
    "detail": "indicate/README.md: dry run first, then the Arduino with the starter sketch."
+  },
+  {
+   "id": "cad-iso-01",
+   "milestone": "cad_isolate",
+   "title": "Loading funnel in the stud and inlet chute",
+   "status": "done",
+   "owner": "Branden",
+   "detail": "Parts 50 and 51. Modeled in the V11 CAD; not test-printed yet."
+  },
+  {
+   "id": "cad-iso-02",
+   "milestone": "cad_isolate",
+   "title": "Drum mounts: cradles and motor bridge",
+   "status": "done",
+   "owner": "Branden",
+   "detail": "Parts 52 and 53 carry the V7 drum, rollers and NEMA17 bracket. Modeled in the V11 CAD; not test-printed yet."
+  },
+  {
+   "id": "cad-iso-03",
+   "milestone": "cad_isolate",
+   "title": "V1 and V2 vibratory trays, supports and leaf springs",
+   "status": "done",
+   "owner": "Branden",
+   "detail": "Parts 54, 55, 56 and 70; folded path from the V9 study. Modeled in the V11 CAD; not test-printed yet."
+  },
+  {
+   "id": "cad-iso-04",
+   "milestone": "cad_isolate",
+   "title": "Print one V tray with two leaf springs and a motor: does it move parts?",
+   "status": "todo",
+   "owner": "",
+   "detail": "Test before printing the rest. Needs a vibration motor (Parts page)."
+  },
+  {
+   "id": "cad-iso-05",
+   "milestone": "cad_isolate",
+   "title": "Fit the motor clip to the real vibration motor",
+   "status": "todo",
+   "owner": "Branden",
+   "detail": "Measure the motor once it arrives and change the clip on the trays."
+  },
+  {
+   "id": "cad-iso-06",
+   "milestone": "cad_isolate",
+   "title": "Flow test: drum to V1 to V2 with real parts, then fix the CAD",
+   "status": "todo",
+   "owner": "",
+   "detail": "One piece at a time onto the scanner is the goal."
+  },
+  {
+   "id": "cad-id-01",
+   "milestone": "cad_identify",
+   "title": "Scanner plate, landing ramp and trapdoors",
+   "status": "done",
+   "owner": "Branden",
+   "detail": "Parts 57, 57b and 58, with a recess for a matte background. Modeled in the V11 CAD; not test-printed yet."
+  },
+  {
+   "id": "cad-id-02",
+   "milestone": "cad_identify",
+   "title": "Trapdoor linkage: one MG996R opens both doors",
+   "status": "done",
+   "owner": "Branden",
+   "detail": "Slider post, slider, links, horn and servo saddle. Doors open about 55 deg. Modeled in the V11 CAD; not test-printed yet."
+  },
+  {
+   "id": "cad-id-03",
+   "milestone": "cad_identify",
+   "title": "Camera bridge (128 mm above the doors) and LED bar holders",
+   "status": "done",
+   "owner": "Branden",
+   "detail": "Parts 61 and 62. Modeled in the V11 CAD; not test-printed yet."
+  },
+  {
+   "id": "cad-id-04",
+   "milestone": "cad_identify",
+   "title": "Print the trapdoor set and test the slide and 55 deg opening",
+   "status": "todo",
+   "owner": "",
+   "detail": "Plate, two doors, slider post and slider, links, horn, servo."
+  },
+  {
+   "id": "cad-id-05",
+   "milestone": "cad_identify",
+   "title": "Camera mount for the XIAO ESP32-S3 Sense (and OV5640)",
+   "status": "todo",
+   "owner": "Branden",
+   "detail": "The camera bridge holds a generic camera now. Leave room for the antenna."
+  },
+  {
+   "id": "cad-id-06",
+   "milestone": "cad_identify",
+   "title": "Mount for the APDS-9960 color sensor at the landing spot",
+   "status": "todo",
+   "owner": "Branden",
+   "detail": "It reads color and tells the camera a part has landed, so it has to sit close to the part."
+  },
+  {
+   "id": "cad-ind-01",
+   "milestone": "cad_indicate",
+   "title": "Bins, locators and compact scoop (V10)",
+   "status": "done",
+   "owner": "Branden",
+   "detail": "8 floor 1 bins (140 tall, 70 sill), 8 floor 2 bins (140, open top), 16 locators with switch pockets, compact scoop. Not test-printed yet."
+  },
+  {
+   "id": "cad-ind-02",
+   "milestone": "cad_indicate",
+   "title": "Lift pedestal and drawer rails with 608 rollers",
+   "status": "done",
+   "owner": "Branden",
+   "detail": "Parts 63 to 67, 350 mm pull-out. Modeled in the V11 CAD; not test-printed yet."
+  },
+  {
+   "id": "cad-ind-03",
+   "milestone": "cad_indicate",
+   "title": "Taller lift for 236 mm of travel",
+   "status": "todo",
+   "owner": "Branden",
+   "detail": "Tower, brace and switch mounts for 400 mm rods and the built-in lead-screw NEMA17. Or shorten the floor 2 bins instead (decision pending)."
+  },
+  {
+   "id": "cad-ind-04",
+   "milestone": "cad_indicate",
+   "title": "Measure a KW11-3Z switch and fix the locator pocket",
+   "status": "todo",
+   "owner": "",
+   "detail": "Calipers on one of the 40 switches. Then print one locator before the other 15."
+  },
+  {
+   "id": "cad-ind-05",
+   "milestone": "cad_indicate",
+   "title": "Drawer carriers that hold the locators",
+   "status": "todo",
+   "owner": "Branden",
+   "detail": "U-shaped trays with the center cutout and M3 holes for the locators. Not drawn yet."
+  },
+  {
+   "id": "cad-ind-06",
+   "milestone": "cad_indicate",
+   "title": "Print one bin of each floor and the scoop; slide 20 parts in by hand",
+   "status": "todo",
+   "owner": "",
+   "detail": "Checks the drop-in fit, the grip lip, the switch press and whether parts make it into the bin."
+  },
+  {
+   "id": "cad-ind-07",
+   "milestone": "cad_indicate",
+   "title": "Scoop outlet vs the 6x8 plate (48 wide, outlet is 40)",
+   "status": "todo",
+   "owner": "Branden",
+   "detail": "Widen the outlet or send big plates to one bin some other way."
+  },
+  {
+   "id": "cad-ind-08",
+   "milestone": "cad_indicate",
+   "title": "Drawer latch so a drawer cannot open during a drop",
+   "status": "todo",
+   "owner": "Branden"
+  },
+  {
+   "id": "cad-hw-01",
+   "milestone": "hardware",
+   "title": "Frame and shell: printed frame or aluminum extrusion, then shell panels and studs",
+   "status": "todo",
+   "owner": "Branden",
+   "detail": "The printed frame is about 17 L of plastic (several kg). Decide before drawing the shell panels."
+  },
+  {
+   "id": "cad-hw-02",
+   "milestone": "hardware",
+   "title": "Electronics bay: supply, two XIAO boards, drivers, MCP23017, buck",
+   "status": "todo",
+   "owner": "Branden",
+   "detail": "About 165 mm is free at each end of the lower brick."
   }
  ]
 }
