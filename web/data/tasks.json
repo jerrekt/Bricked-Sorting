@@ -7,15 +7,26 @@
   "M": 2,
   "L": 4
  },
+ "phases": {
+  "poc": {
+   "label": "Cardboard POC",
+   "when": "Semester 1",
+   "checkpoint": "2026-12-02"
+  },
+  "final": {
+   "label": "Final version",
+   "when": "Semester 2"
+  }
+ },
  "milestone_labels": {
   "repo": "Repo and site setup",
   "bins": "Bin system",
   "isolate": "Isolate",
   "identify": "Identify",
   "indicate": "Indicate",
-  "cad_isolate": "CAD: Isolate",
-  "cad_identify": "CAD: Identify",
-  "cad_indicate": "CAD: Indicate",
+  "cad_isolate": "Final: Isolate",
+  "cad_identify": "Final: Identify",
+  "cad_indicate": "Final: Indicate",
   "dashboard": "Dashboard and inventory",
   "hardware": "Hardware and enclosure",
   "course": "Course deliverables"
@@ -70,6 +81,7 @@
    "title": "Create the project GitHub repo",
    "status": "done",
    "size": "S",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "jerrekt/Bricked-Sorting, public, scaffolded with per-stage folders."
   },
@@ -79,6 +91,7 @@
    "title": "Public site live at bricked-01.adsuaracloud.com",
    "status": "done",
    "size": "M",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "nginx on CT 150, 60 s pull from main, Cloudflare tunnel."
   },
@@ -88,6 +101,7 @@
    "title": "No-terminal upload workflow for teammates",
    "status": "done",
    "size": "S",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "Browser upload, then a pull request Branden merges (main is protected). Steps in the README."
   },
@@ -97,6 +111,7 @@
    "title": "Add teammates as GitHub collaborators",
    "status": "in_progress",
    "size": "S",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "Ethan added 2026-11-01. Vivek and Marshall: send Branden your GitHub username."
   },
@@ -106,6 +121,7 @@
    "title": "Turn on branch protection for main",
    "status": "done",
    "size": "S",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "Ruleset \"Protect main\": pull request required, no force push, no deletion. Set 2026-11-01."
   },
@@ -115,6 +131,7 @@
    "title": "Decide the 16-bin layout and floor-slot code system",
    "status": "done",
    "size": "M",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "Floor 1 = bricks, floor 2 = other; slots 1-7 color groups, slot 8 unknown."
   },
@@ -124,6 +141,7 @@
    "title": "Pick the 7 color groups from the real 10696 inventory",
    "status": "done",
    "size": "M",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "BrickLink, 484 pieces. bins.json is the shared source for site, Kratos and Indicate."
   },
@@ -133,6 +151,7 @@
    "title": "Decide whether plates count as bricks (floor 1 or 2)",
    "status": "blocked",
    "size": "S",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "Open question q26."
   },
@@ -142,23 +161,27 @@
    "title": "Decide bin sizes from the loose volume of one 10696 set",
    "status": "blocked",
    "size": "M",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "Open question q27."
   },
   {
    "id": "isolate-01",
    "milestone": "isolate",
-   "title": "Vibratory feeder design",
+   "title": "Cardboard feeder: vibratory tray that lines parts up",
    "status": "todo",
    "size": "L",
-   "owner": "Vivek"
+   "phase": "poc",
+   "owner": "Vivek",
+   "detail": "Semester 1 proof of concept, cardboard and tape. The printed version is in Final: Isolate."
   },
   {
    "id": "isolate-02",
    "milestone": "isolate",
-   "title": "Feeder prototype test",
+   "title": "Cardboard feeder test: one piece at a time to the camera",
    "status": "todo",
    "size": "L",
+   "phase": "poc",
    "owner": "Vivek"
   },
   {
@@ -167,6 +190,7 @@
    "title": "/identify endpoint on CT 150",
    "status": "done",
    "size": "L",
+   "phase": "poc",
    "owner": "Ethan",
    "detail": "Flask app, calls Brickognize, returns floor/slot/bin_number. Confirmed by a read-only look at CT 150."
   },
@@ -176,6 +200,7 @@
    "title": "Pi camera service (camera_service.py)",
    "status": "in_progress",
    "size": "L",
+   "phase": "poc",
    "owner": "Ethan",
    "detail": "Rewritten on purpose after the old one only detected bricks mid-sort; not finished. The Pi still runs the old service meanwhile."
   },
@@ -185,6 +210,7 @@
    "title": "Decide color ID: Brickognize prediction vs the Pi's APDS-9960 sensor",
    "status": "blocked",
    "size": "S",
+   "phase": "poc",
    "owner": "Ethan",
    "detail": "Open question q28. Server currently uses Brickognize only."
   },
@@ -194,6 +220,7 @@
    "title": "Time 20 real pieces through /identify: seconds and accuracy",
    "status": "todo",
    "size": "M",
+   "phase": "poc",
    "owner": "Ethan",
    "detail": "No real numbers yet; needed before trusting the demo's 16 pcs/s."
   },
@@ -203,6 +230,7 @@
    "title": "Confirm the server's slot numbers match web/data/bins.json",
    "status": "todo",
    "size": "S",
+   "phase": "poc",
    "owner": "Ethan"
   },
   {
@@ -211,6 +239,7 @@
    "title": "Chute geometry: Z rods, floor heights, yaw mechanism",
    "status": "in_progress",
    "size": "L",
+   "phase": "poc",
    "owner": "Marshall",
    "detail": "12 mm rods and a NEMA17 for yaw are picked; the V11 CAD has the full geometry. Still open: lift travel (needs about 400 mm rods, see cad-ind-03)."
   },
@@ -220,6 +249,7 @@
    "title": "Build the bin-code lookup table for Indicate",
    "status": "done",
    "size": "S",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "indicate/bin-lookup.json and .csv, generated from bins.json, on branch live."
   },
@@ -229,6 +259,7 @@
    "title": "Fake /identify server for testing Indicate without a camera",
    "status": "done",
    "size": "M",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "identify/fake_identify.py on branch live."
   },
@@ -238,15 +269,18 @@
    "title": "Wire and test the bin limit switches",
    "status": "todo",
    "size": "M",
+   "phase": "poc",
    "owner": "Marshall"
   },
   {
    "id": "indicate-05",
    "milestone": "indicate",
-   "title": "Build and test the chute hardware",
+   "title": "Cardboard chute: aim at all 16 bins",
    "status": "todo",
    "size": "L",
-   "owner": "Marshall"
+   "phase": "poc",
+   "owner": "Marshall",
+   "detail": "Semester 1 proof of concept. The printed lift and scoop are in Final: Indicate."
   },
   {
    "id": "dash-01",
@@ -254,6 +288,7 @@
    "title": "Browser-only demo (Start sort, bins, three inventory buttons)",
    "status": "done",
    "size": "L",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "web/demo.html, simulates one 10696 box."
   },
@@ -263,6 +298,7 @@
    "title": "Live status page",
    "status": "done",
    "size": "M",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "Replaced by the Live page (dash-06)."
   },
@@ -272,6 +308,7 @@
    "title": "Decide who writes live.json on CT 150",
    "status": "done",
    "size": "S",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "Settled: CT 150 sends each piece to the Live service; no live.json file."
   },
@@ -281,6 +318,7 @@
    "title": "Swap the demo for real Kratos data",
    "status": "todo",
    "size": "L",
+   "phase": "poc",
    "owner": "Branden"
   },
   {
@@ -289,6 +327,7 @@
    "title": "Full BOM for the Indicate stage",
    "status": "done",
    "size": "M",
+   "phase": "poc",
    "owner": "Marshall",
    "detail": "Indicate is section BS-1300 of the BOM (Rev A draft, three versions: Pi + Logitech, Pi + generic camera, ESP32). Buy list on the Parts page."
   },
@@ -298,8 +337,9 @@
    "title": "Enclosure: scaled LEGO-brick shell, red PLA",
    "status": "in_progress",
    "size": "L",
+   "phase": "final",
    "owner": "Branden",
-   "detail": "V11 CAD shape: two LEGO 2x1 bricks stacked, 1040 x 520 x 1248, studs on top, the loading funnel in one stud. Shell panels not drawn yet (cad-hw-01)."
+   "detail": "Semester 2. V11 CAD shape: two LEGO 2x1 bricks stacked, 1040 x 520 x 1248, studs on top, the loading funnel in one stud. Shell panels not drawn yet (cad-hw-01)."
   },
   {
    "id": "hw-03",
@@ -307,6 +347,7 @@
    "title": "Decide prototype controller (Arduino vs Pi)",
    "status": "todo",
    "size": "S",
+   "phase": "poc",
    "owner": "Branden"
   },
   {
@@ -315,6 +356,7 @@
    "title": "Design Sprint with Industrial Design students",
    "status": "done",
    "size": "S",
+   "phase": "poc",
    "owner": "Marshall",
    "detail": "Oct 7, 2026, IS216."
   },
@@ -324,6 +366,7 @@
    "title": "Team task chart on the site",
    "status": "done",
    "size": "M",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "Live at /tasks.html with claiming from Discord and the site."
   },
@@ -333,6 +376,7 @@
    "title": "Keep docs/ updated with meeting notes and decisions",
    "status": "in_progress",
    "size": "S",
+   "phase": "poc",
    "owner": "Marshall"
   },
   {
@@ -341,7 +385,8 @@
    "title": "Cardboard method to size the bins (q27): box the biggest color group per floor, double it",
    "status": "todo",
    "size": "M",
-   "owner": "Branden",
+   "phase": "poc",
+   "owner": "Marshall",
    "detail": "One size per floor, not a box per bin. Steps: 1) Count this set's pieces by color group, separately for floor 1 (bricks) and floor 2 (other) -- web/data/bins.json plus web/data/set-10696.json already give this. 2) Find the LARGEST color group on each floor; that is the worst case every bin on that floor must fit. From the real 10696 counts: floor 1's biggest group is blue (44 pieces); floor 2's biggest is black (72 pieces). 3) Pack only that one group's real pieces into a cardboard box, no bigger than needed to fit them. Do this once for floor 1 (the blue bricks) and once for floor 2 (the black other-pieces). 4) Record each box's length, width, height and volume. 5) Double each volume (for 2 sets; earlier note said 2 to 3 sets, confirm with BJ). 6) That doubled size becomes the ONE standard bin size for every bin on that floor -- every other color group is smaller, so it already fits. Floor 1 gets one bin size, floor 2 gets a different (bigger) one."
   },
   {
@@ -350,6 +395,7 @@
    "title": "Keep the BOM spreadsheet updated",
    "status": "todo",
    "size": "S",
+   "phase": "poc",
    "owner": "Marshall",
    "detail": "Google Sheet, not yet linked here. Add a row whenever a part is chosen or a feature changes the parts list."
   },
@@ -359,6 +405,7 @@
    "title": "Parts page and buy list",
    "status": "done",
    "size": "M",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "Live 2026-11-03: web/parts.html reads web/data/build_parts.json; /parts, /bought and /notbought work in Discord."
   },
@@ -368,6 +415,7 @@
    "title": "Keep the presentation deck updated",
    "status": "todo",
    "size": "S",
+   "phase": "poc",
    "owner": "Marshall",
    "detail": "Google Slides, not yet linked here. Update it whenever a feature is added or a decision changes."
   },
@@ -377,6 +425,7 @@
    "title": "Resolve floor height conflict: 6in bottom / 4in top vs which floor needs more volume",
    "status": "done",
    "size": "S",
+   "phase": "poc",
    "owner": "Marshall",
    "detail": "Settled by the V10 bins: both floors are 140 mm tall, one size per floor. Floor 1 takes parts over a 70 mm sill; floor 2 holds about 65% of the volume."
   },
@@ -386,6 +435,7 @@
    "title": "Agree the camera design with Ethan before touching the running Pi service",
    "status": "blocked",
    "size": "S",
+   "phase": "poc",
    "owner": "Ethan",
    "detail": "The current Pi service still feeds /snapshot and /stream to the dashboard. His new camera script does not have those yet and would fight it for the camera if swapped in now."
   },
@@ -395,6 +445,7 @@
    "title": "Finish the CT 150 access lockdown for Ethan",
    "status": "in_progress",
    "size": "M",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "Login and firewall checks for teammate access to the inference container. Private details are in Mnemosyne, not here."
   },
@@ -404,6 +455,7 @@
    "title": "First development drafts + initial BOM due",
    "status": "done",
    "size": "M",
+   "phase": "poc",
    "owner": "Branden",
    "due": "2026-11-03",
    "detail": "Canvas, 20 points. Submitted (marked done on the live board)."
@@ -414,6 +466,7 @@
    "title": "Written report due",
    "status": "todo",
    "size": "L",
+   "phase": "poc",
    "owner": "Marshall",
    "due": "2026-12-01",
    "detail": "Canvas, 300 points."
@@ -424,9 +477,10 @@
    "title": "Proof of concept + one-pager due",
    "status": "todo",
    "size": "L",
+   "phase": "poc",
    "owner": "Branden",
    "due": "2026-12-02",
-   "detail": "Canvas, 50 points. First semester only needs a proof of concept, not a refined machine."
+   "detail": "Canvas, 50 points. This is the cardboard POC checkpoint: semester 1 only needs a proof of concept, not a refined machine."
   },
   {
    "id": "course-08",
@@ -434,6 +488,7 @@
    "title": "Peer evaluation due",
    "status": "todo",
    "size": "S",
+   "phase": "poc",
    "owner": "All",
    "due": "2026-12-06",
    "detail": "Canvas."
@@ -444,6 +499,7 @@
    "title": "Claim system + Discord bot for the task chart",
    "status": "done",
    "size": "L",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "Live 2026-11-01: Discord commands, site buttons and the #tasks feed."
   },
@@ -453,6 +509,7 @@
    "title": "Create the shared bots container and its firewall",
    "status": "done",
    "size": "M",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "Built 2026-11-01 on Kratos, firewall tested, address reserved. Runs the claim bot and can hold other bots."
   },
@@ -462,6 +519,7 @@
    "title": "Security review of the claim system",
    "status": "done",
    "size": "M",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "Written before building, in the private notes."
   },
@@ -471,6 +529,7 @@
    "title": "Set up the Discord app, channel feed and commands",
    "status": "done",
    "size": "M",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "App installed in the team server, #tasks feed set up. 12 commands registered (tasks plus /parts, /bought, /notbought on 2026-11-03)."
   },
@@ -480,6 +539,7 @@
    "title": "Live test: one Discord command and one site click",
    "status": "done",
    "size": "S",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "Tested 2026-11-01: a site click marked course-09 done and the feed posted it."
   },
@@ -489,6 +549,7 @@
    "title": "Merge or close the old live and identify-backup branches",
    "status": "todo",
    "size": "S",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "Bin lookup from the live branch is now in indicate/. live and identify-backup can be closed after a look."
   },
@@ -498,6 +559,7 @@
    "title": "Live page: camera pieces and the simulator drop into bins",
    "status": "in_progress",
    "size": "L",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "live.html and the Live service built and tested locally. Next: turn it on in the bots container."
   },
@@ -507,6 +569,7 @@
    "title": "Install the Live hook on CT 150 so real pieces reach the Live page",
    "status": "todo",
    "size": "M",
+   "phase": "poc",
    "owner": "Branden",
    "detail": "kratos/live-hook/README.md. Branden installs it (root service)."
   },
@@ -516,6 +579,7 @@
    "title": "Camera sends every piece to /identify; check it on the Live page",
    "status": "todo",
    "size": "M",
+   "phase": "poc",
    "owner": "Ethan",
    "detail": "When a piece is under the camera it should show up on the Live page within a few seconds."
   },
@@ -525,6 +589,7 @@
    "title": "Bins follow the simulator: bridge + Arduino answer OK for each code",
    "status": "todo",
    "size": "L",
+   "phase": "poc",
    "owner": "Marshall",
    "detail": "indicate/README.md: dry run first, then the Arduino with the starter sketch."
   },
@@ -534,6 +599,7 @@
    "title": "Loading funnel in the stud and inlet chute",
    "status": "done",
    "size": "M",
+   "phase": "final",
    "owner": "Branden",
    "detail": "Parts 50 and 51. Modeled in the V11 CAD; not test-printed yet."
   },
@@ -543,6 +609,7 @@
    "title": "Drum mounts: cradles and motor bridge",
    "status": "done",
    "size": "M",
+   "phase": "final",
    "owner": "Branden",
    "detail": "Parts 52 and 53 carry the V7 drum, rollers and NEMA17 bracket. Modeled in the V11 CAD; not test-printed yet."
   },
@@ -552,6 +619,7 @@
    "title": "V1 and V2 vibratory trays, supports and leaf springs",
    "status": "done",
    "size": "L",
+   "phase": "final",
    "owner": "Branden",
    "detail": "Parts 54, 55, 56 and 70; folded path from the V9 study. Modeled in the V11 CAD; not test-printed yet."
   },
@@ -561,6 +629,7 @@
    "title": "Print one V tray with two leaf springs and a motor: does it move parts?",
    "status": "todo",
    "size": "M",
+   "phase": "final",
    "owner": "Branden",
    "detail": "Test before printing the rest. Needs a vibration motor (Parts page)."
   },
@@ -570,6 +639,7 @@
    "title": "Fit the motor clip to the real vibration motor",
    "status": "todo",
    "size": "S",
+   "phase": "final",
    "owner": "Branden",
    "detail": "Measure the motor once it arrives and change the clip on the trays."
   },
@@ -579,6 +649,7 @@
    "title": "Flow test: drum to V1 to V2 with real parts, then fix the CAD",
    "status": "todo",
    "size": "L",
+   "phase": "final",
    "owner": "Branden",
    "detail": "One piece at a time onto the scanner is the goal."
   },
@@ -588,6 +659,7 @@
    "title": "Scanner plate, landing ramp and trapdoors",
    "status": "done",
    "size": "M",
+   "phase": "final",
    "owner": "Branden",
    "detail": "Parts 57, 57b and 58, with a recess for a matte background. Modeled in the V11 CAD; not test-printed yet."
   },
@@ -597,6 +669,7 @@
    "title": "Trapdoor linkage: one MG996R opens both doors",
    "status": "done",
    "size": "L",
+   "phase": "final",
    "owner": "Branden",
    "detail": "Slider post, slider, links, horn and servo saddle. Doors open about 55 deg. Modeled in the V11 CAD; not test-printed yet."
   },
@@ -606,6 +679,7 @@
    "title": "Camera bridge (128 mm above the doors) and LED bar holders",
    "status": "done",
    "size": "S",
+   "phase": "final",
    "owner": "Branden",
    "detail": "Parts 61 and 62. Modeled in the V11 CAD; not test-printed yet."
   },
@@ -615,6 +689,7 @@
    "title": "Print the trapdoor set and test the slide and 55 deg opening",
    "status": "todo",
    "size": "M",
+   "phase": "final",
    "owner": "Branden",
    "detail": "Plate, two doors, slider post and slider, links, horn, servo."
   },
@@ -624,6 +699,7 @@
    "title": "Camera mount for the XIAO ESP32-S3 Sense (and OV5640)",
    "status": "todo",
    "size": "S",
+   "phase": "final",
    "owner": "Branden",
    "detail": "The camera bridge holds a generic camera now. Leave room for the antenna."
   },
@@ -633,6 +709,7 @@
    "title": "Mount for the APDS-9960 color sensor at the landing spot",
    "status": "todo",
    "size": "S",
+   "phase": "final",
    "owner": "Branden",
    "detail": "It reads color and tells the camera a part has landed, so it has to sit close to the part."
   },
@@ -642,6 +719,7 @@
    "title": "Bins, locators and compact scoop (V10)",
    "status": "done",
    "size": "L",
+   "phase": "final",
    "owner": "Branden",
    "detail": "8 floor 1 bins (140 tall, 70 sill), 8 floor 2 bins (140, open top), 16 locators with switch pockets, compact scoop. Not test-printed yet."
   },
@@ -651,6 +729,7 @@
    "title": "Lift pedestal and drawer rails with 608 rollers",
    "status": "done",
    "size": "L",
+   "phase": "final",
    "owner": "Branden",
    "detail": "Parts 63 to 67, 350 mm pull-out. Modeled in the V11 CAD; not test-printed yet."
   },
@@ -660,6 +739,7 @@
    "title": "Taller lift for 236 mm of travel",
    "status": "todo",
    "size": "L",
+   "phase": "final",
    "owner": "Branden",
    "detail": "Tower, brace and switch mounts for 400 mm rods and the built-in lead-screw NEMA17. Or shorten the floor 2 bins instead (decision pending)."
   },
@@ -669,6 +749,7 @@
    "title": "Measure a KW11-3Z switch and fix the locator pocket",
    "status": "todo",
    "size": "S",
+   "phase": "final",
    "owner": "Branden",
    "detail": "Calipers on one of the 40 switches. Then print one locator before the other 15."
   },
@@ -678,6 +759,7 @@
    "title": "Drawer carriers that hold the locators",
    "status": "todo",
    "size": "M",
+   "phase": "final",
    "owner": "Branden",
    "detail": "U-shaped trays with the center cutout and M3 holes for the locators. Not drawn yet."
   },
@@ -687,6 +769,7 @@
    "title": "Print one bin of each floor and the scoop; slide 20 parts in by hand",
    "status": "todo",
    "size": "M",
+   "phase": "final",
    "owner": "Branden",
    "detail": "Checks the drop-in fit, the grip lip, the switch press and whether parts make it into the bin."
   },
@@ -696,6 +779,7 @@
    "title": "Scoop outlet vs the 6x8 plate (48 wide, outlet is 40)",
    "status": "todo",
    "size": "M",
+   "phase": "final",
    "owner": "Branden",
    "detail": "Widen the outlet or send big plates to one bin some other way."
   },
@@ -705,6 +789,7 @@
    "title": "Drawer latch so a drawer cannot open during a drop",
    "status": "todo",
    "size": "M",
+   "phase": "final",
    "owner": "Branden"
   },
   {
@@ -713,6 +798,7 @@
    "title": "Frame and shell: printed frame or aluminum extrusion, then shell panels and studs",
    "status": "todo",
    "size": "L",
+   "phase": "final",
    "owner": "Branden",
    "detail": "The printed frame is about 17 L of plastic (several kg). Decide before drawing the shell panels."
   },
@@ -722,8 +808,129 @@
    "title": "Electronics bay: supply, two XIAO boards, drivers, MCP23017, buck",
    "status": "todo",
    "size": "M",
+   "phase": "final",
    "owner": "Branden",
    "detail": "About 165 mm is free at each end of the lower brick."
+  },
+  {
+   "id": "identify-09",
+   "milestone": "identify",
+   "title": "Cardboard scanner box: camera, lights and one fixed spot for the part",
+   "status": "todo",
+   "size": "M",
+   "phase": "poc",
+   "owner": "Ethan",
+   "detail": "Semester 1 proof of concept. Same 128 mm camera height as the final scanner if you can."
+  },
+  {
+   "id": "bins-06",
+   "milestone": "bins",
+   "title": "Cardboard bins: 16 bins at the sizes from bins-05",
+   "status": "todo",
+   "size": "M",
+   "phase": "poc",
+   "owner": "Marshall",
+   "detail": "Semester 1 proof of concept. 8 per floor, labeled with the bin code."
+  },
+  {
+   "id": "hw-06",
+   "milestone": "hardware",
+   "title": "Cardboard POC run: one handful of pieces from feeder to bins",
+   "status": "todo",
+   "size": "L",
+   "phase": "poc",
+   "owner": "All",
+   "detail": "The semester 1 checkpoint. Isolate, Identify and Indicate working together, even if slowly. Needed for the Dec 2 proof of concept (course-07)."
+  },
+  {
+   "id": "fin-iso-01",
+   "milestone": "cad_isolate",
+   "title": "Print and assemble the final Isolate stage: funnel, drum, V1 and V2 trays",
+   "status": "todo",
+   "size": "L",
+   "phase": "final",
+   "owner": "Branden",
+   "detail": "From the V11 CAD, after the tray test (cad-iso-04)."
+  },
+  {
+   "id": "fin-iso-02",
+   "milestone": "cad_isolate",
+   "title": "Feeder firmware: drum stepper and tray vibration on the XIAO boards",
+   "status": "todo",
+   "size": "M",
+   "phase": "final",
+   "owner": "Vivek",
+   "detail": "Speeds tunable from one config so the flow test can change them."
+  },
+  {
+   "id": "fin-id-01",
+   "milestone": "cad_identify",
+   "title": "Print and assemble the final scanner: trapdoors, servo, camera, LED bars",
+   "status": "todo",
+   "size": "L",
+   "phase": "final",
+   "owner": "Branden",
+   "detail": "From the V11 CAD, after the trapdoor test (cad-id-04)."
+  },
+  {
+   "id": "fin-id-02",
+   "milestone": "cad_identify",
+   "title": "XIAO ESP32-S3 Sense firmware: capture and send to /identify",
+   "status": "todo",
+   "size": "L",
+   "phase": "final",
+   "owner": "Ethan",
+   "detail": "Replaces the Pi camera service. Same /identify endpoint on Kratos."
+  },
+  {
+   "id": "fin-id-03",
+   "milestone": "cad_identify",
+   "title": "Camera test: the same 20 pieces with the Pi camera and the Sense",
+   "status": "todo",
+   "size": "M",
+   "phase": "final",
+   "owner": "Ethan",
+   "detail": "Accuracy and seconds per piece, before dropping the Pi."
+  },
+  {
+   "id": "fin-ind-01",
+   "milestone": "cad_indicate",
+   "title": "Print and assemble the lift, scoop, 16 bins, locators and drawers",
+   "status": "todo",
+   "size": "L",
+   "phase": "final",
+   "owner": "Branden",
+   "detail": "From the V10/V11 CAD, after the bin and scoop test (cad-ind-06)."
+  },
+  {
+   "id": "fin-ind-02",
+   "milestone": "cad_indicate",
+   "title": "Wire the final electronics: TMC2209 drivers, MCP23017, 16 bin switches, homing switches",
+   "status": "todo",
+   "size": "L",
+   "phase": "final",
+   "owner": "Branden",
+   "detail": "Pin map from the GPIO plan (C3 and Sense, all 11 pins each)."
+  },
+  {
+   "id": "fin-ind-03",
+   "milestone": "cad_indicate",
+   "title": "Indicate firmware on the XIAO ESP32-C3: lift, yaw, doors, bin switches",
+   "status": "todo",
+   "size": "L",
+   "phase": "final",
+   "owner": "Marshall",
+   "detail": "Takes the bin code from Identify and answers OK when the part is in."
+  },
+  {
+   "id": "fin-hw-01",
+   "milestone": "hardware",
+   "title": "Final run: one full 10696 box sorted end to end in the brick shell",
+   "status": "todo",
+   "size": "L",
+   "phase": "final",
+   "owner": "All",
+   "detail": "The semester 2 finish line."
   }
  ]
 }
