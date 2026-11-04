@@ -9,6 +9,8 @@ Lets the team claim and update tasks on the Tasks page from Discord or from the 
 ## Discord commands
 `/tasks` `/mytasks` `/claim task` `/start task` `/blocked task reason` `/done task` `/todo task` `/release task` `/export` (Branden only)
 
+Parts (when `BOT_PARTS_URL` is set): `/parts [show]` `/bought part` `/notbought part`
+
 Replies are private to the person who typed the command. The channel feed is how everyone sees the changes.
 
 ## Rules (enforced by the server)
@@ -17,8 +19,13 @@ Replies are private to the person who typed the command. The channel feed is how
 - Only the Discord IDs in `DISCORD_USERS` can use commands. Every request's Discord signature is checked, and requests older than 5 minutes are rejected.
 - Site buttons need a name from the list plus the team password. 8 wrong tries locks that visitor out for 10 minutes. The buttons are off unless `BRICKED_SITE_WRITES=1`.
 
-## Build page parts (optional)
-Set `BOT_PARTS_URL` (the Waymo bot uses `https://raw.githubusercontent.com/jerrekt/Aint-No-WAYmo/main/build_parts.json`) to turn on `GET /api/parts` and `POST /api/parts/{id}` (`{name, password, bought}`). Same gate as site claims. The file stays the list; this server only keeps who marked each part bought, posts it to the feed, and `/export` lists it for a PR. Empty = off.
+## Parts / buy list (optional)
+Set `BOT_PARTS_URL` to turn on `GET /api/parts` and `POST /api/parts/{id}` (`{name, password, bought}`), plus the Discord commands `/parts [show]`, `/bought part` and `/notbought part`. Site writes use the same gate as site claims; Discord uses the signed user ID like the task commands. The file stays the list; this server only keeps who marked each part bought, posts it to the feed, and `/export` lists it for a PR. Empty = off.
+
+- Bricked Sorting bot: `https://raw.githubusercontent.com/jerrekt/Bricked-Sorting/main/web/data/build_parts.json` (Parts page, `web/parts.html`)
+- Waymo bot: `https://raw.githubusercontent.com/jerrekt/Aint-No-WAYmo/main/build_parts.json`
+
+Top-level keys other than `parts` and `_note` (like `versions` and `stage_labels`) pass through unchanged.
 
 ## Run the tests
     python3 -m venv .venv && .venv/bin/pip install -r requirements.txt pytest

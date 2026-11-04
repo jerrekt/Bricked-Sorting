@@ -313,3 +313,52 @@ def test_parts_same_gate_as_site_claims(client, monkeypatch, tmp_path):
     monkeypatch.setenv("BRICKED_SITE_WRITES", "0")
     assert mark(client, "waymo-shell", ip="4.4.4.4").status_code == 503
     assert client.get("/api/parts").json()["writes"] is False
+
+
+# ---- parts from Discord ----
+
+def test_discord_parts_list_and_mark(client, monkeypatch, tmp_path):
+    parts_on(client, monkeypatch, tmp_path)
+    out = discord(client, "Ethan", "parts").json()["data"]
+    assert out["flags"] == 64 and "esp32-s3-sense" in out["content"] and "waymo-shell" not in out["content"]
+    assert "waymo-shell" in discord(client, "Ethan", "parts", show="have").json()["data"]["content"]
+    r = discord(client, "Ethan", "bought", part="ESP32-S3-Sense").json()["data"]["content"]
+    assert r.startswith("Done:") and "have it (Ethan)" in r
+    assert "marked bought `esp32-s3-sense`" in client.posts[-1][1]["content"] and "via Discord" in client.posts[-1][1]["content"]
+    assert discord(client, "Ethan", "parts").json()["data"]["content"] == "Nothing left to buy."
+    discord(client, "Marshall", "notbought", part="waymo-shell")
+    p = next(x for x in client.get("/api/parts").json()["parts"] if x["id"] == "waymo-shell")
+    assert p["bought"] is False and p["bought_by"] == "Marshall"
+    assert "No part called nope-99" in discord(client, "Ethan", "bought", part="nope-99").json()["data"]["content"]
+
+
+def test_discord_parts_gated(client, monkeypatch, tmp_path):
+    monkeypatch.delenv("BOT_PARTS_PATH", raising=False)
+    monkeypatch.delenv("BOT_PARTS_URL", raising=False)
+    appmod._parts.update(data=None, at=0)
+    assert "not set up" in discord(client, "Ethan", "parts").json()["data"]["content"]
+    assert "not set up" in discord(client, "Ethan", "bought", part="x").json()["data"]["content"]
+    parts_on(client, monkeypatch, tmp_path)
+    assert "not on the" in discord(client, "Mallory", "bought", part="waymo-shell").json()["data"]["content"]
+    assert client.posts == []
+
+
+def test_parts_extra_keys_pass_through(client, monkeypatch, tmp_path):
+    seed = {"_note": "secret-ish", "stage_labels": {"identify": "Identify"}, "parts": [
+        {"id": "apds9960", "part": "Color sensor", "stage": "identify", "versions": "all", "bought": False, "qty": "1", "price": "~$2"}]}
+    p = tmp_path / "parts.json"
+    p.write_text(json.dumps(seed))
+    monkeypatch.setenv("BOT_PARTS_PATH", str(p))
+    appmod._parts.update(data=None, at=0)
+    data = client.get("/api/parts").json()
+    assert data["stage_labels"] == {"identify": "Identify"} and data["versions"] == {} and "_note" not in data
+    assert "· 1 · ~$2" in discord(client, "Ethan", "parts").json()["data"]["content"]
+
+
+def test_real_bricked_parts_file_is_valid():
+    data = json.loads((Path(__file__).resolve().parents[3] / "web" / "data" / "build_parts.json").read_text())
+    ids = [p["id"] for p in data["parts"]]
+    assert len(ids) == len(set(ids)) and all(len(i) <= 40 and i == i.lower() for i in ids)
+    assert all(isinstance(p["bought"], bool) and p["stage"] in data["stage_labels"] for p in data["parts"])
+    assert all(p["versions"] in ("all", "v1", "v2", "v3", "v1+v2") for p in data["parts"])
+    assert all(not p["link"] or p["link"].startswith("https://") for p in data["parts"])

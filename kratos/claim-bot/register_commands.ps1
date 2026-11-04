@@ -31,7 +31,14 @@ $commands = @'
    "options": [{"name": "task", "description": "Task id, like identify-02", "type": 3, "required": true, "max_length": 40}]},
   {"name": "release", "description": "Give up a task so someone else can claim it",
    "options": [{"name": "task", "description": "Task id, like identify-02", "type": 3, "required": true, "max_length": 40}]},
-  {"name": "export", "description": "Branden only: live owners and statuses for tasks.json"}
+  {"name": "export", "description": "Branden only: live owners and statuses for tasks.json"},
+  {"name": "parts", "description": "Buy list (what is left to buy, by default)",
+   "options": [{"name": "show", "description": "Which parts", "type": 3, "required": false,
+                "choices": [{"name": "to buy", "value": "need"}, {"name": "have it", "value": "have"}, {"name": "all", "value": "all"}]}]},
+  {"name": "bought", "description": "Mark a part bought",
+   "options": [{"name": "part", "description": "Part id from the Parts page, like mcp23017", "type": 3, "required": true, "max_length": 40}]},
+  {"name": "notbought", "description": "Mark a part not bought",
+   "options": [{"name": "part", "description": "Part id from the Parts page, like mcp23017", "type": 3, "required": true, "max_length": 40}]}
 ]
 '@
 
