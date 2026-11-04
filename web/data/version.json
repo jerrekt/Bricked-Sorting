@@ -1,6 +1,6 @@
 {
- "version": "V1.017",
+ "version": "V1.018",
  "date": "2026-11-03",
- "note": "Task board: each bar is now two rows, Sem 1 cardboard POC ending at the checkpoint flag, and Sem 2 final",
+ "note": "Buy list: parts grouped by stage with prices, $ to buy per group and totals for the V3 build",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }

@@ -30,42 +30,9 @@
       (p.bought ? 'Mark not bought' : 'Mark bought') + '</button></span>';
   }
 
-  function renderList() {
-    var parts = DATA.parts.filter(inVersion);
-    var got = parts.filter(function (p) { return p.bought; }).length;
-    var pct = parts.length ? Math.round(got / parts.length * 100) : 0;
-    $('pct').textContent = pct + '%'; $('fill').style.width = pct + '%';
-    $('count').textContent = got + ' of ' + parts.length + ' on hand · ' + (parts.length - got) + ' to buy';
-    var wrap = $('list'); wrap.innerHTML = '';
-    var labels = DATA.stage_labels || STAGES;
-    Object.keys(labels).forEach(function (st) {
-      var items = parts.filter(function (p) { return p.stage === st && (filter === 'all' || (filter === 'need' ? !p.bought : p.bought)); });
-      if (!items.length) return;
-      var sec = document.createElement('section'); sec.className = 'stage';
-      sec.innerHTML = '<h3>' + esc(labels[st]) + '</h3>';
-      var ul = document.createElement('ul'); ul.className = 'plist';
-      items.forEach(function (p) {
-        var link = safeLink(p.link);
-        var where = p.where ? (link ? '<a href="' + esc(link) + '" target="_blank" rel="noopener noreferrer">' + esc(p.where) + '</a>' : esc(p.where)) : '';
-        var li = document.createElement('li'); li.className = 'part ' + (p.bought ? 'got' : 'need');
-        li.innerHTML = '<span class="p-st">' + (p.bought ? 'Have it' : 'To buy') + '</span><span class="p-name">' + esc(p.part) + '</span>' +
-          '<span class="p-price">' + esc(p.price || '') + '</span>' +
-          '<span class="p-meta">' + (p.qty ? '<span>Qty ' + esc(p.qty) + '</span>' : '') + (where ? '<span>' + where + '</span>' : '') +
-          '<span>' + esc(VLABEL[p.versions] || p.versions || '') + '</span><code>' + esc(p.id) + '</code>' +
-          (p.bought && p.bought_by ? '<span>by ' + esc(p.bought_by) + '</span>' : '') + '</span>' +
-          (p.what ? '<span class="p-what">' + esc(p.what) + '</span>' : '') +
-          (p.note ? '<span class="p-note">' + esc(p.note) + '</span>' : '') + buttons(p);
-        ul.appendChild(li);
-      });
-      sec.appendChild(ul); wrap.appendChild(sec);
-    });
-    if (!wrap.children.length) wrap.innerHTML = '<p class="muted">Nothing here.</p>';
-  }
-
-  /* ---------- condensed layouts with prices (preview: parts.html?opt=a|b|c) ---------- */
-  var OPT = (location.search.match(/[?&]opt=([abc])\b/) || [])[1] || '';
-  // Totals only make sense for one build, so the condensed views start on the planned version (V3).
-  if (OPT) { ver = 'v3'; document.querySelectorAll('.filters button[data-v]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-v') === 'v3' ? 'true' : 'false'); }); }
+  /* ---------- buy list: groups by stage with prices (option A, picked by BJ 2026-11-03) ---------- */
+  // Totals only make sense for one build, so the page starts on the planned version (V3).
+  ver = 'v3'; document.querySelectorAll('.filters button[data-v]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-v') === 'v3' ? 'true' : 'false'); });
   var OPEN = {};
   function money(n, approx) { return n == null ? '' : (approx ? '~' : '') + '$' + (Math.round(n * 100) / 100).toFixed(n % 1 ? 2 : 0); }
   function costOf(list) {
@@ -107,41 +74,17 @@
     return { need: need, got: got, cN: cN, cG: cG, cA: cA, pct: cA.total ? Math.round(cG.total / cA.total * 100) : 0 };
   }
 
-  function renderOpt() {
+  function renderBuyList() {
     // money totals count the machine only; the LEGO test set is listed but not added in
     var all = DATA.parts.filter(inVersion), parts = all.filter(function (p) { return p.stage !== 'test'; }), s = summary(parts), wrap = $('list');
     $('pct').textContent = s.pct + '%'; $('fill').style.width = s.pct + '%';
     $('count').innerHTML = '<b class="money">' + money(s.cN.total, s.cN.approx) + '</b> left to buy' + (s.cN.unpriced ? ' + PLA (slice first)' : '') +
       ' · ' + money(s.cG.total, s.cG.approx) + ' on hand · ' + s.got.length + ' of ' + parts.length + ' parts';
-    var html = '';
-    if (OPT === 'a') {            // A: groups by stage, like the task board
-      var labels = DATA.stage_labels || STAGES;
-      html = Object.keys(labels).map(function (st) {
-        var l = parts.filter(function (p) { return p.stage === st; });
-        return l.length ? groupHtml('s-' + st, labels[st], l, { store: true }) : '';
-      }).join('');
-    } else if (OPT === 'b') {     // B: shopping list by store, what you still need first
-      var stores = {};
-      s.need.forEach(function (p) { var k = p.where || 'Anywhere'; (stores[k] = stores[k] || []).push(p); });
-      var order = Object.keys(stores).sort(function (a, b) { return costOf(stores[b]).total - costOf(stores[a]).total; });
-      html = '<h3 class="c-h">To buy, by store</h3>' + order.map(function (k) {
-        var l = stores[k], c = costOf(l);
-        return '<div class="store"><div class="store-h"><b>' + esc(k) + '</b><span>' + l.length + ' item' + (l.length > 1 ? 's' : '') + ' · ' + c.text + '</span></div>' +
-          '<ul class="clist">' + l.map(function (p) { return row(p, {}); }).join('') + '</ul></div>';
-      }).join('') + groupHtml('have', 'Already have', s.got, { store: true });
-    } else {                      // C: cost overview by type
-      var tl = DATA.type_labels || {}, keys = Object.keys(tl), max = 0;
-      var rows = keys.map(function (k) { var l = parts.filter(function (p) { return p.type === k; }); var c = costOf(l); max = Math.max(max, c.total); return [k, l, c]; })
-        .filter(function (r) { return r[1].length; });
-      html = '<div class="tiles"><div class="tile"><span>Machine total</span><b>' + money(s.cA.total, s.cA.approx) + '</b><em>' + (s.cA.unpriced ? '+ ' + s.cA.unpriced + ' unpriced' : '') + '</em></div>' +
-        '<div class="tile ok"><span>On hand</span><b>' + money(s.cG.total, s.cG.approx) + '</b><em>' + s.got.length + ' parts</em></div>' +
-        '<div class="tile need"><span>Left to buy</span><b>' + money(s.cN.total, s.cN.approx) + '</b><em>' + s.need.length + ' parts</em></div></div>' +
-        '<div class="typebars">' + rows.map(function (r) {
-          var got = costOf(r[1].filter(function (p) { return p.bought; })).total, w = max ? r[2].total / max * 100 : 0, g = r[2].total ? got / r[2].total * 100 : 0;
-          return '<div class="tb"><span class="tb-l">' + esc(tl[r[0]]) + '</span><span class="tb-track"><span class="tb-tot" style="width:' + w.toFixed(1) + '%"><i style="width:' + g.toFixed(1) + '%"></i></span></span><span class="tb-v">' + money(r[2].total, r[2].approx) + '</span></div>';
-        }).join('') + '</div>' +
-        rows.map(function (r) { return groupHtml('t-' + r[0], tl[r[0]], r[1], { store: true }); }).join('');
-    }
+    var labels = DATA.stage_labels || STAGES;
+    var html = Object.keys(labels).map(function (st) {
+      var l = all.filter(function (p) { return p.stage === st; });
+      return l.length ? groupHtml('s-' + st, labels[st], l, { store: true }) : '';
+    }).join('');
     wrap.innerHTML = html;
   }
 
@@ -152,7 +95,7 @@
     $('mode').textContent = isLive ? 'Live' : 'Static';
     $('mode').className = 'mode-badge' + (isLive ? ' live' : '');
     renderVersions(d.versions || {});
-    if (OPT) renderOpt(); else renderList();
+    renderBuyList();
   }
 
   function getJSON(url, ms) {
@@ -220,7 +163,7 @@
       b.addEventListener('click', function () {
         set(b.getAttribute(attr));
         document.querySelectorAll('.filters button[' + attr + ']').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-        if (DATA) { if (OPT) renderOpt(); else renderList(); }
+        if (DATA) renderBuyList();
       });
     });
   }
