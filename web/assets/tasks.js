@@ -16,8 +16,7 @@
 
   /* ---------- weighted progress ----------
      Every task has a size (S/M/L -> size_points) and a phase: "poc" (cardboard proof of
-     concept, semester 1) or "final" (semester 2). Bars count points, not tasks. Each bar has
-     a POC zone and a Final zone; the line between them is the cardboard POC checkpoint. */
+     concept, semester 1) or "final" (semester 2). Bars count points, not tasks. */
   var PHASES = ['poc', 'final'];
   function phaseOf(t) { return t.phase === 'final' ? 'final' : 'poc'; }
   function phaseInfo(ph) {
@@ -30,34 +29,38 @@
     return { n: list.length, nDone: by('done').length, total: total, done: done, run: run,
              pct: total ? Math.round(done / total * 100) : 0 };
   }
-  function zoneBar(list, label) {
-    var z = {}, total = sum(list);
-    PHASES.forEach(function (ph) { z[ph] = stats(list.filter(function (t) { return phaseOf(t) === ph; })); });
-    if (!total) return '<span class="zbar"></span>';
-    var html = '', left = 0;
-    PHASES.forEach(function (ph) {
-      var s = z[ph]; if (!s.total) return;
-      var w = s.total / total * 100, dw = s.done / s.total * 100, rw = s.run / s.total * 100;
-      html += '<span class="zone z-' + ph + (s.done === s.total ? ' full' : '') + '" style="width:' + w.toFixed(2) + '%">' +
-        '<i class="b-done" style="width:' + dw.toFixed(2) + '%"></i><i class="b-run" style="width:' + rw.toFixed(2) + '%"></i></span>';
-      if (ph === 'poc') left = w;
-    });
-    var ck = z.poc.total && z.final.total ? '<span class="ckpt' + (z.poc.done === z.poc.total ? ' hit' : '') + '" style="left:' + left.toFixed(2) + '%" title="Cardboard POC checkpoint"></span>' : '';
-    var aria = label + ': ' + Math.round(sum(list.filter(function (t) { return t.status === 'done'; })) / total * 100) + '% done. ' +
-      PHASES.filter(function (ph) { return z[ph].total; }).map(function (ph) { return phaseInfo(ph).label + ' ' + z[ph].pct + '%'; }).join(', ');
-    return '<span class="zbar" role="img" aria-label="' + esc(aria) + '">' + html + ck + '</span>';
+  /* Two rows per bar: semester 1 (cardboard POC) and semester 2 (final). Each fills from the left,
+     so finished final work never floats ahead of an empty POC. The POC row ends in the checkpoint
+     flag with its date; it turns green when every POC task is done. */
+  var FLAG = '<svg class="flag-ic" viewBox="0 0 12 14" aria-hidden="true"><path d="M2 1v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M2.6 1.6h7.4l-2 2.6 2 2.6H2.6z" fill="currentColor"/></svg>';
+  function shortDate(iso) {
+    var m = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], p = String(iso || '').split('-');
+    return p.length === 3 ? m[+p[1] - 1] + ' ' + (+p[2]) : '';
   }
-  function phaseLine(list) {
-    return PHASES.map(function (ph) {
+  function phaseBars(list, label) {
+    var rows = PHASES.map(function (ph) {
+      var inPh = list.filter(function (t) { return phaseOf(t) === ph; }), s = stats(inPh);
+      if (!s.total) return '';
+      var info = phaseInfo(ph), full = s.done === s.total;
+      var dw = s.done / s.total * 100, rw = Math.min(100 - dw, s.run / s.total * 100);
+      var end = ph === 'poc'
+        ? '<span class="pend flag' + (full ? ' hit' : '') + '" title="Cardboard POC checkpoint">' + FLAG + (full ? 'POC done' : 'POC ' + esc(shortDate(info.checkpoint) || '')) + '</span>'
+        : '<span class="pend fin' + (full ? ' hit' : '') + '">' + (full ? 'Done' : 'Final') + '</span>';
+      return '<span class="prow ph-' + ph + '"><span class="plab">' + (ph === 'poc' ? 'Sem 1' : 'Sem 2') + '</span>' +
+        '<span class="ptrack"><i class="b-done" style="width:' + dw.toFixed(1) + '%"></i><i class="b-run" style="width:' + rw.toFixed(1) + '%"></i></span>' +
+        end + '<span class="ppct">' + s.pct + '%</span></span>';
+    }).join('');
+    var aria = label + ': ' + PHASES.map(function (ph) {
       var s = stats(list.filter(function (t) { return phaseOf(t) === ph; }));
-      return s.total ? '<span class="ph-' + ph + '">' + esc(phaseInfo(ph).label) + ' ' + s.pct + '%</span>' : '';
-    }).filter(Boolean).join('<span class="sep"> · </span>');
+      return s.total ? phaseInfo(ph).label + ' ' + s.pct + '% done' : '';
+    }).filter(Boolean).join(', ');
+    return '<span class="pbars" role="img" aria-label="' + esc(aria) + '">' + rows + '</span>';
   }
 
   function renderProgress(d) {
     var all = d.tasks, s = stats(all);
     $('pg-pct').textContent = s.pct + '%';
-    $('pg-bar').innerHTML = zoneBar(all, 'Whole project');
+    $('pg-bar').innerHTML = phaseBars(all, 'Whole project');
     var poc = stats(all.filter(function (t) { return phaseOf(t) === 'poc'; }));
     var fin = stats(all.filter(function (t) { return phaseOf(t) === 'final'; }));
     var ck = phaseInfo('poc').checkpoint, ckText = '';
@@ -71,8 +74,7 @@
     var list = $('pg-list'); list.innerHTML = '';
     rows.forEach(function (r) {
       var info = phaseInfo(r[0]), li = document.createElement('li'); li.className = 'pg-row ph-' + r[0];
-      li.innerHTML = '<span class="pg-label">' + esc(info.label) + ' <span class="muted">· ' + esc(info.when) + '</span></span><span class="pg-val">' + r[1].pct + '%</span>' +
-        '<span class="pg-mini"><i style="width:' + r[1].pct + '%"></i></span><span class="pg-ev">' + esc(r[2]) + '</span>';
+      li.innerHTML = '<span class="pg-label">' + esc(info.when) + ' · ' + esc(info.label) + '</span><span class="pg-ev">' + esc(r[2]) + '</span>';
       list.appendChild(li);
     });
     // Encouragement: what got finished lately (live board only; the server stamps updated_at).
@@ -167,8 +169,8 @@
       var pid = 'grp-' + esc(g.id);
       sec.innerHTML = '<button type="button" class="grp-btn" aria-expanded="' + open + '" aria-controls="' + pid + '" data-g="' + esc(g.id) + '">' +
         '<span class="grp-name">' + esc(g.label) + '</span><span class="grp-count">' + s.pct + '%</span><span class="grp-chev" aria-hidden="true"></span>' +
-        zoneBar(all, g.label) +
-        '<span class="grp-sub">' + phaseLine(all) + '<span class="sep"> · </span>' + s.nDone + ' of ' + s.n + ' tasks' + (extra ? '<span class="sep"> · </span>' + extra : '') + '</span></button>';
+        phaseBars(all, g.label) +
+        '<span class="grp-sub">' + s.nDone + ' of ' + s.n + ' tasks done' + (extra ? '<span class="sep"> · </span>' + extra : '') + '</span></button>';
       var panel = document.createElement('div'); panel.className = 'grp-panel'; panel.id = pid; panel.hidden = !open;
       PHASES.forEach(function (ph) {
         var inPh = all.filter(function (t) { return phaseOf(t) === ph; });

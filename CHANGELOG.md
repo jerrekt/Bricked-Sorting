@@ -4,6 +4,9 @@ Site and repo version. One bump per merged pull request (see `tools/bump_version
 It counts updates to this repo, not how finished the machine is; the Tasks page shows that.
 V1.001 to V1.014 were numbered afterwards, in merge order.
 
+## V1.017 · 2026-11-03
+- Task board: each bar is now two rows, Sem 1 cardboard POC ending at the checkpoint flag, and Sem 2 final
+
 ## V1.016 · 2026-11-03
 - Bigger Bricked Sorting logo on the intro on desktop
 
