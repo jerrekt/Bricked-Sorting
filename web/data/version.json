@@ -1,6 +1,6 @@
 {
- "version": "V1.018",
+ "version": "V1.019",
  "date": "2026-11-03",
- "note": "Buy list: parts grouped by stage with prices, $ to buy per group and totals for the V3 build",
+ "note": "Team: Vivek is Isolate, code and testing",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }

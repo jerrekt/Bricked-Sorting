@@ -4,6 +4,9 @@ Site and repo version. One bump per merged pull request (see `tools/bump_version
 It counts updates to this repo, not how finished the machine is; the Tasks page shows that.
 V1.001 to V1.014 were numbered afterwards, in merge order.
 
+## V1.019 · 2026-11-03
+- Team: Vivek is Isolate, code and testing
+
 ## V1.018 · 2026-11-03
 - Buy list: parts grouped by stage with prices, $ to buy per group and totals for the V3 build
 
