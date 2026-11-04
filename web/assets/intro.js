@@ -20,7 +20,7 @@
     '#brickIntro{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;' +
     'background:radial-gradient(ellipse at 50% 38%,#1b2540,#0b0f1a 70%);color:#eef1fa;cursor:pointer;animation:biOut .5s ease 2.9s forwards;font:600 14px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}' +
     '#brickIntro::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:linear-gradient(90deg,#d01012 0 33.3%,#f5c518 33.3% 66.6%,#0057c2 66.6% 100%)}' +
-    '#brickIntro .biLogo{height:clamp(36px,9vw,56px);width:auto;opacity:0;transform:translateY(8px);animation:biRise .6s ease .1s forwards}' +
+    '#brickIntro .biLogo{height:clamp(40px,9vw,104px);width:auto;opacity:0;transform:translateY(8px);animation:biRise .6s ease .1s forwards}' +
     '#brickIntro svg{width:min(90vw,460px);height:auto;overflow:hidden}' +
     '#brickIntro .biTag{color:#9aa4c0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:0;animation:biRise .6s ease 2.2s forwards}' +
     '#brickIntro .biSkip{position:absolute;bottom:18px;right:18px;font-size:11px;color:#6f7896;letter-spacing:.06em}' +
