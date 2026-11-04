@@ -11,14 +11,16 @@ Shared by the website, Kratos (classification) and the Indicate controller. The 
 
 | Slot | Group | Merged shades (10696) |
 |---|---|---|
-| 1 | Red / Orange | Red, Dark Red, Orange, Dark Orange, Bright Light Orange |
-| 2 | Yellow | Yellow, Bright Light Yellow |
+| 1 | Red / Orange | Red, Dark Red, Orange, Dark Orange |
+| 2 | Yellow | Yellow, Bright Light Yellow, Bright Light Orange |
 | 3 | Green / Lime | Green, Bright Green, Dark Green, Lime, Yellowish Green |
-| 4 | Blue / Azure | Blue, Dark Blue, Dark Azure, Medium Azure, Light Aqua |
-| 5 | Pink / Purple | Bright Pink, Dark Pink, Magenta, Dark Purple, Lavender, Medium Lavender |
-| 6 | Black / Dark Gray | Black, Dark Bluish Gray |
-| 7 | White / Light Gray | White, Light Bluish Gray |
-| 8 | Unknown | Tan, browns, all transparent colors, anything the camera can't place |
+| 4 | Blue / Azure | Blue, Dark Blue, Dark Azure, Medium Azure, Dark Purple |
+| 5 | Pink / Purple | Bright Pink, Dark Pink, Magenta, Medium Lavender |
+| 6 | Black / Dark Gray | Black, Dark Bluish Gray, Dark Brown |
+| 7 | White / Light Gray | White, Light Bluish Gray, Light Aqua, Lavender |
+| 8 | Unknown | Tan, Reddish Brown, all transparent colors, anything the camera can't place |
+
+Sensor check (2026-11-03): Light Aqua and Lavender moved to White, Bright Light Orange to Yellow, Dark Purple to Blue and Dark Brown to Black, because a normal RGB color sensor reads them as those groups (desk estimate from BrickLink colors, not a sensor test). Dark vs light gray, dark orange vs reddish brown, and black vs very dark colors are told apart only by brightness, so the scanner needs fixed lighting and a calibrated threshold.
 
 Why these groups: they are the biggest color groups in one 10696 box (BrickLink inventory, 484 pieces).
 Per box: floor 2 gets 335 pieces, floor 1 gets 149.
