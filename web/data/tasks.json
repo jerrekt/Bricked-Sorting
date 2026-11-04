@@ -15,6 +15,49 @@
   "hardware": "Hardware and enclosure",
   "course": "Course deliverables"
  },
+ "groups": [
+  {
+   "id": "isolate",
+   "label": "Isolate",
+   "milestones": [
+    "isolate",
+    "cad_isolate"
+   ]
+  },
+  {
+   "id": "identify",
+   "label": "Identify",
+   "milestones": [
+    "identify",
+    "cad_identify"
+   ]
+  },
+  {
+   "id": "indicate",
+   "label": "Indicate",
+   "milestones": [
+    "indicate",
+    "cad_indicate",
+    "bins"
+   ]
+  },
+  {
+   "id": "build",
+   "label": "Build and parts",
+   "milestones": [
+    "hardware"
+   ]
+  },
+  {
+   "id": "project",
+   "label": "Site and class",
+   "milestones": [
+    "repo",
+    "dashboard",
+    "course"
+   ]
+  }
+ ],
  "tasks": [
   {
    "id": "repo-01",

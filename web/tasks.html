@@ -30,8 +30,22 @@
 .filters{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 2px}
 .filters button{font:inherit;font-size:13px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--surface-2);color:var(--fg);font-weight:600;border-color:var(--muted)}
+#board{display:grid;gap:10px;margin-top:10px}
+.grp{border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden}
+.grp-btn{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:1fr auto auto;gap:6px 12px;align-items:center;padding:14px 16px}
+.grp-btn:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:12px}
+.grp-btn:hover .grp-name{color:var(--accent)}
+.grp-name{font-size:18px;font-weight:700}
+.grp-count{font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--muted)}
+.grp-chev{width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin:0 4px 4px}
+.grp.open .grp-chev{transform:rotate(225deg);margin:4px 4px 0}
+.grp-bar{grid-column:1/-1;height:8px;border-radius:6px;background:var(--line);overflow:hidden}
+.grp-bar i{display:block;height:100%;background:var(--ok)}
+.grp-sub{grid-column:1/-1;font-size:13px;color:var(--muted)}
+.grp-panel{padding:0 12px 12px}
+.grp-empty{margin:4px 4px 8px}
 .ms{margin-top:6px}
-.ms h3{font-size:15px;margin:0 0 8px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.ms h3{font-size:13px;margin:8px 2px 8px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 .tlist{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:6px}
 .task{display:grid;grid-template-columns:auto 1fr auto;gap:4px 10px;align-items:baseline;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 12px;box-shadow:var(--shadow)}
 .task .t-detail{grid-column:1/-1;font-size:13px;color:var(--muted)}
@@ -103,7 +117,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
       <button data-f="blocked" aria-pressed="false">Blocked</button>
       <button data-f="done" aria-pressed="false">Done</button>
     </div>
-    <p class="muted small" id="how">To change a task, use the Discord commands (/claim, /start, /blocked, /done, /release) or edit <code>web/data/tasks.json</code> by pull request.</p>
+    <p class="muted small" id="how">Open a group to see its tasks. To change a task, use the Discord commands (/claim, /start, /blocked, /done, /release) or edit <code>web/data/tasks.json</code> by pull request.</p>
     <div id="board"></div>
   </section>
 </main>
@@ -117,7 +131,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
     <div class="row"><button class="btn small" type="button" id="dlg-cancel">Cancel</button><button class="btn small primary" type="submit" id="dlg-ok">Save</button></div>
   </form>
 </dialog>
-<footer class="foot"><div class="wrap">Bricked Sorting · SJSU Tech 190A. Task chart is static; see docs/task-chart-handoff.md for why.</div></footer>
+<footer class="foot"><div class="wrap">Bricked Sorting · SJSU Tech 190A.</div></footer>
 <script src="assets/tasks.js"></script>
 </body>
 </html>

@@ -46,7 +46,7 @@
   function unowned(o) { return !o || o === 'All'; }
 
   function buttons(t) {
-    if (!live || !DATA.writes) return '';
+    if (!live || !DATA.writes || t.status === 'done') return '';
     var b = [];
     if (unowned(t.owner) && t.status !== 'done') b.push(['claim', null, 'Claim', 1]);
     if (!unowned(t.owner)) {
@@ -60,24 +60,59 @@
     }).join('') + '</span>';
   }
 
+  /* Groups: 3-5 collapsible buttons, each with its own progress bar. tasks.json "groups" lists
+     which milestones each one holds; without it, every milestone is its own group. */
+  var OPEN = {};
+  try { OPEN = JSON.parse(localStorage.getItem('bricked-open-groups') || '{}') || {}; } catch (e) { OPEN = {}; }
+  function saveOpen() { try { localStorage.setItem('bricked-open-groups', JSON.stringify(OPEN)); } catch (e) {} }
+
+  function groupsOf(d) {
+    var labels = d.milestone_labels || {}, seen = {}, out = [];
+    (d.groups || []).forEach(function (g) {
+      var ms = (g.milestones || []).filter(function (m) { return labels[m] && !seen[m]; });
+      ms.forEach(function (m) { seen[m] = 1; });
+      if (ms.length) out.push({ id: g.id, label: g.label, milestones: ms });
+    });
+    Object.keys(labels).forEach(function (m) { if (!seen[m]) out.push({ id: m, label: labels[m], milestones: [m] }); });
+    return out;
+  }
+
+  function taskItem(t) {
+    var li = document.createElement('li'); li.className = 'task st-' + t.status;
+    li.innerHTML = '<span class="t-status">' + (STATUS_LABEL[t.status] || esc(t.status)) + '</span><span class="t-title">' + esc(t.title) + '</span>' +
+      '<span class="t-owner">' + esc(t.owner || 'Open') + '</span>' +
+      (t.due && t.status !== 'done' ? '<span class="t-due">Due ' + esc(dueLabel(t.due).text) + '</span>' : '') +
+      (t.note && t.status === 'blocked' ? '<span class="t-note">Blocked: ' + esc(t.note) + '</span>' : '') +
+      (t.detail ? '<span class="t-detail">' + esc(t.detail) + '</span>' : '') + buttons(t);
+    return li;
+  }
+
   function renderTasks() {
     var d = DATA, wrap = $('board'); wrap.innerHTML = '';
-    Object.keys(d.milestone_labels).forEach(function (mid) {
-      var tasks = d.tasks.filter(function (t) { return t.milestone === mid && (filter === 'all' || t.status === filter); });
-      if (!tasks.length) return;
-      var sec = document.createElement('section'); sec.className = 'ms';
-      sec.innerHTML = '<h3>' + esc(d.milestone_labels[mid]) + '</h3>';
-      var ul = document.createElement('ul'); ul.className = 'tlist';
-      tasks.forEach(function (t) {
-        var li = document.createElement('li'); li.className = 'task st-' + t.status;
-        li.innerHTML = '<span class="t-status">' + (STATUS_LABEL[t.status] || esc(t.status)) + '</span><span class="t-title">' + esc(t.title) + '</span>' +
-          '<span class="t-owner">' + esc(t.owner || 'Open') + '</span>' +
-          (t.due ? '<span class="t-due">Due ' + esc(dueLabel(t.due).text) + '</span>' : '') +
-          (t.note ? '<span class="t-note">Blocked: ' + esc(t.note) + '</span>' : '') +
-          (t.detail ? '<span class="t-detail">' + esc(t.detail) + '</span>' : '') + buttons(t);
-        ul.appendChild(li);
+    groupsOf(d).forEach(function (g) {
+      var all = d.tasks.filter(function (t) { return g.milestones.indexOf(t.milestone) >= 0; });
+      if (!all.length) return;
+      var n = function (st) { return all.filter(function (t) { return t.status === st; }).length; };
+      var done = n('done'), pct = Math.round(done / all.length * 100), open = !!OPEN[g.id];
+      var extra = [n('in_progress') && n('in_progress') + ' in progress', n('blocked') && n('blocked') + ' blocked', n('todo') && n('todo') + ' to do'].filter(Boolean).join(' · ');
+      var sec = document.createElement('section'); sec.className = 'grp' + (open ? ' open' : '');
+      var pid = 'grp-' + esc(g.id);
+      sec.innerHTML = '<button type="button" class="grp-btn" aria-expanded="' + open + '" aria-controls="' + pid + '" data-g="' + esc(g.id) + '">' +
+        '<span class="grp-name">' + esc(g.label) + '</span><span class="grp-count">' + done + ' / ' + all.length + ' done</span><span class="grp-chev" aria-hidden="true"></span>' +
+        '<span class="grp-bar"><i style="width:' + pct + '%"></i></span>' +
+        '<span class="grp-sub">' + pct + '%' + (extra ? ' · ' + extra : '') + '</span></button>';
+      var panel = document.createElement('div'); panel.className = 'grp-panel'; panel.id = pid; panel.hidden = !open;
+      g.milestones.forEach(function (mid) {
+        var tasks = all.filter(function (t) { return t.milestone === mid && (filter === 'all' || t.status === filter); });
+        if (!tasks.length) return;
+        var ms = document.createElement('div'); ms.className = 'ms';
+        if (g.milestones.length > 1) ms.innerHTML = '<h3>' + esc(d.milestone_labels[mid]) + '</h3>';
+        var ul = document.createElement('ul'); ul.className = 'tlist';
+        tasks.forEach(function (t) { ul.appendChild(taskItem(t)); });
+        ms.appendChild(ul); panel.appendChild(ms);
       });
-      sec.appendChild(ul); wrap.appendChild(sec);
+      if (!panel.children.length) panel.innerHTML = '<p class="muted small grp-empty">No ' + (filter === 'all' ? '' : STATUS_LABEL[filter].toLowerCase() + ' ') + 'tasks here.</p>';
+      sec.appendChild(panel); wrap.appendChild(sec);
     });
   }
 
@@ -142,6 +177,15 @@
   });
 
   $('board').addEventListener('click', function (e) {
+    var g = e.target.closest('button[data-g]');
+    if (g) {
+      var open = g.getAttribute('aria-expanded') !== 'true';
+      OPEN[g.dataset.g] = open; saveOpen();
+      g.setAttribute('aria-expanded', String(open));
+      g.parentNode.classList.toggle('open', open);
+      $(g.getAttribute('aria-controls')).hidden = !open;
+      return;
+    }
     var b = e.target.closest('button[data-act]'); if (!b) return;
     openDialog(b.dataset.id, b.dataset.act, b.dataset.st);
   });
