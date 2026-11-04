@@ -77,9 +77,21 @@
     return out;
   }
 
+  /* Size: S, M or L. The group bars count work (points per size from tasks.json size_points),
+     so one big task moves the bar more than a small one. Tasks without a size count as M. */
+  var SIZE_WORD = { S: 'small', M: 'medium', L: 'large' };
+  function sizeOf(t) { return SIZE_WORD[t.size] ? t.size : 'M'; }
+  function points(t) {
+    var p = (DATA.size_points || { S: 1, M: 2, L: 4 })[sizeOf(t)];
+    return typeof p === 'number' && p > 0 ? p : 2;
+  }
+  function sum(list) { return list.reduce(function (a, t) { return a + points(t); }, 0); }
+
   function taskItem(t) {
     var li = document.createElement('li'); li.className = 'task st-' + t.status;
-    li.innerHTML = '<span class="t-status">' + (STATUS_LABEL[t.status] || esc(t.status)) + '</span><span class="t-title">' + esc(t.title) + '</span>' +
+    var s = sizeOf(t);
+    li.innerHTML = '<span class="t-status">' + (STATUS_LABEL[t.status] || esc(t.status)) + '</span>' +
+      '<span class="t-title"><span class="t-size sz-' + s + '" title="Size: ' + SIZE_WORD[s] + ' (' + points(t) + ' pt)">' + s + '</span>' + esc(t.title) + '</span>' +
       '<span class="t-owner">' + esc(t.owner || 'Open') + '</span>' +
       (t.due && t.status !== 'done' ? '<span class="t-due">Due ' + esc(dueLabel(t.due).text) + '</span>' : '') +
       (t.note && t.status === 'blocked' ? '<span class="t-note">Blocked: ' + esc(t.note) + '</span>' : '') +
@@ -93,14 +105,16 @@
       var all = d.tasks.filter(function (t) { return g.milestones.indexOf(t.milestone) >= 0; });
       if (!all.length) return;
       var n = function (st) { return all.filter(function (t) { return t.status === st; }).length; };
-      var done = n('done'), pct = Math.round(done / all.length * 100), open = !!OPEN[g.id];
+      var of = function (st) { return all.filter(function (t) { return t.status === st; }); };
+      var total = sum(all), donePts = sum(of('done')), runPts = sum(of('in_progress'));
+      var pct = Math.round(donePts / total * 100), runPct = Math.round((donePts + runPts) / total * 100) - pct, open = !!OPEN[g.id];
       var extra = [n('in_progress') && n('in_progress') + ' in progress', n('blocked') && n('blocked') + ' blocked', n('todo') && n('todo') + ' to do'].filter(Boolean).join(' · ');
       var sec = document.createElement('section'); sec.className = 'grp' + (open ? ' open' : '');
       var pid = 'grp-' + esc(g.id);
       sec.innerHTML = '<button type="button" class="grp-btn" aria-expanded="' + open + '" aria-controls="' + pid + '" data-g="' + esc(g.id) + '">' +
-        '<span class="grp-name">' + esc(g.label) + '</span><span class="grp-count">' + done + ' / ' + all.length + ' done</span><span class="grp-chev" aria-hidden="true"></span>' +
-        '<span class="grp-bar"><i style="width:' + pct + '%"></i></span>' +
-        '<span class="grp-sub">' + pct + '%' + (extra ? ' · ' + extra : '') + '</span></button>';
+        '<span class="grp-name">' + esc(g.label) + '</span><span class="grp-count">' + pct + '%</span><span class="grp-chev" aria-hidden="true"></span>' +
+        '<span class="grp-bar" role="img" aria-label="' + pct + '% of the work done, ' + runPct + '% more in progress"><i class="b-done" style="width:' + pct + '%"></i><i class="b-run" style="width:' + runPct + '%"></i></span>' +
+        '<span class="grp-sub">' + n('done') + ' of ' + all.length + ' tasks done · ' + donePts + ' of ' + total + ' pts' + (extra ? ' · ' + extra : '') + '</span></button>';
       var panel = document.createElement('div'); panel.className = 'grp-panel'; panel.id = pid; panel.hidden = !open;
       g.milestones.forEach(function (mid) {
         var tasks = all.filter(function (t) { return t.milestone === mid && (filter === 'all' || t.status === filter); });
