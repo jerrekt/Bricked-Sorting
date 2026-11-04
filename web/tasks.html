@@ -34,7 +34,7 @@
 .plab{font-size:12px;font-weight:700;color:var(--muted);white-space:nowrap}
 .ptrack{display:flex;height:10px;border-radius:5px;overflow:hidden;background:var(--line)}
 .ptrack i{display:block;height:100%}
-.ph-poc .ptrack .b-done{background:var(--brand)}
+.ph-poc .ptrack .b-done{background:var(--ok)}
 .ph-final .ptrack .b-done{background:var(--ok)}
 .ptrack .b-run{background:var(--flag);opacity:.55}
 .pend{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;white-space:nowrap;color:var(--muted)}
@@ -149,7 +149,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
       <button data-f="done" aria-pressed="false">Done</button>
     </div>
     <p class="muted small" id="how">Open a group to see its tasks. To change a task, use the Discord commands (/claim, /start, /blocked, /done, /release) or edit <code>web/data/tasks.json</code> by pull request.</p>
-    <p class="legend" aria-label="How the bars count"><span>Bars count work, not tasks:</span><span><span class="t-size sz-S">S</span>1 pt</span><span><span class="t-size sz-M">M</span>2 pts</span><span><span class="t-size sz-L">L</span>4 pts</span><span><i style="background:var(--brand)"></i>Sem 1 cardboard POC</span><span><i style="background:var(--ok)"></i>Sem 2 final</span><span><i style="background:var(--flag);opacity:.55"></i>in progress</span></p>
+    <p class="legend" aria-label="How the bars count"><span>Bars count work, not tasks:</span><span><span class="t-size sz-S">S</span>1 pt</span><span><span class="t-size sz-M">M</span>2 pts</span><span><span class="t-size sz-L">L</span>4 pts</span><span><i style="background:var(--ok)"></i>done</span><span><i style="background:var(--flag);opacity:.55"></i>in progress</span><span style="color:var(--brand)">&#9873; POC checkpoint</span></p>
     <div id="board"></div>
   </section>
 </main>
