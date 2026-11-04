@@ -4,6 +4,9 @@ Site and repo version. One bump per merged pull request (see `tools/bump_version
 It counts updates to this repo, not how finished the machine is; the Tasks page shows that.
 V1.001 to V1.014 were numbered afterwards, in merge order.
 
+## V1.016 · 2026-11-03
+- Bigger Bricked Sorting logo on the intro on desktop
+
 ## V1.015 · 2026-11-03
 - Site version in the header of every page, with this changelog (#15)
 - Intro animation of our sorter from above: the brick lands on the trapdoors, is identified, the lift goes to floor 1 and the scoop turns to bin 4, the doors open and it slides into the wedge bin (once per visit, tap to skip) (#15)
