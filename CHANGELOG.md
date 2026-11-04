@@ -6,7 +6,7 @@ V1.001 to V1.014 were numbered afterwards, in merge order.
 
 ## V1.015 · 2026-11-03
 - Site version in the header of every page, with this changelog (#15)
-- Intro animation: a brick is scanned and the chute sends it to its bin (once per visit, tap to skip) (#15)
+- Intro animation of our sorter from above: the brick lands on the trapdoors, is identified, the lift goes to floor 1 and the scoop turns to bin 4, the doors open and it slides into the wedge bin (once per visit, tap to skip) (#15)
 
 ## V1.014 · 2026-11-03
 - Task board: cardboard POC vs final version, checkpoint on every bar, progress card computed from tasks (#14)
