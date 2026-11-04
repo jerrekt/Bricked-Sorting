@@ -39,8 +39,16 @@
 .grp-count{font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--muted)}
 .grp-chev{width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin:0 4px 4px}
 .grp.open .grp-chev{transform:rotate(225deg);margin:4px 4px 0}
-.grp-bar{grid-column:1/-1;height:8px;border-radius:6px;background:var(--line);overflow:hidden}
-.grp-bar i{display:block;height:100%;background:var(--ok)}
+.grp-bar{grid-column:1/-1;height:8px;border-radius:6px;background:var(--line);overflow:hidden;display:flex}
+.grp-bar i{display:block;height:100%}
+.grp-bar .b-done{background:var(--ok)}
+.grp-bar .b-run{background:var(--flag);opacity:.55}
+.grp-count{font-size:16px;color:var(--fg)}
+.t-size{display:inline-block;min-width:18px;text-align:center;font-size:10px;font-weight:700;line-height:16px;border-radius:4px;margin-right:7px;vertical-align:1px;border:1px solid var(--line);color:var(--muted)}
+.t-size.sz-M{border-color:var(--muted)}
+.t-size.sz-L{background:var(--muted);border-color:var(--muted);color:var(--surface)}
+.legend{display:flex;gap:6px 14px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--muted);margin:2px 0 0}
+.legend i{display:inline-block;width:14px;height:8px;border-radius:3px;margin-right:5px;vertical-align:0}
 .grp-sub{grid-column:1/-1;font-size:13px;color:var(--muted)}
 .grp-panel{padding:0 12px 12px}
 .grp-empty{margin:4px 4px 8px}
@@ -118,6 +126,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
       <button data-f="done" aria-pressed="false">Done</button>
     </div>
     <p class="muted small" id="how">Open a group to see its tasks. To change a task, use the Discord commands (/claim, /start, /blocked, /done, /release) or edit <code>web/data/tasks.json</code> by pull request.</p>
+    <p class="legend" aria-label="How the bars count"><span>Bars count work, not tasks:</span><span><span class="t-size sz-S">S</span>1 pt</span><span><span class="t-size sz-M">M</span>2 pts</span><span><span class="t-size sz-L">L</span>4 pts</span><span><i style="background:var(--ok)"></i>done</span><span><i style="background:var(--flag);opacity:.55"></i>in progress</span></p>
     <div id="board"></div>
   </section>
 </main>
