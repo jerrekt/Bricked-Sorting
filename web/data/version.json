@@ -1,6 +1,6 @@
 {
- "version": "V1.019",
+ "version": "V1.020",
  "date": "2026-11-03",
- "note": "Vivek's role; compact home animation and wording; social preview; demo speed label and auto-run; Live offline wording; footer links",
+ "note": "V12 CAD: eight CAD tasks done, extrusion and T-nuts on the buy list",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }

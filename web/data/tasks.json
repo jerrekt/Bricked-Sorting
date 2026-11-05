@@ -339,7 +339,7 @@
    "size": "L",
    "phase": "final",
    "owner": "Branden",
-   "detail": "Semester 2. V11 CAD shape: two LEGO 2x1 bricks stacked, 1040 x 520 x 1248, studs on top, the loading funnel in one stud. Shell panels not drawn yet (cad-hw-01)."
+   "detail": "V12 shell: cut 3 mm sheet panels on the extrusion frame, printed stud rings. Panel cut list and the seam line still to draw; red PLA for the studs and corners."
   },
   {
    "id": "hw-03",
@@ -697,21 +697,21 @@
    "id": "cad-id-05",
    "milestone": "cad_identify",
    "title": "Camera mount for the XIAO ESP32-S3 Sense (and OV5640)",
-   "status": "todo",
+   "status": "done",
    "size": "S",
    "phase": "final",
    "owner": "Branden",
-   "detail": "The camera bridge holds a generic camera now. Leave room for the antenna."
+   "detail": "V12 part 73: snap-in cradle on the camera bridge for the XIAO ESP32-S3 Sense, lens down, room for the OV5640 heat sink, antenna tray. Done in the V12 CAD (2026-11-03); not test-printed."
   },
   {
    "id": "cad-id-06",
    "milestone": "cad_identify",
    "title": "Mount for the APDS-9960 color sensor at the landing spot",
-   "status": "todo",
+   "status": "done",
    "size": "S",
    "phase": "final",
    "owner": "Branden",
-   "detail": "It reads color and tells the camera a part has landed, so it has to sit close to the part."
+   "detail": "V12 part 74: pocket for the GY-9960 board tilted 30 deg toward the doors, 22 mm from the part. Measure the board holes first. Done in the V12 CAD (2026-11-03); not test-printed."
   },
   {
    "id": "cad-ind-01",
@@ -737,11 +737,11 @@
    "id": "cad-ind-03",
    "milestone": "cad_indicate",
    "title": "Taller lift for 236 mm of travel",
-   "status": "todo",
+   "status": "done",
    "size": "L",
    "phase": "final",
    "owner": "Branden",
-   "detail": "Tower, brace and switch mounts for 400 mm rods and the built-in lead-screw NEMA17. Or shorten the floor 2 bins instead (decision pending)."
+   "detail": "V12: rods 400 mm, built-in lead-screw NEMA17 with a 360 mm screw, 236.5 mm travel; new part 71 ties the rod cap to the back frame extrusion. Done in the V12 CAD (2026-11-03); not test-printed."
   },
   {
    "id": "cad-ind-04",
@@ -757,11 +757,11 @@
    "id": "cad-ind-05",
    "milestone": "cad_indicate",
    "title": "Drawer carriers that hold the locators",
-   "status": "todo",
+   "status": "done",
    "size": "M",
    "phase": "final",
    "owner": "Branden",
-   "detail": "U-shaped trays with the center cutout and M3 holes for the locators. Not drawn yet."
+   "detail": "V12 part 72: 8 printed 3 mm tiles per tier with the 24 locator holes, side bar holes and splice strips. Done in the V12 CAD (2026-11-03); not test-printed."
   },
   {
    "id": "cad-ind-06",
@@ -777,40 +777,41 @@
    "id": "cad-ind-07",
    "milestone": "cad_indicate",
    "title": "Scoop outlet vs the 6x8 plate (48 wide, outlet is 40)",
-   "status": "todo",
+   "status": "done",
    "size": "M",
    "phase": "final",
    "owner": "Branden",
-   "detail": "Widen the outlet or send big plates to one bin some other way."
+   "detail": "Decided: keep the 40 mm outlet. Only the 6x8 and 8x16 plates (2 of 484 pieces) are wider, and the 8x16 cannot pass the funnel either; hand-sort those two."
   },
   {
    "id": "cad-ind-08",
    "milestone": "cad_indicate",
    "title": "Drawer latch so a drawer cannot open during a drop",
-   "status": "todo",
+   "status": "done",
    "size": "M",
    "phase": "final",
-   "owner": "Branden"
+   "owner": "Branden",
+   "detail": "V12 part 75: gravity lever on the right rail drops behind a catch under the side bar; a pull jams it, lifting the lever frees it (checked over the full 350 mm). Done in the V12 CAD (2026-11-03); not test-printed."
   },
   {
    "id": "cad-hw-01",
    "milestone": "hardware",
    "title": "Frame and shell: printed frame or aluminum extrusion, then shell panels and studs",
-   "status": "todo",
+   "status": "done",
    "size": "L",
    "phase": "final",
    "owner": "Branden",
-   "detail": "The printed frame is about 17 L of plastic (several kg). Decide before drawing the shell panels."
+   "detail": "V12: 2020 aluminum extrusion frame (20.5 m, printed corners 69 and 77) replaces about 17 L of printed beams; shell walls are cut 3 mm sheet; the two roof studs print as quarter rings (78, 79). Done in the V12 CAD (2026-11-03); not test-printed."
   },
   {
    "id": "cad-hw-02",
    "milestone": "hardware",
    "title": "Electronics bay: supply, two XIAO boards, drivers, MCP23017, buck",
-   "status": "todo",
+   "status": "done",
    "size": "M",
    "phase": "final",
    "owner": "Branden",
-   "detail": "About 165 mm is free at each end of the lower brick."
+   "detail": "V12 part 76: two tray tiles in the +X end bay with standoff bosses for the PSU, buck, two XIAO boards, TMC2209 carrier and MCP23017. Board sizes are placeholders. Done in the V12 CAD (2026-11-03); not test-printed."
   },
   {
    "id": "identify-09",
