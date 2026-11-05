@@ -6,6 +6,7 @@ V1.001 to V1.014 were numbered afterwards, in merge order.
 
 ## V1.020 · 2026-11-03
 - V12 CAD: eight CAD tasks done, extrusion and T-nuts on the buy list
+- V13 drum: static outlet plate and helical flight, one bearing fewer
 
 ## V1.019 · 2026-11-03
 - Team: Vivek is Isolate, code and testing

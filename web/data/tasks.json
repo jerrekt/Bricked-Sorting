@@ -614,6 +614,16 @@
    "detail": "Parts 52 and 53 carry the V7 drum, rollers and NEMA17 bracket. Modeled in the V11 CAD; not test-printed yet."
   },
   {
+   "id": "cad-iso-07",
+   "milestone": "cad_isolate",
+   "title": "Drum: static outlet plate and helical flight (V13)",
+   "status": "done",
+   "size": "M",
+   "phase": "final",
+   "owner": "Branden",
+   "detail": "The end plate no longer turns: 49b is bolted to the cradles and carries the outlet window and the thrust face (old 49 cap and 57 holder dropped, one bearing fewer). Inside the barrel a 1.75-turn spiral (47b) walks bricks to the outlet, 90 mm per turn. Modeled in the V13 CAD; not test-printed yet."
+  },
+  {
    "id": "cad-iso-03",
    "milestone": "cad_isolate",
    "title": "V1 and V2 vibratory trays, supports and leaf springs",
