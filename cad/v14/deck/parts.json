@@ -9,12 +9,12 @@
    "material": "PLA",
    "bed_extent": [
     49.82,
-    204.49,
-    202.48
+    190.95,
+    237.11
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 143.9
+   "est_grams_each": 160.3
   },
   {
    "label": "205_drum_cradle_B_xpos",
@@ -22,83 +22,83 @@
    "qty": 1,
    "material": "PLA",
    "bed_extent": [
-    197.71,
-    237.01,
-    202.48
+    191.09,
+    230.39,
+    237.11
    ],
    "fits_248": true,
    "diagonal_on_bed": true,
-   "est_grams_each": 187.9
+   "est_grams_each": 207.4
   },
   {
-   "label": "200_hopper_bowl_q1",
+   "label": "200_hopper_collar_q1",
    "part_no": "200",
    "qty": 1,
    "material": "PLA",
    "bed_extent": [
-    143.0,
-    143.0,
-    55.67
+    146.02,
+    146.02,
+    14.84
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 35.0
+   "est_grams_each": 45.4
   },
   {
-   "label": "200_hopper_bowl_q2",
+   "label": "200_hopper_collar_q2",
    "part_no": "200",
    "qty": 1,
    "material": "PLA",
    "bed_extent": [
-    142.97,
-    142.97,
-    55.66
+    145.98,
+    145.98,
+    14.81
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 35.0
+   "est_grams_each": 45.4
   },
   {
-   "label": "200_hopper_bowl_q3",
+   "label": "200_hopper_collar_q3",
    "part_no": "200",
    "qty": 1,
    "material": "PLA",
    "bed_extent": [
-    143.0,
-    143.0,
-    55.67
+    146.02,
+    146.02,
+    14.84
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 35.0
+   "est_grams_each": 45.4
   },
   {
-   "label": "200_hopper_bowl_q4",
+   "label": "200_hopper_collar_q4",
    "part_no": "200",
    "qty": 1,
    "material": "PLA",
    "bed_extent": [
-    143.0,
-    143.0,
-    55.67
+    146.02,
+    146.02,
+    14.84
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 35.0
+   "est_grams_each": 45.4
   },
   {
-   "label": "201_hopper_throat",
+   "label": "201_hopper",
    "part_no": "201",
    "qty": 1,
    "material": "PLA",
    "bed_extent": [
-    209.06,
-    217.81,
-    66.0
+    210.86,
+    197.0,
+    100.16
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 101.8
+   "est_grams_each": 169.0
   },
   {
    "label": "202_feed_chute",
@@ -106,13 +106,13 @@
    "qty": 1,
    "material": "PLA",
    "bed_extent": [
-    70.09,
-    138.26,
-    106.7
+    105.72,
+    126.93,
+    102.05
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 44.5
+   "est_grams_each": 41.6
   },
   {
    "label": "203_V1_tray_a",
@@ -120,13 +120,13 @@
    "qty": 1,
    "material": "PETG",
    "bed_extent": [
-    230.02,
+    229.53,
     44.0,
-    24.59
+    39.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 59.6
+   "est_grams_each": 60.3
   },
   {
    "label": "203_V1_tray_b",
@@ -134,13 +134,13 @@
    "qty": 1,
    "material": "PETG",
    "bed_extent": [
-    90.31,
+    92.12,
     44.0,
-    22.41
+    28.18
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 25.0
+   "est_grams_each": 25.3
   },
   {
    "label": "203_V1_splice",
@@ -162,13 +162,13 @@
    "qty": 1,
    "material": "PETG",
    "bed_extent": [
-    228.38,
-    228.38,
-    26.0
+    229.28,
+    229.28,
+    42.86
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 77.2
+   "est_grams_each": 77.5
   },
   {
    "label": "207_leaf_spring_V1_1",
@@ -176,13 +176,13 @@
    "qty": 1,
    "material": "PETG",
    "bed_extent": [
-    56.67,
-    97.0,
-    32.0
+    84.0,
+    130.08,
+    36.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 16.9
+   "est_grams_each": 20.7
   },
   {
    "label": "207_leaf_spring_V1_2",
@@ -190,13 +190,13 @@
    "qty": 1,
    "material": "PETG",
    "bed_extent": [
-    58.4,
-    94.9,
-    32.0
+    64.85,
+    119.5,
+    36.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 14.6
+   "est_grams_each": 17.9
   },
   {
    "label": "207_leaf_spring_V1_3",
@@ -204,13 +204,13 @@
    "qty": 1,
    "material": "PETG",
    "bed_extent": [
-    55.34,
-    93.35,
-    32.0
+    77.6,
+    111.69,
+    36.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 17.7
+   "est_grams_each": 19.5
   },
   {
    "label": "207_leaf_spring_V2_1",
@@ -218,13 +218,13 @@
    "qty": 1,
    "material": "PETG",
    "bed_extent": [
-    44.15,
-    84.4,
-    44.15
+    47.98,
+    99.3,
+    47.98
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 12.9
+   "est_grams_each": 15.4
   },
   {
    "label": "207_leaf_spring_V2_2",
@@ -233,12 +233,12 @@
    "material": "PETG",
    "bed_extent": [
     48.2,
-    82.0,
+    88.77,
     58.2
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 14.7
+   "est_grams_each": 14.5
   },
   {
    "label": "210_scanner_plate",
@@ -521,5 +521,5 @@
    "use": "thrust ring on 49b (V13 note)"
   }
  ],
- "est_total_grams_new_parts": 1681
+ "est_total_grams_new_parts": 1835
 }

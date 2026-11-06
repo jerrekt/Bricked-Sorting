@@ -5,88 +5,89 @@ Built to **v14-interface-4.1** (frozen) on branch `cad-v14-deck`.
 - Outputs:
   - `world/`: STEP in machine coordinates, plus `deck_assembly.step`
   - `print/`: new parts laid flat
-  - `parts.json`, `checks.json`, and 4 stills
+  - `parts.json`, `checks.json`, and 5 stills
 
 Coordinates are right-handed: +X is the front viewer's left, +Y is the front, +Z is up.
 
+**Rev 2 (2026-11-05 20:40 PT, BJ):**
+- Small hopper (~150 across) with a 4-piece collar to the stud ring and M3 seam lugs.
+- Drum tilt cut to 2°, and the drum raised.
+- Trays now 4.5°. The scanner floor stays at 459 and the funnel exit at 335.
+
 ## Brick path and heights
+The heights are solved from the fixed scanner floor upward (`TRAY_DEG` at the top of the script).
+
 | Stage | Where | z |
 |---|---|---|
-| Hopper | Bowl in stud L (r 142 at 779 → r 97), throat r 97 through the roof hole, then an oblique cone to the outlet at (-200, -75) | 779 → 660 |
-| Feed chute 202 | U trough, 43° slope, ends 22 mm inside the drum's rear end, 18 below the axis | 658 → 569 |
-| Drum (V13, as-is) | Axis front-back at x -200, rear end at y 0, tilted **6°** down toward +Y | axis 589 → 570 |
-| Outlet | 49b window at the bottom of the front plate (y ≈ 184) | 503 |
-| V1 203 (long, 2 pieces + splice) | Along +X at y 212, from x -245 to 75. Low lip under the outlet. | 491 → 486 |
-| V2 204 (short) | Diagonal from (65, 205) to (262, 8). Notched where V1 drops in. | 478 → 473 |
-| Landing ramp 211 | V13 ramp, lowered to 8 mm | 467 → 459 |
-| Scanner floor (doors) | Over (330, 0) | 459 |
-| Drop funnel 220 | Mouth r 54 at z 415 (under the open door tips at 416). 45° cone to r 28, then a tube through the deck hole. | exit **335** |
+| Hopper 201 | One piece, ~150 across (r 75 rim). An oblique cone from the stud centre (-260, 0) down to the outlet r 30 at (-245, -50). Worst wall 44.9°. | 778 → 681 |
+| Collar 200 (4 quarters) | r 77.7..144.5 (stud ring ID 290). Top slopes from 780 at the ring to 778 at the rim, so stray bricks slide in. It sits on the hopper's rim flange with 4 × M3. | 775..780 |
+| Feed chute 202 | U trough at **45°**. Ends 22 mm inside the drum rear, 18 below the axis. | 679 → 594 |
+| Drum (V13, as-is) | Axis front-back at x -200, rear end at y 0, tilted **2°** down toward +Y. Barrel top at the rear is 692.6, under the roof at 700. | axis 612.6 → 606.3 |
+| Outlet | 49b window at the bottom of the front plate | 538.5 |
+| V1 203 (2 pieces + splice) | Along +X at y 216, x -245 → 75 | 528.1 → 502.9 (**4.5°**) |
+| V2 204 | Diagonal (65, 205) → (262, 8), notched where V1 drops in | 494.9 → 473.0 (**4.5°**) |
+| Landing ramp 211 | V13 ramp, lowered | 467 → 459 |
+| Scanner floor | Over (330, 0) | **459** |
+| Drop funnel 220 | Mouth r 54 at 415, 45° cone to r 28, tube through the deck hole | exit **335** |
+
+**Max tray slope: about 5.0°.** The remaining height is ~6 mm between the drum top (692.6 rear, plate top 693.8) and the roof underside at 700. Using it would give ~5.0° and leave ~1 mm, and the chute would drop to ~43°. I kept 4.5° for the margin.
 
 ## Parts
-**Drum, reused as-is.** The whole V13 drum group is moved rigidly into the new frame: 47b barrel, 49b static plate, 48 rear guard, 4 × 50 rollers, 54 core, 55 TPU tire, 56 NEMA17 bracket.
+**Drum, reused as-is.** The V13 drum group is moved rigidly into the new frame: 47b barrel, 49b static plate, 48 rear guard, 4 × 50 rollers, 54 core, 55 TPU tire, 56 NEMA17 bracket.
 
 **New: drum supports.**
-- **205 cradles A/B.** Each roller sits between two 5 mm axle forks (M5). A cheek carries the 49b ear (two M3 at axial 166/178, as in V13). Bases bolt to the deck grid.
-- The motor wall that holds bracket 56 (4 × M5 in its slots) is merged into cradle B.
+- **205 cradles A/B.** Each roller sits between 5 mm axle forks (M5). A cheek takes the 49b ear (2 × M3). The motor wall for bracket 56 (4 × M5) is merged into cradle B. Bases bolt to the deck grid.
 
 **New: hopper and chute.**
-- **200** bowl in 4 quarters.
-- **201** throat. Three tabs screw up into the roof underside.
-- **202** feed chute.
+- **201 hopper.** One piece with a rim flange r 75..92 at z 770..775 (4 M3 inserts at r 84).
+- Three arms run out to the roof inserts at r 108 from (-260, 0), at **180° / 240° / 300°**. These angles changed from rev 1 so the arms stay clear of the raised drum.
+- **200 collar.** 4 quarters, each with M3 seam lugs (6 × 16 × 10.5, one each side of the seam at r 112, M3 × 16 + nut across). Screwed down into the flange inserts.
+- **202 chute.**
 
 **New: trays.**
-- **203** V1 (two pieces plus a splice).
-- **204** V2.
-- **207** PETG leaf springs: 2 mm blades leaning 20°, with feet on the deck grid. 3 under V1, 2 under V2.
-- V7 vibration-motor saddle 62 and cap 63 are reused under each tray (24 mm motor).
+- **203 V1** (two pieces + splice) and **204 V2**, PETG.
+- **207** PETG leaf springs, plus the reused V7 vibration-motor saddle 62 and cap 63 under each tray.
 
-**New: scanner (210-218).** A rework of V13 57-62/73/74: same plate, trapdoors, slider, MG996R saddle, camera bridge, LED holders, XIAO Sense and APDS mounts.
-- Scanner floor at z 459.
-- Standoffs moved onto the deck grid at x 240/440, y ±80.
-- Ramp lowered.
-- The V13 small parts 57d slider, 59/59b links and 60 horn arm are reused unchanged.
-
-**New: funnel and electronics.**
-- **220** drop funnel, with a flange on the deck grid.
-- **225** two electronics trays at y -238..-150, top at z 424, level with the bottom of the back access panel. Pads with inserts at the board corners.
-  - Tray 1: PSU, buck, XT30 inlet.
-  - Tray 2: XIAO C3, 3 × TMC2209, MCP23017, DRV8833.
+**New: scanner and below.**
+- **210-218 scanner:** a rework of V13 57-62/73/74. Standoffs on the deck grid at x 240/440, y ±80.
+- **220** drop funnel.
+- **225** electronics trays at the back access panel (top z 424).
 
 ## Checks (`checks.json`)
 - All parts are inside the K zone.
-  - The funnel stays within r 30 below the deck (z 335..390).
-  - The hopper stays within r 97 through the roof hole and r 142 inside the stud ring.
-- No clashes. The listed by-design contacts are springs and saddles touching their trays, and core and tire.
-- Drum turning at 12 angles (barrel + guard): 0 clashes against everything fixed, including the chute inside the rear opening.
-- Scanner doors at 0/30/60/90°: 0 clashes with the funnel, ramp, saddle, APDS mount and post.
+  - The hopper is within r 100 through the roof hole and r 144.5 in the stud ring, below z 780.
+  - The funnel stays within r 30 below the deck.
+- No clashes. The by-design contacts are only springs and saddles touching their trays, and core and tire.
+- Drum at 12 angles: 0 clashes.
+- Scanner doors at 0/30/60/90°: 0 clashes.
 - Every new part fits 248³.
-- Estimated new PLA/PETG: **~1.7 kg**. The drum parts already exist (V13).
+- Estimated new PLA/PETG: **~1.8 kg**.
 
 ## Print notes
-- **Cradles 205:** tall forks, print with tree supports.
-- **Hopper:** bowl quarters printed rim-down. Join them with glue or M3 tabs (the tabs aren't modeled yet, see open questions).
+- **Hopper:** rim down, one piece, 211 × 197 × 100.
+- **Collar quarters:** top face down.
+- **Cradles 205:** tree supports.
 - **Trays:** PETG, walls up.
-- **Leaf springs:** PETG, on their side, so the blade layers run along the bend.
+- **Leaf springs:** on their side.
 - **Scanner plate and funnel:** upside down.
-- **Drum:** print order is as in the V13 note (49b first, then 47b).
+- **Drum:** print order as in the V13 note (49b first, then 47b).
 
 ## Open questions
-1. **Drum tilt is 6°, not V13's 8°.** At 8° the rear end rises 7 mm more, and either the hopper cone hits the drum top or the feed chute drops under 40°. If bricks walk too slowly, the barrel can go back to 8° by lowering the scanner (not possible without shrinking the door swing) or by shortening the hopper. Easier first try: speed up the drum motor.
-2. **Tray slopes are only ~1-2°.** The trays rely on vibration, as V13 did at ~4.6°. Test V1 with a motor before printing V2.
-3. **Hopper bowl seams:** add printed tabs or glue them? Undecided.
-4. **The roof (F) needs 3 M3 inserts** under the hopper throat tabs, at r 108 from (-260, 0), angles 30/150/270°.
-5. **Electronics dimensions are placeholders.** PSU 165 × 60 × 38, TMC carrier 70 × 50, and so on. Measure the real boards; the pads are placed from `EL` in the script.
+1. **Tray slope:** 4.5° built, ~5.0° is the most that fits. Test V1 with its motor before printing V2.
+2. **Drum feed rate:** at 2° tilt the flight alone walks the bricks (90 mm per turn). If they move too slowly, raise the drum rpm.
+3. **Electronics:** board sizes are placeholders (`EL` in the script). Measure the real boards.
 
 ## INTERFACE REQUESTS
-None. The module builds to 4.1 as frozen. Notes for F at integration:
-- The deck grid holes this module uses are listed per part in the script (cradles, springs, standoffs, funnel flange, electronics legs).
-- The roof needs inserts for the hopper throat tabs (open question 4).
+None (built to 4.1). For F at integration:
+- **3 M3 inserts in the roof underside** at r 108 from (-260, 0), angles 180 / 240 / 300°.
+- The deck-grid holes used by the cradles, springs, standoffs, funnel flange and electronics legs.
 
 ## Vault log lines (for the main chat to add to `inbox/changes.yaml`)
-- 2026-11-05 20:03 PT, claim, Bricked Sorting: V14 module K (deck) built on `cad-v14-deck` to interface 4.1.
-  - V13 drum reused as-is, axis front-back at x -200, tilted 6°.
-  - Hopper in stud L feeds a 43° chute into the drum rear.
-  - V1 (long, 2 pieces) and V2 on PETG leaf springs carry bricks to the V13-rework scanner over (330, 0).
-  - Funnel exit at z 335. Electronics trays at the back access panel.
-  - All zone, clash, drum-turning and door-swing checks clean. About 1.7 kg of new filament.
-- 2026-11-05 20:03 PT, decision needed: drum tilt 6° instead of 8° to fit the hopper and chute under the 700 roof (README open question 1).
+- 2026-11-05 20:03 PT, claim, Bricked Sorting: V14 module K (deck) built on `cad-v14-deck` to interface 4.1 (rev 1).
+  - V13 drum reused as-is; hopper, chute, V1/V2 on leaf springs.
+  - V13-rework scanner over (330, 0), funnel exit 335, electronics at the back panel.
+  - All checks clean.
+- 2026-11-05 20:40 PT, decision, Bricked Sorting: deck rev 2 per BJ.
+  - Before: big hopper filling the stud, drum tilt 6°, trays ~1-2°.
+  - After: hopper ~150 across centred in the stud with a 4-piece collar (M3 seam lugs), drum tilt 2° and raised (barrel top 692.6 under the 700 roof), trays 4.5° (max ~5.0°), chute 45°.
+  - Roof inserts move to 180/240/300° at r 108. Scanner floor 459 and funnel exit 335 unchanged.

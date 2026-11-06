@@ -4,9 +4,9 @@ Interface v14-interface-4.1 (frozen). Machine coordinates, right-handed: +X is t
 left, +Y front, +Z up. Run: python3 build_deck.py
 - Drum: V13 parts reused as-is (47b barrel, 49b static plate, 48 guard, 4 x 50 rollers, 54 core,
   55 TPU tire, 56 motor bracket). The V13 drum group is moved rigidly into a new frame: axis
-  front-back in the YZ plane at x -200, rear end centre (-200, 0, 589), tilted 6 deg down
-  toward +Y (V13 used 8; see README for why).
-- New: cradles + motor wall, hopper (bowl quarters + throat), feed chute, V1 (2 pieces) and V2
+  front-back in the YZ plane at x -200, rear end at y 0, tilted 2 deg down
+  toward +Y (V13 used 8; heights solved from the scanner floor up, see README).
+- New: cradles + motor wall, small hopper + 4-piece collar, feed chute, V1 (2 pieces) and V2
   trays on PETG leaf springs with the V7 24 mm vibration-motor saddles, scanner reworked from
   V13 (same mechanism, floor Z_S 459 over (330, 0), lower landing ramp, standoffs on the deck
   grid), drop funnel through the deck hole to the exit at z 335, two electronics trays.
@@ -33,13 +33,25 @@ STUD_L = IF['bricks']['stud_centers'][0]                   # (-260, 0)
 ROOF = IF['roof']; ROOF_HOLE_R = ROOF['hopper_opening']['r']
 
 # ---------------- layout ----------------
-DRUM_X = -200.0; DRUM_REAR = np.array([DRUM_X, 0.0, 589.0]); TILT = 6.0
+# heights are solved from the fixed scanner floor upward (Z_S 459, funnel exit 335 stay put)
 Z_S = 459.0                                   # scanner floor (top of the closed doors)
 SX = DROP[0]                                  # scanner origin x (drop point)
-HOP_OUT = np.array([-200.0, -75.0, 660.0]); HOP_OUT_R = 30.0
 TRAY_W, TRAY_WALL = 44.0, 18.0
-V1_A, V1_B = np.array([-245.0, 212.0, 491.0]), np.array([75.0, 212.0, 486.0])     # top surface line
-V2_A, V2_B = np.array([65.0, 205.0, 478.0]), np.array([262.0, 8.0, 473.0])
+TRAY_DEG = 4.5                                # V13 ran 4.6
+RAMP_TOP = Z_S + 8.0
+V2_B = np.array([262.0, 8.0, RAMP_TOP + 6.0])                 # floor underside 3 above the ramp top
+V2_A = np.array([65.0, 205.0, 0.0])
+V2_A[2] = V2_B[2] + math.hypot(*(V2_B - V2_A)[:2]) * math.tan(math.radians(TRAY_DEG))
+V1_B = np.array([75.0, 216.0, V2_A[2] + 8.0])                 # V1 end 8 above V2 start (V2 notched there)
+V1_A = np.array([-245.0, 216.0, 0.0])
+V1_A[2] = V1_B[2] + (V1_B[0] - V1_A[0]) * math.tan(math.radians(TRAY_DEG))
+OUTLET_GAP = 10.0                             # drum outlet window bottom above V1's start
+DRUM_X = -200.0; TILT = 2.0                   # the helical flight does the pushing; tilt only costs height
+_front_axis = V1_A[2] + OUTLET_GAP + 68.0     # window bottom edge is r 68 below the axis
+DRUM_REAR = np.array([DRUM_X, 0.0, _front_axis + 186.0 * math.sin(math.radians(TILT))])
+HOP_TOP_Z, HOP_TOP_R = 778.0, 75.0            # ~150 across, centred in the stud ring
+HOP_OUT = np.array([-245.0, -50.0, 681.0]); HOP_OUT_R = 30.0
+ROOF_TAB_ANGLES = (180.0, 240.0, 300.0)       # roof inserts (frame) at r 108 from the stud centre, clear of the drum
 
 COL = {'drum': (0.75, 0.25, 0.20), 'drum_fixed': (0.85, 0.55, 0.45), 'cradle': (0.55, 0.57, 0.62), 'hopper': (0.85, 0.20, 0.20),
        'tray': (0.20, 0.60, 0.40), 'spring': (0.95, 0.75, 0.20), 'scan': (0.45, 0.45, 0.50), 'door': (0.25, 0.25, 0.28),
@@ -188,34 +200,63 @@ def motor_wall(rel_bracket):
 
 # ---------------- hopper and chute ----------------
 def hopper_parts():
+    """small hopper (~150 across) centred in stud L, one printed piece: oblique cone from r 75 at the
+    rim (z 778) to the outlet r 30 behind the drum; rim flange carries the collar; three tabs reach the
+    roof inserts. Collar: 4 quarters (r 76..144.5, the stud ring ID is 290) with M3 seam lugs, screwed
+    down onto the rim flange, sloping 4 deg toward the hopper so stray bricks slide in."""
     cx, cy = STUD_L
     T = 2.4
-    # bowl quarters inside the stud ring: r 142 at z 779 down to r 97 at z 724
-    bowl = (cq.Workplane('XY').workplane(offset=724).center(cx, cy).circle(97).workplane(offset=55).circle(142).loft()
-            .cut(cq.Workplane('XY').workplane(offset=724 - 0.01).center(cx, cy).circle(97 - T).workplane(offset=55.02).circle(142 - T).loft()))
-    bowl = bowl.union(cq.Workplane('XY').workplane(offset=724).center(cx, cy).circle(103).circle(97 - T).extrude(4))   # flange onto the throat
+    o = cq.Solid.makeLoft([cq.Wire.makeCircle(HOP_TOP_R + T, cq.Vector(cx, cy, HOP_TOP_Z), cq.Vector(0, 0, 1)),
+                           cq.Wire.makeCircle(HOP_OUT_R + T, cq.Vector(*HOP_OUT), cq.Vector(0, 0, 1))], True)
+    i_ = cq.Solid.makeLoft([cq.Wire.makeCircle(HOP_TOP_R, cq.Vector(cx, cy, HOP_TOP_Z + 0.01), cq.Vector(0, 0, 1)),
+                            cq.Wire.makeCircle(HOP_OUT_R, cq.Vector(*(HOP_OUT - [0, 0, 0.01])), cq.Vector(0, 0, 1))], True)
+    hop = cq.Workplane().add(o).cut(cq.Workplane().add(i_))
+    # rim flange r 75..92 under the collar, 4 M3 inserts at r 84
+    FL_Z0 = HOP_TOP_Z - 8.0                   # flange z 770..775, the collar sits on it
+    fl = cyl((cx, cy, FL_Z0), (0, 0, 1), 92, 5).cut(cyl((cx, cy, FL_Z0 - 1), (0, 0, 1), HOP_TOP_R, 7))
+    for a in (45, 135, 225, 315):
+        fl = fl.cut(cyl((cx + 84 * math.cos(math.radians(a)), cy + 84 * math.sin(math.radians(a)), FL_Z0 - 0.01), (0, 0, 1), INSERT_D / 2, 5.02))
+    hop = hop.union(fl.cut(cq.Workplane().add(i_)))
+    # roof tabs: arm from the cone at z 694..700 out to r 108, M3 clearance hole up into the roof insert
+    zt = ROOF['z'][0]
+    tt = (HOP_TOP_Z - (zt - 3)) / (HOP_TOP_Z - HOP_OUT[2])
+    cc = np.array([cx, cy]) + (HOP_OUT[:2] - np.array([cx, cy])) * tt
+    for a in ROOF_TAB_ANGLES:
+        px, py = cx + 108 * math.cos(math.radians(a)), cy + 108 * math.sin(math.radians(a))
+        d = np.array([px, py]) - cc; L = float(np.linalg.norm(d)); ang = math.degrees(math.atan2(d[1], d[0]))
+        arm = boxc(0, L + 9, -7, 7, zt - 6, zt).rotate((0, 0, 0), (0, 0, 1), ang).translate((cc[0], cc[1], 0))
+        hop = hop.union(arm.cut(cq.Workplane().add(i_))).cut(cyl((px, py, zt - 8), (0, 0, 1), M3_CLR / 2, 10))
+    # collar: 3 mm plate, top from z 780 at the stud ring (r 144.5) down to 778 at the hopper rim, resting on the flange
+    RO, RI = 144.5, HOP_TOP_R + 2.4 + 0.3
+    ztop = lambda r: HOP_TOP_Z + (r - RI) * (780.0 - HOP_TOP_Z) / (RO - RI)
+    prof = [(RI, ztop(RI)), (RO, ztop(RO)), (RO, ztop(RO) - 3), (RI, ztop(RI) - 3)]
+    coll = cq.Workplane('XZ').polyline(prof).close().revolve(360, (0, 0, 0), (0, 1, 0)).translate((cx, cy, 0))
+    for a in (45, 135, 225, 315):
+        coll = coll.cut(cyl((cx + 84 * math.cos(math.radians(a)), cy + 84 * math.sin(math.radians(a)), FL_Z0), (0, 0, 1), M3_CLR / 2, 20))
+        coll = coll.cut(cyl((cx + 84 * math.cos(math.radians(a)), cy + 84 * math.sin(math.radians(a)), ztop(84) - 1.6), (0, 0, 1), CB_D / 2, 3))
+    zo = 780.0
     quarters = []
-    for sx, sy in ((1, 1), (-1, 1), (-1, -1), (1, -1)):
-        q = bowl.intersect(boxc(min(cx, cx + sx * 200) + (0.2 if sx > 0 else 0), max(cx, cx + sx * 200) - (0.2 if sx < 0 else 0),
+    seams = (0, 90, 180, 270)
+    for k, (sx, sy) in enumerate(((1, 1), (-1, 1), (-1, -1), (1, -1))):
+        q = coll.intersect(boxc(min(cx, cx + sx * 200) + (0.2 if sx > 0 else 0), max(cx, cx + sx * 200) - (0.2 if sx < 0 else 0),
                                 min(cy, cy + sy * 200) + (0.2 if sy > 0 else 0), max(cy, cy + sy * 200) - (0.2 if sy < 0 else 0), 0, 1000))
-        for a in (0, 90):   # bolt tabs on the cut edges (2 x M3 + nut per seam)
-            pass
         quarters.append(q)
-    # throat: cylinder r 97 through the roof (z 700..724) + oblique cone to the outlet
-    th = cq.Workplane('XY').workplane(offset=700).center(cx, cy).circle(97).extrude(24).cut(
-         cq.Workplane('XY').workplane(offset=699).center(cx, cy).circle(97 - T).extrude(26))
-    th = th.union(cq.Workplane('XY').workplane(offset=724).center(cx, cy).circle(103).circle(97 - T).extrude(0.01)) if False else th
-    ob_o = cq.Solid.makeLoft([cq.Wire.makeCircle(97, cq.Vector(cx, cy, 700), cq.Vector(0, 0, 1)),
-                              cq.Wire.makeCircle(HOP_OUT_R + T, cq.Vector(*HOP_OUT), cq.Vector(0, 0, 1))], True)
-    ob_i = cq.Solid.makeLoft([cq.Wire.makeCircle(97 - T, cq.Vector(cx, cy, 700.01), cq.Vector(0, 0, 1)),
-                              cq.Wire.makeCircle(HOP_OUT_R, cq.Vector(*(HOP_OUT - [0, 0, 0.01])), cq.Vector(0, 0, 1))], True)
-    throat = th.union(cq.Workplane().add(ob_o).cut(cq.Workplane().add(ob_i)))
-    for a in (30, 150, 270):   # three tabs that screw up into the roof underside (F puts inserts there)
-        x, y = cx + 108 * math.cos(math.radians(a)), cy + 108 * math.sin(math.radians(a))
-        throat = throat.union(box(x, y, 694, 22, 22, 6)).union(box((x + cx + 92 * math.cos(math.radians(a))) / 2, (y + cy + 92 * math.sin(math.radians(a))) / 2, 694, 14, 14, 6))
-        throat = throat.cut(cyl((x, y, 690), (0, 0, 1), M3_CLR / 2, 12))
-    # four M3 bolts through the bowl flange into the throat top: drill at assembly (marked)
-    return quarters, throat
+    # M3 seam lugs: a 6 mm lug either side of each seam under the collar at r 112, bolt across the seam
+    for a in seams:
+        ca, sa = math.cos(math.radians(a)), math.sin(math.radians(a))
+        px, py = cx + 112 * ca, cy + 112 * sa
+        zl = ztop(112) - 3 - 10
+        for k, q in enumerate(quarters):
+            for sgn in (1, -1):
+                # lug centre offset tangentially by 3.2 to one side of the seam
+                tx, ty = -sa * sgn * 3.2, ca * sgn * 3.2
+                lug = box(px + tx, py + ty, zl, 16 if abs(ca) > 0.5 else 6, 6 if abs(ca) > 0.5 else 16, 10.5)
+                lug = lug.cut(cyl((px - sa * 20, py + ca * 20, zl + 5), (sa, -ca, 0), M3_CLR / 2, 40))
+                qs = ((1, 1), (-1, 1), (-1, -1), (1, -1))[k]
+                lx, ly = px + tx, py + ty
+                if qs[0] * (lx - cx) > 0 and qs[1] * (ly - cy) > 0:
+                    quarters[k] = quarters[k].union(lug)
+    return quarters, hop
 
 
 def chute():
@@ -309,7 +350,7 @@ def scanner_parts():
         plate = plate.union(box(sx, sy, DECK_TOP, 14, 14, Z_S - 4 - DECK_TOP)).cut(cyl((sx, sy, DECK_TOP - 1), (0, 0, 1), M3_CLR / 2, 12))
     P['210_scanner_plate'] = plate
     # lower landing ramp: V2 ends over x -80..-55 at Z_S+14, ramp from Z_S+12 at x -75 to Z_S at x -35.6; back wall at -Y
-    ramp = cq.Workplane('XZ').polyline([(-85, Z_S), (-35.6, Z_S), (-85, Z_S + 8)]).close().extrude(30, both=True).translate((0, -6, 0))
+    ramp = cq.Workplane('XZ').polyline([(-85, Z_S), (-35.6, Z_S), (-85, RAMP_TOP)]).close().extrude(30, both=True).translate((0, -6, 0))
     ramp = ramp.union(box(-60.3, -37.5, Z_S, 49.4, 3, 40))
     P['211_landing_ramp_low'] = ramp
     post = box(50, 0, Z_S, 8, 20, 100).union(box(50, 0, Z_S, 24, 34, 5))
@@ -452,9 +493,9 @@ def main():
         w, h = cradle(side, rollers, plate_rel); parts.append((nm, w, 'fixed')); cr[nm] = h
     mw, mwh = motor_wall(rel_br)
     parts = [(n, (w.union(mw) if n == '205_drum_cradle_B_xpos' else w), k) for (n, w, k) in parts]   # motor wall is part of cradle B
-    quarters, throat = hopper_parts()
-    for k, q in enumerate(quarters): parts.append((f'200_hopper_bowl_q{k+1}', q, 'fixed'))
-    parts.append(('201_hopper_throat', throat, 'fixed'))
+    quarters, hop = hopper_parts()
+    for k, q in enumerate(quarters): parts.append((f'200_hopper_collar_q{k+1}', q, 'fixed'))
+    parts.append(('201_hopper', hop, 'fixed'))
     ch, chA, chC, ch_angle = chute(); parts.append(('202_feed_chute', ch, 'fixed'))
     # trays
     v1, f1, s1, u1, L1 = tray(V1_A, V1_B)
@@ -632,7 +673,7 @@ def checks(parts, plist, chA, chC, ch_angle, fun_geo):
     res['flow'] = {'drum_axis_tilt_deg': TILT, 'drum_rear_axis_z': DRUM_REAR[2], 'drum_front_axis_z': round(drum_world((0, 0, 180))[2], 1),
                    'outlet_window_bottom_z': round(drum_world((68, 0, 175))[2], 1),
                    'V1_top_start_end_z': [V1_A[2], V1_B[2]], 'V2_top_start_end_z': [V2_A[2], V2_B[2]],
-                   'V2_end_over_ramp_xy': [V2_B[0], V2_B[1]], 'ramp_top_z': Z_S + 8, 'scanner_floor_Z_S': Z_S,
+                   'V2_end_over_ramp_xy': [V2_B[0], V2_B[1]], 'ramp_top_z': RAMP_TOP, 'tray_slope_deg': TRAY_DEG, 'drum_top_rear_z': round(DRUM_REAR[2] + 80, 1), 'roof_underside_z': ROOF['z'][0], 'scanner_floor_Z_S': Z_S,
                    'drop_point': DROP, 'funnel_exit': [DROP[0], DROP[1], FUNNEL_EXIT_Z]}
     (HERE / 'checks.json').write_text(json.dumps(res, indent=1))
     return res
