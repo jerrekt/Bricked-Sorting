@@ -1,0 +1,72 @@
+{
+ "about": "Height floor for any V13-style machine that keeps the V13 lift, yaw, hub and compact scoop under a scanner on the\nyaw axis. Same stack rules as build_bins_v13c.py / build_machine_v13c.py:\n  lower bin wall  H_L >= S + NC + 24.2 + m            (part on the nose must pass under the upper carrier)\n  upper delivery  LOW_MAX = Z_C + 13.5 + H_L + 26.5 + H_U + NC\n  scanner floor   Z_S = ceil(LOW_MAX + 198.5 + 25 + 38) (scoop height 198.5 at 40 deg, 25 margin, 38 door drop)\n  deck underside  Z_S - 53\nCapacity: 0.0101 L per mm of fill (V10 wedge, RI 152..RO 290); lower fills to S - 2.4, upper to H_U - 12.4.",
+ "rows": [
+  {
+   "fill_L": 0.0,
+   "NC": 35.0,
+   "margin": 10.8,
+   "S": 2.4,
+   "H_U": 12.4,
+   "H_L": 72.4,
+   "Z_S": 482,
+   "total_with_V13_deck_kept": 1054.0,
+   "total_with_new_312_deck_and_60_studs": 801
+  },
+  {
+   "fill_L": 0.0,
+   "NC": 20.0,
+   "margin": 5.0,
+   "S": 2.4,
+   "H_U": 12.4,
+   "H_L": 51.6,
+   "Z_S": 446,
+   "total_with_V13_deck_kept": 1018.0,
+   "total_with_new_312_deck_and_60_studs": 765
+  },
+  {
+   "fill_L": 0.25,
+   "NC": 35.0,
+   "margin": 10.8,
+   "S": 27.2,
+   "H_U": 37.2,
+   "H_L": 97.2,
+   "Z_S": 531,
+   "total_with_V13_deck_kept": 1103.0,
+   "total_with_new_312_deck_and_60_studs": 850
+  },
+  {
+   "fill_L": 0.25,
+   "NC": 20.0,
+   "margin": 5.0,
+   "S": 27.2,
+   "H_U": 37.2,
+   "H_L": 76.4,
+   "Z_S": 496,
+   "total_with_V13_deck_kept": 1068.0,
+   "total_with_new_312_deck_and_60_studs": 815
+  },
+  {
+   "fill_L": 0.4,
+   "NC": 35.0,
+   "margin": 10.8,
+   "S": 42.0,
+   "H_U": 52.0,
+   "H_L": 112.0,
+   "Z_S": 561,
+   "total_with_V13_deck_kept": 1133.0,
+   "total_with_new_312_deck_and_60_studs": 880
+  },
+  {
+   "fill_L": 0.4,
+   "NC": 20.0,
+   "margin": 5.0,
+   "S": 42.0,
+   "H_U": 52.0,
+   "H_L": 91.2,
+   "Z_S": 525,
+   "total_with_V13_deck_kept": 1097.0,
+   "total_with_new_312_deck_and_60_studs": 844
+  }
+ ],
+ "Z_S_max_for_762_with_new_312_deck": 443
+}

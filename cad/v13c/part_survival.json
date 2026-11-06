@@ -1,0 +1,469 @@
+{
+ "rule": "V13 vs V13C printed-part survival. A part 'survives unchanged' when its print-pose STEP has the same volume\n(+-1 mm3) and the same sorted bounding box (+-0.1 mm) as the V13 baseline rebuild (which matches the repo's V13\nSTEPs exactly). Parts loaded from V13 STEPs unchanged (carriage V3, drum V7/V13) survive by construction.\nCounts: unique designs, and printed pieces (PRINT_n multiplicity).",
+ "designs_total": 75,
+ "designs_unchanged": 69,
+ "designs_pct": 92.0,
+ "pieces_total": 282,
+ "pieces_unchanged": 252,
+ "changed": [
+  "51_inlet_chute_lower",
+  "51_inlet_chute_upper",
+  "63_lift_pedestal_leg_PRINT_4",
+  "78_stud_ring_quarter_PRINT_8",
+  "40_bin_lower_PRINT_8",
+  "41_bin_upper_PRINT_8"
+ ],
+ "rows": [
+  {
+   "part": "50_loading_hopper",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "51_inlet_chute_lower",
+   "qty": 1,
+   "unchanged": false,
+   "source": "generated"
+  },
+  {
+   "part": "51_inlet_chute_upper",
+   "qty": 1,
+   "unchanged": false,
+   "source": "generated"
+  },
+  {
+   "part": "52_drum_cradle_L_front_beam",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "52_drum_cradle_L_front_leg",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "52_drum_cradle_L_rear_beam",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "52_drum_cradle_L_rear_leg",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "52_drum_cradle_R_front_beam",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "52_drum_cradle_R_front_leg",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "52_drum_cradle_R_rear_beam",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "52_drum_cradle_R_rear_leg",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "52f_cradle_splice_plate_PRINT_4",
+   "qty": 4,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "53_drum_motor_bridge",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "54_V1_tray",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "55_V2_tray",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "56_tray_support_V1_0",
+   "qty": 2,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "56_tray_support_V2_2",
+   "qty": 2,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "57_scanner_plate",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "57b_landing_ramp",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "57c_slider_post",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "57d_door_slider",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "57e_servo_saddle",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "58_trapdoor_PRINT_2",
+   "qty": 2,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "59_door_link_PRINT_2",
+   "qty": 2,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "59b_servo_link",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "60_servo_horn_arm",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "61_camera_bridge",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "62_led_bar_holder_PRINT_2",
+   "qty": 2,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "63_lift_pedestal_leg_PRINT_4",
+   "qty": 4,
+   "unchanged": false,
+   "source": "generated"
+  },
+  {
+   "part": "64_drawer_rail_100_PRINT_8",
+   "qty": 8,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "64_drawer_rail_200_PRINT_16",
+   "qty": 16,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "65_carrier_side_bar_PRINT_12",
+   "qty": 12,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "66_rear_roller_block_PRINT_4",
+   "qty": 4,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "67_front_roller_bracket_PRINT_4",
+   "qty": 4,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "69_2020_inside_corner_PRINT_48",
+   "qty": 48,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "70_leaf_spring_PRINT_8",
+   "qty": 8,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "71_lift_tower_tie",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "72_carrier_tile_00_PRINT_2",
+   "qty": 2,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "72_carrier_tile_01_PRINT_2",
+   "qty": 2,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "72_carrier_tile_10_PRINT_2",
+   "qty": 2,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "72_carrier_tile_11_PRINT_2",
+   "qty": 2,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "72_carrier_tile_20_PRINT_2",
+   "qty": 2,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "72_carrier_tile_21_PRINT_2",
+   "qty": 2,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "72_carrier_tile_30_PRINT_2",
+   "qty": 2,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "72_carrier_tile_31_PRINT_2",
+   "qty": 2,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "72b_carrier_splice_PRINT_40",
+   "qty": 40,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "73_xiao_sense_camera_mount",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "74_apds9960_mount",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "75_drawer_latch_lever_PRINT_2",
+   "qty": 2,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "75b_latch_pivot_ear_PRINT_2",
+   "qty": 2,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "75c_latch_catch_PRINT_2",
+   "qty": 2,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "76_electronics_tray_A_PRINT",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "76_electronics_tray_B_PRINT",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "77_2020_three_way_corner_PRINT_8",
+   "qty": 8,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "78_stud_ring_quarter_PRINT_8",
+   "qty": 8,
+   "unchanged": false,
+   "source": "generated"
+  },
+  {
+   "part": "79_stud_cap_quarter_PRINT_4",
+   "qty": 4,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "79b_loading_stud_ring_top_quarter_PRINT_4",
+   "qty": 4,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "40_bin_lower_PRINT_8",
+   "qty": 8,
+   "unchanged": false,
+   "source": "generated"
+  },
+  {
+   "part": "41_bin_upper_PRINT_8",
+   "qty": 8,
+   "unchanged": false,
+   "source": "generated"
+  },
+  {
+   "part": "42_bin_locator_PRINT_16",
+   "qty": 16,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "43_compact_scoop_PRINT_FLAT",
+   "qty": 1,
+   "unchanged": true,
+   "source": "generated"
+  },
+  {
+   "part": "01_ground_base",
+   "qty": 1,
+   "unchanged": true,
+   "source": "V13 STEP reused"
+  },
+  {
+   "part": "02_moving_carriage_v3",
+   "qty": 1,
+   "unchanged": true,
+   "source": "V13 STEP reused"
+  },
+  {
+   "part": "03_top_rod_brace",
+   "qty": 1,
+   "unchanged": true,
+   "source": "V13 STEP reused"
+  },
+  {
+   "part": "04_lower_switch_mount",
+   "qty": 1,
+   "unchanged": true,
+   "source": "V13 STEP reused"
+  },
+  {
+   "part": "06_angled_shaft_hub",
+   "qty": 1,
+   "unchanged": true,
+   "source": "V13 STEP reused"
+  },
+  {
+   "part": "07_upper_switch_rod_mount",
+   "qty": 1,
+   "unchanged": true,
+   "source": "V13 STEP reused"
+  },
+  {
+   "part": "10_M2_switch_backer_PRINT_TWICE",
+   "qty": 2,
+   "unchanged": true,
+   "source": "V13 STEP reused"
+  },
+  {
+   "part": "47b_tumbler_barrel_helical_flight",
+   "qty": 1,
+   "unchanged": true,
+   "source": "V13 STEP reused"
+  },
+  {
+   "part": "49b_drum_static_outlet_plate",
+   "qty": 1,
+   "unchanged": true,
+   "source": "V13 STEP reused"
+  },
+  {
+   "part": "48_drum_rear_feed_guard",
+   "qty": 1,
+   "unchanged": true,
+   "source": "V13 STEP reused"
+  },
+  {
+   "part": "50_drum_625_bearing_roller",
+   "qty": 4,
+   "unchanged": true,
+   "source": "V13 STEP reused"
+  },
+  {
+   "part": "54_drum_drive_core_5mm",
+   "qty": 1,
+   "unchanged": true,
+   "source": "V13 STEP reused"
+  },
+  {
+   "part": "55_drum_friction_tire_TPU",
+   "qty": 1,
+   "unchanged": true,
+   "source": "V13 STEP reused"
+  },
+  {
+   "part": "56_drum_NEMA17_adjustable_bracket",
+   "qty": 1,
+   "unchanged": true,
+   "source": "V13 STEP reused"
+  }
+ ],
+ "pieces_pct": 89.4
+}
