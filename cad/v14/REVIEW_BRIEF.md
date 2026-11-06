@@ -31,3 +31,8 @@ Claude's current lean: A, because the capacity B adds is not needed. BJ is consi
 2. Anything in the layout you think will fail first: the 490 mm printed telescoping drawer with ~10 kg of bins, the printed beam and carriage, the scoop dumping into bins 116 mm apart while staying above z 186, frame racking, vibration-tray tuning.
 3. Simpler ways to hit the same goals with the parts listed.
 Keep the answer under about 600 words; we will go a few rounds.
+
+## Follow-up sent to ChatGPT: the old scoop (Z lift + yaw) vs the new slide
+Until V13 the bins were reached differently. **Old design (V3 carriage, V10-V13):** 16 bins in **two stacked tiers of 8**, each tier a ring of wedge-shaped bins around a central lift. A NEMA17 with a T8 lead screw raised a carriage on two 12 mm rods (236 mm of travel between the tiers); on top, a second NEMA17 yawed a hub carrying an open scoop that tipped the brick into one of 8 bins (45 deg apart). Two drawers, one per tier. That made the lower half 624 mm tall and the whole machine 1248 mm plus studs (about 54 in).
+**New design (V14):** one tier of 16 bins in two straight rows, scoop on a belt-driven X slide plus a servo tilt, one drawer. Chosen to get under 30 in while keeping 16 bins in the 1040 x 520 footprint. A single ring of 16 around a yaw would need a ~700 mm circle (a 1040 x 1040 footprint) or ~39 mm bin mouths if squeezed into 520.
+Question: is there a way to keep the Z + yaw approach (already designed and partly understood) within 30 in and 16 bins, e.g. two shallow tiers, a smaller-radius ring with taller narrow bins, or yaw + short radial reach? Compare it with the slide on accuracy, speed, part count, print risk and what can go wrong.
