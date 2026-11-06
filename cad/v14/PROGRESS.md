@@ -4,7 +4,7 @@ Branch `cad-v14-all` (from `cad-v14`; interface **v14-interface-4** merged 18:55
 
 - [x] 1. Runner test kit, interface 4: `drawer/runner_test/` (2026-11-05 19:05 PT): rails 160/161 on the drawer underside, floor roller stations 162/163, guide 164. Sent to BJ. (The 18:31 interface-2 T-rail kit is withdrawn: do not print.)
 - [ ] 2. Drawers + bins (D): `drawer/` — interface-2 build (18:39) withdrawn; rebuilding to interface 4 (`build_drawer.py` still the old one until this is ticked).
-- [ ] 3. Scoop slide (S): `scoop/`
+- [ ] 3. Scoop slide (S): `scoop/` — interface-2 draft kept in `scoop/i2_draft/` for its helpers; rebuild to interface 4.
 - [ ] 4. Deck (K): `deck/`
 - [ ] 5. Frame (F): `frame/`
 - [ ] 6. Integration: checks, stills, one-brick animation, zip, buy list + board PR (merge only on "push")
