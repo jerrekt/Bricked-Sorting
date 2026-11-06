@@ -1,0 +1,719 @@
+{
+ "module": "K",
+ "interface": "v14-interface-5 (2026-11-05 23:10): body 720 x 360 x 664, 2x2 + 1x2 wood frame and 1/2 in plywood floor and deck, 2 mm red PLA skin, 0.5 L bins at 79 pitch",
+ "printed_new": [
+  {
+   "label": "205_drum_cradle_A_ypos",
+   "part_no": "205",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    185.36,
+    45.85,
+    214.13
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 134.2,
+   "est_hours_each": 2.74,
+   "orientation": "base down, forks vertical (teardrop the axle holes if needed)"
+  },
+  {
+   "label": "205_drum_cradle_B_yneg",
+   "part_no": "205",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    185.36,
+    45.85,
+    214.13
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 134.2,
+   "est_hours_each": 2.74,
+   "orientation": "base down, forks vertical (teardrop the axle holes if needed)"
+  },
+  {
+   "label": "206_motor_wall",
+   "part_no": "206",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    61.22,
+    26.0,
+    136.72
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 35.4,
+   "est_hours_each": 0.72,
+   "orientation": "foot down"
+  },
+  {
+   "label": "201_hopper",
+   "part_no": "201",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.74,
+    200.74,
+    107.41
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 209.4,
+   "est_hours_each": 2.79,
+   "orientation": "rim (flange) down, outlet up; cone walls >= 45 deg"
+  },
+  {
+   "label": "202_feed_chute",
+   "part_no": "202",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    115.28,
+    70.09,
+    92.73
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 37.4,
+   "est_hours_each": 0.5,
+   "orientation": "laid flat on a side wall"
+  },
+  {
+   "label": "203_V1_tray",
+   "part_no": "203",
+   "qty": 1,
+   "material": "PETG",
+   "bed_extent": [
+    44.0,
+    141.65,
+    31.95
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 35.2,
+   "est_hours_each": 0.47,
+   "orientation": "walls up (PETG)"
+  },
+  {
+   "label": "204_V2_tray",
+   "part_no": "204",
+   "qty": 1,
+   "material": "PETG",
+   "bed_extent": [
+    134.11,
+    166.41,
+    34.34
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 45.7,
+   "est_hours_each": 0.61,
+   "orientation": "walls up (PETG)"
+  },
+  {
+   "label": "207_leaf_spring_V1_1",
+   "part_no": "207",
+   "qty": 1,
+   "material": "PETG",
+   "bed_extent": [
+    30.0,
+    104.48,
+    64.39
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 17.4,
+   "est_hours_each": 0.23,
+   "orientation": "on its side (PETG)"
+  },
+  {
+   "label": "207_leaf_spring_V1_2",
+   "part_no": "207",
+   "qty": 1,
+   "material": "PETG",
+   "bed_extent": [
+    30.0,
+    96.22,
+    61.38
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 16.8,
+   "est_hours_each": 0.22,
+   "orientation": "on its side (PETG)"
+  },
+  {
+   "label": "207_leaf_spring_V2_1",
+   "part_no": "207",
+   "qty": 1,
+   "material": "PETG",
+   "bed_extent": [
+    37.47,
+    84.42,
+    40.78
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 16.0,
+   "est_hours_each": 0.21,
+   "orientation": "on its side (PETG)"
+  },
+  {
+   "label": "207_leaf_spring_V2_2",
+   "part_no": "207",
+   "qty": 1,
+   "material": "PETG",
+   "bed_extent": [
+    43.73,
+    76.24,
+    49.82
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 15.5,
+   "est_hours_each": 0.21,
+   "orientation": "on its side (PETG)"
+  },
+  {
+   "label": "210_scanner_plate",
+   "part_no": "210",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    220.0,
+    184.04,
+    62.16
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 159.7,
+   "est_hours_each": 3.26,
+   "orientation": "upside down"
+  },
+  {
+   "label": "211_landing_ramp_low",
+   "part_no": "211",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    49.4,
+    63.0,
+    40.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 20.6,
+   "est_hours_each": 0.42,
+   "orientation": "flat"
+  },
+  {
+   "label": "212_slider_post",
+   "part_no": "212",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    34.0,
+    100.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 17.9,
+   "est_hours_each": 0.37,
+   "orientation": "flat"
+  },
+  {
+   "label": "213_servo_saddle",
+   "part_no": "213",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    36.5,
+    56.7,
+    48.85
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 28.5,
+   "est_hours_each": 0.58,
+   "orientation": "flat"
+  },
+  {
+   "label": "214_trapdoor_A",
+   "part_no": "214",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    85.01,
+    66.7,
+    12.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 12.3,
+   "est_hours_each": 0.16,
+   "orientation": "upside down"
+  },
+  {
+   "label": "214_trapdoor_B",
+   "part_no": "214",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    85.01,
+    66.7,
+    12.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 12.3,
+   "est_hours_each": 0.16,
+   "orientation": "upside down"
+  },
+  {
+   "label": "215_camera_bridge",
+   "part_no": "215",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    134.0,
+    80.0,
+    133.01
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 95.3,
+   "est_hours_each": 1.94,
+   "orientation": "flat"
+  },
+  {
+   "label": "216_led_bar_holder_A",
+   "part_no": "216",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    74.0,
+    23.0,
+    46.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 31.0,
+   "est_hours_each": 0.63,
+   "orientation": "flat"
+  },
+  {
+   "label": "216_led_bar_holder_B",
+   "part_no": "216",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    74.0,
+    23.0,
+    46.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 31.0,
+   "est_hours_each": 0.63,
+   "orientation": "flat"
+  },
+  {
+   "label": "217_xiao_sense_camera_mount",
+   "part_no": "217",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    50.0,
+    66.0,
+    14.5
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 12.8,
+   "est_hours_each": 0.17,
+   "orientation": "flat"
+  },
+  {
+   "label": "218_apds9960_mount",
+   "part_no": "218",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    28.0,
+    19.45,
+    19.95
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 5.4,
+   "est_hours_each": 0.07,
+   "orientation": "flat"
+  },
+  {
+   "label": "220_drop_funnel",
+   "part_no": "220",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    120.08,
+    120.08,
+    60.45
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 71.8,
+   "est_hours_each": 0.96,
+   "orientation": "mouth down (cone inside at 45 deg)"
+  },
+  {
+   "label": "225_electronics_tray_1",
+   "part_no": "225",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    221.33,
+    219.2,
+    112.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": true,
+   "est_grams_each": 120.8,
+   "est_hours_each": 1.61,
+   "orientation": "tray top up"
+  },
+  {
+   "label": "225_electronics_tray_2",
+   "part_no": "225",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    100.0,
+    112.0,
+    26.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 49.8,
+   "est_hours_each": 0.66,
+   "orientation": "tray top up"
+  }
+ ],
+ "reused_v13_as_is": [
+  "47b_tumbler_barrel_helical_flight",
+  "48_drum_rear_feed_guard",
+  "49b_drum_static_outlet_plate",
+  "50_drum_625_bearing_roller",
+  "54_drum_drive_core_5mm",
+  "55_drum_friction_tire_TPU",
+  "56_drum_NEMA17_adjustable_bracket",
+  "reuse_62_vib_motor_saddle_V1",
+  "reuse_62_vib_motor_saddle_V2",
+  "reuse_63_vib_motor_cap_V1",
+  "reuse_63_vib_motor_cap_V2",
+  "59_door_link x2",
+  "59b_servo_link",
+  "57d_door_slider",
+  "60_servo_horn_arm (V13 deck_v13 STEPs)"
+ ],
+ "bought": [
+  {
+   "item": "NEMA17 (BJ salvaged, 5 mm shaft)",
+   "qty": 1,
+   "use": "drum drive on bracket 56"
+  },
+  {
+   "item": "625ZZ",
+   "qty": 8,
+   "use": "4 drum rollers x 2 (V7 part 50)"
+  },
+  {
+   "item": "M5 x 30 screw + nyloc",
+   "qty": 4,
+   "use": "roller axles through the cradle forks"
+  },
+  {
+   "item": "M5 x 16 screw + nut",
+   "qty": 4,
+   "use": "bracket 56 to motor wall 206"
+  },
+  {
+   "item": "M3 x 12 + nut",
+   "qty": 4,
+   "use": "49b ears to the cradle cheeks"
+  },
+  {
+   "item": "24 mm coin/vibration motor",
+   "qty": 2,
+   "use": "V1, V2 (DRV8833 channels)"
+  },
+  {
+   "item": "MG996R (BJ owns)",
+   "qty": 1,
+   "use": "scanner doors"
+  },
+  {
+   "item": "XIAO ESP32-S3 Sense",
+   "qty": 1,
+   "use": "camera on 217"
+  },
+  {
+   "item": "APDS-9960 (GY-9960)",
+   "qty": 1,
+   "use": "colour sensor on 218"
+  },
+  {
+   "item": "LED bar 70 mm",
+   "qty": 2,
+   "use": "on 216"
+  },
+  {
+   "item": "XIAO ESP32-C3, MCP23017, 3 x TMC2209, DRV8833, 12-5 V buck, 12 V PSU",
+   "qty": 1,
+   "use": "electronics trays 225 (BJ owns most)"
+  },
+  {
+   "item": "M3 heat-set inserts",
+   "qty": 30,
+   "use": "electronics pads"
+  },
+  {
+   "item": "M3 x 8 countersunk",
+   "qty": 4,
+   "use": "hopper flange to the stud-ring ledge (frame 130)"
+  },
+  {
+   "item": "M3 x 10 / x 12 screws",
+   "qty": 40,
+   "use": "springs, saddles, scanner"
+  },
+  {
+   "item": "#6 x 3/4 in wood screws",
+   "qty": 48,
+   "use": "everything that stands on the deck ply"
+  },
+  {
+   "item": "PTFE film (optional)",
+   "qty": 1,
+   "use": "thrust ring on 49b (V13 note)"
+  }
+ ],
+ "deck_ply_screws": [
+  {
+   "part": "205_drum_cradle_A_ypos",
+   "x": -139.0,
+   "y": 94.9
+  },
+  {
+   "part": "205_drum_cradle_A_ypos",
+   "x": 36.3,
+   "y": 94.9
+  },
+  {
+   "part": "205_drum_cradle_A_ypos",
+   "x": -139.0,
+   "y": 134.7
+  },
+  {
+   "part": "205_drum_cradle_A_ypos",
+   "x": 36.3,
+   "y": 134.7
+  },
+  {
+   "part": "205_drum_cradle_B_yneg",
+   "x": -139.0,
+   "y": -54.7
+  },
+  {
+   "part": "205_drum_cradle_B_yneg",
+   "x": 36.3,
+   "y": -54.7
+  },
+  {
+   "part": "205_drum_cradle_B_yneg",
+   "x": -139.0,
+   "y": -14.9
+  },
+  {
+   "part": "205_drum_cradle_B_yneg",
+   "x": 36.3,
+   "y": -14.9
+  },
+  {
+   "part": "206_motor_wall",
+   "x": -204.3,
+   "y": -4.0
+  },
+  {
+   "part": "206_motor_wall",
+   "x": -151.1,
+   "y": 14.0
+  },
+  {
+   "part": "206_motor_wall",
+   "x": -204.3,
+   "y": 14.0
+  },
+  {
+   "part": "206_motor_wall",
+   "x": -151.1,
+   "y": -4.0
+  },
+  {
+   "part": "207_leaf_spring_V1_1",
+   "x": 50.0,
+   "y": -25.4
+  },
+  {
+   "part": "207_leaf_spring_V1_1",
+   "x": 70.0,
+   "y": -5.4
+  },
+  {
+   "part": "207_leaf_spring_V1_2",
+   "x": 50.0,
+   "y": 82.6
+  },
+  {
+   "part": "207_leaf_spring_V1_2",
+   "x": 70.0,
+   "y": 102.6
+  },
+  {
+   "part": "207_leaf_spring_V2_1",
+   "x": 73.0,
+   "y": 126.4
+  },
+  {
+   "part": "207_leaf_spring_V2_1",
+   "x": 93.0,
+   "y": 146.4
+  },
+  {
+   "part": "207_leaf_spring_V2_2",
+   "x": 126.0,
+   "y": 50.0
+  },
+  {
+   "part": "207_leaf_spring_V2_2",
+   "x": 146.0,
+   "y": 70.0
+  },
+  {
+   "part": "210_scanner_plate",
+   "x": 159.0,
+   "y": -71.0
+  },
+  {
+   "part": "210_scanner_plate",
+   "x": 141.0,
+   "y": -89.0
+  },
+  {
+   "part": "210_scanner_plate",
+   "x": 189.0,
+   "y": 89.0
+  },
+  {
+   "part": "210_scanner_plate",
+   "x": 171.0,
+   "y": 71.0
+  },
+  {
+   "part": "210_scanner_plate",
+   "x": 339.0,
+   "y": -71.0
+  },
+  {
+   "part": "210_scanner_plate",
+   "x": 321.0,
+   "y": -89.0
+  },
+  {
+   "part": "210_scanner_plate",
+   "x": 339.0,
+   "y": 89.0
+  },
+  {
+   "part": "210_scanner_plate",
+   "x": 321.0,
+   "y": 71.0
+  },
+  {
+   "part": "220_drop_funnel",
+   "x": 272.5,
+   "y": 32.5
+  },
+  {
+   "part": "220_drop_funnel",
+   "x": 207.5,
+   "y": 32.5
+  },
+  {
+   "part": "220_drop_funnel",
+   "x": 207.5,
+   "y": -32.5
+  },
+  {
+   "part": "220_drop_funnel",
+   "x": 272.5,
+   "y": -32.5
+  },
+  {
+   "part": "225_electronics_tray_1",
+   "x": -292.0,
+   "y": -162.0
+  },
+  {
+   "part": "225_electronics_tray_1",
+   "x": -22.0,
+   "y": -162.0
+  },
+  {
+   "part": "225_electronics_tray_1",
+   "x": -292.0,
+   "y": -70.0
+  },
+  {
+   "part": "225_electronics_tray_1",
+   "x": -22.0,
+   "y": -70.0
+  },
+  {
+   "part": "225_electronics_tray_1",
+   "x": -157.0,
+   "y": -162.0
+  },
+  {
+   "part": "225_electronics_tray_1",
+   "x": -157.0,
+   "y": -70.0
+  },
+  {
+   "part": "225_electronics_tray_2",
+   "x": 22.0,
+   "y": -162.0
+  },
+  {
+   "part": "225_electronics_tray_2",
+   "x": 102.0,
+   "y": -162.0
+  },
+  {
+   "part": "225_electronics_tray_2",
+   "x": 22.0,
+   "y": -70.0
+  },
+  {
+   "part": "225_electronics_tray_2",
+   "x": 102.0,
+   "y": -70.0
+  }
+ ],
+ "est_total_grams_new_parts": 1366,
+ "est_total_hours_new_parts": 23.1
+}

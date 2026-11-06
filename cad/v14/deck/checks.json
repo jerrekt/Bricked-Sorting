@@ -1,0 +1,242 @@
+{
+ "interface": "v14-interface-5 (2026-11-05 23:10): body 720 x 360 x 664, 2x2 + 1x2 wood frame and 1/2 in plywood floor and deck, 2 mm red PLA skin, 0.5 L bins at 79 pitch",
+ "bed_fit": {
+  "205_drum_cradle_A_ypos": true,
+  "205_drum_cradle_B_yneg": true,
+  "206_motor_wall": true,
+  "201_hopper": true,
+  "202_feed_chute": true,
+  "203_V1_tray": true,
+  "204_V2_tray": true,
+  "207_leaf_spring_V1_1": true,
+  "207_leaf_spring_V1_2": true,
+  "207_leaf_spring_V2_1": true,
+  "207_leaf_spring_V2_2": true,
+  "210_scanner_plate": true,
+  "211_landing_ramp_low": true,
+  "212_slider_post": true,
+  "213_servo_saddle": true,
+  "214_trapdoor_A": true,
+  "214_trapdoor_B": true,
+  "215_camera_bridge": true,
+  "216_led_bar_holder_A": true,
+  "216_led_bar_holder_B": true,
+  "217_xiao_sense_camera_mount": true,
+  "218_apds9960_mount": true,
+  "220_drop_funnel": true,
+  "225_electronics_tray_1": true,
+  "225_electronics_tray_2": true
+ },
+ "zones": {
+  "47b_tumbler_barrel_helical_flight": "in K zone",
+  "49b_drum_static_outlet_plate": "in K zone",
+  "48_drum_rear_feed_guard": "in K zone",
+  "50_drum_625_bearing_roller_1": "in K zone",
+  "50_drum_625_bearing_roller_2": "in K zone",
+  "50_drum_625_bearing_roller_3": "in K zone",
+  "50_drum_625_bearing_roller_4": "in K zone",
+  "54_drum_drive_core_5mm": "in K zone",
+  "55_drum_friction_tire_TPU": "in K zone",
+  "56_drum_NEMA17_adjustable_bracket": "in K zone",
+  "NEMA17_drum": "in K zone",
+  "205_drum_cradle_A_ypos": "in K zone",
+  "205_drum_cradle_B_yneg": "in K zone",
+  "206_motor_wall": "in K zone",
+  "201_hopper": "in K zone (hopper through the roof hole with >= 1 mm to r 90; inside the stud ring above)",
+  "202_feed_chute": "in K zone",
+  "203_V1_tray": "in K zone",
+  "204_V2_tray": "in K zone",
+  "207_leaf_spring_V1_1": "in K zone",
+  "207_leaf_spring_V1_2": "in K zone",
+  "207_leaf_spring_V2_1": "in K zone",
+  "207_leaf_spring_V2_2": "in K zone",
+  "reuse_62_vib_motor_saddle_V1": "in K zone",
+  "reuse_63_vib_motor_cap_V1": "in K zone",
+  "reuse_62_vib_motor_saddle_V2": "in K zone",
+  "reuse_63_vib_motor_cap_V2": "in K zone",
+  "210_scanner_plate": "in K zone",
+  "211_landing_ramp_low": "in K zone",
+  "212_slider_post": "in K zone",
+  "213_servo_saddle": "in K zone",
+  "MG996R_scanner": "in K zone",
+  "214_trapdoor_A": "in K zone",
+  "214_trapdoor_B": "in K zone",
+  "215_camera_bridge": "in K zone",
+  "216_led_bar_holder_A": "in K zone",
+  "216_led_bar_holder_B": "in K zone",
+  "217_xiao_sense_camera_mount": "in K zone",
+  "218_apds9960_mount": "in K zone",
+  "220_drop_funnel": "in K zone (funnel r <= 27.5 through the r 28 deck hole, z 270..312)",
+  "225_electronics_tray_1": "in K zone",
+  "225_electronics_tray_2": "in K zone",
+  "dummy_PSU_12V_165x60": "in K zone",
+  "dummy_buck_12_5": "in K zone",
+  "dummy_XT30_inlet_and_fuse": "in K zone",
+  "dummy_XIAO_ESP32C3_carrier": "in K zone",
+  "dummy_TMC2209_x3_carrier": "in K zone",
+  "dummy_MCP23017": "in K zone",
+  "dummy_DRV8833": "in K zone"
+ },
+ "clashes": [],
+ "by_design_contacts": [
+  [
+   "54_drum_drive_core_5mm",
+   "55_drum_friction_tire_TPU",
+   103.6
+  ],
+  [
+   "203_V1_tray",
+   "204_V2_tray",
+   1.1
+  ],
+  [
+   "203_V1_tray",
+   "207_leaf_spring_V1_1",
+   269.2
+  ],
+  [
+   "203_V1_tray",
+   "207_leaf_spring_V1_2",
+   269.2
+  ],
+  [
+   "203_V1_tray",
+   "reuse_62_vib_motor_saddle_V1",
+   1063.6
+  ],
+  [
+   "203_V1_tray",
+   "reuse_63_vib_motor_cap_V1",
+   582.2
+  ],
+  [
+   "204_V2_tray",
+   "207_leaf_spring_V1_2",
+   123.2
+  ],
+  [
+   "204_V2_tray",
+   "207_leaf_spring_V2_1",
+   253.7
+  ],
+  [
+   "204_V2_tray",
+   "207_leaf_spring_V2_2",
+   253.7
+  ],
+  [
+   "204_V2_tray",
+   "reuse_62_vib_motor_saddle_V2",
+   1063.6
+  ],
+  [
+   "204_V2_tray",
+   "reuse_63_vib_motor_cap_V2",
+   582.2
+  ],
+  [
+   "reuse_62_vib_motor_saddle_V1",
+   "reuse_63_vib_motor_cap_V1",
+   13298.3
+  ],
+  [
+   "reuse_62_vib_motor_saddle_V2",
+   "reuse_63_vib_motor_cap_V2",
+   13298.3
+  ]
+ ],
+ "drum_turning_12_angles": {
+  "0": [],
+  "30": [],
+  "60": [],
+  "90": [],
+  "120": [],
+  "150": [],
+  "180": [],
+  "210": [],
+  "240": [],
+  "270": [],
+  "300": [],
+  "330": []
+ },
+ "scanner_doors_swing": {
+  "0": [],
+  "30": [],
+  "60": [],
+  "90": []
+ },
+ "vs_frame_module": {
+  "checked_parts": 41,
+  "clashes": []
+ },
+ "funnel": {
+  "mouth_z": 330.1550846861379,
+  "mouth_r": 50.0,
+  "cone_bottom_z": 313.0,
+  "r_in_above_deck": 25.5,
+  "r_in_tube": 23.0,
+  "exit_z": 270,
+  "open_door_tip_z": 331.1550846861379,
+  "mouth_below_open_doors": true
+ },
+ "chute": {
+  "from": [
+   -210.0,
+   40.0,
+   555.0
+  ],
+  "to_inside_drum_rear": [
+   -138.5,
+   40.0,
+   478.7
+  ],
+  "slope_deg": 46.9
+ },
+ "hopper": {
+  "rim_r": 75.0,
+  "rim_z": 658.0,
+  "outlet": [
+   -210.0,
+   40.0,
+   557.0
+  ],
+  "outlet_r": 30.0,
+  "far_wall_deg": 46.8
+ },
+ "flow": {
+  "drum_axis": "along +X at y 40, rear at x -150",
+  "drum_axis_tilt_deg": 1.0,
+  "drum_rear_axis_z": 508.9,
+  "drum_front_axis_z": 505.7,
+  "drum_top_rear_z": 588.9,
+  "plate_top_z": 592.1,
+  "roof_underside_z": 612.0,
+  "outlet_window_bottom_z": 437.8,
+  "V1_floor_under_window_z": 417.8,
+  "V1_top_start_end_z": [
+   420.6,
+   409.6
+  ],
+  "V2_top_start_end_z": [
+   401.6,
+   388.2
+  ],
+  "V2_end_over_ramp_xy": [
+   172.0,
+   8.0
+  ],
+  "ramp_top_z": 382.1550846861379,
+  "tray_slope_deg": 4.5,
+  "scanner_floor_Z_S": 374.1550846861379,
+  "drop_point": [
+   240,
+   0
+  ],
+  "funnel_exit": [
+   240,
+   0,
+   270
+  ],
+  "deck_top": 312
+ }
+}
