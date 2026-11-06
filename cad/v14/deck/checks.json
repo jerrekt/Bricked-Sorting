@@ -1,0 +1,230 @@
+{
+ "interface": "v14-interface-4.1 (2026-11-05 19:02): spine tunnels 26 tall (z 8..34) for a 24 mm roller rail, bins ~139 tall; interface frozen from here unless a test fails",
+ "bed_fit": {
+  "205_drum_cradle_A_xneg": true,
+  "205_drum_cradle_B_xpos": true,
+  "200_hopper_bowl_q1": true,
+  "200_hopper_bowl_q2": true,
+  "200_hopper_bowl_q3": true,
+  "200_hopper_bowl_q4": true,
+  "201_hopper_throat": true,
+  "202_feed_chute": true,
+  "203_V1_tray_a": true,
+  "203_V1_tray_b": true,
+  "203_V1_splice": true,
+  "204_V2_tray": true,
+  "207_leaf_spring_V1_1": true,
+  "207_leaf_spring_V1_2": true,
+  "207_leaf_spring_V1_3": true,
+  "207_leaf_spring_V2_1": true,
+  "207_leaf_spring_V2_2": true,
+  "210_scanner_plate": true,
+  "211_landing_ramp_low": true,
+  "212_slider_post": true,
+  "213_servo_saddle": true,
+  "214_trapdoor_A": true,
+  "214_trapdoor_B": true,
+  "215_camera_bridge": true,
+  "216_led_bar_holder_A": true,
+  "216_led_bar_holder_B": true,
+  "217_xiao_sense_camera_mount": true,
+  "218_apds9960_mount": true,
+  "220_drop_funnel": true,
+  "225_electronics_tray_1": true,
+  "225_electronics_tray_2": true
+ },
+ "zones": {
+  "47b_tumbler_barrel_helical_flight": "in K zone",
+  "49b_drum_static_outlet_plate": "in K zone",
+  "48_drum_rear_feed_guard": "in K zone",
+  "50_drum_625_bearing_roller_1": "in K zone",
+  "50_drum_625_bearing_roller_2": "in K zone",
+  "50_drum_625_bearing_roller_3": "in K zone",
+  "50_drum_625_bearing_roller_4": "in K zone",
+  "54_drum_drive_core_5mm": "in K zone",
+  "55_drum_friction_tire_TPU": "in K zone",
+  "56_drum_NEMA17_adjustable_bracket": "in K zone",
+  "NEMA17_drum": "in K zone",
+  "205_drum_cradle_A_xneg": "in K zone",
+  "205_drum_cradle_B_xpos": "in K zone",
+  "200_hopper_bowl_q1": "in K zone (hopper: r <= 97 through the roof hole, r <= 142 inside the stud ring ID 290)",
+  "200_hopper_bowl_q2": "in K zone (hopper: r <= 97 through the roof hole, r <= 142 inside the stud ring ID 290)",
+  "200_hopper_bowl_q3": "in K zone (hopper: r <= 97 through the roof hole, r <= 142 inside the stud ring ID 290)",
+  "200_hopper_bowl_q4": "in K zone (hopper: r <= 97 through the roof hole, r <= 142 inside the stud ring ID 290)",
+  "201_hopper_throat": "in K zone (hopper: r <= 97 through the roof hole, r <= 142 inside the stud ring ID 290)",
+  "202_feed_chute": "in K zone",
+  "203_V1_tray_a": "in K zone",
+  "203_V1_tray_b": "in K zone",
+  "203_V1_splice": "in K zone",
+  "204_V2_tray": "in K zone",
+  "207_leaf_spring_V1_1": "in K zone",
+  "207_leaf_spring_V1_2": "in K zone",
+  "207_leaf_spring_V1_3": "in K zone",
+  "207_leaf_spring_V2_1": "in K zone",
+  "207_leaf_spring_V2_2": "in K zone",
+  "reuse_62_vib_motor_saddle_V1": "in K zone",
+  "reuse_63_vib_motor_cap_V1": "in K zone",
+  "reuse_62_vib_motor_saddle_V2": "in K zone",
+  "reuse_63_vib_motor_cap_V2": "in K zone",
+  "210_scanner_plate": "in K zone",
+  "211_landing_ramp_low": "in K zone",
+  "212_slider_post": "in K zone",
+  "213_servo_saddle": "in K zone",
+  "MG996R_scanner": "in K zone",
+  "214_trapdoor_A": "in K zone",
+  "214_trapdoor_B": "in K zone",
+  "215_camera_bridge": "in K zone",
+  "216_led_bar_holder_A": "in K zone",
+  "216_led_bar_holder_B": "in K zone",
+  "217_xiao_sense_camera_mount": "in K zone",
+  "218_apds9960_mount": "in K zone",
+  "220_drop_funnel": "in K zone (funnel cylinder r 30, z 335..390 below the deck)",
+  "225_electronics_tray_1": "in K zone",
+  "225_electronics_tray_2": "in K zone",
+  "dummy_PSU_12V_165x60": "in K zone",
+  "dummy_buck_12_5": "in K zone",
+  "dummy_XT30_inlet_and_fuse": "in K zone",
+  "dummy_XIAO_ESP32C3_carrier": "in K zone",
+  "dummy_TMC2209_x3_carrier": "in K zone",
+  "dummy_MCP23017": "in K zone",
+  "dummy_DRV8833": "in K zone"
+ },
+ "clashes": [],
+ "by_design_contacts": [
+  [
+   "54_drum_drive_core_5mm",
+   "55_drum_friction_tire_TPU",
+   103.6
+  ],
+  [
+   "203_V1_tray_a",
+   "207_leaf_spring_V1_1",
+   51.6
+  ],
+  [
+   "203_V1_tray_a",
+   "207_leaf_spring_V1_2",
+   51.6
+  ],
+  [
+   "203_V1_tray_a",
+   "reuse_62_vib_motor_saddle_V1",
+   209.6
+  ],
+  [
+   "203_V1_tray_a",
+   "reuse_63_vib_motor_cap_V1",
+   114.7
+  ],
+  [
+   "203_V1_tray_b",
+   "203_V1_splice",
+   76.4
+  ],
+  [
+   "203_V1_tray_b",
+   "207_leaf_spring_V1_3",
+   51.6
+  ],
+  [
+   "204_V2_tray",
+   "207_leaf_spring_V2_1",
+   56.3
+  ],
+  [
+   "204_V2_tray",
+   "207_leaf_spring_V2_2",
+   56.3
+  ],
+  [
+   "204_V2_tray",
+   "reuse_62_vib_motor_saddle_V2",
+   240.8
+  ],
+  [
+   "204_V2_tray",
+   "reuse_63_vib_motor_cap_V2",
+   131.8
+  ],
+  [
+   "reuse_62_vib_motor_saddle_V1",
+   "reuse_63_vib_motor_cap_V1",
+   13298.3
+  ],
+  [
+   "reuse_62_vib_motor_saddle_V2",
+   "reuse_63_vib_motor_cap_V2",
+   13298.3
+  ]
+ ],
+ "drum_turning_12_angles": {
+  "0": [],
+  "30": [],
+  "60": [],
+  "90": [],
+  "120": [],
+  "150": [],
+  "180": [],
+  "210": [],
+  "240": [],
+  "270": [],
+  "300": [],
+  "330": []
+ },
+ "scanner_doors_swing": {
+  "0": [],
+  "30": [],
+  "60": [],
+  "90": []
+ },
+ "funnel": {
+  "mouth_z": 415.0,
+  "mouth_r": 54.0,
+  "cone_45deg_to_r": 28.0,
+  "exit_z": 335,
+  "open_door_tip_z": 416.0,
+  "mouth_below_open_doors": true
+ },
+ "chute": {
+  "from": [
+   -200.0,
+   -75.0,
+   658.0
+  ],
+  "to_inside_drum_rear": [
+   -200.0,
+   20.0,
+   568.8
+  ],
+  "slope_deg": 43.2
+ },
+ "flow": {
+  "drum_axis_tilt_deg": 6.0,
+  "drum_rear_axis_z": 589.0,
+  "drum_front_axis_z": 570.2,
+  "outlet_window_bottom_z": 503.1,
+  "V1_top_start_end_z": [
+   491.0,
+   486.0
+  ],
+  "V2_top_start_end_z": [
+   478.0,
+   473.0
+  ],
+  "V2_end_over_ramp_xy": [
+   262.0,
+   8.0
+  ],
+  "ramp_top_z": 467.0,
+  "scanner_floor_Z_S": 459.0,
+  "drop_point": [
+   330,
+   0
+  ],
+  "funnel_exit": [
+   330,
+   0,
+   335
+  ]
+ }
+}

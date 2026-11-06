@@ -1,0 +1,525 @@
+{
+ "module": "K",
+ "interface": "v14-interface-4.1 (2026-11-05 19:02): spine tunnels 26 tall (z 8..34) for a 24 mm roller rail, bins ~139 tall; interface frozen from here unless a test fails",
+ "printed_new": [
+  {
+   "label": "205_drum_cradle_A_xneg",
+   "part_no": "205",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    49.82,
+    204.49,
+    202.48
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 143.9
+  },
+  {
+   "label": "205_drum_cradle_B_xpos",
+   "part_no": "205",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    197.71,
+    237.01,
+    202.48
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": true,
+   "est_grams_each": 187.9
+  },
+  {
+   "label": "200_hopper_bowl_q1",
+   "part_no": "200",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    143.0,
+    143.0,
+    55.67
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 35.0
+  },
+  {
+   "label": "200_hopper_bowl_q2",
+   "part_no": "200",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    142.97,
+    142.97,
+    55.66
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 35.0
+  },
+  {
+   "label": "200_hopper_bowl_q3",
+   "part_no": "200",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    143.0,
+    143.0,
+    55.67
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 35.0
+  },
+  {
+   "label": "200_hopper_bowl_q4",
+   "part_no": "200",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    143.0,
+    143.0,
+    55.67
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 35.0
+  },
+  {
+   "label": "201_hopper_throat",
+   "part_no": "201",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    209.06,
+    217.81,
+    66.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 101.8
+  },
+  {
+   "label": "202_feed_chute",
+   "part_no": "202",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    70.09,
+    138.26,
+    106.7
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 44.5
+  },
+  {
+   "label": "203_V1_tray_a",
+   "part_no": "203",
+   "qty": 1,
+   "material": "PETG",
+   "bed_extent": [
+    230.02,
+    44.0,
+    24.59
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 59.6
+  },
+  {
+   "label": "203_V1_tray_b",
+   "part_no": "203",
+   "qty": 1,
+   "material": "PETG",
+   "bed_extent": [
+    90.31,
+    44.0,
+    22.41
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 25.0
+  },
+  {
+   "label": "203_V1_splice",
+   "part_no": "203",
+   "qty": 1,
+   "material": "PETG",
+   "bed_extent": [
+    30.0,
+    44.0,
+    4.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 6.6
+  },
+  {
+   "label": "204_V2_tray",
+   "part_no": "204",
+   "qty": 1,
+   "material": "PETG",
+   "bed_extent": [
+    228.38,
+    228.38,
+    26.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 77.2
+  },
+  {
+   "label": "207_leaf_spring_V1_1",
+   "part_no": "207",
+   "qty": 1,
+   "material": "PETG",
+   "bed_extent": [
+    56.67,
+    97.0,
+    32.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 16.9
+  },
+  {
+   "label": "207_leaf_spring_V1_2",
+   "part_no": "207",
+   "qty": 1,
+   "material": "PETG",
+   "bed_extent": [
+    58.4,
+    94.9,
+    32.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 14.6
+  },
+  {
+   "label": "207_leaf_spring_V1_3",
+   "part_no": "207",
+   "qty": 1,
+   "material": "PETG",
+   "bed_extent": [
+    55.34,
+    93.35,
+    32.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 17.7
+  },
+  {
+   "label": "207_leaf_spring_V2_1",
+   "part_no": "207",
+   "qty": 1,
+   "material": "PETG",
+   "bed_extent": [
+    44.15,
+    84.4,
+    44.15
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 12.9
+  },
+  {
+   "label": "207_leaf_spring_V2_2",
+   "part_no": "207",
+   "qty": 1,
+   "material": "PETG",
+   "bed_extent": [
+    48.2,
+    82.0,
+    58.2
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 14.7
+  },
+  {
+   "label": "210_scanner_plate",
+   "part_no": "210",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    240.0,
+    180.0,
+    69.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 199.2
+  },
+  {
+   "label": "211_landing_ramp_low",
+   "part_no": "211",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    49.4,
+    63.0,
+    40.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 21.7
+  },
+  {
+   "label": "212_slider_post",
+   "part_no": "212",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    34.0,
+    100.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 18.8
+  },
+  {
+   "label": "213_servo_saddle",
+   "part_no": "213",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    36.5,
+    56.7,
+    48.85
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 29.7
+  },
+  {
+   "label": "214_trapdoor_A",
+   "part_no": "214",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    85.01,
+    66.7,
+    12.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 12.3
+  },
+  {
+   "label": "214_trapdoor_B",
+   "part_no": "214",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    85.01,
+    66.7,
+    12.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 12.3
+  },
+  {
+   "label": "215_camera_bridge",
+   "part_no": "215",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    134.0,
+    80.0,
+    133.01
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 99.8
+  },
+  {
+   "label": "216_led_bar_holder_A",
+   "part_no": "216",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    74.0,
+    23.0,
+    46.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 32.3
+  },
+  {
+   "label": "216_led_bar_holder_B",
+   "part_no": "216",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    74.0,
+    23.0,
+    46.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 32.3
+  },
+  {
+   "label": "217_xiao_sense_camera_mount",
+   "part_no": "217",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    50.0,
+    66.0,
+    14.5
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 12.8
+  },
+  {
+   "label": "218_apds9960_mount",
+   "part_no": "218",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    28.0,
+    19.45,
+    19.95
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 5.6
+  },
+  {
+   "label": "220_drop_funnel",
+   "part_no": "220",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    140.1,
+    140.1,
+    80.31
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 93.6
+  },
+  {
+   "label": "225_electronics_tray_1",
+   "part_no": "225",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    244.0,
+    88.0,
+    38.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 134.4
+  },
+  {
+   "label": "225_electronics_tray_2",
+   "part_no": "225",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    88.0,
+    38.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 112.9
+  }
+ ],
+ "reused_v13_as_is": [
+  "47b_tumbler_barrel_helical_flight",
+  "48_drum_rear_feed_guard",
+  "49b_drum_static_outlet_plate",
+  "50_drum_625_bearing_roller",
+  "54_drum_drive_core_5mm",
+  "55_drum_friction_tire_TPU",
+  "56_drum_NEMA17_adjustable_bracket",
+  "reuse_62_vib_motor_saddle_V1",
+  "reuse_62_vib_motor_saddle_V2",
+  "reuse_63_vib_motor_cap_V1",
+  "reuse_63_vib_motor_cap_V2",
+  "59_door_link x2",
+  "59b_servo_link",
+  "57d_door_slider",
+  "60_servo_horn_arm (V13 deck_v13 STEPs)"
+ ],
+ "bought": [
+  {
+   "item": "NEMA17 (BJ salvaged, 5 mm shaft)",
+   "qty": 1,
+   "use": "drum drive on bracket 56"
+  },
+  {
+   "item": "625ZZ",
+   "qty": 8,
+   "use": "4 drum rollers x 2 (V7 part 50)"
+  },
+  {
+   "item": "M5 x 30 screw + nyloc",
+   "qty": 4,
+   "use": "roller axles through the cradle forks"
+  },
+  {
+   "item": "M5 x 16 screw + nut",
+   "qty": 4,
+   "use": "bracket 56 to motor wall 206"
+  },
+  {
+   "item": "24 mm coin/vibration motor",
+   "qty": 2,
+   "use": "V1, V2 (DRV8833 channels)"
+  },
+  {
+   "item": "MG996R (BJ owns)",
+   "qty": 1,
+   "use": "scanner doors"
+  },
+  {
+   "item": "XIAO ESP32-S3 Sense",
+   "qty": 1,
+   "use": "camera on 217"
+  },
+  {
+   "item": "APDS-9960 (GY-9960)",
+   "qty": 1,
+   "use": "colour sensor on 218"
+  },
+  {
+   "item": "LED bar 70 mm",
+   "qty": 2,
+   "use": "on 216"
+  },
+  {
+   "item": "XIAO ESP32-C3, MCP23017, 3 x TMC2209, DRV8833, 12-5 V buck, 12 V PSU",
+   "qty": 1,
+   "use": "electronics trays 225 (BJ owns most)"
+  },
+  {
+   "item": "M3 heat-set inserts",
+   "qty": 60,
+   "use": "electronics pads, roof tabs (F), misc"
+  },
+  {
+   "item": "M3 x 10 / x 12 screws",
+   "qty": 90,
+   "use": "deck-grid bolts, splice, springs, scanner"
+  },
+  {
+   "item": "PTFE film (optional)",
+   "qty": 1,
+   "use": "thrust ring on 49b (V13 note)"
+  }
+ ],
+ "est_total_grams_new_parts": 1681
+}
