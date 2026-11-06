@@ -2,8 +2,8 @@
 
 Branch `cad-v14-all` (from `cad-v14`, interface v14-interface-2). Order from the vault handoff `projects/bricked-sorting-v14-cad-handoff.md` ("one chat" section). A fresh chat: read this list, then the module README of the last done module, then continue at the first open item.
 
-- [x] 1. Runner test pair: `drawer/runner_test/` (2026-11-05 18:33 PT). Sent to BJ to print. Fit coupon first (0.20/0.30/0.40), full parts at 0.30.
-- [x] 2. Drawers + bins (D): `drawer/` (2026-11-05 18:52 PT). 4 runners per drawer (not 3), checks clean, see `drawer/README.md` INTERFACE REQUESTS 1-3.
+- [x] 1. Runner test pair: `drawer/runner_test/` (2026-11-05 18:31 PT). Sent to BJ to print. Fit coupon first (0.20/0.30/0.40), full parts at 0.30.
+- [x] 2. Drawers + bins (D): `drawer/` (2026-11-05 18:39 PT). 4 runners per drawer (not 3), checks clean, see `drawer/README.md` INTERFACE REQUESTS 1-3.
 - [ ] 3. Scoop slide (S): `scoop/`
 - [ ] 4. Deck (K): `deck/`
 - [ ] 5. Frame (F): `frame/`
