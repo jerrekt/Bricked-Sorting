@@ -1,6 +1,6 @@
 {
  "_about": "Bricked Sorting V14 shared interface. All four module chats build to these numbers. Do not edit; request changes in your module README under INTERFACE REQUESTS.",
- "version": "v14-interface-1 (2026-11-05)",
+ "version": "v14-interface-2 (2026-11-05 18:20): two opposing drawers, drum kept at 160 x 180",
  "units": "mm",
  "axes": "origin = floor center; +X right when facing the drawer; +Y toward the front (the drawer pulls out +Y); +Z up",
  "envelope": {
@@ -214,6 +214,16 @@
   "stud_R_(+260)": "closed cap"
  },
  "back_wall": {
+  "drawer_opening": {
+   "x": [
+    -470,
+    470
+   ],
+   "z": [
+    8,
+    186
+   ]
+  },
   "removable_access_panel": {
    "x": [
     -300,
@@ -228,18 +238,34 @@
  "zones": {
   "F_frame": "walls, floor, deck panel, roof, studs, corner columns, bracing. Bracing must stay out of the D, S and K zones.",
   "D_drawer": {
-   "x": [
-    -466,
-    466
-   ],
-   "y": [
-    -232,
-    260
-   ],
-   "z": [
-    8,
-    184
-   ]
+   "front": {
+    "x": [
+     -466,
+     466
+    ],
+    "y": [
+     70,
+     260
+    ],
+    "z": [
+     8,
+     184
+    ]
+   },
+   "back": {
+    "x": [
+     -466,
+     466
+    ],
+    "y": [
+     -260,
+     -70
+    ],
+    "z": [
+     8,
+     184
+    ]
+   }
   },
   "S_scoop": {
    "x": [
@@ -299,9 +325,13 @@
   "open_top": true
  },
  "drawer": {
-  "count": 1,
-  "travel_y": 490,
-  "note": "back row must fully clear the front face (y 260) when open, so the runners must telescope (2-stage printed)"
+  "count": 2,
+  "bins_each": 8,
+  "travel_y": 220,
+  "front_pulls": "+Y",
+  "back_pulls": "-Y",
+  "runners": "single-stage printed with hard end stops and a closed detent",
+  "note": "each bank (~5 kg loaded) fully clears its face at 220"
  },
  "scoop": {
   "receive_pose": {
@@ -338,5 +368,23 @@
    249
   ]
  },
- "bought_parts_allowed": "electronics, motors, servos, switches, LEDs, 625ZZ bearings, GT2 6 mm belt + 20T pulleys + idler (scoop slide only), M3/M5 screws and nuts, M3 heat-set inserts, TPU/PTFE film. Everything else printed (no 2020 extrusion, no metal slides)."
+ "bought_parts_allowed": "electronics, motors, servos, switches, LEDs, 625ZZ bearings, GT2 6 mm belt + 20T pulleys + idler (scoop slide only), M3/M5 screws and nuts, M3 heat-set inserts, TPU/PTFE film. Everything else printed (no 2020 extrusion, no metal slides).",
+ "center_spine": {
+  "x": [
+   -466,
+   466
+  ],
+  "y": [
+   -66,
+   66
+  ],
+  "z": [
+   8,
+   184
+  ],
+  "owner": "F",
+  "note": "free strip under the beam between the two drawers: F may put a structural spine here and D may bolt runners to its sides"
+ },
+ "service_clearance": "300 mm behind the machine for the back drawer",
+ "drum": "keep the V13 drum as-is: 47b barrel 160 x 180 with helical flight, 49b static outlet plate (cradles new)"
 }
