@@ -1,0 +1,1625 @@
+{
+ "module": "F",
+ "interface": "v14-interface-4.1 (2026-11-05 19:02): spine tunnels 26 tall (z 8..34) for a 24 mm roller rail, bins ~139 tall; interface frozen from here unless a test fails",
+ "printed": [
+  {
+   "label": "100_floor_00",
+   "part_no": "100",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    228.0,
+    193.0,
+    8.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 217.7
+  },
+  {
+   "label": "100_floor_01",
+   "part_no": "100",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    228.0,
+    194.0,
+    8.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 214.4
+  },
+  {
+   "label": "100_floor_02",
+   "part_no": "100",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    228.0,
+    173.0,
+    8.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 194.8
+  },
+  {
+   "label": "100_floor_10",
+   "part_no": "100",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    228.0,
+    193.0,
+    8.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 214.6
+  },
+  {
+   "label": "100_floor_11",
+   "part_no": "100",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    228.0,
+    194.0,
+    8.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 211.2
+  },
+  {
+   "label": "100_floor_12",
+   "part_no": "100",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    228.0,
+    173.0,
+    8.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 191.8
+  },
+  {
+   "label": "100_floor_20",
+   "part_no": "100",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    228.0,
+    193.0,
+    8.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 214.6
+  },
+  {
+   "label": "100_floor_21",
+   "part_no": "100",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    228.0,
+    194.0,
+    8.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 211.2
+  },
+  {
+   "label": "100_floor_22",
+   "part_no": "100",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    228.0,
+    173.0,
+    8.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 191.8
+  },
+  {
+   "label": "100_floor_30",
+   "part_no": "100",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    228.0,
+    193.0,
+    8.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 212.8
+  },
+  {
+   "label": "100_floor_31",
+   "part_no": "100",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    228.0,
+    194.0,
+    8.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 209.5
+  },
+  {
+   "label": "100_floor_32",
+   "part_no": "100",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    228.0,
+    173.0,
+    8.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 190.0
+  },
+  {
+   "label": "100_floor_40",
+   "part_no": "100",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    208.0,
+    193.0,
+    8.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 202.9
+  },
+  {
+   "label": "100_floor_41",
+   "part_no": "100",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    208.0,
+    194.0,
+    8.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 199.4
+  },
+  {
+   "label": "100_floor_42",
+   "part_no": "100",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    208.0,
+    173.0,
+    8.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 180.0
+  },
+  {
+   "label": "105_spine_1",
+   "part_no": "105",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    245.0,
+    132.0,
+    176.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 1005.6
+  },
+  {
+   "label": "105_spine_2",
+   "part_no": "105",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    245.0,
+    132.0,
+    176.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 990.7
+  },
+  {
+   "label": "105_spine_3",
+   "part_no": "105",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    245.0,
+    132.0,
+    176.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 1002.4
+  },
+  {
+   "label": "105_spine_4",
+   "part_no": "105",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    233.0,
+    132.0,
+    176.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 1001.6
+  },
+  {
+   "label": "110_column_LB_1",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    210.01,
+    210.01,
+    50.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": true,
+   "est_grams": 268.7
+  },
+  {
+   "label": "110_column_LB_2",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    50.0,
+    50.0,
+    235.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 242.2
+  },
+  {
+   "label": "110_column_LB_3",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    50.0,
+    50.0,
+    220.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 234.8
+  },
+  {
+   "label": "110_column_LF_1",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    210.01,
+    210.01,
+    50.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": true,
+   "est_grams": 268.7
+  },
+  {
+   "label": "110_column_LF_2",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    50.0,
+    50.0,
+    235.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 242.2
+  },
+  {
+   "label": "110_column_LF_3",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    50.0,
+    50.0,
+    220.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 234.8
+  },
+  {
+   "label": "110_column_RB_1",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    210.01,
+    210.01,
+    50.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": true,
+   "est_grams": 268.7
+  },
+  {
+   "label": "110_column_RB_2",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    50.0,
+    50.0,
+    235.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 242.2
+  },
+  {
+   "label": "110_column_RB_3",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    50.0,
+    50.0,
+    220.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 234.8
+  },
+  {
+   "label": "110_column_RF_1",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    210.01,
+    210.01,
+    50.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": true,
+   "est_grams": 268.7
+  },
+  {
+   "label": "110_column_RF_2",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    50.0,
+    50.0,
+    235.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 242.2
+  },
+  {
+   "label": "110_column_RF_3",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    50.0,
+    50.0,
+    220.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 234.8
+  },
+  {
+   "label": "115_side_L_00",
+   "part_no": "115",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    247.0,
+    210.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 378.0
+  },
+  {
+   "label": "115_side_L_01",
+   "part_no": "115",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    225.0,
+    210.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 340.2
+  },
+  {
+   "label": "115_side_L_02",
+   "part_no": "115",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    220.0,
+    210.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 335.4
+  },
+  {
+   "label": "115_side_L_10",
+   "part_no": "115",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    247.0,
+    210.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 378.1
+  },
+  {
+   "label": "115_side_L_11",
+   "part_no": "115",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    225.0,
+    210.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 340.2
+  },
+  {
+   "label": "115_side_L_12",
+   "part_no": "115",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    220.0,
+    210.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 335.3
+  },
+  {
+   "label": "115_side_R_00",
+   "part_no": "115",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    247.0,
+    210.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 378.1
+  },
+  {
+   "label": "115_side_R_01",
+   "part_no": "115",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    225.0,
+    210.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 340.2
+  },
+  {
+   "label": "115_side_R_02",
+   "part_no": "115",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    220.0,
+    210.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 335.4
+  },
+  {
+   "label": "115_side_R_10",
+   "part_no": "115",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    247.0,
+    210.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 378.0
+  },
+  {
+   "label": "115_side_R_11",
+   "part_no": "115",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    225.0,
+    210.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 340.2
+  },
+  {
+   "label": "115_side_R_12",
+   "part_no": "115",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    220.0,
+    210.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 335.3
+  },
+  {
+   "label": "120_front_00",
+   "part_no": "120",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    235.0,
+    184.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 311.3
+  },
+  {
+   "label": "120_front_01",
+   "part_no": "120",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    235.0,
+    165.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 264.4
+  },
+  {
+   "label": "120_front_02",
+   "part_no": "120",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    235.0,
+    165.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 281.5
+  },
+  {
+   "label": "120_front_10",
+   "part_no": "120",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    235.0,
+    184.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 311.3
+  },
+  {
+   "label": "120_front_11",
+   "part_no": "120",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    235.0,
+    165.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 264.4
+  },
+  {
+   "label": "120_front_12",
+   "part_no": "120",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    235.0,
+    165.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 281.5
+  },
+  {
+   "label": "120_front_20",
+   "part_no": "120",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    235.0,
+    184.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 311.3
+  },
+  {
+   "label": "120_front_21",
+   "part_no": "120",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    235.0,
+    165.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 264.4
+  },
+  {
+   "label": "120_front_22",
+   "part_no": "120",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    235.0,
+    165.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 281.5
+  },
+  {
+   "label": "120_front_30",
+   "part_no": "120",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    235.0,
+    184.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 311.2
+  },
+  {
+   "label": "120_front_31",
+   "part_no": "120",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    235.0,
+    165.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 264.4
+  },
+  {
+   "label": "120_front_32",
+   "part_no": "120",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    235.0,
+    165.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 281.5
+  },
+  {
+   "label": "125_back_low_0",
+   "part_no": "125",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    235.0,
+    184.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 311.3
+  },
+  {
+   "label": "125_back_low_1",
+   "part_no": "125",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    235.0,
+    184.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 311.3
+  },
+  {
+   "label": "125_back_low_2",
+   "part_no": "125",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    235.0,
+    184.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 311.3
+  },
+  {
+   "label": "125_back_low_3",
+   "part_no": "125",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    235.0,
+    184.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 311.2
+  },
+  {
+   "label": "126_back_side_00",
+   "part_no": "126",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    170.0,
+    165.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 196.1
+  },
+  {
+   "label": "126_back_side_01",
+   "part_no": "126",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    170.0,
+    165.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 208.7
+  },
+  {
+   "label": "126_back_side_10",
+   "part_no": "126",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    170.0,
+    165.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 196.1
+  },
+  {
+   "label": "126_back_side_11",
+   "part_no": "126",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    170.0,
+    165.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 208.7
+  },
+  {
+   "label": "127_back_strip_low_0",
+   "part_no": "127",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    200.0,
+    50.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 81.2
+  },
+  {
+   "label": "127_back_strip_high_0",
+   "part_no": "127",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    200.0,
+    20.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 50.9
+  },
+  {
+   "label": "127_back_strip_low_1",
+   "part_no": "127",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    200.0,
+    50.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 81.2
+  },
+  {
+   "label": "127_back_strip_high_1",
+   "part_no": "127",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    200.0,
+    20.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 50.8
+  },
+  {
+   "label": "127_back_strip_low_2",
+   "part_no": "127",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    200.0,
+    50.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 81.1
+  },
+  {
+   "label": "127_back_strip_high_2",
+   "part_no": "127",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    200.0,
+    20.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 51.0
+  },
+  {
+   "label": "128_access_00",
+   "part_no": "128",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    199.4,
+    129.4,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 187.4
+  },
+  {
+   "label": "128_access_01",
+   "part_no": "128",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    199.4,
+    129.4,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 187.4
+  },
+  {
+   "label": "128_access_10",
+   "part_no": "128",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    199.4,
+    129.4,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 187.4
+  },
+  {
+   "label": "128_access_11",
+   "part_no": "128",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    199.4,
+    129.4,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 187.4
+  },
+  {
+   "label": "128_access_20",
+   "part_no": "128",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    199.4,
+    129.4,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 187.4
+  },
+  {
+   "label": "128_access_21",
+   "part_no": "128",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    199.4,
+    129.4,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 187.4
+  },
+  {
+   "label": "130_deck_00",
+   "part_no": "130",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    204.0,
+    169.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 231.4
+  },
+  {
+   "label": "130_deck_01",
+   "part_no": "130",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    204.0,
+    170.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 255.6
+  },
+  {
+   "label": "130_deck_02",
+   "part_no": "130",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    204.0,
+    169.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 239.2
+  },
+  {
+   "label": "130_deck_10",
+   "part_no": "130",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    200.0,
+    169.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 248.7
+  },
+  {
+   "label": "130_deck_11",
+   "part_no": "130",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    200.0,
+    170.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 250.2
+  },
+  {
+   "label": "130_deck_12",
+   "part_no": "130",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    200.0,
+    169.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 248.7
+  },
+  {
+   "label": "130_deck_20",
+   "part_no": "130",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    200.0,
+    169.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 248.5
+  },
+  {
+   "label": "130_deck_21",
+   "part_no": "130",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    200.0,
+    170.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 250.2
+  },
+  {
+   "label": "130_deck_22",
+   "part_no": "130",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    200.0,
+    169.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 248.5
+  },
+  {
+   "label": "130_deck_30",
+   "part_no": "130",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    180.0,
+    169.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 227.9
+  },
+  {
+   "label": "130_deck_31",
+   "part_no": "130",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    180.0,
+    170.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 229.5
+  },
+  {
+   "label": "130_deck_32",
+   "part_no": "130",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    180.0,
+    169.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 227.9
+  },
+  {
+   "label": "130_deck_40",
+   "part_no": "130",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    244.0,
+    169.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 281.4
+  },
+  {
+   "label": "130_deck_41",
+   "part_no": "130",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    244.0,
+    170.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 281.7
+  },
+  {
+   "label": "130_deck_42",
+   "part_no": "130",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    244.0,
+    169.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 289.2
+  },
+  {
+   "label": "135_roof_00",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    140.0,
+    150.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 151.7
+  },
+  {
+   "label": "135_roof_01",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    140.0,
+    220.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 224.0
+  },
+  {
+   "label": "135_roof_02",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    140.0,
+    150.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 151.7
+  },
+  {
+   "label": "135_roof_10",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    240.0,
+    150.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 254.8
+  },
+  {
+   "label": "135_roof_11",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    240.0,
+    220.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 215.0
+  },
+  {
+   "label": "135_roof_12",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    240.0,
+    150.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 254.8
+  },
+  {
+   "label": "135_roof_20",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    240.0,
+    150.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 254.3
+  },
+  {
+   "label": "135_roof_21",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    240.0,
+    220.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 375.1
+  },
+  {
+   "label": "135_roof_22",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    240.0,
+    150.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 254.3
+  },
+  {
+   "label": "135_roof_30",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    210.0,
+    150.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 228.0
+  },
+  {
+   "label": "135_roof_31",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    210.0,
+    220.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 335.8
+  },
+  {
+   "label": "135_roof_32",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    210.0,
+    150.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 228.0
+  },
+  {
+   "label": "135_roof_40",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    210.0,
+    150.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 227.8
+  },
+  {
+   "label": "135_roof_41",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    210.0,
+    220.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 336.0
+  },
+  {
+   "label": "135_roof_42",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    210.0,
+    150.0,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 227.8
+  },
+  {
+   "label": "140_stud_L_q1",
+   "part_no": "140",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    156.0,
+    156.0,
+    60.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 102.0
+  },
+  {
+   "label": "140_stud_L_q2",
+   "part_no": "140",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    156.0,
+    156.0,
+    60.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 102.0
+  },
+  {
+   "label": "140_stud_L_q3",
+   "part_no": "140",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    156.0,
+    156.0,
+    60.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 102.0
+  },
+  {
+   "label": "140_stud_L_q4",
+   "part_no": "140",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    156.0,
+    156.0,
+    60.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 102.0
+  },
+  {
+   "label": "140_stud_R_q1",
+   "part_no": "140",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    156.0,
+    156.0,
+    60.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 170.4
+  },
+  {
+   "label": "140_stud_R_q2",
+   "part_no": "140",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    156.0,
+    156.0,
+    60.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 170.4
+  },
+  {
+   "label": "140_stud_R_q3",
+   "part_no": "140",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    156.0,
+    156.0,
+    60.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 170.4
+  },
+  {
+   "label": "140_stud_R_q4",
+   "part_no": "140",
+   "qty": 1,
+   "material": "PLA red",
+   "bed_extent": [
+    156.0,
+    156.0,
+    60.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 170.4
+  }
+ ],
+ "bought": [
+  {
+   "item": "M3 heat-set insert",
+   "qty": 900,
+   "use": "floor + deck grids (~575), seams, ledges, roof ring, studs"
+  },
+  {
+   "item": "M3 x 14 socket screw",
+   "qty": 420,
+   "use": "panel seams and columns"
+  },
+  {
+   "item": "M3 x 10 screw",
+   "qty": 120,
+   "use": "deck to ledges, roof to walls, studs, spine to floor"
+  },
+  {
+   "item": "M3 x 12 screw + nut",
+   "qty": 90,
+   "use": "floor laps, spine seams, stud lugs"
+  }
+ ],
+ "est_total_grams": 29826,
+ "est_grams_by_part_no": {
+  "100": 3057,
+  "105": 4000,
+  "110": 2983,
+  "115": 4214,
+  "120": 3429,
+  "125": 1245,
+  "126": 810,
+  "127": 396,
+  "128": 1124,
+  "130": 3759,
+  "135": 3719,
+  "140": 1090
+ }
+}
