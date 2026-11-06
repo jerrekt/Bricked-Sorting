@@ -83,8 +83,12 @@ def station(ys, preload_last=False, slotted_index=None, foot_holes=True, rail_x_
     """floor block for two rollers beside a rail (rail on its -x side, rail centre at x 0).
     ys: roller y (local to this block's frame, i.e. world y). Returns block, roller solids."""
     y0, y1 = min(ys) - 9, max(ys) + 9
+    foot_end = POST_X0 + 86
+    if rail_x_world is not None:   # make the foot long enough for two floor-grid holes
+        lxs = sorted(gx - rail_x_world for gx in GX if gx - rail_x_world >= POST_X1 + 4)
+        if len(lxs) >= 2: foot_end = lxs[1] + 8
     b = box(POST_X0, POST_X1, y0, y1, FLOOR, POST_TOP)
-    b = b.union(box(POST_X0, POST_X0 + 86, y0, y1, FLOOR, FLOOR + FOOT_T))
+    b = b.union(box(POST_X0, foot_end, y0, y1, FLOOR, FLOOR + FOOT_T))
     rollers = []
     for k, y in enumerate(ys):
         # spacer boss into the slot mouth, M5 axle hole with hex nut trap on the outside
@@ -102,7 +106,7 @@ def station(ys, preload_last=False, slotted_index=None, foot_holes=True, rail_x_
     if foot_holes and rail_x_world is not None:
         for gx in GX:
             lx = gx - rail_x_world
-            if POST_X1 + 4 <= lx <= POST_X0 + 82:
+            if POST_X1 + 4 <= lx <= foot_end - 4:
                 for gy in GY:
                     if y0 + 4 <= gy <= y1 - 4:
                         holes.append((lx, gy))

@@ -1,9 +1,9 @@
 # V14 single-chat build: progress
 
-Branch `cad-v14-all` (from `cad-v14`; interface **v14-interface-4** merged 18:55, interface 2 work was redone). Order from the vault handoff `projects/bricked-sorting-v14-cad-handoff.md` ("one chat" section). A fresh chat: read this list, then the module README of the last done module, then continue at the first open item.
+Branch `cad-v14-all` (from `cad-v14`; interface **v14-interface-4.1**, frozen 19:02). Order from the vault handoff `projects/bricked-sorting-v14-cad-handoff.md` ("one chat" section). A fresh chat: read this list, then the module README of the last done module, then continue at the first open item.
 
-- [x] 1. Runner test kit, interface 4: `drawer/runner_test/` (2026-11-05 19:05 PT): rails 160/161 on the drawer underside, floor roller stations 162/163, guide 164. Sent to BJ. (The 18:31 interface-2 T-rail kit is withdrawn: do not print.)
-- [ ] 2. Drawers + bins (D): `drawer/` — interface-2 build (18:39) withdrawn; rebuilding to interface 4 (`build_drawer.py` still the old one until this is ticked).
+- [x] 1. Runner test kit, interface 4: `drawer/runner_test/` (2026-11-05 19:05 PT; stations re-sent 19:25 with a longer foot for 2 grid holes): rails 160/161 on the drawer underside, floor roller stations 162/163, guide 164. Sent to BJ. (The 18:31 interface-2 T-rail kit is withdrawn: do not print.)
+- [x] 2. Drawers + bins (D): `drawer/` (2026-11-05 19:25 PT), interface 4.1. Keyed rails (front ±300, back ±200), 4+5 tray tiles, rib bars, retaining bar, 2 closed switches. All checks clean.
 - [ ] 3. Scoop slide (S): `scoop/` — interface-2 draft kept in `scoop/i2_draft/` for its helpers; rebuild to interface 4.
 - [ ] 4. Deck (K): `deck/`
 - [ ] 5. Frame (F): `frame/`
@@ -16,3 +16,7 @@ Branch `cad-v14-all` (from `cad-v14`; interface **v14-interface-4** merged 18:55
 
 ## Open questions for BJ
 - Runner killer test result (droop at 205 with 6-8 kg).
+
+## Vault lines to log (main chat logs these in inbox/changes.yaml)
+- 2026-11-05 19:05 PT: V14 runner test kit rebuilt to interface 4 (rail 160/161 with 16.5 slot on the drawer underside, 625ZZ floor stations 162/163, guide 164); interface-2 T-rail kit withdrawn.
+- 2026-11-05 19:25 PT: V14 module D done to interface 4.1 on cad-v14-all: keyed drawers (rails ±300 front, ±200 back), bins 138.5 tall (top 176), retaining bar, two drawer-closed KW11-3Z; ~7.2 kg filament estimate; all clash/zone/bed checks clean.

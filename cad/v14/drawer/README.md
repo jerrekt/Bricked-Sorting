@@ -1,56 +1,54 @@
-# V14 module D: drawers, bins and runners
+# V14 module D: drawers, bins and runners (interface 4.1)
 
-Built by the single V14 chat on `cad-v14-all` to interface v14-interface-2. Script: `build_drawer.py` (CadQuery 2.8, reads `../interface.json`; runner geometry in `runner.py`). Outputs: `world/` (STEP in machine coordinates, both drawers closed, plus `drawer_assembly.step`), `print/` (STL laid flat), `parts.json`, `checks.json`, four stills. The runner test kit is in `runner_test/`.
+Built by the single V14 chat on `cad-v14-all`. Script: `build_drawer.py` (CadQuery 2.8, reads `../interface.json`); runner geometry is in `runner.py`, and the test kit is in `runner_test/`.
+
+Outputs:
+- `world/`: STEP files in machine coordinates (both drawers closed), plus `drawer_assembly.step`
+- `print/`: STLs laid flat
+- `parts.json`, `checks.json`
+- 4 stills
 
 ## What it is
-- **Two identical drawers.** The back drawer is the front drawer turned 180° about Z. Only the face colour and the letter change (F or B).
-- **4 undermount runners per drawer** (150 rail + 151 bar, PETG). Front runners sit at x = -400, -160, 80, 440. Turned 180°, the back runners land at 400, 160, -80, -440, so the two sets interleave in the spine strip.
-  - Travel is 220 with a hard stop and a closed detent. 96 mm stays engaged at full pull.
-  - Rails bolt into the floor grid (6 holes each). The tray bolts onto the bar flange inserts.
-- **Tray:** 4 tiles per drawer (152.1-152.4), split in bin gaps at x = -232, 0, 232. The seams are 12 mm half-laps with 3 × M3 + nut.
-  - The tray carries bin ribs (0.6 clearance), a rear stop wall and front stops.
-  - It also carries a KW11-3Z boss and lever window under each bin. Four of them are offset 35 mm to clear a runner.
-  - The MCP23017 bosses go on tile 3, and the closed-switch tab on tile 1.
-- **Face:** 4 pieces per drawer (153 front, 154 back), z 10..184 in the wall opening.
-  - Notched over the rails, with a grip slot in the two middle pieces.
-  - Marks are an inlay: the face has a 0.6 mm pocket, and the matching `_ink` STL fills it. Put both on one plate and give `_ink` white on the AMS.
-  - F1..F8 run left to right for someone standing at the front. The same piece turned 180° reads B1..B8 from the back, so B1 sits behind F8.
-- **Bins (155, ×16):** 106.8 × 146.4 body plus a 2.4 label holder = inside the 108 × 150 cell. 120 tall, top at z 160.
-  - Walls 1.26 (3 loops), floor 2.9, with a stiff top rim.
-  - A handle slot in the front wall, and a slide-in label card (70 × 32 × ~0.5) open at the top.
-- **Wiring:**
-  - Each drawer carries its own MCP23017, which reads 8 bin switches. The drawer-closed switch is on the floor (156) and wires straight to the deck.
-  - Only 4 wires (I2C + 3V3/GND) move. They run as a flat ribbon rolling loop in the lane at x 262 (back drawer: -262), from the floor clip (157) at y -20 to the tray anchor at y 74.
-  - Loop length ~200 + bend. Its bend travels half the stroke (~110), so it survives 220.
+- **Two keyed drawers.** The front drawer's rails are at x ±300 and the back drawer's at ±200, so each drawer only fits its own floor stations. The back drawer is the same design turned 180°.
+- **Runners (160/161 rails, 162/163 stations, 164 guide):**
+  - The rail is 16 × 24 PETG on the drawer underside, z 8.5..32.5. It has a 16.5 side slot and its tail runs through the spine tunnels.
+  - Each rail runs on a front load pair of 625ZZ (y 207/225) and a rear anti-lift pair (165/183). The rear-most roller has a preload slot with an M3 jack screw.
+  - Travel is 205. The hard stop is the closed slot end, and the closed detent is a 0.4 mm bump.
+  - The +X rail of each drawer gets a guide block (two vertical-axle 625ZZ). The other rail floats.
+- **Tray (165):** 5 mm PLA plate on the rail tops, z 32.5..37.5.
+  - Front drawer: 4 tiles, split at x -232/0/232. Back drawer: 5 tiles, split at ±116/±348, so its seams stay clear of its stations.
+  - The tray carries bin locators, a rear stop wall, front stops, and plate half-laps with 2 bolts.
+  - Under it are 3 rows of rib bars (172), bolted up into the plate. They sit only where nothing fixed is on the floor along the travel, and they bridge the seams.
+- **Faces (166 front, 167 back):** one piece per tile, z 10..184.
+  - Notched over the rails, with grip slots.
+  - The F/B + number marks are a 0.6 mm inlay: an `_ink` STL fills the pocket, white on the AMS.
+  - Numbering: F1 is the left bin for a person at the front, and B1 the left bin for a person at the back (behind F8).
+- **Bins (168, ×16):** 106.8 × 146.4 plus a 2.4 label holder. 138.5 tall, top at 176.
+  - Walls 1.26 (3 loops), stiff rim, handle slot, slide-in label card.
+- **Retaining bar (169 + posts 171):** one bar per tile sits in post seats just above the bins' inner rims (y 72..82, z 176.5..182.5). Bins can't lift out until the bar comes off.
+- **Drawer-closed switch:** one KW11-3Z per drawer on the floor (170) at x -400 (back: +400), pressed by a tab (173) under the tray when closed. No per-bin switches.
 
 ## Checks (`checks.json`)
-- Every part fits 248³. Rails and bars sit at 45° on the bed (246 / 243).
-- No clashes in any of three states: both drawers closed, front open with back closed, back open with front closed.
-- Open drawer: the bin rear is at y 295.6, outside the 260 face, so bins lift out freely.
-- Bin top is at 160 (limit 176).
-- Zones: all parts are inside the D zone, except the runner tails, which use the center-spine strip (request 1).
+- Every part fits 248³. Rails print on their side at 45° (240).
+- No clashes in any state: both closed, front open, back open, both open.
+- Zones: everything is inside the D zone; the rail tails are in the spine tunnels as allowed.
+- Bin top is 176.0. Open bins sit at y 280.6, past the 260 face.
+- The runner sweep is clean 0..205, with the detent at about 6 mm and the stop past 205.
+- Mass estimate: ~7.2 kg (PLA + PETG). Weigh it after slicing.
 
 ## Print notes
-- Runners: PETG, base down / flange down, no supports. Do the coupon in `runner_test/` first.
-- Bins: PLA, open top up, no supports, vase-like but 3 loops.
-- Tray tiles: PLA, top up. Small tree supports (build plate only) under the switch and MCP bosses.
-- Faces: outer face on the bed, so the inlay prints in the first layers.
-- Mass: the slicer-like estimate is about 7.6 kg PLA+PETG for the whole module. Bins are ~2 kg, faces ~2 kg, tray ~2 kg, runners ~1.5 kg. Weigh after slicing; see the open questions for options.
+- Tray tiles: plate down, no supports (the switch tab and ribs are separate parts).
+- Rib bars: on their side, inserts from the top face.
+- Faces: outer face on the bed.
+- Bins: open top up.
+- Runners: PETG; see `runner_test/README.md`.
 
 ## Open questions
-1. Measure a KW11-3Z with calipers. Body 20 × 6.4 × 10.3 and M2 holes 9.5 apart are assumed; edit `SW_*`.
-2. Bins could be 90 tall instead of 120, which saves ~0.5 kg. Taller bins catch bounces better. Kept at 120.
-3. Face colours: proposed SME blue front and SME green back, white marks (all on hand).
-4. Should the tray be lightened? It can be pocketed under each bin if the weight matters.
+1. Measure a KW11-3Z with calipers. The body is assumed to be 20 × 6.4 × 10.3 with M2 holes 9.5 apart.
+2. Face colours: proposed SME blue for the front and SME green for the back, both with white marks.
+3. Handedness: as written, the interface has a front viewer seeing +X on their left. Bin marks follow the real viewer. Decide at integration.
 
 ## INTERFACE REQUESTS
-1. **Runner tails in the spine strip.**
-   - Why: single stage cannot reach 220 mm inside a 190 mm deep zone. Rail and bar must run back to y -62 (front) or +62 (back).
-   - Ask: give D the strip y ±66, z 8..30 at x = ±80, ±160, ±400, ±440 (±17 each side). The frame's spine sits between and above those lanes (above z 36 under each tray is drawer space, so the spine keeps to y ±66).
-   - Also ask: let D use the floor at x 254..290 / -290..-254, y -30..-10 for the ribbon clips.
-2. **Handedness.**
-   - The interface says "+X right when you face the drawer" and "+Y toward the front". In a right-handed CAD frame those conflict: a person at the front (+Y) has +X on their left.
-   - Effect: in CAD the scanner (x 330) is on the front viewer's left and the hopper on their right, mirrored from the layout sketch.
-   - Bin numbering follows the real viewer (F1 at x +406), so the marks are right either way.
-   - Decide at integration: accept the mirror, or swap which side is called the front.
-3. **Bin switches.** Bin presence uses one KW11-3Z per bin, under the tray. That needs 16 windows, which are in the CAD now.
+None. Interface 4.1 already has the 26 mm tunnels.
+- F: the spine needs tunnels 24 × 26 at x ±200 / ±300 that the rails pass through.
+- F: the floor-grid holes listed in each station or guide need inserts.

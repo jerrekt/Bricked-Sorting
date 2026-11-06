@@ -28,49 +28,49 @@
    "part": "162_station_front_R",
    "qty": 1,
    "bed_extent": [
-    86.9,
+    100.4,
     36.0,
     22.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "grams_each_PETG": 20.3
+   "grams_each_PETG": 22.5
   },
   {
    "part": "162_station_front_L",
    "qty": 1,
    "bed_extent": [
-    86.9,
+    100.4,
     36.0,
     22.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "grams_each_PETG": 20.3
+   "grams_each_PETG": 22.5
   },
   {
    "part": "163_station_rear_preload_R",
    "qty": 1,
    "bed_extent": [
-    86.9,
+    100.4,
     36.0,
     22.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "grams_each_PETG": 20.4
+   "grams_each_PETG": 22.7
   },
   {
    "part": "163_station_rear_preload_L",
    "qty": 1,
    "bed_extent": [
-    86.9,
+    100.4,
     36.0,
     22.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "grams_each_PETG": 20.4
+   "grams_each_PETG": 22.7
   },
   {
    "part": "164_guide_block_R",

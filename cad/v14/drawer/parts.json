@@ -1,0 +1,787 @@
+{
+ "module": "D",
+ "interface": "v14-interface-4.1 (2026-11-05 19:02): spine tunnels 26 tall (z 8..34) for a 24 mm roller rail, bins ~139 tall; interface frozen from here unless a test fails",
+ "printed": [
+  {
+   "label": "160_rail_R",
+   "part_no": "160",
+   "qty": 2,
+   "material": "PETG",
+   "bed_extent": [
+    240.42,
+    240.42,
+    16.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": true,
+   "est_grams_each": 69.2
+  },
+  {
+   "label": "161_rail_L",
+   "part_no": "161",
+   "qty": 2,
+   "material": "PETG",
+   "bed_extent": [
+    240.42,
+    240.42,
+    16.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": true,
+   "est_grams_each": 69.2
+  },
+  {
+   "label": "162_station_front_x300",
+   "part_no": "162",
+   "qty": 2,
+   "material": "PETG (1 R + 1 mirrored L)",
+   "bed_extent": [
+    100.4,
+    36.0,
+    22.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 22.5
+  },
+  {
+   "label": "163_station_rear_x300",
+   "part_no": "163",
+   "qty": 2,
+   "material": "PETG (1 R + 1 mirrored L)",
+   "bed_extent": [
+    100.4,
+    36.0,
+    22.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 22.7
+  },
+  {
+   "label": "162_station_front_x200",
+   "part_no": "162",
+   "qty": 2,
+   "material": "PETG (1 R + 1 mirrored L)",
+   "bed_extent": [
+    80.4,
+    36.0,
+    22.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 19.2
+  },
+  {
+   "label": "163_station_rear_x200",
+   "part_no": "163",
+   "qty": 2,
+   "material": "PETG (1 R + 1 mirrored L)",
+   "bed_extent": [
+    80.4,
+    36.0,
+    22.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 19.4
+  },
+  {
+   "label": "164_guide_x300",
+   "part_no": "164",
+   "qty": 1,
+   "material": "PETG",
+   "bed_extent": [
+    24.1,
+    60.0,
+    8.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 9.7
+  },
+  {
+   "label": "164_guide_x200",
+   "part_no": "164",
+   "qty": 1,
+   "material": "PETG",
+   "bed_extent": [
+    24.1,
+    60.0,
+    8.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 9.7
+  },
+  {
+   "label": "165_tray_tile_front_1",
+   "part_no": "165",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    246.0,
+    184.0,
+    35.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 237.8
+  },
+  {
+   "label": "165_tray_tile_front_2",
+   "part_no": "165",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    244.0,
+    184.0,
+    35.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 236.3
+  },
+  {
+   "label": "165_tray_tile_front_3",
+   "part_no": "165",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    244.0,
+    184.0,
+    35.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 236.3
+  },
+  {
+   "label": "165_tray_tile_front_4",
+   "part_no": "165",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    234.0,
+    184.0,
+    35.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 230.2
+  },
+  {
+   "label": "172_rib_front_176mm",
+   "part_no": "172",
+   "qty": 9,
+   "material": "PLA",
+   "bed_extent": [
+    175.4,
+    12.5,
+    6.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 14.2
+  },
+  {
+   "label": "169_bar_front_1",
+   "part_no": "169",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    229.8,
+    10.0,
+    7.5
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 16.4
+  },
+  {
+   "label": "169_bar_front_2",
+   "part_no": "169",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    230.8,
+    10.0,
+    7.5
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 16.5
+  },
+  {
+   "label": "169_bar_front_3",
+   "part_no": "169",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    230.8,
+    10.0,
+    7.5
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 16.5
+  },
+  {
+   "label": "169_bar_front_4",
+   "part_no": "169",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    229.8,
+    10.0,
+    7.5
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 16.4
+  },
+  {
+   "label": "166_face_F1",
+   "part_no": "166",
+   "qty": 1,
+   "material": "PLA front colour",
+   "bed_extent": [
+    233.75,
+    174.0,
+    20.05
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 254.2
+  },
+  {
+   "label": "166_face_F1_ink",
+   "part_no": "166",
+   "qty": 1,
+   "material": "PLA white (AMS, same plate)",
+   "bed_extent": [
+    148.32,
+    22.57,
+    0.69
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 0.5
+  },
+  {
+   "label": "166_face_F2",
+   "part_no": "166",
+   "qty": 1,
+   "material": "PLA front colour",
+   "bed_extent": [
+    231.5,
+    174.0,
+    20.02
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 246.8
+  },
+  {
+   "label": "166_face_F2_ink",
+   "part_no": "166",
+   "qty": 1,
+   "material": "PLA white (AMS, same plate)",
+   "bed_extent": [
+    148.14,
+    22.57,
+    0.65
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 0.5
+  },
+  {
+   "label": "166_face_F3",
+   "part_no": "166",
+   "qty": 1,
+   "material": "PLA front colour",
+   "bed_extent": [
+    231.5,
+    174.0,
+    20.01
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 246.8
+  },
+  {
+   "label": "166_face_F3_ink",
+   "part_no": "166",
+   "qty": 1,
+   "material": "PLA white (AMS, same plate)",
+   "bed_extent": [
+    148.22,
+    22.57,
+    0.63
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 0.5
+  },
+  {
+   "label": "166_face_F4",
+   "part_no": "166",
+   "qty": 1,
+   "material": "PLA front colour",
+   "bed_extent": [
+    233.75,
+    174.0,
+    20.08
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 254.2
+  },
+  {
+   "label": "166_face_F4_ink",
+   "part_no": "166",
+   "qty": 1,
+   "material": "PLA white (AMS, same plate)",
+   "bed_extent": [
+    148.02,
+    21.88,
+    0.76
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 0.5
+  },
+  {
+   "label": "165_tray_tile_back_1",
+   "part_no": "165",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    130.0,
+    184.0,
+    35.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 126.1
+  },
+  {
+   "label": "165_tray_tile_back_2",
+   "part_no": "165",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    244.0,
+    184.0,
+    35.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 235.7
+  },
+  {
+   "label": "165_tray_tile_back_3",
+   "part_no": "165",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    244.0,
+    184.0,
+    35.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 236.3
+  },
+  {
+   "label": "165_tray_tile_back_4",
+   "part_no": "165",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    244.0,
+    184.0,
+    35.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 235.9
+  },
+  {
+   "label": "165_tray_tile_back_5",
+   "part_no": "165",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    118.0,
+    184.0,
+    35.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 118.5
+  },
+  {
+   "label": "172_rib_back_48mm",
+   "part_no": "172",
+   "qty": 6,
+   "material": "PLA",
+   "bed_extent": [
+    47.4,
+    12.5,
+    6.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 4.1
+  },
+  {
+   "label": "172_rib_back_92mm",
+   "part_no": "172",
+   "qty": 6,
+   "material": "PLA",
+   "bed_extent": [
+    91.4,
+    12.5,
+    6.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 7.6
+  },
+  {
+   "label": "172_rib_back_164mm",
+   "part_no": "172",
+   "qty": 6,
+   "material": "PLA",
+   "bed_extent": [
+    163.4,
+    12.5,
+    6.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 13.3
+  },
+  {
+   "label": "169_bar_back_1",
+   "part_no": "169",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    113.8,
+    10.0,
+    7.5
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 8.1
+  },
+  {
+   "label": "169_bar_back_2",
+   "part_no": "169",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    230.8,
+    10.0,
+    7.5
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 16.5
+  },
+  {
+   "label": "169_bar_back_3",
+   "part_no": "169",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    230.8,
+    10.0,
+    7.5
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 16.5
+  },
+  {
+   "label": "169_bar_back_4",
+   "part_no": "169",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    230.8,
+    10.0,
+    7.5
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 16.5
+  },
+  {
+   "label": "169_bar_back_5",
+   "part_no": "169",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    113.8,
+    10.0,
+    7.5
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 8.1
+  },
+  {
+   "label": "167_face_B1",
+   "part_no": "167",
+   "qty": 1,
+   "material": "PLA back colour",
+   "bed_extent": [
+    117.75,
+    174.0,
+    20.01
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 140.5
+  },
+  {
+   "label": "167_face_B1_ink",
+   "part_no": "167",
+   "qty": 1,
+   "material": "PLA white (AMS, same plate)",
+   "bed_extent": [
+    34.48,
+    22.58,
+    0.62
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 0.4
+  },
+  {
+   "label": "167_face_B2",
+   "part_no": "167",
+   "qty": 1,
+   "material": "PLA back colour",
+   "bed_extent": [
+    231.5,
+    174.0,
+    20.05
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 244.6
+  },
+  {
+   "label": "167_face_B2_ink",
+   "part_no": "167",
+   "qty": 1,
+   "material": "PLA white (AMS, same plate)",
+   "bed_extent": [
+    150.61,
+    22.58,
+    0.69
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 0.6
+  },
+  {
+   "label": "167_face_B3",
+   "part_no": "167",
+   "qty": 1,
+   "material": "PLA back colour",
+   "bed_extent": [
+    231.5,
+    174.0,
+    20.01
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 254.3
+  },
+  {
+   "label": "167_face_B3_ink",
+   "part_no": "167",
+   "qty": 1,
+   "material": "PLA white (AMS, same plate)",
+   "bed_extent": [
+    150.24,
+    22.58,
+    0.62
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 0.7
+  },
+  {
+   "label": "167_face_B4",
+   "part_no": "167",
+   "qty": 1,
+   "material": "PLA back colour",
+   "bed_extent": [
+    231.5,
+    174.0,
+    20.08
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 244.6
+  },
+  {
+   "label": "167_face_B4_ink",
+   "part_no": "167",
+   "qty": 1,
+   "material": "PLA white (AMS, same plate)",
+   "bed_extent": [
+    150.21,
+    22.58,
+    0.76
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 0.7
+  },
+  {
+   "label": "167_face_B5",
+   "part_no": "167",
+   "qty": 1,
+   "material": "PLA back colour",
+   "bed_extent": [
+    117.75,
+    174.0,
+    20.01
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 140.6
+  },
+  {
+   "label": "167_face_B5_ink",
+   "part_no": "167",
+   "qty": 1,
+   "material": "PLA white (AMS, same plate)",
+   "bed_extent": [
+    30.06,
+    21.89,
+    0.62
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 0.3
+  },
+  {
+   "label": "168_bin",
+   "part_no": "168",
+   "qty": 16,
+   "material": "PLA",
+   "bed_extent": [
+    106.81,
+    148.8,
+    138.51
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 141.6
+  },
+  {
+   "label": "171_bar_post",
+   "part_no": "171",
+   "qty": 12,
+   "material": "PLA",
+   "bed_extent": [
+    6.0,
+    18.0,
+    146.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 12.9
+  },
+  {
+   "label": "170_closed_switch_mount",
+   "part_no": "170",
+   "qty": 2,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    35.5,
+    11.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 8.0
+  },
+  {
+   "label": "173_switch_tab",
+   "part_no": "173",
+   "qty": 2,
+   "material": "PLA",
+   "bed_extent": [
+    28.0,
+    15.0,
+    10.5
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 2.3
+  }
+ ],
+ "bought": [
+  {
+   "item": "625ZZ bearing",
+   "qty": 20,
+   "use": "8 roller + 2 guide per drawer"
+  },
+  {
+   "item": "M5 x 25 screw + nut",
+   "qty": 16,
+   "use": "station roller axles"
+  },
+  {
+   "item": "M5 x 16 screw",
+   "qty": 4,
+   "use": "guide roller axles"
+  },
+  {
+   "item": "M3 heat-set insert",
+   "qty": 168,
+   "use": "rail tops, bar posts, switch tabs, rib bars (~40 mm pitch)"
+  },
+  {
+   "item": "M3 x 10 screw",
+   "qty": 46,
+   "use": "tray to rails, stations + guides to floor, switch mounts"
+  },
+  {
+   "item": "M3 x 12 screw + nut",
+   "qty": 64,
+   "use": "plate laps, rib laps, face to tray"
+  },
+  {
+   "item": "M3 x 16 screw",
+   "qty": 4,
+   "use": "face foot into the rail front insert"
+  },
+  {
+   "item": "M3 x 16 screw (jack)",
+   "qty": 4,
+   "use": "rear roller preload"
+  },
+  {
+   "item": "KW11-3Z",
+   "qty": 2,
+   "use": "drawer closed, front and back"
+  },
+  {
+   "item": "M2 x 12 screw + nut",
+   "qty": 4,
+   "use": "switches"
+  }
+ ],
+ "est_total_grams": 7238
+}
