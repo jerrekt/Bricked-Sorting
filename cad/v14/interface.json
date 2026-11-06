@@ -323,7 +323,8 @@
    -150,
    150
   ],
-  "open_top": true
+  "open_top": true,
+  "height_note": "drawer floor sits on the under-drawer rails (top ~z 30), so bins are about 145 tall to keep their tops at or below 176"
  },
  "drawer": {
   "count": 2,
