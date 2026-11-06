@@ -1,86 +1,47 @@
-# Bricked Sorting V14: shared interface for the parallel CAD chats
+# Bricked Sorting V14: shared interface, version 5
 
-Four chats build four modules at the same time. They only fit together if everyone uses the same numbers, so the numbers live in `interface.json` (read it in your script; do not retype them). If a number does not work for your module, keep building to it and write the change you want under **INTERFACE REQUESTS** in your module README. The integration step decides.
+**Read `interface.json` for every number; this page explains them.** Version 5 (2026-11-05 23:10) replaces versions 1-4.3 (kept in `INTERFACE_v4_superseded.md` / `interface_v4_superseded.json` for history). Why: the fully printed 1040 x 520 machine came out at ~25 kg and ~550 print hours. BJ chose to **resize the body, build the structure from wood (simple straight cuts) and keep a thin red PLA skin** for the LEGO look. Bins were ~2 L each for a 1 L box; now ~0.58 L.
 
-**Interface 4.3 (2026-11-05 21:30): use BJ's measured print settings.** Read `runbooks/3d-printing.md` in Mnemosyne before exporting anything; its numbers beat the generic ones in 4.2. Estimate grams with his day profile (4 walls, 15 % infill, 3 bottom / 5 top, 0.2 layers). Fits per side: sliding or dovetail 0.065-0.07, press pockets -0.02, bin drop-in 0.6. Bearing pockets are not measured yet: add a 625 coupon at 16.0 / 16.1 / 16.2. Inserts: M3 hole ~4.0-4.2 (verify), M5 Ruthex hole 6.4, depth 10.5. Put test results in your README; the main chat files them in the runbook.
-
-**Interface 4.2 (2026-11-05 21:20): print-friendly rules for every module.** The first frame came out at ~30 kg; that is not printable in practice. Rules: estimate grams the way the slicer prints them (3 walls, 4 top/bottom, 15 % gyroid), not solid volume; whole machine <= ~15 kg and <= ~400 print hours, frame <= ~9 kg; no supports (overhangs <= 45 deg, bridges <= 30 mm, teardrop horizontal holes); a flat face on the bed for every part, orientation stated in parts.json; 0.2 mm per side slip fits, 16.2 bearing pockets, 0.6 chamfer on bed edges; fewer, bed-sized parts; every insert reachable after printing. **Wall skin drops from 6 to 2.4 mm** with 2.4 mm ribs at ~80 mm (wall zone still 20, so nothing else moves). Back access panel z 420..668 (3 pieces).
-
-**Interface 4.1 (2026-11-05 19:02):** spine tunnels are 26 tall (z 8..34) because a 16 mm bearing in a 16.5 slot needs a ~24 mm rail; bins are ~139 tall, tops still at 176. **The interface is frozen from here** unless a physical test fails.
-
-**Interface 4 (2026-11-05 18:55):** (1) drawer rails move UNDER the drawers and run back through tunnels in the center spine (front rails at x ±300 reach y -60, back rails at x ±200 reach y +60), rollers fixed to the floor, travel 205: a single-stage drawer can't extend past its own depth unless its rails reach back beyond it. (2) Drop funnel exit lowered to z 335; the scoop keeps out of r 40 around (330, 0) above z 330. (3) Scoop starting geometry: shallow two-ended cup above a pivot at z ~268, lip 114 out / 25 up, dump at 40° (lip y 103, z 214); the opposite end rises to ~360, so taper the ends; TPU pad against bounce. (4) Beam in 5 segments of ~200 with 60-80 mm sleeves. (5) Carriage cable in a drag chain on the beam's back face. (6) With the drawer floor on the rails (~z 30), bins are about 145 tall so their tops stay at or below 176. interface.json has the numbers.
-
-**Interface 3 (2026-11-05 18:35):** beam is a ~65 x 40 PLA box in 4-5 keyed segments (mounts moved to z 200/248), belt near the beam's mid-height, scoop lip must reach |y| >= 100, drawers ride on 625ZZ rollers, two drawer switches only, drawers keyed.
-
-**Interface 2 (2026-11-05 18:20):** after a design review with ChatGPT, the single 490 mm drawer became **two opposing 8-bin drawers** (front row out the front, back row out the back, ~220 mm single-stage printed runners), and the drum stays the V13 160 x 180. Everything below reflects that.
-
-Decided by BJ on 2026-11-05: max height 30 in (a couple of inches over is OK), same 1040 x 520 footprint, one bin tier with 16 bins (two rows of 8), scoop rides a rail between the rows and tilts to either row (no Z lift, no yaw), drum raised on the deck with a small hopper, **fully printed frame** (no 2020 extrusion). The scoop slide may use a GT2 belt. Layout sketch: `../v14_layout_sketch.png` (sketch, not CAD).
-
-## The machine in one paragraph
-Bricks go into a small hopper in the left roof stud, fall into the rear of the V13 drum (static outlet plate, helical flight), come out the drum's front end onto V1 and V2 vibration trays that run sideways (+X) to the scanner at the right. The scanner (V13 design: landing ramp, trapdoors, XIAO S3 Sense camera, APDS-9960, LED bar) drops each brick through a hole in the deck at **(330, 0)** into the scoop. The scoop carriage runs on a printed beam that spans the lower brick at y = 0, moves to one of 8 x positions and tilts toward the back row or the front row, dropping the brick into one of 16 open bins; the front row is one drawer pulled out the front, the back row another pulled out the back. Body 1040 x 520 x 720 plus two 60 mm roof studs = 780 (30.7 in).
+## The machine
+Body **720 x 360 x 614 + 50 mm studs = 664 mm (26.1 in)**, a 2x1 LEGO brick. Same path as before: small hopper in the left roof stud -> V13 drum (static outlet plate, helical flight) -> V1 -> V2 vibration trays -> V13-style scanner -> drops through the deck at **(240, 0)** into the scoop -> the scoop slides on a belt-driven beam to one of 8 x positions and tilts to the front or back row -> 16 bins in **two opposing drawers** (F1-F8 front, B1-B8 back).
 
 ## Coordinates
-mm. Right-handed. Origin at the floor center, +Y toward the front (the front drawer pulls out +Y), +Z up, so **+X is on the left** of a person facing the front drawer. (Wording fixed 19:50; it used to say +X right, which was left-handed. No numbers changed.) Bin numbers F1..F8 and B1..B8 follow the real viewer at each drawer.
+mm, right-handed, origin at the floor center, +Y to the front, +Z up, so **+X is the front viewer's left**. Bin numbers follow the real viewer.
 
-| | |
+## Wood structure (straight crosscuts only; the store cuts the plywood)
+| Piece | Qty | Cut | Where |
+|---|---|---|---|
+| 2x2 corner post | 4 | 600 | \|x\| 316..354, \|y\| 136..174, z 12..612 |
+| 1x2 top rail, long / short | 2 / 2 | 632 / 272 | under the roof at z 574..612 |
+| 1x2 deck cleat, long / short | 2 / 2 | 632 / 272 | z 262..300, the deck plywood sits on them |
+| 1x2 bottom rail, short walls | 2 | 272 | z 12..50 |
+| 1x2 beam post (vertical) | 2 | 212 | x ±(335..354), y ±19, z 50..262; the scoop beam screws in |
+| 1/2 in plywood floor | 1 | 720 x 360 | z 0..12 |
+| 1/2 in plywood deck | 1 | 708 x 348, 38 x 38 notch at each corner | z 300..312 |
+Printed parts screw to wood with #6 wood screws (3.6 mm clearance). Printed-to-printed joints use M3 inserts.
+
+## Skin and studs
+2.0 mm red PLA, printed solid, 4 mm off the wood on printed clips. Outer faces at x ±360, y ±180; roof skin z 612..614 on the top rails. Tiles ≤ 248, seams on the brick's natural lines. Drawer openings in the front and back walls: x -300..300, z 12..134. Removable back access panel x -200..200, z 330..560 for the electronics. Studs at x ±180: OD 216, 50 tall; the left one is an open ring (ID 200) holding the hopper over a roof opening r 90; the right one is capped.
+
+## Zones
+| Module | Space |
 |---|---|
-| Envelope | X -520..520, Y -260..260, Z 0..780 |
-| Lower brick / deck brick / studs | z 0..390 / 390..720 / 720..780 |
-| Wall zone | 20 thick inward from every outer face (2.4 skin + 2.4 ribs at ~80, 17.6 deep). Interior clear X ±500, Y ±240 |
-| Corner columns (frame) | keep-out at all four inside corners: \|x\| 470..500, \|y\| 210..240, z 8..700 |
-| Floor | z 0..8, top has M3 insert holes on a 40 grid: x = -480..480, y = -220..220 (frame skips holes under the columns) |
-| Deck panel | z 370..390 (skin 384..390, ribs 370..384). Top has M3 inserts on a 40 grid: x = -480..480, y = -200..200, skipping holes within 10 of an opening |
-| Deck openings | drop hole r 32 at (330, 0), no ribs within r 50 of it; cable slots x -470..-410 and 410..470, y -210..-190 |
-| Front and back walls | drawer opening x -470..470, z 8..186 in each |
-| Center spine | y -66..66, z 8..184 under the beam, between the drawers: frame may put a spine here; drawer runners may bolt to its sides |
-| Service clearance | 300 mm behind the machine for the back drawer |
-| Side walls | beam mount: four M3 inserts on each inner face (x = ±500, axis along X) at (y, z) = (±12, 200) and (±12, 248) |
-| Roof | z 700..720 (skin 714..720, ribs 700..714). Hopper opening r 100 at (-260, 0). Left stud: open ring OD 312 / ID 290 (hopper inside). Right stud: closed cap |
-| Back wall | removable access panel x -300..300, z 420..680 |
-| Print bed | every printed part ≤ 248 x 248 x 248 |
-| Fasteners | M3 heat-set inserts (4.0 hole, 5.7 deep), M3 screws (3.4 clearance), M5 where a load needs it |
+| **F** frame + skin | the wood, skin, clips, roof, studs, corner caps |
+| **D** drawers | front x ±314, y 52..180; back x ±314, y -180..-52; z 12..132. Front rails x ±200 run back on the floor to y -40, back rails x ±120 to y +40, rail zone z 12..38 |
+| **S** scoop slide | x ±354, y ±150, z 134..296, minus posts and beam posts; nothing below z 134 at any pose |
+| **K** deck | x ±354, y ±172, z 312..608 (clear of top rails and post corners), plus the hopper in the left stud and the drop funnel r 25 at (240, 0), z 270..312 through a deck hole r 28 |
 
-## Zones (who owns what space)
-| Module | Space it may fill |
-|---|---|
-| **F frame** | the wall zones, floor, deck panel, roof, studs, corner columns, bracing. Bracing stays out of the D, S and K zones |
-| **D drawers** | front: x ±466, y 70..260; back: x ±466, y -260..-70; z 8..184 (drawers, faces, runners, bins, switches) |
-| **S scoop** | x ±500, y ±240, z 186..366, minus the corner columns. Nothing in S may go below z 186 at any pose |
-| **K deck** | x ±500, y ±240, z 390..700, plus the hopper inside the left stud (to z 780, through the roof opening) and the drop funnel (cylinder r 30 at (330, 0), z 366..390, through the deck hole) |
+## Bins and drawers
+16 open bins, 72 x 95 footprint, 85 tall (z 41..126), 0.58 L. Centers x = -276.5 + 79 i, rows at y ±102.5 (front 55..150, back -150..-55). Two drawers, travel 150 (inner edge ends 25 past the skin), PETG rails on the drawer underside riding 625ZZ floor stations screwed into the plywood, hard stops, closed detent, keyed by rail spacing (front ±200, back ±120), retaining bar, one KW11-3Z closed switch per side. Faces in two colors with F/B and 1-8, label card slot per bin.
 
-Bins: 16, footprint 108 x 150, open top, top at z ≤ 176. Centers x = -406 + 116 i (i = 0..7), rows at y = -150 and +150.
-Drawers: two, 8 bins each, travel 220 each. Runners: printed PETG rail with 625ZZ bearings as rollers (about 3 per side: two carry the load, one captures against lift), hard end stops, closed detent. The two drawers are keyed so neither fits the other side, and a retaining bar holds all 8 bins, so a seated drawer means all its bins are present. Switches: one KW11-3Z drawer-closed switch per side, no per-bin switches.
-Bin IDs: **F1..F8** front row and **B1..B8** back row, each numbered left to right for the person standing at that drawer (so B1 is behind F8). Marking: the two drawer faces print in different filament colors, with F or B and 1-8 embossed over each bin, and every bin has a slide-in label card slot for its category.
-Drum: keep the V13 drum as-is (47b 160 x 180 barrel with the helical flight, 49b static plate).
-Scoop poses: **receive** = carriage at x 330, level, catching a brick that falls from the funnel exit at (330, 0, 366), r 25. **Dump** = carriage at a bin x, tilted toward -Y or +Y; the brick leaves the lip at |y| ≥ 95, z ≥ 186, and lands inside the bin opening. **Park** = receive pose; the drawer may open only when parked.
+## Scoop slide
+PLA box beam ~50 x 30 spanning x ±335 at y ±15, z 138..188, 3-4 keyed segments, end plates screwed to the beam posts. Salvaged NEMA17 + GT2 belt near the beam mid-height, printed idler/tensioner, endstop. Scoop: shallow two-ended cup above a pivot at z ~200 (lip ~85 out, ~20 up), dump at 40°: the brick leaves at |y| ≥ 75, z ≥ 136, off a surface ≥ 40°; taper the ends (opposite end rises to ~270); TPU pad. Receive and park at carriage x 240 under the funnel exit (240, 0, 270); nothing from S inside r 32 of (240, 0) above z 265.
 
-Part numbers: F 100-149, D 150-179, S 180-199, K 200-249.
-Bought parts allowed: electronics, motors, servos, switches, LEDs, 625ZZ bearings, GT2 6 mm belt + 20T pulleys + idler (scoop slide only), M3/M5 screws and nuts, M3 heat-set inserts, TPU or PTFE film. Everything else printed.
+## Deck
+V13 drum as-is (47b, 49b, rollers, drive), new cradles screwed to the deck plywood. Hopper ~150 across in the left stud. Trays at ~4.5°. Scanner over (240, 0) with the funnel through the deck. Electronics at the back behind the access panel.
 
-## Modules
+## Printing
+Follow Mnemosyne `runbooks/3d-printing.md` (BJ's P2S day profile and measured fits): grams estimated with the day profile, dovetails 0.065-0.07 per side, press pockets -0.02, 625 pocket coupon first. No supports, a flat face on the bed, parts ≤ 248. **Budget: ≤ ~9.5 kg and ≤ ~200 h printed in total** (skin ~4.6, studs ~0.5, mechanisms ~3.5, bins ~1).
 
-### F: frame and shell (`cad/v14/frame/`)
-Ribbed panels that are the structure: floor, four walls per brick, deck panel, roof, two studs, corner columns. Joints bolted with M3 inserts (tongue + 2 bolts per 100 mm of seam is a fair start). Add hidden bracing so a drawer pulled out 220 with 5 kg in it does not rack the frame. Front and back walls each have a drawer opening; the area above (z 186..390) carries the deck. A center spine under the beam (y ±66) is the natural place to stiffen the floor and to carry the inner runners. Side walls carry the beam mount inserts. Back wall also has the removable access panel in the deck brick. Studs like V13's 78/79 quarter rings (reference in `../reference_v13/frame_v13/`). Look: LEGO red brick, studs on top; no visible screws on the front if you can avoid it.
-
-### D: drawers, bins and runners (`cad/v14/drawer/`)
-Two 8-bin drawers, the same except for their keying (front pulls +Y, back pulls -Y), faces and handles, runners made of a printed PETG rail with 625ZZ bearings as rollers and hard end stops, bolted to the floor grid and/or the center spine, a closed detent, a drawer-closed switch mount (KW11-3Z) per side, a retaining bar over the bins, and keying so the front drawer cannot go in the back and vice versa. No per-bin switches. Bins: open top, 108 x 150 footprint, easy to lift out one-handed and to pour from, each with a label card slot on the face toward its drawer front. Faces carry the F/B and 1-8 marks (see Bin IDs). V10 bins and the V12 drawer latch are in `../reference_v13/bins_v10/` and `frame_v13/`.
-
-### S: scoop slide (`cad/v14/scoop/`)
-The printed beam (closed box ~65 tall x 40 deep in PLA, 4-5 keyed segments with internal splices, joints staggered and none at midspan; target < 2 mm sag at center) that bolts to the side-wall inserts, a carriage on 625ZZ bearings, a NEMA17 (BJ's salvaged 48 mm, 5 mm shaft; no lead-screw motor) + GT2 belt drive with a printed idler and tensioner, a homing endstop (KW11-3Z) at -X, the scoop and its tilt servo (MG996R or a smaller servo if it fits; say which), and a cable path from the carriage to a deck cable slot. Must hit all 17 poses (receive + 8 x 2 dumps). At each dump the brick leaves the lip at |y| >= 100 and z >= 190 on a surface tilted at least 40 deg, and nothing dips below z 186. Pivot the scoop on its own shaft or bushings, not on the servo horn. Run the belt near the beam's mid-height. The V3 carriage, hub and open scoop are in `../reference_v13/carriage_v3/` for reference.
-
-### K: deck (`cad/v14/deck/`)
-Everything on the deck: the V13 drum (reuse `47b` and `49b` as-is from `../reference_v13/drum_v13/`, plus rollers 50, drive core 54, TPU tire 55, motor bracket 56 from `drum_v7/`), new low cradles that bolt to the deck grid, a small hopper inside the left stud with a chute into the drum's rear end, V1 and V2 vibration trays running +X from the drum outlet to the scanner, the scanner (rework of V13's 57-62, 73, 74 in `deck_v13/`) with its trapdoors over (330, 0) and a funnel through the deck hole, and the electronics tray (PSU 60 x 165, XIAO ESP32-S3 Sense, XIAO ESP32-C3, MCP23017, 3x TMC2209, DRV8833, buck) toward the back where the access panel can reach it. Drum axis runs front-back with the outlet toward +Y unless you have a better reason.
-
-## What every module chat delivers
-In `cad/v14/<module>/`:
-- `build_<module>.py` (CadQuery 2.8), reading `../interface.json`.
-- `world/`: each part as STEP in machine coordinates (so integration can drop them in as-is), plus `<module>_assembly.step`.
-- `print/`: each part as STL laid flat for printing, named `NNN_name_PRINT_qty.stl`.
-- `parts.json`: label, part number, qty, bed extent, est. grams, print hours if you have them, and bought parts with qty.
-- `checks.json`: every part inside its zone at every pose, no self-clashes, every part fits 248³, and module-specific checks (S: all 17 poses; D: both drawers closed and fully open; K: drum turning 12 angles).
-- `README.md`: what you built, print notes, open questions, and **INTERFACE REQUESTS**.
-- Three or four PNG stills.
-Commit only your folder, on your own branch `cad-v14-<module>` made from `cad-v14`. Do not touch `web/`, do not open a PR, do not merge. The repo is public: no addresses, passwords or tokens.
-
-## Integration (after all four are done)
-One chat pulls the four branches, assembles, checks the envelope, pairwise clashes, the scoop at all 17 poses against the drawer and frame, each drawer at 220 with the scoop parked, the drum turning, bed fit, total filament, then renders the stills and the one-brick animation, updates the buy list (remove 2020 extrusion, T-nuts, metal slides and the NEMA17 lead-screw motor; add belt and pulleys. The two salvaged NEMA17s drive the drum and the slide) and the task board on a PR.
+## Deliverables per module (unchanged)
+`build_<module>.py` reading `interface.json`; `world/` STEPs in machine coordinates; `print/` STLs laid flat; `parts.json` with grams and print hours (day profile) and bought parts; `checks.json`; README with INTERFACE REQUESTS and vault lines; 3-4 stills. Frame module also delivers the **wood cut list** and a drilling map for the screw positions.
