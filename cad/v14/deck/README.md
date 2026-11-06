@@ -83,10 +83,10 @@ None. The module builds to 4.1 as frozen. Notes for F at integration:
 - The roof needs inserts for the hopper throat tabs (open question 4).
 
 ## Vault log lines (for the main chat to add to `inbox/changes.yaml`)
-- 2026-11-05 20:30 PT, claim, Bricked Sorting: V14 module K (deck) built on `cad-v14-deck` to interface 4.1.
+- 2026-11-05 20:03 PT, claim, Bricked Sorting: V14 module K (deck) built on `cad-v14-deck` to interface 4.1.
   - V13 drum reused as-is, axis front-back at x -200, tilted 6°.
   - Hopper in stud L feeds a 43° chute into the drum rear.
   - V1 (long, 2 pieces) and V2 on PETG leaf springs carry bricks to the V13-rework scanner over (330, 0).
   - Funnel exit at z 335. Electronics trays at the back access panel.
   - All zone, clash, drum-turning and door-swing checks clean. About 1.7 kg of new filament.
-- 2026-11-05 20:30 PT, decision needed: drum tilt 6° instead of 8° to fit the hopper and chute under the 700 roof (README open question 1).
+- 2026-11-05 20:03 PT, decision needed: drum tilt 6° instead of 8° to fit the hopper and chute under the 700 roof (README open question 1).
