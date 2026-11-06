@@ -1,6 +1,6 @@
 {
  "_about": "Bricked Sorting V14 shared interface. All four module chats build to these numbers. Do not edit; request changes in your module README under INTERFACE REQUESTS.",
- "version": "v14-interface-2 (2026-11-05 18:20): two opposing drawers, drum kept at 160 x 180",
+ "version": "v14-interface-4 (2026-11-05 18:55): scoop starting geometry, lower drop funnel, 5-segment beam, under-drawer rails through the spine, drag chain",
  "units": "mm",
  "axes": "origin = floor center; +X right when facing the drawer; +Y toward the front (the drawer pulls out +Y); +Z up",
  "envelope": {
@@ -173,19 +173,19 @@
    "points_yz": [
     [
      -12,
-     194
+     200
     ],
     [
      12,
-     194
+     200
     ],
     [
      -12,
-     222
+     248
     ],
     [
      12,
-     222
+     248
     ]
    ]
   }
@@ -265,7 +265,8 @@
      8,
      184
     ]
-   }
+   },
+   "rails": "D also owns the under-drawer rails inside the spine tunnels (y -66..66 at x +-200 / +-300, z 8..28)"
   },
   "S_scoop": {
    "x": [
@@ -297,7 +298,7 @@
    ],
    "plus": [
     "hopper inside stud L up to z 780 through the roof opening",
-    "drop funnel: cylinder r 30 at (330,0), z 366..390, through the deck hole"
+    "drop funnel: cylinder r 30 at (330,0), z 335..390, through the deck hole (exit 335)"
    ]
   }
  },
@@ -322,16 +323,36 @@
    -150,
    150
   ],
-  "open_top": true
+  "open_top": true,
+  "height_note": "drawer floor sits on the under-drawer rails (top ~z 30), so bins are about 145 tall to keep their tops at or below 176"
  },
  "drawer": {
   "count": 2,
   "bins_each": 8,
-  "travel_y": 220,
+  "travel_y": 205,
   "front_pulls": "+Y",
   "back_pulls": "-Y",
-  "runners": "single-stage printed with hard end stops and a closed detent",
-  "note": "each bank (~5 kg loaded) fully clears its face at 220"
+  "runners": "rails on the drawer UNDERSIDE that run back past the drawer through tunnels in the center spine; 625ZZ rollers fixed to the floor (load pair + anti-lift pair per rail, lateral guide rollers on one rail only, the other floats ~0.5); 16.4-16.6 running gap for the 16 mm bearings, one slotted roller for preload; hard stops; closed detent",
+  "note": "each bank (~5 kg loaded) fully clears its face at 220",
+  "keying": "front and back drawers mechanically keyed so neither fits the other side; a retaining bar holds all 8 bins so drawer seated = all bins present",
+  "rails_xy": {
+   "front_drawer_rails_x": [
+    -300,
+    300
+   ],
+   "back_drawer_rails_x": [
+    -200,
+    200
+   ],
+   "rail_width": 16,
+   "front_rails_reach_y": -60,
+   "back_rails_reach_y": 60,
+   "rail_zone_z": [
+    8,
+    26
+   ]
+  },
+  "why": "a single-stage drawer cannot extend past its own depth unless its rails reach back beyond it; 205 travel puts the bins' back edge (y 75 closed) at y 280, 20 past the face, so bins lift straight out"
  },
  "scoop": {
   "receive_pose": {
@@ -339,12 +360,15 @@
    "catch_below": [
     330,
     0,
-    366
+    335
    ],
-   "catch_r": 25
+   "catch_r": 25,
+   "scoop_floor_z_about": 293
   },
-  "dump_poses": "carriage at each bins.x_centers[i], tilt toward -Y or +Y; the brick leaves the lip at |y| >= 95 and z >= 186 and lands inside the bin opening",
-  "park_pose": "level, carriage at x 330, everything above z 186 (drawer may open)"
+  "dump_poses": "carriage at each bins.x_centers[i], tilt toward -Y or +Y; the brick leaves the lip at |y| >= 100 (5 mm margin over the bin inner edge at 75 + brick) and z >= 190, on a surface tilted at least 40 deg so it slides; servo horn is not the bearing (pivot on its own shaft or bushings)",
+  "park_pose": "level, carriage at x 330, everything above z 186 (drawer may open)",
+  "keepout_under_funnel": "at every pose, nothing from S inside r 40 of (330,0) above z 330",
+  "suggested_geometry": "shallow two-ended cup ABOVE the pivot: pivot z ~268 on its own shaft/bearings, lip 114 out and 25 above the pivot, dump at 40 deg -> lip at y 103, z 214; the opposite lip rises to ~360, so taper the open ends and the end walls to stay under 366; TPU pad on the floor so a dropped brick does not bounce out"
  },
  "drop_point": [
   330,
@@ -383,7 +407,8 @@
    184
   ],
   "owner": "F",
-  "note": "free strip under the beam between the two drawers: F may put a structural spine here and D may bolt runners to its sides"
+  "note": "free strip under the beam between the two drawers: F may put a structural spine here and D may bolt runners to its sides",
+  "tunnels": "leave tunnels 24 wide x 20 tall (z 8..28) along y at x = +-200 and +-300 for the drawer rails"
  },
  "service_clearance": "300 mm behind the machine for the back drawer",
  "drum": "keep the V13 drum as-is: 47b barrel 160 x 180 with helical flight, 49b static outlet plate (cradles new)",
@@ -392,5 +417,23 @@
   "back": "B1..B8, left to right as you face the back",
   "note": "so B1 sits behind F8; numbering always reads left to right for the person at that drawer"
  },
- "side_marking": "drawer faces in two filament colors (front and back), embossed F / B and 1-8 above each bin position, and a slide-in label card slot on each bin face for its category"
+ "side_marking": "drawer faces in two filament colors (front and back), embossed F / B and 1-8 above each bin position, and a slide-in label card slot on each bin face for its category",
+ "beam": {
+  "section": "closed box, about 65 tall x 40 deep, 3-4 mm skins, ribs every 60-100 mm, PLA",
+  "zone_yz": {
+   "y": [
+    -20,
+    20
+   ],
+   "z": [
+    192,
+    258
+   ]
+  },
+  "segments": "5 segments of ~200 (no joint at midspan), each seam a 60-80 mm internal sleeve plus screws; gusseted side-wall mounts",
+  "belt": "run the GT2 belt close to the beam's mid-height so tension does not twist it",
+  "targets": "< 2 mm sag at center with carriage and belt tension; scoop stays level across travel"
+ },
+ "switches": "two KW11-3Z drawer-closed switches (front, back); no per-bin switches",
+ "cable": "carriage cable in a small printed drag chain on the beam's back face (y -20..-35, z 195..255), exiting to the left deck cable slot"
 }
