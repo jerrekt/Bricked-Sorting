@@ -19,11 +19,13 @@ sys.path.insert(0, str(HERE))
 from f_common import IF, M3_CLR, INSERT_D, INSERT_DEPTH, CB_D, CB_DEPTH, print_pose, bed_fit, export, bbox, grams, render
 
 E = IF['envelope']; W = IF['walls']
-SKIN, RIBS = W['skin'], W['ribs_inward']                   # 2.4, 17.6 (zone); ribs are RIB_H tall
+SKIN, RIBS = 1.7, W['ribs_inward']                         # rev 3: 1.7 outer skins (lever 1; interface 4.3 says 2.4), zone 20
+DECK_SKIN = 1.3                                           # hidden deck face (lever 2)
+NOZ06_FACTOR = 1.6                                        # g/h gain with a 0.6 nozzle on panels and spine
 RIB_H = 10.0                                              # rib height used (<= RIBS)
 FIT = 0.07                                                # sliding fit per side (vault runbook)
 XO, YO = E['x'][1], E['y'][1]                             # 520, 260 outer
-XI, YI = XO - SKIN - RIBS, YO - SKIN - RIBS               # 500, 240 interior clear
+XI, YI = W['interior_clear']['x'][1], W['interior_clear']['y'][1]   # 500, 240 interior clear
 FLOOR_T = IF['floor']['z'][1]                             # 8
 DECK_Z0, DECK_Z1 = IF['deck']['z']                        # 370, 390
 ROOF_Z0, ROOF_Z1 = IF['roof']['z']                        # 700, 720
@@ -34,12 +36,13 @@ CX0, CY0 = COL['x_abs'][0], COL['y_abs'][0]               # 470, 210: column out
 OPEN_Z1 = IF['front_wall']['drawer_opening']['z'][1]      # 186
 AP = IF['back_wall']['removable_access_panel']            # x -300..300, z 420..680
 SP = IF['center_spine']
+SPINE_Z1 = SP['z'][0] + 60.0                              # 60 mm spine (lever 3)
 BEAM_PTS = IF['side_walls']['beam_mount_inserts']['points_yz']
 FG = IF['floor']['grid_M3_inserts_top']; DG = IF['deck']['grid_M3_inserts_top']
 DO = IF['deck']['openings']; RIB_FREE_R = IF['deck']['rib_free_radius_around_drop']
 HOP = IF['roof']['hopper_opening']
 HOP_INSERTS = [(HOP['center'][0] + 108 * math.cos(math.radians(a)), HOP['center'][1] + 108 * math.sin(math.radians(a))) for a in (180, 240, 300)]
-PERIM, RIB_T, RIB_PITCH = 8.0, W.get('rib_thickness', 2.4), W.get('rib_spacing_about', 80)
+PERIM, RIB_T, RIB_PITCH = 6.4, W.get('rib_thickness', 2.4), W.get('rib_spacing_about', 80)
 INSERT_D = 4.1                                            # M3 generic insert, runbook: hole 4.0-4.2, verify with calipers
 DECK_BAND = (368.0, 392.0)                                # solid band in the walls around the deck edge, inserts at z 380 facing in
 SEAM_PITCH = 100.0
@@ -85,33 +88,35 @@ class Panel:
     `place` maps local (u, v, w) to world. Edges: 'u0','u1','v0','v1'. Each edge gets either inserts
     (axis normal to the edge, in the perimeter rib) or clearance holes, per `edge_mode`."""
 
-    def __init__(self, name, u0, u1, v0, v1, place, edge_mode, solid_fill=None, openings=(), zone_holes=(), skin_v0=None, rib_slot=None):
+    def __init__(self, name, u0, u1, v0, v1, place, edge_mode, solid_fill=None, openings=(), zone_holes=(), skin_v0=None, rib_slot=None, skin=None):
         self.name = name; self.u0, self.u1, self.v0, self.v1 = u0, u1, v0, v1
+        self.skin = SKIN if skin is None else skin
         self.skin_v0 = skin_v0; self.rib_slot = rib_slot
         self.place = place; self.edge_mode = edge_mode; self.solid_fill = solid_fill or []
         self.openings = list(openings); self.zone_holes = list(zone_holes)
 
     def local(self):
         u0, u1, v0, v1 = self.u0, self.u1, self.v0, self.v1
-        T = SKIN + RIB_H
-        p = boxc(u0, u1, v0, v1, 0, SKIN)
+        SK = self.skin
+        T = SK + RIB_H
+        p = boxc(u0, u1, v0, v1, 0, SK)
         # perimeter rib
-        p = p.union(boxc(u0, u1, v0, v1, SKIN - 0.01, T).cut(boxc(u0 + PERIM, u1 - PERIM, v0 + PERIM, v1 - PERIM, SKIN - 1, T + 1)))
+        p = p.union(boxc(u0, u1, v0, v1, SK - 0.01, T).cut(boxc(u0 + PERIM, u1 - PERIM, v0 + PERIM, v1 - PERIM, SK - 1, T + 1)))
         # internal ribs
         nu = max(1, int(round((u1 - u0) / RIB_PITCH))); nv = max(1, int(round((v1 - v0) / RIB_PITCH)))
         for k in range(1, nu):
             u = u0 + k * (u1 - u0) / nu
-            p = p.union(boxc(u - RIB_T / 2, u + RIB_T / 2, v0, v1, SKIN - 0.01, T))
+            p = p.union(boxc(u - RIB_T / 2, u + RIB_T / 2, v0, v1, SK - 0.01, T))
         for k in range(1, nv):
             v = v0 + k * (v1 - v0) / nv
-            p = p.union(boxc(u0, u1, v - RIB_T / 2, v + RIB_T / 2, SKIN - 0.01, T))
+            p = p.union(boxc(u0, u1, v - RIB_T / 2, v + RIB_T / 2, SK - 0.01, T))
         for (a, b, c, d) in self.solid_fill:
             a, b, c, d = max(a, u0), min(b, u1), max(c, v0), min(d, v1)
-            if b > a and d > c: p = p.union(boxc(a, b, c, d, SKIN - 0.01, T))
+            if b > a and d > c: p = p.union(boxc(a, b, c, d, SK - 0.01, T))
         for op in self.openings:
             p = p.cut(op)
-        # seam holes in the perimeter ribs, at w = SKIN + RIBS/2
-        wm = SKIN + RIB_H / 2
+        # seam holes in the perimeter ribs, at w = SK + RIBS/2
+        wm = SK + RIB_H / 2
         for edge, mode in self.edge_mode.items():
             if mode is None: continue
             if edge in ('u0', 'u1'):
@@ -131,9 +136,9 @@ class Panel:
         for (axis, c, d, h) in self.zone_holes:   # extra holes in local coords (in-plane holes get teardrops)
             p = p.cut(tdrop(axis, c, d, h) if axis in ('x', 'y') else cyl(axis, c, d, h))
         if self.skin_v0 is not None:              # skin continues below the rib zone (deck slot at the bottom edge)
-            p = p.union(boxc(u0, u1, self.skin_v0, v0 + 0.01, 0, SKIN))
+            p = p.union(boxc(u0, u1, self.skin_v0, v0 + 0.01, 0, SK))
         if self.rib_slot is not None:             # horizontal slot through the ribs (the deck passes through a side wall)
-            p = p.cut(boxc(u0 - 1, u1 + 1, self.rib_slot[0], self.rib_slot[1], SKIN - 0.3, T + 1))
+            p = p.cut(boxc(u0 - 1, u1 + 1, self.rib_slot[0], self.rib_slot[1], SK - 0.3, T + 1))
         return p
 
     def world(self):
@@ -187,34 +192,47 @@ FLOOR_RING = [(x, y) for x in (-507.0, 507.0) for y in [-180.0, -100.0, -20.0, 6
 COL_FLOOR = [(sx * 495, sy * 235) for sx in (-1, 1) for sy in (-1, 1)]
 
 
+PADS = []   # solid 8 mm pads (x0, x1, y0, y1) under the drawer roller stations, the closed switches and the columns
+for rx in (300.0, 200.0):
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            a, b = sorted((sx * (rx + 6), sx * (rx + 94)))       # station feet reach ~90 outward from the rail
+            PADS.append((a, b, *sorted((sy * 150.0, sy * 240.0))))
+for sx in (-1, 1):
+    PADS.append((sx * 400 - 16, sx * 400 + 16, *sorted((sx * 68.0, sx * 112.0))))   # 170 switch mounts (back one mirrored)
+for sx in (-1, 1):
+    for sy in (-1, 1):
+        PADS.append((*sorted((sx * CX0, sx * XO)), *sorted((sy * CY0, sy * YO))))
+
+
 def floor_tile(i, j):
+    """open grid (lever 4, BJ's pick): 2.4 x 8 ribs on the 40 insert grid, 9 mm bosses at every grid point, solid 8 mm pads
+    where something stands on the floor (roller stations, switch mounts, columns), 6 mm perimeter rib with half-laps."""
     x0, x1, y0, y1 = FX[i], FX[i + 1], FY[j], FY[j + 1]
-    FS = FLOOR_T - SKIN   # 5.6: rib height under the floor skin
-    t = boxc(x0, x1, y0, y1, FS, FLOOR_T)
-    rib = boxc(x0, x1, y0, y1, 0, FS + 0.01).cut(boxc(x0 + 6, x1 - 6, y0 + 6, y1 - 6, -1, FS + 0.02))
     gx = [FG['x0'] + FG['pitch'] * k for k in range(FG['nx'])]; gy = [FG['y0'] + FG['pitch'] * k for k in range(FG['ny'])]
+    t = boxc(x0, x1, y0, y1, 0, FLOOR_T).cut(boxc(x0 + 6, x1 - 6, y0 + 6, y1 - 6, -1, FLOOR_T + 1))
     for x in gx:
-        if x0 < x < x1 and (round(x) // 40) % 2 == 0: rib = rib.union(boxc(x - RIB_T / 2, x + RIB_T / 2, y0, y1, 0, FS + 0.01))
+        if x0 < x < x1: t = t.union(boxc(x - RIB_T / 2, x + RIB_T / 2, y0, y1, 0, FLOOR_T))
     for y in gy:
-        if y0 < y < y1 and (round(y) // 40) % 2 == 0: rib = rib.union(boxc(x0, x1, y - RIB_T / 2, y + RIB_T / 2, 0, FS + 0.01))
-    t = t.union(rib)
-    # bosses + inserts: interior grid (skipping under the columns) + wall ring + column feet
+        if y0 < y < y1: t = t.union(boxc(x0, x1, y - RIB_T / 2, y + RIB_T / 2, 0, FLOOR_T))
+    for (a, b, c, d) in PADS:
+        a, b, c, d = max(a, x0), min(b, x1), max(c, y0), min(d, y1)
+        if b > a and d > c: t = t.union(boxc(a, b, c, d, 0, FLOOR_T))
     pts = [(x, y) for x in gx for y in gy if not (abs(x) >= CX0 and abs(y) >= CY0)] + FLOOR_RING + COL_FLOOR
     for (x, y) in pts:
         if x0 - 0.01 <= x <= x1 + 0.01 and y0 - 0.01 <= y <= y1 + 0.01:
             if x0 + 5 < x < x1 - 5 and y0 + 5 < y < y1 - 5:
-                t = t.union(cyl('z', (x, y, FS / 2), 9, FS))
+                t = t.union(cyl('z', (x, y, FLOOR_T / 2), 9, FLOOR_T))
             t = t.cut(cyl('z', (x, y, FLOOR_T - INSERT_DEPTH / 2 + 0.005), INSERT_D, INSERT_DEPTH + 0.01))
-    # half-laps on +x and +y edges (20 mm, lower half), with 3 M3 + nut
-    # half-laps: a 20 mm tongue (z 0..FS/2) on +x / +y, the socket on -x / -y, FIT per side; M3 + nut
-    H2 = FS / 2
-    if i < 4: t = t.union(boxc(x1, x1 + 20, y0 + 25, y1 - 25, 0, H2))
-    if i > 0: t = t.cut(boxc(x0 - 1, x0 + 20 + FIT, y0 + 25 - FIT, y1 - 25 + FIT, -1, H2 + FIT))
-    if j < 2: t = t.union(boxc(x0 + 10, x1 - 10, y1, y1 + 20, 0, H2))
-    if j > 0: t = t.cut(boxc(x0 + 10 - FIT, x1 - 10 + FIT, y0 - 1, y0 + 20 + FIT, -1, H2 + FIT))
-    for xs in ([x1 + 10] if i < 4 else []) + ([x0 + 10] if i > 0 else []):
+    # half-laps on the perimeter rib: tongue (lower half) on +x / +y, socket on -x / -y, FIT per side; M3 + nut
+    H2 = FLOOR_T / 2
+    if i < 4: t = t.union(boxc(x1, x1 + 6, y0 + 25, y1 - 25, 0, H2))
+    if i > 0: t = t.cut(boxc(x0 - 1, x0 + 6 + FIT, y0 + 25 - FIT, y1 - 25 + FIT, -1, H2 + FIT))
+    if j < 2: t = t.union(boxc(x0 + 10, x1 - 10, y1, y1 + 6, 0, H2))
+    if j > 0: t = t.cut(boxc(x0 + 10 - FIT, x1 - 10 + FIT, y0 - 1, y0 + 6 + FIT, -1, H2 + FIT))
+    for xs in ([x1 + 3] if i < 4 else []) + ([x0 + 3] if i > 0 else []):
         for y in seam_points(y0, y1, 120, 40): t = t.cut(cyl('z', (xs, y, 4), M3_CLR, 12))
-    for ys in ([y1 + 10] if j < 2 else []) + ([y0 + 10] if j > 0 else []):
+    for ys in ([y1 + 3] if j < 2 else []) + ([y0 + 3] if j > 0 else []):
         for x in seam_points(x0, x1, 120, 40): t = t.cut(cyl('z', (x, ys, 4), M3_CLR, 12))
     return t
 
@@ -230,12 +248,12 @@ def deck_tile(i, j):
     x0, x1, y0, y1 = DX[i], DX[i + 1], DY[j], DY[j + 1]
     gx = [DG['x0'] + DG['pitch'] * k for k in range(DG['nx'])]; gy = [DG['y0'] + DG['pitch'] * k for k in range(DG['ny'])]
     drop = DO['drop_hole']; dc = drop['center']
-    pan = Panel(f'deck_{i}{j}', x0, x1, y0, y1, place_top(DECK_Z1), {})
+    pan = Panel(f'deck_{i}{j}', x0, x1, y0, y1, place_top(DECK_Z1), {}, skin=DECK_SKIN)
     t = pan.local()
     # local w: 0..6 skin (world 384..390 after flip), ribs 6..20 (world 370..384)
     # openings (local z 0..20 = world 390 down to 370): drop hole + rib-free ring, cable slots
     t = t.cut(cyl('z', (dc[0], dc[1], 10), 2 * drop['r'], 30))
-    t = t.cut(cyl('z', (dc[0], dc[1], SKIN + RIBS / 2 + 0.5), 2 * RIB_FREE_R, RIBS + 1).cut(cyl('z', (dc[0], dc[1], 10), 2 * drop['r'] + 2 * 4, 30)))
+    t = t.cut(cyl('z', (dc[0], dc[1], DECK_SKIN + RIBS / 2 + 0.5), 2 * RIB_FREE_R, RIBS + 1).cut(cyl('z', (dc[0], dc[1], 10), 2 * drop['r'] + 2 * 4, 30)))
     for sl in (DO['cable_slot_L'], DO['cable_slot_R']):
         t = t.cut(boxc(sl['x'][0], sl['x'][1], sl['y'][0], sl['y'][1], -1, 30))
 
@@ -245,10 +263,12 @@ def deck_tile(i, j):
             if not (x0 + 5 < x < x1 - 5 and y0 + 5 < y < y1 - 5): continue
             if math.hypot(x - dc[0], y - dc[1]) < drop['r'] + DG['skip_within_of_openings']: continue
             if any(sl['x'][0] - 10 < x < sl['x'][1] + 10 and sl['y'][0] - 10 < y < sl['y'][1] + 10 for sl in (DO['cable_slot_L'], DO['cable_slot_R'])): continue
-            t = t.union(cyl('z', (x, y, SKIN + 2), 9, 8)).cut(cyl('z', (x, y, INSERT_DEPTH / 2 - 0.005), INSERT_D, INSERT_DEPTH + 0.01))
+            t = t.union(cyl('z', (x, y, 4), 9, 8)).cut(cyl('z', (x, y, INSERT_DEPTH / 2 - 0.005), INSERT_D, INSERT_DEPTH + 0.01))
     # ledge bolts (down into wall ledge inserts) and spine-free; seams: half-laps in the perimeter ribs with M3 + nut
     # the deck edge bolts sideways into inserts in the wall band (z 380): the outer perimeter rib is the full zone deep
-    t = t.union(boxc(x0, x1, y0, y1, SKIN - 0.01, SKIN + RIBS).cut(boxc(x0 + PERIM, x1 - PERIM, y0 + PERIM, y1 - PERIM, SKIN - 1, SKIN + RIBS + 1)))
+    for (edge_on, bx) in ((i == 0, boxc(x0, x0 + 6, y0, y1, DECK_SKIN - 0.01, DECK_SKIN + RIBS)), (i == 4, boxc(x1 - 6, x1, y0, y1, DECK_SKIN - 0.01, DECK_SKIN + RIBS)),
+                          (j == 0, boxc(x0, x1, y0, y0 + 6, DECK_SKIN - 0.01, DECK_SKIN + RIBS)), (j == 2, boxc(x0, x1, y1 - 6, y1, DECK_SKIN - 0.01, DECK_SKIN + RIBS))):
+        if edge_on: t = t.union(bx)
     wz = DECK_Z1 - 380.0
     if i == 0:
         for y in seam_points(-CY0, CY0):
@@ -265,15 +285,15 @@ def deck_tile(i, j):
     for sx in (-1, 1):   # corner notches for the columns
         for sy in (-1, 1):
             t = t.cut(boxc(*sorted((sx * (CX0 - 0.3), sx * 600)), *sorted((sy * (CY0 - 0.3), sy * 600)), -1, 30))
-    t = t.cut(boxc(-600, 600, -600, 600, SKIN + RIBS + 0.001, 40))
+    t = t.cut(boxc(-600, 600, -600, 600, DECK_SKIN + RIBS + 0.001, 40))
     for edge, (a, b, fixed) in {'u0': (y0, y1, x0), 'u1': (y0, y1, x1), 'v0': (x0, x1, y0), 'v1': (x0, x1, y1)}.items():
         inner = (edge in ('u0', 'u1') and 0 < i < 5 or edge in ('v0', 'v1') and 0 < j < 3)
         if edge == 'u0' and i == 0 or edge == 'u1' and i == 4 or edge == 'v0' and j == 0 or edge == 'v1' and j == 2: continue
         for s in seam_points(a, b):
             if edge in ('u0', 'u1'):
-                t = t.cut(cyl('x', (fixed, s, SKIN + RIBS / 2), M3_CLR, 2 * PERIM + 2))
+                t = t.cut(cyl('x', (fixed, s, DECK_SKIN + RIBS / 2), M3_CLR, 2 * PERIM + 2))
             else:
-                t = t.cut(cyl('y', (s, fixed, SKIN + RIBS / 2), M3_CLR, 2 * PERIM + 2))
+                t = t.cut(cyl('y', (s, fixed, DECK_SKIN + RIBS / 2), M3_CLR, 2 * PERIM + 2))
     return place_top(DECK_Z1)(t)
 
 
@@ -293,24 +313,24 @@ def roof_tile(i, j):
     if math.hypot(max(abs(hc[0] - x0), abs(hc[0] - x1)), 0) < 1e9 and (x0 - HOP['r'] - 8 < hc[0] < x1 + HOP['r'] + 8) and (y0 - HOP['r'] - 8 < hc[1] < y1 + HOP['r'] + 8):
         t = t.cut(cyl('z', (hc[0], hc[1], 10), 2 * HOP['r'], 30))
         # ring rib around the hole (8 wide) so the cut edge is stiff
-        ring = cyl('z', (hc[0], hc[1], SKIN + RIBS / 2), 2 * HOP['r'] + 16, RIBS).cut(cyl('z', (hc[0], hc[1], 10), 2 * HOP['r'], 30)).intersect(boxc(x0, x1, y0, y1, 0, 30))
+        ring = cyl('z', (hc[0], hc[1], SKIN + RIB_H / 2), 2 * HOP['r'] + 16, RIB_H).cut(cyl('z', (hc[0], hc[1], 10), 2 * HOP['r'], 30)).intersect(boxc(x0, x1, y0, y1, 0, 30))
         if ring.vals() and ring.val().Volume() > 1: t = t.union(ring)
     for (x, y) in HOP_INSERTS:
         if x0 + 2 < x < x1 - 2 and y0 + 2 < y < y1 - 2:
-            t = t.union(cyl('z', (x, y, SKIN + RIBS / 2), 12, RIBS)).cut(cyl('z', (x, y, SKIN + RIBS - INSERT_DEPTH / 2 + 0.005), INSERT_D, INSERT_DEPTH + 0.01))
+            t = t.union(cyl('z', (x, y, SKIN + RIB_H / 2), 12, RIB_H)).cut(cyl('z', (x, y, SKIN + RIB_H - INSERT_DEPTH / 2 + 0.005), INSERT_D, INSERT_DEPTH + 0.01))
     for (x, y) in ROOF_RING_PTS + STUD_BOLTS:
         if x0 + 2 < x < x1 - 2 and y0 + 2 < y < y1 - 2:
             if (x, y) in STUD_BOLTS:   # stud screws come down from above into inserts in the roof skin boss
-                t = t.union(cyl('z', (x, y, SKIN + 3), 10, 6)).cut(cyl('z', (x, y, INSERT_DEPTH / 2 - 0.005), INSERT_D, INSERT_DEPTH + 0.01))
+                t = t.union(cyl('z', (x, y, 4), 10, 8)).cut(cyl('z', (x, y, INSERT_DEPTH / 2 - 0.005), INSERT_D, INSERT_DEPTH + 0.01))
             else:                      # roof-to-wall: counterbored M3 down into the wall-top inserts
                 t = t.cut(cyl('z', (x, y, 10), M3_CLR, 30)).cut(cyl('z', (x, y, CB_DEPTH / 2 - 0.01), CB_D, CB_DEPTH))
     for edge, (a, b, fixed) in {'u0': (y0, y1, x0), 'u1': (y0, y1, x1), 'v0': (x0, x1, y0), 'v1': (x0, x1, y1)}.items():
         if edge == 'u0' and i == 0 or edge == 'u1' and i == 4 or edge == 'v0' and j == 0 or edge == 'v1' and j == 2: continue
         for s in seam_points(a, b):
             if edge in ('u0', 'u1'):
-                t = t.cut(cyl('x', (fixed, s, SKIN + RIBS / 2), M3_CLR, 2 * PERIM + 2))
+                t = t.cut(cyl('x', (fixed, s, SKIN + RIB_H / 2), M3_CLR, 2 * PERIM + 2))
             else:
-                t = t.cut(cyl('y', (s, fixed, SKIN + RIBS / 2), M3_CLR, 2 * PERIM + 2))
+                t = t.cut(cyl('y', (s, fixed, SKIN + RIB_H / 2), M3_CLR, 2 * PERIM + 2))
     return place_top(ROOF_Z1)(t)
 
 
@@ -348,7 +368,7 @@ CZ = [FLOOR_T, 255.0, 480.0, ROOF_Z0]
 def column(sx, sy, k):
     x0, x1 = sorted((sx * CX0, sx * XO)); y0, y1 = sorted((sy * CY0, sy * YO))
     z0, z1 = CZ[k], CZ[k + 1]
-    tw = 2.4
+    tw = 1.7
     c = boxc(x0, x1, y0, y1, z0, z1).cut(boxc(x0 + tw, x1 - tw, y0 + tw, y1 - tw, z0 - 1, z1 + 1))
     # insert bosses along the two inner faces (a 2.4 wall alone cannot hold an insert): 8 x 8 strips the full height at the hole lines
     c = c.union(boxc(*sorted((sx * (XO - SKIN - RIB_H / 2 - 4), sx * (XO - SKIN - RIB_H / 2 + 4))), *sorted((sy * CY0, sy * (CY0 + 8))), z0, z1))
@@ -367,10 +387,10 @@ def column(sx, sy, k):
     zs_fb = sorted({z for r in range(3) for z in seam_points(FB_Z[r], FB_Z[r + 1])})
     for z in zs_side:
         if z0 + 3 < z < z1 - 3:
-            c = c.cut(cyl('y', (sx * (XO - SKIN - RIBS / 2), sy * CY0 - sy * INSERT_DEPTH / 2, z), INSERT_D, INSERT_DEPTH))
+            c = c.cut(cyl('y', (sx * (XO - SKIN - RIB_H / 2), sy * CY0 - sy * INSERT_DEPTH / 2, z), INSERT_D, INSERT_DEPTH))
     for z in zs_fb:
         if z0 + 3 < z < z1 - 3:
-            c = c.cut(cyl('x', (sx * CX0 - sx * INSERT_DEPTH / 2, sy * (YO - SKIN - RIBS / 2), z), INSERT_D, INSERT_DEPTH))
+            c = c.cut(cyl('x', (sx * CX0 - sx * INSERT_DEPTH / 2, sy * (YO - SKIN - RIB_H / 2), z), INSERT_D, INSERT_DEPTH))
     return c
 
 
@@ -523,7 +543,7 @@ def spine_segment(i):
     """Inverted-U box beam, printed top-plate-down (no bridges): top plate 4 at z 180..184, side walls 4 at |y| 62..66,
     X ribs every 60 and a centre web, all vertical when printed. Feet inward at the bottom (y 50..62) carry the
     floor bolts at y +-60. Rail tunnels 24 x 26 (z 8..34) cut through the side walls and the feet."""
-    x0, x1 = SX_[i], SX_[i + 1]; y0, y1 = SP['y']; z0, z1 = SP['z']
+    x0, x1 = SX_[i], SX_[i + 1]; y0, y1 = SP['y']; z0, z1 = SP['z'][0], SPINE_Z1
     tp = 2.4
     s = boxc(x0, x1, y0, y1, z1 - tp, z1)
     for ys in (y0, y1 - tp): s = s.union(boxc(x0, x1, ys, ys + tp, z0, z1))
@@ -650,9 +670,11 @@ def main(quick=False):
                 if bed_fit(b2)['fits_248']: bedp, diag, bf = b2, d2, bed_fit(b2); break
         export(bedp, prn / f'{lab}_PRINT_1.stl')
         g = grams_day(w)
+        noz06 = lab[:3] in ('105', '115', '120', '125', '126', '127', '128', '130', '135')   # panels and spine: 0.6 nozzle candidate
         plist.append({'label': lab, 'part_no': lab[:3], 'qty': 1, 'material': 'PLA red', **bf, 'diagonal_on_bed': diag, 'bed_face': bed_face(lab),
-                      'est_grams': g, 'est_hours': round(g / G_PER_H, 1)})
+                      'est_grams': g, 'est_hours_0.4': round(g / G_PER_H, 1), 'est_hours_0.6_on_panels': round(g / (G_PER_H * (NOZ06_FACTOR if noz06 else 1.0)), 1)})
     total = round(sum(p['est_grams'] for p in plist))
+    h04 = round(sum(p['est_hours_0.4'] for p in plist)); h06 = round(sum(p['est_hours_0.6_on_panels'] for p in plist))
     by = {}
     for p in plist: by[p['part_no']] = by.get(p['part_no'], 0) + p['est_grams']
     bought = [{'item': 'M3 heat-set insert', 'qty': 900, 'use': 'floor + deck grids (~575), seams, ledges, roof ring, studs'},
@@ -660,7 +682,7 @@ def main(quick=False):
               {'item': 'M3 x 10 screw', 'qty': 120, 'use': 'deck to ledges, roof to walls, studs, spine to floor'},
               {'item': 'M3 x 12 screw + nut', 'qty': 90, 'use': 'floor laps, spine seams, stud lugs'}]
     (HERE / 'parts.json').write_text(json.dumps({'module': 'F', 'interface': IF['version'], 'printed': plist, 'bought': bought,
-                                                 'est_total_grams': total, 'est_total_hours': round(total / G_PER_H),
+                                                 'est_total_grams': total, 'est_total_hours_0.4': h04, 'est_total_hours_0.6_on_panels_and_spine': h06,
                                                  'estimate_model': 'BJ day profile: 4 walls x 0.42 (1.68 mm per side), 5 top / 3 bottom layers x 0.2, 15 %% infill inside; hours at %d g/h' % G_PER_H,
                                                  'est_grams_by_part_no': {k: round(v) for k, v in by.items()}}, indent=1))
     res = checks(parts, plist, quick)
