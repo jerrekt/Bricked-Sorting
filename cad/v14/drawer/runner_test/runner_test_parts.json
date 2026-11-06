@@ -1,0 +1,74 @@
+[
+ {
+  "part": "150_runner_rail",
+  "qty": 2,
+  "orientation": "base down, 45 deg on the bed",
+  "bed_extent": [
+   246.07,
+   246.07,
+   20.0
+  ],
+  "fits_248": true,
+  "grams_each_PETG": 104.3
+ },
+ {
+  "part": "151_runner_bar",
+  "qty": 2,
+  "orientation": "flange down, 45 deg on the bed",
+  "bed_extent": [
+   243.25,
+   243.25,
+   21.8
+  ],
+  "fits_248": true,
+  "grams_each_PETG": 82.2
+ },
+ {
+  "part": "150c_coupon_rail_60",
+  "qty": 1,
+  "orientation": "base down",
+  "bed_extent": [
+   30.0,
+   60.0,
+   20.0
+  ],
+  "fits_248": true,
+  "grams_each_PETG": 20.4
+ },
+ {
+  "part": "151c_coupon_bar_20",
+  "qty": 1,
+  "orientation": "flange down",
+  "bed_extent": [
+   30.0,
+   50.0,
+   20.0
+  ],
+  "fits_248": true,
+  "grams_each_PETG": 14.0
+ },
+ {
+  "part": "151c_coupon_bar_30",
+  "qty": 1,
+  "orientation": "flange down",
+  "bed_extent": [
+   30.0,
+   50.0,
+   20.0
+  ],
+  "fits_248": true,
+  "grams_each_PETG": 14.0
+ },
+ {
+  "part": "151c_coupon_bar_40",
+  "qty": 1,
+  "orientation": "flange down",
+  "bed_extent": [
+   30.0,
+   50.0,
+   20.0
+  ],
+  "fits_248": true,
+  "grams_each_PETG": 13.9
+ }
+]
