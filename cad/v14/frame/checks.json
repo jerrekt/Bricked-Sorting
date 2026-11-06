@@ -1,5 +1,5 @@
 {
- "interface": "v14-interface-4.1 (2026-11-05 19:02): spine tunnels 26 tall (z 8..34) for a 24 mm roller rail, bins ~139 tall; interface frozen from here unless a test fails",
+ "interface": "v14-interface-4.3 (2026-11-05 21:30): print rules now come from BJ's measured settings in the vault runbook runbooks/3d-printing.md",
  "bed_fit": {
   "100_floor_00": true,
   "100_floor_01": true,
@@ -70,12 +70,9 @@
   "127_back_strip_high_1": true,
   "127_back_strip_low_2": true,
   "127_back_strip_high_2": true,
-  "128_access_00": true,
-  "128_access_01": true,
-  "128_access_10": true,
-  "128_access_11": true,
-  "128_access_20": true,
-  "128_access_21": true,
+  "128_access_0": true,
+  "128_access_1": true,
+  "128_access_2": true,
   "130_deck_00": true,
   "130_deck_01": true,
   "130_deck_02": true,

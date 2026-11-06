@@ -19,7 +19,9 @@ sys.path.insert(0, str(HERE))
 from f_common import IF, M3_CLR, INSERT_D, INSERT_DEPTH, CB_D, CB_DEPTH, print_pose, bed_fit, export, bbox, grams, render
 
 E = IF['envelope']; W = IF['walls']
-SKIN, RIBS = W['skin'], W['ribs_inward']                   # 6, 14
+SKIN, RIBS = W['skin'], W['ribs_inward']                   # 2.4, 17.6 (zone); ribs are RIB_H tall
+RIB_H = 10.0                                              # rib height used (<= RIBS)
+FIT = 0.07                                                # sliding fit per side (vault runbook)
 XO, YO = E['x'][1], E['y'][1]                             # 520, 260 outer
 XI, YI = XO - SKIN - RIBS, YO - SKIN - RIBS               # 500, 240 interior clear
 FLOOR_T = IF['floor']['z'][1]                             # 8
@@ -37,8 +39,9 @@ FG = IF['floor']['grid_M3_inserts_top']; DG = IF['deck']['grid_M3_inserts_top']
 DO = IF['deck']['openings']; RIB_FREE_R = IF['deck']['rib_free_radius_around_drop']
 HOP = IF['roof']['hopper_opening']
 HOP_INSERTS = [(HOP['center'][0] + 108 * math.cos(math.radians(a)), HOP['center'][1] + 108 * math.sin(math.radians(a))) for a in (180, 240, 300)]
-LEDGE_Z0 = DECK_Z0 - 14                                   # 356
-PERIM, RIB_T, RIB_PITCH = 8.0, 3.0, 60.0
+PERIM, RIB_T, RIB_PITCH = 8.0, W.get('rib_thickness', 2.4), W.get('rib_spacing_about', 80)
+INSERT_D = 4.1                                            # M3 generic insert, runbook: hole 4.0-4.2, verify with calipers
+DECK_BAND = (368.0, 392.0)                                # solid band in the walls around the deck edge, inserts at z 380 facing in
 SEAM_PITCH = 100.0
 TUN_W, TUN_Z1 = 24.0, 34.0
 
@@ -55,6 +58,18 @@ def cyl(axis, c, d, h):
     a = {'x': (1, 0, 0), 'y': (0, 1, 0), 'z': (0, 0, 1)}[axis]
     pl = cq.Plane(origin=(c[0] - a[0] * h / 2, c[1] - a[1] * h / 2, c[2] - a[2] * h / 2), xDir=(0, 1, 0) if axis == 'x' else (1, 0, 0), normal=a)
     return cq.Workplane(pl).circle(d / 2).extrude(h)
+
+
+def tdrop(axis, c, d, h):
+    """horizontal hole for printing: circle plus a 45 deg apex toward +z local (up when the part prints skin-down)."""
+    a = {'x': (1, 0, 0), 'y': (0, 1, 0)}[axis]
+    xd = (0, 1, 0) if axis == 'x' else (1, 0, 0)
+    pl = cq.Plane(origin=(c[0] - a[0] * h / 2, c[1] - a[1] * h / 2, c[2]), xDir=xd, normal=a)
+    r = d / 2
+    pts = [(r * math.cos(math.radians(t)), r * math.sin(math.radians(t))) for t in range(-45, 226, 15)]
+    sy = 1 if axis == 'x' else -1          # plane local y is +z for axis x and -z for axis y
+    pts = [(x, sy * y) for x, y in pts] + [(0, sy * r * math.sqrt(2))]
+    return cq.Workplane(pl).polyline(pts).close().extrude(h)
 
 
 def seam_points(a, b, pitch=SEAM_PITCH, margin=20.0):
@@ -78,7 +93,7 @@ class Panel:
 
     def local(self):
         u0, u1, v0, v1 = self.u0, self.u1, self.v0, self.v1
-        T = SKIN + RIBS
+        T = SKIN + RIB_H
         p = boxc(u0, u1, v0, v1, 0, SKIN)
         # perimeter rib
         p = p.union(boxc(u0, u1, v0, v1, SKIN - 0.01, T).cut(boxc(u0 + PERIM, u1 - PERIM, v0 + PERIM, v1 - PERIM, SKIN - 1, T + 1)))
@@ -96,25 +111,25 @@ class Panel:
         for op in self.openings:
             p = p.cut(op)
         # seam holes in the perimeter ribs, at w = SKIN + RIBS/2
-        wm = SKIN + RIBS / 2
+        wm = SKIN + RIB_H / 2
         for edge, mode in self.edge_mode.items():
             if mode is None: continue
             if edge in ('u0', 'u1'):
                 pts = seam_points(v0, v1); ue = u0 if edge == 'u0' else u1
                 for v in pts:
                     if mode == 'insert':
-                        p = p.cut(cyl('x', (ue + (INSERT_DEPTH / 2 if edge == 'u0' else -INSERT_DEPTH / 2), v, wm), INSERT_D, INSERT_DEPTH))
+                        p = p.cut(tdrop('x', (ue + (INSERT_DEPTH / 2 if edge == 'u0' else -INSERT_DEPTH / 2), v, wm), INSERT_D, INSERT_DEPTH))
                     else:
-                        p = p.cut(cyl('x', (ue + (PERIM / 2 if edge == 'u0' else -PERIM / 2), v, wm), M3_CLR, PERIM + 2))
+                        p = p.cut(tdrop('x', (ue + (15 if edge == 'u0' else -15), v, wm), M3_CLR, 32))
             else:
                 pts = seam_points(u0, u1); ve = v0 if edge == 'v0' else v1
                 for u in pts:
                     if mode == 'insert':
-                        p = p.cut(cyl('y', (u, ve + (INSERT_DEPTH / 2 if edge == 'v0' else -INSERT_DEPTH / 2), wm), INSERT_D, INSERT_DEPTH))
+                        p = p.cut(tdrop('y', (u, ve + (INSERT_DEPTH / 2 if edge == 'v0' else -INSERT_DEPTH / 2), wm), INSERT_D, INSERT_DEPTH))
                     else:
-                        p = p.cut(cyl('y', (u, ve + (PERIM / 2 if edge == 'v0' else -PERIM / 2), wm), M3_CLR, PERIM + 2))
-        for (axis, c, d, h) in self.zone_holes:   # extra holes in local coords
-            p = p.cut(cyl(axis, c, d, h))
+                        p = p.cut(tdrop('y', (u, ve + (15 if edge == 'v0' else -15), wm), M3_CLR, 32))
+        for (axis, c, d, h) in self.zone_holes:   # extra holes in local coords (in-plane holes get teardrops)
+            p = p.cut(tdrop(axis, c, d, h) if axis in ('x', 'y') else cyl(axis, c, d, h))
         if self.skin_v0 is not None:              # skin continues below the rib zone (deck slot at the bottom edge)
             p = p.union(boxc(u0, u1, self.skin_v0, v0 + 0.01, 0, SKIN))
         if self.rib_slot is not None:             # horizontal slot through the ribs (the deck passes through a side wall)
@@ -174,26 +189,29 @@ COL_FLOOR = [(sx * 495, sy * 235) for sx in (-1, 1) for sy in (-1, 1)]
 
 def floor_tile(i, j):
     x0, x1, y0, y1 = FX[i], FX[i + 1], FY[j], FY[j + 1]
-    t = boxc(x0, x1, y0, y1, 4, FLOOR_T)
-    rib = boxc(x0, x1, y0, y1, 0, 4.01).cut(boxc(x0 + 6, x1 - 6, y0 + 6, y1 - 6, -1, 4.02))
+    FS = FLOOR_T - SKIN   # 5.6: rib height under the floor skin
+    t = boxc(x0, x1, y0, y1, FS, FLOOR_T)
+    rib = boxc(x0, x1, y0, y1, 0, FS + 0.01).cut(boxc(x0 + 6, x1 - 6, y0 + 6, y1 - 6, -1, FS + 0.02))
     gx = [FG['x0'] + FG['pitch'] * k for k in range(FG['nx'])]; gy = [FG['y0'] + FG['pitch'] * k for k in range(FG['ny'])]
     for x in gx:
-        if x0 < x < x1: rib = rib.union(boxc(x - RIB_T / 2, x + RIB_T / 2, y0, y1, 0, 4.01))
+        if x0 < x < x1 and (round(x) // 40) % 2 == 0: rib = rib.union(boxc(x - RIB_T / 2, x + RIB_T / 2, y0, y1, 0, FS + 0.01))
     for y in gy:
-        if y0 < y < y1: rib = rib.union(boxc(x0, x1, y - RIB_T / 2, y + RIB_T / 2, 0, 4.01))
+        if y0 < y < y1 and (round(y) // 40) % 2 == 0: rib = rib.union(boxc(x0, x1, y - RIB_T / 2, y + RIB_T / 2, 0, FS + 0.01))
     t = t.union(rib)
     # bosses + inserts: interior grid (skipping under the columns) + wall ring + column feet
     pts = [(x, y) for x in gx for y in gy if not (abs(x) >= CX0 and abs(y) >= CY0)] + FLOOR_RING + COL_FLOOR
     for (x, y) in pts:
         if x0 - 0.01 <= x <= x1 + 0.01 and y0 - 0.01 <= y <= y1 + 0.01:
             if x0 + 5 < x < x1 - 5 and y0 + 5 < y < y1 - 5:
-                t = t.union(cyl('z', (x, y, 2), 9, 4))
+                t = t.union(cyl('z', (x, y, FS / 2), 9, FS))
             t = t.cut(cyl('z', (x, y, FLOOR_T - INSERT_DEPTH / 2 + 0.005), INSERT_D, INSERT_DEPTH + 0.01))
     # half-laps on +x and +y edges (20 mm, lower half), with 3 M3 + nut
-    if i < 4: t = t.union(boxc(x1, x1 + 20, y0 + 25, y1 - 25, 0, 4))
-    if i > 0: t = t.cut(boxc(x0 - 1, x0 + 20.3, y0 + 24.7, y1 - 24.7, -1, 4.2))
-    if j < 2: t = t.union(boxc(x0 + 10, x1 - 10, y1, y1 + 20, 0, 4))
-    if j > 0: t = t.cut(boxc(x0 + 9.7, x1 - 9.7, y0 - 1, y0 + 20.3, -1, 4.2))
+    # half-laps: a 20 mm tongue (z 0..FS/2) on +x / +y, the socket on -x / -y, FIT per side; M3 + nut
+    H2 = FS / 2
+    if i < 4: t = t.union(boxc(x1, x1 + 20, y0 + 25, y1 - 25, 0, H2))
+    if i > 0: t = t.cut(boxc(x0 - 1, x0 + 20 + FIT, y0 + 25 - FIT, y1 - 25 + FIT, -1, H2 + FIT))
+    if j < 2: t = t.union(boxc(x0 + 10, x1 - 10, y1, y1 + 20, 0, H2))
+    if j > 0: t = t.cut(boxc(x0 + 10 - FIT, x1 - 10 + FIT, y0 - 1, y0 + 20 + FIT, -1, H2 + FIT))
     for xs in ([x1 + 10] if i < 4 else []) + ([x0 + 10] if i > 0 else []):
         for y in seam_points(y0, y1, 120, 40): t = t.cut(cyl('z', (xs, y, 4), M3_CLR, 12))
     for ys in ([y1 + 10] if j < 2 else []) + ([y0 + 10] if j > 0 else []):
@@ -202,8 +220,8 @@ def floor_tile(i, j):
 
 
 # ---------------- deck ----------------
-DX = [-XI - RIBS, -310.0, -110.0, 90.0, 270.0, XI + RIBS]      # +-514
-DY = [-YI - RIBS, -85.0, 85.0, YI + RIBS]                      # +-254
+DX = [-XI, -310.0, -110.0, 90.0, 270.0, XI]                     # +-500: the deck stays inside the walls (4.3)
+DY = [-YI, -80.0, 80.0, YI]                                     # +-240
 DECK_LEDGE_PTS = [(x, y) for y in (-247.0, 247.0) for x in [-440 + 80 * k for k in range(12)]] + \
                  [(x, y) for x in (-507.0, 507.0) for y in [-160.0, -80.0, 0.0, 80.0, 160.0]]
 
@@ -220,9 +238,7 @@ def deck_tile(i, j):
     t = t.cut(cyl('z', (dc[0], dc[1], SKIN + RIBS / 2 + 0.5), 2 * RIB_FREE_R, RIBS + 1).cut(cyl('z', (dc[0], dc[1], 10), 2 * drop['r'] + 2 * 4, 30)))
     for sl in (DO['cable_slot_L'], DO['cable_slot_R']):
         t = t.cut(boxc(sl['x'][0], sl['x'][1], sl['y'][0], sl['y'][1], -1, 30))
-    for sx in (-1, 1):   # corner notches for the columns
-        for sy in (-1, 1):
-            t = t.cut(boxc(*sorted((sx * (CX0 - 0.3), sx * 600)), *sorted((sy * (CY0 - 0.3), sy * 600)), -1, 30))
+
     # insert bosses on the grid (skip within 10 of an opening)
     for x in gx:
         for y in gy:
@@ -231,13 +247,25 @@ def deck_tile(i, j):
             if any(sl['x'][0] - 10 < x < sl['x'][1] + 10 and sl['y'][0] - 10 < y < sl['y'][1] + 10 for sl in (DO['cable_slot_L'], DO['cable_slot_R'])): continue
             t = t.union(cyl('z', (x, y, SKIN + 2), 9, 8)).cut(cyl('z', (x, y, INSERT_DEPTH / 2 - 0.005), INSERT_D, INSERT_DEPTH + 0.01))
     # ledge bolts (down into wall ledge inserts) and spine-free; seams: half-laps in the perimeter ribs with M3 + nut
-    for (x, y) in DECK_LEDGE_PTS:
-        if x0 + 2 < x < x1 - 2 and y0 + 2 < y < y1 - 2:
-            t = t.cut(cyl('z', (x, y, 10), M3_CLR, 30)).cut(cyl('z', (x, y, CB_DEPTH / 2 - 0.01), CB_D, CB_DEPTH))
-    for y in (-247.0, 247.0):   # the wall rows above bolt down into these (wall bottom rib 390..398, axis z)
+    # the deck edge bolts sideways into inserts in the wall band (z 380): the outer perimeter rib is the full zone deep
+    t = t.union(boxc(x0, x1, y0, y1, SKIN - 0.01, SKIN + RIBS).cut(boxc(x0 + PERIM, x1 - PERIM, y0 + PERIM, y1 - PERIM, SKIN - 1, SKIN + RIBS + 1)))
+    wz = DECK_Z1 - 380.0
+    if i == 0:
+        for y in seam_points(-CY0, CY0):
+            if y0 + 2 < y < y1 - 2: t = t.cut(cyl('x', (x0 + 15, y, wz), M3_CLR, 32))
+    if i == 4:
+        for y in seam_points(-CY0, CY0):
+            if y0 + 2 < y < y1 - 2: t = t.cut(cyl('x', (x1 - 15, y, wz), M3_CLR, 32))
+    if j == 0:
         for x in seam_points(-CX0, CX0):
-            if x0 + 2 < x < x1 - 2 and y0 + 2 < y < y1 - 2:
-                t = t.cut(cyl('z', (x, y, INSERT_DEPTH / 2 - 0.005), INSERT_D, INSERT_DEPTH + 0.01))
+            if x0 + 2 < x < x1 - 2: t = t.cut(cyl('y', (x, y0 + 15, wz), M3_CLR, 32))
+    if j == 2:
+        for x in seam_points(-CX0, CX0):
+            if x0 + 2 < x < x1 - 2: t = t.cut(cyl('y', (x, y1 - 15, wz), M3_CLR, 32))
+    for sx in (-1, 1):   # corner notches for the columns
+        for sy in (-1, 1):
+            t = t.cut(boxc(*sorted((sx * (CX0 - 0.3), sx * 600)), *sorted((sy * (CY0 - 0.3), sy * 600)), -1, 30))
+    t = t.cut(boxc(-600, 600, -600, 600, SKIN + RIBS + 0.001, 40))
     for edge, (a, b, fixed) in {'u0': (y0, y1, x0), 'u1': (y0, y1, x1), 'v0': (x0, x1, y0), 'v1': (x0, x1, y1)}.items():
         inner = (edge in ('u0', 'u1') and 0 < i < 5 or edge in ('v0', 'v1') and 0 < j < 3)
         if edge == 'u0' and i == 0 or edge == 'u1' and i == 4 or edge == 'v0' and j == 0 or edge == 'v1' and j == 2: continue
@@ -294,6 +322,9 @@ def stud_quarter(c, k, capped):
         ring = ring.union(cyl('z', (c[0], c[1], STUD_Z1 - 2), STUD_OD, 4))
     foot = cyl('z', (c[0], c[1], ROOF_Z1 + 2), STUD_OD + 2 * 0, 4).cut(cyl('z', (c[0], c[1], 750), STUD_ID - 22, 100))   # inner flange r 134..156
     ring = ring.union(foot)
+    if capped:   # 45 deg brace under the flange so the capped quarters print cap-down without supports
+        brace = cq.Workplane('XZ').polyline([(STUD_ID / 2 - 11, ROOF_Z1 + 4), (STUD_ID / 2 + 0.5, ROOF_Z1 + 4), (STUD_ID / 2 + 0.5, ROOF_Z1 + 15.5)]).close().revolve(360, (0, 0, 0), (0, 1, 0)).translate((c[0], c[1], 0))
+        ring = ring.union(brace)
     for (x, y) in STUD_BOLTS:
         if math.hypot(x - c[0], y - c[1]) < 160:
             ring = ring.cut(cyl('z', (x, y, ROOF_Z1 + 4), M3_CLR, 12)).cut(cyl('z', (x, y, ROOF_Z1 + 6 - CB_DEPTH / 2), CB_D, CB_DEPTH))
@@ -304,7 +335,7 @@ def stud_quarter(c, k, capped):
     # seam lugs on the inside of the ring (r 135..143) either side of each radial edge, M3 + nut tangentially across the seam
     for a in (a0 + 3.0, a0 + 90 - 3.0):
         x, y = c[0] + 139 * math.cos(math.radians(a)), c[1] + 139 * math.sin(math.radians(a))
-        lug = boxc(-6, 6, -4, 4, ROOF_Z1 + 6, ROOF_Z1 + 22).rotate((0, 0, 0), (0, 0, 1), a + 90).translate((x, y, 0))
+        lug = boxc(-6, 6, -4, 4, ROOF_Z1 + 4, ROOF_Z1 + 22).rotate((0, 0, 0), (0, 0, 1), a + 90).translate((x, y, 0))
         lug = lug.cut(cq.Workplane(cq.Plane(origin=(x, y, ROOF_Z1 + 14), xDir=(0, 0, 1), normal=(-math.sin(math.radians(a)), math.cos(math.radians(a)), 0))).circle(M3_CLR / 2).extrude(10, both=True))
         q = q.union(lug)
     return q
@@ -317,17 +348,20 @@ CZ = [FLOOR_T, 255.0, 480.0, ROOF_Z0]
 def column(sx, sy, k):
     x0, x1 = sorted((sx * CX0, sx * XO)); y0, y1 = sorted((sy * CY0, sy * YO))
     z0, z1 = CZ[k], CZ[k + 1]
-    c = boxc(x0, x1, y0, y1, z0, z1).cut(boxc(x0 + 6, x1 - 6, y0 + 6, y1 - 6, z0 - 1, z1 + 1))
-    c = c.union(boxc(x0 + 6, x1 - 6, (y0 + y1) / 2 - 3, (y0 + y1) / 2 + 3, z0, z1)).union(boxc((x0 + x1) / 2 - 3, (x0 + x1) / 2 + 3, y0 + 6, y1 - 6, z0, z1))
+    tw = 2.4
+    c = boxc(x0, x1, y0, y1, z0, z1).cut(boxc(x0 + tw, x1 - tw, y0 + tw, y1 - tw, z0 - 1, z1 + 1))
+    # insert bosses along the two inner faces (a 2.4 wall alone cannot hold an insert): 8 x 8 strips the full height at the hole lines
+    c = c.union(boxc(*sorted((sx * (XO - SKIN - RIB_H / 2 - 4), sx * (XO - SKIN - RIB_H / 2 + 4))), *sorted((sy * CY0, sy * (CY0 + 8))), z0, z1))
+    c = c.union(boxc(*sorted((sx * CX0, sx * (CX0 + 8))), *sorted((sy * (YO - SKIN - RIB_H / 2 - 4), sy * (YO - SKIN - RIB_H / 2 + 4))), z0, z1))
     # tenon up (+z) 10 mm, socket at the bottom
     cxm, cym = (x0 + x1) / 2, (y0 + y1) / 2
     if k < 2: c = c.union(boxc(cxm - 12, cxm + 12, cym - 12, cym + 12, z1, z1 + 10))
-    if k > 0: c = c.cut(boxc(cxm - 12.2, cxm + 12.2, cym - 12.2, cym + 12.2, z0 - 1, z0 + 10.3))
+    if k > 0: c = c.cut(boxc(cxm - 12 - FIT, cxm + 12 + FIT, cym - 12 - FIT, cym + 12 + FIT, z0 - 1, z0 + 10 + FIT))
     # floor foot: inserts in the floor at (sx*495, sy*235) -> clearance from above through a 6 mm foot plate
     if k == 0:
-        c = c.union(boxc(x0, x1, y0, y1, z0, z0 + 6)).cut(cyl('z', (sx * 495, sy * 235, z0 + 3), M3_CLR, 8)).cut(cyl('z', (sx * 495, sy * 235, z0 + 6 - CB_DEPTH / 2), CB_D, CB_DEPTH))
+        c = c.union(boxc(x0, x1, y0, y1, z0, z0 + 4)).cut(cyl('z', (sx * 495, sy * 235, z0 + 3), M3_CLR, 8)).cut(cyl('z', (sx * 495, sy * 235, z0 + 6 - CB_DEPTH / 2), CB_D, CB_DEPTH))
     if k == 2:   # roof bolts come down into an insert in the column top
-        c = c.union(boxc(x0, x1, y0, y1, z1 - 8, z1)).cut(cyl('z', (sx * 495, sy * 235, z1 - INSERT_DEPTH / 2 + 0.005), INSERT_D, INSERT_DEPTH + 0.01))
+        c = c.union(boxc(x0, x1, y0, y1, z1 - 7, z1)).cut(cyl('z', (sx * 495, sy * 235, z1 - INSERT_DEPTH / 2 + 0.005), INSERT_D, INSERT_DEPTH + 0.01))
     # wall inserts: side-wall panels bolt in along Y (face y = sy*CY0), front/back panels along X (face x = sx*CX0)
     zs_side = sorted({z for r in range(3) for z in seam_points(SIDE_Z[r], SIDE_Z[r + 1])})
     zs_fb = sorted({z for r in range(3) for z in seam_points(FB_Z[r], FB_Z[r + 1])})
@@ -358,29 +392,28 @@ def side_wall(sign, i, k):
         for (y, z) in BEAM_PTS:
             # local u = sign*? : for +x wall, u = y ; for -x wall the rotation mirrors u -> -y
             uu = y if sign > 0 else -y
-            holes.append(('z', (uu, z, SKIN + RIBS - INSERT_DEPTH / 2 + 0.005), INSERT_D, INSERT_DEPTH + 0.01))
+            holes.append(('z', (uu, z, SKIN + RIB_H - INSERT_DEPTH / 2 + 0.005), INSERT_D, INSERT_DEPTH + 0.01))
         for g in (-60.0, 60.0):   # gusset ribs
             fill.append((g - 2, g + 2, 150.0, 300.0))
     slot = None
-    if k == 1:   # deck ledge rib at z 356..370 with inserts (axis z) at the ledge points; slot 370..390 for the deck
-        fill.append((u0, u1, LEDGE_Z0, DECK_Z0)); slot = (DECK_Z0, DECK_Z1)
-        for (x, y) in DECK_LEDGE_PTS:
-            if abs(x - sign * 507) < 0.1:
-                uu = y if sign > 0 else -y
-                if u0 + 4 < uu < u1 - 4:
-                    holes.append(('y', (uu, DECK_Z0 - INSERT_DEPTH / 2 + 0.005, SKIN + RIBS / 2), INSERT_D, INSERT_DEPTH + 0.01))
+    if k == 1:   # deck band: solid rib zone z 368..392 with inserts facing inward at z 380 (the deck edge bolts in sideways)
+        fill.append((u0, u1, DECK_BAND[0], DECK_BAND[1]))
+        for y in seam_points(-CY0, CY0):
+            uu = y if sign > 0 else -y
+            if u0 + 4 < uu < u1 - 4:
+                holes.append(('z', (uu, 380.0, SKIN + RIB_H - INSERT_DEPTH / 2 + 0.005), INSERT_D, INSERT_DEPTH + 0.01))
     if k == 0:   # floor ring bolts: clearance holes down through the bottom rib into the floor ring inserts
         for (x, y) in FLOOR_RING:
             if abs(x - sign * 507) < 0.1:
                 uu = y if sign > 0 else -y
                 if u0 + 4 < uu < u1 - 4:
-                    holes.append(('y', (uu, v0 + PERIM / 2, SKIN + RIBS / 2), M3_CLR, PERIM + 2))
+                    holes.append(('y', (uu, v0 + 15, SKIN + RIB_H / 2), M3_CLR, 32))
     if k == 2:   # roof bolts: inserts in the top rib
         for (x, y) in ROOF_RING_PTS:
             if abs(x - sign * 510) < 0.1:
                 uu = y if sign > 0 else -y
                 if u0 + 4 < uu < u1 - 4:
-                    holes.append(('y', (uu, v1 - INSERT_DEPTH / 2 + 0.005, SKIN + RIBS / 2), INSERT_D, INSERT_DEPTH + 0.01))
+                    holes.append(('y', (uu, v1 - INSERT_DEPTH / 2 + 0.005, SKIN + RIB_H / 2), INSERT_D, INSERT_DEPTH + 0.01))
     pan = Panel(f'side', u0, u1, v0, v1, place_side(sign), modes, fill, zone_holes=holes, rib_slot=slot)
     return pan.world()
 
@@ -390,31 +423,28 @@ def fb_wall(sign, i, k, access=None):
     u0, u1, v0, v1 = FB_X[i], FB_X[i + 1], FB_Z[k], FB_Z[k + 1]
     modes = {'u0': 'clear', 'u1': 'clear' if i == 3 else 'insert', 'v0': None if k == 0 else 'clear', 'v1': None if k == 2 else 'insert'}
     fill = []; holes = []; openings = []
-    if k == 0:   # deck ledge at the top of row 1 (z 356..370) with inserts
-        fill.append((u0, u1, LEDGE_Z0, DECK_Z0))
-        # bottom rib over the drawer opening: thicken to 12 tall so the lintel is stiff
+    if k == 0:   # lintel over the drawer opening
         fill.append((u0, u1, v0, v0 + 12))
-        for (x, y) in DECK_LEDGE_PTS:
-            if abs(y - sign * 247) < 0.1:
-                uu = x if sign < 0 else -x
-                if u0 + 4 < uu < u1 - 4:
-                    holes.append(('y', (uu, DECK_Z0 - INSERT_DEPTH / 2 + 0.005, SKIN + RIBS / 2), INSERT_D, INSERT_DEPTH + 0.01))
+    if k == 1:   # deck band with inward inserts at z 380
+        fill.append((u0, u1, DECK_BAND[0], DECK_BAND[1]))
+        for x in seam_points(-CX0, CX0):
+            uu = x if sign < 0 else -x
+            if u0 + 4 < uu < u1 - 4:
+                holes.append(('z', (uu, 380.0, SKIN + RIB_H - INSERT_DEPTH / 2 + 0.005), INSERT_D, INSERT_DEPTH + 0.01))
     if k == 2:
         for (x, y) in ROOF_RING_PTS:
             if abs(y - sign * 250) < 0.1:
                 uu = x if sign < 0 else -x
                 if u0 + 4 < uu < u1 - 4:
-                    holes.append(('y', (uu, v1 - INSERT_DEPTH / 2 + 0.005, SKIN + RIBS / 2), INSERT_D, INSERT_DEPTH + 0.01))
-    skin0 = None
-    if k == 1: skin0 = v0; v0 = DECK_Z1
-    pan = Panel('fb', u0, u1, v0, v1, place_fb(sign), modes, fill, openings, zone_holes=holes, skin_v0=skin0)
+                    holes.append(('y', (uu, v1 - INSERT_DEPTH / 2 + 0.005, SKIN + RIB_H / 2), INSERT_D, INSERT_DEPTH + 0.01))
+    pan = Panel('fb', u0, u1, v0, v1, place_fb(sign), modes, fill, openings, zone_holes=holes)
     return pan.world()
 
 
 # back wall above the deck: side pieces, strips and the removable access panel
 BK_SIDE_X = [(-CX0, AP['x'][0]), (AP['x'][1], CX0)]       # x 300..470 each side
 AP_X = [AP['x'][0], -100.0, 100.0, AP['x'][1]]
-AP_Z = [AP['z'][0], 550.0, AP['z'][1]]
+AP_Z = [AP['z'][0], AP['z'][1]]                 # 420..668: one row of 3 pieces, 200 x 248
 
 
 def back_upper(i, k):
@@ -424,18 +454,21 @@ def back_upper(i, k):
     u0, u1 = a, b
     modes = {'u0': 'clear' if i == 0 else 'insert', 'u1': 'insert' if i == 0 else 'clear', 'v0': 'clear', 'v1': None if k == 1 else 'insert'}
     holes = []; fill = []
+    if k == 0:
+        fill.append((u0, u1, DECK_BAND[0], DECK_BAND[1]))
+        for x in seam_points(-CX0, CX0):
+            if u0 + 4 < x < u1 - 4:
+                holes.append(('z', (x, 380.0, SKIN + RIB_H - INSERT_DEPTH / 2 + 0.005), INSERT_D, INSERT_DEPTH + 0.01))
     if k == 1:
         for (x, y) in ROOF_RING_PTS:
             if abs(y + 250) < 0.1 and u0 + 4 < x < u1 - 4:
-                holes.append(('y', (x, v1 - INSERT_DEPTH / 2 + 0.005, SKIN + RIBS / 2), INSERT_D, INSERT_DEPTH + 0.01))
+                holes.append(('y', (x, v1 - INSERT_DEPTH / 2 + 0.005, SKIN + RIB_H / 2), INSERT_D, INSERT_DEPTH + 0.01))
     # access panel bolts: inserts along x in the inner edge rib at z 450, 520, 580, 650
     inner = u1 if i == 0 else u0
     for z in (450.0, 520.0, 580.0, 650.0):
         if v0 < z < v1:
-            holes.append(('x', (inner + (-INSERT_DEPTH / 2 if i == 0 else INSERT_DEPTH / 2), z, SKIN + RIBS / 2), INSERT_D, INSERT_DEPTH + 0.01))
-    skin0 = None
-    if k == 0: skin0 = v0; v0 = DECK_Z1
-    pan = Panel('bk', u0, u1, v0, v1, place_fb(-1), modes, fill, zone_holes=holes, skin_v0=skin0)
+            holes.append(('x', (inner + (-INSERT_DEPTH / 2 if i == 0 else INSERT_DEPTH / 2), z, SKIN + RIB_H / 2), INSERT_D, INSERT_DEPTH + 0.01))
+    pan = Panel('bk', u0, u1, v0, v1, place_fb(-1), modes, fill, zone_holes=holes)
     return pan.world()
 
 
@@ -447,33 +480,37 @@ def back_strip(i, which):
     else:
         v0, v1 = AP['z'][1], ROOF_Z0; modes = {'u0': 'clear', 'u1': 'insert' if i < 2 else 'clear', 'v0': None, 'v1': None}
     holes = []
+    if which == 'low':
+        fill = [(u0, u1, DECK_BAND[0], DECK_BAND[1])]
+        for x in seam_points(-CX0, CX0):
+            if u0 + 4 < x < u1 - 4:
+                holes.append(('z', (x, 380.0, SKIN + RIB_H - INSERT_DEPTH / 2 + 0.005), INSERT_D, INSERT_DEPTH + 0.01))
+    else:
+        fill = []
     # access panel bolts come up/down (axis z) into inserts in the strip edge rib
     for x in seam_points(u0, u1, 100, 35):
         ve = v1 if which == 'low' else v0
-        holes.append(('y', (x, ve + (-INSERT_DEPTH / 2 if which == 'low' else INSERT_DEPTH / 2), SKIN + RIBS / 2), INSERT_D, INSERT_DEPTH + 0.01))
+        holes.append(('y', (x, ve + (-INSERT_DEPTH / 2 if which == 'low' else INSERT_DEPTH / 2), SKIN + RIB_H / 2), INSERT_D, INSERT_DEPTH + 0.01))
     if which == 'high':
         for (x, y) in ROOF_RING_PTS:
             if abs(y + 250) < 0.1 and u0 + 4 < x < u1 - 4:
-                holes.append(('y', (x, v1 - INSERT_DEPTH / 2 + 0.005, SKIN + RIBS / 2), INSERT_D, INSERT_DEPTH + 0.01))
-    skin0 = None
-    if which == 'low': skin0 = v0; v0 = DECK_Z1
-    return Panel('strip', u0, u1, v0, v1, place_fb(-1), modes, [], zone_holes=holes, skin_v0=skin0).world()
+                holes.append(('y', (x, v1 - INSERT_DEPTH / 2 + 0.005, SKIN + RIB_H / 2), INSERT_D, INSERT_DEPTH + 0.01))
+    return Panel('strip', u0, u1, v0, v1, place_fb(-1), modes, fill, zone_holes=holes).world()
 
 
 def access_piece(i, k):
     """removable access panel 600 x 260 in 3 x 2 pieces; outer edges have counterbored clearance holes (screwed from
     the outside, it is the back), inner seams insert/clear like any panel."""
     u0, u1, v0, v1 = AP_X[i], AP_X[i + 1], AP_Z[k], AP_Z[k + 1]
-    modes = {'u0': None if i == 0 else 'clear', 'u1': None if i == 2 else 'insert', 'v0': None if k == 0 else 'clear', 'v1': None if k == 1 else 'insert'}
+    modes = {'u0': None if i == 0 else 'clear', 'u1': None if i == 2 else 'insert', 'v0': None, 'v1': None}
     holes = []
     if i == 0 or i == 2:
         for z in (450.0, 520.0, 580.0, 650.0):
             if v0 < z < v1:
-                holes.append(('x', (u0 + PERIM / 2 if i == 0 else u1 - PERIM / 2, z, SKIN + RIBS / 2), M3_CLR, PERIM + 2))
-    if k == 0:
-        for x in seam_points(u0, u1, 100, 35): holes.append(('y', (x, v0 + PERIM / 2, SKIN + RIBS / 2), M3_CLR, PERIM + 2))
-    if k == 1:
-        for x in seam_points(u0, u1, 100, 35): holes.append(('y', (x, v1 - PERIM / 2, SKIN + RIBS / 2), M3_CLR, PERIM + 2))
+                holes.append(('x', (u0 + 15 if i == 0 else u1 - 15, z, SKIN + RIB_H / 2), M3_CLR, 32))
+    for x in seam_points(u0, u1, 100, 35):
+        holes.append(('y', (x, v0 + 15, SKIN + RIB_H / 2), M3_CLR, 32))
+        holes.append(('y', (x, v1 - 15, SKIN + RIB_H / 2), M3_CLR, 32))
     return Panel('ap', u0 + 0.3, u1 - 0.3, v0 + 0.3, v1 - 0.3, place_fb(-1), modes, [], zone_holes=holes).world()
 
 
@@ -483,25 +520,29 @@ TUNNELS = [-300.0, -200.0, 200.0, 300.0]
 
 
 def spine_segment(i):
+    """Inverted-U box beam, printed top-plate-down (no bridges): top plate 4 at z 180..184, side walls 4 at |y| 62..66,
+    X ribs every 60 and a centre web, all vertical when printed. Feet inward at the bottom (y 50..62) carry the
+    floor bolts at y +-60. Rail tunnels 24 x 26 (z 8..34) cut through the side walls and the feet."""
     x0, x1 = SX_[i], SX_[i + 1]; y0, y1 = SP['y']; z0, z1 = SP['z']
-    s = boxc(x0, x1, y0, y1, z0, z1).cut(boxc(x0 - 1, x1 + 1, y0 + 6, y1 - 6, z0 - 1, z1 - 6))   # top plate 6 + side walls 6
-    s = s.union(boxc(x0, x1, y0, y1, z0, z0 + 6))                                                      # bottom plate 6 (floor bolts)
-    for x in [x0 + 30 + k * 60 for k in range(int((x1 - x0 - 60) // 60) + 1)]:                       # X ribs every 60
-        s = s.union(boxc(x - 2, x + 2, y0, y1, z0, z1))
-    s = s.union(boxc(x0, x1, -2, 2, z0, z1))                                                           # centre web
-    for tx in TUNNELS:                                                                                 # rail tunnels, full y
+    tp = 2.4
+    s = boxc(x0, x1, y0, y1, z1 - tp, z1)
+    for ys in (y0, y1 - tp): s = s.union(boxc(x0, x1, ys, ys + tp, z0, z1))
+    for ys in (y0 + tp, y1 - tp - 12): s = s.union(boxc(x0, x1, ys, ys + 12, z0, z0 + 4))          # feet
+    for x in [x0 + 40 + k * 80 for k in range(int((x1 - x0 - 80) // 80) + 1)]:
+        s = s.union(boxc(x - 1.2, x + 1.2, y0, y1, z0, z1))
+    for tx in TUNNELS:
         if x0 <= tx - TUN_W / 2 and tx + TUN_W / 2 <= x1:
             s = s.cut(boxc(tx - TUN_W / 2, tx + TUN_W / 2, y0 - 1, y1 + 1, z0 - 1, TUN_Z1))
-            s = s.union(boxc(tx - TUN_W / 2 - 4, tx + TUN_W / 2 + 4, y0, y1, TUN_Z1, TUN_Z1 + 6))    # bridge over the tunnel
-    # floor bolts: grid points inside (y -60, -20, 20, 60), counterbored from above through the bottom plate
     gx = [FG['x0'] + FG['pitch'] * k for k in range(FG['nx'])]
     for x in gx:
         if x0 + 10 < x < x1 - 10 and all(abs(x - tx) > TUN_W / 2 + 6 for tx in TUNNELS):
             for y in (-60.0, 60.0):
-                s = s.cut(cyl('z', (x, y, z0 + 3), M3_CLR, 8)).cut(cyl('z', (x, y, z0 + 6 - CB_DEPTH / 2), CB_D, CB_DEPTH))
-    # seams: tongue on +x, socket on -x, 2 M3 + nut through the side walls
-    if i < 3: s = s.union(boxc(x1, x1 + 12, y0 + 6, y1 - 6, z1 - 6, z1).cut(boxc(x1 - 1, x1 + 13, y0 + 12, y1 - 12, z1 - 7, z1 + 1)))
-    if i > 0: s = s.cut(boxc(x0 - 1, x0 + 12.3, y0 + 5.7, y1 - 5.7, z1 - 6.3, z1 + 1))
+                s = s.cut(cyl('z', (x, y, z0 + 2), M3_CLR, 6)).cut(cyl('z', (x, y, z0 + 4 - CB_DEPTH / 2), CB_D, CB_DEPTH))
+    # seams: tongue (top plate) on +x, socket on -x, FIT per side, 2 M3 + nut through the side walls
+    if i < 3: s = s.union(boxc(x1, x1 + 12, y0 + tp, y1 - tp, z1 - tp, z1).cut(boxc(x1 - 1, x1 + 13, y0 + 10, y1 - 10, z1 - tp - 1, z1 + 1)))
+    if i > 0: s = s.cut(boxc(x0 - 1, x0 + 12 + FIT, y0 + tp - FIT, y1 - tp + FIT, z1 - tp - FIT, z1 + 1))
+    for xs in ([x1 + 6] if i < 3 else []) + ([x0 + 6] if i > 0 else []):
+        s = s.cut(cyl('y', (xs, 0, z1 - 2), M3_CLR, 140))
     return s
 
 
@@ -529,8 +570,7 @@ def build():
     for i in range(3):
         parts.append((f'127_back_strip_low_{i}', back_strip(i, 'low'), COLORS['wall']))
         parts.append((f'127_back_strip_high_{i}', back_strip(i, 'high'), COLORS['wall']))
-    for i in range(3):
-        for k in range(2): parts.append((f'128_access_{i}{k}', access_piece(i, k), COLORS['panel']))
+    for i in range(3): parts.append((f'128_access_{i}', access_piece(i, 0), COLORS['panel']))
     for i in range(5):
         for j in range(3): parts.append((f'130_deck_{i}{j}', deck_tile(i, j), COLORS['deck']))
     for i in range(5):
@@ -538,6 +578,23 @@ def build():
     for ci, c in enumerate(STUDS):
         for k in range(4): parts.append((f'140_stud_{"L" if ci == 0 else "R"}_q{k+1}', stud_quarter(c, k, capped=(ci == 1)), COLORS['stud']))
     return parts
+
+
+G_PER_H = 45.0   # from the runbook timing (left backplate half: ~125 g in 2 h 33 min on the day profile; wall-heavy parts a bit slower)
+
+
+def grams_day(w, rho=1.24):
+    """slicer-like estimate for BJ's day profile: every face gets a solid shell (walls 1.68, top 1.0, bottom 0.6 -> 1.5 mm
+    averaged), the rest is 15 % infill. Thin skins (2.4) come out fully solid, as the slicer would print them."""
+    sld = w.val(); V = sld.Volume(); A = sld.Area()
+    solid = min(V, A * 1.5)
+    return round((solid + (V - solid) * 0.15) / 1000 * rho, 1)
+
+
+def bed_face(lab):
+    return {'100': 'floor skin (top) down', '105': 'top plate down (inverted U)', '110': 'foot/plate down, tenon up', '115': 'outer skin down',
+            '120': 'outer skin down', '125': 'outer skin down', '126': 'outer skin down', '127': 'outer skin down', '128': 'outer skin down',
+            '130': 'deck skin (top) down', '135': 'roof skin (top) down', '140': 'flange down (open ring) / cap down (capped)'}[lab[:3]]
 
 
 def _ov(a, b):
@@ -592,7 +649,9 @@ def main(quick=False):
                 b2, d2 = print_pose(w.rotate((0, 0, 0), ax, 90))
                 if bed_fit(b2)['fits_248']: bedp, diag, bf = b2, d2, bed_fit(b2); break
         export(bedp, prn / f'{lab}_PRINT_1.stl')
-        plist.append({'label': lab, 'part_no': lab[:3], 'qty': 1, 'material': 'PLA red', **bf, 'diagonal_on_bed': diag, 'est_grams': grams(w, 1.24)})
+        g = grams_day(w)
+        plist.append({'label': lab, 'part_no': lab[:3], 'qty': 1, 'material': 'PLA red', **bf, 'diagonal_on_bed': diag, 'bed_face': bed_face(lab),
+                      'est_grams': g, 'est_hours': round(g / G_PER_H, 1)})
     total = round(sum(p['est_grams'] for p in plist))
     by = {}
     for p in plist: by[p['part_no']] = by.get(p['part_no'], 0) + p['est_grams']
@@ -601,7 +660,9 @@ def main(quick=False):
               {'item': 'M3 x 10 screw', 'qty': 120, 'use': 'deck to ledges, roof to walls, studs, spine to floor'},
               {'item': 'M3 x 12 screw + nut', 'qty': 90, 'use': 'floor laps, spine seams, stud lugs'}]
     (HERE / 'parts.json').write_text(json.dumps({'module': 'F', 'interface': IF['version'], 'printed': plist, 'bought': bought,
-                                                 'est_total_grams': total, 'est_grams_by_part_no': {k: round(v) for k, v in by.items()}}, indent=1))
+                                                 'est_total_grams': total, 'est_total_hours': round(total / G_PER_H),
+                                                 'estimate_model': 'BJ day profile: 4 walls x 0.42 (1.68 mm per side), 5 top / 3 bottom layers x 0.2, 15 %% infill inside; hours at %d g/h' % G_PER_H,
+                                                 'est_grams_by_part_no': {k: round(v) for k, v in by.items()}}, indent=1))
     res = checks(parts, plist, quick)
     stills(parts)
     return res

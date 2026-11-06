@@ -1,6 +1,6 @@
 {
  "module": "F",
- "interface": "v14-interface-4.1 (2026-11-05 19:02): spine tunnels 26 tall (z 8..34) for a 24 mm roller rail, bins ~139 tall; interface frozen from here unless a test fails",
+ "interface": "v14-interface-4.3 (2026-11-05 21:30): print rules now come from BJ's measured settings in the vault runbook runbooks/3d-printing.md",
  "printed": [
   {
    "label": "100_floor_00",
@@ -14,7 +14,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 217.7
+   "bed_face": "floor skin (top) down",
+   "est_grams": 178.2,
+   "est_hours": 4.0
   },
   {
    "label": "100_floor_01",
@@ -28,7 +30,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 214.4
+   "bed_face": "floor skin (top) down",
+   "est_grams": 174.5,
+   "est_hours": 3.9
   },
   {
    "label": "100_floor_02",
@@ -42,7 +46,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 194.8
+   "bed_face": "floor skin (top) down",
+   "est_grams": 158.4,
+   "est_hours": 3.5
   },
   {
    "label": "100_floor_10",
@@ -56,7 +62,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 214.6
+   "bed_face": "floor skin (top) down",
+   "est_grams": 172.6,
+   "est_hours": 3.8
   },
   {
    "label": "100_floor_11",
@@ -70,7 +78,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 211.2
+   "bed_face": "floor skin (top) down",
+   "est_grams": 169.1,
+   "est_hours": 3.8
   },
   {
    "label": "100_floor_12",
@@ -84,7 +94,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 191.8
+   "bed_face": "floor skin (top) down",
+   "est_grams": 153.2,
+   "est_hours": 3.4
   },
   {
    "label": "100_floor_20",
@@ -98,7 +110,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 214.6
+   "bed_face": "floor skin (top) down",
+   "est_grams": 174.6,
+   "est_hours": 3.9
   },
   {
    "label": "100_floor_21",
@@ -112,7 +126,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 211.2
+   "bed_face": "floor skin (top) down",
+   "est_grams": 171.0,
+   "est_hours": 3.8
   },
   {
    "label": "100_floor_22",
@@ -126,7 +142,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 191.8
+   "bed_face": "floor skin (top) down",
+   "est_grams": 155.3,
+   "est_hours": 3.5
   },
   {
    "label": "100_floor_30",
@@ -140,7 +158,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 212.8
+   "bed_face": "floor skin (top) down",
+   "est_grams": 172.1,
+   "est_hours": 3.8
   },
   {
    "label": "100_floor_31",
@@ -154,7 +174,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 209.5
+   "bed_face": "floor skin (top) down",
+   "est_grams": 168.4,
+   "est_hours": 3.7
   },
   {
    "label": "100_floor_32",
@@ -168,7 +190,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 190.0
+   "bed_face": "floor skin (top) down",
+   "est_grams": 152.7,
+   "est_hours": 3.4
   },
   {
    "label": "100_floor_40",
@@ -182,7 +206,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 202.9
+   "bed_face": "floor skin (top) down",
+   "est_grams": 165.6,
+   "est_hours": 3.7
   },
   {
    "label": "100_floor_41",
@@ -196,7 +222,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 199.4
+   "bed_face": "floor skin (top) down",
+   "est_grams": 161.7,
+   "est_hours": 3.6
   },
   {
    "label": "100_floor_42",
@@ -210,7 +238,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 180.0
+   "bed_face": "floor skin (top) down",
+   "est_grams": 145.8,
+   "est_hours": 3.2
   },
   {
    "label": "105_spine_1",
@@ -224,7 +254,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 1005.6
+   "bed_face": "top plate down (inverted U)",
+   "est_grams": 483.5,
+   "est_hours": 10.7
   },
   {
    "label": "105_spine_2",
@@ -238,7 +270,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 990.7
+   "bed_face": "top plate down (inverted U)",
+   "est_grams": 469.6,
+   "est_hours": 10.4
   },
   {
    "label": "105_spine_3",
@@ -252,7 +286,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 1002.4
+   "bed_face": "top plate down (inverted U)",
+   "est_grams": 479.1,
+   "est_hours": 10.6
   },
   {
    "label": "105_spine_4",
@@ -266,7 +302,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 1001.6
+   "bed_face": "top plate down (inverted U)",
+   "est_grams": 478.5,
+   "est_hours": 10.6
   },
   {
    "label": "110_column_LB_1",
@@ -280,7 +318,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": true,
-   "est_grams": 268.7
+   "bed_face": "foot/plate down, tenon up",
+   "est_grams": 184.2,
+   "est_hours": 4.1
   },
   {
    "label": "110_column_LB_2",
@@ -294,7 +334,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 242.2
+   "bed_face": "foot/plate down, tenon up",
+   "est_grams": 159.6,
+   "est_hours": 3.5
   },
   {
    "label": "110_column_LB_3",
@@ -308,7 +350,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 234.8
+   "bed_face": "foot/plate down, tenon up",
+   "est_grams": 166.0,
+   "est_hours": 3.7
   },
   {
    "label": "110_column_LF_1",
@@ -322,7 +366,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": true,
-   "est_grams": 268.7
+   "bed_face": "foot/plate down, tenon up",
+   "est_grams": 184.2,
+   "est_hours": 4.1
   },
   {
    "label": "110_column_LF_2",
@@ -336,7 +382,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 242.2
+   "bed_face": "foot/plate down, tenon up",
+   "est_grams": 159.6,
+   "est_hours": 3.5
   },
   {
    "label": "110_column_LF_3",
@@ -350,7 +398,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 234.8
+   "bed_face": "foot/plate down, tenon up",
+   "est_grams": 166.0,
+   "est_hours": 3.7
   },
   {
    "label": "110_column_RB_1",
@@ -364,7 +414,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": true,
-   "est_grams": 268.7
+   "bed_face": "foot/plate down, tenon up",
+   "est_grams": 184.2,
+   "est_hours": 4.1
   },
   {
    "label": "110_column_RB_2",
@@ -378,7 +430,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 242.2
+   "bed_face": "foot/plate down, tenon up",
+   "est_grams": 159.6,
+   "est_hours": 3.5
   },
   {
    "label": "110_column_RB_3",
@@ -392,7 +446,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 234.8
+   "bed_face": "foot/plate down, tenon up",
+   "est_grams": 166.0,
+   "est_hours": 3.7
   },
   {
    "label": "110_column_RF_1",
@@ -406,7 +462,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": true,
-   "est_grams": 268.7
+   "bed_face": "foot/plate down, tenon up",
+   "est_grams": 184.2,
+   "est_hours": 4.1
   },
   {
    "label": "110_column_RF_2",
@@ -420,7 +478,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 242.2
+   "bed_face": "foot/plate down, tenon up",
+   "est_grams": 159.6,
+   "est_hours": 3.5
   },
   {
    "label": "110_column_RF_3",
@@ -434,7 +494,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 234.8
+   "bed_face": "foot/plate down, tenon up",
+   "est_grams": 166.0,
+   "est_hours": 3.7
   },
   {
    "label": "115_side_L_00",
@@ -444,11 +506,13 @@
    "bed_extent": [
     247.0,
     210.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 378.0
+   "bed_face": "outer skin down",
+   "est_grams": 269.8,
+   "est_hours": 6.0
   },
   {
    "label": "115_side_L_01",
@@ -458,11 +522,13 @@
    "bed_extent": [
     225.0,
     210.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 340.2
+   "bed_face": "outer skin down",
+   "est_grams": 254.7,
+   "est_hours": 5.7
   },
   {
    "label": "115_side_L_02",
@@ -472,11 +538,13 @@
    "bed_extent": [
     220.0,
     210.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 335.4
+   "bed_face": "outer skin down",
+   "est_grams": 237.5,
+   "est_hours": 5.3
   },
   {
    "label": "115_side_L_10",
@@ -486,11 +554,13 @@
    "bed_extent": [
     247.0,
     210.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 378.1
+   "bed_face": "outer skin down",
+   "est_grams": 269.7,
+   "est_hours": 6.0
   },
   {
    "label": "115_side_L_11",
@@ -500,11 +570,13 @@
    "bed_extent": [
     225.0,
     210.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 340.2
+   "bed_face": "outer skin down",
+   "est_grams": 254.5,
+   "est_hours": 5.7
   },
   {
    "label": "115_side_L_12",
@@ -514,11 +586,13 @@
    "bed_extent": [
     220.0,
     210.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 335.3
+   "bed_face": "outer skin down",
+   "est_grams": 237.3,
+   "est_hours": 5.3
   },
   {
    "label": "115_side_R_00",
@@ -528,11 +602,13 @@
    "bed_extent": [
     247.0,
     210.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 378.1
+   "bed_face": "outer skin down",
+   "est_grams": 269.9,
+   "est_hours": 6.0
   },
   {
    "label": "115_side_R_01",
@@ -542,11 +618,13 @@
    "bed_extent": [
     225.0,
     210.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 340.2
+   "bed_face": "outer skin down",
+   "est_grams": 254.7,
+   "est_hours": 5.7
   },
   {
    "label": "115_side_R_02",
@@ -556,11 +634,13 @@
    "bed_extent": [
     220.0,
     210.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 335.4
+   "bed_face": "outer skin down",
+   "est_grams": 237.6,
+   "est_hours": 5.3
   },
   {
    "label": "115_side_R_10",
@@ -570,11 +650,13 @@
    "bed_extent": [
     247.0,
     210.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 378.0
+   "bed_face": "outer skin down",
+   "est_grams": 270.0,
+   "est_hours": 6.0
   },
   {
    "label": "115_side_R_11",
@@ -584,11 +666,13 @@
    "bed_extent": [
     225.0,
     210.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 340.2
+   "bed_face": "outer skin down",
+   "est_grams": 254.5,
+   "est_hours": 5.7
   },
   {
    "label": "115_side_R_12",
@@ -598,11 +682,13 @@
    "bed_extent": [
     220.0,
     210.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 335.3
+   "bed_face": "outer skin down",
+   "est_grams": 237.4,
+   "est_hours": 5.3
   },
   {
    "label": "120_front_00",
@@ -612,11 +698,13 @@
    "bed_extent": [
     235.0,
     184.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 311.3
+   "bed_face": "outer skin down",
+   "est_grams": 218.2,
+   "est_hours": 4.8
   },
   {
    "label": "120_front_01",
@@ -624,13 +712,15 @@
    "qty": 1,
    "material": "PLA red",
    "bed_extent": [
-    235.0,
-    165.0,
-    20.0
+    0.49,
+    0.49,
+    0.74
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 264.4
+   "bed_face": "outer skin down",
+   "est_grams": 0.0,
+   "est_hours": 0.0
   },
   {
    "label": "120_front_02",
@@ -640,11 +730,13 @@
    "bed_extent": [
     235.0,
     165.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 281.5
+   "bed_face": "outer skin down",
+   "est_grams": 198.3,
+   "est_hours": 4.4
   },
   {
    "label": "120_front_10",
@@ -654,11 +746,13 @@
    "bed_extent": [
     235.0,
     184.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 311.3
+   "bed_face": "outer skin down",
+   "est_grams": 218.2,
+   "est_hours": 4.8
   },
   {
    "label": "120_front_11",
@@ -668,11 +762,13 @@
    "bed_extent": [
     235.0,
     165.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 264.4
+   "bed_face": "outer skin down",
+   "est_grams": 0.1,
+   "est_hours": 0.0
   },
   {
    "label": "120_front_12",
@@ -682,11 +778,13 @@
    "bed_extent": [
     235.0,
     165.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 281.5
+   "bed_face": "outer skin down",
+   "est_grams": 198.2,
+   "est_hours": 4.4
   },
   {
    "label": "120_front_20",
@@ -696,11 +794,13 @@
    "bed_extent": [
     235.0,
     184.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 311.3
+   "bed_face": "outer skin down",
+   "est_grams": 218.2,
+   "est_hours": 4.8
   },
   {
    "label": "120_front_21",
@@ -708,13 +808,15 @@
    "qty": 1,
    "material": "PLA red",
    "bed_extent": [
-    235.0,
-    165.0,
-    20.0
+    104.1,
+    4.1,
+    5.7
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 264.4
+   "bed_face": "outer skin down",
+   "est_grams": 0.1,
+   "est_hours": 0.0
   },
   {
    "label": "120_front_22",
@@ -724,11 +826,13 @@
    "bed_extent": [
     235.0,
     165.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 281.5
+   "bed_face": "outer skin down",
+   "est_grams": 198.0,
+   "est_hours": 4.4
   },
   {
    "label": "120_front_30",
@@ -738,11 +842,13 @@
    "bed_extent": [
     235.0,
     184.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 311.2
+   "bed_face": "outer skin down",
+   "est_grams": 218.0,
+   "est_hours": 4.8
   },
   {
    "label": "120_front_31",
@@ -750,13 +856,15 @@
    "qty": 1,
    "material": "PLA red",
    "bed_extent": [
-    235.0,
-    165.0,
-    20.0
+    0.49,
+    0.49,
+    0.74
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 264.4
+   "bed_face": "outer skin down",
+   "est_grams": 0.0,
+   "est_hours": 0.0
   },
   {
    "label": "120_front_32",
@@ -766,11 +874,13 @@
    "bed_extent": [
     235.0,
     165.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 281.5
+   "bed_face": "outer skin down",
+   "est_grams": 198.4,
+   "est_hours": 4.4
   },
   {
    "label": "125_back_low_0",
@@ -780,11 +890,13 @@
    "bed_extent": [
     235.0,
     184.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 311.3
+   "bed_face": "outer skin down",
+   "est_grams": 218.2,
+   "est_hours": 4.8
   },
   {
    "label": "125_back_low_1",
@@ -794,11 +906,13 @@
    "bed_extent": [
     235.0,
     184.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 311.3
+   "bed_face": "outer skin down",
+   "est_grams": 218.2,
+   "est_hours": 4.8
   },
   {
    "label": "125_back_low_2",
@@ -808,11 +922,13 @@
    "bed_extent": [
     235.0,
     184.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 311.3
+   "bed_face": "outer skin down",
+   "est_grams": 218.2,
+   "est_hours": 4.8
   },
   {
    "label": "125_back_low_3",
@@ -822,11 +938,13 @@
    "bed_extent": [
     235.0,
     184.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 311.2
+   "bed_face": "outer skin down",
+   "est_grams": 218.0,
+   "est_hours": 4.8
   },
   {
    "label": "126_back_side_00",
@@ -834,13 +952,15 @@
    "qty": 1,
    "material": "PLA red",
    "bed_extent": [
-    170.0,
-    165.0,
-    20.0
+    0.49,
+    0.49,
+    0.74
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 196.1
+   "bed_face": "outer skin down",
+   "est_grams": 0.0,
+   "est_hours": 0.0
   },
   {
    "label": "126_back_side_01",
@@ -850,11 +970,13 @@
    "bed_extent": [
     170.0,
     165.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 208.7
+   "bed_face": "outer skin down",
+   "est_grams": 145.7,
+   "est_hours": 3.2
   },
   {
    "label": "126_back_side_10",
@@ -862,13 +984,15 @@
    "qty": 1,
    "material": "PLA red",
    "bed_extent": [
-    170.0,
-    165.0,
-    20.0
+    0.49,
+    0.49,
+    0.74
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 196.1
+   "bed_face": "outer skin down",
+   "est_grams": 0.0,
+   "est_hours": 0.0
   },
   {
    "label": "126_back_side_11",
@@ -878,11 +1002,13 @@
    "bed_extent": [
     170.0,
     165.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 208.7
+   "bed_face": "outer skin down",
+   "est_grams": 145.8,
+   "est_hours": 3.2
   },
   {
    "label": "127_back_strip_low_0",
@@ -890,13 +1016,15 @@
    "qty": 1,
    "material": "PLA red",
    "bed_extent": [
-    200.0,
-    50.0,
-    20.0
+    104.1,
+    4.1,
+    5.7
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 81.2
+   "bed_face": "outer skin down",
+   "est_grams": 0.1,
+   "est_hours": 0.0
   },
   {
    "label": "127_back_strip_high_0",
@@ -905,12 +1033,14 @@
    "material": "PLA red",
    "bed_extent": [
     200.0,
-    20.0,
-    20.0
+    32.0,
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 50.9
+   "bed_face": "outer skin down",
+   "est_grams": 47.3,
+   "est_hours": 1.1
   },
   {
    "label": "127_back_strip_low_1",
@@ -920,11 +1050,13 @@
    "bed_extent": [
     200.0,
     50.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 81.2
+   "bed_face": "outer skin down",
+   "est_grams": -108.1,
+   "est_hours": -2.4
   },
   {
    "label": "127_back_strip_high_1",
@@ -933,12 +1065,14 @@
    "material": "PLA red",
    "bed_extent": [
     200.0,
-    20.0,
-    20.0
+    32.0,
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 50.8
+   "bed_face": "outer skin down",
+   "est_grams": 47.0,
+   "est_hours": 1.0
   },
   {
    "label": "127_back_strip_low_2",
@@ -946,13 +1080,15 @@
    "qty": 1,
    "material": "PLA red",
    "bed_extent": [
-    200.0,
-    50.0,
-    20.0
+    104.1,
+    4.1,
+    5.7
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 81.1
+   "bed_face": "outer skin down",
+   "est_grams": 0.1,
+   "est_hours": 0.0
   },
   {
    "label": "127_back_strip_high_2",
@@ -961,96 +1097,62 @@
    "material": "PLA red",
    "bed_extent": [
     200.0,
-    20.0,
-    20.0
+    32.0,
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 51.0
+   "bed_face": "outer skin down",
+   "est_grams": 47.0,
+   "est_hours": 1.0
   },
   {
-   "label": "128_access_00",
+   "label": "128_access_0",
    "part_no": "128",
    "qty": 1,
    "material": "PLA red",
    "bed_extent": [
     199.4,
-    129.4,
-    20.0
+    247.4,
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 187.4
+   "bed_face": "outer skin down",
+   "est_grams": 244.5,
+   "est_hours": 5.4
   },
   {
-   "label": "128_access_01",
+   "label": "128_access_1",
    "part_no": "128",
    "qty": 1,
    "material": "PLA red",
    "bed_extent": [
     199.4,
-    129.4,
-    20.0
+    247.4,
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 187.4
+   "bed_face": "outer skin down",
+   "est_grams": 244.2,
+   "est_hours": 5.4
   },
   {
-   "label": "128_access_10",
+   "label": "128_access_2",
    "part_no": "128",
    "qty": 1,
    "material": "PLA red",
    "bed_extent": [
     199.4,
-    129.4,
-    20.0
+    247.4,
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 187.4
-  },
-  {
-   "label": "128_access_11",
-   "part_no": "128",
-   "qty": 1,
-   "material": "PLA red",
-   "bed_extent": [
-    199.4,
-    129.4,
-    20.0
-   ],
-   "fits_248": true,
-   "diagonal_on_bed": false,
-   "est_grams": 187.4
-  },
-  {
-   "label": "128_access_20",
-   "part_no": "128",
-   "qty": 1,
-   "material": "PLA red",
-   "bed_extent": [
-    199.4,
-    129.4,
-    20.0
-   ],
-   "fits_248": true,
-   "diagonal_on_bed": false,
-   "est_grams": 187.4
-  },
-  {
-   "label": "128_access_21",
-   "part_no": "128",
-   "qty": 1,
-   "material": "PLA red",
-   "bed_extent": [
-    199.4,
-    129.4,
-    20.0
-   ],
-   "fits_248": true,
-   "diagonal_on_bed": false,
-   "est_grams": 187.4
+   "bed_face": "outer skin down",
+   "est_grams": 244.3,
+   "est_hours": 5.4
   },
   {
    "label": "130_deck_00",
@@ -1058,13 +1160,15 @@
    "qty": 1,
    "material": "PLA red",
    "bed_extent": [
-    204.0,
-    169.0,
+    190.0,
+    160.0,
     20.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 231.4
+   "bed_face": "deck skin (top) down",
+   "est_grams": 172.2,
+   "est_hours": 3.8
   },
   {
    "label": "130_deck_01",
@@ -1072,13 +1176,15 @@
    "qty": 1,
    "material": "PLA red",
    "bed_extent": [
-    204.0,
-    170.0,
+    190.0,
+    160.0,
     20.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 255.6
+   "bed_face": "deck skin (top) down",
+   "est_grams": 183.7,
+   "est_hours": 4.1
   },
   {
    "label": "130_deck_02",
@@ -1086,13 +1192,15 @@
    "qty": 1,
    "material": "PLA red",
    "bed_extent": [
-    204.0,
-    169.0,
+    190.0,
+    160.0,
     20.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 239.2
+   "bed_face": "deck skin (top) down",
+   "est_grams": 176.4,
+   "est_hours": 3.9
   },
   {
    "label": "130_deck_10",
@@ -1101,12 +1209,14 @@
    "material": "PLA red",
    "bed_extent": [
     200.0,
-    169.0,
+    160.0,
     20.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 248.7
+   "bed_face": "deck skin (top) down",
+   "est_grams": 191.8,
+   "est_hours": 4.3
   },
   {
    "label": "130_deck_11",
@@ -1115,12 +1225,14 @@
    "material": "PLA red",
    "bed_extent": [
     200.0,
-    170.0,
+    160.0,
     20.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 250.2
+   "bed_face": "deck skin (top) down",
+   "est_grams": 191.8,
+   "est_hours": 4.3
   },
   {
    "label": "130_deck_12",
@@ -1129,12 +1241,14 @@
    "material": "PLA red",
    "bed_extent": [
     200.0,
-    169.0,
+    160.0,
     20.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 248.7
+   "bed_face": "deck skin (top) down",
+   "est_grams": 191.8,
+   "est_hours": 4.3
   },
   {
    "label": "130_deck_20",
@@ -1143,12 +1257,14 @@
    "material": "PLA red",
    "bed_extent": [
     200.0,
-    169.0,
+    160.0,
     20.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 248.5
+   "bed_face": "deck skin (top) down",
+   "est_grams": 191.8,
+   "est_hours": 4.3
   },
   {
    "label": "130_deck_21",
@@ -1157,12 +1273,14 @@
    "material": "PLA red",
    "bed_extent": [
     200.0,
-    170.0,
+    160.0,
     20.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 250.2
+   "bed_face": "deck skin (top) down",
+   "est_grams": 191.8,
+   "est_hours": 4.3
   },
   {
    "label": "130_deck_22",
@@ -1171,12 +1289,14 @@
    "material": "PLA red",
    "bed_extent": [
     200.0,
-    169.0,
+    160.0,
     20.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 248.5
+   "bed_face": "deck skin (top) down",
+   "est_grams": 191.8,
+   "est_hours": 4.3
   },
   {
    "label": "130_deck_30",
@@ -1185,12 +1305,14 @@
    "material": "PLA red",
    "bed_extent": [
     180.0,
-    169.0,
+    160.0,
     20.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 227.9
+   "bed_face": "deck skin (top) down",
+   "est_grams": 175.4,
+   "est_hours": 3.9
   },
   {
    "label": "130_deck_31",
@@ -1199,12 +1321,14 @@
    "material": "PLA red",
    "bed_extent": [
     180.0,
-    170.0,
+    160.0,
     20.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 229.5
+   "bed_face": "deck skin (top) down",
+   "est_grams": 175.4,
+   "est_hours": 3.9
   },
   {
    "label": "130_deck_32",
@@ -1213,12 +1337,14 @@
    "material": "PLA red",
    "bed_extent": [
     180.0,
-    169.0,
+    160.0,
     20.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 227.9
+   "bed_face": "deck skin (top) down",
+   "est_grams": 175.4,
+   "est_hours": 3.9
   },
   {
    "label": "130_deck_40",
@@ -1226,13 +1352,15 @@
    "qty": 1,
    "material": "PLA red",
    "bed_extent": [
-    244.0,
-    169.0,
+    230.0,
+    160.0,
     20.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 281.4
+   "bed_face": "deck skin (top) down",
+   "est_grams": 209.3,
+   "est_hours": 4.7
   },
   {
    "label": "130_deck_41",
@@ -1240,13 +1368,15 @@
    "qty": 1,
    "material": "PLA red",
    "bed_extent": [
-    244.0,
-    170.0,
+    230.0,
+    160.0,
     20.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 281.7
+   "bed_face": "deck skin (top) down",
+   "est_grams": 203.6,
+   "est_hours": 4.5
   },
   {
    "label": "130_deck_42",
@@ -1254,13 +1384,15 @@
    "qty": 1,
    "material": "PLA red",
    "bed_extent": [
-    244.0,
-    169.0,
+    230.0,
+    160.0,
     20.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 289.2
+   "bed_face": "deck skin (top) down",
+   "est_grams": 214.1,
+   "est_hours": 4.8
   },
   {
    "label": "135_roof_00",
@@ -1270,11 +1402,13 @@
    "bed_extent": [
     140.0,
     150.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 151.7
+   "bed_face": "roof skin (top) down",
+   "est_grams": 112.5,
+   "est_hours": 2.5
   },
   {
    "label": "135_roof_01",
@@ -1284,11 +1418,13 @@
    "bed_extent": [
     140.0,
     220.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 224.0
+   "bed_face": "roof skin (top) down",
+   "est_grams": 162.7,
+   "est_hours": 3.6
   },
   {
    "label": "135_roof_02",
@@ -1298,11 +1434,13 @@
    "bed_extent": [
     140.0,
     150.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 151.7
+   "bed_face": "roof skin (top) down",
+   "est_grams": 112.5,
+   "est_hours": 2.5
   },
   {
    "label": "135_roof_10",
@@ -1312,11 +1450,13 @@
    "bed_extent": [
     240.0,
     150.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 254.8
+   "bed_face": "roof skin (top) down",
+   "est_grams": 186.0,
+   "est_hours": 4.1
   },
   {
    "label": "135_roof_11",
@@ -1330,7 +1470,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 215.0
+   "bed_face": "roof skin (top) down",
+   "est_grams": 174.9,
+   "est_hours": 3.9
   },
   {
    "label": "135_roof_12",
@@ -1340,11 +1482,13 @@
    "bed_extent": [
     240.0,
     150.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 254.8
+   "bed_face": "roof skin (top) down",
+   "est_grams": 186.0,
+   "est_hours": 4.1
   },
   {
    "label": "135_roof_20",
@@ -1354,11 +1498,13 @@
    "bed_extent": [
     240.0,
     150.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 254.3
+   "bed_face": "roof skin (top) down",
+   "est_grams": 185.0,
+   "est_hours": 4.1
   },
   {
    "label": "135_roof_21",
@@ -1368,11 +1514,13 @@
    "bed_extent": [
     240.0,
     220.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 375.1
+   "bed_face": "roof skin (top) down",
+   "est_grams": 266.5,
+   "est_hours": 5.9
   },
   {
    "label": "135_roof_22",
@@ -1382,11 +1530,13 @@
    "bed_extent": [
     240.0,
     150.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 254.3
+   "bed_face": "roof skin (top) down",
+   "est_grams": 185.0,
+   "est_hours": 4.1
   },
   {
    "label": "135_roof_30",
@@ -1396,11 +1546,13 @@
    "bed_extent": [
     210.0,
     150.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 228.0
+   "bed_face": "roof skin (top) down",
+   "est_grams": 165.1,
+   "est_hours": 3.7
   },
   {
    "label": "135_roof_31",
@@ -1410,11 +1562,13 @@
    "bed_extent": [
     210.0,
     220.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 335.8
+   "bed_face": "roof skin (top) down",
+   "est_grams": 237.5,
+   "est_hours": 5.3
   },
   {
    "label": "135_roof_32",
@@ -1424,11 +1578,13 @@
    "bed_extent": [
     210.0,
     150.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 228.0
+   "bed_face": "roof skin (top) down",
+   "est_grams": 165.1,
+   "est_hours": 3.7
   },
   {
    "label": "135_roof_40",
@@ -1438,11 +1594,13 @@
    "bed_extent": [
     210.0,
     150.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 227.8
+   "bed_face": "roof skin (top) down",
+   "est_grams": 164.7,
+   "est_hours": 3.7
   },
   {
    "label": "135_roof_41",
@@ -1452,11 +1610,13 @@
    "bed_extent": [
     210.0,
     220.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 336.0
+   "bed_face": "roof skin (top) down",
+   "est_grams": 237.4,
+   "est_hours": 5.3
   },
   {
    "label": "135_roof_42",
@@ -1466,11 +1626,13 @@
    "bed_extent": [
     210.0,
     150.0,
-    20.0
+    12.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 227.8
+   "bed_face": "roof skin (top) down",
+   "est_grams": 164.7,
+   "est_hours": 3.7
   },
   {
    "label": "140_stud_L_q1",
@@ -1484,7 +1646,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 102.0
+   "bed_face": "flange down (open ring) / cap down (capped)",
+   "est_grams": 97.3,
+   "est_hours": 2.2
   },
   {
    "label": "140_stud_L_q2",
@@ -1498,7 +1662,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 102.0
+   "bed_face": "flange down (open ring) / cap down (capped)",
+   "est_grams": 97.3,
+   "est_hours": 2.2
   },
   {
    "label": "140_stud_L_q3",
@@ -1512,7 +1678,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 102.0
+   "bed_face": "flange down (open ring) / cap down (capped)",
+   "est_grams": 97.3,
+   "est_hours": 2.2
   },
   {
    "label": "140_stud_L_q4",
@@ -1526,7 +1694,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 102.0
+   "bed_face": "flange down (open ring) / cap down (capped)",
+   "est_grams": 97.3,
+   "est_hours": 2.2
   },
   {
    "label": "140_stud_R_q1",
@@ -1540,7 +1710,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 170.4
+   "bed_face": "flange down (open ring) / cap down (capped)",
+   "est_grams": 161.6,
+   "est_hours": 3.6
   },
   {
    "label": "140_stud_R_q2",
@@ -1554,7 +1726,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 170.4
+   "bed_face": "flange down (open ring) / cap down (capped)",
+   "est_grams": 161.6,
+   "est_hours": 3.6
   },
   {
    "label": "140_stud_R_q3",
@@ -1568,7 +1742,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 170.4
+   "bed_face": "flange down (open ring) / cap down (capped)",
+   "est_grams": 161.6,
+   "est_hours": 3.6
   },
   {
    "label": "140_stud_R_q4",
@@ -1582,7 +1758,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 170.4
+   "bed_face": "flange down (open ring) / cap down (capped)",
+   "est_grams": 161.6,
+   "est_hours": 3.6
   }
  ],
  "bought": [
@@ -1607,19 +1785,21 @@
    "use": "floor laps, spine seams, stud lugs"
   }
  ],
- "est_total_grams": 29826,
+ "est_total_grams": 19644,
+ "est_total_hours": 437,
+ "estimate_model": "BJ day profile: 4 walls x 0.42 (1.68 mm per side), 5 top / 3 bottom layers x 0.2, 15 % infill inside; hours at 45 g/h",
  "est_grams_by_part_no": {
-  "100": 3057,
-  "105": 4000,
-  "110": 2983,
-  "115": 4214,
-  "120": 3429,
-  "125": 1245,
-  "126": 810,
-  "127": 396,
-  "128": 1124,
-  "130": 3759,
-  "135": 3719,
-  "140": 1090
+  "100": 2473,
+  "105": 1911,
+  "110": 2039,
+  "115": 3048,
+  "120": 1666,
+  "125": 873,
+  "126": 292,
+  "127": 33,
+  "128": 733,
+  "130": 2836,
+  "135": 2706,
+  "140": 1036
  }
 }
