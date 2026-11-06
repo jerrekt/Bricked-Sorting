@@ -2,7 +2,7 @@
  "_about": "Bricked Sorting V14 shared interface. All four module chats build to these numbers. Do not edit; request changes in your module README under INTERFACE REQUESTS.",
  "version": "v14-interface-4.1 (2026-11-05 19:02): spine tunnels 26 tall (z 8..34) for a 24 mm roller rail, bins ~139 tall; interface frozen from here unless a test fails",
  "units": "mm",
- "axes": "origin = floor center; +X right when facing the drawer; +Y toward the front (the drawer pulls out +Y); +Z up",
+ "axes": "right-handed: origin = floor center; +Y toward the front (the drawer pulls out +Y), +Z up, so +X is on the LEFT of a person facing the front drawer (wording fix 19:50; numbers unchanged). Bin numbers follow the real viewer at each drawer.",
  "envelope": {
   "x": [
    -520,

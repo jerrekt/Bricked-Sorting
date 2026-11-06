@@ -16,7 +16,7 @@ Decided by BJ on 2026-11-05: max height 30 in (a couple of inches over is OK), s
 Bricks go into a small hopper in the left roof stud, fall into the rear of the V13 drum (static outlet plate, helical flight), come out the drum's front end onto V1 and V2 vibration trays that run sideways (+X) to the scanner at the right. The scanner (V13 design: landing ramp, trapdoors, XIAO S3 Sense camera, APDS-9960, LED bar) drops each brick through a hole in the deck at **(330, 0)** into the scoop. The scoop carriage runs on a printed beam that spans the lower brick at y = 0, moves to one of 8 x positions and tilts toward the back row or the front row, dropping the brick into one of 16 open bins; the front row is one drawer pulled out the front, the back row another pulled out the back. Body 1040 x 520 x 720 plus two 60 mm roof studs = 780 (30.7 in).
 
 ## Coordinates
-mm. Origin at the floor center. +X right when you face the drawer, +Y toward the front (the drawer pulls out +Y), +Z up.
+mm. Right-handed. Origin at the floor center, +Y toward the front (the front drawer pulls out +Y), +Z up, so **+X is on the left** of a person facing the front drawer. (Wording fixed 19:50; it used to say +X right, which was left-handed. No numbers changed.) Bin numbers F1..F8 and B1..B8 follow the real viewer at each drawer.
 
 | | |
 |---|---|
