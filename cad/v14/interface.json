@@ -1,6 +1,6 @@
 {
  "_about": "Bricked Sorting V14 shared interface. All four module chats build to these numbers. Do not edit; request changes in your module README under INTERFACE REQUESTS.",
- "version": "v14-interface-4 (2026-11-05 18:55): scoop starting geometry, lower drop funnel, 5-segment beam, under-drawer rails through the spine, drag chain",
+ "version": "v14-interface-4.1 (2026-11-05 19:02): spine tunnels 26 tall (z 8..34) for a 24 mm roller rail, bins ~139 tall; interface frozen from here unless a test fails",
  "units": "mm",
  "axes": "origin = floor center; +X right when facing the drawer; +Y toward the front (the drawer pulls out +Y); +Z up",
  "envelope": {
@@ -266,7 +266,7 @@
      184
     ]
    },
-   "rails": "D also owns the under-drawer rails inside the spine tunnels (y -66..66 at x +-200 / +-300, z 8..28)"
+   "rails": "D also owns the under-drawer rails inside the spine tunnels (y -66..66 at x +-200 / +-300, z 8..34)"
   },
   "S_scoop": {
    "x": [
@@ -324,7 +324,7 @@
    150
   ],
   "open_top": true,
-  "height_note": "drawer floor sits on the under-drawer rails (top ~z 30), so bins are about 145 tall to keep their tops at or below 176"
+  "height_note": "drawer floor sits on the under-drawer rails (rail top ~z 34), so bins are about 139 tall to keep their tops at or below 176"
  },
  "drawer": {
   "count": 2,
@@ -349,7 +349,7 @@
    "back_rails_reach_y": 60,
    "rail_zone_z": [
     8,
-    26
+    34
    ]
   },
   "why": "a single-stage drawer cannot extend past its own depth unless its rails reach back beyond it; 205 travel puts the bins' back edge (y 75 closed) at y 280, 20 past the face, so bins lift straight out"
@@ -408,7 +408,7 @@
   ],
   "owner": "F",
   "note": "free strip under the beam between the two drawers: F may put a structural spine here and D may bolt runners to its sides",
-  "tunnels": "leave tunnels 24 wide x 20 tall (z 8..28) along y at x = +-200 and +-300 for the drawer rails"
+  "tunnels": "leave tunnels 24 wide x 26 tall (z 8..34) along y at x = +-200 and +-300 for the drawer rails"
  },
  "service_clearance": "300 mm behind the machine for the back drawer",
  "drum": "keep the V13 drum as-is: 47b barrel 160 x 180 with helical flight, 49b static outlet plate (cradles new)",
