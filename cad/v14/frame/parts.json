@@ -1,0 +1,1880 @@
+{
+ "module": "F",
+ "interface": "v14-interface-5 (2026-11-05 23:10): body 720 x 360 x 664, 2x2 + 1x2 wood frame and 1/2 in plywood floor and deck, 2 mm red PLA skin, 0.5 L bins at 79 pitch",
+ "printed": [
+  {
+   "label": "110_tile_F_c1_r1",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    156.0,
+    200.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 45.0,
+   "est_hours_each": 0.6,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "110_tile_F_c1_r2",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    156.0,
+    200.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 82.1,
+   "est_hours_each": 1.09,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "110_tile_F_c1_r3",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    156.0,
+    200.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 82.1,
+   "est_hours_each": 1.09,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "110_tile_F_c2_r1",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    180.0,
+    78.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 37.6,
+   "est_hours_each": 0.5,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "110_tile_F_c2_r2",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    180.0,
+    200.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 94.4,
+   "est_hours_each": 1.26,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "110_tile_F_c2_r3",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    180.0,
+    200.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 94.4,
+   "est_hours_each": 1.26,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "110_tile_F_c3_r1",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    180.0,
+    78.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 37.6,
+   "est_hours_each": 0.5,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "110_tile_F_c3_r2",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    180.0,
+    200.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 94.4,
+   "est_hours_each": 1.26,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "110_tile_F_c3_r3",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    180.0,
+    200.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 94.4,
+   "est_hours_each": 1.26,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "110_tile_F_c4_r1",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    156.0,
+    200.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 45.0,
+   "est_hours_each": 0.6,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "110_tile_F_c4_r2",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    156.0,
+    200.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 82.1,
+   "est_hours_each": 1.09,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "110_tile_F_c4_r3",
+   "part_no": "110",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    156.0,
+    200.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 82.1,
+   "est_hours_each": 1.09,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "111_tile_B_c1_r1",
+   "part_no": "111",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    136.0,
+    200.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 40.9,
+   "est_hours_each": 0.55,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "111_tile_B_c1_r2",
+   "part_no": "111",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    136.0,
+    200.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 71.9,
+   "est_hours_each": 0.96,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "111_tile_B_c1_r3",
+   "part_no": "111",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    136.0,
+    200.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 71.9,
+   "est_hours_each": 0.96,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "111_tile_B_c2_r1",
+   "part_no": "111",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    78.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 41.7,
+   "est_hours_each": 0.56,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "111_tile_B_c2_r2",
+   "part_no": "111",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    118.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 62.5,
+   "est_hours_each": 0.83,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "111_tile_B_c2_r3",
+   "part_no": "111",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    52.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 29.0,
+   "est_hours_each": 0.39,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "115_access_panel_x_neg",
+   "part_no": "115",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    230.0,
+    4.81
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 118.2,
+   "est_hours_each": 1.58,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "111_tile_B_c3_r1",
+   "part_no": "111",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    78.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 41.7,
+   "est_hours_each": 0.56,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "111_tile_B_c3_r2",
+   "part_no": "111",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    118.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 62.5,
+   "est_hours_each": 0.83,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "111_tile_B_c3_r3",
+   "part_no": "111",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    52.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 29.0,
+   "est_hours_each": 0.39,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "115_access_panel_x_pos",
+   "part_no": "115",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    230.0,
+    4.81
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 118.2,
+   "est_hours_each": 1.58,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "111_tile_B_c4_r1",
+   "part_no": "111",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    136.0,
+    200.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 40.9,
+   "est_hours_each": 0.55,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "111_tile_B_c4_r2",
+   "part_no": "111",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    136.0,
+    200.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 71.9,
+   "est_hours_each": 0.96,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "111_tile_B_c4_r3",
+   "part_no": "111",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    136.0,
+    200.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 71.9,
+   "est_hours_each": 0.96,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "112_tile_L_c1_r1",
+   "part_no": "112",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    156.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 82.1,
+   "est_hours_each": 1.09,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "112_tile_L_c1_r2",
+   "part_no": "112",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    156.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 82.1,
+   "est_hours_each": 1.09,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "112_tile_L_c1_r3",
+   "part_no": "112",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    156.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 82.1,
+   "est_hours_each": 1.09,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "112_tile_L_c2_r1",
+   "part_no": "112",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    156.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 82.1,
+   "est_hours_each": 1.09,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "112_tile_L_c2_r2",
+   "part_no": "112",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    156.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 82.1,
+   "est_hours_each": 1.09,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "112_tile_L_c2_r3",
+   "part_no": "112",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    156.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 82.1,
+   "est_hours_each": 1.09,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "113_tile_R_c1_r1",
+   "part_no": "113",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    156.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 82.1,
+   "est_hours_each": 1.09,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "113_tile_R_c1_r2",
+   "part_no": "113",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    156.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 82.1,
+   "est_hours_each": 1.09,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "113_tile_R_c1_r3",
+   "part_no": "113",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    156.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 82.1,
+   "est_hours_each": 1.09,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "113_tile_R_c2_r1",
+   "part_no": "113",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    156.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 82.1,
+   "est_hours_each": 1.09,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "113_tile_R_c2_r2",
+   "part_no": "113",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    156.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 82.1,
+   "est_hours_each": 1.09,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "113_tile_R_c2_r3",
+   "part_no": "113",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    200.0,
+    156.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 82.1,
+   "est_hours_each": 1.09,
+   "orientation": "outer face on the bed, ribs up"
+  },
+  {
+   "label": "114_roof_tile_c1_r1",
+   "part_no": "114",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    180.0,
+    180.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 66.7,
+   "est_hours_each": 0.89,
+   "orientation": "top face on the bed, ribs up"
+  },
+  {
+   "label": "114_roof_tile_c1_r2",
+   "part_no": "114",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    180.0,
+    180.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 66.7,
+   "est_hours_each": 0.89,
+   "orientation": "top face on the bed, ribs up"
+  },
+  {
+   "label": "114_roof_tile_c2_r1",
+   "part_no": "114",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    180.0,
+    180.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 67.2,
+   "est_hours_each": 0.9,
+   "orientation": "top face on the bed, ribs up"
+  },
+  {
+   "label": "114_roof_tile_c2_r2",
+   "part_no": "114",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    180.0,
+    180.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 67.2,
+   "est_hours_each": 0.9,
+   "orientation": "top face on the bed, ribs up"
+  },
+  {
+   "label": "114_roof_tile_c3_r1",
+   "part_no": "114",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    180.0,
+    180.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 84.0,
+   "est_hours_each": 1.12,
+   "orientation": "top face on the bed, ribs up"
+  },
+  {
+   "label": "114_roof_tile_c3_r2",
+   "part_no": "114",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    180.0,
+    180.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 84.0,
+   "est_hours_each": 1.12,
+   "orientation": "top face on the bed, ribs up"
+  },
+  {
+   "label": "114_roof_tile_c4_r1",
+   "part_no": "114",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    180.0,
+    180.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 83.4,
+   "est_hours_each": 1.11,
+   "orientation": "top face on the bed, ribs up"
+  },
+  {
+   "label": "114_roof_tile_c4_r2",
+   "part_no": "114",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    180.0,
+    180.0,
+    4.79
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 83.4,
+   "est_hours_each": 1.11,
+   "orientation": "top face on the bed, ribs up"
+  },
+  {
+   "label": "116_panel_keeper_bottom_x-150",
+   "part_no": "116",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    16.0,
+    78.0,
+    5.82
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 5.8,
+   "est_hours_each": 0.08,
+   "orientation": "outer (countersunk) face on the bed"
+  },
+  {
+   "label": "117_panel_keeper_top_x-150",
+   "part_no": "117",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    16.0,
+    56.0,
+    5.82
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 4.4,
+   "est_hours_each": 0.06,
+   "orientation": "outer (countersunk) face on the bed"
+  },
+  {
+   "label": "116_panel_keeper_bottom_x-50",
+   "part_no": "116",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    16.0,
+    78.0,
+    5.82
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 5.8,
+   "est_hours_each": 0.08,
+   "orientation": "outer (countersunk) face on the bed"
+  },
+  {
+   "label": "117_panel_keeper_top_x-50",
+   "part_no": "117",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    16.0,
+    56.0,
+    5.82
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 4.4,
+   "est_hours_each": 0.06,
+   "orientation": "outer (countersunk) face on the bed"
+  },
+  {
+   "label": "116_panel_keeper_bottom_x50",
+   "part_no": "116",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    16.0,
+    78.0,
+    5.82
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 5.8,
+   "est_hours_each": 0.08,
+   "orientation": "outer (countersunk) face on the bed"
+  },
+  {
+   "label": "117_panel_keeper_top_x50",
+   "part_no": "117",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    16.0,
+    56.0,
+    5.82
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 4.4,
+   "est_hours_each": 0.06,
+   "orientation": "outer (countersunk) face on the bed"
+  },
+  {
+   "label": "116_panel_keeper_bottom_x150",
+   "part_no": "116",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    16.0,
+    78.0,
+    5.82
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 5.8,
+   "est_hours_each": 0.08,
+   "orientation": "outer (countersunk) face on the bed"
+  },
+  {
+   "label": "117_panel_keeper_top_x150",
+   "part_no": "117",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    16.0,
+    56.0,
+    5.82
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 4.4,
+   "est_hours_each": 0.06,
+   "orientation": "outer (countersunk) face on the bed"
+  },
+  {
+   "label": "130_stud_ring_left_hopper",
+   "part_no": "130",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    216.15,
+    216.15,
+    50.15
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 208.6,
+   "est_hours_each": 4.26,
+   "orientation": "foot on the bed; the ledge has a 45 deg underside"
+  },
+  {
+   "label": "131_stud_cap_right",
+   "part_no": "131",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    216.15,
+    216.15,
+    50.15
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 246.5,
+   "est_hours_each": 3.29,
+   "orientation": "top face on the bed, open end up"
+  },
+  {
+   "label": "135_corner_cap_RB_r1",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    24.0,
+    200.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 25.0,
+   "est_hours_each": 0.33,
+   "orientation": "standing on its end (200 tall L), ribs vertical; brim"
+  },
+  {
+   "label": "135_corner_cap_RB_r2",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    24.0,
+    200.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 25.0,
+   "est_hours_each": 0.33,
+   "orientation": "standing on its end (200 tall L), ribs vertical; brim"
+  },
+  {
+   "label": "135_corner_cap_RB_r3",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    24.0,
+    200.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 25.0,
+   "est_hours_each": 0.33,
+   "orientation": "standing on its end (200 tall L), ribs vertical; brim"
+  },
+  {
+   "label": "135_corner_cap_RF_r1",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    24.0,
+    200.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 25.0,
+   "est_hours_each": 0.33,
+   "orientation": "standing on its end (200 tall L), ribs vertical; brim"
+  },
+  {
+   "label": "135_corner_cap_RF_r2",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    24.0,
+    200.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 25.0,
+   "est_hours_each": 0.33,
+   "orientation": "standing on its end (200 tall L), ribs vertical; brim"
+  },
+  {
+   "label": "135_corner_cap_RF_r3",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    24.0,
+    200.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 25.0,
+   "est_hours_each": 0.33,
+   "orientation": "standing on its end (200 tall L), ribs vertical; brim"
+  },
+  {
+   "label": "135_corner_cap_LB_r1",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    24.0,
+    200.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 25.0,
+   "est_hours_each": 0.33,
+   "orientation": "standing on its end (200 tall L), ribs vertical; brim"
+  },
+  {
+   "label": "135_corner_cap_LB_r2",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    24.0,
+    200.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 25.0,
+   "est_hours_each": 0.33,
+   "orientation": "standing on its end (200 tall L), ribs vertical; brim"
+  },
+  {
+   "label": "135_corner_cap_LB_r3",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    24.0,
+    200.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 25.0,
+   "est_hours_each": 0.33,
+   "orientation": "standing on its end (200 tall L), ribs vertical; brim"
+  },
+  {
+   "label": "135_corner_cap_LF_r1",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    24.0,
+    200.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 25.0,
+   "est_hours_each": 0.33,
+   "orientation": "standing on its end (200 tall L), ribs vertical; brim"
+  },
+  {
+   "label": "135_corner_cap_LF_r2",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    24.0,
+    200.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 25.0,
+   "est_hours_each": 0.33,
+   "orientation": "standing on its end (200 tall L), ribs vertical; brim"
+  },
+  {
+   "label": "135_corner_cap_LF_r3",
+   "part_no": "135",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    24.0,
+    200.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 25.0,
+   "est_hours_each": 0.33,
+   "orientation": "standing on its end (200 tall L), ribs vertical; brim"
+  },
+  {
+   "label": "120_clip_C1_single",
+   "part_no": "120",
+   "qty": 128,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    13.96,
+    3.4
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 0.8,
+   "est_hours_each": 0.01,
+   "orientation": "base on the bed, slot up (print 20-30 per plate)"
+  },
+  {
+   "label": "121_clip_C2_seam",
+   "part_no": "121",
+   "qty": 6,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    15.56,
+    3.4
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 0.8,
+   "est_hours_each": 0.01,
+   "orientation": "base on the bed, slot up (print 20-30 per plate)"
+  },
+  {
+   "label": "122_clip_H_bridge",
+   "part_no": "122",
+   "qty": 90,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    6.54,
+    3.4
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 0.4,
+   "est_hours_each": 0.01,
+   "orientation": "base on the bed, slot up (print 20-30 per plate)"
+  },
+  {
+   "label": "123_clip_C3_roof",
+   "part_no": "123",
+   "qty": 24,
+   "material": "PLA",
+   "bed_extent": [
+    24.0,
+    4.96,
+    33.8
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 2.3,
+   "est_hours_each": 0.03,
+   "orientation": "base on the bed, slot up (print 20-30 per plate)"
+  }
+ ],
+ "wood": [
+  {
+   "label": "100_post_2x2_RB",
+   "bbox": [
+    -354.0,
+    -174.0,
+    12.0,
+    -316.0,
+    -136.0,
+    612.0
+   ]
+  },
+  {
+   "label": "100_post_2x2_RF",
+   "bbox": [
+    -354.0,
+    136.0,
+    12.0,
+    -316.0,
+    174.0,
+    612.0
+   ]
+  },
+  {
+   "label": "100_post_2x2_LB",
+   "bbox": [
+    316.0,
+    -174.0,
+    12.0,
+    354.0,
+    -136.0,
+    612.0
+   ]
+  },
+  {
+   "label": "100_post_2x2_LF",
+   "bbox": [
+    316.0,
+    136.0,
+    12.0,
+    354.0,
+    174.0,
+    612.0
+   ]
+  },
+  {
+   "label": "101_top_rail_long_B",
+   "bbox": [
+    -316.0,
+    -174.0,
+    574.0,
+    316.0,
+    -155.0,
+    612.0
+   ]
+  },
+  {
+   "label": "101_top_rail_long_F",
+   "bbox": [
+    -316.0,
+    155.0,
+    574.0,
+    316.0,
+    174.0,
+    612.0
+   ]
+  },
+  {
+   "label": "102_top_rail_short_R",
+   "bbox": [
+    -354.0,
+    -136.0,
+    574.0,
+    -335.0,
+    136.0,
+    612.0
+   ]
+  },
+  {
+   "label": "102_top_rail_short_L",
+   "bbox": [
+    335.0,
+    -136.0,
+    574.0,
+    354.0,
+    136.0,
+    612.0
+   ]
+  },
+  {
+   "label": "103_deck_cleat_long_B",
+   "bbox": [
+    -316.0,
+    -174.0,
+    262.0,
+    316.0,
+    -155.0,
+    300.0
+   ]
+  },
+  {
+   "label": "103_deck_cleat_long_F",
+   "bbox": [
+    -316.0,
+    155.0,
+    262.0,
+    316.0,
+    174.0,
+    300.0
+   ]
+  },
+  {
+   "label": "104_deck_cleat_short_R",
+   "bbox": [
+    -354.0,
+    -136.0,
+    262.0,
+    -335.0,
+    136.0,
+    300.0
+   ]
+  },
+  {
+   "label": "104_deck_cleat_short_L",
+   "bbox": [
+    335.0,
+    -136.0,
+    262.0,
+    354.0,
+    136.0,
+    300.0
+   ]
+  },
+  {
+   "label": "105_bottom_rail_short_R",
+   "bbox": [
+    -354.0,
+    -136.0,
+    12.0,
+    -335.0,
+    136.0,
+    50.0
+   ]
+  },
+  {
+   "label": "105_bottom_rail_short_L",
+   "bbox": [
+    335.0,
+    -136.0,
+    12.0,
+    354.0,
+    136.0,
+    50.0
+   ]
+  },
+  {
+   "label": "106_beam_post_R",
+   "bbox": [
+    -354.0,
+    -19.0,
+    50.0,
+    -335.0,
+    19.0,
+    262.0
+   ]
+  },
+  {
+   "label": "106_beam_post_L",
+   "bbox": [
+    335.0,
+    -19.0,
+    50.0,
+    354.0,
+    19.0,
+    262.0
+   ]
+  },
+  {
+   "label": "107_floor_ply",
+   "bbox": [
+    -360.0,
+    -180.0,
+    0.0,
+    360.0,
+    180.0,
+    12.0
+   ]
+  },
+  {
+   "label": "108_deck_ply",
+   "bbox": [
+    -354.0,
+    -174.0,
+    300.0,
+    354.0,
+    174.0,
+    312.0
+   ]
+  }
+ ],
+ "bought": [
+  {
+   "item": "2x2 x 8 ft",
+   "qty": 1
+  },
+  {
+   "item": "1x2 x 8 ft",
+   "qty": 2
+  },
+  {
+   "item": "1/2 in plywood 2 x 4 ft",
+   "qty": 1
+  },
+  {
+   "item": "#6 x 3/4 in wood screws (clips, keeper bars)",
+   "qty": 176
+  },
+  {
+   "item": "#8 x 2.5 in wood screws",
+   "qty": 36
+  },
+  {
+   "item": "#8 x 2 in",
+   "qty": 8
+  },
+  {
+   "item": "#6 x 1.25 in",
+   "qty": 12
+  },
+  {
+   "item": "M3 heat-set inserts",
+   "qty": 16,
+   "use": "stud feet (8), stud ledge (4) [+8 in keeper bars]"
+  },
+  {
+   "item": "M3 heat-set inserts",
+   "qty": 8,
+   "use": "keeper bars"
+  },
+  {
+   "item": "M3 x 8 countersunk",
+   "qty": 16,
+   "use": "stud feet through the roof (8), access panel (8)"
+  },
+  {
+   "item": "red PLA",
+   "qty": "~4.3 kg"
+  }
+ ],
+ "h_clip_positions": [
+  {
+   "wall": "F",
+   "w": -180.0,
+   "z": 159
+  },
+  {
+   "wall": "F",
+   "w": -180.0,
+   "z": 187.0
+  },
+  {
+   "wall": "F",
+   "w": -180.0,
+   "z": 237.0
+  },
+  {
+   "wall": "F",
+   "w": -180.0,
+   "z": 387.0
+  },
+  {
+   "wall": "F",
+   "w": -180.0,
+   "z": 437.0
+  },
+  {
+   "wall": "F",
+   "w": -180.0,
+   "z": 587.0
+  },
+  {
+   "wall": "F",
+   "w": 0.0,
+   "z": 159
+  },
+  {
+   "wall": "F",
+   "w": 0.0,
+   "z": 187.0
+  },
+  {
+   "wall": "F",
+   "w": 0.0,
+   "z": 237.0
+  },
+  {
+   "wall": "F",
+   "w": 0.0,
+   "z": 387.0
+  },
+  {
+   "wall": "F",
+   "w": 0.0,
+   "z": 437.0
+  },
+  {
+   "wall": "F",
+   "w": 0.0,
+   "z": 587.0
+  },
+  {
+   "wall": "F",
+   "w": 180.0,
+   "z": 159
+  },
+  {
+   "wall": "F",
+   "w": 180.0,
+   "z": 187.0
+  },
+  {
+   "wall": "F",
+   "w": 180.0,
+   "z": 237.0
+  },
+  {
+   "wall": "F",
+   "w": 180.0,
+   "z": 387.0
+  },
+  {
+   "wall": "F",
+   "w": 180.0,
+   "z": 437.0
+  },
+  {
+   "wall": "F",
+   "w": 180.0,
+   "z": 587.0
+  },
+  {
+   "wall": "F",
+   "w": -311.0,
+   "z": 212.0
+  },
+  {
+   "wall": "F",
+   "w": -205.0,
+   "z": 212.0
+  },
+  {
+   "wall": "F",
+   "w": -311.0,
+   "z": 412.0
+  },
+  {
+   "wall": "F",
+   "w": -205.0,
+   "z": 412.0
+  },
+  {
+   "wall": "F",
+   "w": -155.0,
+   "z": 212.0
+  },
+  {
+   "wall": "F",
+   "w": -25.0,
+   "z": 212.0
+  },
+  {
+   "wall": "F",
+   "w": -155.0,
+   "z": 412.0
+  },
+  {
+   "wall": "F",
+   "w": -25.0,
+   "z": 412.0
+  },
+  {
+   "wall": "F",
+   "w": 25.0,
+   "z": 212.0
+  },
+  {
+   "wall": "F",
+   "w": 155.0,
+   "z": 212.0
+  },
+  {
+   "wall": "F",
+   "w": 25.0,
+   "z": 412.0
+  },
+  {
+   "wall": "F",
+   "w": 155.0,
+   "z": 412.0
+  },
+  {
+   "wall": "F",
+   "w": 205.0,
+   "z": 212.0
+  },
+  {
+   "wall": "F",
+   "w": 311.0,
+   "z": 212.0
+  },
+  {
+   "wall": "F",
+   "w": 205.0,
+   "z": 412.0
+  },
+  {
+   "wall": "F",
+   "w": 311.0,
+   "z": 412.0
+  },
+  {
+   "wall": "B",
+   "w": -200.0,
+   "z": 159
+  },
+  {
+   "wall": "B",
+   "w": -200.0,
+   "z": 187.0
+  },
+  {
+   "wall": "B",
+   "w": -200.0,
+   "z": 237.0
+  },
+  {
+   "wall": "B",
+   "w": -200.0,
+   "z": 587.0
+  },
+  {
+   "wall": "B",
+   "w": 0.0,
+   "z": 159
+  },
+  {
+   "wall": "B",
+   "w": 0.0,
+   "z": 187.0
+  },
+  {
+   "wall": "B",
+   "w": 0.0,
+   "z": 237.0
+  },
+  {
+   "wall": "B",
+   "w": 0.0,
+   "z": 587.0
+  },
+  {
+   "wall": "B",
+   "w": 200.0,
+   "z": 159
+  },
+  {
+   "wall": "B",
+   "w": 200.0,
+   "z": 187.0
+  },
+  {
+   "wall": "B",
+   "w": 200.0,
+   "z": 237.0
+  },
+  {
+   "wall": "B",
+   "w": 200.0,
+   "z": 587.0
+  },
+  {
+   "wall": "B",
+   "w": -311.0,
+   "z": 212.0
+  },
+  {
+   "wall": "B",
+   "w": -225.0,
+   "z": 212.0
+  },
+  {
+   "wall": "B",
+   "w": -311.0,
+   "z": 412.0
+  },
+  {
+   "wall": "B",
+   "w": -225.0,
+   "z": 412.0
+  },
+  {
+   "wall": "B",
+   "w": -175.0,
+   "z": 212.0
+  },
+  {
+   "wall": "B",
+   "w": -25.0,
+   "z": 212.0
+  },
+  {
+   "wall": "B",
+   "w": 25.0,
+   "z": 212.0
+  },
+  {
+   "wall": "B",
+   "w": 175.0,
+   "z": 212.0
+  },
+  {
+   "wall": "B",
+   "w": 225.0,
+   "z": 212.0
+  },
+  {
+   "wall": "B",
+   "w": 311.0,
+   "z": 212.0
+  },
+  {
+   "wall": "B",
+   "w": 225.0,
+   "z": 412.0
+  },
+  {
+   "wall": "B",
+   "w": 311.0,
+   "z": 412.0
+  },
+  {
+   "wall": "L",
+   "w": 0.0,
+   "z": 437.0
+  },
+  {
+   "wall": "L",
+   "w": 0.0,
+   "z": 587.0
+  },
+  {
+   "wall": "L",
+   "w": -131.0,
+   "z": 212.0
+  },
+  {
+   "wall": "L",
+   "w": -25.0,
+   "z": 212.0
+  },
+  {
+   "wall": "L",
+   "w": -131.0,
+   "z": 412.0
+  },
+  {
+   "wall": "L",
+   "w": -25.0,
+   "z": 412.0
+  },
+  {
+   "wall": "L",
+   "w": 25.0,
+   "z": 212.0
+  },
+  {
+   "wall": "L",
+   "w": 131.0,
+   "z": 212.0
+  },
+  {
+   "wall": "L",
+   "w": 25.0,
+   "z": 412.0
+  },
+  {
+   "wall": "L",
+   "w": 131.0,
+   "z": 412.0
+  },
+  {
+   "wall": "R",
+   "w": 0.0,
+   "z": 437.0
+  },
+  {
+   "wall": "R",
+   "w": 0.0,
+   "z": 587.0
+  },
+  {
+   "wall": "R",
+   "w": -131.0,
+   "z": 212.0
+  },
+  {
+   "wall": "R",
+   "w": -25.0,
+   "z": 212.0
+  },
+  {
+   "wall": "R",
+   "w": -131.0,
+   "z": 412.0
+  },
+  {
+   "wall": "R",
+   "w": -25.0,
+   "z": 412.0
+  },
+  {
+   "wall": "R",
+   "w": 25.0,
+   "z": 212.0
+  },
+  {
+   "wall": "R",
+   "w": 131.0,
+   "z": 212.0
+  },
+  {
+   "wall": "R",
+   "w": 25.0,
+   "z": 412.0
+  },
+  {
+   "wall": "R",
+   "w": 131.0,
+   "z": 412.0
+  },
+  {
+   "wall": "roof",
+   "w": -180.0,
+   "z": -120.0
+  },
+  {
+   "wall": "roof",
+   "w": -180.0,
+   "z": 120.0
+  },
+  {
+   "wall": "roof",
+   "w": 0.0,
+   "z": -120.0
+  },
+  {
+   "wall": "roof",
+   "w": 0.0,
+   "z": 120.0
+  },
+  {
+   "wall": "roof",
+   "w": 180.0,
+   "z": -120.0
+  },
+  {
+   "wall": "roof",
+   "w": 180.0,
+   "z": 120.0
+  },
+  {
+   "wall": "roof",
+   "w": -325.0,
+   "z": 0.0
+  },
+  {
+   "wall": "roof",
+   "w": -35.0,
+   "z": 0.0
+  },
+  {
+   "wall": "roof",
+   "w": 35.0,
+   "z": 0.0
+  },
+  {
+   "wall": "roof",
+   "w": 145.0,
+   "z": 0.0
+  },
+  {
+   "wall": "roof",
+   "w": 215.0,
+   "z": 0.0
+  },
+  {
+   "wall": "roof",
+   "w": 325.0,
+   "z": 0.0
+  }
+ ],
+ "totals": {
+  "printed_grams": 4326,
+  "printed_hours": 59.4,
+  "grams_by_group": {
+   "skin walls": 2492,
+   "access panel": 236,
+   "roof": 602,
+   "keeper bars": 40,
+   "studs": 456,
+   "corner caps": 300,
+   "clips": 198
+  },
+  "clips_screwed": {
+   "C1": 128,
+   "C2": 6,
+   "C3": 24
+  },
+  "H_bridge_clips": 90,
+  "tiles": 46,
+  "wood_screws_for_clips": 166
+ }
+}

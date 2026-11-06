@@ -1,0 +1,1662 @@
+[
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -328.73,
+   174.0,
+   62.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -328.73,
+   174.0,
+   162.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   -301.0,
+   174.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   -215.0,
+   174.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -328.73,
+   174.0,
+   262.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -328.73,
+   174.0,
+   362.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   -301.0,
+   174.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   -215.0,
+   174.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -328.73,
+   174.0,
+   462.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -328.73,
+   174.0,
+   562.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   -145.0,
+   174.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   -35.0,
+   174.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   -145.0,
+   174.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   -35.0,
+   174.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   35.0,
+   174.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   145.0,
+   174.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   35.0,
+   174.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   145.0,
+   174.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   328.73,
+   174.0,
+   62.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   328.73,
+   174.0,
+   162.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   215.0,
+   174.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   301.0,
+   174.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   328.73,
+   174.0,
+   262.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   328.73,
+   174.0,
+   362.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   215.0,
+   174.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   301.0,
+   174.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   328.73,
+   174.0,
+   462.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   328.73,
+   174.0,
+   562.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -328.73,
+   -174.0,
+   62.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -328.73,
+   -174.0,
+   162.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   -301.0,
+   -174.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   -235.0,
+   -174.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -328.73,
+   -174.0,
+   262.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -328.73,
+   -174.0,
+   362.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   -301.0,
+   -174.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   -235.0,
+   -174.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -328.73,
+   -174.0,
+   462.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -328.73,
+   -174.0,
+   562.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   -130.0,
+   -174.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   -70.0,
+   -174.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   -130.0,
+   -174.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   -70.0,
+   -174.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   70.0,
+   -174.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   130.0,
+   -174.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   70.0,
+   -174.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   130.0,
+   -174.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   328.73,
+   -174.0,
+   62.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   328.73,
+   -174.0,
+   162.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   235.0,
+   -174.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   301.0,
+   -174.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   328.73,
+   -174.0,
+   262.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   328.73,
+   -174.0,
+   362.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   235.0,
+   -174.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   301.0,
+   -174.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   328.73,
+   -174.0,
+   462.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   328.73,
+   -174.0,
+   562.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "bottom rail, tile rib",
+  "xyz": [
+   354.0,
+   -121.0,
+   24.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "bottom rail, tile rib",
+  "xyz": [
+   354.0,
+   -35.0,
+   24.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   354.0,
+   -148.73,
+   62.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   354.0,
+   -148.73,
+   162.0
+  ]
+ },
+ {
+  "part": "clip C2",
+  "on": "x +354 (post / rail outer face)",
+  "what": "beam post, seam ribs",
+  "xyz": [
+   354.0,
+   7.27,
+   110.0
+  ]
+ },
+ {
+  "part": "clip C2",
+  "on": "x +354 (post / rail outer face)",
+  "what": "beam post, seam ribs",
+  "xyz": [
+   354.0,
+   7.27,
+   185.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   354.0,
+   -121.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   354.0,
+   -35.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   354.0,
+   -148.73,
+   262.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   354.0,
+   -148.73,
+   362.0
+  ]
+ },
+ {
+  "part": "clip C2",
+  "on": "x +354 (post / rail outer face)",
+  "what": "beam post, seam ribs",
+  "xyz": [
+   354.0,
+   7.27,
+   240.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   354.0,
+   -121.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   354.0,
+   -35.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   354.0,
+   -148.73,
+   462.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   354.0,
+   -148.73,
+   562.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "bottom rail, tile rib",
+  "xyz": [
+   354.0,
+   35.0,
+   24.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "bottom rail, tile rib",
+  "xyz": [
+   354.0,
+   121.0,
+   24.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   354.0,
+   148.73,
+   62.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   354.0,
+   148.73,
+   162.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   354.0,
+   35.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   354.0,
+   121.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   354.0,
+   148.73,
+   262.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   354.0,
+   148.73,
+   362.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   354.0,
+   35.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   354.0,
+   121.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   354.0,
+   148.73,
+   462.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   354.0,
+   148.73,
+   562.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "bottom rail, tile rib",
+  "xyz": [
+   -354.0,
+   -121.0,
+   24.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "bottom rail, tile rib",
+  "xyz": [
+   -354.0,
+   -35.0,
+   24.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -354.0,
+   -148.73,
+   62.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -354.0,
+   -148.73,
+   162.0
+  ]
+ },
+ {
+  "part": "clip C2",
+  "on": "x -354 (post / rail outer face)",
+  "what": "beam post, seam ribs",
+  "xyz": [
+   -354.0,
+   -7.27,
+   110.0
+  ]
+ },
+ {
+  "part": "clip C2",
+  "on": "x -354 (post / rail outer face)",
+  "what": "beam post, seam ribs",
+  "xyz": [
+   -354.0,
+   -7.27,
+   185.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   -354.0,
+   -121.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   -354.0,
+   -35.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -354.0,
+   -148.73,
+   262.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -354.0,
+   -148.73,
+   362.0
+  ]
+ },
+ {
+  "part": "clip C2",
+  "on": "x -354 (post / rail outer face)",
+  "what": "beam post, seam ribs",
+  "xyz": [
+   -354.0,
+   -7.27,
+   240.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   -354.0,
+   -121.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   -354.0,
+   -35.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -354.0,
+   -148.73,
+   462.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -354.0,
+   -148.73,
+   562.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "bottom rail, tile rib",
+  "xyz": [
+   -354.0,
+   35.0,
+   24.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "bottom rail, tile rib",
+  "xyz": [
+   -354.0,
+   121.0,
+   24.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -354.0,
+   148.73,
+   62.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -354.0,
+   148.73,
+   162.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   -354.0,
+   35.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "cleat, tile rib",
+  "xyz": [
+   -354.0,
+   121.0,
+   274.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -354.0,
+   148.73,
+   262.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -354.0,
+   148.73,
+   362.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   -354.0,
+   35.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "top rail, tile rib",
+  "xyz": [
+   -354.0,
+   121.0,
+   586.53
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -354.0,
+   148.73,
+   462.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "post, tile edge rib",
+  "xyz": [
+   -354.0,
+   148.73,
+   562.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   -339.53,
+   -174.0,
+   112.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   -354.0,
+   -160.53,
+   112.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   -339.53,
+   -174.0,
+   312.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   -354.0,
+   -160.53,
+   312.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   -339.53,
+   -174.0,
+   512.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   -354.0,
+   -160.53,
+   512.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   -339.53,
+   174.0,
+   112.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   -354.0,
+   160.53,
+   112.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   -339.53,
+   174.0,
+   312.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   -354.0,
+   160.53,
+   312.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   -339.53,
+   174.0,
+   512.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x -354 (post / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   -354.0,
+   160.53,
+   512.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   339.53,
+   -174.0,
+   112.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   354.0,
+   -160.53,
+   112.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   339.53,
+   -174.0,
+   312.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   354.0,
+   -160.53,
+   312.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y -174 (post / cleat / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   339.53,
+   -174.0,
+   512.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   354.0,
+   -160.53,
+   512.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   339.53,
+   174.0,
+   112.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   354.0,
+   160.53,
+   112.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   339.53,
+   174.0,
+   312.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   354.0,
+   160.53,
+   312.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "y +174 (post / cleat / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   339.53,
+   174.0,
+   512.0
+  ]
+ },
+ {
+  "part": "clip C1",
+  "on": "x +354 (post / rail outer face)",
+  "what": "post, corner cap rib",
+  "xyz": [
+   354.0,
+   160.53,
+   512.0
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "long top rail inner face y -155",
+  "what": "top rail inner face, roof rib",
+  "xyz": [
+   -280,
+   -155.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "long top rail inner face y -155",
+  "what": "top rail inner face, roof rib",
+  "xyz": [
+   -210.0,
+   -155.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "short top rail inner face x -335",
+  "what": "short top rail inner face, roof rib",
+  "xyz": [
+   -335.0,
+   -120.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "short top rail inner face x -335",
+  "what": "short top rail inner face, roof rib",
+  "xyz": [
+   -335.0,
+   -60.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "long top rail inner face y +155",
+  "what": "top rail inner face, roof rib",
+  "xyz": [
+   -280,
+   155.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "long top rail inner face y +155",
+  "what": "top rail inner face, roof rib",
+  "xyz": [
+   -210.0,
+   155.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "short top rail inner face x -335",
+  "what": "short top rail inner face, roof rib",
+  "xyz": [
+   -335.0,
+   60.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "short top rail inner face x -335",
+  "what": "short top rail inner face, roof rib",
+  "xyz": [
+   -335.0,
+   120.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "long top rail inner face y -155",
+  "what": "top rail inner face, roof rib",
+  "xyz": [
+   -150.0,
+   -155.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "long top rail inner face y -155",
+  "what": "top rail inner face, roof rib",
+  "xyz": [
+   -30.0,
+   -155.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "long top rail inner face y +155",
+  "what": "top rail inner face, roof rib",
+  "xyz": [
+   -150.0,
+   155.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "long top rail inner face y +155",
+  "what": "top rail inner face, roof rib",
+  "xyz": [
+   -30.0,
+   155.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "long top rail inner face y -155",
+  "what": "top rail inner face, roof rib",
+  "xyz": [
+   30.0,
+   -155.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "long top rail inner face y -155",
+  "what": "top rail inner face, roof rib",
+  "xyz": [
+   150.0,
+   -155.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "long top rail inner face y +155",
+  "what": "top rail inner face, roof rib",
+  "xyz": [
+   30.0,
+   155.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "long top rail inner face y +155",
+  "what": "top rail inner face, roof rib",
+  "xyz": [
+   150.0,
+   155.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "long top rail inner face y -155",
+  "what": "top rail inner face, roof rib",
+  "xyz": [
+   210.0,
+   -155.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "long top rail inner face y -155",
+  "what": "top rail inner face, roof rib",
+  "xyz": [
+   280,
+   -155.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "short top rail inner face x +335",
+  "what": "short top rail inner face, roof rib",
+  "xyz": [
+   335.0,
+   -120.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "short top rail inner face x +335",
+  "what": "short top rail inner face, roof rib",
+  "xyz": [
+   335.0,
+   -60.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "long top rail inner face y +155",
+  "what": "top rail inner face, roof rib",
+  "xyz": [
+   210.0,
+   155.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "long top rail inner face y +155",
+  "what": "top rail inner face, roof rib",
+  "xyz": [
+   280,
+   155.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "short top rail inner face x +335",
+  "what": "short top rail inner face, roof rib",
+  "xyz": [
+   335.0,
+   60.0,
+   586.2
+  ]
+ },
+ {
+  "part": "clip C3",
+  "on": "short top rail inner face x +335",
+  "what": "short top rail inner face, roof rib",
+  "xyz": [
+   335.0,
+   120.0,
+   586.2
+  ]
+ },
+ {
+  "part": "keeper bar 116",
+  "on": "y -174 (deck cleat outer face)",
+  "what": "access panel keeper",
+  "xyz": [
+   -150.0,
+   -174.0,
+   281.0
+  ]
+ },
+ {
+  "part": "keeper bar 117",
+  "on": "y -174 (top rail outer face)",
+  "what": "access panel keeper",
+  "xyz": [
+   -150.0,
+   -174.0,
+   593.0
+  ]
+ },
+ {
+  "part": "keeper bar 116",
+  "on": "y -174 (deck cleat outer face)",
+  "what": "access panel keeper",
+  "xyz": [
+   -50.0,
+   -174.0,
+   281.0
+  ]
+ },
+ {
+  "part": "keeper bar 117",
+  "on": "y -174 (top rail outer face)",
+  "what": "access panel keeper",
+  "xyz": [
+   -50.0,
+   -174.0,
+   593.0
+  ]
+ },
+ {
+  "part": "keeper bar 116",
+  "on": "y -174 (deck cleat outer face)",
+  "what": "access panel keeper",
+  "xyz": [
+   50.0,
+   -174.0,
+   281.0
+  ]
+ },
+ {
+  "part": "keeper bar 117",
+  "on": "y -174 (top rail outer face)",
+  "what": "access panel keeper",
+  "xyz": [
+   50.0,
+   -174.0,
+   593.0
+  ]
+ },
+ {
+  "part": "keeper bar 116",
+  "on": "y -174 (deck cleat outer face)",
+  "what": "access panel keeper",
+  "xyz": [
+   150.0,
+   -174.0,
+   281.0
+  ]
+ },
+ {
+  "part": "keeper bar 117",
+  "on": "y -174 (top rail outer face)",
+  "what": "access panel keeper",
+  "xyz": [
+   150.0,
+   -174.0,
+   593.0
+  ]
+ }
+]
