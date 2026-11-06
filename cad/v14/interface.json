@@ -1,8 +1,8 @@
 {
  "_about": "Bricked Sorting V14 shared interface. All four module chats build to these numbers. Do not edit; request changes in your module README under INTERFACE REQUESTS.",
- "version": "v14-interface-4.1 (2026-11-05 19:02): spine tunnels 26 tall (z 8..34) for a 24 mm roller rail, bins ~139 tall; interface frozen from here unless a test fails",
+ "version": "v14-interface-4.3 (2026-11-05 21:30): print rules now come from BJ's measured settings in the vault runbook runbooks/3d-printing.md",
  "units": "mm",
- "axes": "origin = floor center; +X right when facing the drawer; +Y toward the front (the drawer pulls out +Y); +Z up",
+ "axes": "right-handed: origin = floor center; +Y toward the front (the drawer pulls out +Y), +Z up, so +X is on the LEFT of a person facing the front drawer (wording fix 19:50; numbers unchanged). Bin numbers follow the real viewer at each drawer.",
  "envelope": {
   "x": [
    -520,
@@ -59,8 +59,10 @@
  },
  "walls": {
   "zone_thickness": 20,
-  "skin": 6,
-  "ribs_inward": 14,
+  "skin": 2.4,
+  "ribs_inward": 17.6,
+  "rib_thickness": 2.4,
+  "rib_spacing_about": 80,
   "interior_clear": {
    "x": [
     -500,
@@ -231,7 +233,7 @@
    ],
    "z": [
     420,
-    680
+    668
    ]
   }
  },
@@ -435,5 +437,19 @@
   "targets": "< 2 mm sag at center with carriage and belt tension; scoop stays level across travel"
  },
  "switches": "two KW11-3Z drawer-closed switches (front, back); no per-bin switches",
- "cable": "carriage cable in a small printed drag chain on the beam's back face (y -20..-35, z 195..255), exiting to the left deck cable slot"
+ "cable": "carriage cable in a small printed drag chain on the beam's back face (y -20..-35, z 195..255), exiting to the left deck cable slot",
+ "print_rules": {
+  "source": "Mnemosyne runbooks/3d-printing.md (read it first; its values beat anything here) and inventory/parts-owned.md for inserts",
+  "estimates": "grams with BJ's day profile: 0.4 nozzle, 0.2 layers, 4 walls, 15 % sparse infill, 3 bottom / 5 top layers; not solid volume",
+  "fits_per_side": "sliding/dovetail 0.065-0.07; press-fit pocket -0.02 (pocket smaller); loose drop-in 0.6 (bins); bearing pockets not yet measured on this printer: print a 625 coupon at 16.0/16.1/16.2 first",
+  "inserts": "M3 generic insert hole ~4.0-4.2 (verify with calipers), M5 Ruthex RX-M5x9.5 hole 6.4 min depth 10.5 min wall 2.6",
+  "elephant_foot": "0.15 compensation is in BJ's profile; chamfer 0.6 on bed edges anyway",
+  "bed": "usable ~248 x 248 (256 plate)",
+  "budget": "whole machine <= ~15 kg filament and <= ~400 print hours; frame <= ~9 kg",
+  "supports": "none: overhangs <= 45 deg, bridges <= 30 mm, teardrop horizontal holes",
+  "orientation": "every part has a flat face on the bed; state it in parts.json",
+  "materials": "on hand: PLA (red for the body), PETG, ASA, TPU 95A, PC; AMS for multi-colour (labels, face numbers)",
+  "file_back": "after a test print, BJ's results go into the runbook (the main chat files them)"
+ },
+ "interface_note_fits": "older lines saying 0.2 mm slip fits or 16.2 bearing pockets are superseded by print_rules.fits_per_side"
 }
