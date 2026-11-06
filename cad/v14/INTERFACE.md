@@ -2,6 +2,8 @@
 
 Four chats build four modules at the same time. They only fit together if everyone uses the same numbers, so the numbers live in `interface.json` (read it in your script; do not retype them). If a number does not work for your module, keep building to it and write the change you want under **INTERFACE REQUESTS** in your module README. The integration step decides.
 
+**Interface 4 (2026-11-05 18:55):** (1) drawer rails move UNDER the drawers and run back through tunnels in the center spine (front rails at x ±300 reach y -60, back rails at x ±200 reach y +60), rollers fixed to the floor, travel 205: a single-stage drawer can't extend past its own depth unless its rails reach back beyond it. (2) Drop funnel exit lowered to z 335; the scoop keeps out of r 40 around (330, 0) above z 330. (3) Scoop starting geometry: shallow two-ended cup above a pivot at z ~268, lip 114 out / 25 up, dump at 40° (lip y 103, z 214); the opposite end rises to ~360, so taper the ends; TPU pad against bounce. (4) Beam in 5 segments of ~200 with 60-80 mm sleeves. (5) Carriage cable in a drag chain on the beam's back face. interface.json has the numbers.
+
 **Interface 3 (2026-11-05 18:35):** beam is a ~65 x 40 PLA box in 4-5 keyed segments (mounts moved to z 200/248), belt near the beam's mid-height, scoop lip must reach |y| >= 100, drawers ride on 625ZZ rollers, two drawer switches only, drawers keyed.
 
 **Interface 2 (2026-11-05 18:20):** after a design review with ChatGPT, the single 490 mm drawer became **two opposing 8-bin drawers** (front row out the front, back row out the back, ~220 mm single-stage printed runners), and the drum stays the V13 160 x 180. Everything below reflects that.
