@@ -1,6 +1,6 @@
 {
  "_about": "Bricked Sorting V14 shared interface. All four module chats build to these numbers. Do not edit; request changes in your module README under INTERFACE REQUESTS.",
- "version": "v14-interface-4.2 (2026-11-05 21:20): print-friendly rules; wall skin 2.4 (zone still 20); back access panel z 420..668",
+ "version": "v14-interface-4.3 (2026-11-05 21:30): print rules now come from BJ's measured settings in the vault runbook runbooks/3d-printing.md",
  "units": "mm",
  "axes": "right-handed: origin = floor center; +Y toward the front (the drawer pulls out +Y), +Z up, so +X is on the LEFT of a person facing the front drawer (wording fix 19:50; numbers unchanged). Bin numbers follow the real viewer at each drawer.",
  "envelope": {
@@ -439,12 +439,17 @@
  "switches": "two KW11-3Z drawer-closed switches (front, back); no per-bin switches",
  "cable": "carriage cable in a small printed drag chain on the beam's back face (y -20..-35, z 195..255), exiting to the left deck cable slot",
  "print_rules": {
-  "estimates": "grams as the slicer would print them: 3 walls (1.2 mm), 4 top/bottom layers, 15 % gyroid infill, not solid volume",
+  "source": "Mnemosyne runbooks/3d-printing.md (read it first; its values beat anything here) and inventory/parts-owned.md for inserts",
+  "estimates": "grams with BJ's day profile: 0.4 nozzle, 0.2 layers, 4 walls, 15 % sparse infill, 3 bottom / 5 top layers; not solid volume",
+  "fits_per_side": "sliding/dovetail 0.065-0.07; press-fit pocket -0.02 (pocket smaller); loose drop-in 0.6 (bins); bearing pockets not yet measured on this printer: print a 625 coupon at 16.0/16.1/16.2 first",
+  "inserts": "M3 generic insert hole ~4.0-4.2 (verify with calipers), M5 Ruthex RX-M5x9.5 hole 6.4 min depth 10.5 min wall 2.6",
+  "elephant_foot": "0.15 compensation is in BJ's profile; chamfer 0.6 on bed edges anyway",
+  "bed": "usable ~248 x 248 (256 plate)",
   "budget": "whole machine <= ~15 kg filament and <= ~400 print hours; frame <= ~9 kg",
-  "supports": "none: overhangs <= 45 deg, bridges <= 30 mm, holes horizontal are teardrop or 0.2 mm sacrificial layer",
-  "orientation": "every part has a flat face to put on the bed; say the orientation in parts.json",
-  "fits": "0.2 mm per side for slip fits, 0.1 for press fits, bearings 16.2 pockets; chamfer 0.6 on bed edges",
-  "parts": "fewer, bed-sized parts beat many small ones; panels near 240 x 240",
-  "inserts": "every insert hole reachable with a soldering iron after printing"
- }
+  "supports": "none: overhangs <= 45 deg, bridges <= 30 mm, teardrop horizontal holes",
+  "orientation": "every part has a flat face on the bed; state it in parts.json",
+  "materials": "on hand: PLA (red for the body), PETG, ASA, TPU 95A, PC; AMS for multi-colour (labels, face numbers)",
+  "file_back": "after a test print, BJ's results go into the runbook (the main chat files them)"
+ },
+ "interface_note_fits": "older lines saying 0.2 mm slip fits or 16.2 bearing pockets are superseded by print_rules.fits_per_side"
 }
