@@ -1,6 +1,6 @@
 {
  "_about": "Bricked Sorting V14 shared interface. All four module chats build to these numbers. Do not edit; request changes in your module README under INTERFACE REQUESTS.",
- "version": "v14-interface-2 (2026-11-05 18:20): two opposing drawers, drum kept at 160 x 180",
+ "version": "v14-interface-3 (2026-11-05 18:35): beam section and mounts, scoop margin, roller runners, two drawer switches",
  "units": "mm",
  "axes": "origin = floor center; +X right when facing the drawer; +Y toward the front (the drawer pulls out +Y); +Z up",
  "envelope": {
@@ -173,19 +173,19 @@
    "points_yz": [
     [
      -12,
-     194
+     200
     ],
     [
      12,
-     194
+     200
     ],
     [
      -12,
-     222
+     248
     ],
     [
      12,
-     222
+     248
     ]
    ]
   }
@@ -330,8 +330,9 @@
   "travel_y": 220,
   "front_pulls": "+Y",
   "back_pulls": "-Y",
-  "runners": "single-stage printed with hard end stops and a closed detent",
-  "note": "each bank (~5 kg loaded) fully clears its face at 220"
+  "runners": "printed PETG rail + 625ZZ bearings as rollers (about 3 per side: two carry load, one captures against lift), hard end stops, closed detent; drawer body may be PLA",
+  "note": "each bank (~5 kg loaded) fully clears its face at 220",
+  "keying": "front and back drawers mechanically keyed so neither fits the other side; a retaining bar holds all 8 bins so drawer seated = all bins present"
  },
  "scoop": {
   "receive_pose": {
@@ -343,7 +344,7 @@
    ],
    "catch_r": 25
   },
-  "dump_poses": "carriage at each bins.x_centers[i], tilt toward -Y or +Y; the brick leaves the lip at |y| >= 95 and z >= 186 and lands inside the bin opening",
+  "dump_poses": "carriage at each bins.x_centers[i], tilt toward -Y or +Y; the brick leaves the lip at |y| >= 100 (5 mm margin over the bin inner edge at 75 + brick) and z >= 190, on a surface tilted at least 40 deg so it slides; servo horn is not the bearing (pivot on its own shaft or bushings)",
   "park_pose": "level, carriage at x 330, everything above z 186 (drawer may open)"
  },
  "drop_point": [
@@ -392,5 +393,22 @@
   "back": "B1..B8, left to right as you face the back",
   "note": "so B1 sits behind F8; numbering always reads left to right for the person at that drawer"
  },
- "side_marking": "drawer faces in two filament colors (front and back), embossed F / B and 1-8 above each bin position, and a slide-in label card slot on each bin face for its category"
+ "side_marking": "drawer faces in two filament colors (front and back), embossed F / B and 1-8 above each bin position, and a slide-in label card slot on each bin face for its category",
+ "beam": {
+  "section": "closed box, about 65 tall x 40 deep, 3-4 mm skins, ribs every 60-100 mm, PLA",
+  "zone_yz": {
+   "y": [
+    -20,
+    20
+   ],
+   "z": [
+    192,
+    258
+   ]
+  },
+  "segments": "4-5 keyed segments with internal splices; joints staggered, none at midspan",
+  "belt": "run the GT2 belt close to the beam's mid-height so tension does not twist it",
+  "targets": "< 2 mm sag at center with carriage and belt tension; scoop stays level across travel"
+ },
+ "switches": "two KW11-3Z drawer-closed switches (front, back); no per-bin switches"
 }
