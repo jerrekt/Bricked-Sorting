@@ -9,7 +9,7 @@ Built to **v14-interface-4.1** (frozen) on branch `cad-v14-deck`.
 
 Coordinates are right-handed: +X is the front viewer's left, +Y is the front, +Z is up.
 
-**Rev 2 (2026-11-05 20:40 PT, BJ):**
+**Rev 2 (2026-11-05 20:27 PT, BJ):**
 - Small hopper (~150 across) with a 4-piece collar to the stud ring and M3 seam lugs.
 - Drum tilt cut to 2°, and the drum raised.
 - Trays now 4.5°. The scanner floor stays at 459 and the funnel exit at 335.
@@ -87,7 +87,7 @@ None (built to 4.1). For F at integration:
   - V13 drum reused as-is; hopper, chute, V1/V2 on leaf springs.
   - V13-rework scanner over (330, 0), funnel exit 335, electronics at the back panel.
   - All checks clean.
-- 2026-11-05 20:40 PT, decision, Bricked Sorting: deck rev 2 per BJ.
+- 2026-11-05 20:27 PT, decision, Bricked Sorting: deck rev 2 per BJ.
   - Before: big hopper filling the stud, drum tilt 6°, trays ~1-2°.
   - After: hopper ~150 across centred in the stud with a 4-piece collar (M3 seam lugs), drum tilt 2° and raised (barrel top 692.6 under the 700 roof), trays 4.5° (max ~5.0°), chute 45°.
   - Roof inserts move to 180/240/300° at r 108. Scanner floor 459 and funnel exit 335 unchanged.
