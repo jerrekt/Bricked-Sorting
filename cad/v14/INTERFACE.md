@@ -2,6 +2,10 @@
 
 Four chats build four modules at the same time. They only fit together if everyone uses the same numbers, so the numbers live in `interface.json` (read it in your script; do not retype them). If a number does not work for your module, keep building to it and write the change you want under **INTERFACE REQUESTS** in your module README. The integration step decides.
 
+**Interface 4.3 (2026-11-05 21:30): use BJ's measured print settings.** Read `runbooks/3d-printing.md` in Mnemosyne before exporting anything; its numbers beat the generic ones in 4.2. Estimate grams with his day profile (4 walls, 15 % infill, 3 bottom / 5 top, 0.2 layers). Fits per side: sliding or dovetail 0.065-0.07, press pockets -0.02, bin drop-in 0.6. Bearing pockets are not measured yet: add a 625 coupon at 16.0 / 16.1 / 16.2. Inserts: M3 hole ~4.0-4.2 (verify), M5 Ruthex hole 6.4, depth 10.5. Put test results in your README; the main chat files them in the runbook.
+
+**Interface 4.2 (2026-11-05 21:20): print-friendly rules for every module.** The first frame came out at ~30 kg; that is not printable in practice. Rules: estimate grams the way the slicer prints them (3 walls, 4 top/bottom, 15 % gyroid), not solid volume; whole machine <= ~15 kg and <= ~400 print hours, frame <= ~9 kg; no supports (overhangs <= 45 deg, bridges <= 30 mm, teardrop horizontal holes); a flat face on the bed for every part, orientation stated in parts.json; 0.2 mm per side slip fits, 16.2 bearing pockets, 0.6 chamfer on bed edges; fewer, bed-sized parts; every insert reachable after printing. **Wall skin drops from 6 to 2.4 mm** with 2.4 mm ribs at ~80 mm (wall zone still 20, so nothing else moves). Back access panel z 420..668 (3 pieces).
+
 **Interface 4.1 (2026-11-05 19:02):** spine tunnels are 26 tall (z 8..34) because a 16 mm bearing in a 16.5 slot needs a ~24 mm rail; bins are ~139 tall, tops still at 176. **The interface is frozen from here** unless a physical test fails.
 
 **Interface 4 (2026-11-05 18:55):** (1) drawer rails move UNDER the drawers and run back through tunnels in the center spine (front rails at x ±300 reach y -60, back rails at x ±200 reach y +60), rollers fixed to the floor, travel 205: a single-stage drawer can't extend past its own depth unless its rails reach back beyond it. (2) Drop funnel exit lowered to z 335; the scoop keeps out of r 40 around (330, 0) above z 330. (3) Scoop starting geometry: shallow two-ended cup above a pivot at z ~268, lip 114 out / 25 up, dump at 40° (lip y 103, z 214); the opposite end rises to ~360, so taper the ends; TPU pad against bounce. (4) Beam in 5 segments of ~200 with 60-80 mm sleeves. (5) Carriage cable in a drag chain on the beam's back face. (6) With the drawer floor on the rails (~z 30), bins are about 145 tall so their tops stay at or below 176. interface.json has the numbers.
@@ -22,7 +26,7 @@ mm. Right-handed. Origin at the floor center, +Y toward the front (the front dra
 |---|---|
 | Envelope | X -520..520, Y -260..260, Z 0..780 |
 | Lower brick / deck brick / studs | z 0..390 / 390..720 / 720..780 |
-| Wall zone | 20 thick inward from every outer face (6 skin + 14 ribs). Interior clear X ±500, Y ±240 |
+| Wall zone | 20 thick inward from every outer face (2.4 skin + 2.4 ribs at ~80, 17.6 deep). Interior clear X ±500, Y ±240 |
 | Corner columns (frame) | keep-out at all four inside corners: \|x\| 470..500, \|y\| 210..240, z 8..700 |
 | Floor | z 0..8, top has M3 insert holes on a 40 grid: x = -480..480, y = -220..220 (frame skips holes under the columns) |
 | Deck panel | z 370..390 (skin 384..390, ribs 370..384). Top has M3 inserts on a 40 grid: x = -480..480, y = -200..200, skipping holes within 10 of an opening |
