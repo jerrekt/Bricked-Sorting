@@ -1,0 +1,66 @@
+BRICKED SORTING - V12 WHOLE MACHINE: THE OPEN CAD TASKS CLOSED
+2026-11-03 22:43 PT. Units mm. Made by Claude in CadQuery on top of V11 (read
+READ_THIS_FIRST_V11.txt first; everything there still holds). PROPOSED, NOT A
+PRINT RELEASE. Scripts: build_machine_v12.py (V11 text plus marked V12
+sections) and render_machine_v12.py. Checks: machine_checks.json.
+
+WHAT V12 ADDS (task board ids in brackets)
+68  FRAME IS NOW 2020 ALUMINUM EXTRUSION, not printed beams [cad-hw-01].
+    Cut list: 8 x 1240, 4 x 650, 14 x 457, 12 x 132 = 20.5 m. Bought cut to
+    length (about $3 per metre). Tap the ends M5. Printed fittings:
+    69 inside corner x48 (two M5 T-nuts), 77 three-way corner cube x8 at the
+    body corners (M5 into the tapped ends). This drops about 17 L of PLA.
+71  LIFT TOWER TIE [cad-ind-03]: the V3 cap was the free end of a 400 mm rod
+    cantilever. Plate bolts to the cap's two M4 rod screws and rises to the
+    back deck-level extrusion (two M5 T-nuts). Clears the carriage trigger
+    tab at H_MAX by 9 mm (checked at 24 poses). Lift decision: rods 400,
+    built-in lead-screw NEMA17 with a 360 screw, travel 236.5 (q71 answered
+    as "taller lift"; shortening floor 2 bins stays possible).
+72  DRAWER CARRIER TILES [cad-ind-05]: 8 printed tiles per tier, 3 mm, in
+    place of a cut sheet. Holes for all 24 locator screws per tier, 18 side
+    bar screws, and 72b splice strips (36 x 16 x 4, x40) under every seam.
+    Centre cutout r 146 clears the lift base, pedestal legs and rods at every
+    drawer position (checked, no clashes at full pull-out).
+73  XIAO ESP32-S3 SENSE CAMERA MOUNT [cad-id-05]: plate on the camera bridge
+    (same two M3 slots), lens window over the bridge hole, four corner posts
+    with snap nubs hold the 21 x 17.8 board lens-down, 0.3 clearance, room
+    for the OV5640 heat sink (stack 9.5). Antenna strip tray on +Y, USB-C
+    cable clip on -Y. Pupil stays 128 above the doors.
+74  APDS-9960 MOUNT [cad-id-06]: on the scanner plate at (-14, -44), board
+    pocket 20.2 x 15.8 tilted 30 deg toward the door centre, sensor about 22
+    from the part, wire channel out the back, two M3 into the plate. Board
+    hole pattern not checked: measure the GY-9960 before printing.
+75  DRAWER LATCH [cad-ind-08]: gravity lever on a pivot ear beside the right
+    rail (75b), hook drops behind a catch block hanging under the carrier
+    side bar (75c). Pulling the drawer 5 mm jams the catch into the hook
+    (checked: 75 mm3 overlap); lifting the lever 35 deg clears the catch over
+    the whole 350 mm travel (checked: 0). Thumb tab at the front.
+76  ELECTRONICS TRAY [cad-hw-02]: two 3 mm tiles in the +X end bay of the
+    lower brick (x 355 to 487), M4 down into the base plate, M3 standoff
+    bosses for: PSU 12 V 10 A (60 x 165 x 40, long side along Y), buck, XIAO
+    C3 carrier, spare XIAO, TMC2209 x3 carrier board, MCP23017, XT30 inlet.
+    Reference boxes only; measure each board before trusting the bosses.
+78/79 STUD RINGS: the two 312 mm roof studs print as quarter arcs x8
+    (156 x 156 x 107.5 each) plus cap quarters x4 and the open loading ring
+    top x4, glued on the cut roof. Shell walls stay cut sheet (3 mm).
+SCOOP OUTLET [cad-ind-07]: KEPT AT 40. In the 10696 set only Plate 6x8
+    (48 wide) and Plate 8x16 (64 x 128) are wider, and the 8x16 cannot pass
+    the 64 x 44 funnel duct anyway. Hand-sort those 2 of 484 pieces. Widening
+    to 46 would leave under 2 mm to the 49.5 bin mouth.
+
+CHECKS RUN (geometry only, all clean)
+- All 46 printable files: single valid solids, watertight, fit 248 x 248 x 256.
+- Scoop, carriage, hub, yaw motor vs everything fixed (now incl. the tie and
+  electronics) at 24 poses: none. Doors open 75 deg vs scoop: none. Both
+  drawers out 350 vs lift, frame, tie, latch ears, trays: none.
+- Isolation modules: only the by-design drum core/tire overlap.
+NOT checked: stiffness of the tie and tiles, latch spring-back, board hole
+patterns, wiring, extrusion T-nut access, stud ring glue joints.
+
+PRINT ORDER (runbook: test small first)
+1 One carrier tile (72_..._10) + two splices: flatness and locator fit.
+2 73 camera mount with the real Sense board: snap fit, antenna, cable.
+3 74 APDS mount after measuring the board. 4 One latch set. 5 The rest.
+NEW PLA: about 3.7 L of solid volume for one of each new part (times the
+counts for tiles, rings and corners); slice to confirm.
+BUY: 20.5 m of 2020 extrusion, about 60 M5 T-nuts and M5x8 screws.
