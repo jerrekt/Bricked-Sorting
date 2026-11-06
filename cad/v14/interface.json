@@ -1,6 +1,6 @@
 {
  "_about": "Bricked Sorting V14 shared interface. All four module chats build to these numbers. Do not edit; request changes in your module README under INTERFACE REQUESTS.",
- "version": "v14-interface-4.1 (2026-11-05 19:02): spine tunnels 26 tall (z 8..34) for a 24 mm roller rail, bins ~139 tall; interface frozen from here unless a test fails",
+ "version": "v14-interface-4.2 (2026-11-05 21:20): print-friendly rules; wall skin 2.4 (zone still 20); back access panel z 420..668",
  "units": "mm",
  "axes": "right-handed: origin = floor center; +Y toward the front (the drawer pulls out +Y), +Z up, so +X is on the LEFT of a person facing the front drawer (wording fix 19:50; numbers unchanged). Bin numbers follow the real viewer at each drawer.",
  "envelope": {
@@ -59,8 +59,10 @@
  },
  "walls": {
   "zone_thickness": 20,
-  "skin": 6,
-  "ribs_inward": 14,
+  "skin": 2.4,
+  "ribs_inward": 17.6,
+  "rib_thickness": 2.4,
+  "rib_spacing_about": 80,
   "interior_clear": {
    "x": [
     -500,
@@ -231,7 +233,7 @@
    ],
    "z": [
     420,
-    680
+    668
    ]
   }
  },
@@ -435,5 +437,14 @@
   "targets": "< 2 mm sag at center with carriage and belt tension; scoop stays level across travel"
  },
  "switches": "two KW11-3Z drawer-closed switches (front, back); no per-bin switches",
- "cable": "carriage cable in a small printed drag chain on the beam's back face (y -20..-35, z 195..255), exiting to the left deck cable slot"
+ "cable": "carriage cable in a small printed drag chain on the beam's back face (y -20..-35, z 195..255), exiting to the left deck cable slot",
+ "print_rules": {
+  "estimates": "grams as the slicer would print them: 3 walls (1.2 mm), 4 top/bottom layers, 15 % gyroid infill, not solid volume",
+  "budget": "whole machine <= ~15 kg filament and <= ~400 print hours; frame <= ~9 kg",
+  "supports": "none: overhangs <= 45 deg, bridges <= 30 mm, holes horizontal are teardrop or 0.2 mm sacrificial layer",
+  "orientation": "every part has a flat face to put on the bed; say the orientation in parts.json",
+  "fits": "0.2 mm per side for slip fits, 0.1 for press fits, bearings 16.2 pockets; chamfer 0.6 on bed edges",
+  "parts": "fewer, bed-sized parts beat many small ones; panels near 240 x 240",
+  "inserts": "every insert hole reachable with a soldering iron after printing"
+ }
 }
