@@ -386,5 +386,11 @@
   "note": "free strip under the beam between the two drawers: F may put a structural spine here and D may bolt runners to its sides"
  },
  "service_clearance": "300 mm behind the machine for the back drawer",
- "drum": "keep the V13 drum as-is: 47b barrel 160 x 180 with helical flight, 49b static outlet plate (cradles new)"
+ "drum": "keep the V13 drum as-is: 47b barrel 160 x 180 with helical flight, 49b static outlet plate (cradles new)",
+ "bin_ids": {
+  "front": "F1..F8, left to right as you face the front",
+  "back": "B1..B8, left to right as you face the back",
+  "note": "so B1 sits behind F8; numbering always reads left to right for the person at that drawer"
+ },
+ "side_marking": "drawer faces in two filament colors (front and back), embossed F / B and 1-8 above each bin position, and a slide-in label card slot on each bin face for its category"
 }
