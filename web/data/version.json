@@ -1,6 +1,6 @@
 {
- "version": "V1.026",
+ "version": "V1.027",
  "date": "2026-11-07",
- "note": "Live page keeps reconnecting until the server answers (it gave up after two tries before)",
+ "note": "Live page bins fill up like the Demo: piles and fill bars, sized for 3 boxes",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }

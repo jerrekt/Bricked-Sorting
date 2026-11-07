@@ -67,11 +67,7 @@
 .tools p{font-size:13px;color:var(--muted);margin:8px 0 0}
 .tag{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:999px;border:1px solid var(--line);text-transform:uppercase}
 .tag.sim{border-color:var(--pop)}
-.bin{cursor:default;overflow:hidden;min-height:96px}
-.bin-count{margin-top:auto}
-.drop{position:absolute;left:50%;top:-24px;width:22px;height:14px;margin-left:-11px;border-radius:3px;border:1px solid rgba(0,0,0,.35);animation:fall .55s cubic-bezier(.5,0,.9,.6) forwards;pointer-events:none}
-@keyframes fall{to{top:calc(100% - 22px);opacity:.15}}
-@media (prefers-reduced-motion:reduce){.drop{display:none}}
+.bin{cursor:default;overflow:hidden}
 .recent{list-style:none;margin:0;padding:0;display:grid;gap:4px;font-size:14px}
 .recent li{display:grid;grid-template-columns:36px auto auto 1fr auto auto;gap:10px;align-items:center;padding:4px 0;border-bottom:1px solid var(--line)}
 .recent .r-th{width:36px;height:27px;border-radius:5px;overflow:hidden;background:var(--surface-2);display:grid;place-items:center}
@@ -108,7 +104,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 <script src="assets/intro.js"></script>
 <header class="top"><div class="wrap">
   <a class="logo" href="./"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
-  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.026</a>
+  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.027</a>
   <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="live.html" aria-current="page">Live</a><a href="tasks.html">Tasks</a><a href="parts.html">Parts</a><a href="camera.html">Camera</a></nav>
 </div></header>
 
