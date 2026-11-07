@@ -28,68 +28,42 @@
    "hours": 1.0
   },
   {
-   "part": "162_station_front_R",
+   "part": "162_station_R",
    "qty": 1,
    "bed_extent": [
     50.9,
-    32.0,
+    65.0,
     22.0
    ],
    "fits_248": true,
    "bed_face": "foot down",
-   "grams_PETG": 12.4,
-   "hours": 0.3
+   "grams_PETG": 23.4,
+   "hours": 0.5
   },
   {
-   "part": "162_station_front_L",
+   "part": "162_station_L",
    "qty": 1,
    "bed_extent": [
     50.9,
-    32.0,
+    65.0,
     22.0
    ],
    "fits_248": true,
    "bed_face": "foot down",
-   "grams_PETG": 12.4,
-   "hours": 0.3
-  },
-  {
-   "part": "163_station_rear_preload_R",
-   "qty": 1,
-   "bed_extent": [
-    50.9,
-    36.0,
-    22.0
-   ],
-   "fits_248": true,
-   "bed_face": "foot down",
-   "grams_PETG": 13.8,
-   "hours": 0.3
-  },
-  {
-   "part": "163_station_rear_preload_L",
-   "qty": 1,
-   "bed_extent": [
-    50.9,
-    36.0,
-    22.0
-   ],
-   "fits_248": true,
-   "bed_face": "foot down",
-   "grams_PETG": 13.8,
-   "hours": 0.3
+   "grams_PETG": 23.4,
+   "hours": 0.5
   },
   {
    "part": "164_guide_block_R",
    "qty": 1,
    "bed_extent": [
     26.1,
-    56.0,
+    48.0,
     8.0
    ],
    "fits_248": true,
    "bed_face": "foot down",
-   "grams_PETG": 9.5,
+   "grams_PETG": 8.3,
    "hours": 0.2
   },
   {
@@ -110,7 +84,7 @@
   "0": {},
   "3": {},
   "6": {
-   "roller_1": 1.43
+   "roller_2": 1.43
   },
   "10": {},
   "50": {},
@@ -118,20 +92,20 @@
   "149": {},
   "150": {},
   "151": {
-   "roller_2": 26.16
+   "roller_0": 26.16
   },
   "153": {
-   "roller_2": 130.49
+   "roller_0": 130.49
   }
  },
  "bought": [
   {
    "item": "625ZZ",
-   "qty": 10
+   "qty": 8
   },
   {
    "item": "M5 x 25 screw + nut",
-   "qty": 8
+   "qty": 6
   },
   {
    "item": "M5 x 16 screw",

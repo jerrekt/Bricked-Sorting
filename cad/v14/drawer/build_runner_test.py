@@ -11,12 +11,12 @@ import cadquery as cq
 
 OUT = HERE / 'runner_test'
 INS = [60, 100, 140, 175]           # rail-top M3 inserts, rail local y
-DET = R.ROLLERS_Y[3] - R.RAIL_Y0_WORLD - 6.0
+DET = R.ROLLERS_Y[-1] - R.RAIL_Y0_WORLD - 6.0
 rail_R = R.rail(insert_ys=INS, detent_y=DET)
 rail_L = R.mirror_x(rail_R)
-stF, rF, _ = R.station(R.ROLLERS_Y[2:])
-stB, rB, _ = R.station(R.ROLLERS_Y[:2], slotted_index=0)
-gd, rG, _ = R.guide_block((136.0, 172.0))
+stF, rF, _ = R.station(R.ROLLERS_Y, slotted_index=0)
+stB, rB = stF, []
+gd, rG, _ = R.guide_block((134.0, 162.0))
 
 
 def coupon():
@@ -31,7 +31,7 @@ def coupon():
 
 
 def check():
-    fixed = [('front_station', stF), ('rear_station', stB), ('guide', gd)] + [(f'roller_{i}', r) for i, r in enumerate(rF + rB + rG)]
+    fixed = [('station', stF), ('guide', gd)] + [(f'roller_{i}', r) for i, r in enumerate(rF + rB + rG)]
     out = {}
     for d in (0, 3, 6, 10, 50, 100, 149, 150, 151, 153):
         rr = rail_R.translate((0, R.RAIL_Y0_WORLD + d, 0))
@@ -44,8 +44,7 @@ def check():
 
 
 parts = [('160_rail_R_guided', rail_R, 2, 'PETG'), ('161_rail_L_floating', rail_L, 2, 'PETG'),
-         ('162_station_front_R', stF, 0, 'PETG'), ('162_station_front_L', R.mirror_x(stF), 0, 'PETG'),
-         ('163_station_rear_preload_R', stB, 0, 'PETG'), ('163_station_rear_preload_L', R.mirror_x(stB), 0, 'PETG'),
+         ('162_station_R', stF, 0, 'PETG'), ('162_station_L', R.mirror_x(stF), 0, 'PETG'),
          ('164_guide_block_R', gd, 0, 'PETG'), ('165_625_pocket_coupon', coupon(), 0, 'PETG')]
 report = []
 for name, shp, how, mat in parts:
@@ -59,15 +58,15 @@ for name, shp, how, mat in parts:
     report.append({'part': name, 'qty': 1, **bed_fit(bedp), 'bed_face': 'closed web down (slot up)' if how == 2 else 'foot down', 'grams_PETG': g, 'hours': hours(g)})
 chk = check()
 (OUT / 'runner_test_parts.json').write_text(json.dumps({'interface': 'v14-interface-5.1', 'parts': report, 'sweep_check_right_rail_mm': chk,
-    'bought': [{'item': '625ZZ', 'qty': 10}, {'item': 'M5 x 25 screw + nut', 'qty': 8}, {'item': 'M5 x 16 screw', 'qty': 2},
+    'bought': [{'item': '625ZZ', 'qty': 8}, {'item': 'M5 x 25 screw + nut', 'qty': 6}, {'item': 'M5 x 16 screw', 'qty': 2},
                {'item': 'M3 insert', 'qty': 8}, {'item': 'M3 x 12 screw', 'qty': 2}, {'item': '#6 x 3/4 wood screw', 'qty': 10}]}, indent=1))
 for r in report: print(r)
 print(chk)
 items = [(rail_R.translate((200, R.RAIL_Y0_WORLD + 150, 0)), (0.95, 0.55, 0.15), 1), (rail_L.translate((-200, R.RAIL_Y0_WORLD + 150, 0)), (0.95, 0.55, 0.15), 1)]
-for s_ in (stF, stB, gd): items.append((s_.translate((200, 0, 0)), (0.25, 0.45, 0.75), 1))
-for s_ in (stF, stB): items.append((R.mirror_x(s_).translate((-200, 0, 0)), (0.25, 0.45, 0.75), 1))
-for r in rF + rB + rG: items.append((r.translate((200, 0, 0)), (0.75, 0.75, 0.78), 1))
-for r in rF + rB: items.append((R.mirror_x(r).translate((-200, 0, 0)), (0.75, 0.75, 0.78), 1))
+for s_ in (stF, gd): items.append((s_.translate((200, 0, 0)), (0.25, 0.45, 0.75), 1))
+items.append((R.mirror_x(stF).translate((-200, 0, 0)), (0.25, 0.45, 0.75), 1))
+for r in rF + rG: items.append((r.translate((200, 0, 0)), (0.75, 0.75, 0.78), 1))
+for r in rF: items.append((R.mirror_x(r).translate((-200, 0, 0)), (0.75, 0.75, 0.78), 1))
 ply = cq.Workplane().box(720, 360, 12, centered=(True, True, False))
 items.append((ply, (0.85, 0.75, 0.55), 0.5))
 render(items, OUT / 'runner_test_extended.png', cam=(700, -500, 420), focal=(0, 120, 20), title='Runner test 5.1: rails 160/161 at the 150 mm stop on 625ZZ stations screwed to the plywood floor')
