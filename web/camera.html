@@ -21,23 +21,67 @@
 .head-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .head-row h1{font-size:22px;margin:0}
 .cam p{margin:10px 0 0}
+.feed{position:relative;margin-top:12px;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:var(--surface-2);border:1px solid var(--line)}
+.feed img{display:block;width:100%;height:100%;object-fit:contain}
+.feed .msg{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:16px;color:var(--muted)}
+.feed [hidden]{display:none}
+.badge.on{background:var(--ok);color:#fff;border-color:var(--ok)}
+.badge.off{background:var(--surface-2);color:var(--muted)}
 </style>
 </head>
 <body>
 <script src="assets/intro.js"></script>
 <header class="top"><div class="wrap">
   <a class="logo" href="./"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
-  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.028</a>
+  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.029</a>
   <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="live.html">Live</a><a href="tasks.html">Tasks</a><a href="parts.html">Parts</a><a href="camera.html" aria-current="page">Camera</a></nav>
 </div></header>
 
 <main class="wrap cam">
   <section class="card">
-    <div class="head-row"><h1>Camera</h1><span class="badge">In progress</span></div>
-    <p>Ethan is building the Raspberry Pi camera service: it photographs each piece on the tray and sends it to the server, which identifies it with Brickognize and picks its bin.</p>
-    <p class="muted">When it is connected, every piece the camera sees shows up on the <a href="live.html">Live page</a>.</p>
+    <div class="head-row"><h1>Camera</h1><span class="badge off" id="cam-state">Connecting…</span></div>
+    <div class="feed">
+      <img id="cam" alt="Live view of the Bricked Sorting tray from the Raspberry Pi camera" width="640" height="360" hidden>
+      <div class="msg" id="cam-msg">Connecting to the camera…</div>
+    </div>
+    <p class="muted">Live view from the Raspberry Pi camera above the tray, about 5 frames a second. Each piece it sees is identified on our server with Brickognize and shows up on the <a href="live.html">Live page</a>.</p>
   </section>
 </main>
+<script>
+(function () {
+  var img = document.getElementById('cam'), msg = document.getElementById('cam-msg'), state = document.getElementById('cam-state');
+  var retry = null, gotFrame = false;
+  function show(on, text) {
+    state.textContent = on ? 'Live' : 'Offline'; state.className = 'badge ' + (on ? 'on' : 'off');
+    img.hidden = !on; msg.hidden = on; if (text) msg.textContent = text;
+  }
+  function start() {
+    clearTimeout(retry); gotFrame = false;
+    img.src = '/camera-stream?t=' + Date.now();   // new URL each time so a dropped stream really reconnects
+  }
+  function stop() { clearTimeout(retry); img.removeAttribute('src'); }
+  img.onload = function () { gotFrame = true; show(true); };
+  img.onerror = function () {
+    show(false, gotFrame ? 'The camera stream dropped. Reconnecting…' : 'The camera is offline right now. Checking again every 10 seconds.');
+    stop(); retry = setTimeout(start, 10000);
+  };
+  // A stream that just stops keeps showing its last frame, so check the camera every 10 s.
+  var online = null;
+  function check() {
+    if (document.hidden) return;
+    fetch('/camera-health', { cache: 'no-store' }).then(function (r) { return r.ok; }, function () { return false; })
+      .then(function (ok) {
+        if (ok && online === false) start();                       // came back
+        if (!ok) { stop(); show(false, 'The camera is offline right now. Checking again every 10 seconds.'); }
+        online = ok;
+      });
+  }
+  setInterval(check, 10000);
+  // Don't stream to a tab nobody is looking at.
+  document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else { start(); check(); } });
+  start();
+})();
+</script>
 
 <footer class="foot"><div class="wrap"><span>Camera: Pi camera for the semester 1 proof of concept.</span><nav class="foot-links"><a href="https://github.com/jerrekt/Bricked-Sorting" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://bja.adsuaracloud.com" target="_blank" rel="noopener noreferrer">bja.adsuaracloud.com</a><a href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Changelog</a></nav><span class="foot-course">SJSU Tech 190A, Senior Project I, Fall 2026 · Instructor Vlad Ionescu</span></div></footer>
 </body>

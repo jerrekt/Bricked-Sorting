@@ -1,6 +1,6 @@
 {
- "version": "V1.028",
+ "version": "V1.029",
  "date": "2026-11-07",
- "note": "Live page: click a Recount bin to clear it after pouring it back",
+ "note": "Camera tab: live feed from the Pi camera (via CT 150 /camera-stream, 640 px, 5 fps)",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }
