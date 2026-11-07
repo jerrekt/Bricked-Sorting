@@ -35,7 +35,7 @@ Height budget: drum top 589 / plate top 592 under the 612 roof (20 mm spare; K z
 - No clashes between parts (by-design contacts: springs/saddles on their trays, core/tire, V1 in V2's notch, 49b ears on the cheeks, rollers in the forks, bracket on the motor wall).
 - Drum turned in 30° steps: 0 clashes at all 12 (the chute tip clears the flight).
 - Scanner doors at 0/30/60/90°: 0 clashes; the funnel mouth is 1 mm below the open door tips.
-- **Against the frame module** (`cad-v14-frame5` world STEPs: posts, top rails, roof tiles, stud ring, C3 roof clips): 0 clashes.
+- **Against the frame module** (`cad-v14-frame5` world STEPs: posts, top rails, the two flat roof cross rails at x -292 / -68 (z 593..612, interface 5.1), roof tiles, stud ring, C3 roof clips): 0 clashes; the drum top passes 5 mm under the x -68 cross rail.
 - All 26 new parts fit 248; electronics tray 1 goes on the bed diagonally.
 
 ## Print notes
@@ -46,10 +46,10 @@ Height budget: drum top 589 / plate top 592 under the 612 roof (20 mm spare; K z
 ## Open questions
 1. Drum feed: 1° tilt + the helical flight. If pieces are slow, raise the rpm or go to 2° (costs 3 mm of height; there is 20 spare).
 2. Electronics board sizes are placeholders (`EL` in the script); measure the real boards.
-3. Hopper load: the stud ring carries the hopper on the 2 mm roof (frame README request 3). Keep the hopper under ~1 kg of bricks until a cross rail is in.
+3. ~~Hopper load~~: interface 5.1 put two flat 1x2 cross rails under the stud (frame README).
 
 ## INTERFACE REQUESTS
-None. Built to interface 5; the hopper flange matches the ledge in frame part 130 (my own frame module).
+None. Built to interface 5 (re-checked clean against 5.1 on 2026-11-06 19:55 PT; nothing in K changed); the hopper flange matches the ledge in frame part 130 (my own frame module).
 
 ## Vault log lines (for the main chat, `inbox/changes.yaml`)
 - 2026-11-06 00:20 PT, claim, Bricked Sorting: V14 module K (deck) rev 3 on `cad-v14-deck5` to interface 5.

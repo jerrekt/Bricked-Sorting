@@ -1,6 +1,6 @@
 {
  "module": "K",
- "interface": "v14-interface-5 (2026-11-05 23:10): body 720 x 360 x 664, 2x2 + 1x2 wood frame and 1/2 in plywood floor and deck, 2 mm red PLA skin, 0.5 L bins at 79 pitch",
+ "interface": "v14-interface-5.1 (2026-11-06 19:35): drawer fits through the skin opening (bins 70 wide at 76 pitch, body x +-306, opening +-310, overlay face +-330); roof support under the hopper stud",
  "printed_new": [
   {
    "label": "205_drum_cradle_A_ypos",

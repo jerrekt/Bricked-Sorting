@@ -422,7 +422,7 @@ def frame_ref_parts():
         d = Path('/home/claude/frame_ref')
     if d.exists():
         for f in sorted(d.glob('*.step')):
-            if f.name.startswith(('100_', '101_', '102_', '114_', '130_', '123_')):
+            if f.name.startswith(('100_', '101_', '102_', '109_', '114_', '130_', '123_')):
                 out.append((f.stem, cq.importers.importStep(str(f)), 'skin' if f.name.startswith(('114', '130')) else 'frame'))
     return out
 
