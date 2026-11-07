@@ -1,6 +1,6 @@
 {
- "version": "V1.020",
- "date": "2026-11-03",
- "note": "V12 CAD: eight CAD tasks done, extrusion and T-nuts on the buy list",
+ "version": "V1.021",
+ "date": "2026-11-05",
+ "note": "V13 drum: static outlet plate and helical flight, one bearing fewer",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }
