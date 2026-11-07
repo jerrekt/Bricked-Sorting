@@ -1,91 +1,112 @@
 {
+ "interface": "v14-interface-5.1",
  "parts": [
   {
    "part": "160_rail_R_guided",
    "qty": 1,
    "bed_extent": [
-    240.42,
-    240.42,
+    24.5,
+    220.0,
     16.0
    ],
    "fits_248": true,
-   "diagonal_on_bed": true,
-   "grams_each_PETG": 69.1
+   "bed_face": "closed web down (slot up)",
+   "grams_PETG": 47.1,
+   "hours": 1.0
   },
   {
    "part": "161_rail_L_floating",
    "qty": 1,
    "bed_extent": [
-    240.42,
-    240.42,
+    24.5,
+    220.0,
     16.0
    ],
    "fits_248": true,
-   "diagonal_on_bed": true,
-   "grams_each_PETG": 69.1
+   "bed_face": "closed web down (slot up)",
+   "grams_PETG": 47.1,
+   "hours": 1.0
   },
   {
    "part": "162_station_front_R",
    "qty": 1,
    "bed_extent": [
-    100.4,
-    36.0,
+    50.9,
+    32.0,
     22.0
    ],
    "fits_248": true,
-   "diagonal_on_bed": false,
-   "grams_each_PETG": 22.5
+   "bed_face": "foot down",
+   "grams_PETG": 12.4,
+   "hours": 0.3
   },
   {
    "part": "162_station_front_L",
    "qty": 1,
    "bed_extent": [
-    100.4,
-    36.0,
+    50.9,
+    32.0,
     22.0
    ],
    "fits_248": true,
-   "diagonal_on_bed": false,
-   "grams_each_PETG": 22.5
+   "bed_face": "foot down",
+   "grams_PETG": 12.4,
+   "hours": 0.3
   },
   {
    "part": "163_station_rear_preload_R",
    "qty": 1,
    "bed_extent": [
-    100.4,
+    50.9,
     36.0,
     22.0
    ],
    "fits_248": true,
-   "diagonal_on_bed": false,
-   "grams_each_PETG": 22.7
+   "bed_face": "foot down",
+   "grams_PETG": 13.8,
+   "hours": 0.3
   },
   {
    "part": "163_station_rear_preload_L",
    "qty": 1,
    "bed_extent": [
-    100.4,
+    50.9,
     36.0,
     22.0
    ],
    "fits_248": true,
-   "diagonal_on_bed": false,
-   "grams_each_PETG": 22.7
+   "bed_face": "foot down",
+   "grams_PETG": 13.8,
+   "hours": 0.3
   },
   {
    "part": "164_guide_block_R",
    "qty": 1,
    "bed_extent": [
-    24.1,
-    60.0,
+    26.1,
+    56.0,
     8.0
    ],
    "fits_248": true,
-   "diagonal_on_bed": false,
-   "grams_each_PETG": 9.7
+   "bed_face": "foot down",
+   "grams_PETG": 9.5,
+   "hours": 0.2
+  },
+  {
+   "part": "165_625_pocket_coupon",
+   "qty": 1,
+   "bed_extent": [
+    70.0,
+    26.0,
+    7.01
+   ],
+   "fits_248": true,
+   "bed_face": "foot down",
+   "grams_PETG": 11.2,
+   "hours": 0.2
   }
  ],
- "sweep_check_right_rail": {
+ "sweep_check_right_rail_mm": {
   "0": {},
   "3": {},
   "6": {
@@ -94,13 +115,12 @@
   "10": {},
   "50": {},
   "100": {},
+  "149": {},
   "150": {},
-  "200": {},
-  "205": {},
-  "206": {
+  "151": {
    "roller_2": 26.16
   },
-  "208": {
+  "153": {
    "roller_2": 130.49
   }
  },
@@ -124,6 +144,10 @@
   {
    "item": "M3 x 12 screw",
    "qty": 2
+  },
+  {
+   "item": "#6 x 3/4 wood screw",
+   "qty": 10
   }
  ]
 }

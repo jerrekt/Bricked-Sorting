@@ -6,11 +6,13 @@ import cadquery as cq
 
 V14 = Path(__file__).resolve().parent
 IF = json.loads((V14 / 'interface.json').read_text())
-BED = IF['print_bed_max']            # [248, 248, 248]
-FAST = IF['fasteners']
-INSERT_D, INSERT_DEPTH = FAST['insert_M3_hole_dia'], FAST['insert_M3_depth']
-M3_CLR = FAST['M3_clearance']
-CB_D, CB_DEPTH = FAST['M3_head_counterbore']
+BED = [248, 248, 248]                # usable P2S bed (runbook)
+INSERT_D, INSERT_DEPTH = 4.1, 5.7    # M3 generic insert (runbook: 4.0-4.2, verify with calipers)
+M3_CLR = 3.4
+CB_D, CB_DEPTH = 6.5, 3.5
+FIT = 0.07                           # dovetail / sliding fit per side (runbook)
+PRESS = -0.02                        # press pocket per side (runbook)
+WOOD_SCREW = 3.6                     # #6 wood screw clearance
 
 
 def bbox(shape):
@@ -56,13 +58,21 @@ def export(shape, path):
         cq.exporters.export(w, str(path))
 
 
-def grams(shape, density=1.27, shell=1.6, infill=0.15):
-    """Rough slicer-like estimate: walls (4 x 0.42) solid + 15 % infill inside.
-    PETG 1.27, PLA 1.24 g/cm3. Good to about +-25 %."""
+G_PER_H = 45.0   # day profile throughput (runbook backplate timing), 0.4 nozzle
+
+
+def grams(shape, density=1.24, shell=1.5, infill=0.15):
+    """BJ's day profile (vault runbooks/3d-printing.md): 4 walls x 0.42 = 1.68 mm per side, 5 top / 3 bottom layers
+    (1.5 mm averaged over the area) solid, 15 % sparse infill inside. Thin parts come out fully solid.
+    PLA 1.24, PETG 1.27 g/cm3."""
     s = shape.val() if isinstance(shape, cq.Workplane) else shape
     v = s.Volume(); a = s.Area()
     solid = min(v, a * shell)
     return round((solid + (v - solid) * infill) / 1000 * density, 1)
+
+
+def hours(g):
+    return round(g / G_PER_H, 1)
 
 
 # ---------------- rendering (VTK offscreen) ----------------

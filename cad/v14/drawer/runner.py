@@ -1,4 +1,4 @@
-"""V14 drawer runner, interface 4: rail on the drawer underside, 625ZZ rollers fixed to the floor.
+"""V14 drawer runner, interface 5.1: PETG rail on the drawer underside, 625ZZ roller stations screwed into the plywood floor.
 
 Rail (PETG, moves with the drawer): 16 wide x 24 tall bar with a 16.5 tall
 side slot, 6.5 deep, open toward the outside of the machine. Each rail runs
@@ -21,29 +21,27 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from common import IF, M3_CLR, CB_D, CB_DEPTH, INSERT_D, INSERT_DEPTH
 
-RX = IF['drawer']['rails_xy']
-TRAVEL = IF['drawer']['travel_y']               # 205
-RAIL_W = RX['rail_width']                        # 16
-FLOOR = IF['floor']['z'][1]                      # 8
-RAIL_Z0 = FLOOR + 0.5                            # 8.5
-SLOT_Z0, SLOT_H = RAIL_Z0 + 4.0, 16.5            # 12.5 .. 29.0
-RAIL_Z1 = SLOT_Z0 + SLOT_H + 3.5                 # 32.5 = drawer floor underside
+TRAVEL = IF['drawer']['travel_y']               # 150
+RAIL_W = 16.0
+FLOOR = IF['wood']['floor_ply']['z'][1]          # 12 (plywood top)
+RAIL_Z0 = FLOOR + 0.5                            # 12.5
+SLOT_Z0, SLOT_H = RAIL_Z0 + 4.0, 16.5            # 16.5 .. 33.0
+RAIL_Z1 = SLOT_Z0 + SLOT_H + 4.0                 # 37.0 = drawer tray underside (rail zone ends 38)
+RAILS_X = {'front': 200.0, 'back': 120.0}        # keyed: front rails x +-200, back +-120
+WOOD_SCREW_CLR = 3.6                             # #6 wood screw
 SLOT_DEPTH = 6.5
 BR_OD, BR_W, BR_ID = 16.0, 5.0, 5.0
 AXLE_Z = SLOT_Z0 + SLOT_H / 2                    # 20.75
 BR_X = (RAIL_W / 2 - SLOT_DEPTH + 1.0, RAIL_W / 2 - SLOT_DEPTH + 1.0 + BR_W)   # 2.5 .. 7.5 (1 mm off the slot floor)
-RAIL_Y0_WORLD = -60.0                            # front rail tail (back rails mirror to +60)
-RAIL_L = 316.0                                   # tail -60 .. front 256
-ROLLERS_Y = (165.0, 183.0, 207.0, 225.0)        # world y of the 4 rollers (front drawer)
+RAIL_Y0_WORLD = -40.0                            # front rail tail (back rails mirror to +40)
+RAIL_L = 220.0                                   # tail -40 .. front 180
+ROLLERS_Y = (130.0, 148.0, 164.0, 178.0)        # world y of the 4 rollers (front drawer): anti-lift pair, load pair
 STOP_WALL = ROLLERS_Y[0] - BR_OD / 2 - TRAVEL - RAIL_Y0_WORLD   # 12: slot starts here (rail local)
 BUMP_H = 0.4
 POST_X0 = RAIL_W / 2 + 0.5                       # 8.5 post face (outside the rail)
 POST_X1 = POST_X0 + 13.5
-POST_TOP = 30.0
+POST_TOP = 34.0
 FOOT_T = 4.0
-GRID = IF['floor']['grid_M3_inserts_top']
-GX = [GRID['x0'] + GRID['pitch'] * k for k in range(GRID['nx'])]
-GY = [GRID['y0'] + GRID['pitch'] * k for k in range(GRID['ny'])]
 
 
 def box(x0, x1, y0, y1, z0, z1):
@@ -83,10 +81,7 @@ def station(ys, preload_last=False, slotted_index=None, foot_holes=True, rail_x_
     """floor block for two rollers beside a rail (rail on its -x side, rail centre at x 0).
     ys: roller y (local to this block's frame, i.e. world y). Returns block, roller solids."""
     y0, y1 = min(ys) - 9, max(ys) + 9
-    foot_end = POST_X0 + 86
-    if rail_x_world is not None:   # make the foot long enough for two floor-grid holes
-        lxs = sorted(gx - rail_x_world for gx in GX if gx - rail_x_world >= POST_X1 + 4)
-        if len(lxs) >= 2: foot_end = lxs[1] + 8
+    foot_end = POST_X0 + 50
     b = box(POST_X0, POST_X1, y0, y1, FLOOR, POST_TOP)
     b = b.union(box(POST_X0, foot_end, y0, y1, FLOOR, FLOOR + FOOT_T))
     rollers = []
@@ -103,15 +98,10 @@ def station(ys, preload_last=False, slotted_index=None, foot_holes=True, rail_x_
             b = b.cut(cq.Workplane(cq.Plane(origin=(POST_X1 - 4, y, AXLE_Z), xDir=(0, 1, 0), normal=(1, 0, 0))).polygon(6, 9.4).extrude(5))
         rollers.append(cyl('x', ((BR_X[0] + BR_X[1]) / 2, y, AXLE_Z), BR_OD, BR_W).cut(cyl('x', ((BR_X[0] + BR_X[1]) / 2, y, AXLE_Z), BR_ID, BR_W + 1)))
     holes = []
-    if foot_holes and rail_x_world is not None:
-        for gx in GX:
-            lx = gx - rail_x_world
-            if POST_X1 + 4 <= lx <= foot_end - 4:
-                for gy in GY:
-                    if y0 + 4 <= gy <= y1 - 4:
-                        holes.append((lx, gy))
-        for (lx, gy) in holes:
-            b = b.cut(cyl('z', (lx, gy, FLOOR + FOOT_T / 2), M3_CLR, FOOT_T + 2))
+    if foot_holes:   # two #6 wood screws into the plywood, counterbored
+        for (lx, gy) in ((POST_X1 + 10, y0 + 9), (foot_end - 8, y1 - 9)):
+            holes.append((lx, gy))
+            b = b.cut(cyl('z', (lx, gy, FLOOR + FOOT_T / 2), WOOD_SCREW_CLR, FOOT_T + 2)).cut(cyl('z', (lx, gy, FLOOR + FOOT_T - 0.75), 7.0, 1.5))
     return b, rollers, holes
 
 
@@ -120,19 +110,12 @@ def guide_block(ys, rail_x_world=None):
     face = -RAIL_W / 2                     # rail inner face, local x
     cx = face - BR_OD / 2 - 0.1
     y0, y1 = min(ys) - 10, max(ys) + 10
-    b = box(cx - 18, face - 2.0, y0, y1, FLOOR, FLOOR + 8.0)
+    b = box(cx - 20, face - 2.0, y0, y1, FLOOR, FLOOR + 8.0)
     rollers = []
     for y in ys:
         b = b.cut(cyl('z', (cx, y, FLOOR + 4), INSERT_D, 9)) if False else b.cut(cyl('z', (cx, y, FLOOR + 4), 4.2, 9))
         rollers.append(cyl('z', (cx, y, FLOOR + 8.5 + BR_W / 2), BR_OD, BR_W).cut(cyl('z', (cx, y, FLOOR + 8.5 + BR_W / 2), BR_ID, BR_W + 1)))
-    holes = []
-    if rail_x_world is not None:
-        for gx in GX:
-            lx = gx - rail_x_world
-            if cx - 16 <= lx <= face - 6 and abs(lx - cx) > 7:
-                for gy in GY:
-                    if y0 + 4 <= gy <= y1 - 4 and all(abs(gy - y) > 9 for y in ys):
-                        holes.append((lx, gy))
-        for (lx, gy) in holes:
-            b = b.cut(cyl('z', (lx, gy, FLOOR + 4), M3_CLR, 10)).cut(cyl('z', (lx, gy, FLOOR + 8 - CB_DEPTH / 2), CB_D, CB_DEPTH + 0.02))
+    holes = [(cx - 12, y0 + 6), (cx - 12, y1 - 6)]
+    for (lx, gy) in holes:
+        b = b.cut(cyl('z', (lx, gy, FLOOR + 4), WOOD_SCREW_CLR, 10)).cut(cyl('z', (lx, gy, FLOOR + 8 - 0.75), 7.0, 1.5))
     return b, rollers, holes
