@@ -7,7 +7,7 @@ It is the only program that opens the USB camera. Everything else reads from it:
   GET /health    {"ok": true, "age_s": seconds since the last frame}
 
 Settings come from environment variables (all optional):
-  CAMERA_DEVICE=0  CAMERA_WIDTH=1280  CAMERA_HEIGHT=720  CAMERA_FPS=15
+  CAMERA_DEVICE=0 (or /dev/video0)  CAMERA_WIDTH=1280  CAMERA_HEIGHT=720  CAMERA_FPS=15
   JPEG_QUALITY=85  STREAM_PORT=8001
 """
 import json
@@ -33,14 +33,45 @@ _latest_time = 0.0      # time.time() of the newest frame
 _cond = threading.Condition()
 
 
-def open_camera():
-    source = int(DEVICE) if DEVICE.isdigit() else DEVICE
-    cap = cv2.VideoCapture(source)
-    cap.set(cv2.CAP_PROP_FRAME_WIDTH, WIDTH)
-    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, HEIGHT)
-    cap.set(cv2.CAP_PROP_FPS, FPS)
+def _try_open(source, backend, fourcc, size):
+    cap = cv2.VideoCapture(source, backend)
+    if not cap.isOpened():
+        cap.release()
+        return None
+    if fourcc:
+        cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*fourcc))
+    if size:
+        cap.set(cv2.CAP_PROP_FRAME_WIDTH, WIDTH)
+        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, HEIGHT)
+        cap.set(cv2.CAP_PROP_FPS, FPS)
     cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
-    return cap
+    for _ in range(5):  # a USB camera can return a few empty frames at start
+        ok, frame = cap.read()
+        if ok and frame is not None:
+            return cap
+        time.sleep(0.2)
+    cap.release()
+    return None
+
+
+def open_camera():
+    """Open the camera with plain V4L2 (not GStreamer), trying the usual USB-camera setups."""
+    source = int(DEVICE) if DEVICE.isdigit() else DEVICE
+    tries = [
+        ("V4L2 MJPG %dx%d" % (WIDTH, HEIGHT), cv2.CAP_V4L2, "MJPG", True),
+        ("V4L2 default format, %dx%d" % (WIDTH, HEIGHT), cv2.CAP_V4L2, None, True),
+        ("V4L2 camera defaults", cv2.CAP_V4L2, None, False),
+        ("any backend, camera defaults", cv2.CAP_ANY, None, False),
+    ]
+    for label, backend, fourcc, size in tries:
+        cap = _try_open(source, backend, fourcc, size)
+        if cap is not None:
+            w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+            h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+            logging.info("Camera %s open: %s (got %dx%d)", DEVICE, label, w, h)
+            return cap
+        logging.warning("Camera %s: %s failed", DEVICE, label)
+    return None
 
 
 def capture_loop():
@@ -50,11 +81,10 @@ def capture_loop():
     while True:
         if cap is None or not cap.isOpened():
             cap = open_camera()
-            if not cap.isOpened():
+            if cap is None:
                 logging.warning("Camera %s not available; retrying in 3 s", DEVICE)
                 time.sleep(3)
                 continue
-            logging.info("Camera %s open", DEVICE)
 
         ok, frame = cap.read()
         if not ok or frame is None:
