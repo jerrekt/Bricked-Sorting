@@ -59,3 +59,6 @@ Two 1x2 cross rails, **laid flat** (38 wide, 19 tall, z 593..612) at x -292 and 
   - ~4.33 kg / ~59 h printed; all clash, zone, bed and opening checks clean. Print one clip + tile-edge coupon before the tiles.
 - 2026-11-05 23:50 PT, question, Bricked Sorting: D zone (x +-314) overlaps the skin's +-300 opening by 14 mm each side; and whether a 1x2 cross rail under the hopper stud is wanted. (Answered by interface 5.1.)
 - 2026-11-06 19:50 PT, claim, Bricked Sorting: module F updated to interface 5.1: openings x +-310 z 12..136; two 1x2 roof cross rails laid flat at x -292 / -68 (z 593..612, 4-5.5 mm over the drum) carry the hopper stud; ~4.31 kg; checks clean.
+
+## Drawer check (2026-11-06 20:05 PT, drawers from `cad-v14-all` @86274c8, interface 5.1)
+`check_drawers.py` -> `check_drawers_5.1.json`. Drawers vs deck: 0 clashes. Drawer bodies (x +-306, z 23..131.5) vs the +-310 / 12..136 openings: clear, and 0 clashes with any frame part at 50 / 100 / 150 mm of travel. **Closed: the 6 overlay faces clash with the 8 row-1 wall tiles** because the faces run y 174..192 (from the wood face) instead of the interface's y 180..192 (from the skin face): 6 mm deep into the 2 mm tile and its ribs along the opening border. Fix on D: face back plane at |y| 180. Nothing to change in F.
