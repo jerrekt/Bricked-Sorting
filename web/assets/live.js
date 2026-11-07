@@ -14,6 +14,88 @@
   function slotInfo(slot) { return BINS.slots.filter(function (s) { return s.slot === slot; })[0] || {}; }
   function shown() { return mode === 'sim' ? counts.sim : counts.live; }
 
+  /* ---------- bin piles and fill bars, same look as the Demo page ----------
+     Capacity matches the Demo: what 3 LEGO 10696 boxes put in each bin (placeholder bin sizes).
+     Counts come from the server, so a pile is rebuilt from its count with that bin's color;
+     pieces that arrive while the page is open drop in with their real shape and color. */
+  var BOXES_CAPACITY = 3, CAP = {}, PW = 80, PH = 64, piles = {}, animating = false, DROP = 280;
+  function codesAll() { var a = []; [2, 1].forEach(function (f) { for (var s = 1; s <= 8; s++) a.push(f + '-' + s); }); return a; }
+  function setCaps(set) {
+    var exp = {}; codesAll().forEach(function (c) { exp[c] = 0; });
+    var slotOfKey = {}; BINS.slots.forEach(function (s) { slotOfKey[s.key] = s.slot; });
+    (set && set.parts || []).forEach(function (p) {
+      var c = (p.brick ? 1 : 2) + '-' + (slotOfKey[BINS.colorMap[p.color] || 'unknown'] || 8); exp[c] += p.qty;
+    });
+    codesAll().forEach(function (c) { CAP[c] = Math.max(10, exp[c] * BOXES_CAPACITY); });
+    [1, 2].forEach(function (f) { var n = 0; for (var s = 1; s <= 7; s++) n += exp[f + '-' + s]; CAP[f + '-8'] += Math.ceil(n * 0.05 * BOXES_CAPACITY); });
+  }
+  function shapeOf(name) {
+    name = name || '';
+    if (/^Brick \d+ x \d+/.test(name)) return [20, 9];
+    if (/Tire|Wheel/.test(name)) return [10, 10];
+    if (/Round|Cone/.test(name)) return [8, 9];
+    if (/^Plate|^Tile/.test(name)) return [20, 4];
+    if (/Slope/.test(name)) return [14, 8];
+    return [16, 7];
+  }
+  function pileFor(c) {
+    if (piles[c]) return piles[c];
+    var cv = document.querySelector('#bin-' + c + ' .pile'); if (!cv) return null;
+    var sc = Math.min(1, Math.sqrt((PW * PH * 0.5) / (CAP[c] || 60) / 120));
+    return (piles[c] = { cv: cv, x: cv.getContext('2d'), hm: new Array(PW).fill(0), items: [], sc: sc });
+  }
+  function place(pl, name, hex, brickFloor) {
+    var d = shapeOf(name || (brickFloor ? 'Brick 2 x 2' : '')), w = Math.max(3, d[0] * pl.sc), h = Math.max(2, d[1] * pl.sc), best = 1e9, xs = [];
+    for (var x0 = 0; x0 <= PW - w; x0 += 1) {
+      var m = 0; for (var i = Math.floor(x0); i < Math.ceil(x0 + w); i++) if (pl.hm[i] > m) m = pl.hm[i];
+      xs.push([x0, m]); if (m < best) best = m;
+    }
+    var near = xs.filter(function (q) { return q[1] <= best + h * 0.3; }), pk = near[Math.floor(Math.random() * near.length)];
+    var top = Math.min(pk[1] + h, PH + 40);
+    for (var j = Math.floor(pk[0]); j < Math.ceil(pk[0] + w); j++) pl.hm[j] = top;
+    return { x: pk[0], y: pk[1], w: w, h: h, hex: hex, rot: (Math.random() - 0.5) * 0.12, t0: 0,
+      studs: (brickFloor || /^(Brick|Plate) \d/.test(name || '')) && w > 8 };
+  }
+  function pileRebuild(c, n) {
+    var pl = pileFor(c); if (!pl) return;
+    var slot = +c.split('-')[1], hex = slotInfo(slot).swatch || '#9aa0a6', brickFloor = c.charAt(0) === '1';
+    pl.hm.fill(0); pl.items = [];
+    for (var i = 0; i < n; i++) pl.items.push(place(pl, '', hex, brickFloor));
+    drawPile(c);
+  }
+  function pileAdd(e) {
+    var pl = pileFor(e.code); if (!pl) return;
+    var it = place(pl, e.name, colorFor(e), e.code.charAt(0) === '1');
+    it.t0 = reduce ? 0 : performance.now(); pl.items.push(it); pl.dirty = true;
+    if (it.t0) kick(); else drawPile(e.code);
+  }
+  function kick() { if (!animating) { animating = true; requestAnimationFrame(frame); } }
+  function frame(t) {
+    var any = false;
+    Object.keys(piles).forEach(function (c) { var pl = piles[c]; if (pl.dirty) { if (drawPile(c, t)) any = true; else pl.dirty = false; } });
+    if (any) requestAnimationFrame(frame); else animating = false;
+  }
+  function drawPile(c, t) {
+    var pl = piles[c], x = pl.x, k = pl.cv.width / PW, moving = false;
+    t = t || performance.now();
+    x.setTransform(k, 0, 0, k, 0, 0); x.clearRect(0, 0, PW, PH);
+    for (var i = Math.max(0, pl.items.length - 400); i < pl.items.length; i++) {
+      var it = pl.items[i], yb = PH - it.y, rot = it.rot;
+      if (it.t0) {
+        var u = (t - it.t0) / DROP;
+        if (u < 1) { moving = true; yb = -2 + (yb + 2) * u * u; rot = it.rot * u; } else it.t0 = 0;
+      }
+      if (yb - it.h > PH) continue;
+      x.save(); x.translate(it.x + it.w / 2, yb - it.h / 2); x.rotate(rot);
+      x.fillStyle = it.hex; x.fillRect(-it.w / 2, -it.h / 2, it.w, it.h);
+      x.strokeStyle = 'rgba(0,0,0,.35)'; x.lineWidth = 0.6; x.strokeRect(-it.w / 2 + 0.3, -it.h / 2 + 0.3, it.w - 0.6, it.h - 0.6);
+      if (it.h > 3) { x.fillStyle = 'rgba(255,255,255,.28)'; x.fillRect(-it.w / 2 + 1, -it.h / 2 + 0.8, it.w - 2, Math.max(0.6, it.h * 0.15)); }
+      if (it.studs) { x.fillStyle = it.hex; var sw = Math.max(1.5, it.w * 0.18), sh = Math.max(1, it.h * 0.3); x.fillRect(-it.w * 0.3 - sw / 2, -it.h / 2 - sh, sw, sh); x.fillRect(it.w * 0.3 - sw / 2, -it.h / 2 - sh, sw, sh); }
+      x.restore();
+    }
+    return moving;
+  }
+
   function buildBins() {
     [2, 1].forEach(function (f) {
       var el = $('floor' + f); el.innerHTML = '';
@@ -23,7 +105,8 @@
         d.innerHTML = '<div class="bin-code">' + code + '</div>' +
           (s.swatch ? '<span class="bin-sw" style="background:' + esc(s.swatch) + '"></span>' : '<span class="bin-sw unk"></span>') +
           '<div class="bin-label">' + esc(s.label) + '</div><span class="bin-flag" id="flag-' + code + '" hidden></span>' +
-          '<div class="bin-count" id="cnt-' + code + '">0</div>';
+          '<div class="bin-count" id="cnt-' + code + '">0</div>' +
+          '<canvas class="pile" width="160" height="128" aria-hidden="true"></canvas><span class="fill" title="How full, sized for 3 boxes"><i></i></span>';
         el.appendChild(d);
       });
     });
@@ -34,6 +117,11 @@
     [1, 2].forEach(function (f) { BINS.slots.forEach(function (s) {
       var code = f + '-' + s.slot, n = c[code] || 0; sums[f] += n;
       var el = $('cnt-' + code); if (el) el.textContent = n;
+      var bin = $('bin-' + code); if (!bin) return;
+      var pct = Math.min(100, Math.round(n / (CAP[code] || 60) * 100));
+      bin.querySelector('.fill i').style.width = pct + '%';
+      bin.classList.toggle('full', pct >= 80);
+      var pl = pileFor(code); if (pl && pl.items.length !== n) pileRebuild(code, n);
     }); });
     $('f1sum').textContent = sums[1] + (sums[1] === 1 ? ' piece' : ' pieces'); $('f2sum').textContent = sums[2] + (sums[2] === 1 ? ' piece' : ' pieces');
   }
@@ -182,10 +270,10 @@
     var c = counts[e.source]; c[e.code] = (c[e.code] || 0) + 1;
     note(e); showPiece(e); addRecent(e); drawStats();
     var bin = $('bin-' + e.code);
-    if (bin && !reduce && e.source === (mode === 'sim' ? 'sim' : 'live')) {
-      var d = document.createElement('span'); d.className = 'drop'; d.style.background = colorFor(e);
-      bin.appendChild(d); setTimeout(function () { d.remove(); }, 650);
-      bin.classList.remove('pulse'); void bin.offsetWidth; bin.classList.add('pulse');
+    if (bin && e.source === (mode === 'sim' ? 'sim' : 'live')) {
+      var pl = pileFor(e.code);
+      if (pl && pl.items.length === (c[e.code] || 0) - 1) pileAdd(e);
+      if (!reduce) { bin.classList.remove('pulse'); void bin.offsetWidth; bin.classList.add('pulse'); }
     }
     drawCounts();
   }
@@ -249,8 +337,9 @@
       }, function () { $('dlg-ok').disabled = false; $('dlg-err').textContent = 'Could not reach the server.'; });
   });
 
-  fetch('data/bins.json').then(function (r) { return r.json(); }).then(function (b) {
-    BINS = b; buildBins(); drawCounts();
+  Promise.all([fetch('data/bins.json').then(function (r) { return r.json(); }),
+               fetch('data/set-10696.json').then(function (r) { return r.json(); }).catch(function () { return null; })]).then(function (a) {
+    BINS = a[0]; setCaps(a[1]); buildBins(); drawCounts();
     if (TEST) testBins();
     if (!API) { setMode('off'); return; }
     (function start(delay) {  /* keep trying until the server answers (it may be off or restarting) */
