@@ -1,6 +1,6 @@
 {
- "version": "V1.025",
+ "version": "V1.026",
  "date": "2026-11-07",
- "note": "Live page centered on Identify and the bins: big camera photo, piece and color match, Identify stats, simulator moved to Testing tools",
+ "note": "Live page keeps reconnecting until the server answers (it gave up after two tries before)",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }

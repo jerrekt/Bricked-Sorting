@@ -253,6 +253,8 @@
     BINS = b; buildBins(); drawCounts();
     if (TEST) testBins();
     if (!API) { setMode('off'); return; }
-    loadState().then(poll, function () { setMode('off'); setTimeout(function () { loadState().then(poll, function () {}); }, 5000); });
+    (function start(delay) {  /* keep trying until the server answers (it may be off or restarting) */
+      loadState().then(poll, function () { setMode('off'); setTimeout(function () { start(Math.min(delay * 2, 30000)); }, delay); });
+    })(5000);
   });
 })();

@@ -4,6 +4,9 @@ Site and repo version. One bump per merged pull request (see `tools/bump_version
 It counts updates to this repo, not how finished the machine is; the Tasks page shows that.
 V1.001 to V1.014 were numbered afterwards, in merge order.
 
+## V1.026 · 2026-11-07
+- Live page keeps reconnecting until the server answers (it gave up after two tries before)
+
 ## V1.025 · 2026-11-07
 - Live page centered on Identify and the bins: big camera photo, piece and color match, Identify stats, simulator moved to Testing tools
 
