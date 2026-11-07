@@ -1,6 +1,6 @@
 {
  "_about": "Bricked Sorting V14 shared interface, version 5. Wood structure + thin red PLA skin, resized body. Build to these numbers; request changes in your README under INTERFACE REQUESTS.",
- "version": "v14-interface-5 (2026-11-05 23:10): body 720 x 360 x 664, 2x2 + 1x2 wood frame and 1/2 in plywood floor and deck, 2 mm red PLA skin, 0.5 L bins at 79 pitch",
+ "version": "v14-interface-5.1 (2026-11-06 19:35): drawer fits through the skin opening (bins 70 wide at 76 pitch, body x +-306, opening +-310, overlay face +-330); roof support under the hopper stud",
  "units": "mm",
  "axes": "right-handed: origin = floor center; +Y toward the front (the front drawer pulls out +Y), +Z up, so +X is on the LEFT of a person facing the front drawer. Bin numbers follow the real viewer at each drawer.",
  "envelope": {
@@ -9,13 +9,14 @@
    360
   ],
   "y": [
-   -180,
-   180
+   -192,
+   192
   ],
   "z": [
    0,
    664
-  ]
+  ],
+  "note": "y +-192 includes the overlay drawer faces (10 mm proud of the skin); body skin stays at y +-180"
  },
  "height_in": 26.1,
  "wood": {
@@ -153,14 +154,15 @@
   "drawer_openings": {
    "front_and_back_walls": {
     "x": [
-     -300,
-     300
+     -310,
+     310
     ],
     "z": [
      12,
-     134
+     136
     ]
-   }
+   },
+   "note": "drawer faces overlay the opening like a cabinet drawer, covering 20 mm past each side"
   },
   "back_access_panel": {
    "x": [
@@ -198,8 +200,8 @@
   "D_drawers": {
    "front": {
     "x": [
-     -314,
-     314
+     -306,
+     306
     ],
     "y": [
      52,
@@ -208,12 +210,26 @@
     "z": [
      12,
      132
-    ]
+    ],
+    "face": {
+     "x": [
+      -330,
+      330
+     ],
+     "y": [
+      180,
+      192
+     ],
+     "z": [
+      8,
+      140
+     ]
+    }
    },
    "back": {
     "x": [
-     -314,
-     314
+     -306,
+     306
     ],
     "y": [
      -180,
@@ -222,7 +238,21 @@
     "z": [
      12,
      132
-    ]
+    ],
+    "face": {
+     "x": [
+      -330,
+      330
+     ],
+     "y": [
+      -192,
+      -180
+     ],
+     "z": [
+      8,
+      140
+     ]
+    }
    },
    "rails": "front drawer rails at x +-200 run back on the floor to y -40; back drawer rails at x +-120 run to y +40; rail zone z 12..38"
   },
@@ -264,7 +294,7 @@
  "bins": {
   "count": 16,
   "footprint_xy": [
-   72,
+   70,
    95
   ],
   "height": 85,
@@ -272,16 +302,16 @@
    41,
    126
   ],
-  "volume_l": 0.58,
+  "volume_l": 0.57,
   "x_centers": [
-   -276.5,
-   -197.5,
-   -118.5,
-   -39.5,
-   39.5,
-   118.5,
-   197.5,
-   276.5
+   -266,
+   -190,
+   -114,
+   -38,
+   38,
+   114,
+   190,
+   266
   ],
   "row_y_centers": [
    -102.5,
@@ -386,5 +416,6 @@
   "materials": "on hand: PLA (red for the body), PETG, ASA, TPU 95A, PC; AMS for multi-colour (labels, face numbers)",
   "file_back": "after a test print, BJ's results go into the runbook (the main chat files them)"
  },
- "budget": "printed total <= ~9.5 kg and <= ~200 h (skin ~4.6 kg, studs ~0.5, mechanisms ~3.5, bins ~1)"
+ "budget": "printed total <= ~9.5 kg and <= ~200 h (skin ~4.6 kg, studs ~0.5, mechanisms ~3.5, bins ~1)",
+ "roof_support": "the 2 mm roof must not carry the hopper alone: either two 1x2 cross rails (cut 310, between the long top rails) at x -180 +-112, if they clear the deck (drum top 589 vs rails z 574..612), or a locally thickened 4 mm roof ring with printed ribs under the stud; frame chat decides after checking against cad-v14-deck5"
 }
