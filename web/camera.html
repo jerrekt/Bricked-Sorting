@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bricked Sorting Camera</title>
+<meta name="description" content="Camera status for the Bricked Sorting machine: the Pi camera and LEGO identification are in progress.">
+<meta property="og:title" content="Bricked Sorting">
+<meta property="og:description" content="Camera status for the Bricked Sorting machine.">
+<meta property="og:image" content="https://bricked-01.adsuaracloud.com/assets/logo-720.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#e3261c">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.cam{padding-top:16px;padding-bottom:24px;display:grid;gap:16px}
+.head-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.head-row h1{font-size:22px;margin:0}
+.cam p{margin:10px 0 0}
+</style>
+</head>
+<body>
+<script src="assets/intro.js"></script>
+<header class="top"><div class="wrap">
+  <a class="logo" href="./"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
+  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.022</a>
+  <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="live.html">Live</a><a href="tasks.html">Tasks</a><a href="parts.html">Parts</a></nav>
+</div></header>
+
+<main class="wrap cam">
+  <section class="card">
+    <div class="head-row"><h1>Camera</h1><span class="badge">In progress</span></div>
+    <p>Ethan is building the Raspberry Pi camera service: it photographs each piece on the tray and sends it to the server, which identifies it with Brickognize and picks its bin.</p>
+    <p class="muted">When it is connected, every piece the camera sees shows up on the <a href="live.html">Live page</a>.</p>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>Camera: Pi camera for the semester 1 proof of concept.</span><nav class="foot-links"><a href="https://github.com/jerrekt/Bricked-Sorting" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://bja.adsuaracloud.com" target="_blank" rel="noopener noreferrer">bja.adsuaracloud.com</a><a href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Changelog</a></nav><span class="foot-course">SJSU Tech 190A, Senior Project I, Fall 2026 · Instructor Vlad Ionescu</span></div></footer>
+</body>
+</html>

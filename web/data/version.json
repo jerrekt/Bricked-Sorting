@@ -1,6 +1,6 @@
 {
- "version": "V1.021",
- "date": "2026-11-05",
- "note": "V13 drum: static outlet plate and helical flight, one bearing fewer",
+ "version": "V1.022",
+ "date": "2026-11-07",
+ "note": "Camera page (Ethan): status of the Pi camera service, matches the site",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }
