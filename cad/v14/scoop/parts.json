@@ -1,0 +1,293 @@
+{
+ "module": "S",
+ "interface": "v14-interface-5.1 (2026-11-06 19:35): drawer fits through the skin opening (bins 70 wide at 76 pitch, body x +-306, opening +-310, overlay face +-330); roof support under the hopper stud",
+ "printed": [
+  {
+   "label": "180_beam_seg_1",
+   "part_no": "180",
+   "qty": 1,
+   "material": "PLA",
+   "bed_face": "end/diaphragm face down (box standing on its -x end)",
+   "bed_extent": [
+    90.0,
+    38.0,
+    243.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 139.7,
+   "est_hours": 3.1
+  },
+  {
+   "label": "180_beam_seg_2",
+   "part_no": "180",
+   "qty": 1,
+   "material": "PLA",
+   "bed_face": "end/diaphragm face down (box standing on its -x end)",
+   "bed_extent": [
+    50.0,
+    30.0,
+    244.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 117.7,
+   "est_hours": 2.6
+  },
+  {
+   "label": "180_beam_seg_3",
+   "part_no": "180",
+   "qty": 1,
+   "material": "PLA",
+   "bed_face": "end/diaphragm face down (box standing on its -x end)",
+   "bed_extent": [
+    90.0,
+    38.0,
+    223.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 132.3,
+   "est_hours": 2.9
+  },
+  {
+   "label": "184_motor_bracket",
+   "part_no": "184",
+   "qty": 1,
+   "material": "PLA",
+   "bed_face": "flat",
+   "bed_extent": [
+    46.0,
+    83.37,
+    20.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 13.9,
+   "est_hours": 0.3
+  },
+  {
+   "label": "185_idler_channel",
+   "part_no": "185",
+   "qty": 1,
+   "material": "PLA",
+   "bed_face": "flat",
+   "bed_extent": [
+    39.0,
+    20.01,
+    26.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 5.6,
+   "est_hours": 0.1
+  },
+  {
+   "label": "186_idler_slider",
+   "part_no": "186",
+   "qty": 1,
+   "material": "PLA",
+   "bed_face": "flat",
+   "bed_extent": [
+    26.0,
+    37.3,
+    18.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 6.8,
+   "est_hours": 0.2
+  },
+  {
+   "label": "187_idler_wheel",
+   "part_no": "187",
+   "qty": 1,
+   "material": "PLA",
+   "bed_face": "flat",
+   "bed_extent": [
+    22.0,
+    22.0,
+    11.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 1.2,
+   "est_hours": 0.0
+  },
+  {
+   "label": "188_endstop_mount",
+   "part_no": "188",
+   "qty": 1,
+   "material": "PLA",
+   "bed_face": "flat",
+   "bed_extent": [
+    14.0,
+    20.0,
+    25.05
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 2.4,
+   "est_hours": 0.1
+  },
+  {
+   "label": "181_carriage",
+   "part_no": "181",
+   "qty": 1,
+   "material": "PETG",
+   "bed_face": "top plate down (towers up); tree supports only under the belt-clamp arm if the slicer asks",
+   "bed_extent": [
+    124.0,
+    81.05,
+    98.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 99.3,
+   "est_hours": 2.2
+  },
+  {
+   "label": "190_servo_bracket",
+   "part_no": "190",
+   "qty": 1,
+   "material": "PETG",
+   "bed_face": "on its +x face (toward the cup)",
+   "bed_extent": [
+    109.5,
+    79.75,
+    43.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 33.1,
+   "est_hours": 0.7
+  },
+  {
+   "label": "182_scoop_cup",
+   "part_no": "182",
+   "qty": 1,
+   "material": "PLA",
+   "bed_face": "floor down (keel up)",
+   "bed_extent": [
+    93.0,
+    176.0,
+    36.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 52.8,
+   "est_hours": 1.2
+  },
+  {
+   "label": "183_cup_pad_TPU",
+   "part_no": "183",
+   "qty": 1,
+   "material": "TPU 95A",
+   "bed_face": "flat",
+   "bed_extent": [
+    76.0,
+    130.0,
+    1.5
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 16.3,
+   "est_hours": 0.4
+  },
+  {
+   "label": "189_pushrod",
+   "part_no": "189",
+   "qty": 1,
+   "material": "PLA",
+   "bed_face": "flat",
+   "bed_extent": [
+    39.0,
+    8.0,
+    5.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 1.8,
+   "est_hours": 0.0
+  }
+ ],
+ "bought": [
+  {
+   "item": "625ZZ",
+   "qty": 8,
+   "use": "6 carriage rollers, idler, cup pivot"
+  },
+  {
+   "item": "NEMA17 (salvaged) + GT2 20T pulley 5 mm bore",
+   "qty": 1,
+   "use": "drive"
+  },
+  {
+   "item": "GT2 6 mm belt",
+   "qty": "1.3 m",
+   "use": "loop ~1.24 m"
+  },
+  {
+   "item": "MG996R (owned)",
+   "qty": 1,
+   "use": "tilt"
+  },
+  {
+   "item": "KW11-3Z",
+   "qty": 1,
+   "use": "endstop"
+  },
+  {
+   "item": "TMC2209 (owned)",
+   "qty": 1,
+   "use": "slide driver"
+  },
+  {
+   "item": "M5 x 50 screw + nyloc",
+   "qty": 2,
+   "use": "top roller axles (through both side plates)"
+  },
+  {
+   "item": "M5 x 25 screw + nyloc",
+   "qty": 5,
+   "use": "side roller axles (4), idler axle (1)"
+  },
+  {
+   "item": "M3 x 12 screw + nut",
+   "qty": 8,
+   "use": "beam joints, motor bracket to beam, misc"
+  },
+  {
+   "item": "M3 x 30 screw",
+   "qty": 1,
+   "use": "belt tensioner"
+  },
+  {
+   "item": "M3 insert",
+   "qty": 1,
+   "use": "tensioner"
+  },
+  {
+   "item": "#6 x 3/4 wood screw",
+   "qty": 6,
+   "use": "end plates into the beam posts"
+  },
+  {
+   "item": "M2 x 8 screw",
+   "qty": 6,
+   "use": "servo horn to hub, endstop"
+  },
+  {
+   "item": "PTFE tape",
+   "qty": 1,
+   "use": "anti-lift hooks"
+  },
+  {
+   "item": "servo extension lead 3-wire",
+   "qty": "1 m",
+   "use": "rolling loop to the deck electronics"
+  }
+ ],
+ "est_total_grams": 623,
+ "est_total_hours": 13.8
+}

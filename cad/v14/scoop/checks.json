@@ -1,0 +1,659 @@
+{
+ "interface": "v14-interface-5.1 (2026-11-06 19:35): drawer fits through the skin opening (bins 70 wide at 76 pitch, body x +-306, opening +-310, overlay face +-330); roof support under the hopper stud",
+ "poses": {
+  "receive": {
+   "carriage_x": 240,
+   "tilt_deg": 0.0,
+   "min_z": 136.0,
+   "max_z": 259.5,
+   "z_ok": true,
+   "inside_xy": true,
+   "clashes": [],
+   "clashes_vs_drawers_closed": [],
+   "funnel_keepout_overlap_mm3": 0.0
+  },
+  "home": {
+   "carriage_x": -240.0,
+   "tilt_deg": 0.0,
+   "min_z": 136.0,
+   "max_z": 259.5,
+   "z_ok": true,
+   "inside_xy": true,
+   "clashes": [],
+   "clashes_vs_drawers_closed": [],
+   "funnel_keepout_overlap_mm3": null
+  },
+  "dump_front_1": {
+   "carriage_x": -266,
+   "tilt_deg": -40.0,
+   "min_z": 136.0,
+   "max_z": 294.65,
+   "z_ok": true,
+   "inside_xy": true,
+   "clashes": [],
+   "clashes_vs_drawers_closed": [],
+   "funnel_keepout_overlap_mm3": null,
+   "brick": {
+    "lip_y": 75.1,
+    "lip_z": 179.6,
+    "lip_ok": true,
+    "floor_surface_deg": 40.0,
+    "lip_ramp_surface_deg": 12.4,
+    "drops": [
+     {
+      "mu": 0.0,
+      "leaves": true,
+      "y_at_bin_top": 155.6,
+      "in_row": false
+     },
+     {
+      "mu": 0.3,
+      "leaves": true,
+      "y_at_bin_top": 136.7,
+      "in_row": true
+     },
+     {
+      "mu": 0.45,
+      "leaves": true,
+      "y_at_bin_top": 122.4,
+      "in_row": true
+     }
+    ]
+   }
+  },
+  "dump_back_1": {
+   "carriage_x": -266,
+   "tilt_deg": 40.0,
+   "min_z": 136.0,
+   "max_z": 294.65,
+   "z_ok": true,
+   "inside_xy": true,
+   "clashes": [],
+   "clashes_vs_drawers_closed": [],
+   "funnel_keepout_overlap_mm3": null,
+   "brick": {
+    "lip_y": -75.1,
+    "lip_z": 179.6,
+    "lip_ok": true,
+    "floor_surface_deg": 40.0,
+    "lip_ramp_surface_deg": 12.4,
+    "drops": [
+     {
+      "mu": 0.0,
+      "leaves": true,
+      "y_at_bin_top": -155.6,
+      "in_row": false
+     },
+     {
+      "mu": 0.3,
+      "leaves": true,
+      "y_at_bin_top": -136.7,
+      "in_row": true
+     },
+     {
+      "mu": 0.45,
+      "leaves": true,
+      "y_at_bin_top": -122.4,
+      "in_row": true
+     }
+    ]
+   }
+  },
+  "dump_front_2": {
+   "carriage_x": -190,
+   "tilt_deg": -40.0,
+   "min_z": 136.0,
+   "max_z": 294.65,
+   "z_ok": true,
+   "inside_xy": true,
+   "clashes": [],
+   "clashes_vs_drawers_closed": [],
+   "funnel_keepout_overlap_mm3": null,
+   "brick": {
+    "lip_y": 75.1,
+    "lip_z": 179.6,
+    "lip_ok": true,
+    "floor_surface_deg": 40.0,
+    "lip_ramp_surface_deg": 12.4,
+    "drops": [
+     {
+      "mu": 0.0,
+      "leaves": true,
+      "y_at_bin_top": 155.6,
+      "in_row": false
+     },
+     {
+      "mu": 0.3,
+      "leaves": true,
+      "y_at_bin_top": 136.7,
+      "in_row": true
+     },
+     {
+      "mu": 0.45,
+      "leaves": true,
+      "y_at_bin_top": 122.4,
+      "in_row": true
+     }
+    ]
+   }
+  },
+  "dump_back_2": {
+   "carriage_x": -190,
+   "tilt_deg": 40.0,
+   "min_z": 136.0,
+   "max_z": 294.65,
+   "z_ok": true,
+   "inside_xy": true,
+   "clashes": [],
+   "clashes_vs_drawers_closed": [],
+   "funnel_keepout_overlap_mm3": null,
+   "brick": {
+    "lip_y": -75.1,
+    "lip_z": 179.6,
+    "lip_ok": true,
+    "floor_surface_deg": 40.0,
+    "lip_ramp_surface_deg": 12.4,
+    "drops": [
+     {
+      "mu": 0.0,
+      "leaves": true,
+      "y_at_bin_top": -155.6,
+      "in_row": false
+     },
+     {
+      "mu": 0.3,
+      "leaves": true,
+      "y_at_bin_top": -136.7,
+      "in_row": true
+     },
+     {
+      "mu": 0.45,
+      "leaves": true,
+      "y_at_bin_top": -122.4,
+      "in_row": true
+     }
+    ]
+   }
+  },
+  "dump_front_3": {
+   "carriage_x": -114,
+   "tilt_deg": -40.0,
+   "min_z": 136.0,
+   "max_z": 294.65,
+   "z_ok": true,
+   "inside_xy": true,
+   "clashes": [],
+   "clashes_vs_drawers_closed": [],
+   "funnel_keepout_overlap_mm3": null,
+   "brick": {
+    "lip_y": 75.1,
+    "lip_z": 179.6,
+    "lip_ok": true,
+    "floor_surface_deg": 40.0,
+    "lip_ramp_surface_deg": 12.4,
+    "drops": [
+     {
+      "mu": 0.0,
+      "leaves": true,
+      "y_at_bin_top": 155.6,
+      "in_row": false
+     },
+     {
+      "mu": 0.3,
+      "leaves": true,
+      "y_at_bin_top": 136.7,
+      "in_row": true
+     },
+     {
+      "mu": 0.45,
+      "leaves": true,
+      "y_at_bin_top": 122.4,
+      "in_row": true
+     }
+    ]
+   }
+  },
+  "dump_back_3": {
+   "carriage_x": -114,
+   "tilt_deg": 40.0,
+   "min_z": 136.0,
+   "max_z": 294.65,
+   "z_ok": true,
+   "inside_xy": true,
+   "clashes": [],
+   "clashes_vs_drawers_closed": [],
+   "funnel_keepout_overlap_mm3": null,
+   "brick": {
+    "lip_y": -75.1,
+    "lip_z": 179.6,
+    "lip_ok": true,
+    "floor_surface_deg": 40.0,
+    "lip_ramp_surface_deg": 12.4,
+    "drops": [
+     {
+      "mu": 0.0,
+      "leaves": true,
+      "y_at_bin_top": -155.6,
+      "in_row": false
+     },
+     {
+      "mu": 0.3,
+      "leaves": true,
+      "y_at_bin_top": -136.7,
+      "in_row": true
+     },
+     {
+      "mu": 0.45,
+      "leaves": true,
+      "y_at_bin_top": -122.4,
+      "in_row": true
+     }
+    ]
+   }
+  },
+  "dump_front_4": {
+   "carriage_x": -38,
+   "tilt_deg": -40.0,
+   "min_z": 136.0,
+   "max_z": 294.65,
+   "z_ok": true,
+   "inside_xy": true,
+   "clashes": [],
+   "clashes_vs_drawers_closed": [],
+   "funnel_keepout_overlap_mm3": null,
+   "brick": {
+    "lip_y": 75.1,
+    "lip_z": 179.6,
+    "lip_ok": true,
+    "floor_surface_deg": 40.0,
+    "lip_ramp_surface_deg": 12.4,
+    "drops": [
+     {
+      "mu": 0.0,
+      "leaves": true,
+      "y_at_bin_top": 155.6,
+      "in_row": false
+     },
+     {
+      "mu": 0.3,
+      "leaves": true,
+      "y_at_bin_top": 136.7,
+      "in_row": true
+     },
+     {
+      "mu": 0.45,
+      "leaves": true,
+      "y_at_bin_top": 122.4,
+      "in_row": true
+     }
+    ]
+   }
+  },
+  "dump_back_4": {
+   "carriage_x": -38,
+   "tilt_deg": 40.0,
+   "min_z": 136.0,
+   "max_z": 294.65,
+   "z_ok": true,
+   "inside_xy": true,
+   "clashes": [],
+   "clashes_vs_drawers_closed": [],
+   "funnel_keepout_overlap_mm3": null,
+   "brick": {
+    "lip_y": -75.1,
+    "lip_z": 179.6,
+    "lip_ok": true,
+    "floor_surface_deg": 40.0,
+    "lip_ramp_surface_deg": 12.4,
+    "drops": [
+     {
+      "mu": 0.0,
+      "leaves": true,
+      "y_at_bin_top": -155.6,
+      "in_row": false
+     },
+     {
+      "mu": 0.3,
+      "leaves": true,
+      "y_at_bin_top": -136.7,
+      "in_row": true
+     },
+     {
+      "mu": 0.45,
+      "leaves": true,
+      "y_at_bin_top": -122.4,
+      "in_row": true
+     }
+    ]
+   }
+  },
+  "dump_front_5": {
+   "carriage_x": 38,
+   "tilt_deg": -40.0,
+   "min_z": 136.0,
+   "max_z": 294.65,
+   "z_ok": true,
+   "inside_xy": true,
+   "clashes": [],
+   "clashes_vs_drawers_closed": [],
+   "funnel_keepout_overlap_mm3": null,
+   "brick": {
+    "lip_y": 75.1,
+    "lip_z": 179.6,
+    "lip_ok": true,
+    "floor_surface_deg": 40.0,
+    "lip_ramp_surface_deg": 12.4,
+    "drops": [
+     {
+      "mu": 0.0,
+      "leaves": true,
+      "y_at_bin_top": 155.6,
+      "in_row": false
+     },
+     {
+      "mu": 0.3,
+      "leaves": true,
+      "y_at_bin_top": 136.7,
+      "in_row": true
+     },
+     {
+      "mu": 0.45,
+      "leaves": true,
+      "y_at_bin_top": 122.4,
+      "in_row": true
+     }
+    ]
+   }
+  },
+  "dump_back_5": {
+   "carriage_x": 38,
+   "tilt_deg": 40.0,
+   "min_z": 136.0,
+   "max_z": 294.65,
+   "z_ok": true,
+   "inside_xy": true,
+   "clashes": [],
+   "clashes_vs_drawers_closed": [],
+   "funnel_keepout_overlap_mm3": null,
+   "brick": {
+    "lip_y": -75.1,
+    "lip_z": 179.6,
+    "lip_ok": true,
+    "floor_surface_deg": 40.0,
+    "lip_ramp_surface_deg": 12.4,
+    "drops": [
+     {
+      "mu": 0.0,
+      "leaves": true,
+      "y_at_bin_top": -155.6,
+      "in_row": false
+     },
+     {
+      "mu": 0.3,
+      "leaves": true,
+      "y_at_bin_top": -136.7,
+      "in_row": true
+     },
+     {
+      "mu": 0.45,
+      "leaves": true,
+      "y_at_bin_top": -122.4,
+      "in_row": true
+     }
+    ]
+   }
+  },
+  "dump_front_6": {
+   "carriage_x": 114,
+   "tilt_deg": -40.0,
+   "min_z": 136.0,
+   "max_z": 294.65,
+   "z_ok": true,
+   "inside_xy": true,
+   "clashes": [],
+   "clashes_vs_drawers_closed": [],
+   "funnel_keepout_overlap_mm3": null,
+   "brick": {
+    "lip_y": 75.1,
+    "lip_z": 179.6,
+    "lip_ok": true,
+    "floor_surface_deg": 40.0,
+    "lip_ramp_surface_deg": 12.4,
+    "drops": [
+     {
+      "mu": 0.0,
+      "leaves": true,
+      "y_at_bin_top": 155.6,
+      "in_row": false
+     },
+     {
+      "mu": 0.3,
+      "leaves": true,
+      "y_at_bin_top": 136.7,
+      "in_row": true
+     },
+     {
+      "mu": 0.45,
+      "leaves": true,
+      "y_at_bin_top": 122.4,
+      "in_row": true
+     }
+    ]
+   }
+  },
+  "dump_back_6": {
+   "carriage_x": 114,
+   "tilt_deg": 40.0,
+   "min_z": 136.0,
+   "max_z": 294.65,
+   "z_ok": true,
+   "inside_xy": true,
+   "clashes": [],
+   "clashes_vs_drawers_closed": [],
+   "funnel_keepout_overlap_mm3": null,
+   "brick": {
+    "lip_y": -75.1,
+    "lip_z": 179.6,
+    "lip_ok": true,
+    "floor_surface_deg": 40.0,
+    "lip_ramp_surface_deg": 12.4,
+    "drops": [
+     {
+      "mu": 0.0,
+      "leaves": true,
+      "y_at_bin_top": -155.6,
+      "in_row": false
+     },
+     {
+      "mu": 0.3,
+      "leaves": true,
+      "y_at_bin_top": -136.7,
+      "in_row": true
+     },
+     {
+      "mu": 0.45,
+      "leaves": true,
+      "y_at_bin_top": -122.4,
+      "in_row": true
+     }
+    ]
+   }
+  },
+  "dump_front_7": {
+   "carriage_x": 190,
+   "tilt_deg": -40.0,
+   "min_z": 136.0,
+   "max_z": 294.65,
+   "z_ok": true,
+   "inside_xy": true,
+   "clashes": [],
+   "clashes_vs_drawers_closed": [],
+   "funnel_keepout_overlap_mm3": null,
+   "brick": {
+    "lip_y": 75.1,
+    "lip_z": 179.6,
+    "lip_ok": true,
+    "floor_surface_deg": 40.0,
+    "lip_ramp_surface_deg": 12.4,
+    "drops": [
+     {
+      "mu": 0.0,
+      "leaves": true,
+      "y_at_bin_top": 155.6,
+      "in_row": false
+     },
+     {
+      "mu": 0.3,
+      "leaves": true,
+      "y_at_bin_top": 136.7,
+      "in_row": true
+     },
+     {
+      "mu": 0.45,
+      "leaves": true,
+      "y_at_bin_top": 122.4,
+      "in_row": true
+     }
+    ]
+   }
+  },
+  "dump_back_7": {
+   "carriage_x": 190,
+   "tilt_deg": 40.0,
+   "min_z": 136.0,
+   "max_z": 294.65,
+   "z_ok": true,
+   "inside_xy": true,
+   "clashes": [],
+   "clashes_vs_drawers_closed": [],
+   "funnel_keepout_overlap_mm3": null,
+   "brick": {
+    "lip_y": -75.1,
+    "lip_z": 179.6,
+    "lip_ok": true,
+    "floor_surface_deg": 40.0,
+    "lip_ramp_surface_deg": 12.4,
+    "drops": [
+     {
+      "mu": 0.0,
+      "leaves": true,
+      "y_at_bin_top": -155.6,
+      "in_row": false
+     },
+     {
+      "mu": 0.3,
+      "leaves": true,
+      "y_at_bin_top": -136.7,
+      "in_row": true
+     },
+     {
+      "mu": 0.45,
+      "leaves": true,
+      "y_at_bin_top": -122.4,
+      "in_row": true
+     }
+    ]
+   }
+  },
+  "dump_front_8": {
+   "carriage_x": 266,
+   "tilt_deg": -40.0,
+   "min_z": 136.0,
+   "max_z": 294.65,
+   "z_ok": true,
+   "inside_xy": true,
+   "clashes": [],
+   "clashes_vs_drawers_closed": [],
+   "funnel_keepout_overlap_mm3": null,
+   "brick": {
+    "lip_y": 75.1,
+    "lip_z": 179.6,
+    "lip_ok": true,
+    "floor_surface_deg": 40.0,
+    "lip_ramp_surface_deg": 12.4,
+    "drops": [
+     {
+      "mu": 0.0,
+      "leaves": true,
+      "y_at_bin_top": 155.6,
+      "in_row": false
+     },
+     {
+      "mu": 0.3,
+      "leaves": true,
+      "y_at_bin_top": 136.7,
+      "in_row": true
+     },
+     {
+      "mu": 0.45,
+      "leaves": true,
+      "y_at_bin_top": 122.4,
+      "in_row": true
+     }
+    ]
+   }
+  },
+  "dump_back_8": {
+   "carriage_x": 266,
+   "tilt_deg": 40.0,
+   "min_z": 136.0,
+   "max_z": 294.65,
+   "z_ok": true,
+   "inside_xy": true,
+   "clashes": [],
+   "clashes_vs_drawers_closed": [],
+   "funnel_keepout_overlap_mm3": null,
+   "brick": {
+    "lip_y": -75.1,
+    "lip_z": 179.6,
+    "lip_ok": true,
+    "floor_surface_deg": 40.0,
+    "lip_ramp_surface_deg": 12.4,
+    "drops": [
+     {
+      "mu": 0.0,
+      "leaves": true,
+      "y_at_bin_top": -155.6,
+      "in_row": false
+     },
+     {
+      "mu": 0.3,
+      "leaves": true,
+      "y_at_bin_top": -136.7,
+      "in_row": true
+     },
+     {
+      "mu": 0.45,
+      "leaves": true,
+      "y_at_bin_top": -122.4,
+      "in_row": true
+     }
+    ]
+   }
+  }
+ },
+ "bed_fit": {
+  "180_beam_seg_1": true,
+  "180_beam_seg_2": true,
+  "180_beam_seg_3": true,
+  "184_motor_bracket": true,
+  "185_idler_channel": true,
+  "186_idler_slider": true,
+  "187_idler_wheel": true,
+  "188_endstop_mount": true,
+  "181_carriage": true,
+  "190_servo_bracket": true,
+  "182_scoop_cup": true,
+  "183_cup_pad_TPU": true,
+  "189_pushrod": true
+ },
+ "receive": {
+  "cup_floor_z": 227.0,
+  "funnel_exit_z": 270,
+  "drop_mm": 43.0,
+  "cup_top_z": 255.0,
+  "catch_r": 22,
+  "cup_half_x": 40.0,
+  "cup_flat_half_y": 65.0
+ }
+}
