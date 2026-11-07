@@ -39,6 +39,8 @@ STUD_C = ST['centers']; STUD_R = ST['od'] / 2; STUD_Z = ST['z']   # (-180,0),(18
 ROOF_HOLE_R = 90.0; STUD_ID_R = 100.0
 CAP_LEG = 24.0; CAP_RIB = 346.0; CAP_RIB_Y = 167.0                # corner cap leg width and rib lines (over the posts)
 PANEL_SCREW_X = (-150.0, -50.0, 50.0, 150.0)
+CROSS_X = (STUD_C[0][0] - 112.0, STUD_C[0][0] + 112.0)          # interface 5.1: 1x2 cross rails under the hopper stud at x -292 / -68
+CROSS_W, CROSS_H = 38.0, 19.0                                     # laid FLAT (38 wide, 19 tall, z 593..612) to clear the drum top (589)
 PANEL_SCREW_Z = (PANEL['z'][0] + 8.0, PANEL['z'][1] - 8.0)        # 338, 552
 BAR_W = 16.0
 
@@ -218,6 +220,8 @@ def wood_parts():
     for sx in (-1, 1):
         X = sb(sx, *bp['x_abs'])
         P.append((f'106_beam_post_{"L" if sx > 0 else "R"}', boxc(X[0], X[1], bp['y'][0], bp['y'][1], bp['z'][0], bp['z'][1]), 'wood'))
+    for k, xc in enumerate(CROSS_X):
+        P.append((f'109_roof_cross_rail_{k + 1}', boxc(xc - CROSS_W / 2, xc + CROSS_W / 2, -py[1] + 19, py[1] - 19, pz[1] - CROSS_H, pz[1]), 'wood'))
     fp = W['floor_ply']
     P.append(('107_floor_ply', boxc(fp['x'][0], fp['x'][1], fp['y'][0], fp['y'][1], fp['z'][0], fp['z'][1]), 'ply'))
     dp = W['deck_ply']; hx, hy = dp['size'][0] / 2, dp['size'][1] / 2
@@ -356,7 +360,13 @@ def roof_parts():
             seams.append(sbox(max(x0, -310), yr, min(x1, 310), yr + RIB_T))                                         # stop before the posts (|x| 316)
             if ci == 0: seams.append(sbox(-(POST_X - 1.6 - RIB_T) - RIB_T, -130, -(POST_X - 1.6 - RIB_T), 130))      # x -333.4..-331.8, |y| < 130 (posts at 136)
             if ci == 3: seams.append(sbox(POST_X - 1.6 - RIB_T, -130, POST_X - 1.6, 130))                             # x 331.8..333.4
+            for xc in CROSS_X:        # locator ribs hugging both sides of the flat cross rail (0.2 clearance each side)
+                for sx_ in (-1, 1):
+                    xr = xc + sx_ * (CROSS_W / 2 + 0.2)
+                    seams.append(sbox(min(xr, xr + sx_ * RIB_T), max(y0, -140), max(xr, xr + sx_ * RIB_T), min(y1, 140)))
             rp = unary_union(seams).intersection(poly.buffer(-0.01)).intersection(sbox(-333.5, -153.5, 333.5, 153.5))
+            for xc in CROSS_X:        # no ribs over the cross rails themselves
+                rp = rp.difference(sbox(xc - CROSS_W / 2 - 0.1, -200, xc + CROSS_W / 2 + 0.1, 200))
             ribs = multi_to_cq(rp, RIB_H, Z_ROOF - RIB_H + 0.01)
             w = face.union(ribs) if ribs is not None else face
             for (sx, sy) in STUD_C:      # csk M3 from below into the stud inserts
@@ -367,6 +377,7 @@ def roof_parts():
                         w = w.cut(cyl((bx, by, Z_ROOF - 1), (0, 0, 1), M3_CLR / 2, 5)).cut(csk_cone((bx, by, Z_ROOF - 0.01), (0, 0, 1), M3_CSK_D))
             P.append((f'114_roof_tile_c{ci + 1}_r{ri + 1}', w, 'skin'))
             for xc in (max(x0, -310) + 30, min(x1, 310) - 30):
+                if any(abs(xc - cx_) < CROSS_W / 2 + 14 for cx_ in CROSS_X): xc += 36 if xc < (x0 + x1) / 2 else -36   # clear of the cross rail ends
                 clips.append(dict(kind='C3', face='long', x=xc, y=(POST_Y if y1 > 0 else -POST_Y), what='top rail inner face, roof rib'))
             if ci in (0, 3):
                 for yc in (y0 + 60, y1 - 60):
@@ -499,12 +510,13 @@ def cut_list(screws):
         ('104', 'deck cleat, short', '1x2 (38 tall)', 272, 2, 'x +-335..354, z 262..300'),
         ('105', 'bottom rail, short walls', '1x2 (38 tall)', 272, 2, 'x +-335..354, z 12..50'),
         ('106', 'beam post', '1x2', 212, 2, 'x +-335..354, y -19..19, z 50..262 (vertical, 19 face toward the wall)'),
+        ('109', 'roof cross rail (under the hopper stud)', '1x2 laid FLAT', 310, 2, 'x -292 and -68 (centres), y -155..155 between the long top rails, z 593..612; 38 face up'),
     ]
     for pn, nm, st, cut, q, pos in rows:
         L.append(f'| {pn} | {nm} | {st} | {cut} | {cut / 25.4:.2f} | {q} | {pos} |')
     L.append('| 107 | floor plywood | 1/2 in ply | 720 x 360 | 28.35 x 14.17 | 1 | z 0..12 |')
     L.append('| 108 | deck plywood | 1/2 in ply | 708 x 348 | 27.87 x 13.70 | 1 | z 300..312; 38 x 38 notch at each corner; 56 mm (2 3/16 in) hole at (240, 0) for the drop funnel |')
-    L += ['', 'Stock: 2x2 x 8 ft x 1 (4 x 600 = 2400 of 2438, cut carefully), 1x2 x 8 ft x 2 (632 + 632 + 272 + 272 + 272 = 2080; 632 + 632 + 272 + 272 + 212 + 212 = 2232), 1/2 in plywood 2 x 4 ft handy panel x 1.',
+    L += ['', 'Stock: 2x2 x 8 ft x 1 (4 x 600 = 2400 of 2438, cut carefully), 1x2 x 8 ft x 3 (632 + 632 + 272 + 272 + 272 = 2080; 632 + 632 + 272 + 272 + 212 + 212 = 2232; 310 + 310 = 620), 1/2 in plywood 2 x 4 ft handy panel x 1.',
           '', '## Wood-to-wood screws (pilot 2.5 mm for #6, 3 mm for #8)', '',
           '| Joint | Screw | Qty | Where |', '|---|---|---|---|',
           '| posts to floor ply | #8 x 2 in, up from below the ply | 8 | 2 per post, at the post centre (x +-335, y +-155) +-10 along y |',
@@ -513,6 +525,7 @@ def cut_list(screws):
           '| beam post 106 to bottom rail 105 | #8 x 2.5 in, up from below the floor ply through rail 105 | 2 | at (+-344.5, 0) |',
           '| beam post 106 to deck cleat 104 | #8 x 2.5 in, down through the cleat top | 2 | at (+-344.5, 0), before the deck ply goes on |',
           '| deck ply 108 to cleats | #6 x 1.25 in, from above | 12 | 3 per cleat, on the cleat centreline (y +-164.5 / x +-344.5) |',
+          '| cross rails 109 to long top rails | #8 x 2.5 in toe-screwed (pocket style) down from the cross rail top face into the long rail, 2 per end, before the roof goes on | 8 | at x -292 / -68, y +-140, ~15 deg off vertical toward the long rail |',
           '', 'Order: posts onto the floor ply; bottom rails 105; beam posts 106; cleats 103/104; top rails 101/102; drill the clip pilots (drilling_map.md); clips; deck ply last (after the drawer rails, which screw into the floor).']
     (HERE / 'cut_list.md').write_text('\n'.join(L) + '\n')
 
@@ -660,8 +673,8 @@ def main():
     (HERE / 'checks.json').write_text(json.dumps(res, indent=1))
     (HERE / 'parts.json').write_text(json.dumps({'module': 'F', 'interface': IF['version'], 'printed': plist,
         'wood': [{'label': lab, 'bbox': bbox(w)} for lab, w, kind in wood],
-        'bought': [{'item': '2x2 x 8 ft', 'qty': 1}, {'item': '1x2 x 8 ft', 'qty': 2}, {'item': '1/2 in plywood 2 x 4 ft', 'qty': 1},
-                   {'item': '#6 x 3/4 in wood screws (clips, keeper bars)', 'qty': len(screws) + 10}, {'item': '#8 x 2.5 in wood screws', 'qty': 36}, {'item': '#8 x 2 in', 'qty': 8}, {'item': '#6 x 1.25 in', 'qty': 12},
+        'bought': [{'item': '2x2 x 8 ft', 'qty': 1}, {'item': '1x2 x 8 ft', 'qty': 3}, {'item': '1/2 in plywood 2 x 4 ft', 'qty': 1},
+                   {'item': '#6 x 3/4 in wood screws (clips, keeper bars)', 'qty': len(screws) + 10}, {'item': '#8 x 2.5 in wood screws', 'qty': 44}, {'item': '#8 x 2 in', 'qty': 8}, {'item': '#6 x 1.25 in', 'qty': 12},
                    {'item': 'M3 heat-set inserts', 'qty': 16, 'use': 'stud feet (8), stud ledge (4) [+8 in keeper bars]'}, {'item': 'M3 heat-set inserts', 'qty': 8, 'use': 'keeper bars'},
                    {'item': 'M3 x 8 countersunk', 'qty': 16, 'use': 'stud feet through the roof (8), access panel (8)'}, {'item': 'red PLA', 'qty': f'~{tot_g / 1000:.1f} kg'}],
         'h_clip_positions': hpos, 'totals': res['totals']}, indent=1))
@@ -672,7 +685,7 @@ def main():
 
 def stills(parts):
     items = [(w, COL[kind], 1.0) for lab, w, kind in parts]
-    render(items, HERE / 'still_1_front_left.png', cam=(1500, 1500, 1200), focal=(0, 0, 330), title='V14 frame + skin (F): 720 x 360 x 664, 2 mm red PLA tiles on a wood frame; drawer opening; studs')
+    render(items, HERE / 'still_1_front_left.png', cam=(1500, 1500, 1200), focal=(0, 0, 330), title='V14 frame + skin (F, interface 5.1): 720 x 360 x 664, 2 mm red PLA tiles on a wood frame; drawer openings x +-310; studs')
     render(items, HERE / 'still_2_back_right.png', cam=(-1500, -1500, 1100), focal=(0, 0, 330), title='Back: removable access panel (2 halves, 8 screws), drawer opening, corner caps')
     inner = [(w, COL[kind], 1.0) for lab, w, kind in parts if kind in ('wood', 'ply', 'clip', 'bar')] + [(w, COL[kind], 0.15) for lab, w, kind in parts if kind in ('skin', 'panel', 'cap', 'stud')]
     render(inner, HERE / 'still_3_wood_and_clips.png', cam=(1400, 1300, 1000), focal=(0, 0, 320), title='Wood (2x2 posts, 1x2 rails, cleats, beam posts, 1/2 in ply) with the clips and keeper bars; skin ghosted')

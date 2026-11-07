@@ -1,5 +1,5 @@
 {
- "interface": "v14-interface-5 (2026-11-05 23:10): body 720 x 360 x 664, 2x2 + 1x2 wood frame and 1/2 in plywood floor and deck, 2 mm red PLA skin, 0.5 L bins at 79 pitch",
+ "interface": "v14-interface-5.1 (2026-11-06 19:35): drawer fits through the skin opening (bins 70 wide at 76 pitch, body x +-306, opening +-310, overlay face +-330); roof support under the hopper stud",
  "bed_fit": {
   "110_tile_F_c1_r1": true,
   "110_tile_F_c1_r2": true,
@@ -91,6 +91,8 @@
   "105_bottom_rail_short_L": "in envelope",
   "106_beam_post_R": "in envelope",
   "106_beam_post_L": "in envelope",
+  "109_roof_cross_rail_1": "in envelope",
+  "109_roof_cross_rail_2": "in envelope",
   "107_floor_ply": "in envelope",
   "108_deck_ply": "in envelope",
   "110_tile_F_c1_r1": "in envelope",
@@ -322,26 +324,6 @@
  },
  "zone_intrusions": [
   [
-   "110_tile_F_c1_r1",
-   "Dfront",
-   3951.0
-  ],
-  [
-   "110_tile_F_c4_r1",
-   "Dfront",
-   3951.0
-  ],
-  [
-   "111_tile_B_c1_r1",
-   "Dback",
-   3951.0
-  ],
-  [
-   "111_tile_B_c4_r1",
-   "Dback",
-   3951.0
-  ],
-  [
    "123_clip_C3_roof_1",
    "K",
    1566.7
@@ -471,12 +453,12 @@
  },
  "skin_inside_wood_faces": [],
  "totals": {
-  "printed_grams": 4326,
-  "printed_hours": 59.4,
+  "printed_grams": 4312,
+  "printed_hours": 59.2,
   "grams_by_group": {
-   "skin walls": 2492,
+   "skin walls": 2470,
    "access panel": 236,
-   "roof": 602,
+   "roof": 606,
    "keeper bars": 40,
    "studs": 456,
    "corner caps": 300,

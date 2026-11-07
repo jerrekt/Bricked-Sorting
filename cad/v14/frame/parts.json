@@ -1,6 +1,6 @@
 {
  "module": "F",
- "interface": "v14-interface-5 (2026-11-05 23:10): body 720 x 360 x 664, 2x2 + 1x2 wood frame and 1/2 in plywood floor and deck, 2 mm red PLA skin, 0.5 L bins at 79 pitch",
+ "interface": "v14-interface-5.1 (2026-11-06 19:35): drawer fits through the skin opening (bins 70 wide at 76 pitch, body x +-306, opening +-310, overlay face +-330); roof support under the hopper stud",
  "printed": [
   {
    "label": "110_tile_F_c1_r1",
@@ -14,8 +14,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 45.0,
-   "est_hours_each": 0.6,
+   "est_grams_each": 41.3,
+   "est_hours_each": 0.55,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -57,13 +57,13 @@
    "material": "PLA",
    "bed_extent": [
     180.0,
-    78.0,
+    76.0,
     4.79
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 37.6,
-   "est_hours_each": 0.5,
+   "est_grams_each": 36.7,
+   "est_hours_each": 0.49,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -105,13 +105,13 @@
    "material": "PLA",
    "bed_extent": [
     180.0,
-    78.0,
+    76.0,
     4.79
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 37.6,
-   "est_hours_each": 0.5,
+   "est_grams_each": 36.7,
+   "est_hours_each": 0.49,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -158,8 +158,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 45.0,
-   "est_hours_each": 0.6,
+   "est_grams_each": 41.3,
+   "est_hours_each": 0.55,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -206,8 +206,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 40.9,
-   "est_hours_each": 0.55,
+   "est_grams_each": 37.3,
+   "est_hours_each": 0.5,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -249,13 +249,13 @@
    "material": "PLA",
    "bed_extent": [
     200.0,
-    78.0,
+    76.0,
     4.79
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 41.7,
-   "est_hours_each": 0.56,
+   "est_grams_each": 40.7,
+   "est_hours_each": 0.54,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -313,13 +313,13 @@
    "material": "PLA",
    "bed_extent": [
     200.0,
-    78.0,
+    76.0,
     4.79
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 41.7,
-   "est_hours_each": 0.56,
+   "est_grams_each": 40.7,
+   "est_hours_each": 0.54,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -382,8 +382,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 40.9,
-   "est_hours_each": 0.55,
+   "est_grams_each": 37.3,
+   "est_hours_each": 0.5,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -622,8 +622,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 66.7,
-   "est_hours_each": 0.89,
+   "est_grams_each": 67.8,
+   "est_hours_each": 0.9,
    "orientation": "top face on the bed, ribs up"
   },
   {
@@ -638,8 +638,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 66.7,
-   "est_hours_each": 0.89,
+   "est_grams_each": 67.8,
+   "est_hours_each": 0.9,
    "orientation": "top face on the bed, ribs up"
   },
   {
@@ -654,8 +654,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 67.2,
-   "est_hours_each": 0.9,
+   "est_grams_each": 68.3,
+   "est_hours_each": 0.91,
    "orientation": "top face on the bed, ribs up"
   },
   {
@@ -670,8 +670,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 67.2,
-   "est_hours_each": 0.9,
+   "est_grams_each": 68.3,
+   "est_hours_each": 0.91,
    "orientation": "top face on the bed, ribs up"
   },
   {
@@ -905,7 +905,7 @@
    "material": "PLA",
    "bed_extent": [
     24.0,
-    24.0,
+    25.8,
     200.0
    ],
    "fits_248": true,
@@ -921,7 +921,7 @@
    "material": "PLA",
    "bed_extent": [
     24.0,
-    24.0,
+    25.8,
     200.0
    ],
    "fits_248": true,
@@ -937,7 +937,7 @@
    "material": "PLA",
    "bed_extent": [
     24.0,
-    24.0,
+    25.8,
     200.0
    ],
    "fits_248": true,
@@ -953,7 +953,7 @@
    "material": "PLA",
    "bed_extent": [
     24.0,
-    24.0,
+    25.8,
     200.0
    ],
    "fits_248": true,
@@ -969,7 +969,7 @@
    "material": "PLA",
    "bed_extent": [
     24.0,
-    24.0,
+    25.8,
     200.0
    ],
    "fits_248": true,
@@ -985,7 +985,7 @@
    "material": "PLA",
    "bed_extent": [
     24.0,
-    24.0,
+    25.8,
     200.0
    ],
    "fits_248": true,
@@ -1001,7 +1001,7 @@
    "material": "PLA",
    "bed_extent": [
     24.0,
-    24.0,
+    25.8,
     200.0
    ],
    "fits_248": true,
@@ -1017,7 +1017,7 @@
    "material": "PLA",
    "bed_extent": [
     24.0,
-    24.0,
+    25.8,
     200.0
    ],
    "fits_248": true,
@@ -1033,7 +1033,7 @@
    "material": "PLA",
    "bed_extent": [
     24.0,
-    24.0,
+    25.8,
     200.0
    ],
    "fits_248": true,
@@ -1049,7 +1049,7 @@
    "material": "PLA",
    "bed_extent": [
     24.0,
-    24.0,
+    25.8,
     200.0
    ],
    "fits_248": true,
@@ -1065,7 +1065,7 @@
    "material": "PLA",
    "bed_extent": [
     24.0,
-    24.0,
+    25.8,
     200.0
    ],
    "fits_248": true,
@@ -1081,7 +1081,7 @@
    "material": "PLA",
    "bed_extent": [
     24.0,
-    24.0,
+    25.8,
     200.0
    ],
    "fits_248": true,
@@ -1333,6 +1333,28 @@
    ]
   },
   {
+   "label": "109_roof_cross_rail_1",
+   "bbox": [
+    -311.0,
+    -155.0,
+    593.0,
+    -273.0,
+    155.0,
+    612.0
+   ]
+  },
+  {
+   "label": "109_roof_cross_rail_2",
+   "bbox": [
+    -87.0,
+    -155.0,
+    593.0,
+    -49.0,
+    155.0,
+    612.0
+   ]
+  },
+  {
    "label": "107_floor_ply",
    "bbox": [
     -360.0,
@@ -1362,7 +1384,7 @@
   },
   {
    "item": "1x2 x 8 ft",
-   "qty": 2
+   "qty": 3
   },
   {
    "item": "1/2 in plywood 2 x 4 ft",
@@ -1374,7 +1396,7 @@
   },
   {
    "item": "#8 x 2.5 in wood screws",
-   "qty": 36
+   "qty": 44
   },
   {
    "item": "#8 x 2 in",
@@ -1408,7 +1430,7 @@
   {
    "wall": "F",
    "w": -180.0,
-   "z": 159
+   "z": 161
   },
   {
    "wall": "F",
@@ -1438,7 +1460,7 @@
   {
    "wall": "F",
    "w": 0.0,
-   "z": 159
+   "z": 161
   },
   {
    "wall": "F",
@@ -1468,7 +1490,7 @@
   {
    "wall": "F",
    "w": 180.0,
-   "z": 159
+   "z": 161
   },
   {
    "wall": "F",
@@ -1578,7 +1600,7 @@
   {
    "wall": "B",
    "w": -200.0,
-   "z": 159
+   "z": 161
   },
   {
    "wall": "B",
@@ -1598,7 +1620,7 @@
   {
    "wall": "B",
    "w": 0.0,
-   "z": 159
+   "z": 161
   },
   {
    "wall": "B",
@@ -1618,7 +1640,7 @@
   {
    "wall": "B",
    "w": 200.0,
-   "z": 159
+   "z": 161
   },
   {
    "wall": "B",
@@ -1857,12 +1879,12 @@
   }
  ],
  "totals": {
-  "printed_grams": 4326,
-  "printed_hours": 59.4,
+  "printed_grams": 4312,
+  "printed_hours": 59.2,
   "grams_by_group": {
-   "skin walls": 2492,
+   "skin walls": 2470,
    "access panel": 236,
-   "roof": 602,
+   "roof": 606,
    "keeper bars": 40,
    "studs": 456,
    "corner caps": 300,
