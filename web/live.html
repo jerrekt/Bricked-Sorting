@@ -61,6 +61,18 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 .dlg label{display:grid;gap:4px;font-size:14px;font-weight:600}
 .dlg select,.dlg input{font:inherit;font-size:15px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);min-height:40px}
 .dlg .row{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.bin-flag{align-self:flex-start;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;border-radius:999px}
+.bin.is-open{border-color:var(--warn);border-width:2px;padding:7px 7px 9px;background:color-mix(in srgb,var(--warn) 8%,var(--surface))}
+.bin.is-open .bin-flag{background:var(--warn);color:#fff}
+.bin.is-open .bin-count,.bin.is-recount .bin-count{opacity:.4}
+.bin.is-recount{border-color:var(--flag);border-width:2px;padding:7px 7px 9px}
+.bin.is-recount .bin-flag{background:var(--flag);color:#14182b}
+.bin-alert{border-left:4px solid var(--warn)}
+.bin-alert h2{font-size:16px;margin:0 0 6px}
+.bin-alert ul{margin:0;padding-left:18px;display:grid;gap:4px;font-size:14px}
+.sensors{font-size:12px;color:var(--muted);margin:8px 0 0}
+.sensors::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--line);margin-right:6px;vertical-align:1px}
+.sensors.on::before{background:var(--ok)}
 .dlg .err{color:var(--warn);font-size:14px;margin:0;min-height:1em}
 </style>
 </head>
@@ -68,7 +80,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 <script src="assets/intro.js"></script>
 <header class="top"><div class="wrap">
   <a class="logo" href="./"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
-  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.023</a>
+  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.024</a>
   <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="live.html" aria-current="page">Live</a><a href="tasks.html">Tasks</a><a href="parts.html">Parts</a><a href="camera.html">Camera</a></nav>
 </div></header>
 
@@ -88,6 +100,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
         <button class="btn small" type="button" id="b-stop">Stop</button>
         <button class="btn small" type="button" id="b-reset">Reset counts</button>
       </div>
+      <p class="sensors" id="sensors">Bin switches: not reporting</p>
     </section>
 
     <section class="card" aria-live="polite">
@@ -101,6 +114,11 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
       </div>
     </section>
   </div>
+
+  <section class="card bin-alert" id="bin-alert" role="status" hidden>
+    <h2>Bins opened</h2>
+    <ul id="bin-alert-list"></ul>
+  </section>
 
   <section class="floors" aria-label="Bins in machine order">
     <div class="floor"><div class="floor-head"><h2>Floor 2 · Other pieces</h2><span class="muted" id="f2sum"></span></div><div class="bins" id="floor2"></div></div>

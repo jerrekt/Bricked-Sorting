@@ -6,6 +6,8 @@
   var API = ((document.querySelector('meta[name="bricked-api"]') || {}).content || '').replace(/\/+$/, '');
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var BINS = null, NAMES = ['Branden', 'Ethan', 'Marshall', 'Vivek'];
+  var TEST = /[?&]test=bins\b/.test(location.search);
+  var binState = { sensors: false, open: {}, recount: [], drawers_open: [] };
   var lastId = 0, mode = 'idle', counts = { live: {}, sim: {} }, recent = [], queue = [], busy = false, pass = '', lastName = '';
 
   function slotInfo(slot) { return BINS.slots.filter(function (s) { return s.slot === slot; })[0] || {}; }
@@ -19,7 +21,8 @@
         d.className = 'bin'; d.id = 'bin-' + code;
         d.innerHTML = '<div class="bin-code">' + code + '</div>' +
           (s.swatch ? '<span class="bin-sw" style="background:' + esc(s.swatch) + '"></span>' : '<span class="bin-sw unk"></span>') +
-          '<div class="bin-label">' + esc(s.label) + '</div><div class="bin-count" id="cnt-' + code + '">0</div>';
+          '<div class="bin-label">' + esc(s.label) + '</div><span class="bin-flag" id="flag-' + code + '" hidden></span>' +
+          '<div class="bin-count" id="cnt-' + code + '">0</div>';
         el.appendChild(d);
       });
     });
@@ -32,6 +35,57 @@
       var el = $('cnt-' + code); if (el) el.textContent = n;
     }); });
     $('f1sum').textContent = sums[1] + (sums[1] === 1 ? ' piece' : ' pieces'); $('f2sum').textContent = sums[2] + (sums[2] === 1 ? ' piece' : ' pieces');
+  }
+
+  /* bin switches: a lifted bin is open; once it goes back its count needs a recount */
+  function binName(code) {
+    var m = /^([12])-([1-8])$/.exec(code);
+    if (m) {
+      var fl = BINS.floors.filter(function (f) { return f.floor === +m[1]; })[0] || {};
+      return (fl.label || 'Floor ' + m[1]) + ' · ' + (slotInfo(+m[2]).label || 'slot ' + m[2]) + ' (' + code + ')';
+    }
+    return (code.charAt(0) === 'F' ? 'Front drawer' : 'Back drawer') + ' · bin ' + code;
+  }
+
+  function drawBins(b) {
+    if (!b || !BINS) return;
+    binState = b;
+    var open = b.open || {}, rec = b.recount || [];
+    [1, 2].forEach(function (f) { BINS.slots.forEach(function (s) {
+      var code = f + '-' + s.slot, el = $('bin-' + code), flag = $('flag-' + code);
+      if (!el) return;
+      var isOpen = code in open, isRec = !isOpen && rec.indexOf(code) >= 0;
+      el.classList.toggle('is-open', isOpen); el.classList.toggle('is-recount', isRec);
+      flag.hidden = !(isOpen || isRec); flag.textContent = isOpen ? 'Open' : 'Recount';
+    }); });
+    var lines = [];
+    (b.drawers_open || []).forEach(function (d) {
+      lines.push('<li><b>' + (d === 'front' ? 'Front' : 'Back') + ' drawer is out.</b> The machine waits until it is closed.</li>');
+    });
+    Object.keys(open).sort().forEach(function (code) {
+      lines.push('<li><b>' + esc(binName(code)) + ' is open.</b> Its count stops being trusted.</li>');
+    });
+    if (rec.length) {
+      lines.push('<li><b>Recount:</b> ' + rec.map(function (c) { return esc(binName(c)); }).join(', ') +
+        '. Pour only ' + (rec.length === 1 ? 'that bin' : 'those bins') + ' back into the hopper, then Reset counts.</li>');
+    }
+    $('bin-alert-list').innerHTML = lines.join('');
+    $('bin-alert').hidden = !lines.length;
+    $('sensors').textContent = TEST ? 'Bin switches: test mode (fake, this page only)' :
+      b.sensors ? 'Bin switches: reporting' : 'Bin switches: not reporting';
+    $('sensors').className = 'sensors' + (b.sensors || TEST ? ' on' : '');
+  }
+
+  /* ?test=bins: fake switch changes in this page only, so the look can be checked without the Pi */
+  function testBins() {
+    var steps = [
+      { sensors: true, open: {}, recount: [], drawers_open: [] },
+      { sensors: true, open: { '1-1': 1 }, recount: [], drawers_open: [] },
+      { sensors: true, open: {}, recount: ['1-1'], drawers_open: [] },
+      { sensors: true, open: { '2-4': 1 }, recount: ['1-1'], drawers_open: ['front'] },
+      { sensors: true, open: {}, recount: ['1-1', '2-4'], drawers_open: [] }
+    ], i = 0;
+    (function next() { drawBins(steps[i]); i = (i + 1) % steps.length; setTimeout(next, 3000); })();
   }
 
   var MODE_TEXT = { live: ['Live camera', 'live', 'Pieces from the camera, identified on our server.'],
@@ -102,12 +156,14 @@
       recent = []; evs.slice(-12).forEach(addRecent);
       if (evs.length) showPiece(evs[evs.length - 1]);
       drawCounts(); $('ctl').hidden = false;
+      if (!TEST) drawBins(s.bins);
     });
   }
 
   function poll() {
     getJSON(API + '/live/events?after=' + lastId + '&wait=25').then(function (r) {
       if (r.mode !== mode) loadState().catch(function () {});
+      if (r.bins && !TEST) drawBins(r.bins);
       (r.events || []).forEach(function (e) { if (e.id > lastId) { lastId = e.id; queue.push(e); } });
       pump(); setTimeout(poll, r.busy ? 3000 : 100);
     }, function () { setMode('off'); setTimeout(function () { loadState().then(poll, function () { setTimeout(poll, 5000); }); }, 3000); });
@@ -142,6 +198,7 @@
 
   fetch('data/bins.json').then(function (r) { return r.json(); }).then(function (b) {
     BINS = b; buildBins(); drawCounts();
+    if (TEST) testBins();
     if (!API) { setMode('off'); return; }
     loadState().then(poll, function () { setMode('off'); setTimeout(function () { loadState().then(poll, function () {}); }, 5000); });
   });

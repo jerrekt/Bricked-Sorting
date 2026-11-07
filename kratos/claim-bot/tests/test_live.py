@@ -16,6 +16,7 @@ import app as appmod  # noqa: E402
 import live  # noqa: E402
 
 TOKEN = "t" * 32
+BINS_TOKEN = "b" * 32
 PW = "test-only-pass"
 ROOT = Path(__file__).resolve().parents[3]  # repo root (web/data has the real bins and piece list)
 
@@ -32,6 +33,7 @@ def jpeg(w=640, h=480, exif=True) -> bytes:
 def c(tmp_path, monkeypatch):
     monkeypatch.setenv("BRICKED_LIVE_ENABLED", "1")
     monkeypatch.setenv("BRICKED_LIVE_TOKEN", TOKEN)
+    monkeypatch.setenv("BRICKED_BINS_TOKEN", BINS_TOKEN)
     monkeypatch.setenv("BRICKED_SIM_CONTROL", "1")
     monkeypatch.setenv("BRICKED_TEAM_PASSWORD_SHA256", hashlib.sha256(PW.encode()).hexdigest())
     monkeypatch.setenv("BRICKED_SITE_NAMES", "Branden,Ethan,Marshall,Vivek")
@@ -193,3 +195,57 @@ def test_wrong_passwords_share_lockout_with_task_buttons(c):
     for _ in range(appmod.FAIL_LIMIT):
         control(c, "start", pw="nope")
     assert control(c, "start").status_code == 429
+
+
+# ---------- bin switches ----------
+
+def bins(c, open_=(), drawers=(), token=BINS_TOKEN):
+    return c.post("/live/bins", json={"open": list(open_), "drawers_open": list(drawers)},
+                  headers={"Authorization": f"Bearer {token}"})
+
+
+def test_bins_need_their_own_token(c):
+    assert bins(c, ["1-1"], token="x" * 32).status_code == 401
+    assert bins(c, ["1-1"], token=TOKEN).status_code == 401   # the camera token can't set bins
+    assert bins(c, ["1-1"]).status_code == 200
+
+
+def test_bin_open_then_closed_needs_recount(c):
+    assert c.get("/live/state").json()["bins"]["sensors"] is False
+    bins(c, ["1-1", "2-8"])
+    b = c.get("/live/state").json()["bins"]
+    assert b["sensors"] and set(b["open"]) == {"1-1", "2-8"} and b["recount"] == []
+    bins(c, ["2-8"])
+    b = c.get("/live/state").json()["bins"]
+    assert set(b["open"]) == {"2-8"} and b["recount"] == ["1-1"]
+
+
+def test_reset_clears_recount(c):
+    bins(c, ["1-3"]); bins(c, [])
+    control(c, "reset")
+    assert c.get("/live/state").json()["bins"]["recount"] == []
+
+
+def test_bad_bin_codes_and_drawers_rejected(c):
+    assert bins(c, ["9-9"]).status_code == 400
+    assert bins(c, ["<b>"]).status_code == 400
+    assert bins(c, [], drawers=["side"]).status_code == 400
+    assert bins(c, ["f3"], drawers=["Front"]).status_code == 200
+    b = c.get("/live/state").json()["bins"]
+    assert list(b["open"]) == ["F3"] and b["drawers_open"] == ["front"]
+
+
+def test_stale_sensors_hide_open_bins(c, monkeypatch):
+    bins(c, ["1-1"])
+    monkeypatch.setattr(live, "SENSOR_STALE", 0)
+    b = c.get("/live/state").json()["bins"]
+    assert b["sensors"] is False and b["open"] == {}
+
+
+def test_long_poll_wakes_on_bin_change(c):
+    import threading
+    last = c.get("/live/state").json()["last_id"]
+    threading.Timer(0.5, lambda: live.HUB.set_bins(["1-2"], [])).start()
+    t = time.time()
+    r = c.get(f"/live/events?after={last}&wait=5").json()
+    assert time.time() - t < 3 and "1-2" in r["bins"]["open"] and r["events"] == []

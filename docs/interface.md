@@ -26,11 +26,12 @@ Live page "Start simulator" ──fake pieces───────────�
 | `GET /live/events?after=ID&wait=25` | Live page, bridge | New pieces after ID; waits up to 25 s for one |
 | `GET /live/img/ID.jpg` | Live page | The small photo of a camera piece |
 | `POST /live/control` | Live page buttons (team password) | `start` / `stop` the simulator, `reset` counts |
+| `POST /live/bins` | Pi only (own bearer key) | Which bins are open right now (bin switches); see `docs/electrical/README.md` |
 
 Each piece: `{id, ts, source: "live"|"sim", code, floor, slot, name, color, confidence (0-1), has_image, hex}`.
 
 ## Bridge ↔ Arduino (USB serial, 115200)
 Bridge sends `1-3\n`. Arduino answers `OK 1-3` when the chute is there, or `ERR reason`. One command at a time; the bridge waits up to 10 s. `PING` → `PONG`, `HOME` → `OK HOME`. Code: `indicate/bridge/bin_bridge.py`, `indicate/arduino/bin_receiver/`.
 
-## Not built yet
-Bin limit switch "opened" events back to the server.
+## Bin switches
+`/live/state` and `/live/events` also carry `bins`: `sensors` (reporting or not), `open` (code → time opened), `recount`, `drawers_open`. Details in `docs/electrical/README.md`.

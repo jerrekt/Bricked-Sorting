@@ -14,6 +14,7 @@ import hmac
 import io
 import json
 import random
+import re
 import threading
 import time
 from collections import deque
@@ -40,6 +41,10 @@ MAX_WAITERS = 40
 SIM_MAX_RATE = 2.0        # pieces per second
 SIM_MAX_SECONDS = 600
 INGEST_LIMIT, INGEST_WINDOW = 600, 60
+BINS_LIMIT, BINS_WINDOW = 120, 60
+SENSOR_STALE = 90         # seconds without a Pi update before the switches count as offline
+BIN_CODE = re.compile(r"^(?:[12]-[1-8]|[FB][1-8])$")   # floor-slot now, V14 drawer codes later
+DRAWERS = {"front", "back"}
 NO_STORE = {"Cache-Control": "no-store"}
 DATA_BASE = "https://raw.githubusercontent.com/jerrekt/Bricked-Sorting/main/web/data/"
 
@@ -69,6 +74,43 @@ class Hub:
             self.last_live_at = 0.0
             self.sim = {"running": False, "until": 0.0, "rate": 0.0, "by": "", "token": 0}
             self.waiters = 0
+            # bin switches (Pi): open bins with the time they opened, bins that need a recount
+            self.open: dict[str, float] = {}
+            self.recount: set[str] = set()
+            self.drawers_open: list[str] = []
+            self.sensors_at = 0.0
+            self.bins_rev = 0
+
+    def set_bins(self, open_codes: list[str], drawers: list[str]) -> None:
+        """The Pi sends the full list of open bins each time; work out what changed."""
+        with self.lock:
+            now = round(time.time(), 3)
+            before = set(self.open)
+            after = set(open_codes)
+            for code in before - after:          # closed again: count is no longer trusted
+                del self.open[code]
+                self.recount.add(code)
+            for code in after - before:
+                self.open[code] = now
+            drawers = sorted(set(drawers))
+            changed = before != after or drawers != self.drawers_open or not self.sensors_on()
+            self.drawers_open = drawers
+            self.sensors_at = now
+            if changed:
+                self.bins_rev += 1
+
+    def sensors_on(self) -> bool:
+        return time.time() - self.sensors_at < SENSOR_STALE
+
+    def bins_state(self) -> dict:
+        with self.lock:
+            return self._bins()
+
+    def _bins(self) -> dict:  # caller holds the lock
+        on = self.sensors_on()
+        return {"sensors": on, "sensors_at": self.sensors_at, "rev": self.bins_rev,
+                "open": dict(self.open) if on else {}, "drawers_open": list(self.drawers_open) if on else [],
+                "recount": sorted(self.recount)}
 
     def add(self, evt: dict, image: bytes | None = None) -> dict:
         with self.lock:
@@ -103,6 +145,7 @@ class Hub:
                 "mode": self.mode(), "sim": sim, "last_live_at": self.last_live_at,
                 "counts": {k: dict(v) for k, v in self.counts.items()},
                 "events": list(self.events)[-30:], "last_id": self.next_id - 1,
+                "bins": self._bins(),
             }
 
 
@@ -134,8 +177,8 @@ def ref() -> dict:
 
 # ---------- ingest from CT 150 ----------
 
-def token_ok(header: str) -> bool:
-    want = core.env("BRICKED_LIVE_TOKEN")
+def token_ok(header: str, name: str = "BRICKED_LIVE_TOKEN") -> bool:
+    want = core.env(name)
     if len(want) < 24 or not header.startswith("Bearer "):
         return False
     a = hashlib.sha256(header[7:].strip().encode()).digest()
@@ -217,6 +260,36 @@ async def live_event(request: Request):
     return {"ok": True, "id": evt["id"], "code": evt["code"]}
 
 
+# ---------- bin switches from the Pi ----------
+
+class Bins(BaseModel):
+    open: list[str] = []
+    drawers_open: list[str] = []
+
+
+@router.post("/live/bins")
+def live_bins(body: Bins, request: Request):
+    """Full list of bins that are open right now (switch released). Send on every change
+    and at least every 30 s, so the page can tell the switches are still reporting."""
+    need_enabled()
+    if not token_ok(request.headers.get("authorization", ""), "BRICKED_BINS_TOKEN"):
+        raise HTTPException(401, "bad token")
+    if core.LIMITS.over("live:bins", BINS_LIMIT, BINS_WINDOW):
+        raise HTTPException(429, "slow down")
+    if len(body.open) > 32 or len(body.drawers_open) > 2:
+        raise HTTPException(400, "too many")
+    codes = [str(c).strip().upper() for c in body.open]
+    bad = [c for c in codes if not BIN_CODE.match(c)]
+    if bad:
+        raise HTTPException(400, "bin codes look like 1-3 (or F3 / B3)")
+    drawers = [str(d).strip().lower() for d in body.drawers_open]
+    if any(d not in DRAWERS for d in drawers):
+        raise HTTPException(400, "drawers are front or back")
+    core.LIMITS.add("live:bins")
+    HUB.set_bins(codes, drawers)
+    return {"ok": True, **HUB.bins_state()}
+
+
 # ---------- readers (website and Marshall's bridge) ----------
 
 @router.get("/live/state")
@@ -229,22 +302,28 @@ def live_state():
 async def live_events(after: int = 0, wait: int = 0):
     need_enabled()
     wait = max(0, min(int(wait), WAIT_MAX))
+
+    def reply(found, **extra):
+        return JSONResponse({"events": found, "last_id": HUB.next_id - 1, "mode": HUB.mode(),
+                             "bins": HUB.bins_state(), **extra}, headers=NO_STORE)
+
     found = HUB.after(after)
     if found or not wait:
-        return JSONResponse({"events": found, "last_id": HUB.next_id - 1, "mode": HUB.mode()}, headers=NO_STORE)
+        return reply(found)
     if HUB.waiters >= MAX_WAITERS:
-        return JSONResponse({"events": [], "last_id": HUB.next_id - 1, "mode": HUB.mode(), "busy": True}, headers=NO_STORE)
+        return reply([], busy=True)
     HUB.waiters += 1
+    rev, on = HUB.bins_rev, HUB.sensors_on()
     try:
         end = time.time() + wait
         while time.time() < end:
             await asyncio.sleep(0.25)
             found = HUB.after(after)
-            if found:
+            if found or HUB.bins_rev != rev or HUB.sensors_on() != on:   # a bin opened or closed
                 break
     finally:
         HUB.waiters -= 1
-    return JSONResponse({"events": found, "last_id": HUB.next_id - 1, "mode": HUB.mode()}, headers=NO_STORE)
+    return reply(found)
 
 
 @router.get("/live/img/{event_id}.jpg")
@@ -342,6 +421,9 @@ def live_control(body: Control, request: Request, bg: BackgroundTasks):
     elif act == "reset":
         with HUB.lock:
             HUB.counts = {"live": {}, "sim": {}}
+            if HUB.recount:
+                HUB.recount = set()
+                HUB.bins_rev += 1
         text = f"**{name}** reset the Live bin counts"
     else:
         raise HTTPException(400, "action must be start, stop or reset")
