@@ -9,6 +9,7 @@
   var TEST = /[?&]test=bins\b/.test(location.search);
   var binState = { sensors: false, open: {}, recount: [], drawers_open: [] };
   var lastId = 0, mode = 'idle', counts = { live: {}, sim: {} }, recent = [], queue = [], busy = false, pass = '', lastName = '';
+  var seen = { live: [], sim: [] }, seenIds = {};  /* pieces since this page opened, for the Identify stats */
 
   function slotInfo(slot) { return BINS.slots.filter(function (s) { return s.slot === slot; })[0] || {}; }
   function shown() { return mode === 'sim' ? counts.sim : counts.live; }
@@ -90,7 +91,7 @@
 
   var MODE_TEXT = { live: ['Live camera', 'live', 'Pieces from the camera, identified on our server.'],
                     sim: ['Simulator', 'sim', 'Fake pieces from the real 10696 parts list. Marshall\'s bins can follow along.'],
-                    idle: ['Idle', 'off', 'No pieces in the last minute. Start the simulator, or run the camera.'],
+                    idle: ['Idle', 'off', 'No pieces in the last minute. Put a piece under the camera, or open Testing tools below.'],
                     off: ['Machine off', 'off', 'The machine is not running right now. This page updates on its own when it comes back; try the Demo meanwhile.'] };
   function setMode(m, sim) {
     mode = m; var t = MODE_TEXT[m] || MODE_TEXT.idle;
@@ -105,29 +106,81 @@
 
   function colorFor(e) { return e.hex || slotInfo(e.slot).swatch || '#9aa0a6'; }
 
+  function pct(v) { return v == null ? null : Math.round(v * 100); }
+  function level(v) { return v == null ? '' : v >= 0.8 ? 'hi' : v >= 0.6 ? 'mid' : 'lo'; }
+  function meter(bar, val, v) {
+    var p = pct(v);
+    $(bar).style.width = (p == null ? 0 : p) + '%'; $(bar).className = level(v);
+    $(val).textContent = p == null ? '–' : p + '%';
+  }
+  function binLabel(e) {
+    if (!BINS || e.floor == null) return '';
+    var fl = BINS.floors.filter(function (f) { return f.floor === e.floor; })[0] || {};
+    return (slotInfo(e.slot).label || '') + (fl.label ? ' · ' + fl.label : '');
+  }
+  function srcTag(e) {
+    return '<span class="tag' + (e.source === 'sim' ? ' sim' : '') + '">' + (e.source === 'sim' ? 'simulated' : 'camera') + '</span>';
+  }
+
   function showPiece(e) {
     $('p-code').textContent = e.code;
+    $('p-binlabel').textContent = binLabel(e);
     $('p-name').textContent = e.name || 'Piece';
-    $('p-meta').innerHTML = esc(e.color || '') + (e.confidence != null ? ' · ' + Math.round(e.confidence * 100) + '% sure' : '') +
-      ' · <span class="tag' + (e.source === 'sim' ? ' sim' : '') + '">' + (e.source === 'sim' ? 'simulated' : 'camera') + '</span>';
-    var th = $('thumb');
-    if (e.has_image) th.innerHTML = '<img alt="Camera photo of the piece" src="' + API + '/live/img/' + e.id + '.jpg">';
-    else th.innerHTML = '<span class="blk" style="background:' + esc(colorFor(e)) + '"></span>';
+    var sub = [];
+    if (e.part_id) sub.push('Part ' + e.part_id);
+    if (e.category) sub.push(e.category);
+    if (e.shape) sub.push(e.shape);
+    $('p-sub').textContent = sub.join(' · ');
+    meter('m-piece', 'v-piece', e.confidence);
+    $('p-color').textContent = e.color || 'Color';
+    $('p-sw').style.background = colorFor(e);
+    meter('m-color', 'v-color', e.color_confidence);
+    var t = new Date(e.ts * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    $('p-tags').innerHTML = srcTag(e) + '<span>' + t + '</span>' + (e.confidence != null && e.confidence < 0.6 ? '<span class="tag">low match</span>' : '');
+    var sh = $('shot');
+    if (e.has_image) sh.innerHTML = '<img alt="Camera photo of the piece" src="' + API + '/live/img/' + e.id + '.jpg">';
+    else sh.innerHTML = '<span class="blk" style="background:' + esc(colorFor(e)) + '"></span>';
   }
 
   function addRecent(e) {
     recent.unshift(e); recent = recent.slice(0, 12);
     $('recent').innerHTML = recent.map(function (r) {
       var t = new Date(r.ts * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-      return '<li><span class="r-time">' + t + '</span><span class="r-code">' + esc(r.code) + '</span><span class="r-name">' + esc(r.name) +
+      var th = r.has_image ? '<img alt="" loading="lazy" src="' + API + '/live/img/' + r.id + '.jpg">' :
+        '<span class="sw" style="background:' + esc(colorFor(r)) + '"></span>';
+      var c = pct(r.confidence);
+      return '<li><span class="r-th">' + th + '</span><span class="r-time">' + t + '</span><span class="r-code">' + esc(r.code) +
+        '</span><span class="r-name">' + esc(r.name) + '</span><span class="r-conf">' + (c == null ? '' : c + '%') +
         '</span><span class="tag' + (r.source === 'sim' ? ' sim' : '') + '">' + (r.source === 'sim' ? 'sim' : 'cam') + '</span></li>';
     }).join('');
     $('recent-empty').hidden = recent.length > 0;
   }
 
+  /* Identify stats for the source on screen (camera, or the simulator while it runs) */
+  function note(e) {
+    if (seenIds[e.id]) return; seenIds[e.id] = 1;
+    (seen[e.source] || (seen[e.source] = [])).push(e);
+  }
+  function ago(ts) {
+    if (!ts) return '–';
+    var s = Math.max(0, Math.round(Date.now() / 1000 - ts));
+    return s < 60 ? s + ' s ago' : s < 3600 ? Math.round(s / 60) + ' min ago' : Math.round(s / 3600) + ' h ago';
+  }
+  function drawStats() {
+    var list = seen[mode === 'sim' ? 'sim' : 'live'] || [];
+    var conf = list.filter(function (e) { return e.confidence != null; });
+    var avg = conf.length ? conf.reduce(function (a, e) { return a + e.confidence; }, 0) / conf.length : null;
+    $('st-n').textContent = list.length;
+    $('st-avg').textContent = avg == null ? '–' : Math.round(avg * 100) + '%';
+    $('st-low').textContent = conf.filter(function (e) { return e.confidence < 0.6; }).length;
+    $('st-unk').textContent = list.filter(function (e) { return e.slot === 8; }).length;
+    $('st-last').textContent = list.length ? ago(list[list.length - 1].ts) : '–';
+  }
+  setInterval(drawStats, 1000);
+
   function play(e) {
     var c = counts[e.source]; c[e.code] = (c[e.code] || 0) + 1;
-    showPiece(e); addRecent(e);
+    note(e); showPiece(e); addRecent(e); drawStats();
     var bin = $('bin-' + e.code);
     if (bin && !reduce && e.source === (mode === 'sim' ? 'sim' : 'live')) {
       var d = document.createElement('span'); d.className = 'drop'; d.style.background = colorFor(e);
@@ -153,9 +206,9 @@
     return getJSON(API + '/live/state').then(function (s) {
       lastId = s.last_id; counts = s.counts; setMode(s.mode, s.sim);
       var evs = s.events || [];
-      recent = []; evs.slice(-12).forEach(addRecent);
+      recent = []; evs.slice(-12).forEach(addRecent); evs.forEach(note); drawStats();
       if (evs.length) showPiece(evs[evs.length - 1]);
-      drawCounts(); $('ctl').hidden = false;
+      drawCounts(); $('ctl').hidden = false; $('b-reset').hidden = false;
       if (!TEST) drawBins(s.bins);
     });
   }

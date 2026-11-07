@@ -19,7 +19,7 @@ log = logging.getLogger("live_hook")
 URL = os.environ.get("BRICKED_LIVE_URL", "https://bricked-api.adsuaracloud.com/live/event")
 MAX_IMAGE = 280_000  # the Live service refuses JPEGs over 300 KB
 FIELDS = ("name", "part_id", "category", "confidence", "shape", "bin", "bin_number",
-          "floor", "slot", "color", "color_bucket", "color_confidence", "lego_detected")
+          "floor", "slot", "color", "color_bucket", "color_confidence", "rgb", "lego_detected")
 
 
 def _send(payload: dict, token: str):

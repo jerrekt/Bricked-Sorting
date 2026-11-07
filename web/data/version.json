@@ -1,6 +1,6 @@
 {
- "version": "V1.024",
+ "version": "V1.025",
  "date": "2026-11-07",
- "note": "Live page: bins show Open and Recount from the bin switches (Pi posts /live/bins)",
+ "note": "Live page centered on Identify and the bins: big camera photo, piece and color match, Identify stats, simulator moved to Testing tools",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }

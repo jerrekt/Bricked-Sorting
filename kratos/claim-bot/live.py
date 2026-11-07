@@ -215,6 +215,23 @@ def as_int(v, lo, hi):
     return v if lo <= v <= hi else None
 
 
+def to_hex(v) -> str | None:
+    """CT 150 sends rgb as [r, g, b], "r,g,b" or "#rrggbb"; the page wants "#rrggbb"."""
+    if isinstance(v, str):
+        t = v.strip()
+        if re.fullmatch(r"#[0-9a-fA-F]{6}", t):
+            return t.lower()
+        v = [x for x in re.split(r"[\s,]+", t.strip("()[]")) if x]
+    if isinstance(v, (list, tuple)) and len(v) == 3:
+        try:
+            r, g, b = (int(float(x)) for x in v)
+        except (TypeError, ValueError):
+            return None
+        if all(0 <= x <= 255 for x in (r, g, b)):
+            return f"#{r:02x}{g:02x}{b:02x}"
+    return None
+
+
 def confidence(v) -> float | None:
     try:
         v = float(v)
@@ -255,7 +272,8 @@ async def live_event(request: Request):
         "source": "live", "code": f"{floor}-{slot}", "floor": floor, "slot": slot,
         "name": core.clean(data.get("name", ""), 80), "color": core.clean(data.get("color", ""), 40),
         "part_id": core.clean(data.get("part_id", ""), 20), "confidence": confidence(data.get("confidence")),
-        "hex": None,
+        "category": core.clean(data.get("category", ""), 40), "shape": core.clean(data.get("shape", ""), 40),
+        "color_confidence": confidence(data.get("color_confidence")), "hex": to_hex(data.get("rgb")),
     }, image)
     return {"ok": True, "id": evt["id"], "code": evt["code"]}
 
@@ -348,7 +366,9 @@ def sim_piece() -> dict:
     slot = r["slot_of"][group]
     return {"source": "sim", "code": f"{floor}-{slot}", "floor": floor, "slot": slot,
             "name": core.clean(p.get("part", ""), 80), "color": core.clean(p.get("color", ""), 40),
-            "part_id": "", "confidence": round(random.uniform(0.6, 0.98), 2), "hex": p.get("hex")}
+            "part_id": "", "confidence": round(random.uniform(0.6, 0.98), 2), "hex": p.get("hex"),
+            "category": "Brick" if p.get("brick") else "Other", "shape": "",
+            "color_confidence": round(random.uniform(0.7, 0.99), 2)}
 
 
 def sim_loop(run_token: int):

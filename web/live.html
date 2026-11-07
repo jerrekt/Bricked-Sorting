@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Bricked Sorting Live</title>
-<meta name="description" content="Live view of the Bricked Sorting machine: each piece the camera sees, and the bin it goes to.">
+<meta name="description" content="Live view of the Bricked Sorting machine: each piece the camera sees, what it is, how sure we are, and the bin it goes to.">
 <!-- Address of the Bricked Sorting API (kratos/claim-bot). Empty = page shows "Not connected". -->
 <meta name="bricked-api" content="https://bricked-api.adsuaracloud.com">
 <meta property="og:title" content="Bricked Sorting">
@@ -32,15 +32,39 @@
 .sub{font-size:14px;color:var(--muted);margin:6px 0 0}
 .ctl{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
 .ctl select{font:inherit;font-size:14px;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg);min-height:40px}
-.piece{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center}
-.thumb{width:120px;height:90px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden;display:grid;place-items:center}
-.thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.thumb .blk{width:46px;height:30px;border-radius:5px;border:1px solid rgba(0,0,0,.3);position:relative}
-.thumb .blk::before,.thumb .blk::after{content:"";position:absolute;top:-7px;width:12px;height:7px;border-radius:3px 3px 0 0;background:inherit;border:1px solid rgba(0,0,0,.3);border-bottom:0}
-.thumb .blk::before{left:7px}.thumb .blk::after{right:7px}
-.p-code{font-size:34px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
-.p-name{font-weight:600;margin-top:4px;min-width:0;overflow-wrap:anywhere}
-.p-meta{font-size:13px;color:var(--muted)}
+.id-grid{display:grid;gap:16px}
+@media (min-width:880px){.id-grid{grid-template-columns:1.7fr 1fr;align-items:stretch}}
+.id-body{display:grid;gap:14px;margin-top:14px}
+@media (min-width:600px){.id-body{grid-template-columns:minmax(220px,320px) 1fr;align-items:start}}
+.shot{aspect-ratio:4/3;width:100%;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden;display:grid;place-items:center}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot .blk{width:92px;height:60px;border-radius:8px;border:1px solid rgba(0,0,0,.3);position:relative}
+.shot .blk::before,.shot .blk::after{content:"";position:absolute;top:-13px;width:24px;height:13px;border-radius:5px 5px 0 0;background:inherit;border:1px solid rgba(0,0,0,.3);border-bottom:0}
+.shot .blk::before{left:14px}.shot .blk::after{right:14px}
+.shot .wait{font-size:13px;color:var(--muted)}
+.r-bin{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.p-code{font-size:42px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
+.p-binlabel{font-size:14px;color:var(--muted)}
+.p-name{font-size:18px;font-weight:700;margin-top:8px;min-width:0;overflow-wrap:anywhere}
+.p-sub{font-size:13px;color:var(--muted);margin-top:2px;min-height:1em}
+.meters{display:grid;gap:8px;margin-top:12px}
+.meter{display:grid;grid-template-columns:110px 1fr 44px;gap:8px;align-items:center;font-size:13px}
+.meter .m-lab{color:var(--muted);display:flex;align-items:center;gap:6px;min-width:0;overflow:hidden;white-space:nowrap}
+.meter .m-bar{height:8px;border-radius:5px;background:var(--line);overflow:hidden}
+.meter .m-bar i{display:block;height:100%;width:0;background:var(--muted);transition:width .3s}
+.meter .m-bar i.hi{background:var(--ok)}.meter .m-bar i.mid{background:var(--flag)}.meter .m-bar i.lo{background:var(--warn)}
+.meter .m-val{font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
+.sw{width:12px;height:12px;border-radius:3px;border:1px solid rgba(0,0,0,.3);display:inline-block;flex:none}
+.p-tags{margin-top:12px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--muted)}
+.id-stats h2{font-size:16px;margin:0 0 10px}
+.id-stats dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:8px 12px;font-size:14px}
+.id-stats dt{color:var(--muted)}
+.id-stats dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
+.id-stats .note{font-size:12px;color:var(--muted);margin:12px 0 0}
+.floors-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.floors-head h2{margin:0;font-size:18px}
+.tools summary{cursor:pointer;font-weight:700}
+.tools p{font-size:13px;color:var(--muted);margin:8px 0 0}
 .tag{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:999px;border:1px solid var(--line);text-transform:uppercase}
 .tag.sim{border-color:var(--pop)}
 .bin{cursor:default;overflow:hidden;min-height:96px}
@@ -49,7 +73,11 @@
 @keyframes fall{to{top:calc(100% - 22px);opacity:.15}}
 @media (prefers-reduced-motion:reduce){.drop{display:none}}
 .recent{list-style:none;margin:0;padding:0;display:grid;gap:4px;font-size:14px}
-.recent li{display:grid;grid-template-columns:auto auto 1fr auto;gap:10px;align-items:baseline;padding:4px 0;border-bottom:1px solid var(--line)}
+.recent li{display:grid;grid-template-columns:36px auto auto 1fr auto auto;gap:10px;align-items:center;padding:4px 0;border-bottom:1px solid var(--line)}
+.recent .r-th{width:36px;height:27px;border-radius:5px;overflow:hidden;background:var(--surface-2);display:grid;place-items:center}
+.recent .r-th img{width:100%;height:100%;object-fit:cover;display:block}
+.recent .r-conf{font-size:12px;font-variant-numeric:tabular-nums;color:var(--muted)}
+@media (max-width:520px){.recent li{grid-template-columns:36px auto 1fr auto}.recent .r-time,.recent .r-conf{display:none}}
 .recent .r-code{font-weight:700;font-variant-numeric:tabular-nums}
 .recent .r-time{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
 .recent .r-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -80,38 +108,41 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 <script src="assets/intro.js"></script>
 <header class="top"><div class="wrap">
   <a class="logo" href="./"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
-  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.024</a>
+  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.025</a>
   <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="live.html" aria-current="page">Live</a><a href="tasks.html">Tasks</a><a href="parts.html">Parts</a><a href="camera.html">Camera</a></nav>
 </div></header>
 
 <main class="wrap live">
-  <div class="top-grid">
-    <section class="card">
+  <div class="id-grid">
+    <section class="card identify" aria-live="polite">
       <div class="head-row"><h1>Live</h1><span class="mode off" id="mode">Checking</span></div>
-      <p class="sub" id="sub">Each piece the camera sees shows up here and drops into its bin.</p>
-      <div class="ctl" id="ctl" hidden>
-        <button class="btn small primary" type="button" id="b-start">Start simulator</button>
-        <label class="sr" for="rate" hidden>Speed</label>
-        <select id="rate" aria-label="Simulator speed">
-          <option value="0.5">1 piece / 2 s</option>
-          <option value="1" selected>1 piece / s</option>
-          <option value="2">2 pieces / s</option>
-        </select>
-        <button class="btn small" type="button" id="b-stop">Stop</button>
-        <button class="btn small" type="button" id="b-reset">Reset counts</button>
-      </div>
-      <p class="sensors" id="sensors">Bin switches: not reporting</p>
-    </section>
-
-    <section class="card" aria-live="polite">
-      <div class="piece">
-        <div class="thumb" id="thumb"><span class="blk" style="background:var(--surface-2)"></span></div>
+      <p class="sub" id="sub">Each piece the camera sees: what it is, how sure the server is, and the bin it goes to.</p>
+      <div class="id-body">
+        <div class="shot" id="shot"><span class="wait">Waiting for a piece</span></div>
         <div style="min-width:0">
-          <div class="p-code" id="p-code">–</div>
+          <div class="r-bin"><span class="p-code" id="p-code">–</span><span class="p-binlabel" id="p-binlabel"></span></div>
           <div class="p-name" id="p-name">Waiting for a piece</div>
-          <div class="p-meta" id="p-meta"></div>
+          <div class="p-sub" id="p-sub"></div>
+          <div class="meters">
+            <div class="meter"><span class="m-lab">Piece match</span><span class="m-bar"><i id="m-piece"></i></span><span class="m-val" id="v-piece">–</span></div>
+            <div class="meter"><span class="m-lab"><span class="sw" id="p-sw" style="background:var(--surface-2)"></span><span id="p-color">Color</span></span><span class="m-bar"><i id="m-color"></i></span><span class="m-val" id="v-color">–</span></div>
+          </div>
+          <div class="p-tags" id="p-tags"></div>
         </div>
       </div>
+    </section>
+
+    <section class="card id-stats">
+      <h2>Identify</h2>
+      <dl>
+        <dt>Pieces identified</dt><dd id="st-n">0</dd>
+        <dt>Average piece match</dt><dd id="st-avg">–</dd>
+        <dt>Low match (under 60%)</dt><dd id="st-low">0</dd>
+        <dt>Unknown color (slot 8)</dt><dd id="st-unk">0</dd>
+        <dt>Last piece</dt><dd id="st-last">–</dd>
+      </dl>
+      <p class="sensors" id="sensors">Bin switches: not reporting</p>
+      <p class="note" id="st-note">Camera pieces the server still holds (up to 30) plus every new one. While the simulator runs, its fake pieces instead.</p>
     </section>
   </div>
 
@@ -121,6 +152,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
   </section>
 
   <section class="floors" aria-label="Bins in machine order">
+    <div class="floors-head"><h2>Bins</h2><button class="btn small" type="button" id="b-reset" hidden>Reset counts</button></div>
     <div class="floor"><div class="floor-head"><h2>Floor 2 · Other pieces</h2><span class="muted" id="f2sum"></span></div><div class="bins" id="floor2"></div></div>
     <div class="floor"><div class="floor-head"><h2>Floor 1 · Bricks</h2><span class="muted" id="f1sum"></span></div><div class="bins" id="floor1"></div></div>
   </section>
@@ -130,6 +162,20 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
     <ul class="recent" id="recent"></ul>
     <p class="empty" id="recent-empty">None yet.</p>
   </section>
+
+  <details class="card tools" id="ctl" hidden>
+    <summary>Testing tools</summary>
+    <p>Fake pieces from the real 10696 parts list, to test the bins and this page without the camera. Team password needed.</p>
+    <div class="ctl">
+      <button class="btn small primary" type="button" id="b-start">Start simulator</button>
+      <select id="rate" aria-label="Simulator speed">
+        <option value="0.5">1 piece / 2 s</option>
+        <option value="1" selected>1 piece / s</option>
+        <option value="2">2 pieces / s</option>
+      </select>
+      <button class="btn small" type="button" id="b-stop">Stop</button>
+    </div>
+  </details>
 </main>
 
 <dialog id="dlg" aria-labelledby="dlg-title">
@@ -142,7 +188,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
   </form>
 </dialog>
 
-<footer class="foot"><div class="wrap"><span>Live view. Simulator pieces come from the real parts list of one LEGO Classic 10696 box.</span><nav class="foot-links"><a href="https://github.com/jerrekt/Bricked-Sorting" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://bja.adsuaracloud.com" target="_blank" rel="noopener noreferrer">bja.adsuaracloud.com</a><a href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Changelog</a></nav><span class="foot-course">SJSU Tech 190A, Senior Project I, Fall 2026 · Instructor Vlad Ionescu</span></div></footer>
+<footer class="foot"><div class="wrap"><span>Live view: the camera, what the server thinks each piece is, and the bins.</span><nav class="foot-links"><a href="https://github.com/jerrekt/Bricked-Sorting" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://bja.adsuaracloud.com" target="_blank" rel="noopener noreferrer">bja.adsuaracloud.com</a><a href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Changelog</a></nav><span class="foot-course">SJSU Tech 190A, Senior Project I, Fall 2026 · Instructor Vlad Ionescu</span></div></footer>
 <script src="assets/live.js"></script>
 </body>
 </html>
