@@ -75,6 +75,16 @@ def open_camera():
 
 
 def capture_loop():
+    """Keep the capture thread alive no matter what goes wrong."""
+    while True:
+        try:
+            _capture()
+        except Exception:
+            logging.exception("Capture loop crashed; restarting in 3 s")
+            time.sleep(3)
+
+
+def _capture():
     """Keep reading frames; reopen the camera if it drops out."""
     global _latest, _latest_time
     cap = None
