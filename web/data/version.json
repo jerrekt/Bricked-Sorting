@@ -1,6 +1,6 @@
 {
- "version": "V1.023",
+ "version": "V1.024",
  "date": "2026-11-07",
- "note": "Camera in the nav on every page; phone nav in two rows of three",
+ "note": "Live page: bins show Open and Recount from the bin switches (Pi posts /live/bins)",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }
