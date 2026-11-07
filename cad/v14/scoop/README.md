@@ -1,6 +1,6 @@
 # V14 module S: scoop slide (interface 5.1)
 
-Built on `cad-v14-all`, 2026-11-06 20:30 PT. Script `build_scoop.py` (reads `../interface.json` and the drawer `world/` for the bin check). Outputs: `world/` STEP (fixed parts + moving parts at receive) + `scoop_assembly.step`, `print/` STL laid flat, `parts.json` (day-profile grams/hours, bought parts), `checks.json` (17 poses), 4 stills.
+Built on `cad-v14-all`, 2026-11-06 20:09 PT. Script `build_scoop.py` (reads `../interface.json` and the drawer `world/` for the bin check). Outputs: `world/` STEP (fixed parts + moving parts at receive) + `scoop_assembly.step`, `print/` STL laid flat, `parts.json` (day-profile grams/hours, bought parts), `checks.json` (17 poses), 4 stills.
 
 ## What it is
 - **Beam (180):** closed PLA box 30 × 50 at y ±15, z 138..188, x ±335, 3 segments (joints at x ±112) with 20 mm plugs at 0.07 fit and 2 × M3 through the sides. End plates 6 thick screw into the 1x2 beam posts' inner faces with 3 × #6 each. Internal diaphragms every 60.
@@ -31,4 +31,4 @@ Beam 0.39 (3 × 118-140 g), carriage 0.10, bracket 0.03, cup 0.05 + TPU pad 0.02
 None. Note for K: the funnel's r 25 tube ends at z 270 directly over the cup (floor 227, walls to 241); for F: the lead clip at (0, −19..−25, 140).
 
 ## Vault log lines
-- 2026-11-06 20:30 PT, claim, Bricked Sorting: module S built to 5.1 on `cad-v14-all`: 30 × 50 box beam in 3 keyed segments on the 1x2 beam posts, 6-roller carriage (nothing below z 136), belt drive with the NEMA17 at the −x end, 80 × 176 cup pivoting at z 222 with a 40° dump (lip |y| 75 / z 180), MG996R outboard at y −105 through a 4-bar pushrod. 17 poses clash-free vs the drawers; 0.62 kg / 14 h.
+- 2026-11-06 20:09 PT, claim, Bricked Sorting: module S built to 5.1 on `cad-v14-all`: 30 × 50 box beam in 3 keyed segments on the 1x2 beam posts, 6-roller carriage (nothing below z 136), belt drive with the NEMA17 at the −x end, 80 × 176 cup pivoting at z 222 with a 40° dump (lip |y| 75 / z 180), MG996R outboard at y −105 through a 4-bar pushrod. 17 poses clash-free vs the drawers; 0.62 kg / 14 h.

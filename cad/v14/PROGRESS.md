@@ -1,6 +1,6 @@
 # V14 single-chat build: progress
 
-**2026-11-06: interface 5.1** (720 x 360 wood frame + PLA skin). Frame and deck are done elsewhere (`cad-v14-frame5`, `cad-v14-deck5`). This branch: drawers (done 19:45), scoop (done 20:30), integration (next: pull `cad-v14-frame5` and `cad-v14-deck5`, clash-check everything, one-brick animation, zip, buy list).
+**2026-11-06: interface 5.1** (720 x 360 wood frame + PLA skin). Frame and deck are done elsewhere (`cad-v14-frame5`, `cad-v14-deck5`). This branch: drawers (done 19:45), scoop (done 20:09), integration (next: pull `cad-v14-frame5` and `cad-v14-deck5`, clash-check everything, one-brick animation, zip, buy list).
 
 Branch `cad-v14-all` (from `cad-v14`; interface **v14-interface-4.3** since 21:30: print rules, fits and gram estimates come from the vault `runbooks/3d-printing.md`; 2.4 mm skins; access panel 420..668). Order from the vault handoff `projects/bricked-sorting-v14-cad-handoff.md` ("one chat" section). A fresh chat: read this list, then the module README of the last done module, then continue at the first open item.
 
