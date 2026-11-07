@@ -4,11 +4,13 @@
 It is the only program that opens the USB camera. Everything else reads from it:
   GET /stream    MJPEG video (the CT 150 dashboard relays this)
   GET /snapshot  one JPEG of the newest frame (identify/camera_service.py polls this)
+  add ?public=1  640 px wide, 5 frames/s at most: what the public website gets
   GET /health    {"ok": true, "age_s": seconds since the last frame}
 
 Settings come from environment variables (all optional):
   CAMERA_DEVICE=0 (or /dev/video0)  CAMERA_WIDTH=1280  CAMERA_HEIGHT=720  CAMERA_FPS=15
   JPEG_QUALITY=85  STREAM_PORT=8001
+  PUBLIC_WIDTH=640 PUBLIC_FPS=5   size and rate for ?public=1 (what the website's /camera-stream uses)
   CAMERA_LOCK=1    after 3 s of auto, freeze focus, exposure and white balance where they
                    landed (steady colors and no false "piece" from auto changes). 0 = leave auto.
   CAMERA_CONTROLS  optional fixed v4l2 settings applied after that, e.g.
@@ -79,6 +81,11 @@ def lock_controls():
 
 _latest = None          # newest JPEG bytes
 _latest_time = 0.0      # time.time() of the newest frame
+_latest_frame = None    # newest raw frame, for the small public copy
+_small = (0.0, None)    # (frame time, small JPEG) for ?public=1, made only when someone asks
+
+PUBLIC_WIDTH = int(os.environ.get("PUBLIC_WIDTH", "640"))
+PUBLIC_FPS = float(os.environ.get("PUBLIC_FPS", "5"))
 _cond = threading.Condition()
 
 
@@ -135,7 +142,7 @@ def capture_loop():
 
 def _capture():
     """Keep reading frames; reopen the camera if it drops out."""
-    global _latest, _latest_time
+    global _latest, _latest_time, _latest_frame
     cap = None
     lock_at = None
     while True:
@@ -164,7 +171,29 @@ def _capture():
             with _cond:
                 _latest = jpg.tobytes()
                 _latest_time = time.time()
+                _latest_frame = frame
                 _cond.notify_all()
+
+
+def small_jpeg():
+    """Smaller, lower-quality copy for the public website (about 30 KB instead of ~150 KB).
+    Made at most once per new frame, and only while someone is watching."""
+    global _small
+    with _cond:
+        t, frame, cached = _latest_time, _latest_frame, _small
+    if frame is None:
+        return None, 0.0
+    if cached[0] == t:
+        return cached[1], t
+    h, w = frame.shape[:2]
+    if w > PUBLIC_WIDTH:
+        frame = cv2.resize(frame, (PUBLIC_WIDTH, int(h * PUBLIC_WIDTH / w)), interpolation=cv2.INTER_AREA)
+    ok, jpg = cv2.imencode(".jpg", frame, [cv2.IMWRITE_JPEG_QUALITY, 70])
+    if not ok:
+        return None, 0.0
+    with _cond:
+        _small = (t, jpg.tobytes())
+    return _small[1], t
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -180,7 +209,8 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_GET(self):
-        path = self.path.split("?", 1)[0]
+        path, _, query = self.path.partition("?")
+        public = "public=1" in query.split("&")   # the website asks for this: smaller and slower
 
         if path == "/health":
             age = time.time() - _latest_time if _latest else None
@@ -189,8 +219,11 @@ class Handler(BaseHTTPRequestHandler):
             self._send(200 if ok else 503, body, "application/json")
 
         elif path == "/snapshot":
-            with _cond:
-                jpg = _latest
+            if public:
+                jpg = small_jpeg()[0]
+            else:
+                with _cond:
+                    jpg = _latest
             if jpg is None:
                 self._send(503, b"no frame yet", "text/plain")
             else:
@@ -202,11 +235,19 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header("Cache-Control", "no-store")
             self.end_headers()
             last = 0.0
+            sent_at = 0.0
+            gap = 1.0 / PUBLIC_FPS if public else 0.0
             try:
                 while True:
+                    if gap:
+                        time.sleep(max(0.0, sent_at + gap - time.time()))
+                        sent_at = time.time()
                     with _cond:
                         _cond.wait_for(lambda: _latest_time > last, timeout=5)
                         jpg, last = _latest, _latest_time
+                    if public:
+                        jpg, last = small_jpeg()
+                        last = last or time.time()
                     if jpg is None:
                         continue
                     self.wfile.write(

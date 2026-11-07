@@ -91,6 +91,8 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 .bin.is-open .bin-count,.bin.is-recount .bin-count{opacity:.4}
 .bin.is-recount{border-color:var(--flag);border-width:2px;padding:7px 7px 9px}
 .bin.is-recount .bin-flag{background:var(--flag);color:#14182b}
+.bin.is-recount{cursor:pointer}
+.bin.is-recount:hover{box-shadow:0 0 0 3px color-mix(in srgb,var(--flag) 35%,transparent)}
 .bin-alert{border-left:4px solid var(--warn)}
 .bin-alert h2{font-size:16px;margin:0 0 6px}
 .bin-alert ul{margin:0;padding-left:18px;display:grid;gap:4px;font-size:14px}
@@ -104,7 +106,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 <script src="assets/intro.js"></script>
 <header class="top"><div class="wrap">
   <a class="logo" href="./"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
-  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.027</a>
+  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.029</a>
   <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="live.html" aria-current="page">Live</a><a href="tasks.html">Tasks</a><a href="parts.html">Parts</a><a href="camera.html">Camera</a></nav>
 </div></header>
 
@@ -177,6 +179,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
 <dialog id="dlg" aria-labelledby="dlg-title">
   <form class="dlg" id="dlg-form" method="dialog">
     <h3 id="dlg-title">Start simulator</h3>
+    <p class="muted small" id="dlg-msg" hidden></p>
     <label for="dlg-name">Your name<select id="dlg-name" required></select></label>
     <label for="dlg-pass">Team password<input id="dlg-pass" type="password" autocomplete="current-password" required></label>
     <p class="err" id="dlg-err" role="alert"></p>

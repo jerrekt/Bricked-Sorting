@@ -4,6 +4,12 @@ Site and repo version. One bump per merged pull request (see `tools/bump_version
 It counts updates to this repo, not how finished the machine is; the Tasks page shows that.
 V1.001 to V1.014 were numbered afterwards, in merge order.
 
+## V1.029 · 2026-11-07
+- Camera tab: live feed from the Pi camera (via CT 150 /camera-stream, 640 px, 5 fps)
+
+## V1.028 · 2026-11-07
+- Live page: click a Recount bin to clear it after pouring it back
+
 ## V1.027 · 2026-11-07
 - Live page bins fill up like the Demo: piles and fill bars, sized for 3 boxes
 
