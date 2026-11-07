@@ -4,6 +4,9 @@ Site and repo version. One bump per merged pull request (see `tools/bump_version
 It counts updates to this repo, not how finished the machine is; the Tasks page shows that.
 V1.001 to V1.014 were numbered afterwards, in merge order.
 
+## V1.023 · 2026-11-07
+- Camera in the nav on every page; phone nav in two rows of three
+
 ## V1.022 · 2026-11-07
 - Camera page (Ethan): status of the Pi camera service, matches the site
 

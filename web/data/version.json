@@ -1,6 +1,6 @@
 {
- "version": "V1.022",
+ "version": "V1.023",
  "date": "2026-11-07",
- "note": "Camera page (Ethan): status of the Pi camera service, matches the site",
+ "note": "Camera in the nav on every page; phone nav in two rows of three",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }
