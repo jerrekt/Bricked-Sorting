@@ -226,6 +226,7 @@ def motor_bracket():
     b = b.union(box(-328.0, -308.0, BY[0], BY[1] + 3, BZ[1] - 0.01, BZ[1] + 4))                   # saddle over the beam top
     for dx in (-6, 6):
         b = b.cut(cylc((-318 + dx, 0, BZ[1] + 2), (0, 0, 1), M3_CLR / 2, 12))
+    b = b.cut(box(-360.0, -334.0, -30.0, 19.6, 100.0, 300.0))      # clear the 1x2 beam post (|x| 335..354, y +-19)
     return b
 
 

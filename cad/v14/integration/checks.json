@@ -1,0 +1,750 @@
+{
+ "interface": "v14-interface-5.1 (2026-11-06 19:35): drawer fits through the skin opening (bins 70 wide at 76 pitch, body x +-306, opening +-310, overlay face +-330); roof support under the hopper stud",
+ "modules": {
+  "F": 289,
+  "K": 48,
+  "D": 68,
+  "S_fixed": 9
+ },
+ "F_vs_D_closed": [
+  [
+   "110_tile_F_c1_r1",
+   "front_166_tray_tile_1",
+   39.5
+  ],
+  [
+   "110_tile_F_c1_r1",
+   "front_167_face_F1",
+   74.8
+  ],
+  [
+   "110_tile_F_c4_r1",
+   "front_166_tray_tile_4",
+   39.5
+  ],
+  [
+   "110_tile_F_c4_r1",
+   "front_167_face_F3",
+   74.8
+  ],
+  [
+   "111_tile_B_c1_r1",
+   "back_166_tray_tile_4",
+   39.5
+  ],
+  [
+   "111_tile_B_c1_r1",
+   "back_168_face_B3",
+   74.8
+  ],
+  [
+   "111_tile_B_c4_r1",
+   "back_166_tray_tile_1",
+   39.5
+  ],
+  [
+   "111_tile_B_c4_r1",
+   "back_168_face_B1",
+   74.8
+  ]
+ ],
+ "F_vs_D_open": [],
+ "F_vs_K": [],
+ "F_vs_S_fixed": [],
+ "K_vs_S_fixed": [],
+ "K_vs_D_closed": [],
+ "D_vs_S_fixed": [],
+ "scoop_poses": {
+  "receive": {
+   "vs_F": [],
+   "vs_K": [],
+   "vs_D_closed": []
+  },
+  "home": {
+   "vs_F": [],
+   "vs_K": [],
+   "vs_D_closed": []
+  },
+  "dump_front_1": {
+   "vs_F": [],
+   "vs_K": [],
+   "vs_D_closed": []
+  },
+  "dump_back_1": {
+   "vs_F": [],
+   "vs_K": [],
+   "vs_D_closed": []
+  },
+  "dump_front_2": {
+   "vs_F": [],
+   "vs_K": [],
+   "vs_D_closed": []
+  },
+  "dump_back_2": {
+   "vs_F": [],
+   "vs_K": [],
+   "vs_D_closed": []
+  },
+  "dump_front_3": {
+   "vs_F": [],
+   "vs_K": [],
+   "vs_D_closed": []
+  },
+  "dump_back_3": {
+   "vs_F": [],
+   "vs_K": [],
+   "vs_D_closed": []
+  },
+  "dump_front_4": {
+   "vs_F": [],
+   "vs_K": [],
+   "vs_D_closed": []
+  },
+  "dump_back_4": {
+   "vs_F": [],
+   "vs_K": [],
+   "vs_D_closed": []
+  },
+  "dump_front_5": {
+   "vs_F": [],
+   "vs_K": [],
+   "vs_D_closed": []
+  },
+  "dump_back_5": {
+   "vs_F": [],
+   "vs_K": [],
+   "vs_D_closed": []
+  },
+  "dump_front_6": {
+   "vs_F": [],
+   "vs_K": [],
+   "vs_D_closed": []
+  },
+  "dump_back_6": {
+   "vs_F": [],
+   "vs_K": [],
+   "vs_D_closed": []
+  },
+  "dump_front_7": {
+   "vs_F": [],
+   "vs_K": [],
+   "vs_D_closed": []
+  },
+  "dump_back_7": {
+   "vs_F": [],
+   "vs_K": [],
+   "vs_D_closed": []
+  },
+  "dump_front_8": {
+   "vs_F": [],
+   "vs_K": [],
+   "vs_D_closed": []
+  },
+  "dump_back_8": {
+   "vs_F": [],
+   "vs_K": [],
+   "vs_D_closed": []
+  }
+ },
+ "envelope": {
+  "bbox": [
+   -360.0,
+   -192.0,
+   0.0,
+   360.0,
+   192.0,
+   664.0
+  ],
+  "limit": {
+   "x": [
+    -360,
+    360
+   ],
+   "y": [
+    -192,
+    192
+   ],
+   "z": [
+    0,
+    664
+   ],
+   "note": "y +-192 includes the overlay drawer faces (10 mm proud of the skin); body skin stays at y +-180"
+  },
+  "ok": true
+ },
+ "printed_totals": {
+  "F_frame_skin": {
+   "grams": 4326,
+   "hours": 59.4
+  },
+  "K_deck": {
+   "grams": 1366,
+   "hours": 23.1
+  },
+  "D_drawers": {
+   "grams": 2349,
+   "hours": 52
+  },
+  "S_scoop": {
+   "grams": 623,
+   "hours": 13.8
+  },
+  "ALL": {
+   "grams": 8664,
+   "hours": 148.3,
+   "budget": "printed total <= ~9.5 kg and <= ~200 h (skin ~4.6 kg, studs ~0.5, mechanisms ~3.5, bins ~1)"
+  }
+ },
+ "bought_merged": {
+  "2x2 x 8 ft": [
+   {
+    "module": "F",
+    "qty": 1,
+    "use": ""
+   }
+  ],
+  "1x2 x 8 ft": [
+   {
+    "module": "F",
+    "qty": 2,
+    "use": ""
+   }
+  ],
+  "1/2 in plywood 2 x 4 ft": [
+   {
+    "module": "F",
+    "qty": 1,
+    "use": ""
+   }
+  ],
+  "#6 x 3/4 in wood screws (clips, keeper bars)": [
+   {
+    "module": "F",
+    "qty": 176,
+    "use": ""
+   }
+  ],
+  "#8 x 2.5 in wood screws": [
+   {
+    "module": "F",
+    "qty": 36,
+    "use": ""
+   }
+  ],
+  "#8 x 2 in": [
+   {
+    "module": "F",
+    "qty": 8,
+    "use": ""
+   }
+  ],
+  "#6 x 1.25 in": [
+   {
+    "module": "F",
+    "qty": 12,
+    "use": ""
+   }
+  ],
+  "M3 heat-set inserts": [
+   {
+    "module": "F",
+    "qty": 16,
+    "use": "stud feet (8), stud ledge (4) [+8 in keeper bars]"
+   },
+   {
+    "module": "F",
+    "qty": 8,
+    "use": "keeper bars"
+   },
+   {
+    "module": "K",
+    "qty": 30,
+    "use": "electronics pads"
+   }
+  ],
+  "M3 x 8 countersunk": [
+   {
+    "module": "F",
+    "qty": 16,
+    "use": "stud feet through the roof (8), access panel (8)"
+   },
+   {
+    "module": "K",
+    "qty": 4,
+    "use": "hopper flange to the stud-ring ledge (frame 130)"
+   }
+  ],
+  "red PLA": [
+   {
+    "module": "F",
+    "qty": "~4.3 kg",
+    "use": ""
+   }
+  ],
+  "NEMA17 (BJ salvaged, 5 mm shaft)": [
+   {
+    "module": "K",
+    "qty": 1,
+    "use": "drum drive on bracket 56"
+   }
+  ],
+  "625ZZ": [
+   {
+    "module": "K",
+    "qty": 8,
+    "use": "4 drum rollers x 2 (V7 part 50)"
+   },
+   {
+    "module": "S",
+    "qty": 8,
+    "use": "6 carriage rollers, idler, cup pivot"
+   }
+  ],
+  "M5 x 30 screw + nyloc": [
+   {
+    "module": "K",
+    "qty": 4,
+    "use": "roller axles through the cradle forks"
+   }
+  ],
+  "M5 x 16 screw + nut": [
+   {
+    "module": "K",
+    "qty": 4,
+    "use": "bracket 56 to motor wall 206"
+   }
+  ],
+  "M3 x 12 + nut": [
+   {
+    "module": "K",
+    "qty": 4,
+    "use": "49b ears to the cradle cheeks"
+   }
+  ],
+  "24 mm coin/vibration motor": [
+   {
+    "module": "K",
+    "qty": 2,
+    "use": "V1, V2 (DRV8833 channels)"
+   }
+  ],
+  "MG996R (BJ owns)": [
+   {
+    "module": "K",
+    "qty": 1,
+    "use": "scanner doors"
+   }
+  ],
+  "XIAO ESP32-S3 Sense": [
+   {
+    "module": "K",
+    "qty": 1,
+    "use": "camera on 217"
+   }
+  ],
+  "APDS-9960 (GY-9960)": [
+   {
+    "module": "K",
+    "qty": 1,
+    "use": "colour sensor on 218"
+   }
+  ],
+  "LED bar 70 mm": [
+   {
+    "module": "K",
+    "qty": 2,
+    "use": "on 216"
+   }
+  ],
+  "XIAO ESP32-C3, MCP23017, 3 x TMC2209, DRV8833, 12-5 V buck, 12 V PSU": [
+   {
+    "module": "K",
+    "qty": 1,
+    "use": "electronics trays 225 (BJ owns most)"
+   }
+  ],
+  "M3 x 10 / x 12 screws": [
+   {
+    "module": "K",
+    "qty": 40,
+    "use": "springs, saddles, scanner"
+   }
+  ],
+  "#6 x 3/4 in wood screws": [
+   {
+    "module": "K",
+    "qty": 48,
+    "use": "everything that stands on the deck ply"
+   }
+  ],
+  "PTFE film (optional)": [
+   {
+    "module": "K",
+    "qty": 1,
+    "use": "thrust ring on 49b (V13 note)"
+   }
+  ],
+  "625ZZ bearing": [
+   {
+    "module": "D",
+    "qty": 16,
+    "use": "6 roller + 2 guide per drawer"
+   }
+  ],
+  "M5 x 25 screw + nut": [
+   {
+    "module": "D",
+    "qty": 12,
+    "use": "station roller axles (3 per station)"
+   }
+  ],
+  "M5 x 16 screw": [
+   {
+    "module": "D",
+    "qty": 4,
+    "use": "guide roller axles"
+   }
+  ],
+  "#6 x 3/4 wood screw": [
+   {
+    "module": "D",
+    "qty": 22,
+    "use": "stations, guides, switch mounts into the plywood"
+   },
+   {
+    "module": "S",
+    "qty": 6,
+    "use": "end plates into the beam posts"
+   }
+  ],
+  "M3 heat-set insert": [
+   {
+    "module": "D",
+    "qty": 20,
+    "use": "rail tops"
+   }
+  ],
+  "M3 x 10 screw": [
+   {
+    "module": "D",
+    "qty": 20,
+    "use": "tray to rails, face feet to rail fronts"
+   }
+  ],
+  "M3 x 12 screw + nut": [
+   {
+    "module": "D",
+    "qty": 12,
+    "use": "tray laps"
+   },
+   {
+    "module": "S",
+    "qty": 8,
+    "use": "beam joints, motor bracket to beam, misc"
+   }
+  ],
+  "M3 x 16 screw": [
+   {
+    "module": "D",
+    "qty": 4,
+    "use": "rear roller preload jacks"
+   }
+  ],
+  "KW11-3Z": [
+   {
+    "module": "D",
+    "qty": 2,
+    "use": "drawer closed"
+   },
+   {
+    "module": "S",
+    "qty": 1,
+    "use": "endstop"
+   }
+  ],
+  "M2 x 12 screw + nut": [
+   {
+    "module": "D",
+    "qty": 4,
+    "use": "switches"
+   }
+  ],
+  "NEMA17 (salvaged) + GT2 20T pulley 5 mm bore": [
+   {
+    "module": "S",
+    "qty": 1,
+    "use": "drive"
+   }
+  ],
+  "GT2 6 mm belt": [
+   {
+    "module": "S",
+    "qty": "1.3 m",
+    "use": "loop ~1.24 m"
+   }
+  ],
+  "MG996R (owned)": [
+   {
+    "module": "S",
+    "qty": 1,
+    "use": "tilt"
+   }
+  ],
+  "TMC2209 (owned)": [
+   {
+    "module": "S",
+    "qty": 1,
+    "use": "slide driver"
+   }
+  ],
+  "M5 x 50 screw + nyloc": [
+   {
+    "module": "S",
+    "qty": 2,
+    "use": "top roller axles (through both side plates)"
+   }
+  ],
+  "M5 x 25 screw + nyloc": [
+   {
+    "module": "S",
+    "qty": 5,
+    "use": "side roller axles (4), idler axle (1)"
+   }
+  ],
+  "M3 x 30 screw": [
+   {
+    "module": "S",
+    "qty": 1,
+    "use": "belt tensioner"
+   }
+  ],
+  "M3 insert": [
+   {
+    "module": "S",
+    "qty": 1,
+    "use": "tensioner"
+   }
+  ],
+  "M2 x 8 screw": [
+   {
+    "module": "S",
+    "qty": 6,
+    "use": "servo horn to hub, endstop"
+   }
+  ],
+  "PTFE tape": [
+   {
+    "module": "S",
+    "qty": 1,
+    "use": "anti-lift hooks"
+   }
+  ],
+  "servo extension lead 3-wire": [
+   {
+    "module": "S",
+    "qty": "1 m",
+    "use": "rolling loop to the deck electronics"
+   }
+  ]
+ },
+ "wood": [
+  {
+   "label": "100_post_2x2_RB",
+   "bbox": [
+    -354.0,
+    -174.0,
+    12.0,
+    -316.0,
+    -136.0,
+    612.0
+   ]
+  },
+  {
+   "label": "100_post_2x2_RF",
+   "bbox": [
+    -354.0,
+    136.0,
+    12.0,
+    -316.0,
+    174.0,
+    612.0
+   ]
+  },
+  {
+   "label": "100_post_2x2_LB",
+   "bbox": [
+    316.0,
+    -174.0,
+    12.0,
+    354.0,
+    -136.0,
+    612.0
+   ]
+  },
+  {
+   "label": "100_post_2x2_LF",
+   "bbox": [
+    316.0,
+    136.0,
+    12.0,
+    354.0,
+    174.0,
+    612.0
+   ]
+  },
+  {
+   "label": "101_top_rail_long_B",
+   "bbox": [
+    -316.0,
+    -174.0,
+    574.0,
+    316.0,
+    -155.0,
+    612.0
+   ]
+  },
+  {
+   "label": "101_top_rail_long_F",
+   "bbox": [
+    -316.0,
+    155.0,
+    574.0,
+    316.0,
+    174.0,
+    612.0
+   ]
+  },
+  {
+   "label": "102_top_rail_short_R",
+   "bbox": [
+    -354.0,
+    -136.0,
+    574.0,
+    -335.0,
+    136.0,
+    612.0
+   ]
+  },
+  {
+   "label": "102_top_rail_short_L",
+   "bbox": [
+    335.0,
+    -136.0,
+    574.0,
+    354.0,
+    136.0,
+    612.0
+   ]
+  },
+  {
+   "label": "103_deck_cleat_long_B",
+   "bbox": [
+    -316.0,
+    -174.0,
+    262.0,
+    316.0,
+    -155.0,
+    300.0
+   ]
+  },
+  {
+   "label": "103_deck_cleat_long_F",
+   "bbox": [
+    -316.0,
+    155.0,
+    262.0,
+    316.0,
+    174.0,
+    300.0
+   ]
+  },
+  {
+   "label": "104_deck_cleat_short_R",
+   "bbox": [
+    -354.0,
+    -136.0,
+    262.0,
+    -335.0,
+    136.0,
+    300.0
+   ]
+  },
+  {
+   "label": "104_deck_cleat_short_L",
+   "bbox": [
+    335.0,
+    -136.0,
+    262.0,
+    354.0,
+    136.0,
+    300.0
+   ]
+  },
+  {
+   "label": "105_bottom_rail_short_R",
+   "bbox": [
+    -354.0,
+    -136.0,
+    12.0,
+    -335.0,
+    136.0,
+    50.0
+   ]
+  },
+  {
+   "label": "105_bottom_rail_short_L",
+   "bbox": [
+    335.0,
+    -136.0,
+    12.0,
+    354.0,
+    136.0,
+    50.0
+   ]
+  },
+  {
+   "label": "106_beam_post_R",
+   "bbox": [
+    -354.0,
+    -19.0,
+    50.0,
+    -335.0,
+    19.0,
+    262.0
+   ]
+  },
+  {
+   "label": "106_beam_post_L",
+   "bbox": [
+    335.0,
+    -19.0,
+    50.0,
+    354.0,
+    19.0,
+    262.0
+   ]
+  },
+  {
+   "label": "107_floor_ply",
+   "bbox": [
+    -360.0,
+    -180.0,
+    0.0,
+    360.0,
+    180.0,
+    12.0
+   ]
+  },
+  {
+   "label": "108_deck_ply",
+   "bbox": [
+    -354.0,
+    -174.0,
+    300.0,
+    354.0,
+    174.0,
+    312.0
+   ]
+  }
+ ]
+}
