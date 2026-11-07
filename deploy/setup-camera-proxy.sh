@@ -1,31 +1,48 @@
 #!/bin/sh
-# One-time, inside CT 150 as root: let the public site show the Pi camera at /camera-stream.
-# Asks for the Pi's Tailscale address and keeps it out of GitHub
-# (/etc/nginx/conf.d/bricked-pi-camera.conf). Re-run any time the Pi's address changes.
+# One-time, inside CT 150 as root: show the Pi camera on the website's Camera tab.
+# Installs the camera relay (kratos/camera-relay, port 8002) that the Pi pushes frames to,
+# and the nginx paths /camera-stream, /camera-snapshot, /camera-health. Safe to re-run.
+# Doesn't touch bricked-server (5000), the dashboard (8080) or anything else.
 set -eu
-CONF=/etc/nginx/conf.d/bricked-pi-camera.conf
 REPO_URL=https://github.com/jerrekt/Bricked-Sorting.git
+DIR=/opt/bricked-camera-relay
+CONF=/etc/nginx/conf.d/bricked-pi-camera.conf
 SRC=$(mktemp -d)
 trap 'rm -rf "$SRC"' EXIT
 
-printf "Pi Tailscale IP (tailscale status, the Pi row, starts with 100.): "
-read -r PI </dev/tty
-PI=$(printf '%s' "$PI" | tr -d '[:space:]')
-case "$PI" in 100.*.*.*) ;; *) echo "That isn't a 100.x.x.x Tailscale address. Nothing changed."; exit 1;; esac
-
-echo "--- checking the Pi camera from CT 150"
-curl -fsS -m 5 -o /dev/null "http://$PI:8001/snapshot" \
-  || { echo "CT 150 can't get http://$PI:8001/snapshot. Is bricked-camera-stream running on the Pi? Nothing changed."; exit 1; }
-echo "Pi camera answers."
-
 git clone -q --depth 1 --branch main "$REPO_URL" "$SRC/r"
+
+echo "--- 1/3 camera relay service (port 8002)"
+id bricked-relay >/dev/null 2>&1 || useradd --system --no-create-home --shell /usr/sbin/nologin bricked-relay
+install -d -m 755 "$DIR"
+install -m 644 "$SRC/r/kratos/camera-relay/camera_relay.py" "$DIR/camera_relay.py"
+cat > /etc/systemd/system/bricked-camera-relay.service <<UNIT
+[Unit]
+Description=Bricked Sorting camera relay (Pi pushes frames, website reads them)
+After=network-online.target
+
+[Service]
+User=bricked-relay
+ExecStart=/usr/bin/python3 -u $DIR/camera_relay.py
+Restart=always
+RestartSec=3
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=multi-user.target
+UNIT
+systemctl daemon-reload
+systemctl enable --now bricked-camera-relay
+systemctl restart bricked-camera-relay
+sleep 1
+curl -s -m 3 -o /dev/null -w "relay: HTTP %{http_code} (503 = running, no frames from the Pi yet)\n" http://127.0.0.1:8002/health || true
+
+echo "--- 2/3 nginx paths"
 cp /etc/nginx/sites-available/bricked-site "$SRC/site.bak"
 [ -f "$CONF" ] && cp "$CONF" "$SRC/conf.bak"
-
-printf 'upstream bricked_pi_camera { server %s:8001; keepalive 4; }\n' "$PI" > "$CONF"
+echo 'upstream bricked_pi_camera { server 127.0.0.1:8002; keepalive 4; }' > "$CONF"
 chmod 644 "$CONF"
 install -m 644 "$SRC/r/deploy/nginx-bricked-site.conf" /etc/nginx/sites-available/bricked-site
-
 if nginx -t 2>/dev/null; then
   systemctl reload nginx
 else
@@ -36,7 +53,7 @@ else
   exit 1
 fi
 
-echo "--- check"
+echo "--- 3/3 check"
 curl -fsS -o /dev/null -w "site: HTTP %{http_code}\n" http://localhost:8090/
-curl -fsS -m 5 -o /dev/null -w "camera snapshot through nginx: HTTP %{http_code}\n" http://localhost:8090/camera-snapshot
-curl -sS -m 3 -o /dev/null -w "camera stream through nginx: HTTP %{http_code} (%{size_download} bytes in 3 s)\n" http://localhost:8090/camera-stream || true
+curl -s -m 5 -o /dev/null -w "camera through nginx: HTTP %{http_code} (200 once the Pi is pushing)\n" http://localhost:8090/camera-health || true
+echo "Next: on the Pi, re-run identify/setup_camera.sh so it starts bricked-camera-push."
