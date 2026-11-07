@@ -1,6 +1,6 @@
 # V14 integration (interface 5.1)
 
-2026-11-06 20:35 PT on `cad-v14-all`. Script `build_integration.py` loads every module's `world/` (F from the `cad-v14-frame5` worktree, K from `cad-v14-deck5`, D and S from this branch), checks the whole machine and writes `checks.json`, `buy_list.md`, 3 stills and `one_brick.gif`.
+2026-11-06 20:15 PT on `cad-v14-all`. Script `build_integration.py` loads every module's `world/` (F from the `cad-v14-frame5` worktree, K from `cad-v14-deck5`, D and S from this branch), checks the whole machine and writes `checks.json`, `buy_list.md`, 3 stills and `one_brick.gif`.
 
 ## Results
 | Check | Result |
@@ -30,4 +30,4 @@ Filament by the interface's budget lines: skin ~4.3 (budget 4.6) ✓, studs 0.46
 - KW11-3Z body dimensions (assumed).
 
 ## Vault log lines
-- 2026-11-06 20:35 PT, claim, Bricked Sorting: V14 integration on `cad-v14-all` (interface 5.1). Whole machine: drawers open/closed, scoop 17 poses, deck, frame: 0 clashes except 8 small hits of the 5.0 frame skin opening (±300) on the ±306 drawer body, fixed by the 5.1 opening. Printed total 8.66 kg / ~148 h (budget 9.5 / 200). Envelope 720 × 384 × 664 exact. `one_brick.gif` shows receive → carry → dump → return.
+- 2026-11-06 20:15 PT, claim, Bricked Sorting: V14 integration on `cad-v14-all` (interface 5.1). Whole machine: drawers open/closed, scoop 17 poses, deck, frame: 0 clashes except 8 small hits of the 5.0 frame skin opening (±300) on the ±306 drawer body, fixed by the 5.1 opening. Printed total 8.66 kg / ~148 h (budget 9.5 / 200). Envelope 720 × 384 × 664 exact. `one_brick.gif` shows receive → carry → dump → return.
