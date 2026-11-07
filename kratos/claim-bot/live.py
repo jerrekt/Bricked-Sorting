@@ -397,6 +397,7 @@ class Control(BaseModel):
     action: str
     rate: float = 0.5
     minutes: float = 5
+    code: str = ""      # bin code, only for "recounted"
 
 
 def control_gate(request: Request, body: Control) -> str:
@@ -438,6 +439,21 @@ def live_control(body: Control, request: Request, bg: BackgroundTasks):
         with HUB.lock:
             HUB.sim.update(running=False)
         text = f"**{name}** stopped the simulator"
+    elif act == "recounted":
+        # One bin was poured back into the hopper: clear its Recount flag and zero its count,
+        # so the pieces are counted again as they come back through. Other bins keep their counts.
+        code = body.code.strip().upper()
+        if not BIN_CODE.match(code):
+            raise HTTPException(400, "bin codes look like 1-3 (or F3 / B3)")
+        with HUB.lock:
+            if code in HUB.open:
+                raise HTTPException(409, f"Bin {code} is still open. Put it back first.")
+            if code not in HUB.recount:
+                raise HTTPException(409, f"Bin {code} doesn't need a recount.")
+            HUB.recount.discard(code)
+            HUB.counts["live"].pop(code, None)
+            HUB.bins_rev += 1
+        text = f"**{name}** recounted bin {code} on the Live page"
     elif act == "reset":
         with HUB.lock:
             HUB.counts = {"live": {}, "sim": {}}
@@ -446,6 +462,6 @@ def live_control(body: Control, request: Request, bg: BackgroundTasks):
                 HUB.bins_rev += 1
         text = f"**{name}** reset the Live bin counts"
     else:
-        raise HTTPException(400, "action must be start, stop or reset")
+        raise HTTPException(400, "action must be start, stop, reset or recounted")
     bg.add_task(core.post_feed, text)
     return {"ok": True, **HUB.state()["sim"]}

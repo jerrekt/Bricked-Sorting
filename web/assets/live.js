@@ -107,6 +107,9 @@
           '<div class="bin-label">' + esc(s.label) + '</div><span class="bin-flag" id="flag-' + code + '" hidden></span>' +
           '<div class="bin-count" id="cnt-' + code + '">0</div>' +
           '<canvas class="pile" width="160" height="128" aria-hidden="true"></canvas><span class="fill" title="How full, sized for 3 boxes"><i></i></span>';
+        d.addEventListener('click', function () {
+          if (d.classList.contains('is-recount')) ask('recounted', 'Bin ' + code + ' recounted?', code);
+        });
         el.appendChild(d);
       });
     });
@@ -156,7 +159,7 @@
     });
     if (rec.length) {
       lines.push('<li><b>Recount:</b> ' + rec.map(function (c) { return esc(binName(c)); }).join(', ') +
-        '. Pour only ' + (rec.length === 1 ? 'that bin' : 'those bins') + ' back into the hopper, then Reset counts.</li>');
+        '. Pour ' + (rec.length === 1 ? 'that bin' : 'each one') + ' back into the hopper, then click the bin to clear it.</li>');
     }
     $('bin-alert-list').innerHTML = lines.join('');
     $('bin-alert').hidden = !lines.length;
@@ -311,9 +314,12 @@
   }
 
   /* controls */
-  var pending = null;
-  function ask(action, title) {
-    pending = action; $('dlg-title').textContent = title;
+  var pending = null, pendingCode = '';
+  var MSG = { recounted: 'Only after you poured this bin back into the hopper: its Recount flag clears and its count goes to 0, so the pieces get counted again. Other bins keep their counts.',
+              reset: 'Sets every bin count to 0 and clears every Recount flag.' };
+  function ask(action, title, code) {
+    pending = action; pendingCode = code || ''; $('dlg-title').textContent = title;
+    $('dlg-msg').textContent = MSG[action] || ''; $('dlg-msg').hidden = !MSG[action];
     $('dlg-name').innerHTML = '<option value="">Pick your name</option>' + NAMES.map(function (n) { return '<option>' + esc(n) + '</option>'; }).join('');
     $('dlg-name').value = lastName; $('dlg-pass').value = pass; $('dlg-err').textContent = '';
     $('dlg').showModal(); ($('dlg-name').value ? $('dlg-pass') : $('dlg-name')).focus();
@@ -328,7 +334,7 @@
     if (!name) { $('dlg-err').textContent = 'Pick your name.'; return; }
     $('dlg-ok').disabled = true;
     fetch(API + '/live/control', { method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name, password: pw, action: pending, rate: +$('rate').value, minutes: 5 }) })
+      body: JSON.stringify({ name: name, password: pw, action: pending, code: pendingCode, rate: +$('rate').value, minutes: 5 }) })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (res) {
         $('dlg-ok').disabled = false;

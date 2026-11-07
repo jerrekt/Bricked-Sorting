@@ -235,6 +235,22 @@ def test_reset_clears_recount(c):
     assert c.get("/live/state").json()["bins"]["recount"] == []
 
 
+def test_recounted_clears_one_bin_only(c):
+    bins(c, ["1-3", "1-4"]); bins(c, [])
+    r = control(c, "recounted", code="1-3")
+    assert r.status_code == 200
+    assert c.get("/live/state").json()["bins"]["recount"] == ["1-4"]
+
+
+def test_recounted_refuses_open_or_unflagged_bins(c):
+    bins(c, ["1-3"])
+    assert control(c, "recounted", code="1-3").status_code == 409   # still lifted
+    bins(c, [])
+    assert control(c, "recounted", code="2-2").status_code == 409   # never flagged
+    assert control(c, "recounted", code="9-9").status_code == 400
+    assert control(c, "recounted", code="1-3", pw="nope").status_code == 401
+
+
 def test_bad_bin_codes_and_drawers_rejected(c):
     assert bins(c, ["9-9"]).status_code == 400
     assert bins(c, ["<b>"]).status_code == 400

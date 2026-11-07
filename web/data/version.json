@@ -1,6 +1,6 @@
 {
- "version": "V1.027",
+ "version": "V1.028",
  "date": "2026-11-07",
- "note": "Live page bins fill up like the Demo: piles and fill bars, sized for 3 boxes",
+ "note": "Live page: click a Recount bin to clear it after pouring it back",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }
