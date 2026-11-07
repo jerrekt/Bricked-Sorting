@@ -15,12 +15,17 @@ for f in camera_stream.py camera_service.py; do
 done
 
 echo "== 2/6 Checking Python packages"
-if ! python3 -c "import cv2, numpy, requests" 2>/dev/null; then
-  sudo apt-get update -qq && sudo apt-get install -y -qq python3-opencv python3-numpy python3-requests
+if ! python3 -c "import cv2, numpy, requests" 2>/dev/null || ! command -v v4l2-ctl >/dev/null; then
+  sudo apt-get update -qq && sudo apt-get install -y -qq python3-opencv python3-numpy python3-requests v4l-utils
 fi
 
 echo "== 3/6 Camera server (port 8001) replaces the old camera-stream user service"
 systemctl --user disable --now camera-stream 2>/dev/null || true
+# The Pi no longer identifies pieces itself (CT 150 does, decided 2026-10-24): retire the old
+# local brick-server on port 5000. Disabled, not deleted: "sudo systemctl enable --now brick-server" undoes it.
+if systemctl list-unit-files brick-server.service 2>/dev/null | grep -q brick-server; then
+  sudo systemctl disable --now brick-server 2>/dev/null && echo "Old Pi brick-server (port 5000) stopped and disabled."
+fi
 sudo usermod -aG video "$U"
 sudo tee /etc/systemd/system/bricked-camera-stream.service >/dev/null <<UNIT
 [Unit]
