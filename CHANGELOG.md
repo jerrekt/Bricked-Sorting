@@ -4,6 +4,9 @@ Site and repo version. One bump per merged pull request (see `tools/bump_version
 It counts updates to this repo, not how finished the machine is; the Tasks page shows that.
 V1.001 to V1.014 were numbered afterwards, in merge order.
 
+## V1.021 · 2026-11-05
+- V13 drum: static outlet plate and helical flight, one bearing fewer
+
 ## V1.020 · 2026-11-03
 - V12 CAD: eight CAD tasks done, extrusion and T-nuts on the buy list
 
