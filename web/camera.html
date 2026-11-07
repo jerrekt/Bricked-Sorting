@@ -25,6 +25,13 @@
 .feed img{display:block;width:100%;height:100%;object-fit:contain}
 .feed .msg{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:16px;color:var(--muted)}
 .feed [hidden]{display:none}
+.lock{position:absolute;inset:0;display:grid;place-items:center;padding:16px}
+.feed:has(.lock:not([hidden])){aspect-ratio:auto;min-height:300px}   /* phones: room for the password box */
+.lock form{display:grid;gap:10px;width:min(320px,100%);text-align:left}
+.lock h2{margin:0;font-size:17px}
+.lock label{display:grid;gap:4px;font-size:14px;font-weight:600}
+.lock input{font:inherit;font-size:15px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);min-height:40px}
+.lock .err{color:var(--warn);font-size:14px;margin:0;min-height:1em}
 .badge.on{background:var(--ok);color:#fff;border-color:var(--ok)}
 .badge.off{background:var(--surface-2);color:var(--muted)}
 </style>
@@ -33,7 +40,7 @@
 <script src="assets/intro.js"></script>
 <header class="top"><div class="wrap">
   <a class="logo" href="./"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
-  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.029</a>
+  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.030</a>
   <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="live.html">Live</a><a href="tasks.html">Tasks</a><a href="parts.html">Parts</a><a href="camera.html" aria-current="page">Camera</a></nav>
 </div></header>
 
@@ -43,6 +50,15 @@
     <div class="feed">
       <img id="cam" alt="Live view of the Bricked Sorting tray from the Raspberry Pi camera" width="640" height="360" hidden>
       <div class="msg" id="cam-msg">Connecting to the camera…</div>
+      <div class="lock" id="cam-lock" hidden>
+        <form id="cam-form">
+          <h2>Team only</h2>
+          <p class="muted small" style="margin:0">The live camera is for the Bricked Sorting team. Use the same team password as the Live page buttons.</p>
+          <label for="cam-pass">Team password<input id="cam-pass" type="password" autocomplete="current-password" required></label>
+          <p class="err" id="cam-err" role="alert"></p>
+          <button class="btn small primary" type="submit" id="cam-go">Watch</button>
+        </form>
+      </div>
     </div>
     <p class="muted">Live view from the Raspberry Pi camera above the tray, about 5 frames a second. Each piece it sees is identified on our server with Brickognize and shows up on the <a href="live.html">Live page</a>.</p>
   </section>
@@ -50,18 +66,42 @@
 <script>
 (function () {
   var img = document.getElementById('cam'), msg = document.getElementById('cam-msg'), state = document.getElementById('cam-state');
-  var retry = null, gotFrame = false;
+  var lock = document.getElementById('cam-lock'), form = document.getElementById('cam-form'), err = document.getElementById('cam-err');
+  var retry = null, gotFrame = false, allowed = false;
   function show(on, text) {
     state.textContent = on ? 'Live' : 'Offline'; state.className = 'badge ' + (on ? 'on' : 'off');
-    img.hidden = !on; msg.hidden = on; if (text) msg.textContent = text;
+    img.hidden = !on || !allowed; msg.hidden = on || !allowed; lock.hidden = allowed; if (text) msg.textContent = text;
   }
+  function locked() {
+    allowed = false; stop(); lock.hidden = false; img.hidden = true; msg.hidden = true;
+    setTimeout(function () { document.getElementById('cam-pass').focus(); }, 0);
+  }
+  // Ask the server if this browser already has the team cookie; show the password box if not.
+  function session(then) {
+    fetch('/camera-session', { cache: 'no-store', credentials: 'same-origin' })
+      .then(function (r) { if (r.status === 401) locked(); else { allowed = true; lock.hidden = true; then && then(); } },
+            function () { allowed = true; then && then(); });   // relay unreachable: the stream will show Offline
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); err.textContent = ''; var btn = document.getElementById('cam-go'); btn.disabled = true;
+    fetch('/camera-login', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' },
+                             body: JSON.stringify({ password: document.getElementById('cam-pass').value }) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return [r.ok, j]; }); })
+      .then(function (a) {
+        btn.disabled = false;
+        if (!a[0]) { err.textContent = a[1].error || 'Could not sign in.'; return; }
+        document.getElementById('cam-pass').value = ''; allowed = true; lock.hidden = true; msg.hidden = false; start();
+      }, function () { btn.disabled = false; err.textContent = 'Could not reach the camera server.'; });
+  });
   function start() {
+    if (!allowed) return;
     clearTimeout(retry); gotFrame = false;
     img.src = '/camera-stream?t=' + Date.now();   // new URL each time so a dropped stream really reconnects
   }
   function stop() { clearTimeout(retry); img.removeAttribute('src'); }
   img.onload = function () { gotFrame = true; show(true); };
   img.onerror = function () {
+    if (!gotFrame) { session(); if (!allowed) return; }   // a 401 (cookie expired) also lands here
     show(false, gotFrame ? 'The camera stream dropped. Reconnecting…' : 'The camera is offline right now. Checking again every 10 seconds.');
     stop(); retry = setTimeout(start, 10000);
   };
@@ -73,13 +113,14 @@
       .then(function (ok) {
         if (ok && online === false) start();                       // came back
         if (!ok) { stop(); show(false, 'The camera is offline right now. Checking again every 10 seconds.'); }
+        if (!allowed) { state.textContent = ok ? 'Live' : 'Offline'; state.className = 'badge ' + (ok ? 'on' : 'off'); }
         online = ok;
       });
   }
-  setInterval(check, 10000);
+  setInterval(check, 10000); check();
   // Don't stream to a tab nobody is looking at.
   document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else { start(); check(); } });
-  start();
+  session(start);
 })();
 </script>
 

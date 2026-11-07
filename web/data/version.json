@@ -1,6 +1,6 @@
 {
- "version": "V1.029",
+ "version": "V1.030",
  "date": "2026-11-07",
- "note": "Camera tab: live feed from the Pi camera (via CT 150 /camera-stream, 640 px, 5 fps)",
+ "note": "Camera tab: team password to watch (checked on CT 150, 12-hour cookie)",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }
