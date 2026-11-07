@@ -1,381 +1,389 @@
 {
- "_about": "Bricked Sorting V14 shared interface. All four module chats build to these numbers. Do not edit; request changes in your module README under INTERFACE REQUESTS.",
- "version": "v14-interface-4.3 (2026-11-05 21:30): print rules now come from BJ's measured settings in the vault runbook runbooks/3d-printing.md",
+ "_about": "Bricked Sorting V14 shared interface, version 5. Wood structure + thin red PLA skin, resized body. Build to these numbers; request changes in your README under INTERFACE REQUESTS.",
+ "version": "v14-interface-5.1 (2026-11-06 19:35): drawer fits through the skin opening (bins 70 wide at 76 pitch, body x +-306, opening +-310, overlay face +-330); roof support under the hopper stud",
  "units": "mm",
- "axes": "right-handed: origin = floor center; +Y toward the front (the drawer pulls out +Y), +Z up, so +X is on the LEFT of a person facing the front drawer (wording fix 19:50; numbers unchanged). Bin numbers follow the real viewer at each drawer.",
+ "axes": "right-handed: origin = floor center; +Y toward the front (the front drawer pulls out +Y), +Z up, so +X is on the LEFT of a person facing the front drawer. Bin numbers follow the real viewer at each drawer.",
  "envelope": {
   "x": [
-   -520,
-   520
+   -360,
+   360
   ],
   "y": [
-   -260,
-   260
+   -192,
+   192
   ],
   "z": [
    0,
-   780
-  ]
+   664
+  ],
+  "note": "y +-192 includes the overlay drawer faces (10 mm proud of the skin); body skin stays at y +-180"
  },
- "bricks": {
-  "lower": [
-   0,
-   390
-  ],
-  "deck": [
-   390,
-   720
-  ],
-  "studs_z": [
-   720,
-   780
-  ],
-  "stud_centers": [
-   [
-    -260,
-    0
-   ],
-   [
-    260,
-    0
-   ]
-  ],
-  "stud_od": 312
- },
- "print_bed_max": [
-  248,
-  248,
-  248
- ],
- "fasteners": {
-  "insert_M3_hole_dia": 4.0,
-  "insert_M3_depth": 5.7,
-  "M3_clearance": 3.4,
-  "M3_head_counterbore": [
-   6.0,
-   3.2
-  ],
-  "M5_clearance": 5.4
- },
- "walls": {
-  "zone_thickness": 20,
-  "skin": 2.4,
-  "ribs_inward": 17.6,
-  "rib_thickness": 2.4,
-  "rib_spacing_about": 80,
-  "interior_clear": {
+ "height_in": 26.1,
+ "wood": {
+  "lumber": "2x2 (38 x 38 actual) for posts, 1x2 (19 x 38 actual) for rails and cleats; straight crosscuts only. Plywood 1/2 in (12 mm) floor and deck; the store cuts the sheet",
+  "floor_ply": {
    "x": [
-    -500,
-    500
+    -360,
+    360
    ],
    "y": [
-    -240,
-    240
+    -180,
+    180
+   ],
+   "z": [
+    0,
+    12
    ]
-  }
- },
- "corner_columns_keepout": {
-  "x_abs": [
-   470,
-   500
-  ],
-  "y_abs": [
-   210,
-   240
-  ],
-  "z": [
-   8,
-   700
-  ],
-  "owner": "F"
- },
- "floor": {
-  "z": [
-   0,
-   8
-  ],
-  "grid_M3_inserts_top": {
-   "x0": -480,
-   "nx": 25,
-   "y0": -220,
-   "ny": 12,
-   "pitch": 40,
-   "z_top": 8
-  }
- },
- "deck": {
-  "z": [
-   370,
-   390
-  ],
-  "skin": [
-   384,
-   390
-  ],
-  "ribs": [
-   370,
-   384
-  ],
-  "grid_M3_inserts_top": {
-   "x0": -480,
-   "nx": 25,
-   "y0": -200,
-   "ny": 11,
-   "pitch": 40,
-   "z_top": 390,
-   "skip_within_of_openings": 10
   },
-  "openings": {
-   "drop_hole": {
-    "center": [
-     330,
-     0
+  "posts_2x2": {
+   "count": 4,
+   "x_abs": [
+    316,
+    354
+   ],
+   "y_abs": [
+    136,
+    174
+   ],
+   "z": [
+    12,
+    612
+   ],
+   "cut_length": 600
+  },
+  "top_rails_1x2": {
+   "long": {
+    "count": 2,
+    "cut_length": 632,
+    "y_abs": [
+     155,
+     174
     ],
-    "r": 32
-   },
-   "cable_slot_L": {
-    "x": [
-     -470,
-     -410
-    ],
-    "y": [
-     -210,
-     -190
+    "z": [
+     574,
+     612
     ]
    },
-   "cable_slot_R": {
-    "x": [
-     410,
-     470
+   "short": {
+    "count": 2,
+    "cut_length": 272,
+    "x_abs": [
+     335,
+     354
     ],
-    "y": [
-     -210,
-     -190
+    "z": [
+     574,
+     612
     ]
    }
   },
-  "rib_free_radius_around_drop": 50
- },
- "front_wall": {
-  "drawer_opening": {
-   "x": [
-    -470,
-    470
-   ],
-   "z": [
-    8,
-    186
-   ]
-  }
- },
- "side_walls": {
-  "beam_mount_inserts": {
-   "x_face_abs": 500,
-   "axis": "X",
-   "points_yz": [
-    [
-     -12,
-     200
-    ],
-    [
-     12,
-     200
-    ],
-    [
-     -12,
-     248
-    ],
-    [
-     12,
-     248
-    ]
-   ]
-  }
- },
- "roof": {
-  "z": [
-   700,
-   720
-  ],
-  "skin": [
-   714,
-   720
-  ],
-  "ribs": [
-   700,
-   714
-  ],
-  "hopper_opening": {
-   "center": [
-    -260,
-    0
-   ],
-   "r": 100
-  },
-  "stud_L_(-260)": "open ring OD 312 ID 290, z 720..780, the hopper sits inside",
-  "stud_R_(+260)": "closed cap"
- },
- "back_wall": {
-  "drawer_opening": {
-   "x": [
-    -470,
-    470
-   ],
-   "z": [
-    8,
-    186
-   ]
-  },
-  "removable_access_panel": {
-   "x": [
-    -300,
-    300
-   ],
-   "z": [
-    420,
-    668
-   ]
-  }
- },
- "zones": {
-  "F_frame": "walls, floor, deck panel, roof, studs, corner columns, bracing. Bracing must stay out of the D, S and K zones.",
-  "D_drawer": {
-   "front": {
-    "x": [
-     -466,
-     466
-    ],
-    "y": [
-     70,
-     260
+  "deck_cleats_1x2": {
+   "long": {
+    "count": 2,
+    "cut_length": 632,
+    "y_abs": [
+     155,
+     174
     ],
     "z": [
-     8,
-     184
+     262,
+     300
     ]
+   },
+   "short": {
+    "count": 2,
+    "cut_length": 272,
+    "x_abs": [
+     335,
+     354
+    ],
+    "z": [
+     262,
+     300
+    ]
+   }
+  },
+  "bottom_rails_1x2_short_walls": {
+   "count": 2,
+   "cut_length": 272,
+   "x_abs": [
+    335,
+    354
+   ],
+   "z": [
+    12,
+    50
+   ]
+  },
+  "beam_posts_1x2": {
+   "count": 2,
+   "cut_length": 212,
+   "x_abs": [
+    335,
+    354
+   ],
+   "y": [
+    -19,
+    19
+   ],
+   "z": [
+    50,
+    262
+   ],
+   "note": "vertical, between the short-wall bottom rail and deck cleat; the scoop beam screws into them"
+  },
+  "deck_ply": {
+   "size": [
+    708,
+    348
+   ],
+   "z": [
+    300,
+    312
+   ],
+   "corner_notches": "38 x 38 at each corner around the posts (2 straight saw cuts per corner)"
+  },
+  "screws": "printed parts fasten to wood with #6 (3.5 mm) wood screws, 3.6 mm clearance holes; printed-to-printed with M3 inserts"
+ },
+ "skin": {
+  "material": "red PLA, 2.0 mm, printed solid",
+  "outer_faces": "x = +-360, y = +-180, roof top z 614",
+  "gap_to_wood": "4 mm for clips (skin inner face at x +-358 / y +-178)",
+  "roof": "2 mm red PLA at z 612..614 resting on the top rails",
+  "tiles": "each <= 248 x 248; seams on the brick's natural lines; printed clips screw to posts and rails",
+  "drawer_openings": {
+   "front_and_back_walls": {
+    "x": [
+     -310,
+     310
+    ],
+    "z": [
+     12,
+     136
+    ]
+   },
+   "note": "drawer faces overlay the opening like a cabinet drawer, covering 20 mm past each side"
+  },
+  "back_access_panel": {
+   "x": [
+    -200,
+    200
+   ],
+   "z": [
+    330,
+    560
+   ],
+   "note": "removable for the electronics"
+  }
+ },
+ "studs": {
+  "centers": [
+   [
+    -180,
+    0
+   ],
+   [
+    180,
+    0
+   ]
+  ],
+  "od": 216,
+  "z": [
+   614,
+   664
+  ],
+  "left_(-180)": "open ring, ID 200, the hopper sits inside; roof opening r 90",
+  "right_(+180)": "closed cap"
+ },
+ "zones": {
+  "F_frame_and_skin": "the wood, the skin and clips, roof, studs, corner caps",
+  "D_drawers": {
+   "front": {
+    "x": [
+     -306,
+     306
+    ],
+    "y": [
+     52,
+     180
+    ],
+    "z": [
+     12,
+     132
+    ],
+    "face": {
+     "x": [
+      -330,
+      330
+     ],
+     "y": [
+      180,
+      192
+     ],
+     "z": [
+      8,
+      140
+     ]
+    }
    },
    "back": {
     "x": [
-     -466,
-     466
+     -306,
+     306
     ],
     "y": [
-     -260,
-     -70
+     -180,
+     -52
     ],
     "z": [
-     8,
-     184
-    ]
+     12,
+     132
+    ],
+    "face": {
+     "x": [
+      -330,
+      330
+     ],
+     "y": [
+      -192,
+      -180
+     ],
+     "z": [
+      8,
+      140
+     ]
+    }
    },
-   "rails": "D also owns the under-drawer rails inside the spine tunnels (y -66..66 at x +-200 / +-300, z 8..34)"
+   "rails": "front drawer rails at x +-200 run back on the floor to y -40; back drawer rails at x +-120 run to y +40; rail zone z 12..38"
   },
   "S_scoop": {
    "x": [
-    -500,
-    500
+    -354,
+    354
    ],
    "y": [
-    -240,
-    240
+    -150,
+    150
    ],
    "z": [
-    186,
-    366
+    134,
+    296
    ],
-   "note": "minus the corner columns; never below z 186 at any pose"
+   "note": "minus the posts and beam posts; nothing below z 134 at any pose"
   },
   "K_deck": {
    "x": [
-    -500,
-    500
+    -354,
+    354
    ],
    "y": [
-    -240,
-    240
+    -172,
+    172
    ],
    "z": [
-    390,
-    700
+    312,
+    608
    ],
    "plus": [
-    "hopper inside stud L up to z 780 through the roof opening",
-    "drop funnel: cylinder r 30 at (330,0), z 335..390, through the deck hole (exit 335)"
-   ]
+    "hopper inside the left stud up to z 664 through the roof opening",
+    "drop funnel: cylinder r 25 at (240, 0), z 270..312 through a deck hole r 28"
+   ],
+   "note": "stay clear of the top rails (y +-155..174 / x +-335..354 at z 574..612) and the post corners"
   }
  },
  "bins": {
   "count": 16,
-  "footprint": [
-   108,
-   150
+  "footprint_xy": [
+   70,
+   95
   ],
-  "top_z_max": 176,
+  "height": 85,
+  "z": [
+   41,
+   126
+  ],
+  "volume_l": 0.57,
   "x_centers": [
-   -406,
-   -290,
-   -174,
-   -58,
-   58,
-   174,
-   290,
-   406
+   -266,
+   -190,
+   -114,
+   -38,
+   38,
+   114,
+   190,
+   266
   ],
   "row_y_centers": [
-   -150,
-   150
+   -102.5,
+   102.5
   ],
-  "open_top": true,
-  "height_note": "drawer floor sits on the under-drawer rails (rail top ~z 34), so bins are about 139 tall to keep their tops at or below 176"
+  "row_y_ranges": {
+   "front": [
+    55,
+    150
+   ],
+   "back": [
+    -150,
+    -55
+   ]
+  },
+  "open_top": true
  },
+ "bin_ids": {
+  "front": "F1..F8, left to right as you face the front",
+  "back": "B1..B8, left to right as you face the back",
+  "note": "so B1 sits behind F8; numbering always reads left to right for the person at that drawer"
+ },
+ "side_marking": "drawer faces in two filament colors (front and back), embossed F / B and 1-8 above each bin position, and a slide-in label card slot on each bin face for its category",
  "drawer": {
   "count": 2,
   "bins_each": 8,
-  "travel_y": 205,
-  "front_pulls": "+Y",
-  "back_pulls": "-Y",
-  "runners": "rails on the drawer UNDERSIDE that run back past the drawer through tunnels in the center spine; 625ZZ rollers fixed to the floor (load pair + anti-lift pair per rail, lateral guide rollers on one rail only, the other floats ~0.5); 16.4-16.6 running gap for the 16 mm bearings, one slotted roller for preload; hard stops; closed detent",
-  "note": "each bank (~5 kg loaded) fully clears its face at 220",
-  "keying": "front and back drawers mechanically keyed so neither fits the other side; a retaining bar holds all 8 bins so drawer seated = all bins present",
-  "rails_xy": {
-   "front_drawer_rails_x": [
-    -300,
-    300
+  "travel_y": 150,
+  "note": "travel 150 puts each bank's inner edge (y 55) at y 205, 25 past the skin, so bins lift straight out",
+  "runners": "PETG rails on the drawer underside, 625ZZ floor stations screwed into the plywood (load pair + anti-lift pair per rail, guide rollers on one rail only), hard stops, closed detent",
+  "keying": "front rails at x +-200, back at x +-120, so neither drawer fits the other side; a retaining bar holds the 8 bins",
+  "switches": "one KW11-3Z drawer-closed switch per side"
+ },
+ "beam": {
+  "span_x": [
+   -335,
+   335
+  ],
+  "zone_yz": {
+   "y": [
+    -15,
+    15
    ],
-   "back_drawer_rails_x": [
-    -200,
-    200
-   ],
-   "rail_width": 16,
-   "front_rails_reach_y": -60,
-   "back_rails_reach_y": 60,
-   "rail_zone_z": [
-    8,
-    34
+   "z": [
+    138,
+    188
    ]
   },
-  "why": "a single-stage drawer cannot extend past its own depth unless its rails reach back beyond it; 205 travel puts the bins' back edge (y 75 closed) at y 280, 20 past the face, so bins lift straight out"
+  "section": "closed PLA box ~50 tall x 30 deep, 3-4 keyed segments, joints off midspan",
+  "mounts": "end plates screwed into the 1x2 beam posts",
+  "belt": "GT2 near the beam mid-height",
+  "drive": "salvaged NEMA17 + GT2 6 mm belt, 20T pulley, printed idler/tensioner, endstop at one end"
  },
  "scoop": {
+  "suggested_geometry": "shallow two-ended cup above a pivot at z ~200: lip ~85 out and ~20 up; dump at 40 deg -> lip y ~78, z ~157; opposite end rises to ~270, taper the ends; TPU pad",
+  "dump_rule": "brick leaves the lip at |y| >= 75 and z >= 136 off a surface >= 40 deg",
   "receive_pose": {
-   "carriage_x": 330,
-   "catch_below": [
-    330,
+   "carriage_x": 240,
+   "funnel_exit": [
+    240,
     0,
-    335
+    270
    ],
-   "catch_r": 25,
-   "scoop_floor_z_about": 293
+   "catch_r": 22
   },
-  "dump_poses": "carriage at each bins.x_centers[i], tilt toward -Y or +Y; the brick leaves the lip at |y| >= 100 (5 mm margin over the bin inner edge at 75 + brick) and z >= 190, on a surface tilted at least 40 deg so it slides; servo horn is not the bearing (pivot on its own shaft or bushings)",
-  "park_pose": "level, carriage at x 330, everything above z 186 (drawer may open)",
-  "keepout_under_funnel": "at every pose, nothing from S inside r 40 of (330,0) above z 330",
-  "suggested_geometry": "shallow two-ended cup ABOVE the pivot: pivot z ~268 on its own shaft/bearings, lip 114 out and 25 above the pivot, dump at 40 deg -> lip at y 103, z 214; the opposite lip rises to ~360, so taper the open ends and the end walls to stay under 366; TPU pad on the floor so a dropped brick does not bounce out"
+  "keepout_under_funnel": "nothing from S inside r 32 of (240,0) above z 265",
+  "park": "receive pose; drawers may open only when parked"
  },
  "drop_point": [
-  330,
+  240,
   0
  ],
+ "drum": "V13 drum as-is (47b 160 x 180 barrel with helical flight, 49b static plate); new cradles screw to the deck plywood",
  "part_numbers": {
   "F": [
    100,
@@ -394,50 +402,7 @@
    249
   ]
  },
- "bought_parts_allowed": "electronics, motors, servos, switches, LEDs, 625ZZ bearings, GT2 6 mm belt + 20T pulleys + idler (scoop slide only), M3/M5 screws and nuts, M3 heat-set inserts, TPU/PTFE film. Everything else printed (no 2020 extrusion, no metal slides).",
- "center_spine": {
-  "x": [
-   -466,
-   466
-  ],
-  "y": [
-   -66,
-   66
-  ],
-  "z": [
-   8,
-   184
-  ],
-  "owner": "F",
-  "note": "free strip under the beam between the two drawers: F may put a structural spine here and D may bolt runners to its sides",
-  "tunnels": "leave tunnels 24 wide x 26 tall (z 8..34) along y at x = +-200 and +-300 for the drawer rails"
- },
- "service_clearance": "300 mm behind the machine for the back drawer",
- "drum": "keep the V13 drum as-is: 47b barrel 160 x 180 with helical flight, 49b static outlet plate (cradles new)",
- "bin_ids": {
-  "front": "F1..F8, left to right as you face the front",
-  "back": "B1..B8, left to right as you face the back",
-  "note": "so B1 sits behind F8; numbering always reads left to right for the person at that drawer"
- },
- "side_marking": "drawer faces in two filament colors (front and back), embossed F / B and 1-8 above each bin position, and a slide-in label card slot on each bin face for its category",
- "beam": {
-  "section": "closed box, about 65 tall x 40 deep, 3-4 mm skins, ribs every 60-100 mm, PLA",
-  "zone_yz": {
-   "y": [
-    -20,
-    20
-   ],
-   "z": [
-    192,
-    258
-   ]
-  },
-  "segments": "5 segments of ~200 (no joint at midspan), each seam a 60-80 mm internal sleeve plus screws; gusseted side-wall mounts",
-  "belt": "run the GT2 belt close to the beam's mid-height so tension does not twist it",
-  "targets": "< 2 mm sag at center with carriage and belt tension; scoop stays level across travel"
- },
- "switches": "two KW11-3Z drawer-closed switches (front, back); no per-bin switches",
- "cable": "carriage cable in a small printed drag chain on the beam's back face (y -20..-35, z 195..255), exiting to the left deck cable slot",
+ "bought_parts_allowed": "wood (2x2, 1x2, 1/2 in plywood), wood screws, paint optional; electronics, motors, servos, switches, LEDs, 625ZZ, GT2 belt + pulleys, M3/M5 hardware, M3 inserts, TPU/PTFE film",
  "print_rules": {
   "source": "Mnemosyne runbooks/3d-printing.md (read it first; its values beat anything here) and inventory/parts-owned.md for inserts",
   "estimates": "grams with BJ's day profile: 0.4 nozzle, 0.2 layers, 4 walls, 15 % sparse infill, 3 bottom / 5 top layers; not solid volume",
@@ -445,11 +410,12 @@
   "inserts": "M3 generic insert hole ~4.0-4.2 (verify with calipers), M5 Ruthex RX-M5x9.5 hole 6.4 min depth 10.5 min wall 2.6",
   "elephant_foot": "0.15 compensation is in BJ's profile; chamfer 0.6 on bed edges anyway",
   "bed": "usable ~248 x 248 (256 plate)",
-  "budget": "whole machine <= ~15 kg filament and <= ~400 print hours; frame <= ~9 kg",
+  "budget": "printed total <= ~9.5 kg and <= ~200 h (skin ~4.6 kg, studs ~0.5, mechanisms ~3.5, bins ~1)",
   "supports": "none: overhangs <= 45 deg, bridges <= 30 mm, teardrop horizontal holes",
   "orientation": "every part has a flat face on the bed; state it in parts.json",
   "materials": "on hand: PLA (red for the body), PETG, ASA, TPU 95A, PC; AMS for multi-colour (labels, face numbers)",
   "file_back": "after a test print, BJ's results go into the runbook (the main chat files them)"
  },
- "interface_note_fits": "older lines saying 0.2 mm slip fits or 16.2 bearing pockets are superseded by print_rules.fits_per_side"
+ "budget": "printed total <= ~9.5 kg and <= ~200 h (skin ~4.6 kg, studs ~0.5, mechanisms ~3.5, bins ~1)",
+ "roof_support": "the 2 mm roof must not carry the hopper alone: either two 1x2 cross rails (cut 310, between the long top rails) at x -180 +-112, if they clear the deck (drum top 589 vs rails z 574..612), or a locally thickened 4 mm roof ring with printed ribs under the stud; frame chat decides after checking against cad-v14-deck5"
 }
