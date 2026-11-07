@@ -86,6 +86,15 @@ def test_ingest_result_shows_in_state(c):
     assert s["counts"]["live"] == {"1-4": 1} and s["mode"] == "live"
 
 
+def test_identify_details_and_swatch_kept(c):
+    send(c, dict(RESULT, category="Brick", shape="2x4", color_confidence=91, rgb=[200, 30, 30]))
+    e = c.get("/live/state").json()["events"][-1]
+    assert e["category"] == "Brick" and e["shape"] == "2x4"
+    assert e["color_confidence"] == 0.91 and e["hex"] == "#c81e1e"
+    assert live.to_hex("#AABBCC") == "#aabbcc" and live.to_hex("10, 20, 30") == "#0a141e"
+    assert live.to_hex([300, 0, 0]) is None and live.to_hex("red") is None
+
+
 def test_no_lego_ignored(c):
     r = send(c, {"bin": "NO_LEGO", "bin_number": 0, "lego_detected": False})
     assert r.json()["ignored"] and c.get("/live/state").json()["events"] == []
