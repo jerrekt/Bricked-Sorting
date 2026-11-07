@@ -9,10 +9,15 @@ It is the only program that opens the USB camera. Everything else reads from it:
 Settings come from environment variables (all optional):
   CAMERA_DEVICE=0 (or /dev/video0)  CAMERA_WIDTH=1280  CAMERA_HEIGHT=720  CAMERA_FPS=15
   JPEG_QUALITY=85  STREAM_PORT=8001
+  CAMERA_LOCK=1    after 3 s of auto, freeze focus, exposure and white balance where they
+                   landed (steady colors and no false "piece" from auto changes). 0 = leave auto.
+  CAMERA_CONTROLS  optional fixed v4l2 settings applied after that, e.g.
+                   "focus_absolute=30,exposure_time_absolute=250,white_balance_temperature=4000"
 """
 import json
 import logging
 import os
+import subprocess
 import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -26,7 +31,51 @@ FPS = float(os.environ.get("CAMERA_FPS", "15"))
 QUALITY = int(os.environ.get("JPEG_QUALITY", "85"))
 PORT = int(os.environ.get("STREAM_PORT", "8001"))
 
+LOCK = os.environ.get("CAMERA_LOCK", "1") == "1"
+CONTROLS = os.environ.get("CAMERA_CONTROLS", "").strip()
+DEV_PATH = "/dev/video" + DEVICE if DEVICE.isdigit() else DEVICE
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
+
+# (auto control names, value for "manual", value control names). Names differ between kernels.
+_LOCKS = [
+    (("focus_automatic_continuous", "focus_auto"), 0, ("focus_absolute",)),
+    (("white_balance_automatic", "white_balance_temperature_auto"), 0, ("white_balance_temperature",)),
+    (("auto_exposure", "exposure_auto"), 1, ("exposure_time_absolute", "exposure_absolute")),
+]
+
+
+def _v4l2(*args):
+    r = subprocess.run(["v4l2-ctl", "-d", DEV_PATH] + list(args), capture_output=True, text=True, timeout=5)
+    return r.returncode == 0, (r.stdout + r.stderr).strip()
+
+
+def lock_controls():
+    """Freeze focus, white balance and exposure at what auto chose, then apply CAMERA_CONTROLS."""
+    try:
+        ok, listing = _v4l2("--list-ctrls")
+    except (OSError, subprocess.SubprocessError) as e:
+        logging.warning("Camera lock skipped: v4l2-ctl not usable (%s). Install v4l-utils.", e)
+        return
+    # lines look like "    focus_absolute 0x009a090a (int) : min=0 max=250 ..."
+    have = {line.split()[0] for line in listing.splitlines() if " 0x" in line}
+    done = []
+    if LOCK:
+        for autos, manual, values in _LOCKS:
+            auto = next((a for a in autos if a in have), None)
+            value = next((v for v in values if v in have), None)
+            if not auto or not value:
+                continue
+            ok, out = _v4l2("-C", value)               # what auto picked, e.g. "focus_absolute: 30"
+            current = out.rsplit(":", 1)[-1].strip() if ok else ""
+            ok1, _ = _v4l2("-c", "%s=%d" % (auto, manual))
+            ok2 = _v4l2("-c", "%s=%s" % (value, current))[0] if current.lstrip("-").isdigit() else False
+            done.append("%s=%s" % (value, current) if ok1 and ok2 else "%s (failed)" % value)
+    if CONTROLS:
+        ok, out = _v4l2("-c", CONTROLS)
+        done.append(("set " if ok else "FAILED ") + CONTROLS + ("" if ok else ": " + out))
+    if done:
+        logging.info("Camera controls: %s", ", ".join(done))
 
 _latest = None          # newest JPEG bytes
 _latest_time = 0.0      # time.time() of the newest frame
@@ -88,6 +137,7 @@ def _capture():
     """Keep reading frames; reopen the camera if it drops out."""
     global _latest, _latest_time
     cap = None
+    lock_at = None
     while True:
         if cap is None or not cap.isOpened():
             cap = open_camera()
@@ -95,6 +145,11 @@ def _capture():
                 logging.warning("Camera %s not available; retrying in 3 s", DEVICE)
                 time.sleep(3)
                 continue
+            lock_at = time.time() + 3 if (LOCK or CONTROLS) else None  # let auto settle first
+
+        if lock_at and time.time() >= lock_at:
+            lock_at = None
+            lock_controls()
 
         ok, frame = cap.read()
         if not ok or frame is None:
