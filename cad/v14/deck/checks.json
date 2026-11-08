@@ -21,11 +21,16 @@
   "215_camera_bridge": true,
   "216_led_bar_holder_A": true,
   "216_led_bar_holder_B": true,
-  "217_xiao_sense_camera_mount": true,
+  "217_webcam_mount_generic": true,
   "218_apds9960_mount": true,
   "220_drop_funnel": true,
-  "225_electronics_tray_1": true,
-  "225_electronics_tray_2": true
+  "225_electronics_tray_1a_psu": true,
+  "225_electronics_tray_1b_power_io": true,
+  "225_electronics_tray_2_pi": true,
+  "227_psu_terminal_cover": true,
+  "228_webcam_cable_spool": true,
+  "226_usb_cable_clip_1": true,
+  "226_usb_cable_clip_2": true
  },
  "zones": {
   "47b_tumbler_barrel_helical_flight": "in K zone",
@@ -64,18 +69,25 @@
   "215_camera_bridge": "in K zone",
   "216_led_bar_holder_A": "in K zone",
   "216_led_bar_holder_B": "in K zone",
-  "217_xiao_sense_camera_mount": "in K zone",
+  "217_webcam_mount_generic": "in K zone",
   "218_apds9960_mount": "in K zone",
   "220_drop_funnel": "in K zone (funnel r <= 27.5 through the r 28 deck hole, z 270..312)",
-  "225_electronics_tray_1": "in K zone",
-  "225_electronics_tray_2": "in K zone",
-  "dummy_PSU_12V_165x60": "in K zone",
-  "dummy_buck_12_5": "in K zone",
-  "dummy_XT30_inlet_and_fuse": "in K zone",
+  "225_electronics_tray_1a_psu": "in K zone",
+  "225_electronics_tray_1b_power_io": "in K zone",
+  "225_electronics_tray_2_pi": "in K zone",
+  "227_psu_terminal_cover": "in K zone",
+  "228_webcam_cable_spool": "in K zone",
+  "226_usb_cable_clip_1": "in K zone",
+  "226_usb_cable_clip_2": "in K zone",
+  "dummy_PSU_12V_10A_199x98x42": "in K zone",
+  "dummy_RPi4B": "in K zone",
+  "dummy_buck_5A_servos_vib": "in K zone",
+  "dummy_XT30_and_fuse_12V": "in K zone",
+  "dummy_buck_3A_pi_logic": "in K zone",
+  "dummy_DRV8833": "in K zone",
   "dummy_XIAO_ESP32C3_carrier": "in K zone",
-  "dummy_TMC2209_x3_carrier": "in K zone",
-  "dummy_MCP23017": "in K zone",
-  "dummy_DRV8833": "in K zone"
+  "dummy_TMC2209_2slot_carrier": "in K zone",
+  "dummy_USB_webcam_placeholder": "in K zone"
  },
  "clashes": [],
  "by_design_contacts": [
@@ -166,7 +178,7 @@
   "90": []
  },
  "vs_frame_module": {
-  "checked_parts": 43,
+  "checked_parts": 56,
   "clashes": []
  },
  "funnel": {

@@ -318,6 +318,8 @@ def scanner_parts():
     cam = cam.cut(cyl((0, 0, CAM[2] - 1), (0, 0, 1), 16, 8))
     for yy in (-28, 28): cam = cam.cut(cq.Workplane('XY').center(10, yy).slot2D(60, 3.4, 0).extrude(8).translate((0, 0, CAM[2] - 1)))
     for yy in (-20, 20): cam = cam.cut(cyl((80, yy, Z_S - 1), (0, 0, 1), 1.7, 12))
+    for zz in (Z_S + 30, Z_S + 85):          # webcam cable: zip-tie slot pairs through the post
+        for yy in (-24.0, -16.0): cam = cam.cut(box(80, yy, zz, 16, 2.4, 4))
     P['215_camera_bridge'] = cam
 
     def led(side):
@@ -325,16 +327,13 @@ def scanner_parts():
         w = w.cut(box(-3, side * 63.5, Z_S + 30, 70, 12, 3).rotate((0, side * 63.5, Z_S + 31.5), (1, side * 63.5, Z_S + 31.5), side * 45))
         return w
     P['216_led_bar_holder_A'] = led(1); P['216_led_bar_holder_B'] = led(-1)
-    XB_L, XB_W, XB_T = 21.0, 17.8, 9.5
-    xm = box(0, 0, CAM[2] + 5, 50, 66, 3).cut(box(0, 0, CAM[2] + 4, 16, 14, 5))
+    # 217: generic USB-webcam plate (electrical update Nov 8, model TBD): 34 mm lens window over the bridge hole, two zip-tie
+    # slot pairs to strap the webcam face-down, 2 x M3 to the bridge slots. CAM (Z_S + 128) is the lens-to-trapdoor distance.
+    xm = box(0, 0, CAM[2] + 5, 50, 66, 3).cut(cyl((0, 0, CAM[2] + 4), (0, 0, 1), 17, 5))
     for yy in (-28, 28): xm = xm.cut(cyl((5, yy, CAM[2] + 4), (0, 0, 1), 1.7, 5))
-    for sx in (-1, 1):
-        for sy in (-1, 1):
-            xm = xm.union(box(sx * (XB_L / 2 + 0.3 + 1.5), sy * (XB_W / 2 + 0.3 + 1.5), CAM[2] + 8, 3, 3, XB_T + 2))
-            xm = xm.union(box(sx * (XB_L / 2 + 0.3 + 0.6), sy * (XB_W / 2 + 0.3 + 1.5), CAM[2] + 8 + XB_T, 1.2, 3, 2))
-    xm = xm.union(box(0, 20, CAM[2] + 8, 26, 14, 2.5)).cut(box(0, 20, CAM[2] + 8.5, 24, 11, 3))
-    xm = xm.union(box(0, -20, CAM[2] + 8, 10, 6, 6))
-    P['217_xiao_sense_camera_mount'] = xm
+    for xx in (-21, 21):
+        for yy in (-12, 12): xm = xm.cut(box(xx, yy, CAM[2] + 4, 2.4, 5, 5))
+    P['217_webcam_mount_generic'] = xm
     AP_C = (-14.0, -44.0)
     ap = box(AP_C[0], AP_C[1], Z_S, 28, 11, 10)
     ah = box(0, 0, 0, 24, 19, 6).cut(box(0, 0, 3, 20.2, 15.8, 4)).cut(box(0, 2, -1, 9, 7, 8))
@@ -378,38 +377,113 @@ def drop_funnel():
     return f, holes, (F_MOUTH_Z, F_MOUTH_R, F_TUBE_TOP, r_in_up, r_in_tube)
 
 
-# ---------------- electronics ----------------
-EL = [  # name, x0, y0, dx, dy, dz  (board sizes are placeholders: measure the real boards)
-    ('PSU_12V_165x60', -290.0, -166.0, 165.0, 60.0, 38.0),
-    ('buck_12_5', -110.0, -166.0, 60.0, 35.0, 20.0),
-    ('XT30_inlet_and_fuse', -110.0, -112.0, 40.0, 25.0, 15.0),
-    ('XIAO_ESP32C3_carrier', -40.0, -166.0, 50.0, 30.0, 15.0),
-    ('TMC2209_x3_carrier', 25.0, -166.0, 70.0, 50.0, 22.0),
-    ('MCP23017', 25.0, -106.0, 40.0, 25.0, 10.0),
-    ('DRV8833', -40.0, -112.0, 25.0, 20.0, 10.0),
-]
+# ---------------- electronics (Nov 8 electrical update) ----------------
+# Pi 4B is the brain; USB webcam replaces the XIAO S3 Sense; 12 V 10 A PSU (199 x 98 x 42, being measured); two bucks
+# (>= 5 A servos + vibration motors, >= 3 A Pi + logic); XT30 + fuse on the 12 V side; deck MCP23017 dropped (Pi GPIO).
+# All board sizes are placeholders except the Pi: measure and edit EL. Trays sit at z 334, behind the back access panel.
 EL_Z = DECK_TOP + 22.0   # tray top z 334, just above the panel's bottom edge (330)
+PSU = dict(x0=-290.0, y0=-165.0, dx=199.0, dy=98.0, dz=42.0)          # AC/DC terminal end at x -294 (under the IEC inlet)
+EL = [  # name, x0, y0, dx, dy, dz, tray
+    ('buck_5A_servos_vib', -80.0, -168.0, 40.0, 65.0, 22.0, 'b'),
+    ('XT30_and_fuse_12V', -80.0, -98.0, 40.0, 25.0, 15.0, 'b'),
+    ('buck_3A_pi_logic', -35.0, -168.0, 28.0, 48.0, 20.0, 'b'),
+    ('DRV8833', -35.0, -114.0, 20.0, 25.0, 10.0, 'b'),
+    ('XIAO_ESP32C3_carrier', -12.0, -114.0, 22.0, 40.0, 12.0, 'b'),
+    ('TMC2209_2slot_carrier', 24.0, -103.0, 50.0, 40.0, 22.0, '2'),
+]
+PI = dict(x0=24.0, y0=-166.0, dx=85.0, dy=56.0, dz=20.0, holes=(58.0, 49.0), inset=3.5)   # USB/Ethernet end at x 105 (faces the camera)
+SPOOL_C = (255.0, -133.0)
+CLIPS_226 = [(332.0, -112.0, 0.0), (198.0, -140.0, 90.0)]
+
+
+def _legs_tray(outline, legs):
+    """outline: shapely polygon (x, y); 2.4 mm plate at EL_Z, legs to the deck with #6 wood screws."""
+    from shapely.geometry import Polygon as SP
+    t = cq.Workplane('XY').workplane(offset=EL_Z - 2.4).polyline([(float(a), float(b)) for a, b in list(outline.exterior.coords)[:-1]]).close().extrude(2.4)
+    for (gx, gy) in legs:
+        t = t.union(box(gx, gy, DECK_TOP, 12, 12, EL_Z - 2.4 - DECK_TOP)).union(box(gx, gy, DECK_TOP, 20, 20, 4))
+        t = t.cut(cyl((gx, gy, DECK_TOP - 1), (0, 0, 1), WOOD_SCREW_CLR / 2, EL_Z - DECK_TOP + 2)).cut(csk_cone((gx, gy, EL_Z + 0.01), (0, 0, -1), WOOD_SCREW_CSK))
+    return t
+
+
+def _m3_pads(t, ex, ey, dx, dy):
+    for cx in (ex + 4, ex + dx - 4):
+        for cy in (ey + 4, ey + dy - 4):
+            t = t.union(cyl((cx, cy, EL_Z), (0, 0, 1), 4, 4)).cut(cyl((cx, cy, EL_Z - 2), (0, 0, 1), INSERT_M3_D / 2, 6.5))
+    return t
 
 
 def electronics():
-    trays = []
-    for (x0, x1) in ((-300.0, -14.0), (14.0, 110.0)):
-        t = boxc(x0, x1, -170.0, -62.0, EL_Z - 2.4, EL_Z)
-        legs = [(x0 + 8, -162.0), (x1 - 8, -162.0), (x0 + 8, -70.0), (x1 - 8, -70.0)]
-        if x1 - x0 > 200: legs += [((x0 + x1) / 2, -162.0), ((x0 + x1) / 2, -70.0)]
-        for (gx, gy) in legs:
-            t = t.union(box(gx, gy, DECK_TOP, 12, 12, EL_Z - 2.4 - DECK_TOP)).union(box(gx, gy, DECK_TOP, 20, 20, 4))
-            t = t.cut(cyl((gx, gy, DECK_TOP - 1), (0, 0, 1), WOOD_SCREW_CLR / 2, EL_Z - DECK_TOP + 2)).cut(csk_cone((gx, gy, EL_Z + 0.01), (0, 0, -1), WOOD_SCREW_CSK))
-        for (n, ex, ey, dx, dy, dz) in EL:
-            if x0 <= ex and ex + dx <= x1:
-                for cx in (ex + 4, ex + dx - 4):
-                    for cy in (ey + 4, ey + dy - 4):
-                        t = t.union(cyl((cx, cy, EL_Z), (0, 0, 1), 4, 4)).cut(cyl((cx, cy, EL_Z - 2), (0, 0, 1), INSERT_M3_D / 2, 6.5))
-        for xx in np.arange(x0 + 20, x1 - 10, 40):
-            t = t.cut(boxc(xx, xx + 4, -62.5 - 8, -62.5 - 4, EL_Z - 4, EL_Z + 1))
-        trays.append((t, legs))
-    dummies = [(n, boxc(ex, ex + dx, ey, ey + dy, EL_Z + 4, EL_Z + 4 + dz)) for (n, ex, ey, dx, dy, dz) in EL]
-    return trays, dummies
+    from shapely.geometry import Polygon as SP, box as sb
+    parts, screws = [], []
+    # tray 1a: PSU in a 6 mm fence (+0.5 clearance), 2 strap slots (hook-and-loop or zip tie) until its hole pattern is measured
+    o = sb(-316.0, -172.0, -86.0, -60.0)
+    legs = [(-304.0, -162.0), (-98.0, -162.0), (-304.0, -70.0), (-98.0, -70.0), (-200.0, -162.0), (-200.0, -70.0)]
+    t = _legs_tray(o, legs)
+    c = 0.5; fx0, fx1, fy0, fy1 = PSU['x0'] - c, PSU['x0'] + PSU['dx'] + c, PSU['y0'] - c, PSU['y0'] + PSU['dy'] + c
+    fence = boxc(fx0, fx1 + 2, fy0 - 2, fy1 + 2, EL_Z, EL_Z + 6).cut(boxc(fx0, fx1, fy0, fy1, EL_Z - 1, EL_Z + 7)).cut(boxc(fx0 - 3, fx0 + 12, fy0 - 3, fy1 + 3, EL_Z - 1, EL_Z + 7))
+    t = t.union(fence)
+    for xs in (-235.0, -150.0):
+        for (ya, yb) in ((-170.5, -167.5), (-63.5, -60.8)):
+            t = t.cut(boxc(xs - 13, xs + 13, ya, yb, EL_Z - 3, EL_Z + 7))
+    for (ix, iy) in ((-311.5, -120.0), (-311.5, -90.0)):          # 2 M3 inserts for the terminal cover tabs (-x end)
+        t = t.union(cyl((ix, iy, EL_Z - 2.4), (0, 0, 1), 2.8, 2.4 + 6)).cut(cyl((ix, iy, EL_Z + 6 - INSERT_M3_DEPTH), (0, 0, 1), INSERT_M3_D / 2, INSERT_M3_DEPTH + 1))
+    parts.append(('225_electronics_tray_1a_psu', t, 'fixed')); screws += [('225_electronics_tray_1a_psu', x, y) for x, y in legs]
+    # tray 1b: bucks, XT30 + fuse, DRV8833, XIAO C3
+    o = sb(-82.0, -172.0, 12.0, -60.0)
+    legs = [(-72.0, -162.0), (2.0, -162.0), (-72.0, -70.0), (2.0, -70.0)]
+    t = _legs_tray(o, legs)
+    for (n, ex, ey, dx, dy, dz, tr) in EL:
+        if tr == 'b': t = _m3_pads(t, ex, ey, dx, dy)
+    for xx in (-56.0, -22.0):
+        t = t.cut(boxc(xx, xx + 4, -66.5, -62.5, EL_Z - 4, EL_Z + 1))
+    parts.append(('225_electronics_tray_1b_power_io', t, 'fixed')); screws += [('225_electronics_tray_1b_power_io', x, y) for x, y in legs]
+    # tray 2: Pi 4B (M2 x 16 + nut trap from below; 58 x 49 holes) + 2-slot TMC2209 carrier; L-shape clears the scanner standoff (150, -80)
+    o = SP([(16.0, -172.0), (180.0, -172.0), (180.0, -97.0), (124.0, -97.0), (124.0, -60.0), (16.0, -60.0)])
+    legs = [(26.0, -162.0), (170.0, -162.0), (170.0, -107.0), (26.0, -70.0), (114.0, -70.0), (98.0, -162.0)]
+    t = _legs_tray(o, legs)
+    for hx in (PI['x0'] + PI['inset'], PI['x0'] + PI['inset'] + PI['holes'][0]):
+        for hy in (PI['y0'] + PI['inset'], PI['y0'] + PI['inset'] + PI['holes'][1]):
+            t = t.union(cyl((hx, hy, EL_Z), (0, 0, 1), 3.0, 6)).cut(cyl((hx, hy, EL_Z - 3), (0, 0, 1), 1.1, 10))
+            t = t.cut(cq.Workplane('XY').polygon(6, 4.4).extrude(1.8).translate((hx, hy, EL_Z - 2.41)))
+    for (n, ex, ey, dx, dy, dz, tr) in EL:
+        if tr == '2': t = _m3_pads(t, ex, ey, dx, dy)
+    parts.append(('225_electronics_tray_2_pi', t, 'fixed')); screws += [('225_electronics_tray_2_pi', x, y) for x, y in legs]
+    # 227 PSU terminal cover: wraps the terminal end (x -308..-280), slot up for the AC lead to the inlet, slot on +y for DC
+    cx0, cx1 = PSU['x0'] - 18.0, PSU['x0'] + 10.0
+    cy0, cy1 = fy0 - 2.0, fy1 + 2.0
+    cz1 = EL_Z + PSU['dz'] + 1.0 + 2.0
+    cov = boxc(cx0, cx1, cy0, cy1, EL_Z, cz1).cut(boxc(cx0 + 2, cx1 + 1, cy0 + 2, cy1 - 2, EL_Z - 1, cz1 - 2))
+    cov = cov.cut(boxc(cx0 + 4, cx0 + 16, -132.0, -108.0, cz1 - 3, cz1 + 1))                     # AC slot (top)
+    cov = cov.cut(boxc(cx0 + 4, cx0 + 17, cy1 - 3, cy1 + 1, EL_Z + 8, EL_Z + 22))                # DC slot (+y side)
+    for (ix, iy) in ((-311.5, -120.0), (-311.5, -90.0)):
+        tab = boxc(-314.5, cx0 + 0.01, iy - 5, iy + 5, EL_Z + 6, EL_Z + 9)
+        cov = cov.union(tab).cut(cyl((ix, iy, EL_Z + 5), (0, 0, 1), M3_CLR / 2, 6))
+    cov = cov.cut(boxc(cx0 - 1, cx1 + 1, fy0 - 2.1, fy0 - 1.9, EL_Z - 1, EL_Z)) if False else cov
+    parts.append(('227_psu_terminal_cover', cov, 'fixed'))
+    # 228 webcam cable spool: base r 38 (3 #6 inside the core), core r 25, 45 deg flange to r 38, entry slot
+    sx, sy = SPOOL_C
+    prof = [(0.0, 0.0), (38.0, 0.0), (38.0, 3.0), (25.0, 3.0), (25.0, 24.0), (38.0, 37.0), (38.0, 39.0), (23.0, 39.0), (23.0, 3.0), (0.0, 3.0)]
+    sp = cq.Workplane('XZ').polyline(prof).close().revolve(360, (0, 0, 0), (0, 1, 0)).translate((sx, sy, DECK_TOP))
+    sp = sp.cut(boxc(sx - 3, sx + 3, sy + 20, sy + 40, DECK_TOP + 26, DECK_TOP + 40))
+    for a in (90, 210, 330):
+        hx, hy = sx + 12 * math.cos(math.radians(a)), sy + 12 * math.sin(math.radians(a))
+        sp = wood_hole(sp, hx, hy, DECK_TOP + 3); screws.append(('228_webcam_cable_spool', hx, hy))
+    parts.append(('228_webcam_cable_spool', sp, 'fixed'))
+    # 226 USB cable clips (snap-in, 6.2 bore, 4.2 mouth) with one #6
+    for k, (x, y, ang) in enumerate(CLIPS_226):
+        cl = box(0, 0, 0, 10, 14, 12).cut(cyl((-6, 0, 7), (1, 0, 0), 3.1, 12)).cut(box(0, 0, 7, 12, 4.2, 6))
+        cl = cl.union(box(0, -13, 0, 10, 12, 3))
+        cl = cl.cut(cyl((0, -14, -1), (0, 0, 1), WOOD_SCREW_CLR / 2, 5)).cut(csk_cone((0, -14, 3.01), (0, 0, -1), WOOD_SCREW_CSK))
+        cl = cl.rotate((0, 0, 0), (0, 0, 1), ang).translate((x, y, DECK_TOP))
+        parts.append((f'226_usb_cable_clip_{k + 1}', cl, 'fixed'))
+        dx_, dy_ = -14 * -math.sin(math.radians(ang)), -14 * math.cos(math.radians(ang))
+        screws.append((f'226_usb_cable_clip_{k + 1}', x + dx_, y + dy_))
+    # dummies
+    dz = [('PSU_12V_10A_199x98x42', boxc(PSU['x0'], PSU['x0'] + PSU['dx'], PSU['y0'], PSU['y0'] + PSU['dy'], EL_Z, EL_Z + PSU['dz'])),
+          ('RPi4B', boxc(PI['x0'], PI['x0'] + PI['dx'], PI['y0'], PI['y0'] + PI['dy'], EL_Z + 6, EL_Z + 6 + PI['dz']))]
+    dz += [(n, boxc(ex, ex + dx, ey, ey + dy, EL_Z + 4, EL_Z + 4 + dh)) for (n, ex, ey, dx, dy, dh, tr) in EL]
+    return parts, screws, dz
 
 
 # ---------------- frame reference (for the cross-check) ----------------
@@ -422,7 +496,7 @@ def frame_ref_parts():
         d = Path('/home/claude/frame_ref')
     if d.exists():
         for f in sorted(d.glob('*.step')):
-            if f.name.startswith(('100_', '101_', '102_', '109_', '114_', '130_', '123_')):
+            if f.name.startswith(('100_', '101_', '102_', '109_', '111_', '114_', '119_', '130_', '123_')):
                 out.append((f.stem, cq.importers.importStep(str(f)), 'skin' if f.name.startswith(('114', '130')) else 'frame'))
     return out
 
@@ -462,10 +536,10 @@ def main():
     for k, v in sc.items():
         parts.append((k, v, 'door' if k.startswith('214') else ('dummy' if k.startswith('MG996R') else 'fixed')))
     fun, fun_holes, fun_geo = drop_funnel(); parts.append(('220_drop_funnel', fun, 'fixed')); screws += [('220_drop_funnel', x, y) for x, y in fun_holes]
-    trays_e, dummies = electronics()
-    for k, (t, legs) in enumerate(trays_e):
-        parts.append((f'225_electronics_tray_{k+1}', t, 'fixed')); screws += [(f'225_electronics_tray_{k+1}', x, y) for x, y in legs]
+    eparts, escrews, dummies = electronics()
+    parts += eparts; screws += escrews
     for n, d in dummies: parts.append((f'dummy_{n}', d, 'dummy'))
+    parts.append(('dummy_USB_webcam_placeholder', box(SX, 0, CAM[2] + 8, 60, 40, 35), 'dummy'))
 
     # ---------- exports ----------
     asm = cq.Assembly(name='deck_module')
@@ -477,11 +551,11 @@ def main():
     printable = [(lab, w) for lab, w, kind in parts if lab[0] == '2' and lab[1:3].isdigit()]
     plist = []
     pose = {'201': 'flip', '202': 'auto', '203': 'auto', '204': 'auto', '205': 'auto', '206': 'auto', '207': 'side',
-            '210': 'flip', '211': 'auto', '212': 'auto', '213': 'auto', '214': 'flip', '215': 'auto', '216': 'auto', '217': 'auto', '218': 'auto', '220': 'flip', '225': 'auto'}
+            '210': 'flip', '211': 'auto', '212': 'auto', '213': 'auto', '214': 'flip', '215': 'auto', '216': 'auto', '217': 'auto', '218': 'auto', '220': 'flip', '225': 'auto', '226': 'auto', '227': 'flip', '228': 'auto'}
     mat = {'207': 'PETG', '203': 'PETG', '204': 'PETG'}
     notes = {'201': 'rim (flange) down, outlet up; cone walls >= 45 deg', '202': 'laid flat on a side wall', '203': 'walls up (PETG)', '204': 'walls up (PETG)',
              '205': 'base down, forks vertical (teardrop the axle holes if needed)', '206': 'foot down', '207': 'on its side (PETG)', '210': 'upside down',
-             '214': 'upside down', '220': 'mouth down (cone inside at 45 deg)', '225': 'tray top up'}
+             '214': 'upside down', '220': 'mouth down (cone inside at 45 deg)', '225': 'tray top up', '226': 'base down', '227': 'top face down', '228': 'base down (45 deg flange)'}
     for lab, w in printable:
         how = pose.get(lab[:3], 'auto')
         if how == 'flip': bedp, diag = print_pose(w, flip=True)
@@ -504,11 +578,14 @@ def main():
         {'item': 'M3 x 12 + nut', 'qty': 4, 'use': '49b ears to the cradle cheeks'},
         {'item': '24 mm coin/vibration motor', 'qty': 2, 'use': 'V1, V2 (DRV8833 channels)'},
         {'item': 'MG996R (BJ owns)', 'qty': 1, 'use': 'scanner doors'},
-        {'item': 'XIAO ESP32-S3 Sense', 'qty': 1, 'use': 'camera on 217'},
+        {'item': 'USB webcam (model TBD)', 'qty': 1, 'use': 'strapped face-down on 217, cable to the Pi via 215 post slots, clips 226, spool 228'},
         {'item': 'APDS-9960 (GY-9960)', 'qty': 1, 'use': 'colour sensor on 218'},
         {'item': 'LED bar 70 mm', 'qty': 2, 'use': 'on 216'},
-        {'item': 'XIAO ESP32-C3, MCP23017, 3 x TMC2209, DRV8833, 12-5 V buck, 12 V PSU', 'qty': 1, 'use': 'electronics trays 225 (BJ owns most)'},
-        {'item': 'M3 heat-set inserts', 'qty': 30, 'use': 'electronics pads'},
+        {'item': 'Pi 4B, XIAO ESP32-C3, 2 x TMC2209 (2-slot carrier), DRV8833, buck >= 5 A, buck >= 3 A, 12 V 10 A PSU, XT30 + fuse', 'qty': 1, 'use': 'trays 225 1a / 1b / 2 (deck MCP23017 dropped: Pi GPIO)'},
+        {'item': 'IEC C14 fused + switched snap-in inlet', 'qty': 1, 'use': 'frame back tile B c1 r3 (cutout 47.5 x 27.5 placeholder)'},
+        {'item': 'M2 x 16 + nut', 'qty': 4, 'use': 'Pi 4B to tray 2 (nut traps underneath)'},
+        {'item': 'hook-and-loop strap or 2 zip ties', 'qty': 2, 'use': 'PSU to tray 1a until its hole pattern is measured'},
+        {'item': 'M3 heat-set inserts', 'qty': 34, 'use': 'electronics pads (32) + PSU cover (2)'},
         {'item': 'M3 x 8 countersunk', 'qty': 4, 'use': 'hopper flange to the stud-ring ledge (frame 130)'},
         {'item': 'M3 x 10 / x 12 screws', 'qty': 40, 'use': 'springs, saddles, scanner'},
         {'item': '#6 x 3/4 in wood screws', 'qty': len(screws) + 6, 'use': 'everything that stands on the deck ply'},

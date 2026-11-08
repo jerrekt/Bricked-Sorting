@@ -286,8 +286,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 95.3,
-   "est_hours_each": 1.94,
+   "est_grams_each": 96.3,
+   "est_hours_each": 1.97,
    "orientation": "flat"
   },
   {
@@ -323,19 +323,19 @@
    "orientation": "flat"
   },
   {
-   "label": "217_xiao_sense_camera_mount",
+   "label": "217_webcam_mount_generic",
    "part_no": "217",
    "qty": 1,
    "material": "PLA",
    "bed_extent": [
     50.0,
     66.0,
-    14.5
+    3.02
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 12.8,
-   "est_hours_each": 0.17,
+   "est_grams_each": 8.7,
+   "est_hours_each": 0.12,
    "orientation": "flat"
   },
   {
@@ -371,36 +371,116 @@
    "orientation": "mouth down (cone inside at 45 deg)"
   },
   {
-   "label": "225_electronics_tray_1",
+   "label": "225_electronics_tray_1a_psu",
    "part_no": "225",
    "qty": 1,
    "material": "PLA",
    "bed_extent": [
-    221.33,
-    219.2,
-    112.0
+    230.0,
+    112.0,
+    28.0
    ],
    "fits_248": true,
-   "diagonal_on_bed": true,
-   "est_grams_each": 120.8,
-   "est_hours_each": 1.61,
+   "diagonal_on_bed": false,
+   "est_grams_each": 109.9,
+   "est_hours_each": 1.47,
    "orientation": "tray top up"
   },
   {
-   "label": "225_electronics_tray_2",
+   "label": "225_electronics_tray_1b_power_io",
    "part_no": "225",
    "qty": 1,
    "material": "PLA",
    "bed_extent": [
-    100.0,
+    94.0,
     112.0,
     26.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 49.8,
-   "est_hours_each": 0.66,
+   "est_grams_each": 52.1,
+   "est_hours_each": 0.69,
    "orientation": "tray top up"
+  },
+  {
+   "label": "225_electronics_tray_2_pi",
+   "part_no": "225",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    164.0,
+    112.0,
+    28.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 76.5,
+   "est_hours_each": 1.02,
+   "orientation": "tray top up"
+  },
+  {
+   "label": "227_psu_terminal_cover",
+   "part_no": "227",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    34.5,
+    103.0,
+    45.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 22.9,
+   "est_hours_each": 0.31,
+   "orientation": "top face down"
+  },
+  {
+   "label": "228_webcam_cable_spool",
+   "part_no": "228",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    76.37,
+    76.25,
+    39.05
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 47.8,
+   "est_hours_each": 0.98,
+   "orientation": "base down (45 deg flange)"
+  },
+  {
+   "label": "226_usb_cable_clip_1",
+   "part_no": "226",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    10.0,
+    26.0,
+    12.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 2.0,
+   "est_hours_each": 0.03,
+   "orientation": "base down"
+  },
+  {
+   "label": "226_usb_cable_clip_2",
+   "part_no": "226",
+   "qty": 1,
+   "material": "PLA",
+   "bed_extent": [
+    26.0,
+    10.0,
+    12.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 2.0,
+   "est_hours_each": 0.03,
+   "orientation": "base down"
   }
  ],
  "reused_v13_as_is": [
@@ -457,9 +537,9 @@
    "use": "scanner doors"
   },
   {
-   "item": "XIAO ESP32-S3 Sense",
+   "item": "USB webcam (model TBD)",
    "qty": 1,
-   "use": "camera on 217"
+   "use": "strapped face-down on 217, cable to the Pi via 215 post slots, clips 226, spool 228"
   },
   {
    "item": "APDS-9960 (GY-9960)",
@@ -472,14 +552,29 @@
    "use": "on 216"
   },
   {
-   "item": "XIAO ESP32-C3, MCP23017, 3 x TMC2209, DRV8833, 12-5 V buck, 12 V PSU",
+   "item": "Pi 4B, XIAO ESP32-C3, 2 x TMC2209 (2-slot carrier), DRV8833, buck >= 5 A, buck >= 3 A, 12 V 10 A PSU, XT30 + fuse",
    "qty": 1,
-   "use": "electronics trays 225 (BJ owns most)"
+   "use": "trays 225 1a / 1b / 2 (deck MCP23017 dropped: Pi GPIO)"
+  },
+  {
+   "item": "IEC C14 fused + switched snap-in inlet",
+   "qty": 1,
+   "use": "frame back tile B c1 r3 (cutout 47.5 x 27.5 placeholder)"
+  },
+  {
+   "item": "M2 x 16 + nut",
+   "qty": 4,
+   "use": "Pi 4B to tray 2 (nut traps underneath)"
+  },
+  {
+   "item": "hook-and-loop strap or 2 zip ties",
+   "qty": 2,
+   "use": "PSU to tray 1a until its hole pattern is measured"
   },
   {
    "item": "M3 heat-set inserts",
-   "qty": 30,
-   "use": "electronics pads"
+   "qty": 34,
+   "use": "electronics pads (32) + PSU cover (2)"
   },
   {
    "item": "M3 x 8 countersunk",
@@ -493,7 +588,7 @@
   },
   {
    "item": "#6 x 3/4 in wood screws",
-   "qty": 48,
+   "qty": 59,
    "use": "everything that stands on the deck ply"
   },
   {
@@ -664,56 +759,111 @@
    "y": -32.5
   },
   {
-   "part": "225_electronics_tray_1",
-   "x": -292.0,
+   "part": "225_electronics_tray_1a_psu",
+   "x": -304.0,
    "y": -162.0
   },
   {
-   "part": "225_electronics_tray_1",
-   "x": -22.0,
+   "part": "225_electronics_tray_1a_psu",
+   "x": -98.0,
    "y": -162.0
   },
   {
-   "part": "225_electronics_tray_1",
-   "x": -292.0,
+   "part": "225_electronics_tray_1a_psu",
+   "x": -304.0,
    "y": -70.0
   },
   {
-   "part": "225_electronics_tray_1",
-   "x": -22.0,
+   "part": "225_electronics_tray_1a_psu",
+   "x": -98.0,
    "y": -70.0
   },
   {
-   "part": "225_electronics_tray_1",
-   "x": -157.0,
+   "part": "225_electronics_tray_1a_psu",
+   "x": -200.0,
    "y": -162.0
   },
   {
-   "part": "225_electronics_tray_1",
-   "x": -157.0,
+   "part": "225_electronics_tray_1a_psu",
+   "x": -200.0,
    "y": -70.0
   },
   {
-   "part": "225_electronics_tray_2",
-   "x": 22.0,
+   "part": "225_electronics_tray_1b_power_io",
+   "x": -72.0,
    "y": -162.0
   },
   {
-   "part": "225_electronics_tray_2",
-   "x": 102.0,
+   "part": "225_electronics_tray_1b_power_io",
+   "x": 2.0,
    "y": -162.0
   },
   {
-   "part": "225_electronics_tray_2",
-   "x": 22.0,
+   "part": "225_electronics_tray_1b_power_io",
+   "x": -72.0,
    "y": -70.0
   },
   {
-   "part": "225_electronics_tray_2",
-   "x": 102.0,
+   "part": "225_electronics_tray_1b_power_io",
+   "x": 2.0,
    "y": -70.0
+  },
+  {
+   "part": "225_electronics_tray_2_pi",
+   "x": 26.0,
+   "y": -162.0
+  },
+  {
+   "part": "225_electronics_tray_2_pi",
+   "x": 170.0,
+   "y": -162.0
+  },
+  {
+   "part": "225_electronics_tray_2_pi",
+   "x": 170.0,
+   "y": -107.0
+  },
+  {
+   "part": "225_electronics_tray_2_pi",
+   "x": 26.0,
+   "y": -70.0
+  },
+  {
+   "part": "225_electronics_tray_2_pi",
+   "x": 114.0,
+   "y": -70.0
+  },
+  {
+   "part": "225_electronics_tray_2_pi",
+   "x": 98.0,
+   "y": -162.0
+  },
+  {
+   "part": "228_webcam_cable_spool",
+   "x": 255.0,
+   "y": -121.0
+  },
+  {
+   "part": "228_webcam_cable_spool",
+   "x": 244.6,
+   "y": -139.0
+  },
+  {
+   "part": "228_webcam_cable_spool",
+   "x": 265.4,
+   "y": -139.0
+  },
+  {
+   "part": "226_usb_cable_clip_1",
+   "x": 332.0,
+   "y": -126.0
+  },
+  {
+   "part": "226_usb_cable_clip_2",
+   "x": 212.0,
+   "y": -140.0
   }
  ],
- "est_total_grams_new_parts": 1366,
- "est_total_hours_new_parts": 23.1
+ "est_total_grams_new_parts": 1506,
+ "est_total_hours_new_parts": 25.3
 }

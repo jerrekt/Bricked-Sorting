@@ -56,3 +56,18 @@ None. Built to interface 5 (re-checked clean against 5.1 on 2026-11-06 19:55 PT;
   - Drum turned along X (axis y 40, rear x -150, tilt 1°), hopper r 75 in the left stud on the stud-ring ledge, 47° chute, V1 along +Y, V2 diagonal to the scanner at (240, 0), scanner floor 374, funnel exit 270, electronics behind the panel.
   - ~1.37 kg / ~23 h new parts; all zone, clash, drum-rotation, door-swing, bed and frame cross-checks clean.
   - Frame + deck together: ~5.7 kg / ~82 h (budget was ~5.5 kg).
+
+## Nov 8 electrical update (rev 3.1, 2026-11-08 16:40 PT)
+From the electrical chat: Pi 4B brain, USB webcam instead of the XIAO S3 Sense, 12 V 10 A PSU (~199 x 98 x 42), IEC C14 fused + switched inlet, two bucks (>= 5 A servos/vibration, >= 3 A Pi/logic), XT30 + fuse on the 12 V side, deck MCP23017 dropped.
+| Part | What | Where |
+|---|---|---|
+| 225 tray 1a | PSU in a 6 mm fence, 2 strap slots (hook-and-loop or zip ties until its holes are measured), 2 M3 inserts for the cover | x -316..-86, y -172..-60; PSU x -290..-91, AC end at x -290 |
+| 227 PSU terminal cover | wraps the terminal end, AC slot on top (lead up to the inlet), DC slot on +y, 2 tabs with M3 | x -308..-280 |
+| IEC inlet (frame) | fixed back tile B c1 r3, centre x -268, z 445 (frame README) | 50 mm above the cover |
+| 225 tray 1b | 5 A buck, XT30 + fuse, 3 A buck, DRV8833, XIAO C3 (M3 insert pads) | x -82..12 |
+| 225 tray 2 | Pi 4B (M2 x 16 + nut traps, 58 x 49 holes) with its USB/Ethernet end facing the camera (+x, 70 mm free for plugs), 2-slot TMC2209 carrier | L-shape x 16..180, clears the scanner standoff |
+| 217 webcam mount | generic: 34 mm lens window over the bridge hole, 2 zip-tie slot pairs to strap the webcam face-down; lens stays 128 mm above the trapdoor (`CAM`) | replaces the XIAO mount |
+| Cable route | 215 post zip-tie slots (2 pairs) → over the plate corner (x 338, y -92) → clip 226-1 (332, -112) → spool 228 at (255, -133) for ~1 m of slack → clip 226-2 (198, -140) → Pi USB | |
+Power the Pi through its GPIO 5 V pins from the 3 A buck; a USB-C plug on the Pi's -y side has only ~20 mm to the back wall.
+Checks: 0 clashes (parts, drum at 12 angles, doors, frame incl. the inlet and back tiles), all in K, all fit 248. New parts ~1.51 kg / ~25 h for the deck now.
+Placeholders to measure: PSU holes, both bucks, XT30/fuse holder, XIAO carrier, TMC carrier, webcam, IEC module.
