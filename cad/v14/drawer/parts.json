@@ -47,7 +47,7 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 23.4,
+   "est_grams_each": 23.3,
    "est_hours_each": 0.5
   },
   {
@@ -63,7 +63,7 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 23.4,
+   "est_grams_each": 23.3,
    "est_hours_each": 0.5
   },
   {
@@ -75,7 +75,7 @@
    "bed_extent": [
     26.1,
     48.0,
-    8.0
+    8.02
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
@@ -608,6 +608,6 @@
    "use": "reeds to the MCP23017"
   }
  ],
- "est_total_grams": 2379,
+ "est_total_grams": 2378,
  "est_total_hours": 53
 }

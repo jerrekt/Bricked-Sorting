@@ -13,6 +13,7 @@ CB_D, CB_DEPTH = 6.5, 3.5
 FIT = 0.07                           # dovetail / sliding fit per side (runbook)
 PRESS = -0.02                        # press pocket per side (runbook)
 WOOD_SCREW = 3.6                     # #6 wood screw clearance
+WOOD_SCREW_CSK = 7.0                 # #6 flat/bugle head: 90 deg countersink, top dia (same as frame5/deck5)
 
 
 def bbox(shape):
@@ -110,3 +111,9 @@ def render(items, path, cam, focal, up=(0, 0, 1), size=(1280, 800), title=None, 
     rw.Render()
     w2i = vtk.vtkWindowToImageFilter(); w2i.SetInput(rw); w2i.Update()
     wr = vtk.vtkPNGWriter(); wr.SetFileName(str(path)); wr.SetInputConnection(w2i.GetOutputPort()); wr.Write()
+
+
+def csk_cone(p, d, big=7.0):
+    """90 deg countersink cone, top diameter big at point p, apex along unit vector d (into the part)."""
+    import cadquery as _cq
+    return _cq.Workplane(obj=_cq.Solid.makeCone(big / 2, 0.0, big / 2, _cq.Vector(*p), _cq.Vector(*d)))

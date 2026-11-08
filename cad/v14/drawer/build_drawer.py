@@ -12,6 +12,7 @@ from pathlib import Path
 import cadquery as cq
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent)); sys.path.insert(0, str(HERE))
+from common import csk_cone
 from common import IF, M3_CLR, INSERT_D, INSERT_DEPTH, CB_D, CB_DEPTH, WOOD_SCREW, print_pose, bed_fit, export, bbox, grams, hours, render
 import runner as R
 
@@ -231,7 +232,7 @@ def closed_switch_mount():
     m = m.cut(box(x - SW_W / 2 - SW_CLR, x + SW_W / 2 + SW_CLR, y - SW_L / 2 - SW_CLR, y + SW_L / 2 + SW_CLR, FLOOR_TOP + 0.8, FLOOR_TOP + 12))
     for dy in (-SW_HOLE_PITCH / 2, SW_HOLE_PITCH / 2):
         m = m.cut(cq.Workplane('YZ').circle(SW_HOLE_D / 2).extrude(30).translate((x - 15, y + dy, FLOOR_TOP + 6)))
-    m = m.cut(cylz(x, 87, FLOOR_TOP - 1, 20, WOOD_SCREW)).cut(cylz(x, 87, FLOOR_TOP + 10.3 - 1.5, 5, 7.0))
+    m = m.cut(cylz(x, 87, FLOOR_TOP - 1, 20, WOOD_SCREW)).cut(cylz(x, 87, FLOOR_TOP + 10.3 - 1.5, 5, 7.0)).cut(csk_cone((x, 87, FLOOR_TOP + 10.3 - 1.5 + 0.01), (0, 0, -1)))   # flat-head seat
     return m
 
 

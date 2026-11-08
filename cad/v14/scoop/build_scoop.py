@@ -13,6 +13,7 @@ from pathlib import Path
 import cadquery as cq
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
+from common import csk_cone
 from common import IF, M3_CLR, INSERT_D, INSERT_DEPTH, CB_D, CB_DEPTH, WOOD_SCREW, FIT, print_pose, bed_fit, export, bbox, grams, hours, render
 
 SZ = IF['zones']['S_scoop']; Z_MIN = SZ['z'][0]            # 134
@@ -77,7 +78,7 @@ def beam_segment(i):
         pl = box(xe - (0 if i == 0 else 6), xe + (6 if i == 0 else 0), -19, 19, BZ[0] - 20, BZ[1] + 20)
         for z in (BZ[0] - 10, 163.0, BZ[1] + 10):
             pl = pl.cut(cylc((xe + (3 if i == 0 else -3), 0, z), (1, 0, 0), WOOD_SCREW / 2, 8))
-            pl = pl.cut(cylc((xe + (6 if i == 0 else -6), 0, z), (1, 0, 0), 3.6, 3))   # #6 head seat
+            pl = pl.cut(csk_cone((xe + (6.01 if i == 0 else -6.01), 0, z), (-1 if i == 0 else 1, 0, 0)))   # #6 flat-head countersink
         s = s.union(pl)
     return s
 
@@ -244,6 +245,7 @@ def idler_block():
     sl = sl.union(arm).cut(cylc((IDLER_X, PUL_Y, 163), (0, 0, 1), 2.65, 40))
     ch = ch.union(box(334.0, 340.0, BY[1] + 8, BY[1] + 20, 154.0, 172.0)).cut(cylc((337, BY[1] + 14, 163), (1, 0, 0), M3_CLR / 2, 8))
     sl = sl.cut(cylc((IDLER_X + 6, BY[1] + 5, 163), (1, 0, 0), INSERT_D / 2, 2 * INSERT_DEPTH))
+    sl = sl.cut(cylc((IDLER_X + 6 - 11, BY[1] + 5, 163), (1, 0, 0), M3_CLR / 2, 22))   # screw run-out past the insert: M3 x 20-30 all fit
     return ch, sl
 
 
@@ -423,7 +425,7 @@ def main():
               {'item': 'M5 x 50 screw + nyloc', 'qty': 2, 'use': 'top roller axles (through both side plates)'},
               {'item': 'M5 x 25-30 screw + nyloc', 'qty': 5, 'use': 'side roller axles (4, grip 17: an M5 x 30 tip ends at z 141.5, 3.5 above the anti-lift hook), idler axle (1, grip 18)'},
               {'item': 'M3 x 12 screw + nut', 'qty': 4 + 2 + 2, 'use': 'beam joints, motor bracket to beam, misc'},
-              {'item': 'M3 x 30 screw', 'qty': 1, 'use': 'belt tensioner'}, {'item': 'M3 insert', 'qty': 1, 'use': 'tensioner'},
+              {'item': 'M3 x 25 screw', 'qty': 1, 'use': 'belt tensioner (20-30 all fit: clearance run-out past the insert)'}, {'item': 'M3 insert', 'qty': 1, 'use': 'tensioner'},
               {'item': '#6 x 3/4 wood screw', 'qty': 6, 'use': 'end plates into the beam posts'},
               {'item': 'M2 x 8 screw', 'qty': 4 + 2, 'use': 'servo horn to hub, endstop'}, {'item': 'PTFE tape', 'qty': 1, 'use': 'anti-lift hooks'},
               {'item': 'servo extension lead 3-wire', 'qty': '1 m', 'use': 'rolling loop to the deck electronics'}]

@@ -37,7 +37,7 @@
    ],
    "fits_248": true,
    "bed_face": "foot down",
-   "grams_PETG": 23.4,
+   "grams_PETG": 23.3,
    "hours": 0.5
   },
   {
@@ -50,7 +50,7 @@
    ],
    "fits_248": true,
    "bed_face": "foot down",
-   "grams_PETG": 23.4,
+   "grams_PETG": 23.3,
    "hours": 0.5
   },
   {
@@ -59,7 +59,7 @@
    "bed_extent": [
     26.1,
     48.0,
-    8.0
+    8.02
    ],
    "fits_248": true,
    "bed_face": "foot down",

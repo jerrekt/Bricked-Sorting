@@ -15,7 +15,7 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 139.7,
+   "est_grams": 139.8,
    "est_hours": 3.1
   },
   {
@@ -47,7 +47,7 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 132.3,
+   "est_grams": 132.4,
    "est_hours": 2.9
   },
   {
@@ -95,8 +95,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 6.8,
-   "est_hours": 0.2
+   "est_grams": 6.6,
+   "est_hours": 0.1
   },
   {
    "label": "187_idler_wheel",
@@ -258,9 +258,9 @@
    "use": "beam joints, motor bracket to beam, misc"
   },
   {
-   "item": "M3 x 30 screw",
+   "item": "M3 x 25 screw",
    "qty": 1,
-   "use": "belt tensioner"
+   "use": "belt tensioner (20-30 all fit: clearance run-out past the insert)"
   },
   {
    "item": "M3 insert",

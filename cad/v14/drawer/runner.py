@@ -19,7 +19,7 @@ import cadquery as cq
 from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from common import IF, M3_CLR, CB_D, CB_DEPTH, INSERT_D, INSERT_DEPTH
+from common import IF, M3_CLR, CB_D, CB_DEPTH, INSERT_D, INSERT_DEPTH, csk_cone
 
 TRAVEL = IF['drawer']['travel_y']               # 150
 RAIL_W = 16.0
@@ -98,10 +98,10 @@ def station(ys, preload_last=False, slotted_index=None, foot_holes=True, rail_x_
             b = b.cut(cq.Workplane(cq.Plane(origin=(POST_X1 - 4, y, AXLE_Z), xDir=(0, 1, 0), normal=(1, 0, 0))).polygon(6, 9.4).extrude(5))
         rollers.append(cyl('x', ((BR_X[0] + BR_X[1]) / 2, y, AXLE_Z), BR_OD, BR_W).cut(cyl('x', ((BR_X[0] + BR_X[1]) / 2, y, AXLE_Z), BR_ID, BR_W + 1)))
     holes = []
-    if foot_holes:   # two #6 wood screws into the plywood, counterbored
+    if foot_holes:   # two #6 flat-head wood screws into the plywood, countersunk
         for (lx, gy) in ((POST_X1 + 10, y0 + 9), (foot_end - 8, y1 - 9)):
             holes.append((lx, gy))
-            b = b.cut(cyl('z', (lx, gy, FLOOR + FOOT_T / 2), WOOD_SCREW_CLR, FOOT_T + 2)).cut(cyl('z', (lx, gy, FLOOR + FOOT_T - 0.75), 7.0, 1.5))
+            b = b.cut(cyl('z', (lx, gy, FLOOR + FOOT_T / 2), WOOD_SCREW_CLR, FOOT_T + 2)).cut(csk_cone((lx, gy, FLOOR + FOOT_T + 0.01), (0, 0, -1)))
     return b, rollers, holes
 
 
@@ -117,5 +117,5 @@ def guide_block(ys, rail_x_world=None):
         rollers.append(cyl('z', (cx, y, FLOOR + 8.5 + BR_W / 2), BR_OD, BR_W).cut(cyl('z', (cx, y, FLOOR + 8.5 + BR_W / 2), BR_ID, BR_W + 1)))
     holes = [(cx - 12, y0 + 6), (cx - 12, y1 - 6)]
     for (lx, gy) in holes:
-        b = b.cut(cyl('z', (lx, gy, FLOOR + 4), WOOD_SCREW_CLR, 10)).cut(cyl('z', (lx, gy, FLOOR + 8 - 0.75), 7.0, 1.5))
+        b = b.cut(cyl('z', (lx, gy, FLOOR + 4), WOOD_SCREW_CLR, 10)).cut(csk_cone((lx, gy, FLOOR + 8 + 0.01), (0, 0, -1)))
     return b, rollers, holes
