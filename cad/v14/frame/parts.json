@@ -1399,12 +1399,9 @@
    "qty": 44
   },
   {
-   "item": "#8 x 2 in",
-   "qty": 8
-  },
-  {
    "item": "#6 x 1.25 in",
-   "qty": 12
+   "qty": 28,
+   "use": "deck ply to cleats (12), posts to floor ply (16)"
   },
   {
    "item": "M3 heat-set inserts",

@@ -21,7 +21,7 @@ Stock: 2x2 x 8 ft x 1 (4 x 600 = 2400 of 2438, cut carefully), 1x2 x 8 ft x 3 (6
 
 | Joint | Screw | Qty | Where |
 |---|---|---|---|
-| posts to floor ply | #8 x 2 in, up from below the ply | 8 | 2 per post, at the post centre (x +-335, y +-155) +-10 along y |
+| posts to floor ply | #6 x 1-1/4 in, up from below the ply (12 ply + 20 into the post) | 16 | 4 per post, at the post centre (x +-335, y +-155) +-10 in x and y |
 | long rails 101 / cleats 103 to posts | #8 x 2.5 in, through the post outer x face (+-354) into the rail end grain | 8 | 2 per rail end: y +-164.5, z 584 and 602 (rail) / 272 and 290 (cleat) |
 | short rails 102 / cleats 104 / bottom rails 105 to posts | #8 x 2.5 in, through the post outer y face (+-174) into the end grain | 24 | 2 per end: x +-344.5, z 584/602, 272/290, 22/40 |
 | beam post 106 to bottom rail 105 | #8 x 2.5 in, up from below the floor ply through rail 105 | 2 | at (+-344.5, 0) |

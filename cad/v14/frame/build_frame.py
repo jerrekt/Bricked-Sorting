@@ -519,7 +519,7 @@ def cut_list(screws):
     L += ['', 'Stock: 2x2 x 8 ft x 1 (4 x 600 = 2400 of 2438, cut carefully), 1x2 x 8 ft x 3 (632 + 632 + 272 + 272 + 272 = 2080; 632 + 632 + 272 + 272 + 212 + 212 = 2232; 310 + 310 = 620), 1/2 in plywood 2 x 4 ft handy panel x 1.',
           '', '## Wood-to-wood screws (pilot 2.5 mm for #6, 3 mm for #8)', '',
           '| Joint | Screw | Qty | Where |', '|---|---|---|---|',
-          '| posts to floor ply | #8 x 2 in, up from below the ply | 8 | 2 per post, at the post centre (x +-335, y +-155) +-10 along y |',
+          '| posts to floor ply | #6 x 1-1/4 in, up from below the ply (12 ply + 20 into the post) | 16 | 4 per post, at the post centre (x +-335, y +-155) +-10 in x and y |',
           '| long rails 101 / cleats 103 to posts | #8 x 2.5 in, through the post outer x face (+-354) into the rail end grain | 8 | 2 per rail end: y +-164.5, z 584 and 602 (rail) / 272 and 290 (cleat) |',
           '| short rails 102 / cleats 104 / bottom rails 105 to posts | #8 x 2.5 in, through the post outer y face (+-174) into the end grain | 24 | 2 per end: x +-344.5, z 584/602, 272/290, 22/40 |',
           '| beam post 106 to bottom rail 105 | #8 x 2.5 in, up from below the floor ply through rail 105 | 2 | at (+-344.5, 0) |',
@@ -674,7 +674,7 @@ def main():
     (HERE / 'parts.json').write_text(json.dumps({'module': 'F', 'interface': IF['version'], 'printed': plist,
         'wood': [{'label': lab, 'bbox': bbox(w)} for lab, w, kind in wood],
         'bought': [{'item': '2x2 x 8 ft', 'qty': 1}, {'item': '1x2 x 8 ft', 'qty': 3}, {'item': '1/2 in plywood 2 x 4 ft', 'qty': 1},
-                   {'item': '#6 x 3/4 in wood screws (clips, keeper bars)', 'qty': len(screws) + 10}, {'item': '#8 x 2.5 in wood screws', 'qty': 44}, {'item': '#8 x 2 in', 'qty': 8}, {'item': '#6 x 1.25 in', 'qty': 12},
+                   {'item': '#6 x 3/4 in wood screws (clips, keeper bars)', 'qty': len(screws) + 10}, {'item': '#8 x 2.5 in wood screws', 'qty': 44}, {'item': '#6 x 1.25 in', 'qty': 28, 'use': 'deck ply to cleats (12), posts to floor ply (16)'},
                    {'item': 'M3 heat-set inserts', 'qty': 16, 'use': 'stud feet (8), stud ledge (4) [+8 in keeper bars]'}, {'item': 'M3 heat-set inserts', 'qty': 8, 'use': 'keeper bars'},
                    {'item': 'M3 x 8 countersunk', 'qty': 16, 'use': 'stud feet through the roof (8), access panel (8)'}, {'item': 'red PLA', 'qty': f'~{tot_g / 1000:.1f} kg'}],
         'h_clip_positions': hpos, 'totals': res['totals']}, indent=1))
