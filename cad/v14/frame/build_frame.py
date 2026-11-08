@@ -28,7 +28,7 @@ from f_common import (IF, BED, FIT_SLIDE, INSERT_M3_D, INSERT_M3_DEPTH, M3_CLR, 
                       CHAMFER_BED, print_pose, bed_fit, export, bbox, extent, grams, hours, cyl, boxc, box, ov, vol, render)
 
 W = IF['wood']; SK = IF['skin']; ST = IF['studs']
-XO, YO = IF['envelope']['x'][1], IF['envelope']['y'][1]          # 360, 180 outer skin faces
+XO, YO = 360.0, 180.0                                            # outer skin faces (interface skin.outer_faces; the 5.1 envelope y +-192 includes the drawer faces)
 Z_ROOF = 612.0; T_SKIN = 2.0; GAP = 4.0; D_WOOD = T_SKIN + GAP    # roof skin z 612..614; wood faces 6 in from the skin
 RIB_T, RIB_H = 1.6, 2.8                                           # rib thickness / height off the face back
 SLOT1 = RIB_T + 2 * FIT_SLIDE; SLOT2 = 2 * RIB_T + 2 * FIT_SLIDE
