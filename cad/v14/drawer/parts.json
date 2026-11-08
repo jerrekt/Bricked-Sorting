@@ -95,7 +95,7 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 94.7,
+   "est_grams_each": 95.6,
    "est_hours_each": 2.1
   },
   {
@@ -107,12 +107,12 @@
    "bed_extent": [
     162.0,
     128.0,
-    100.5
+    108.1
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 93.4,
-   "est_hours_each": 2.1
+   "est_grams_each": 99.4,
+   "est_hours_each": 2.2
   },
   {
    "label": "166_tray_tile_front_3",
@@ -127,7 +127,7 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 93.4,
+   "est_grams_each": 94.3,
    "est_hours_each": 2.1
   },
   {
@@ -143,7 +143,7 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 89.8,
+   "est_grams_each": 90.8,
    "est_hours_each": 2.0
   },
   {
@@ -255,7 +255,7 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 93.0,
+   "est_grams_each": 94.0,
    "est_hours_each": 2.1
   },
   {
@@ -267,12 +267,12 @@
    "bed_extent": [
     162.0,
     128.0,
-    100.5
+    108.1
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 91.1,
-   "est_hours_each": 2.0
+   "est_grams_each": 97.1,
+   "est_hours_each": 2.2
   },
   {
    "label": "166_tray_tile_back_3",
@@ -287,7 +287,7 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 91.0,
+   "est_grams_each": 92.0,
    "est_hours_each": 2.0
   },
   {
@@ -303,7 +303,7 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 88.2,
+   "est_grams_each": 89.2,
    "est_hours_each": 2.0
   },
   {
@@ -497,6 +497,38 @@
    "diagonal_on_bed": false,
    "est_grams_each": 6.9,
    "est_hours_each": 0.2
+  },
+  {
+   "label": "172_reed_coupon_tray",
+   "part_no": "172",
+   "qty": 1,
+   "material": "PLA",
+   "bed_face": "plate top down (test first)",
+   "bed_extent": [
+    44.0,
+    60.0,
+    6.0
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 9.4,
+   "est_hours_each": 0.2
+  },
+  {
+   "label": "172_reed_coupon_floor",
+   "part_no": "172",
+   "qty": 1,
+   "material": "PLA",
+   "bed_face": "floor down, magnet pocket on the bed",
+   "bed_extent": [
+    44.0,
+    44.0,
+    2.6
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 2.9,
+   "est_hours_each": 0.1
   }
  ],
  "bought": [
@@ -549,8 +581,33 @@
    "item": "M2 x 12 screw + nut",
    "qty": 4,
    "use": "switches"
+  },
+  {
+   "item": "reed switch N/O, glass 2 x 14 mm",
+   "qty": 18,
+   "use": "one per bin (+2 spares, glass breaks)"
+  },
+  {
+   "item": "neodymium magnet 6 x 2 mm disc",
+   "qty": 18,
+   "use": "one per bin floor (+2 for the coupon)"
+  },
+  {
+   "item": "MCP23017 I2C module (~40 x 25)",
+   "qty": 2,
+   "use": "one per drawer, under tray tile 2"
+  },
+  {
+   "item": "4-core flexible cable (3V3, GND, SDA, SCL)",
+   "qty": "2 x 1 m",
+   "use": "drawer to deck, service loop for 150 travel"
+  },
+  {
+   "item": "26-28 AWG hookup wire",
+   "qty": "~6 m",
+   "use": "reeds to the MCP23017"
   }
  ],
- "est_total_grams": 2349,
- "est_total_hours": 52
+ "est_total_grams": 2379,
+ "est_total_hours": 53
 }

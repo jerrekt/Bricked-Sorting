@@ -1,53 +1,12 @@
 {
  "interface": "v14-interface-5.1 (2026-11-06 19:35): drawer fits through the skin opening (bins 70 wide at 76 pitch, body x +-306, opening +-310, overlay face +-330); roof support under the hopper stud",
  "modules": {
-  "F": 289,
+  "F": 291,
   "K": 48,
-  "D": 68,
+  "D": 102,
   "S_fixed": 9
  },
- "F_vs_D_closed": [
-  [
-   "110_tile_F_c1_r1",
-   "front_166_tray_tile_1",
-   39.5
-  ],
-  [
-   "110_tile_F_c1_r1",
-   "front_167_face_F1",
-   74.8
-  ],
-  [
-   "110_tile_F_c4_r1",
-   "front_166_tray_tile_4",
-   39.5
-  ],
-  [
-   "110_tile_F_c4_r1",
-   "front_167_face_F3",
-   74.8
-  ],
-  [
-   "111_tile_B_c1_r1",
-   "back_166_tray_tile_4",
-   39.5
-  ],
-  [
-   "111_tile_B_c1_r1",
-   "back_168_face_B3",
-   74.8
-  ],
-  [
-   "111_tile_B_c4_r1",
-   "back_166_tray_tile_1",
-   39.5
-  ],
-  [
-   "111_tile_B_c4_r1",
-   "back_168_face_B1",
-   74.8
-  ]
- ],
+ "F_vs_D_closed": [],
  "F_vs_D_open": [],
  "F_vs_K": [],
  "F_vs_S_fixed": [],
@@ -174,24 +133,24 @@
  },
  "printed_totals": {
   "F_frame_skin": {
-   "grams": 4326,
-   "hours": 59.4
+   "grams": 4312,
+   "hours": 59.2
   },
   "K_deck": {
    "grams": 1366,
    "hours": 23.1
   },
   "D_drawers": {
-   "grams": 2349,
-   "hours": 52
+   "grams": 2379,
+   "hours": 53
   },
   "S_scoop": {
    "grams": 623,
    "hours": 13.8
   },
   "ALL": {
-   "grams": 8664,
-   "hours": 148.3,
+   "grams": 8680,
+   "hours": 149.1,
    "budget": "printed total <= ~9.5 kg and <= ~200 h (skin ~4.6 kg, studs ~0.5, mechanisms ~3.5, bins ~1)"
   }
  },
@@ -206,7 +165,7 @@
   "1x2 x 8 ft": [
    {
     "module": "F",
-    "qty": 2,
+    "qty": 3,
     "use": ""
    }
   ],
@@ -227,7 +186,7 @@
   "#8 x 2.5 in wood screws": [
    {
     "module": "F",
-    "qty": 36,
+    "qty": 44,
     "use": ""
    }
   ],
@@ -467,6 +426,41 @@
     "module": "D",
     "qty": 4,
     "use": "switches"
+   }
+  ],
+  "reed switch N/O, glass 2 x 14 mm": [
+   {
+    "module": "D",
+    "qty": 18,
+    "use": "one per bin (+2 spares, glass breaks)"
+   }
+  ],
+  "neodymium magnet 6 x 2 mm disc": [
+   {
+    "module": "D",
+    "qty": 18,
+    "use": "one per bin floor (+2 for the coupon)"
+   }
+  ],
+  "MCP23017 I2C module (~40 x 25)": [
+   {
+    "module": "D",
+    "qty": 2,
+    "use": "one per drawer, under tray tile 2"
+   }
+  ],
+  "4-core flexible cable (3V3, GND, SDA, SCL)": [
+   {
+    "module": "D",
+    "qty": "2 x 1 m",
+    "use": "drawer to deck, service loop for 150 travel"
+   }
+  ],
+  "26-28 AWG hookup wire": [
+   {
+    "module": "D",
+    "qty": "~6 m",
+    "use": "reeds to the MCP23017"
    }
   ],
   "NEMA17 (salvaged) + GT2 20T pulley 5 mm bore": [
@@ -722,6 +716,28 @@
     354.0,
     19.0,
     262.0
+   ]
+  },
+  {
+   "label": "109_roof_cross_rail_1",
+   "bbox": [
+    -311.0,
+    -155.0,
+    593.0,
+    -273.0,
+    155.0,
+    612.0
+   ]
+  },
+  {
+   "label": "109_roof_cross_rail_2",
+   "bbox": [
+    -87.0,
+    -155.0,
+    593.0,
+    -49.0,
+    155.0,
+    612.0
    ]
   },
   {

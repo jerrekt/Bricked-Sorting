@@ -27,3 +27,6 @@ Interface is 4.3. Use the vault print runbook for fits and gram estimates, and r
 ## Vault lines to log (main chat logs these in inbox/changes.yaml)
 - 2026-11-05 19:05 PT: V14 runner test kit rebuilt to interface 4 (rail 160/161 with 16.5 slot on the drawer underside, 625ZZ floor stations 162/163, guide 164); interface-2 T-rail kit withdrawn.
 - 2026-11-05 19:19 PT: V14 module D done to interface 4.1 on cad-v14-all: keyed drawers (rails ±300 front, ±200 back), bins 138.5 tall (top 176), retaining bar, two drawer-closed KW11-3Z; ~7.2 kg filament estimate; all clash/zone/bed checks clean.
+
+- 2026-11-08 PT: D bin switches (reed per bin in the tray, 6x2 magnet per bin, MCP23017 per drawer, reed coupon 172); frame5 skin-plane fix (b4965a3); integration re-run clean; BOM_V14.xlsx.
+  Vault: "2026-11-08, claim, Bricked Sorting: V14 bin switches in CAD (reed under every bin, magnet in the bin floor, MCP23017 per drawer) and BOM_V14 (~$261 to buy, half filament)."

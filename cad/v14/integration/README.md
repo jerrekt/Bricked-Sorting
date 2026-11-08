@@ -31,3 +31,7 @@ Filament by the interface's budget lines: skin ~4.3 (budget 4.6) ✓, studs 0.46
 
 ## Vault log lines
 - 2026-11-06 20:15 PT, claim, Bricked Sorting: V14 integration on `cad-v14-all` (interface 5.1). Whole machine: drawers open/closed, scoop 17 poses, deck, frame: 0 clashes except 8 small hits of the 5.0 frame skin opening (±300) on the ±306 drawer body, fixed by the 5.1 opening. Printed total 8.66 kg / ~148 h (budget 9.5 / 200). Envelope 720 × 384 × 664 exact. `one_brick.gif` shows receive → carry → dump → return.
+
+## 2026-11-08 re-run
+- Frame `cad-v14-frame5` b4965a3 (skin back at y +-180; the 5.1 envelope +-192 had been read as the skin plane) and deck `cad-v14-deck5` ce96b78 (5.1). Drawers with the per-bin reed switches. All cross-module checks 0, scoop 17 poses clean, envelope 720 x 384 x 664 ok, printed 8.68 kg / 149 h.
+- BOM: `build_bom.py` -> `BOM_V14.xlsx` (formulas: packs to buy, cost, totals by section) and `BOM_V14.md`. ~$261 to buy at listed/approx prices, about half of it filament.

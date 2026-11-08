@@ -3,7 +3,8 @@
 Front drawer in world coordinates; the back drawer is the same design turned 180 deg about Z with its rails
 at x +-120 (front +-200), so the drawers are keyed. Tray 2.4 plate + ribs on the rail tops (z 37..39.4, bin
 floor at 41), 4 tiles; overlay face (x +-330, y 180..192, z 8..140) in 3 pieces with an F/B + number inlay;
-8 bins 70 x 95 x 85 (0.84 walls); retaining bar over the inner rims; one KW11-3Z closed switch on the floor.
+8 bins 70 x 95 x 85 (0.84 walls); retaining bar over the inner rims; one KW11-3Z closed switch on the floor;
+a reed switch in the tray under every bin (magnet in the bin floor) wired to one MCP23017 per drawer.
 Run: python3 build_drawer.py
 """
 import json, sys
@@ -39,6 +40,13 @@ LOC_T, LOC_H = 4.0, 6.0
 BAR_Y = (55.0, 60.0); BAR_Z = (126.3, 130.3); POST_W = 6.0
 SW_L, SW_W, SW_H = 20.0, 6.4, 10.3; SW_CLR = 0.2; SW_HOLE_PITCH, SW_HOLE_D = 9.5, 2.2
 CLOSED_SW_X = -250.0
+# per-bin presence (docs/electrical V14 plan): 2 x 14 mm glass reed (N/O) in the tray under each bin, 6 x 2 mm magnet in the bin floor
+REED_DX = 25.0                                   # same bin-local x in every bin: clears the rails at +-200 (front) and +-120 (back) by >= 4 mm
+REED_D, REED_L, REED_LEAD = 2.0, 14.0, 9.0       # glass, body, lead groove past each end
+REED_GROOVE_W = 2.6; REED_FLOOR_Z = 38.0         # glass 38.0..40.0 (+0.5 slack under the bin floor at 41)
+MAG_D, MAG_T = 6.0, 2.0; MAG_DY = 5.0            # magnet over one end of the reed (a disc over the middle can sit in the null)
+MAG_HOLE = MAG_D - 2 * 0.02                      # press fit per the runbook (-0.02 per side); CA glue if loose
+MCP = dict(x=(-75.0, -35.0), y=(117.2, 142.8), pcb=1.6)   # MCP23017 module 40 x 25 (assumed), slides into hooks under tile 2
 
 COL = {'rail': (0.95, 0.55, 0.15), 'station': (0.25, 0.45, 0.75), 'brg': (0.75, 0.75, 0.78), 'tray': (0.80, 0.80, 0.82),
        'face_F': (0.10, 0.35, 0.70), 'face_B': (0.10, 0.55, 0.30), 'bin': (0.96, 0.87, 0.65), 'ink': (0.97, 0.97, 0.97),
@@ -124,6 +132,24 @@ def tray_tile(i, rail_x):
             t = t.cut(box(a - 1, b + 1, BAR_Y[0] - 0.3, BAR_Y[1] + 0.3, BAR_Z[0] - 0.3, BAR_Z[1] + 2))
     if x0 < CLOSED_SW_X < x1:
         t = t.union(box(CLOSED_SW_X - 5, CLOSED_SW_X + 5, TRAY_Y[0], TRAY_Y[0] + 5, FLOOR_TOP + SW_H + 0.8, Z_TRAY0 + 0.01))
+    # reed switch per bin: boss under the plate, groove in the plate top, lead slots and wire holes at both ends
+    for x in XC:
+        rx = x + REED_DX
+        if x0 + 4 < rx < x1 - 4:
+            yl = REED_L / 2 + REED_LEAD
+            t = t.union(box(rx - 3.5, rx + 3.5, ROW_Y - yl - 3, ROW_Y + yl + 3, Z_TRAY0 - 2.0, Z_TRAY0 + 0.01))
+            t = t.cut(box(rx - REED_GROOVE_W / 2, rx + REED_GROOVE_W / 2, ROW_Y - REED_L / 2 - 0.5, ROW_Y + REED_L / 2 + 0.5, REED_FLOOR_Z, Z_TRAY1 + 1))
+            t = t.cut(box(rx - 0.75, rx + 0.75, ROW_Y - yl, ROW_Y + yl, REED_FLOOR_Z + 0.2, Z_TRAY1 + 1))
+            for yy in (ROW_Y - yl, ROW_Y + yl): t = t.cut(cylz(rx, yy, Z_TRAY0 - 3, 10, 2.5))
+    # MCP23017 module hooks under the plate (board slides in along x, components up, wires soldered, no headers)
+    if x0 < MCP['x'][0] and MCP['x'][1] < x1:
+        (a, b), (c, d) = MCP['x'], MCP['y']; zb = Z_TRAY0 - 12.0                     # pcb bottom at z 25
+        for (w0, w1) in ((c - 2.0, c + 1.2), (d - 1.2, d + 2.0)):
+            hook = box(a, b, w0, w1, zb - 1.6, Z_TRAY0 + 0.01)
+            hook = hook.cut(box(a - 1, b + 1, c + 1.2 - 0.01, d - 1.2 + 0.01, zb + 0.01, Z_TRAY0 + 1))   # clear the board area above the lip
+            t = t.union(hook)
+        t = t.cut(box(a - 1, b + 1, c - 0.07, d + 0.07, zb - 0.07, zb + MCP['pcb'] + 0.2))           # slot for the pcb edges
+        t = t.union(box(b, b + 2.0, c - 2.0, d + 2.0, zb - 1.6, Z_TRAY0 + 0.01))                     # end stop at +x
     return t
 
 
@@ -191,7 +217,12 @@ def bin_part():
     holder = box(-lw / 2, lw / 2, y1, y1 + LABEL_DEPTH, lz, lz + lh)
     holder = holder.cut(box(-lw / 2 + 2, lw / 2 - 2, y1 + 0.6, y1 + 1.5, lz + 2, lz + lh + 1))
     holder = holder.cut(box(-lw / 2 + 5, lw / 2 - 5, y1 + 1.4, y1 + LABEL_DEPTH + 1, lz + 5, lz + lh + 1))
-    return b.union(holder)
+    b = b.union(holder)
+    # magnet boss inside the floor, pocket open to the bottom (bed face) under the reed's +y end
+    mx, my = REED_DX, MAG_DY
+    b = b.union(cylz(mx, my, 0, MAG_T + 0.6, MAG_D + 2.4))
+    b = b.cut(cylz(mx, my, -0.01, MAG_T + 0.01, MAG_HOLE))
+    return b
 
 
 def closed_switch_mount():
@@ -202,6 +233,37 @@ def closed_switch_mount():
         m = m.cut(cq.Workplane('YZ').circle(SW_HOLE_D / 2).extrude(30).translate((x - 15, y + dy, FLOOR_TOP + 6)))
     m = m.cut(cylz(x, 87, FLOOR_TOP - 1, 20, WOOD_SCREW)).cut(cylz(x, 87, FLOOR_TOP + 10.3 - 1.5, 5, 7.0))
     return m
+
+
+def reed_dummies():
+    out = []
+    for x in XC:
+        rx = x + REED_DX
+        out.append(cq.Workplane('XZ').circle(REED_D / 2).extrude(REED_L / 2, both=True).translate((rx, ROW_Y, REED_FLOOR_Z + REED_D / 2)))
+    return out
+
+
+def magnet_dummy(x):
+    return cylz(x + REED_DX, ROW_Y + MAG_DY, Z_TRAY1, MAG_T, MAG_D)
+
+
+def mcp_dummy():
+    (a, b), (c, d) = MCP['x'], MCP['y']
+    zb = Z_TRAY0 - 12.0
+    return box(a + 0.3, b - 0.3, c + 0.1, d - 0.1, zb, zb + MCP['pcb']).union(box(a + 10, b - 10, c + 6, d - 6, zb + MCP['pcb'], zb + MCP['pcb'] + 2.5))
+
+
+def reed_coupon():
+    """172: a 44 x 60 piece of tray (plate, shim pads, boss, groove, holes) + a 44 x 44 bin-floor disc with the magnet boss."""
+    rx, y0 = 0.0, 0.0
+    yl = REED_L / 2 + REED_LEAD
+    t = box(-22, 22, -30, 30, Z_TRAY0, Z_PLATE1).union(box(-22, 22, -30, -24, Z_PLATE1, Z_TRAY1)).union(box(-22, 22, 24, 30, Z_PLATE1, Z_TRAY1))
+    t = t.union(box(-3.5, 3.5, -yl - 3, yl + 3, Z_TRAY0 - 2.0, Z_TRAY0 + 0.01))
+    t = t.cut(box(-REED_GROOVE_W / 2, REED_GROOVE_W / 2, -REED_L / 2 - 0.5, REED_L / 2 + 0.5, REED_FLOOR_Z, Z_TRAY1 + 1))
+    t = t.cut(box(-0.75, 0.75, -yl, yl, REED_FLOOR_Z + 0.2, Z_TRAY1 + 1))
+    for yy in (-yl, yl): t = t.cut(cylz(0, yy, Z_TRAY0 - 3, 10, 2.5))
+    f = box(-22, 22, -22, 22, 0, BIN_FLOOR).union(cylz(0, MAG_DY, 0, MAG_T + 0.6, MAG_D + 2.4)).cut(cylz(0, MAG_DY, -0.01, MAG_T + 0.01, MAG_HOLE))
+    return t.translate((0, 0, -Z_TRAY0 + 2.0)), f
 
 
 def switch_dummy():
@@ -229,13 +291,16 @@ def drawer(side):
     for i in range(4): parts.append((f'170_bar_{i+1}', bar_piece(i), 'moving'))
     parts.append(('171_closed_switch_mount', closed_switch_mount(), 'fixed'))
     parts.append(('KW11_closed', switch_dummy(), 'fixed'))
+    for k, r in enumerate(reed_dummies()): parts.append((f'REED_{k+1}', r, 'moving'))
+    for k, x in enumerate(XC): parts.append((f'MAGNET_{k+1}', magnet_dummy(x), 'moving'))
+    parts.append(('MCP23017_dummy', mcp_dummy(), 'moving'))
     if side == 'back':
         parts = [(n, rot180(s), g) for n, s, g in parts]
     return parts, tiles, faces, b0
 
 
 def color(lab):
-    for k, c in (('_ink', 'ink'), ('160', 'rail'), ('162', 'station'), ('163', 'station'), ('164', 'station'), ('625', 'brg'),
+    for k, c in (('_ink', 'ink'), ('REED', 'brg'), ('MAGNET', 'brg'), ('MCP', 'sw'), ('160', 'rail'), ('162', 'station'), ('163', 'station'), ('164', 'station'), ('625', 'brg'),
                  ('166', 'tray'), ('167', 'face_F'), ('168', 'face_B'), ('169', 'bin'), ('170', 'bar')):
         if k in lab: return COL[c]
     return COL['sw']
@@ -268,6 +333,9 @@ def main():
     printable += [('169_bin', extra['front'][2], None, 16, 'PLA', 'floor down')]
     for i in range(4): printable.append((f'170_bar_{i+1}', bar_piece(i), None, 2, 'PLA', 'flat'))
     printable.append(('171_closed_switch_mount', closed_switch_mount(), None, 2, 'PLA', 'foot down'))
+    ct, cf = reed_coupon()
+    printable.append(('172_reed_coupon_tray', ct, 'flip', 1, 'PLA', 'plate top down (test first)'))
+    printable.append(('172_reed_coupon_floor', cf, None, 1, 'PLA', 'floor down, magnet pocket on the bed'))
     plist = []
     for name, shp, how, qty, mat, face in printable:
         if how in ('rail_R', 'rail_L'):
@@ -293,6 +361,11 @@ def main():
         {'item': 'M3 x 12 screw + nut', 'qty': 2 * 6, 'use': 'tray laps'},
         {'item': 'M3 x 16 screw', 'qty': 4, 'use': 'rear roller preload jacks'},
         {'item': 'KW11-3Z', 'qty': 2, 'use': 'drawer closed'}, {'item': 'M2 x 12 screw + nut', 'qty': 4, 'use': 'switches'},
+        {'item': 'reed switch N/O, glass 2 x 14 mm', 'qty': 16 + 2, 'use': 'one per bin (+2 spares, glass breaks)'},
+        {'item': 'neodymium magnet 6 x 2 mm disc', 'qty': 16 + 2, 'use': 'one per bin floor (+2 for the coupon)'},
+        {'item': 'MCP23017 I2C module (~40 x 25)', 'qty': 2, 'use': 'one per drawer, under tray tile 2'},
+        {'item': '4-core flexible cable (3V3, GND, SDA, SCL)', 'qty': '2 x 1 m', 'use': 'drawer to deck, service loop for 150 travel'},
+        {'item': '26-28 AWG hookup wire', 'qty': '~6 m', 'use': 'reeds to the MCP23017'},
     ]
     tot = sum(p['est_grams_each'] * p['qty'] for p in plist)
     (HERE / 'parts.json').write_text(json.dumps({'module': 'D', 'interface': IF['version'], 'printed': plist, 'bought': bought,
@@ -321,7 +394,7 @@ def checks(allp, plist):
     for side in allp:
         z = Z[side]; fz = z['face']
         for lab, s, g in allp[side]:
-            if lab.startswith(('625', 'KW11')) or lab.endswith('_ink'): continue
+            if lab.startswith(('625', 'KW11', 'REED', 'MAGNET', 'MCP')) or lab.endswith('_ink'): continue
             b = bbox(s)
             def inside(zz):
                 return zz['x'][0] - .01 <= b[0] and b[3] <= zz['x'][1] + .01 and zz['y'][0] - .01 <= b[1] and b[4] <= zz['y'][1] + .01 and zz['z'][0] - .01 <= b[2] and b[5] <= zz['z'][1] + .01
@@ -338,9 +411,13 @@ def checks(allp, plist):
                 if lab.endswith('_ink'): continue
                 out.append((f'{side}_{lab}', s.translate((0, dy, 0)) if (op and g == 'moving') else s))
         return out
-    skip = lambda a, b: ('KW11' in a and '166_tray' in b) or ('KW11' in b and '166_tray' in a)
+    def skip(a, b):
+        pair = (a, b)
+        if any('KW11' in u for u in pair) and any('166_tray' in u for u in pair): return True
+        if any('MAGNET' in u for u in pair) and any('169_bin' in u for u in pair): return True   # press fit (-0.02/side)
+        return False
     res['clash_both_closed'] = clash(state(False, False), skip)
-    res['clash_front_open'] = clash(state(True, False)); res['clash_back_open'] = clash(state(False, True)); res['clash_both_open'] = clash(state(True, True))
+    res['clash_front_open'] = clash(state(True, False), skip); res['clash_back_open'] = clash(state(False, True), skip); res['clash_both_open'] = clash(state(True, True), skip)
     fb = [bbox(s) for lab, s, g in allp['front'] if lab.startswith('169_bin')]
     res['bin_top_z'] = round(max(b[5] for b in fb), 2); res['bin_top_ok'] = res['bin_top_z'] <= B['z'][1] + 1e-6
     res['front_open_bin_rear_y'] = round(min(b[1] for b in fb) + TRAVEL, 1)

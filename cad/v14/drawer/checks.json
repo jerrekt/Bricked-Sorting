@@ -31,7 +31,9 @@
   "170_bar_2": true,
   "170_bar_3": true,
   "170_bar_4": true,
-  "171_closed_switch_mount": true
+  "171_closed_switch_mount": true,
+  "172_reed_coupon_tray": true,
+  "172_reed_coupon_floor": true
  },
  "zones": {
   "front_160_rail_L": "D zone + rail strip (allowed)",
