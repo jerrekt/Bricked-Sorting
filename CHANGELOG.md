@@ -4,6 +4,9 @@ Site and repo version. One bump per merged pull request (see `tools/bump_version
 It counts updates to this repo, not how finished the machine is; the Tasks page shows that.
 V1.001 to V1.014 were numbered afterwards, in merge order.
 
+## V1.030 · 2026-11-07
+- Camera tab: team password to watch (checked on CT 150, 12-hour cookie)
+
 ## V1.029 · 2026-11-07
 - Camera tab: live feed from the Pi camera (via CT 150 /camera-stream, 640 px, 5 fps)
 
