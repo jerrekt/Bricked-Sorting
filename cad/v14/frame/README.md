@@ -63,3 +63,9 @@ Two 1x2 cross rails, **laid flat** (38 wide, 19 tall, z 593..612) at x -292 and 
 ## Drawer check (re-run 2026-11-08 12:45 PT: drawers `cad-v14-all` @86274c8 vs frame `b4965a3` + deck `ce96b78`)
 `check_drawers.py` -> `check_drawers_5.1.json`. **All clean:** 0 clashes with the frame (closed), 0 with the deck, 0 with any frame part at 50 / 100 / 150 mm of travel for both drawers. Bodies x +-306, z 23..131.5 inside the +-310 / 12..136 openings; overlay faces x +-330, z 8..140, back plane at |y| 180 on the skin (their 174 bbox is the lip inside the opening).
 Correction: the 2026-11-06 run reported the faces 6 mm too deep. That was a frame bug, not a drawer one: the 5.1 rebuild read the skin plane from `envelope.y` (+-192 after 5.1), so the front/back skin had moved out 12 mm. Fixed in b4965a3 (skin back at +-180). No drawer change was needed.
+
+## Nov 8 electrical update: IEC inlet (2026-11-08 16:30 PT)
+- **IEC C14 fused + switched inlet** in the fixed back tile `111_tile_B_c1_r3` (x -336..-200, z 412..612), centred at **x -268, z 445**, directly above the PSU's AC end on deck tray 1. Placeholder snap-in module: cutout **47.5 x 27.5**, body 40 deep (`119_dummy_IEC_C14_inlet`). Measure the real module and change `INLET` at the top of `build_frame.py`.
+- The tile keeps 6.5 mm of bare 2 mm face around the cutout for the snap clips (they want a 1-2 mm panel), with a 3 mm stiffening ring outside that.
+- On a fixed tile, not the access panel, so the panel comes off without the mains cord dragging it and the AC wiring never flexes.
+- Checks still clean; the inlet body clears the deck (see deck README).

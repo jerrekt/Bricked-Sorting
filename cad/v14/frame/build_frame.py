@@ -45,7 +45,7 @@ PANEL_SCREW_Z = (PANEL['z'][0] + 8.0, PANEL['z'][1] - 8.0)        # 338, 552
 BAR_W = 16.0
 
 COL = {'wood': (0.82, 0.68, 0.45), 'ply': (0.88, 0.80, 0.62), 'skin': (0.78, 0.10, 0.10), 'panel': (0.55, 0.08, 0.08),
-       'clip': (0.25, 0.25, 0.28), 'stud': (0.80, 0.12, 0.12), 'cap': (0.70, 0.08, 0.08), 'bar': (0.30, 0.30, 0.34)}
+       'clip': (0.25, 0.25, 0.28), 'stud': (0.80, 0.12, 0.12), 'cap': (0.70, 0.08, 0.08), 'bar': (0.30, 0.30, 0.34), 'dummy': (0.12, 0.12, 0.14)}
 
 
 # ---------------- small helpers ----------------
@@ -122,7 +122,7 @@ def rib_ring(poly):
     return poly.difference(poly.buffer(-RIB_T, join_style='mitre'))
 
 
-def build_tile(wall, poly, extra_ribs=(), notch_strips=(), face_cuts=()):
+def build_tile(wall, poly, extra_ribs=(), notch_strips=(), face_cuts=(), rib_clear=None):
     """poly in (w, z). extra_ribs: (w0, w1, z0, z1) rectangles in (w, z) for ribs on wood lines.
     notch_strips: (w0, w1) vertical strips where no rib may be (keeper bars pass behind). face_cuts: (w, z) csk M3 holes."""
     face = multi_to_cq(loc2d(wall, poly), T_SKIN, 0.0)
@@ -131,6 +131,9 @@ def build_tile(wall, poly, extra_ribs=(), notch_strips=(), face_cuts=()):
         ribs2d = ribs2d.union(sbox(w0, z0, w1, z1).intersection(poly.buffer(-RIB_T * 0.5, join_style='mitre')))
     for (w0, w1) in notch_strips:
         ribs2d = ribs2d.difference(sbox(w0, -10, w1, 1000))
+    if rib_clear is not None:   # snap-in module: keep 6 mm of bare 2 mm face around the cutout for its clips, stiffening ring outside that
+        ribs2d = ribs2d.difference(rib_clear.buffer(6.5, join_style='mitre'))
+        ribs2d = ribs2d.union(rib_clear.buffer(9.5, join_style='mitre').difference(rib_clear.buffer(6.5, join_style='mitre')).intersection(poly))
     ribs = multi_to_cq(loc2d(wall, ribs2d), RIB_H, T_SKIN - 0.01)
     body = face.union(ribs) if ribs is not None else face
     s = WALLS[wall]['sgn']
@@ -249,6 +252,10 @@ POST_X = sum(W['posts_2x2']['x_abs']) / 2                         # 335
 POST_Y = sum(W['posts_2x2']['y_abs']) / 2                         # 155
 OPEN_CUT = sbox(OPEN['x'][0], 0, OPEN['x'][1], OPEN['z'][1])
 PANEL_CUT = sbox(PANEL['x'][0], PANEL['z'][0], PANEL['x'][1], PANEL['z'][1])
+# Nov 8 electrical update: IEC C14 fused + switched snap-in inlet in the fixed back tile B c1 r3, above the PSU (deck tray 1).
+# Placeholder module: cutout 47.5 x 27.5 (typical 3-in-1 snap-in), body 40 deep. Measure the real one and change these four numbers.
+INLET = dict(x=-268.0, z=445.0, w=47.5, h=27.5, depth=40.0)
+INLET_CUT = sbox(INLET['x'] - INLET['w'] / 2, INLET['z'] - INLET['h'] / 2, INLET['x'] + INLET['w'] / 2, INLET['z'] + INLET['h'] / 2)
 
 
 def hribs(z0, z1, w0, w1, extra=()):
@@ -279,11 +286,12 @@ def skin_parts():
             outer = ci in (0, 3)
             rows = ROWS if (outer or wall == 'F') else ROWS_B_MID
             for ri, (z0, z1) in enumerate(rows):
-                poly = tile_poly(w0, w1, z0, z1, cuts=[OPEN_CUT] + ([PANEL_CUT] if wall == 'B' else []))
+                inlet_here = wall == 'B' and w0 <= INLET['x'] <= w1 and z0 <= INLET['z'] <= z1
+                poly = tile_poly(w0, w1, z0, z1, cuts=[OPEN_CUT] + ([PANEL_CUT] if wall == 'B' else []) + ([INLET_CUT] if inlet_here else []))
                 if poly.is_empty or poly.area < 100: continue
                 notches = [(x - 9, x + 9) for x in PANEL_SCREW_X if w0 < x < w1] if (wall == 'B' and not outer and ri > 0) else []
                 lab = f'{110 if wall == "F" else 111}_tile_{wall}_c{ci + 1}_r{ri + 1}'
-                P.append((lab, build_tile(wall, poly, hribs(z0, z1, w0, w1), notches), 'skin'))
+                P.append((lab, build_tile(wall, poly, hribs(z0, z1, w0, w1), notches, rib_clear=(INLET_CUT if inlet_here else None)), 'skin'))
                 add_clips_h(wall, w0, w1, z0, z1)
                 if outer: add_post_clips(wall, w0 if ci == 0 else w1, z0, z1)
             if not outer and wall == 'B':   # access panel halves 115
@@ -580,7 +588,9 @@ def main():
     clipsP, screws, ncl = clip_instances(wall_clips + cap_clips, roof_clips)
     screws += bar_screws
     hpos = h_clip_plan()
-    parts = wood + skin + bars + roof + studs + caps + clipsP
+    inlet = boxc(INLET['x'] - INLET['w'] / 2, INLET['x'] + INLET['w'] / 2, -YO + T_SKIN, -YO + T_SKIN + INLET['depth'], INLET['z'] - INLET['h'] / 2, INLET['z'] + INLET['h'] / 2)
+    inlet = inlet.union(boxc(INLET['x'] - INLET['w'] / 2 - 2, INLET['x'] + INLET['w'] / 2 + 2, -YO - 3, -YO, INLET['z'] - INLET['h'] / 2 - 2, INLET['z'] + INLET['h'] / 2 + 2))
+    parts = wood + skin + bars + roof + studs + caps + clipsP + [('119_dummy_IEC_C14_inlet', inlet, 'dummy')]
     masters = [('120_clip_C1_single', clip_C(SLOT1)[0], 'clip'), ('121_clip_C2_seam', clip_C(SLOT2)[0], 'clip'),
                ('122_clip_H_bridge', clip_H(), 'clip'), ('123_clip_C3_roof', clip_C3(), 'clip')]
 
@@ -635,7 +645,7 @@ def main():
              'Dback': boxc(DZ['back']['x'][0], DZ['back']['x'][1], DZ['back']['y'][0], DZ['back']['y'][1], DZ['back']['z'][0], DZ['back']['z'][1])}
     intr = []
     for lab, w, kind in parts:
-        if kind in ('wood', 'ply'): continue
+        if kind in ('wood', 'ply', 'dummy'): continue
         b = bbox(w)
         for zn, zb in zones.items():
             if ov(b, bbox(zb)):

@@ -320,7 +320,8 @@
   "123_clip_C3_roof_21": "in envelope",
   "123_clip_C3_roof_22": "in envelope",
   "123_clip_C3_roof_23": "in envelope",
-  "123_clip_C3_roof_24": "in envelope"
+  "123_clip_C3_roof_24": "in envelope",
+  "119_dummy_IEC_C14_inlet": "in envelope"
  },
  "zone_intrusions": [
   [
@@ -453,7 +454,7 @@
  },
  "skin_inside_wood_faces": [],
  "totals": {
-  "printed_grams": 4312,
+  "printed_grams": 4310,
   "printed_hours": 59.2,
   "grams_by_group": {
    "skin walls": 2470,

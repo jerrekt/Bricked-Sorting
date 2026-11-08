@@ -238,8 +238,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 71.9,
-   "est_hours_each": 0.96,
+   "est_grams_each": 70.9,
+   "est_hours_each": 0.95,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -1876,7 +1876,7 @@
   }
  ],
  "totals": {
-  "printed_grams": 4312,
+  "printed_grams": 4310,
   "printed_hours": 59.2,
   "grams_by_group": {
    "skin walls": 2470,
