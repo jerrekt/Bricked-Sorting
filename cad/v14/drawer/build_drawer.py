@@ -353,7 +353,7 @@ def main():
                       'est_grams_each': g, 'est_hours_each': hours(g)})
     bought = [
         {'item': '625ZZ bearing', 'qty': 16, 'use': '6 roller + 2 guide per drawer'},
-        {'item': 'M5 x 25 screw + nut', 'qty': 12, 'use': 'station roller axles (3 per station)'},
+        {'item': 'M5 x 20 screw + nyloc', 'qty': 12, 'use': 'station roller axles (3 per station); head outside, nyloc in the trap; tip ends 0.5 short of the rail slot floor, so NOT longer than 20'},
         {'item': 'M5 x 16 screw', 'qty': 4, 'use': 'guide roller axles'},
         {'item': '#6 x 3/4 wood screw', 'qty': 2 * (8 + 2 + 1), 'use': 'stations, guides, switch mounts into the plywood'},
         {'item': 'M3 heat-set insert', 'qty': 4 * 5, 'use': 'rail tops'},

@@ -248,9 +248,9 @@
    "use": "top roller axles (through both side plates)"
   },
   {
-   "item": "M5 x 25 screw + nyloc",
+   "item": "M5 x 25-30 screw + nyloc",
    "qty": 5,
-   "use": "side roller axles (4), idler axle (1)"
+   "use": "side roller axles (4, grip 17: an M5 x 30 tip ends at z 141.5, 3.5 above the anti-lift hook), idler axle (1, grip 18)"
   },
   {
    "item": "M3 x 12 screw + nut",

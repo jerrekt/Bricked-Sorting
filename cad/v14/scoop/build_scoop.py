@@ -421,7 +421,7 @@ def main():
               {'item': 'GT2 6 mm belt', 'qty': '1.3 m', 'use': 'loop ~1.24 m'}, {'item': 'MG996R (owned)', 'qty': 1, 'use': 'tilt'},
               {'item': 'KW11-3Z', 'qty': 1, 'use': 'endstop'}, {'item': 'TMC2209 (owned)', 'qty': 1, 'use': 'slide driver'},
               {'item': 'M5 x 50 screw + nyloc', 'qty': 2, 'use': 'top roller axles (through both side plates)'},
-              {'item': 'M5 x 25 screw + nyloc', 'qty': 5, 'use': 'side roller axles (4), idler axle (1)'},
+              {'item': 'M5 x 25-30 screw + nyloc', 'qty': 5, 'use': 'side roller axles (4, grip 17: an M5 x 30 tip ends at z 141.5, 3.5 above the anti-lift hook), idler axle (1, grip 18)'},
               {'item': 'M3 x 12 screw + nut', 'qty': 4 + 2 + 2, 'use': 'beam joints, motor bracket to beam, misc'},
               {'item': 'M3 x 30 screw', 'qty': 1, 'use': 'belt tensioner'}, {'item': 'M3 insert', 'qty': 1, 'use': 'tensioner'},
               {'item': '#6 x 3/4 wood screw', 'qty': 6, 'use': 'end plates into the beam posts'},

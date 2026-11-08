@@ -538,9 +538,9 @@
    "use": "6 roller + 2 guide per drawer"
   },
   {
-   "item": "M5 x 25 screw + nut",
+   "item": "M5 x 20 screw + nyloc",
    "qty": 12,
-   "use": "station roller axles (3 per station)"
+   "use": "station roller axles (3 per station); head outside, nyloc in the trap; tip ends 0.5 short of the rail slot floor, so NOT longer than 20"
   },
   {
    "item": "M5 x 16 screw",

@@ -71,10 +71,11 @@ ROWS = [
  ('Fasteners', 'M3 x 10 / x 12 socket', '', 60, 'pc', 'K 40, D 20', 'Y', 0, 1, False, 'Amazon', '720-pc M3 kit on hand'),
  ('Fasteners', 'M3 x 12 + nut', '', 24, 'pc', 'K 4, D 12, S 8', 'Y', 0, 1, False, '', 'M3 kit'),
  ('Fasteners', 'M3 x 16 / x 30', '', 5, 'pc', 'D preload jacks 4, S tensioner 1', 'Y', 0, 1, False, '', 'M3 kit'),
- ('Fasteners', 'M5 x 25 + nut/nyloc', '', 17, 'pc', 'D station axles 12, S 5', 'part', 8.00, 50, True, 'Amazon', 'M2-M5 kit may cover some'),
- ('Fasteners', 'M5 x 30 + nyloc', '', 4, 'pc', 'K drum roller axles', 'part', 0, 1, True, '', 'in the M5 pack'),
- ('Fasteners', 'M5 x 50 + nyloc', '', 2, 'pc', 'S top roller axles', 'N', 3.00, 10, True, 'Amazon', ''),
- ('Fasteners', 'M5 x 16 + nut', '', 8, 'pc', 'D guide axles 4, K bracket 4', 'part', 0, 1, True, '', 'in the M5 pack / kit'),
+ ('Fasteners', 'M5 x 20 + nyloc', 'max 20: longer hits the rail slot floor', 12, 'pc', 'D station axles 12', 'Y', 0, 1, False, '', 'M2-M5 kit'),
+ ('Fasteners', 'M5 x 30 + nyloc', '25 or 30 both fit', 5, 'pc', 'S side roller axles 4, idler 1', 'Y', 0, 1, False, '', 'BJ has M5 x 30'),
+ ('Fasteners', 'M5 x 30 + nyloc', '', 4, 'pc', 'K drum roller axles', 'Y', 0, 1, False, '', 'BJ has M5 x 30'),
+ ('Fasteners', 'M5 x 50 + nyloc', 'partially threaded', 2, 'pc', 'S top roller axles', 'N', 11.44, 25, False, 'McMaster 91292A196', 'nyloc: McMaster 93625A200'),
+ ('Fasteners', 'M5 x 16 + nut', '', 8, 'pc', 'D guide axles 4, K bracket 4', 'Y', 0, 1, False, '', 'M2-M5 kit'),
  ('Fasteners', 'M2 x 8 / x 12 + nut', '', 10, 'pc', 'D switch 4, S servo/endstop 6', 'Y', 0, 1, False, '', 'M2-M5 kit'),
 ]
 
