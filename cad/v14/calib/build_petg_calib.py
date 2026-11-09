@@ -3,7 +3,7 @@ Same method as the PLA tests in the vault runbook. Each row is labelled with 1-5
   A  625ZZ pocket 5.2 deep:          15.9 / 16.0 / 16.1 / 16.2 / 16.3  (press a 625 in: pick the one that holds without cracking)
   B  M3 heat-set insert hole 5.7 deep: 3.9 / 4.0 / 4.1 / 4.2 / 4.3    (set an insert with the iron: pick the one with a clean collar, no wobble)
   C  M5 axle hole through 8:         5.0 / 5.1 / 5.2 / 5.3 / 5.4       (push an M5 screw through: snug turn by hand, no slop)
-  D  dovetail pairs per side:        0.05 / 0.065 / 0.08 / 0.10 / 0.15  (slide by hand: pick the tightest that goes without forcing)
+  D  dovetail pairs per side:        0.10 / 0.15 / 0.20 / 0.25 / 0.30  (rev 2: elephant-foot relief + corner reliefs; slide by hand)
 Run: python3 build_petg_calib.py  -> print/ STLs + README numbers. Print flat, no supports, PETG day profile, textured PEI.
 """
 import sys
@@ -33,15 +33,23 @@ def row_holes(vals, d_pitch, depth, w_y, through=False):
     return b
 
 
+DOVE_C = (0.10, 0.15, 0.20, 0.25, 0.30)       # rev 2 (2026-11-08): rev 1 0.05..0.15 none fit in SUNLU Matte PETG
+
+
 def dovetail_pair(c):
     """Female block 22 x 20 x 10 with a dovetail slot through z, open on the y = 20 face: 5 wide at the face, 7 wide 5 deep,
     opened by c per side. Male key: the nominal profile, 10 tall, with a 14 x 6 grip tab outside the face. Slide it down along z."""
     H = 10.0
     def prof(e):
         return [(-2.5 - e, 20.01), (2.5 + e, 20.01), (3.5 + e, 15.0 - e), (-3.5 - e, 15.0 - e)]
+    EF = 0.5                                   # elephant-foot relief on the bed layers (both parts)
     fem = cq.Workplane().box(22, 20, H, centered=False).translate((-11, 0, 0))
     fem = fem.cut(cq.Workplane('XY').polyline(prof(c)).close().extrude(H + 2).translate((0, 0, -1)))
-    male = cq.Workplane('XY').polyline(prof(0)[:4]).close().extrude(H)
+    fem = fem.cut(cq.Workplane('XY').polyline(prof(c + EF)).close().extrude(EF + 1).translate((0, 0, -1)))
+    for sx in (-1, 1):                         # corner reliefs: the nozzle can't print a sharp inside corner
+        fem = fem.cut(cq.Workplane().circle(0.6).extrude(H + 2).translate((sx * (3.5 + c - 0.2), 15.0 - c + 0.2, -1)))
+    male = cq.Workplane('XY').polyline(prof(0)[:4]).close().extrude(H - EF).translate((0, 0, EF))
+    male = male.union(cq.Workplane('XY').polyline(prof(-EF)[:4]).close().extrude(EF))
     male = male.union(cq.Workplane().box(14, 6, H, centered=False).translate((-7, 20.0, 0)))
     return fem, male
 
@@ -52,7 +60,7 @@ def main():
     B = row_holes((3.9, 4.0, 4.1, 4.2, 4.3), 10, 5.7, 14)
     C = row_holes((5.0, 5.1, 5.2, 5.3, 5.4), 10, 0, 14, through=True)
     parts = [('180_petg_625_pockets', A), ('181_petg_insert_holes', B), ('182_petg_m5_holes', C)]
-    for k, c in enumerate((0.05, 0.065, 0.08, 0.10, 0.15)):
+    for k, c in enumerate(DOVE_C):
         f, m = dovetail_pair(c)
         f = dots(f, k + 1, -8.0, 4.0, 10.0)
         m = dots(m, k + 1, -2.6 * k / 2, 23.0, 10.0)
