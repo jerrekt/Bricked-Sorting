@@ -55,22 +55,43 @@ def pack(items):
     return out
 
 
+# filament slots: name suffix -> (AMS slot, colour). Everything else is slot 1.
+SLOTS = {'_ink': (2, '#FFFFFF')}
+BASE = (1, '#C91A09')        # LEGO red
+
+
+def slot_of(name):
+    for suf, v in SLOTS.items():
+        if suf in name: return v
+    return BASE
+
+
 def write_3mf(path, plate):
     """one build object per group; a group of 2+ parts is an object with components (Bambu: one object, several parts,
-    each part can get its own filament, e.g. the white inlay on a drawer face)."""
-    objs, build, k = [], [], 0
+    each part can get its own filament, e.g. the white inlay on a drawer face). Colours go in as 3MF base materials and
+    the AMS slot per part in Bambu's Metadata/model_settings.config (slot 1 red, slot 2 white)."""
+    objs, build, k, cfg = [], [], 0, []
+    cols = sorted({slot_of(pn) for _, parts in plate for pn, _ in parts})
+    bm = '<basematerials id="900">' + ''.join(f'<base name="slot{sl}" displaycolor="{c}"/>' for sl, c in cols) + '</basematerials>'
+    pidx = {v: i for i, v in enumerate(cols)}
     for name, parts in plate:
         ids = []
         for pn, tri in parts:
-            k += 1; objs.append(f'<object id="{k}" name="{pn}" type="model">{mesh_xml(tri)}</object>'); ids.append(k)
+            k += 1
+            mx = mesh_xml(tri)
+            objs.append(f'<object id="{k}" name="{pn}" type="model" pid="900" pindex="{pidx[slot_of(pn)]}">{mx}</object>'); ids.append((k, pn))
         if len(ids) == 1:
-            build.append(f'<item objectid="{ids[0]}"/>')
+            build.append(f'<item objectid="{ids[0][0]}"/>')
+            cfg.append(f'<object id="{ids[0][0]}"><metadata key="name" value="{ids[0][1]}"/><metadata key="extruder" value="{slot_of(ids[0][1])[0]}"/>'
+                       f'<part id="{ids[0][0]}" subtype="normal_part"><metadata key="name" value="{ids[0][1]}"/><metadata key="extruder" value="{slot_of(ids[0][1])[0]}"/></part></object>')
         else:
             k += 1
-            objs.append(f'<object id="{k}" name="{name}" type="model"><components>' + ''.join(f'<component objectid="{i}"/>' for i in ids) + '</components></object>')
+            objs.append(f'<object id="{k}" name="{name}" type="model"><components>' + ''.join(f'<component objectid="{i}"/>' for i, _ in ids) + '</components></object>')
             build.append(f'<item objectid="{k}"/>')
+            cfg.append(f'<object id="{k}"><metadata key="name" value="{name}"/><metadata key="extruder" value="{BASE[0]}"/>' + ''.join(
+                f'<part id="{i}" subtype="normal_part"><metadata key="name" value="{pn}"/><metadata key="extruder" value="{slot_of(pn)[0]}"/></part>' for i, pn in ids) + '</object>')
     model = ('<?xml version="1.0" encoding="UTF-8"?><model unit="millimeter" xml:lang="en-US" '
-             'xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02"><resources>' + ''.join(objs) +
+             'xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02"><resources>' + bm + ''.join(objs) +
              '</resources><build>' + ''.join(build) + '</build></model>')
     ct = ('<?xml version="1.0" encoding="UTF-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
           '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'
@@ -79,6 +100,7 @@ def write_3mf(path, plate):
             '<Relationship Target="/3D/3dmodel.model" Id="rel0" Type="http://schemas.microsoft.com/3dmanufacturing/2013/01/3dmodel"/></Relationships>')
     with zipfile.ZipFile(path, 'w', zipfile.ZIP_DEFLATED) as z:
         z.writestr('[Content_Types].xml', ct); z.writestr('_rels/.rels', rels); z.writestr('3D/3dmodel.model', model)
+        z.writestr('Metadata/model_settings.config', '<?xml version="1.0" encoding="UTF-8"?><config>' + ''.join(cfg) + '</config>')
 
 
 def make(out, specs):
