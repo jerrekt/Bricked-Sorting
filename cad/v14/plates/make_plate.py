@@ -56,7 +56,7 @@ def pack(items):
 
 
 # filament slots: name suffix -> (AMS slot, colour). Everything else is slot 1.
-SLOTS = {'_ink': (2, '#FFFFFF')}
+SLOTS = {'_ink': (2, '#1B1B1B')}       # lettering black (BJ 2026-11-09)
 BASE = (1, '#C91A09')        # LEGO red
 
 

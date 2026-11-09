@@ -166,7 +166,7 @@
    "label": "167_face_F1_ink",
    "part_no": "167",
    "qty": 1,
-   "material": "PLA white (AMS, same plate)",
+   "material": "PLA black (AMS, same plate)",
    "bed_face": "with its face",
    "bed_extent": [
     175.7,
@@ -198,7 +198,7 @@
    "label": "167_face_F2_ink",
    "part_no": "167",
    "qty": 1,
-   "material": "PLA white (AMS, same plate)",
+   "material": "PLA black (AMS, same plate)",
    "bed_face": "with its face",
    "bed_extent": [
     99.52,
@@ -230,7 +230,7 @@
    "label": "167_face_F3_ink",
    "part_no": "167",
    "qty": 1,
-   "material": "PLA white (AMS, same plate)",
+   "material": "PLA black (AMS, same plate)",
    "bed_face": "with its face",
    "bed_extent": [
     175.5,
@@ -326,7 +326,7 @@
    "label": "168_face_B1_ink",
    "part_no": "168",
    "qty": 1,
-   "material": "PLA white (AMS, same plate)",
+   "material": "PLA black (AMS, same plate)",
    "bed_face": "with its face",
    "bed_extent": [
     177.28,
@@ -358,7 +358,7 @@
    "label": "168_face_B2_ink",
    "part_no": "168",
    "qty": 1,
-   "material": "PLA white (AMS, same plate)",
+   "material": "PLA black (AMS, same plate)",
    "bed_face": "with its face",
    "bed_extent": [
     101.11,
@@ -390,7 +390,7 @@
    "label": "168_face_B3_ink",
    "part_no": "168",
    "qty": 1,
-   "material": "PLA white (AMS, same plate)",
+   "material": "PLA black (AMS, same plate)",
    "bed_face": "with its face",
    "bed_extent": [
     177.09,

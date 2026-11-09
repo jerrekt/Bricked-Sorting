@@ -330,7 +330,7 @@ def main():
         for i, t in enumerate(tiles): printable.append((f'166_tray_tile_{side}_{i+1}', t, 'flip', 1, 'PLA', 'plate top down, ribs up'))
         for i, (f, ink) in enumerate(faces):
             printable.append((f'{pn}_face_{letter}{i+1}', f, ('face', f), 1, 'PLA red', 'outer face down'))
-            printable.append((f'{pn}_face_{letter}{i+1}_ink', ink, ('face', f), 1, 'PLA white (AMS, same plate)', 'with its face'))
+            printable.append((f'{pn}_face_{letter}{i+1}_ink', ink, ('face', f), 1, 'PLA black (AMS, same plate)', 'with its face'))
     printable += [('169_bin', extra['front'][2], None, 16, 'PLA', 'floor down')]
     for i in range(4): printable.append((f'170_bar_{i+1}', bar_piece(i), None, 2, 'PLA', 'flat'))
     printable.append(('171_closed_switch_mount', closed_switch_mount(), None, 2, 'PLA', 'foot down'))
