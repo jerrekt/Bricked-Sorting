@@ -398,7 +398,7 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 52.1,
+   "est_grams_each": 51.9,
    "est_hours_each": 0.69,
    "orientation": "tray top up"
   },
