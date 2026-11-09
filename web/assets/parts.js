@@ -31,8 +31,8 @@
   }
 
   /* ---------- buy list: groups by stage with prices (option A, picked by BJ 2026-11-03) ---------- */
-  // Totals only make sense for one build, so the page starts on the planned version (V3).
-  ver = 'v3'; document.querySelectorAll('.filters button[data-v]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-v') === 'v3' ? 'true' : 'false'); });
+  // Totals only make sense for one build, so the page starts on the planned version (V1 since Nov 8).
+  ver = 'v1'; document.querySelectorAll('.filters button[data-v]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-v') === 'v1' ? 'true' : 'false'); });
   var OPEN = {};
   function money(n, approx) { return n == null ? '' : (approx ? '~' : '') + '$' + (Math.round(n * 100) / 100).toFixed(n % 1 ? 2 : 0); }
   function costOf(list) {
