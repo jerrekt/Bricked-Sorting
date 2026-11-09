@@ -7,7 +7,7 @@ import cadquery as cq
 V14 = Path(__file__).resolve().parent
 IF = json.loads((V14 / 'interface.json').read_text())
 BED = [248, 248, 248]                # usable P2S bed (runbook)
-INSERT_D, INSERT_DEPTH = 4.1, 5.7    # M3 generic insert (runbook: 4.0-4.2, verify with calipers)
+INSERT_D, INSERT_DEPTH = 4.3, 5.7    # M3 generic insert in PLA: 4.3 (BJ 2026-11-09, 4.4 loose); PETG parts use 4.4 (drawer/runner.py)
 M3_CLR = 3.4
 CB_D, CB_DEPTH = 6.5, 3.5
 FIT = 0.07                           # dovetail / sliding fit per side (runbook)
