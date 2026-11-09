@@ -150,7 +150,7 @@
    "label": "167_face_F1",
    "part_no": "167",
    "qty": 1,
-   "material": "PLA front colour",
+   "material": "PLA red",
    "bed_face": "outer face down",
    "bed_extent": [
     234.75,
@@ -182,7 +182,7 @@
    "label": "167_face_F2",
    "part_no": "167",
    "qty": 1,
-   "material": "PLA front colour",
+   "material": "PLA red",
    "bed_face": "outer face down",
    "bed_extent": [
     189.5,
@@ -214,7 +214,7 @@
    "label": "167_face_F3",
    "part_no": "167",
    "qty": 1,
-   "material": "PLA front colour",
+   "material": "PLA red",
    "bed_face": "outer face down",
    "bed_extent": [
     234.75,
@@ -310,7 +310,7 @@
    "label": "168_face_B1",
    "part_no": "168",
    "qty": 1,
-   "material": "PLA back colour",
+   "material": "PLA red",
    "bed_face": "outer face down",
    "bed_extent": [
     234.75,
@@ -342,7 +342,7 @@
    "label": "168_face_B2",
    "part_no": "168",
    "qty": 1,
-   "material": "PLA back colour",
+   "material": "PLA red",
    "bed_face": "outer face down",
    "bed_extent": [
     189.5,
@@ -374,7 +374,7 @@
    "label": "168_face_B3",
    "part_no": "168",
    "qty": 1,
-   "material": "PLA back colour",
+   "material": "PLA red",
    "bed_face": "outer face down",
    "bed_extent": [
     234.75,
