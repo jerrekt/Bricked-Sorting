@@ -10,3 +10,4 @@
 
 Runner kit plate comes after the PETG numbers are in.
 | P4_PETG_runner_kit | PETG (SUNLU Matte profile, fan max 40%) | rails 160/161, stations 162 L/R, guide 164 | runner killer test; PETG fits 2026-11-08: insert 4.4, axle 5.1, guide M5 screwed into 5.0 |
+| P5_PLA_insert_holes | PLA (Inland) | 184 insert bar 4.0/4.1/4.2/4.3/4.4 | PLA insert hole was never tested (4.1 assumed); PETG needed 4.4 |
