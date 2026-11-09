@@ -58,7 +58,7 @@ for name, shp, how, mat in parts:
     report.append({'part': name, 'qty': 1, **bed_fit(bedp), 'bed_face': 'closed web down (slot up)' if how == 2 else 'foot down', 'grams_PETG': g, 'hours': hours(g)})
 chk = check()
 (OUT / 'runner_test_parts.json').write_text(json.dumps({'interface': 'v14-interface-5.1', 'parts': report, 'sweep_check_right_rail_mm': chk,
-    'bought': [{'item': '625ZZ', 'qty': 8}, {'item': 'M5 x 25 screw + nut', 'qty': 6}, {'item': 'M5 x 16 screw', 'qty': 2},
+    'bought': [{'item': '625ZZ', 'qty': 8}, {'item': 'M5 x 20 screw + nyloc', 'qty': 6}, {'item': 'M5 x 16 screw', 'qty': 2},
                {'item': 'M3 insert', 'qty': 8}, {'item': 'M3 x 12 screw', 'qty': 2}, {'item': '#6 x 3/4 wood screw', 'qty': 10}]}, indent=1))
 for r in report: print(r)
 print(chk)
