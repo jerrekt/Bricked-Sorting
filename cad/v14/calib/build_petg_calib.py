@@ -1,7 +1,7 @@
 """PETG fit calibration plate for the P2S (BJ calibrated only Inland PLA; the runner rails, stations and guides are PETG).
 Same method as the PLA tests in the vault runbook. Each row is labelled with 1-5 dots (dot 1 = first value).
   A  625ZZ pocket 5.2 deep:          15.9 / 16.0 / 16.1 / 16.2 / 16.3  (press a 625 in: pick the one that holds without cracking)
-  B  M3 heat-set insert hole 5.7 deep: 3.9 / 4.0 / 4.1 / 4.2 / 4.3    (set an insert with the iron: pick the one with a clean collar, no wobble)
+  B  M3 heat-set insert hole 5.7 deep: 4.3 / 4.4 / 4.5 / 4.6 / 4.7 (rev 2)    (set an insert with the iron: pick the one with a clean collar, no wobble)
   C  M5 axle hole through 8:         5.0 / 5.1 / 5.2 / 5.3 / 5.4       (push an M5 screw through: snug turn by hand, no slop)
   D  dovetail pairs per side:        0.10 / 0.15 / 0.20 / 0.25 / 0.30  (rev 2: elephant-foot relief + corner reliefs; slide by hand)
 Run: python3 build_petg_calib.py  -> print/ STLs + README numbers. Print flat, no supports, PETG day profile, textured PEI.
@@ -57,7 +57,7 @@ def dovetail_pair(c):
 def main():
     prn = HERE / 'print'; prn.mkdir(exist_ok=True)
     A = row_holes((15.9, 16.0, 16.1, 16.2, 16.3), 21, 5.2, 24)
-    B = row_holes((3.9, 4.0, 4.1, 4.2, 4.3), 10, 5.7, 14)
+    B = row_holes((4.3, 4.4, 4.5, 4.6, 4.7), 10, 5.7, 14)   # rev 2 (2026-11-08): rev 1 3.9..4.3 all too small in SUNLU Matte PETG
     C = row_holes((5.0, 5.1, 5.2, 5.3, 5.4), 10, 0, 14, through=True)
     parts = [('180_petg_625_pockets', A), ('181_petg_insert_holes', B), ('182_petg_m5_holes', C)]
     for k, c in enumerate(DOVE_C):
