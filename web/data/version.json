@@ -1,6 +1,6 @@
 {
- "version": "V1.030",
- "date": "2026-11-07",
- "note": "Camera tab: team password to watch (checked on CT 150, 12-hour cookie)",
+ "version": "V1.031",
+ "date": "2026-11-08",
+ "note": "Parts: V14 buy list (wood frame, deck, drawers, scoop; Pi + USB webcam is the plan), Nov 8 Amazon order marked",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }
