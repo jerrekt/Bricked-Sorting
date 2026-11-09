@@ -9,7 +9,7 @@ import numpy as np
 BED = 240.0; GAP = 6.0       # usable 248 minus a margin for skirt/purge
 
 
-def read_stl(p):
+def read_stl(p, keep_z=False):
     b = Path(p).read_bytes()
     if b[:5] == b'solid' and b'facet' in b[:300]:
         v = [list(map(float, l.split()[1:4])) for l in b.decode(errors='ignore').splitlines() if l.strip().startswith('vertex')]
@@ -18,7 +18,7 @@ def read_stl(p):
         n = struct.unpack('<I', b[80:84])[0]
         a = np.frombuffer(b[84:84 + n * 50], dtype=np.dtype([('n', '<3f4'), ('v', '<9f4'), ('a', '<u2')]))
         tri = a['v'].reshape(-1, 3, 3).astype(float)
-    tri[:, :, 2] -= tri[:, :, 2].min()
+    if not keep_z: tri[:, :, 2] -= tri[:, :, 2].min()
     return tri
 
 
@@ -32,33 +32,43 @@ def mesh_xml(tri):
 
 
 def pack(items):
-    """shelf packing, biggest first. items: (name, tri). returns list of plates, each a list of (name, tri moved)."""
-    items = sorted(items, key=lambda t: -(np.ptp(t[1][:, :, 1]) * 1000 + np.ptp(t[1][:, :, 0])))
+    """shelf packing, biggest first. items: (name, [(part, tri), ...]); a group moves as one.
+    returns list of plates, each a list of (name, [(part, tri moved), ...])."""
+    def bb(parts):
+        a = np.concatenate([t.reshape(-1, 3) for _, t in parts]); return a.min(0), a.max(0)
+    items = sorted(items, key=lambda it: -((bb(it[1])[1] - bb(it[1])[0])[1] * 1000 + (bb(it[1])[1] - bb(it[1])[0])[0]))
     plates, cur, x, y, shelf = [], [], 0.0, 0.0, 0.0
-    for name, tri in items:
-        w, d = np.ptp(tri[:, :, 0]), np.ptp(tri[:, :, 1])
-        if w > BED and d <= BED and w <= 248: pass
+    for name, parts in items:
+        lo, hi = bb(parts); w, d = hi[0] - lo[0], hi[1] - lo[1]
         if x + w > BED:
             x, y, shelf = 0.0, y + shelf + GAP, 0.0
-        if y + d > BED:
+        if y + d > BED and cur:
             plates.append(cur); cur, x, y, shelf = [], 0.0, 0.0, 0.0
-        t = tri.copy()
-        t[:, :, 0] += x - tri[:, :, 0].min(); t[:, :, 1] += y - tri[:, :, 1].min()
-        cur.append((name, t)); x += w + GAP; shelf = max(shelf, d)
+        off = np.array([x - lo[0], y - lo[1], 0.0])
+        cur.append((name, [(pn, t + off) for pn, t in parts])); x += w + GAP; shelf = max(shelf, d)
     if cur: plates.append(cur)
     out = []
     for pl in plates:            # centre each plate on the 256 bed
-        allv = np.concatenate([t.reshape(-1, 3) for _, t in pl])
-        cx = 128 - (allv[:, 0].min() + allv[:, 0].max()) / 2; cy = 128 - (allv[:, 1].min() + allv[:, 1].max()) / 2
-        out.append([(n, t + np.array([cx, cy, 0])) for n, t in pl])
+        allv = np.concatenate([t.reshape(-1, 3) for _, ps in pl for _, t in ps])
+        c = np.array([128 - (allv[:, 0].min() + allv[:, 0].max()) / 2, 128 - (allv[:, 1].min() + allv[:, 1].max()) / 2, 0])
+        out.append([(n, [(pn, t + c) for pn, t in ps]) for n, ps in pl])
     return out
 
 
 def write_3mf(path, plate):
-    objs, build = [], []
-    for k, (name, tri) in enumerate(plate, 1):
-        objs.append(f'<object id="{k}" name="{name}" type="model">{mesh_xml(tri)}</object>')
-        build.append(f'<item objectid="{k}"/>')
+    """one build object per group; a group of 2+ parts is an object with components (Bambu: one object, several parts,
+    each part can get its own filament, e.g. the white inlay on a drawer face)."""
+    objs, build, k = [], [], 0
+    for name, parts in plate:
+        ids = []
+        for pn, tri in parts:
+            k += 1; objs.append(f'<object id="{k}" name="{pn}" type="model">{mesh_xml(tri)}</object>'); ids.append(k)
+        if len(ids) == 1:
+            build.append(f'<item objectid="{ids[0]}"/>')
+        else:
+            k += 1
+            objs.append(f'<object id="{k}" name="{name}" type="model"><components>' + ''.join(f'<component objectid="{i}"/>' for i in ids) + '</components></object>')
+            build.append(f'<item objectid="{k}"/>')
     model = ('<?xml version="1.0" encoding="UTF-8"?><model unit="millimeter" xml:lang="en-US" '
              'xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02"><resources>' + ''.join(objs) +
              '</resources><build>' + ''.join(build) + '</build></model>')
@@ -73,10 +83,17 @@ def write_3mf(path, plate):
 
 def make(out, specs):
     items = []
-    for s in specs:
-        f, q = (s.rsplit(':', 1) + ['1'])[:2] if ':' in Path(s).name else (s, '1')
-        tri = read_stl(f); stem = Path(f).stem.split('_PRINT')[0]
-        for i in range(int(q)): items.append((stem if int(q) == 1 else f'{stem}_{i+1}', tri))
+    for s in specs:                       # "a.stl", "a.stl:3" (qty) or "a.stl+b.stl" (parts kept together, same frame)
+        q = 1
+        if ':' in Path(s).name: s, q = s.rsplit(':', 1); q = int(q)
+        files = s.split('+')
+        tris = [read_stl(f, keep_z=(len(files) > 1)) for f in files]
+        if len(files) > 1:                 # drop the group as a whole onto the bed
+            z0 = min(t[:, :, 2].min() for t in tris); tris = [t - np.array([0, 0, z0]) for t in tris]
+        stems = [Path(f).stem.split('_PRINT')[0] for f in files]
+        for i in range(q):
+            nm = stems[0] if q == 1 else f'{stems[0]}_{i+1}'
+            items.append((nm, [(st if q == 1 else f'{st}_{i+1}', t) for st, t in zip(stems, tris)]))
     plates = pack(items)
     paths = []
     for k, pl in enumerate(plates, 1):
