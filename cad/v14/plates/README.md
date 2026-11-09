@@ -9,3 +9,4 @@
 | P3_PETG_deck_tray_test | PETG | V1 tray (203) + one leaf spring (207) | tray + spring test |
 
 Runner kit plate comes after the PETG numbers are in.
+| P4_PETG_runner_kit | PETG (SUNLU Matte profile, fan max 40%) | rails 160/161, stations 162 L/R, guide 164 | runner killer test; PETG fits 2026-11-08: insert 4.4, axle 5.1, guide M5 screwed into 5.0 |

@@ -21,6 +21,12 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from common import IF, M3_CLR, CB_D, CB_DEPTH, INSERT_D, INSERT_DEPTH, csk_cone
 
+# PETG fits, measured by BJ 2026-11-08 (SUNLU Matte PETG, P2S; vault runbooks/3d-printing.md 'PETG fits')
+PETG_INSERT_D = 4.4      # M3 heat-set insert hole (PLA would be 4.1)
+PETG_AXLE_D = 5.1        # M5 push-fit axle hole
+PETG_TAP_D = 5.0         # M5 screwed straight into PETG
+PETG_SLOT_W = 5.5        # M5 sliding in a slot (preload station)
+
 TRAVEL = IF['drawer']['travel_y']               # 150
 RAIL_W = 16.0
 FLOOR = IF['wood']['floor_ply']['z'][1]          # 12 (plywood top)
@@ -69,7 +75,7 @@ def rail(length=RAIL_L, insert_ys=(), stop=True, detent_y=None):
                     (y0 + 1, SLOT_Z0 + SLOT_H - BUMP_H), (y0 - 1, SLOT_Z0 + SLOT_H - BUMP_H)]).close()
                     .extrude(SLOT_DEPTH).translate((RAIL_W / 2 - SLOT_DEPTH, 0, 0)))
     for y in insert_ys:
-        r = r.cut(cyl('z', (-2.0, y, RAIL_Z1 - INSERT_DEPTH / 2 + 0.01), INSERT_D, INSERT_DEPTH + 0.02))
+        r = r.cut(cyl('z', (-2.0, y, RAIL_Z1 - INSERT_DEPTH / 2 + 0.01), PETG_INSERT_D, INSERT_DEPTH + 0.02))
     return r
 
 
@@ -89,12 +95,12 @@ def station(ys, preload_last=False, slotted_index=None, foot_holes=True, rail_x_
         # spacer boss into the slot mouth, M5 axle hole with hex nut trap on the outside
         b = b.union(cyl('x', (POST_X0 - 0.45, y, AXLE_Z), 8.0, 0.9))
         if slotted_index is not None and k == slotted_index:
-            b = b.cut(box(-1, POST_X1 + 1, y - 2.7, y + 2.7, AXLE_Z - 2.7 - 1.0, AXLE_Z + 2.7 + 1.0))   # 2 mm vertical slot
+            b = b.cut(box(-1, POST_X1 + 1, y - PETG_SLOT_W / 2, y + PETG_SLOT_W / 2, AXLE_Z - PETG_SLOT_W / 2 - 1.0, AXLE_Z + PETG_SLOT_W / 2 + 1.0))   # 2 mm vertical slot
             b = b.cut(box(POST_X1 - 4, POST_X1 + 1, y - 5, y + 5, AXLE_Z - 6, AXLE_Z + 6))                 # nut/washer seat
             # M3 jack screw from the top to set the preload
             b = b.cut(cyl('z', (POST_X0 + 6, y, POST_TOP - 6), M3_CLR, 14))
         else:
-            b = b.cut(cyl('x', (POST_X0 + 6, y, AXLE_Z), 5.3, 40))
+            b = b.cut(cyl('x', (POST_X0 + 6, y, AXLE_Z), PETG_AXLE_D, 40))
             b = b.cut(cq.Workplane(cq.Plane(origin=(POST_X1 - 4, y, AXLE_Z), xDir=(0, 1, 0), normal=(1, 0, 0))).polygon(6, 9.4).extrude(5))
         rollers.append(cyl('x', ((BR_X[0] + BR_X[1]) / 2, y, AXLE_Z), BR_OD, BR_W).cut(cyl('x', ((BR_X[0] + BR_X[1]) / 2, y, AXLE_Z), BR_ID, BR_W + 1)))
     holes = []
@@ -113,7 +119,7 @@ def guide_block(ys, rail_x_world=None):
     b = box(cx - 20, face - 2.0, y0, y1, FLOOR, FLOOR + 8.0)
     rollers = []
     for y in ys:
-        b = b.cut(cyl('z', (cx, y, FLOOR + 4), INSERT_D, 9)) if False else b.cut(cyl('z', (cx, y, FLOOR + 4), 4.2, 9))
+        b = b.cut(cyl('z', (cx, y, FLOOR + 4), PETG_TAP_D, 9))   # M5 screwed into the PETG block
         rollers.append(cyl('z', (cx, y, FLOOR + 8.5 + BR_W / 2), BR_OD, BR_W).cut(cyl('z', (cx, y, FLOOR + 8.5 + BR_W / 2), BR_ID, BR_W + 1)))
     holes = [(cx - 12, y0 + 6), (cx - 12, y1 - 6)]
     for (lx, gy) in holes:
