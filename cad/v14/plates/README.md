@@ -13,3 +13,7 @@ Runner kit plate comes after the PETG numbers are in.
 | P5_PLA_insert_holes | PLA (Inland) | 184 insert bar 4.0/4.1/4.2/4.3/4.4 | PLA insert hole was never tested (4.1 assumed); PETG needed 4.4 |
 | P6_PLA_face_F1..F3 / B1..B3 | PLA red body (slot 1), black lettering (slot 2) (BJ 2026-11-09) | one drawer-face piece per plate, face + inlay as one object with 2 parts | outer face down |
 | P7_PLA_bars_and_switch_mounts | PLA | 8 retaining-bar pieces (170) + 2 closed-switch mounts (171) | |
+| P8_PLA_red_stud_left_hopper | PLA red | stud 130 (open ring, hopper ledge) | frame5, inserts 4.3 |
+| P9_PLA_red_stud_right_cap | PLA red | stud 131 (capped) | frame5 |
+| P10_PLA_red_corner_caps | PLA red | 12 corner caps 135 (4 corners x 3 rows), standing | frame5 |
+| P11_PLA_red_hopper / P12_PLA_red_feed_chute | PLA red | hopper 201, feed chute 202 | deck5, inserts 4.3 |
