@@ -481,6 +481,22 @@
    "est_grams_each": 2.0,
    "est_hours_each": 0.03,
    "orientation": "base down"
+  },
+  {
+   "label": "50b_drum_625_roller",
+   "part_no": "50b",
+   "qty": 4,
+   "material": "PETG",
+   "bed_extent": [
+    32.02,
+    32.02,
+    14.02
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 7.4,
+   "est_hours_each": 0.15,
+   "orientation": "flat on an end; 625 pockets 16.1 (PETG coupon dot 3)"
   }
  ],
  "reused_v13_as_is": [
@@ -864,6 +880,6 @@
    "y": -140.0
   }
  ],
- "est_total_grams_new_parts": 1506,
- "est_total_hours_new_parts": 25.3
+ "est_total_grams_new_parts": 1513,
+ "est_total_hours_new_parts": 25.4
 }

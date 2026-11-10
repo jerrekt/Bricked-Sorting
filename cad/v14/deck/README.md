@@ -71,3 +71,7 @@ From the electrical chat: Pi 4B brain, USB webcam instead of the XIAO S3 Sense, 
 Power the Pi through its GPIO 5 V pins from the 3 A buck; a USB-C plug on the Pi's -y side has only ~20 mm to the back wall.
 Checks: 0 clashes (parts, drum at 12 angles, doors, frame incl. the inlet and back tiles), all in K, all fit 248. New parts ~1.51 kg / ~25 h for the deck now.
 Placeholders to measure: PSU holes, both bucks, XT30/fuse holder, XIAO carrier, TMC carrier, webcam, IEC module.
+
+## 625 pocket result (2026-11-09 19:20 PT)
+BJ's PETG coupon (plate P1, row A): **dot 3 = 16.1 mm seats with a light push.** The scoop and drawer pockets are already drawn at 16.1. The reused V7 drum roller 50 had 16.2 pockets (would slip), so it is redrawn as **`50b_drum_625_roller`** (same OD 32 x 14, 10 through, 5.2-deep pockets at **16.1**), printed in **PETG**, qty 4: `print/50b_drum_625_roller_PETG_pocket16.1_PRINT_4.stl` (~7 g each). Checks still clean (parts, drum at 12 angles, frame).
+Vault line: `2026-11-09 7:12pm PT, claim, 3D printing: PETG 625ZZ pocket (5.2 deep) = 16.1 mm (coupon P1 row A dot 3, seats with a light push); drum rollers redrawn to 16.1 in PETG on cad-v14-deck5.`

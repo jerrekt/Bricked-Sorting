@@ -30,7 +30,8 @@
   "227_psu_terminal_cover": true,
   "228_webcam_cable_spool": true,
   "226_usb_cable_clip_1": true,
-  "226_usb_cable_clip_2": true
+  "226_usb_cable_clip_2": true,
+  "50b_drum_625_roller": true
  },
  "zones": {
   "47b_tumbler_barrel_helical_flight": "in K zone",
@@ -178,7 +179,7 @@
   "90": []
  },
  "vs_frame_module": {
-  "checked_parts": 0,
+  "checked_parts": 56,
   "clashes": []
  },
  "funnel": {

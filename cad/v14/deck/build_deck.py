@@ -120,11 +120,22 @@ def load_drum_parts():
     rot = {'47b_tumbler_barrel_helical_flight', '48_drum_rear_feed_guard'}
     out = []
     for lab, f in files.items():
-        shp = cq.importers.importStep(str(f))
+        shp = roller_50b() if lab.startswith('50_') else cq.importers.importStep(str(f))
         for k, m in enumerate(m13_all(lab)):
             rel = F13_inv @ m
             out.append((f'{lab}_{k+1}' if lab.startswith('50_') else lab, apply(shp, F14 @ rel), lab in rot, rel))
     return out
+
+
+ROLLER_POCKET_D = 16.1   # 625ZZ pocket: BJ's PETG coupon 2026-11-09, dot 3 = 16.1 seats with a light push (V7 roller had 16.2)
+
+
+def roller_50b():
+    """V7 roller 50 (OD 32 x 14, 10 through, a 5.2-deep 625 pocket each end) redrawn with the tested pocket; print in PETG."""
+    r = ROLLER_POCKET_D / 2
+    w = cq.Workplane().circle(16).extrude(14).cut(cq.Workplane().circle(5).extrude(14))
+    w = w.cut(cq.Workplane().circle(r).extrude(5.2)).cut(cq.Workplane().workplane(offset=8.8).circle(r).extrude(5.2))
+    return w.val()
 
 
 def rotate_drum(w, deg):
@@ -569,6 +580,10 @@ def main():
         m = mat.get(lab[:3], 'PLA'); g = grams(w, m)
         plist.append({'label': lab, 'part_no': lab[:3], 'qty': 1, 'material': m, **bed_fit(bedp), 'diagonal_on_bed': diag,
                       'est_grams_each': g, 'est_hours_each': hours(g, w), 'orientation': notes.get(lab[:3], 'flat')})
+    rb = cq.Workplane().add(roller_50b()); g50 = grams(rb, 'PETG')
+    export(rb, prn / '50b_drum_625_roller_PETG_pocket16.1_PRINT_4.stl')
+    plist.append({'label': '50b_drum_625_roller', 'part_no': '50b', 'qty': 4, 'material': 'PETG', **bed_fit(rb), 'diagonal_on_bed': False,
+                  'est_grams_each': g50, 'est_hours_each': hours(g50, rb), 'orientation': 'flat on an end; 625 pockets 16.1 (PETG coupon dot 3)'})
     reuse = sorted(set(lab.rsplit('_', 1)[0] if lab.startswith('50_') else lab for lab, w, kind in parts if kind in ('rot', 'reuse')))
     bought = [
         {'item': 'NEMA17 (BJ salvaged, 5 mm shaft)', 'qty': 1, 'use': 'drum drive on bracket 56'},
