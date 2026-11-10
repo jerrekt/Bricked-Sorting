@@ -69,3 +69,6 @@ Correction: the 2026-11-06 run reported the faces 6 mm too deep. That was a fram
 - The tile keeps 6.5 mm of bare 2 mm face around the cutout for the snap clips (they want a 1-2 mm panel), with a 3 mm stiffening ring outside that.
 - On a fixed tile, not the access panel, so the panel comes off without the mains cord dragging it and the AC wiring never flexes.
 - Checks still clean; the inlet body clears the deck (see deck README).
+
+## Stud cap 131: no supports (2026-11-10 14:35 PT)
+Printed cap-top-down (P9), the screw ring at the open end was a 10 mm flat overhang and Bambu Studio asked for supports. The ring (r 96..105.6, 8 mm) now has a 45 deg face toward the cap top, so it prints with no supports; inserts at r 102 keep their full 5.8 depth. ~275 g, ~3.7 h. Checks unchanged (0 clashes).

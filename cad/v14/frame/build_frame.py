@@ -409,10 +409,11 @@ def stud_parts():
         ring = ring.cut(cyl((px, py, z0 - 1), (0, 0, 1), INSERT_M3_D / 2, INSERT_M3_DEPTH + 1))
     ring = ring.cut(cq.Workplane('XZ').polyline([(STUD_R + 0.01, 0), (STUD_R + 0.01, CHAMFER_BED), (STUD_R - CHAMFER_BED, 0)]).close().revolve(360, (0, 0, 0), (0, 1, 0)).translate((cx, cy, z0)))
     P.append(('130_stud_ring_left_hopper', ring, 'stud'))
-    # right stud: capped, 2.4 wall, 2 mm top, 8 mm foot ring r 96..108 with 4 M3 inserts at r 102 (roof screws from below)
+    # right stud: capped, 2.4 wall, 2 mm top, foot ring r 96..108 (8 mm + 45 deg chamfer) with 4 M3 inserts at r 102 (roof screws from below)
     cx, cy = STUD_C[1]
     cap = cyl((cx, cy, z0), (0, 0, 1), STUD_R, z1 - z0).cut(cyl((cx, cy, z0 - 1), (0, 0, 1), STUD_R - 2.4, z1 - z0 - 2.0 + 1))
-    cap = cap.union(cyl((cx, cy, z0), (0, 0, 1), STUD_R, 8.0).cut(cyl((cx, cy, z0 - 1), (0, 0, 1), 96, 10)))
+    # screw ring r 96..105.6 with a 45 deg face toward the cap top: prints cap-top-down with no supports (P9, BJ 2026-11-10)
+    cap = cap.union(cq.Workplane('XZ').polyline([(96.0, 0.0), (STUD_R - 2.39, 0.0), (STUD_R - 2.39, 8.0 + (STUD_R - 2.4 - 96.0)), (96.0, 8.0)]).close().revolve(360, (0, 0, 0), (0, 1, 0)).translate((cx, cy, z0)))
     for a in (45, 135, 225, 315):
         px, py = cx + 102 * math.cos(math.radians(a)), cy + 102 * math.sin(math.radians(a))
         cap = cap.cut(cyl((px, py, z0 - 1), (0, 0, 1), INSERT_M3_D / 2, INSERT_M3_DEPTH + 1))
