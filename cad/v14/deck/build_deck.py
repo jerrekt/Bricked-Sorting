@@ -738,3 +738,7 @@ if __name__ == '__main__':
     print(json.dumps({k: v for k, v in r.items() if k not in ('zones', 'bed_fit', 'by_design_contacts')}, indent=1)[:5000])
     print(sorted(set(r['zones'].values())))
     print('bed fail:', [k for k, v in r['bed_fit'].items() if not v])
+    # re-pose print STLs for no supports (../tools/auto_orient.py; keeps the designer's pose when it already needs none)
+    import subprocess, glob as _g
+    _p = Path(__file__).resolve().parent
+    subprocess.run([sys.executable, str(_p.parent / 'tools' / 'auto_orient.py')] + sorted(_g.glob(str(_p / 'print' / '*.stl'))), check=False)

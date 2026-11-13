@@ -1,0 +1,281 @@
+{
+ "201_hopper_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 24,
+  "was": {
+   "support": 0,
+   "steep": 24
+  }
+ },
+ "202_feed_chute_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 224,
+  "was": {
+   "support": 0,
+   "steep": 224
+  }
+ },
+ "203_V1_tray_PRINT_1.stl": {
+  "pose": "+x down",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 3781,
+   "steep": 0
+  }
+ },
+ "204_V2_tray_PRINT_1.stl": {
+  "pose": "+y down",
+  "support": 0,
+  "steep": 184,
+  "was": {
+   "support": 5042,
+   "steep": 0
+  }
+ },
+ "205_drum_cradle_A_ypos_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 70,
+  "was": {
+   "support": 0,
+   "steep": 70
+  }
+ },
+ "205_drum_cradle_B_yneg_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 70,
+  "was": {
+   "support": 0,
+   "steep": 70
+  }
+ },
+ "206_motor_wall_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 78,
+  "was": {
+   "support": 0,
+   "steep": 78
+  }
+ },
+ "210_scanner_plate_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 78,
+  "was": {
+   "support": 0,
+   "steep": 78
+  }
+ },
+ "211_landing_ramp_low_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "212_slider_post_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "213_servo_saddle_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 17,
+  "was": {
+   "support": 0,
+   "steep": 17
+  }
+ },
+ "214_trapdoor_A_PRINT_1.stl": {
+  "pose": "+x down",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 1620,
+   "steep": 472
+  }
+ },
+ "214_trapdoor_B_PRINT_1.stl": {
+  "pose": "+x down",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 1620,
+   "steep": 472
+  }
+ },
+ "215_camera_bridge_PRINT_1.stl": {
+  "pose": "+y down",
+  "support": 0,
+  "steep": 141,
+  "was": {
+   "support": 8673,
+   "steep": 0
+  }
+ },
+ "216_led_bar_holder_A_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "216_led_bar_holder_B_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "217_webcam_mount_generic_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "217_xiao_sense_camera_mount_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "218_apds9960_mount_PRINT_1.stl": {
+  "pose": "-x down",
+  "support": 0,
+  "steep": 10,
+  "was": {
+   "support": 0,
+   "steep": 332
+  }
+ },
+ "220_drop_funnel_PRINT_1.stl": {
+  "pose": "+y down",
+  "support": 0,
+  "steep": 2376,
+  "was": {
+   "support": 8365,
+   "steep": 6433
+  }
+ },
+ "225_electronics_tray_1_PRINT_1.stl": {
+  "pose": "+y down",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 703
+  }
+ },
+ "225_electronics_tray_1a_psu_PRINT_1.stl": {
+  "pose": "-y down",
+  "support": 0,
+  "steep": 292,
+  "was": {
+   "support": 24600,
+   "steep": 0
+  }
+ },
+ "225_electronics_tray_1b_power_io_PRINT_1.stl": {
+  "pose": "-x down",
+  "support": 0,
+  "steep": 759,
+  "was": {
+   "support": 9920,
+   "steep": 0
+  }
+ },
+ "225_electronics_tray_2_PRINT_1.stl": {
+  "pose": "-x down",
+  "support": 0,
+  "steep": 392,
+  "was": {
+   "support": 9760,
+   "steep": 0
+  }
+ },
+ "225_electronics_tray_2_pi_PRINT_1.stl": {
+  "pose": "+y down",
+  "support": 0,
+  "steep": 460,
+  "was": {
+   "support": 15394,
+   "steep": 0
+  }
+ },
+ "226_usb_cable_clip_1_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "226_usb_cable_clip_2_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "226_usb_cable_clip_3_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "227_psu_terminal_cover_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "228_webcam_cable_spool_PRINT_1.stl": {
+  "pose": "flip (upside down)",
+  "support": 0,
+  "steep": 17,
+  "was": {
+   "support": 0,
+   "steep": 644
+  }
+ },
+ "50b_drum_625_roller_PETG_pocket16.1_PRINT_4.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ }
+}
