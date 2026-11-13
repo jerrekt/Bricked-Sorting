@@ -17,3 +17,7 @@ Runner kit plate comes after the PETG numbers are in.
 | P9_PLA_red_stud_right_cap | PLA red | stud 131 (capped) | frame5 |
 | P10_PLA_red_corner_caps | PLA red | 12 corner caps 135 (4 corners x 3 rows), standing | frame5 |
 | P11_PLA_red_hopper / P12_PLA_red_feed_chute | PLA red | hopper 201, feed chute 202 | deck5, inserts 4.3 |
+| P2_PLA_coupons | PLA | reed coupon tray + floor, C1 clip, servo saddle | (replaces P2_PLA_coupons_and_deck_tests; drum cradle moved to P13) |
+| P12_PLA_red_feed_chute | PLA red | chute 202, on its side | re-posed 2026-11-12 |
+| P13_PLA_deck_parts_plate1/2 | PLA any | drum cradles A/B, motor wall, landing ramp, slider post, camera bridge, LED holders A/B, webcam mount, APDS mount, cable spool, 2 USB clips | no supports |
+| P14_PETG_deck_V2_springs_rollers | PETG | V2 tray, 3 leaf springs (V1_2, V2_1, V2_2), 4 drum rollers (625 pocket 16.1) | no supports |
