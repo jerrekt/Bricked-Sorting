@@ -455,3 +455,7 @@ if __name__ == '__main__':
     print('bricks:', {k: (v['brick']['lip_y'], v['brick']['lip_z'], v['brick']['lip_ramp_surface_deg'], [d.get('in_row') for d in v['brick']['drops']]) for k, v in r['poses'].items() if 'brick' in v and k.endswith('_1')})
     print('receive:', r['receive'], 'keepout', r['poses']['receive']['funnel_keepout_overlap_mm3'])
     print('bed fail:', [k for k, v in r['bed_fit'].items() if not v])
+    # re-pose print STLs for no supports (plates/auto_orient.py; keeps the designer's pose when it already needs none)
+    import subprocess, glob as _g
+    _p = Path(__file__).resolve().parent
+    subprocess.run([sys.executable, str(_p.parent / 'plates' / 'auto_orient.py')] + sorted(_g.glob(str(_p / 'print' / '*.stl'))), check=False)

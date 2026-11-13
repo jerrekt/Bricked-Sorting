@@ -1,0 +1,191 @@
+{
+ "160_rail_R_PRINT_2.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 66,
+  "was": {
+   "support": 0,
+   "steep": 66
+  }
+ },
+ "161_rail_L_PRINT_2.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 66,
+  "was": {
+   "support": 0,
+   "steep": 66
+  }
+ },
+ "162_station_L_PRINT_2.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 64,
+  "was": {
+   "support": 0,
+   "steep": 64
+  }
+ },
+ "162_station_R_PRINT_2.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 64,
+  "was": {
+   "support": 0,
+   "steep": 64
+  }
+ },
+ "164_guide_R_PRINT_2.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "166_tray_tile_back_1_PRINT_1.stl": {
+  "pose": "+y down",
+  "support": 0,
+  "steep": 26,
+  "was": {
+   "support": 16484,
+   "steep": 0
+  }
+ },
+ "166_tray_tile_back_2_PRINT_1.stl": {
+  "pose": "+y down",
+  "support": 0,
+  "steep": 44,
+  "was": {
+   "support": 16233,
+   "steep": 0
+  }
+ },
+ "166_tray_tile_back_3_PRINT_1.stl": {
+  "pose": "+y down",
+  "support": 0,
+  "steep": 44,
+  "was": {
+   "support": 16233,
+   "steep": 0
+  }
+ },
+ "166_tray_tile_back_4_PRINT_1.stl": {
+  "pose": "+y down",
+  "support": 0,
+  "steep": 26,
+  "was": {
+   "support": 16466,
+   "steep": 0
+  }
+ },
+ "166_tray_tile_front_1_PRINT_1.stl": {
+  "pose": "+y down",
+  "support": 0,
+  "steep": 40,
+  "was": {
+   "support": 16466,
+   "steep": 0
+  }
+ },
+ "166_tray_tile_front_2_PRINT_1.stl": {
+  "pose": "+y down",
+  "support": 0,
+  "steep": 30,
+  "was": {
+   "support": 16251,
+   "steep": 0
+  }
+ },
+ "166_tray_tile_front_3_PRINT_1.stl": {
+  "pose": "+y down",
+  "support": 0,
+  "steep": 30,
+  "was": {
+   "support": 16251,
+   "steep": 0
+  }
+ },
+ "166_tray_tile_front_4_PRINT_1.stl": {
+  "pose": "+y down",
+  "support": 0,
+  "steep": 39,
+  "was": {
+   "support": 16448,
+   "steep": 0
+  }
+ },
+ "169_bin_PRINT_16.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 4,
+  "was": {
+   "support": 0,
+   "steep": 4
+  }
+ },
+ "170_bar_1_PRINT_2.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "170_bar_2_PRINT_2.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "170_bar_3_PRINT_2.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "170_bar_4_PRINT_2.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "171_closed_switch_mount_PRINT_2.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 35,
+  "was": {
+   "support": 0,
+   "steep": 35
+  }
+ },
+ "172_reed_coupon_floor_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "172_reed_coupon_tray_PRINT_1.stl": {
+  "pose": "flip (upside down)",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 2041,
+   "steep": 0
+  }
+ }
+}
