@@ -1,0 +1,245 @@
+{
+ "116_panel_keeper_bottom_x-150_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 6,
+  "was": {
+   "support": 0,
+   "steep": 6
+  }
+ },
+ "116_panel_keeper_bottom_x-50_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 6,
+  "was": {
+   "support": 0,
+   "steep": 6
+  }
+ },
+ "116_panel_keeper_bottom_x150_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 6,
+  "was": {
+   "support": 0,
+   "steep": 6
+  }
+ },
+ "116_panel_keeper_bottom_x50_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 6,
+  "was": {
+   "support": 0,
+   "steep": 6
+  }
+ },
+ "117_panel_keeper_top_x-150_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 6,
+  "was": {
+   "support": 0,
+   "steep": 6
+  }
+ },
+ "117_panel_keeper_top_x-50_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 6,
+  "was": {
+   "support": 0,
+   "steep": 6
+  }
+ },
+ "117_panel_keeper_top_x150_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 6,
+  "was": {
+   "support": 0,
+   "steep": 6
+  }
+ },
+ "117_panel_keeper_top_x50_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 6,
+  "was": {
+   "support": 0,
+   "steep": 6
+  }
+ },
+ "120_clip_C1_single_PRINT_128.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "120_clip_C1_single_PRINT_152.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "121_clip_C2_seam_PRINT_12.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "121_clip_C2_seam_PRINT_6.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "122_clip_H_bridge_PRINT_90.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "123_clip_C3_roof_PRINT_24.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "131_stud_cap_right_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 285,
+  "was": {
+   "support": 0,
+   "steep": 285
+  }
+ },
+ "135_corner_cap_LB_r1_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "135_corner_cap_LB_r2_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "135_corner_cap_LB_r3_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "135_corner_cap_LF_r1_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "135_corner_cap_LF_r2_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "135_corner_cap_LF_r3_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "135_corner_cap_RB_r1_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "135_corner_cap_RB_r2_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "135_corner_cap_RB_r3_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "135_corner_cap_RF_r1_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "135_corner_cap_RF_r2_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "135_corner_cap_RF_r3_PRINT_1.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ }
+}
