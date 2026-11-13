@@ -9,20 +9,20 @@
   }
  },
  "202_feed_chute_PRINT_1.stl": {
-  "pose": "as posed",
-  "support": 0,
-  "steep": 224,
+  "pose": "-x down",
+  "support": 269,
+  "steep": 6277,
   "was": {
-   "support": 0,
+   "support": 473,
    "steep": 224
   }
  },
  "203_V1_tray_PRINT_1.stl": {
-  "pose": "+x down",
-  "support": 0,
+  "pose": "-y down",
+  "support": 66,
   "steep": 0,
   "was": {
-   "support": 3781,
+   "support": 3302,
    "steep": 0
   }
  },
@@ -31,43 +31,43 @@
   "support": 0,
   "steep": 184,
   "was": {
-   "support": 5042,
+   "support": 3968,
    "steep": 0
   }
  },
  "205_drum_cradle_A_ypos_PRINT_1.stl": {
   "pose": "as posed",
-  "support": 0,
+  "support": 3,
   "steep": 70,
   "was": {
-   "support": 0,
+   "support": 3,
    "steep": 70
   }
  },
  "205_drum_cradle_B_yneg_PRINT_1.stl": {
   "pose": "as posed",
-  "support": 0,
+  "support": 3,
   "steep": 70,
   "was": {
-   "support": 0,
+   "support": 3,
    "steep": 70
   }
  },
  "206_motor_wall_PRINT_1.stl": {
   "pose": "as posed",
-  "support": 0,
+  "support": 11,
   "steep": 78,
   "was": {
-   "support": 0,
+   "support": 11,
    "steep": 78
   }
  },
  "210_scanner_plate_PRINT_1.stl": {
   "pose": "as posed",
-  "support": 0,
+  "support": 1474,
   "steep": 78,
   "was": {
-   "support": 0,
+   "support": 1474,
    "steep": 78
   }
  },
@@ -91,35 +91,35 @@
  },
  "213_servo_saddle_PRINT_1.stl": {
   "pose": "as posed",
-  "support": 0,
+  "support": 2,
   "steep": 17,
   "was": {
-   "support": 0,
+   "support": 2,
    "steep": 17
   }
  },
  "214_trapdoor_A_PRINT_1.stl": {
   "pose": "+x down",
-  "support": 0,
+  "support": 119,
   "steep": 0,
   "was": {
-   "support": 1620,
+   "support": 1927,
    "steep": 472
   }
  },
  "214_trapdoor_B_PRINT_1.stl": {
   "pose": "+x down",
-  "support": 0,
+  "support": 119,
   "steep": 0,
   "was": {
-   "support": 1620,
+   "support": 1927,
    "steep": 472
   }
  },
  "215_camera_bridge_PRINT_1.stl": {
-  "pose": "+y down",
+  "pose": "flip (upside down)",
   "support": 0,
-  "steep": 141,
+  "steep": 0,
   "was": {
    "support": 8673,
    "steep": 0
@@ -162,9 +162,9 @@
   }
  },
  "218_apds9960_mount_PRINT_1.stl": {
-  "pose": "-x down",
+  "pose": "as posed",
   "support": 0,
-  "steep": 10,
+  "steep": 332,
   "was": {
    "support": 0,
    "steep": 332
@@ -172,10 +172,10 @@
  },
  "220_drop_funnel_PRINT_1.stl": {
   "pose": "+y down",
-  "support": 0,
+  "support": 945,
   "steep": 2376,
   "was": {
-   "support": 8365,
+   "support": 8279,
    "steep": 6433
   }
  },
@@ -184,43 +184,43 @@
   "support": 0,
   "steep": 0,
   "was": {
-   "support": 0,
+   "support": 1071,
    "steep": 703
   }
  },
  "225_electronics_tray_1a_psu_PRINT_1.stl": {
-  "pose": "-y down",
-  "support": 0,
+  "pose": "-x down",
+  "support": 613,
   "steep": 292,
   "was": {
-   "support": 24600,
+   "support": 24597,
    "steep": 0
   }
  },
  "225_electronics_tray_1b_power_io_PRINT_1.stl": {
   "pose": "-x down",
-  "support": 0,
+  "support": 287,
   "steep": 759,
   "was": {
-   "support": 9920,
+   "support": 9918,
    "steep": 0
   }
  },
  "225_electronics_tray_2_PRINT_1.stl": {
-  "pose": "-x down",
-  "support": 0,
+  "pose": "-y down",
+  "support": 480,
   "steep": 392,
   "was": {
-   "support": 9760,
+   "support": 9758,
    "steep": 0
   }
  },
  "225_electronics_tray_2_pi_PRINT_1.stl": {
-  "pose": "+y down",
-  "support": 0,
+  "pose": "-y down",
+  "support": 358,
   "steep": 460,
   "was": {
-   "support": 15394,
+   "support": 15408,
    "steep": 0
   }
  },
@@ -253,17 +253,17 @@
  },
  "227_psu_terminal_cover_PRINT_1.stl": {
   "pose": "as posed",
-  "support": 0,
+  "support": 138,
   "steep": 0,
   "was": {
-   "support": 0,
+   "support": 138,
    "steep": 0
   }
  },
  "228_webcam_cable_spool_PRINT_1.stl": {
-  "pose": "flip (upside down)",
+  "pose": "as posed",
   "support": 0,
-  "steep": 17,
+  "steep": 644,
   "was": {
    "support": 0,
    "steep": 644
