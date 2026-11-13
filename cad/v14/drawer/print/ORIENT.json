@@ -1,37 +1,37 @@
 {
  "160_rail_R_PRINT_2.stl": {
   "pose": "as posed",
-  "support": 0,
+  "support": 9,
   "steep": 66,
   "was": {
-   "support": 0,
+   "support": 9,
    "steep": 66
   }
  },
  "161_rail_L_PRINT_2.stl": {
   "pose": "as posed",
-  "support": 0,
+  "support": 9,
   "steep": 66,
   "was": {
-   "support": 0,
+   "support": 9,
    "steep": 66
   }
  },
  "162_station_L_PRINT_2.stl": {
   "pose": "as posed",
-  "support": 0,
+  "support": 8,
   "steep": 64,
   "was": {
-   "support": 0,
+   "support": 8,
    "steep": 64
   }
  },
  "162_station_R_PRINT_2.stl": {
   "pose": "as posed",
-  "support": 0,
+  "support": 8,
   "steep": 64,
   "was": {
-   "support": 0,
+   "support": 8,
    "steep": 64
   }
  },
@@ -46,82 +46,82 @@
  },
  "166_tray_tile_back_1_PRINT_1.stl": {
   "pose": "+y down",
-  "support": 0,
+  "support": 200,
   "steep": 26,
   "was": {
-   "support": 16484,
+   "support": 20413,
    "steep": 0
   }
  },
  "166_tray_tile_back_2_PRINT_1.stl": {
-  "pose": "+y down",
-  "support": 0,
-  "steep": 44,
+  "pose": "-x down",
+  "support": 2379,
+  "steep": 50,
   "was": {
-   "support": 16233,
+   "support": 20742,
    "steep": 0
   }
  },
  "166_tray_tile_back_3_PRINT_1.stl": {
   "pose": "+y down",
-  "support": 0,
+  "support": 2049,
   "steep": 44,
   "was": {
-   "support": 16233,
+   "support": 20797,
    "steep": 0
   }
  },
  "166_tray_tile_back_4_PRINT_1.stl": {
   "pose": "+y down",
-  "support": 0,
+  "support": 188,
   "steep": 26,
   "was": {
-   "support": 16466,
+   "support": 19528,
    "steep": 0
   }
  },
  "166_tray_tile_front_1_PRINT_1.stl": {
   "pose": "+y down",
-  "support": 0,
+  "support": 789,
   "steep": 40,
   "was": {
-   "support": 16466,
+   "support": 20879,
    "steep": 0
   }
  },
  "166_tray_tile_front_2_PRINT_1.stl": {
   "pose": "+y down",
-  "support": 0,
+  "support": 1228,
   "steep": 30,
   "was": {
-   "support": 16251,
+   "support": 20332,
    "steep": 0
   }
  },
  "166_tray_tile_front_3_PRINT_1.stl": {
   "pose": "+y down",
-  "support": 0,
+  "support": 189,
   "steep": 30,
   "was": {
-   "support": 16251,
+   "support": 20332,
    "steep": 0
   }
  },
  "166_tray_tile_front_4_PRINT_1.stl": {
   "pose": "+y down",
-  "support": 0,
+  "support": 769,
   "steep": 39,
   "was": {
-   "support": 16448,
+   "support": 20049,
    "steep": 0
   }
  },
  "169_bin_PRINT_16.stl": {
   "pose": "as posed",
-  "support": 0,
+  "support": 24,
   "steep": 4,
   "was": {
-   "support": 0,
+   "support": 24,
    "steep": 4
   }
  },
@@ -163,10 +163,10 @@
  },
  "171_closed_switch_mount_PRINT_2.stl": {
   "pose": "as posed",
-  "support": 0,
+  "support": 5,
   "steep": 35,
   "was": {
-   "support": 0,
+   "support": 5,
    "steep": 35
   }
  },
@@ -180,11 +180,11 @@
   }
  },
  "172_reed_coupon_tray_PRINT_1.stl": {
-  "pose": "flip (upside down)",
+  "pose": "-x down",
   "support": 0,
-  "steep": 0,
+  "steep": 12,
   "was": {
-   "support": 2041,
+   "support": 2040,
    "steep": 0
   }
  }

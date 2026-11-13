@@ -1,37 +1,37 @@
 {
  "160_rail_R_guided_PRINT_1.stl": {
   "pose": "as posed",
-  "support": 0,
+  "support": 7,
   "steep": 53,
   "was": {
-   "support": 0,
+   "support": 7,
    "steep": 53
   }
  },
  "161_rail_L_floating_PRINT_1.stl": {
   "pose": "as posed",
-  "support": 0,
+  "support": 7,
   "steep": 53,
   "was": {
-   "support": 0,
+   "support": 7,
    "steep": 53
   }
  },
  "162_station_L_PRINT_1.stl": {
   "pose": "as posed",
-  "support": 0,
+  "support": 8,
   "steep": 64,
   "was": {
-   "support": 0,
+   "support": 8,
    "steep": 64
   }
  },
  "162_station_R_PRINT_1.stl": {
   "pose": "as posed",
-  "support": 0,
+  "support": 8,
   "steep": 64,
   "was": {
-   "support": 0,
+   "support": 8,
    "steep": 64
   }
  },

@@ -1,19 +1,19 @@
 {
  "181_carriage_PRINT_1.stl": {
   "pose": "+x down",
-  "support": 0,
+  "support": 2776,
   "steep": 155,
   "was": {
-   "support": 3072,
+   "support": 6729,
    "steep": 149
   }
  },
  "182_scoop_cup_PRINT_1.stl": {
-  "pose": "+x down",
-  "support": 0,
-  "steep": 0,
+  "pose": "+y down",
+  "support": 633,
+  "steep": 32,
   "was": {
-   "support": 9776,
+   "support": 9778,
    "steep": 4183
   }
  },
@@ -27,29 +27,29 @@
   }
  },
  "184_motor_bracket_PRINT_1.stl": {
-  "pose": "as posed",
-  "support": 0,
-  "steep": 0,
+  "pose": "+x down",
+  "support": 27,
+  "steep": 91,
   "was": {
-   "support": 0,
+   "support": 581,
    "steep": 0
   }
  },
  "185_idler_channel_PRINT_1.stl": {
-  "pose": "as posed",
-  "support": 0,
-  "steep": 11,
+  "pose": "+x down",
+  "support": 100,
+  "steep": 0,
   "was": {
-   "support": 0,
+   "support": 271,
    "steep": 11
   }
  },
  "186_idler_slider_PRINT_1.stl": {
-  "pose": "as posed",
-  "support": 0,
-  "steep": 42,
+  "pose": "+x down",
+  "support": 3,
+  "steep": 22,
   "was": {
-   "support": 0,
+   "support": 369,
    "steep": 42
   }
  },
@@ -63,11 +63,11 @@
   }
  },
  "188_endstop_mount_PRINT_1.stl": {
-  "pose": "as posed",
+  "pose": "+x down",
   "support": 0,
   "steep": 0,
   "was": {
-   "support": 0,
+   "support": 265,
    "steep": 0
   }
  },
@@ -81,11 +81,11 @@
   }
  },
  "190_servo_bracket_PRINT_1.stl": {
-  "pose": "+y down",
-  "support": 0,
+  "pose": "-y down",
+  "support": 302,
   "steep": 3,
   "was": {
-   "support": 977,
+   "support": 1296,
    "steep": 11
   }
  }

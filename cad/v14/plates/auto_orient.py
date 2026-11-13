@@ -1,5 +1,5 @@
 """Re-pose print STLs for no supports. For each STL, try the 6 face-down orientations; keep the designer's pose if it already
-needs no support (0 mm2 beyond a 20 mm bridge) and its steep (45-79 deg) area is within 300 mm2 of the best; otherwise
+needs at most 50 mm2 more support than the best pose and its steep (45-79 deg) area is within 300 mm2 of the best; otherwise
 take the best one that fits the bed (support, then steep area, then height). Rewrites the STL in place and prints a report.
 Usage: python3 auto_orient.py [--dry] files..."""
 import sys, json, numpy as np, trimesh
@@ -25,7 +25,7 @@ for f in files:
     cand = [r for r in res if r['fits']]
     best = min(cand, key=lambda r: (round(r['support']), r['steep'] * 0.3 + r['h']))
     posed = res[0]
-    keep = posed['fits'] and posed['support'] < 1 and posed['steep'] <= best['steep'] + 300
+    keep = posed['fits'] and posed['support'] <= best['support'] + 50 and posed['steep'] <= best['steep'] + 300
     pick = posed if keep else best
     report[f.split('/')[-1]] = dict(pose=pick['name'], support=round(pick['support']), steep=round(pick['steep']),
                                      was=dict(support=round(posed['support']), steep=round(posed['steep'])))
