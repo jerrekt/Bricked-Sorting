@@ -75,3 +75,7 @@ Placeholders to measure: PSU holes, both bucks, XT30/fuse holder, XIAO carrier, 
 ## 625 pocket result (2026-11-09 19:20 PT)
 BJ's PETG coupon (plate P1, row A): **dot 3 = 16.1 mm seats with a light push.** The scoop and drawer pockets are already drawn at 16.1. The reused V7 drum roller 50 had 16.2 pockets (would slip), so it is redrawn as **`50b_drum_625_roller`** (same OD 32 x 14, 10 through, 5.2-deep pockets at **16.1**), printed in **PETG**, qty 4: `print/50b_drum_625_roller_PETG_pocket16.1_PRINT_4.stl` (~7 g each). Checks still clean (parts, drum at 12 angles, frame).
 Vault line: `2026-11-09 7:12pm PT, claim, 3D printing: PETG 625ZZ pocket (5.2 deep) = 16.1 mm (coupon P1 row A dot 3, seats with a light push); drum rollers redrawn to 16.1 in PETG on cad-v14-deck5.`
+
+## Hopper 201 rev 2: no supports (2026-11-12 PT)
+Printed upside down (P11), the 11 deg sloped top ring and the flat underside of the flange were ~2 x 100 cm2 of flat overhang. Rev 2: the top ring is flat (r 75..100 at z 663, it is the bed face) and the flange + skirt are one section with a 45 deg inner face (85, 651) -> (97, 663); 6.4 bores from the top give the screwdriver access to the 4 csk M3 in the flange. Overhang left: ~25 mm2 (bore/csk transitions). No clash with stud 130; the stray-catch slope is gone (strays sit on the flat ring, brush them in).
+Vault line: `2026-11-12 PT, claim, Bricked Sorting: hopper 201 rev 2 prints upside down with no supports (flat top ring, 45 deg flange fill); cad-v14-deck5.`

@@ -200,7 +200,8 @@ def motor_wall(rel_bracket):
 def hopper():
     """one piece, ~150 across, centred in the left stud: oblique cone from r 75 at z 658 to the outlet r 30 at
     (-190, 40, 570); sloped top ring up to r 100 at z 663 (catches strays inside the stud ring), skirt r 97..100,
-    and a flat flange r 85..100 at z 646..651 that sits on the stud-ring ledge (frame 130) with 4 csk M3."""
+    and a flat flange r 85..100 at z 646..651 that sits on the stud-ring ledge (frame 130) with 4 csk M3.
+    Rev 2: flat top ring r 75..100 at z 663 and a 45 deg fill between flange and top, so it prints upside down with no supports."""
     cx, cy = STUD_L
     T = 2.0
     o = cq.Solid.makeLoft([cq.Wire.makeCircle(HOP_TOP_R + T, cq.Vector(cx, cy, HOP_TOP_Z), cq.Vector(0, 0, 1)),
@@ -208,13 +209,17 @@ def hopper():
     i_ = cq.Solid.makeLoft([cq.Wire.makeCircle(HOP_TOP_R, cq.Vector(cx, cy, HOP_TOP_Z + 0.01), cq.Vector(0, 0, 1)),
                             cq.Wire.makeCircle(HOP_OUT_R, cq.Vector(*(HOP_OUT - [0, 0, 0.01])), cq.Vector(0, 0, 1))], True)
     hop = cq.Workplane().add(o).cut(cq.Workplane().add(i_))
-    top = cq.Workplane('XZ').polyline([(HOP_TOP_R, HOP_TOP_Z), (100.0, HOP_TOP_Z + 5), (100.0, HOP_TOP_Z + 2), (HOP_TOP_R + T, HOP_TOP_Z - 3)]).close().revolve(360, (0, 0, 0), (0, 1, 0)).translate((cx, cy, 0))
-    skirt = cyl((cx, cy, STUD_LEDGE_Z), (0, 0, 1), 100.0, HOP_TOP_Z + 2 - STUD_LEDGE_Z).cut(cyl((cx, cy, STUD_LEDGE_Z - 1), (0, 0, 1), 97.0, 30))
-    flange = cyl((cx, cy, STUD_LEDGE_Z), (0, 0, 1), 100.0, 5.0).cut(cyl((cx, cy, STUD_LEDGE_Z - 1), (0, 0, 1), STUD_LEDGE_R, 7))
+    # rev 2 (2026-11-12, BJ printing P11): printed upside down with no supports. The top ring is flat (it is the bed face,
+    # r 75..100 at z 663) instead of the 11 deg slope, and the flange + skirt are one solid section whose inner face is a
+    # 45 deg cone (85, 651) -> (97, 663), so nothing overhangs flat. Screw access: 6.5 bores from the top down to the csk.
+    TOPZ = HOP_TOP_Z + 5
+    top = cq.Workplane('XZ').polyline([(HOP_TOP_R, HOP_TOP_Z), (HOP_TOP_R, TOPZ), (100.0, TOPZ), (100.0, HOP_TOP_Z - 3), (HOP_TOP_R + T, HOP_TOP_Z - 3)]).close().revolve(360, (0, 0, 0), (0, 1, 0)).translate((cx, cy, 0))
+    body = cq.Workplane('XZ').polyline([(STUD_LEDGE_R, STUD_LEDGE_Z), (100.0, STUD_LEDGE_Z), (100.0, TOPZ), (97.0, TOPZ), (STUD_LEDGE_R, STUD_LEDGE_Z + 5)]).close().revolve(360, (0, 0, 0), (0, 1, 0)).translate((cx, cy, 0))
+    hop = hop.union(top).union(body)
     for a in (45, 135, 225, 315):
         px, py = cx + STUD_INSERT_R * math.cos(math.radians(a)), cy + STUD_INSERT_R * math.sin(math.radians(a))
-        flange = flange.cut(cyl((px, py, STUD_LEDGE_Z - 1), (0, 0, 1), M3_CLR / 2, 8)).cut(csk_cone((px, py, STUD_LEDGE_Z + 5.01), (0, 0, -1), M3_CSK_D))
-    hop = hop.union(top).union(skirt).union(flange)
+        hop = hop.cut(cyl((px, py, STUD_LEDGE_Z - 1), (0, 0, 1), M3_CLR / 2, 8)).cut(csk_cone((px, py, STUD_LEDGE_Z + 5.01), (0, 0, -1), M3_CSK_D))
+        hop = hop.cut(cyl((px, py, STUD_LEDGE_Z + 5.0), (0, 0, 1), M3_CSK_D / 2, TOPZ - STUD_LEDGE_Z))   # driver/head access from the top
     return hop, i_
 
 
