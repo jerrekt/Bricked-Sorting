@@ -11,7 +11,7 @@ BED = [248.0, 248.0, 248.0]                   # usable bed (runbook: design to ~
 # runbook fits (per side)
 FIT_SLIDE = 0.07          # sliding / dovetail, BJ's "normal"
 FIT_PRESS = -0.02         # press pocket (pocket smaller than the piece)
-INSERT_M3_D, INSERT_M3_DEPTH = 4.3, 5.8       # generic M3 heat-set in PLA: 4.3 tested by BJ 2026-11-09 (PETG: 4.4); vault runbooks/3d-printing.md
+INSERT_M3_D, INSERT_M3_DEPTH = 4.4, 5.8       # M3 heat-set in PETG (BJ prints the deck in PETG, 2026-11-13): PETG 4.4, PLA 4.3; vault runbooks/3d-printing.md
 M3_CLR, M3_CSK_D = 3.4, 6.4
 WOOD_SCREW_CLR = 3.6      # #6 wood screw clearance (interface)
 WOOD_SCREW_CSK = 7.0      # #6 flat head

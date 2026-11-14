@@ -382,8 +382,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 109.9,
-   "est_hours_each": 1.47,
+   "est_grams_each": 109.8,
+   "est_hours_each": 1.46,
    "orientation": "tray top up"
   },
   {
@@ -394,11 +394,11 @@
    "bed_extent": [
     94.0,
     112.0,
-    26.0
+    26.01
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 51.9,
+   "est_grams_each": 51.8,
    "est_hours_each": 0.69,
    "orientation": "tray top up"
   },
