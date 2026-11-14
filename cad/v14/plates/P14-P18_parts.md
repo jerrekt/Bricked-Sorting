@@ -1,7 +1,7 @@
 # P14–P18 — what each part is
 
 Zip naming: `P<first>-P<last>.zip` (plate range). Plate files keep their `P<n>_<material>_<what>` names.
-All print without supports unless noted. Material in the file name is the designed material.
+All print without supports unless noted. Everything is PETG except P17 (TPU tire). 54 drive core is a V13 part with a PLA-sized 5 mm bore: if it is tight on the motor shaft in PETG, run a 5 mm drill through it.
 
 ## P14 — PETG — deck V2 tray, springs, drum rollers
 | Part | What it is |
@@ -11,12 +11,12 @@ All print without supports unless noted. Material in the file name is the design
 | 207_leaf_spring_V2_1, V2_2 | The two leaf springs the V2 tray sits on; they let it shake |
 | 50b_drum_625_roller ×4 | Drum support rollers; each takes one 625 bearing (16.1 pocket, PETG fit) on an M5 axle in the cradles |
 
-## P15 — PLA — drum barrel
+## P15 — PETG — drum barrel
 | Part | What it is |
 |---|---|
 | 47b_tumbler_barrel_helical_flight | The rotating drum; the spiral flight inside walks bricks forward one at a time. Small tree support (~2 cm²) |
 
-## P16 — PLA — drum and scanner small parts (3 plates)
+## P16 — PETG — drum and scanner small parts (3 plates)
 | Part | What it is |
 |---|---|
 | 49b_drum_static_outlet_plate | Fixed plate at the drum exit; bricks leave the drum through it onto the landing ramp |
@@ -34,7 +34,7 @@ All print without supports unless noted. Material in the file name is the design
 |---|---|
 | 55_drum_friction_tire_TPU | Rubber tire on hub 54; friction-drives the drum |
 
-## P18 — PLA — scanner and electronics (2 plates)
+## P18 — PETG — scanner and electronics (3 plates; M3 insert holes 4.4 for PETG)
 | Part | What it is |
 |---|---|
 | 210_scanner_plate | Platform where each brick stops to be scanned; sits on 4 standoffs on the deck. Small tree support (~15 cm²) |
