@@ -21,3 +21,7 @@ Runner kit plate comes after the PETG numbers are in.
 | P12_PLA_red_feed_chute | PLA red | chute 202, on its side | re-posed 2026-11-12 |
 | P13_PLA_deck_parts_plate1/2 | PLA any | drum cradles A/B, motor wall, landing ramp, slider post, camera bridge, LED holders A/B, webcam mount, APDS mount, cable spool, 2 USB clips | no supports |
 | P14_PETG_deck_V2_springs_rollers | PETG | V2 tray, 3 leaf springs (V1_2, V2_1, V2_2), 4 drum rollers (625 pocket 16.1) | no supports |
+| P15_PLA_drum_barrel | PLA | 47b tumbler barrel (V13 reuse), outlet end down, ~7 h | v13_reuse/ STLs exported from cad/reference_v13 STEPs; ~2 cm2 tree support under the flight |
+| P16_PLA_drum_and_scanner_small_plate1-3 | PLA | 49b outlet plate, 48 rear guard, 54 drive core, 56 NEMA17 bracket, 2x 62 saddle, 2x 63 cap, 2x 59 door link, 59b, 57d, 60 | V13 reuse, no supports |
+| P17_TPU_drum_tire | TPU | 55 friction tire | |
+| P18_PLA_deck_scanner_electronics_plate1-2 | PLA | 210 scanner plate, 214 trapdoors A/B, 220 funnel, 225 electronics trays 1a/1b/2_pi, 227 PSU cover, 217 XIAO camera mount, 226 clip 3 | scanner plate, funnel, electronics trays: Tree (auto) supports, build plate only |
