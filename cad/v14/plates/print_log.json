@@ -1,244 +1,381 @@
 {
- "_note": "Filament used, one entry per print. source=estimate: geometry at 2 walls / 15% infill, no supports, brim or purge (slicer usually reads 5-15% higher). Replace with source=slicer when BJ sends Bambu grams.",
+ "_note": "Filament used, one line per Bambu job (from BJ's print history). grams source=estimate: part geometry at 2 walls / 15% infill, no supports, brim or purge (the slicer usually reads 5-15% higher); replace with source=slicer when BJ sends the grams Bambu shows for a job. Other projects (JE, SJSU SAEC, SME sign) are not counted.",
  "prints": [
   {
-   "date": "by 2026-11-15",
+   "date": "2026-11-08 10:48",
+   "bambu_job": "165_625_pocket_coupon",
+   "hours": 0.37,
+   "plate": "(coupon)",
+   "version": 1,
+   "material": "PLA",
+   "grams": 7,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "165 625 pocket coupon"
+   ],
+   "note": ""
+  },
+  {
+   "date": "2026-11-08 11:26",
+   "bambu_job": "pa_line + flow coarse/fine (Bambu)",
+   "hours": 1.48,
+   "plate": "(Bambu calib)",
+   "version": 0,
+   "material": "PETG",
+   "grams": 25,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "PA line",
+    "flow rate coarse",
+    "flow rate fine"
+   ],
+   "note": "Bambu built-in calibration, rough guess"
+  },
+  {
+   "date": "2026-11-08 16:12",
+   "bambu_job": "180_petg_625_pockets + 183...",
+   "hours": 1.3,
    "plate": "P1",
    "version": 1,
    "material": "PETG",
-   "parts": [
-    "P1_PETG_calibration"
-   ],
    "grams": 35,
    "source": "estimate",
-   "note": "calibration"
+   "status": "done",
+   "parts": [
+    "625 pockets, insert holes rev1, M5 holes, dovetails rev1"
+   ],
+   "note": ""
   },
   {
-   "date": "by 2026-11-15",
+   "date": "2026-11-08 17:49",
+   "bambu_job": "183_petg_dovetail...",
+   "hours": 0.72,
    "plate": "P1b",
    "version": 1,
    "material": "PETG",
-   "parts": [
-    "P1b_PETG_dovetails_only"
-   ],
    "grams": 16,
    "source": "estimate",
-   "note": "calibration"
-  },
-  {
-   "date": "by 2026-11-15",
-   "plate": "P1c",
-   "version": 1,
-   "material": "PETG",
+   "status": "done",
    "parts": [
-    "P1c_PETG_dovetails_rev2_and_inserts"
+    "dovetails rev 2"
    ],
-   "grams": 20,
-   "source": "estimate",
-   "note": "calibration"
+   "note": ""
   },
   {
-   "date": "by 2026-11-15",
+   "date": "2026-11-08 18:58",
+   "bambu_job": "181_petg_insert_holes",
+   "hours": 0.33,
    "plate": "P1d",
    "version": 1,
    "material": "PETG",
-   "parts": [
-    "P1d_PETG_inserts_only"
-   ],
    "grams": 4,
    "source": "estimate",
-   "note": "calibration"
+   "status": "done",
+   "parts": [
+    "insert hole bar"
+   ],
+   "note": ""
   },
   {
-   "date": "by 2026-11-15",
-   "plate": "P5",
+   "date": "2026-11-08 19:18",
+   "bambu_job": "181_petg_insert_holes",
+   "hours": 0.38,
+   "plate": "P1d",
    "version": 1,
-   "material": "PLA",
-   "parts": [
-    "P5_PLA_insert_holes"
-   ],
+   "material": "PETG",
    "grams": 4,
    "source": "estimate",
-   "note": "calibration"
-  },
-  {
-   "date": "by 2026-11-15",
-   "plate": "P8",
-   "version": "1",
-   "material": "PLA",
+   "status": "done",
    "parts": [
-    "130_stud_ring_left_hopper"
+    "insert hole bar rev 2 (picked 4.4)"
    ],
-   "grams": 148,
-   "source": "estimate",
-   "note": "red"
-  },
-  {
-   "date": "by 2026-11-15",
-   "plate": "P9",
-   "version": "1",
-   "material": "PLA",
-   "parts": [
-    "131_stud_cap_right"
-   ],
-   "grams": 172,
-   "source": "estimate",
-   "note": "red"
-  },
-  {
-   "date": "by 2026-11-15",
-   "plate": "P11",
-   "version": "1",
-   "material": "PLA",
-   "parts": [
-    "201_hopper"
-   ],
-   "grams": 152,
-   "source": "estimate",
-   "note": "red; rev 1 hopper, printed with supports (support not counted)"
-  },
-  {
-   "date": "by 2026-11-15",
-   "plate": "P12",
-   "version": "1",
-   "material": "PLA",
-   "parts": [
-    "202_feed_chute"
-   ],
-   "grams": 30,
-   "source": "estimate",
-   "note": "red"
-  },
-  {
-   "date": "by 2026-11-15",
-   "plate": "P3",
-   "version": "1",
-   "material": "PETG",
-   "parts": [
-    "203_V1_tray",
-    "207_leaf_spring_V1_1"
-   ],
-   "grams": 37,
-   "source": "estimate",
    "note": ""
   },
   {
-   "date": "by 2026-11-15",
-   "plate": "P4",
-   "version": "1",
-   "material": "PETG",
-   "parts": [
-    "160_rail_R_guided",
-    "161_rail_L_floating"
-   ],
-   "grams": 63,
-   "source": "estimate",
-   "note": "rails missing the front face insert: drill 4.4"
-  },
-  {
-   "date": "by 2026-11-15",
-   "plate": "P14+P4",
-   "version": "1",
-   "material": "PETG",
-   "parts": [
-    "204_V2_tray",
-    "207_leaf_spring_V1_2",
-    "207_leaf_spring_V2_1",
-    "207_leaf_spring_V2_2",
-    "50b_drum_625_roller_PETG_pocket16.1_1",
-    "50b_drum_625_roller_PETG_pocket16.1_2",
-    "50b_drum_625_roller_PETG_pocket16.1_3",
-    "50b_drum_625_roller_PETG_pocket16.1_4",
-    "162_station_L",
-    "162_station_R",
-    "164_guide_block_R"
-   ],
-   "grams": 120,
-   "source": "estimate",
-   "note": ""
-  },
-  {
-   "date": "by 2026-11-15",
-   "plate": "P2",
-   "version": "1",
-   "material": "PETG",
-   "parts": [
-    "172_reed_coupon_tray",
-    "172_reed_coupon_floor",
-    "120_clip_C1_single",
-    "213_servo_saddle"
-   ],
-   "grams": 32,
-   "source": "estimate",
-   "note": ""
-  },
-  {
-   "date": "by 2026-11-15",
-   "plate": "P13/P16/P18",
-   "version": "1",
-   "material": "PETG",
-   "parts": [
-    "215_camera_bridge",
-    "214_trapdoor_A",
-    "214_trapdoor_B",
-    "56_drum_NEMA17_adjustable_bracket",
-    "211_landing_ramp_low",
-    "63_vib_motor_cap_1",
-    "63_vib_motor_cap_2",
-    "57d_door_slider",
-    "59b_servo_link"
-   ],
-   "grams": 142,
-   "source": "estimate",
-   "note": ""
-  },
-  {
-   "date": "by 2026-11-15",
-   "plate": "P16",
-   "version": "1",
-   "material": "PETG",
-   "parts": [
-    "49b_drum_static_outlet_plate"
-   ],
-   "grams": 72,
-   "source": "estimate",
-   "note": ""
-  },
-  {
-   "date": "by 2026-11-15",
-   "plate": "P17",
-   "version": "1",
-   "material": "TPU",
-   "parts": [
-    "55_drum_friction_tire_TPU"
-   ],
-   "grams": 4,
-   "source": "estimate",
-   "note": ""
-  },
-  {
-   "date": "2026-11-15",
-   "plate": "P18",
-   "version": "2",
-   "material": "PETG",
-   "parts": [
-    "210_scanner_plate"
-   ],
-   "grams": 103,
-   "source": "estimate",
-   "note": "scanner plate rev 2"
-  },
-  {
-   "date": "by 2026-11-08",
+   "date": "2026-11-08 20:20",
+   "bambu_job": "160_rail + 161 + 162...",
+   "hours": 0.17,
    "plate": "P4 (old 4.x kit)",
    "version": 0,
    "material": "PETG",
+   "grams": 3,
+   "source": "estimate",
+   "status": "canceled",
    "parts": [
-    "old runner kit, superseded"
+    "runner kit"
    ],
-   "grams": 0,
-   "source": "unknown",
-   "note": "printed before the 5.1 kit; grams not known"
+   "note": "stopped at ~10 min"
+  },
+  {
+   "date": "2026-11-08 20:32",
+   "bambu_job": "160_rail + 161 + 162...",
+   "hours": 2.9,
+   "plate": "P4 (old 4.x kit)",
+   "version": 0,
+   "material": "PETG",
+   "grams": 99,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "rails, stations, guide (old 4.x kit, superseded)"
+   ],
+   "note": "rough: same parts as the 5.1 kit"
+  },
+  {
+   "date": "2026-11-09 13:22",
+   "bambu_job": "184_pla_insert_holes",
+   "hours": 0.3,
+   "plate": "P5",
+   "version": 1,
+   "material": "PLA",
+   "grams": 4,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "PLA insert bar"
+   ],
+   "note": ""
+  },
+  {
+   "date": "2026-11-09 13:55",
+   "bambu_job": "P6_PLA_face_B1",
+   "hours": 3.4,
+   "plate": "P6",
+   "version": 1,
+   "material": "PLA",
+   "grams": 89,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "drawer face B1 (red + black lettering)"
+   ],
+   "note": ""
+  },
+  {
+   "date": "2026-11-09 21:13",
+   "bambu_job": "P8_PLA_red_stud_left_hopper",
+   "hours": 3.5,
+   "plate": "P8",
+   "version": 1,
+   "material": "PLA",
+   "grams": 148,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "130 stud ring left (red)"
+   ],
+   "note": ""
+  },
+  {
+   "date": "2026-11-10 14:31",
+   "bambu_job": "p8-p12_plate_2",
+   "hours": 3.7,
+   "plate": "P9",
+   "version": 1,
+   "material": "PLA",
+   "grams": 172,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "131 stud cap right (red)"
+   ],
+   "note": ""
+  },
+  {
+   "date": "2026-11-12 16:47",
+   "bambu_job": "p8-p12_plate_5",
+   "hours": 3.1,
+   "plate": "P11",
+   "version": 1,
+   "material": "PLA",
+   "grams": 152,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "201 hopper rev 1 (red)"
+   ],
+   "note": "with supports, not counted"
+  },
+  {
+   "date": "2026-11-12 20:28",
+   "bambu_job": "p8-p12_plate_6",
+   "hours": 0.3,
+   "plate": "P3",
+   "version": 1,
+   "material": "PETG",
+   "grams": 4,
+   "source": "estimate",
+   "status": "canceled",
+   "parts": [
+    "V1 tray + spring"
+   ],
+   "note": "stopped at ~18 min"
+  },
+  {
+   "date": "2026-11-12 20:47",
+   "bambu_job": "p8-p12_plate_6",
+   "hours": 1.3,
+   "plate": "P3",
+   "version": 1,
+   "material": "PETG",
+   "grams": 37,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "203 V1 tray",
+    "207 spring V1_1"
+   ],
+   "note": ""
+  },
+  {
+   "date": "2026-11-12 22:20",
+   "bambu_job": "p8-p12_plate_9",
+   "hours": 2.2,
+   "plate": "P12",
+   "version": 1,
+   "material": "PETG",
+   "grams": 30,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "202 feed chute"
+   ],
+   "note": "black in the history thumbnail"
+  },
+  {
+   "date": "2026-11-13 09:26",
+   "bambu_job": "p8-p12_plate_8",
+   "hours": 7.0,
+   "plate": "P14+P4",
+   "version": 1,
+   "material": "PETG",
+   "grams": 120,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "204 V2 tray",
+    "207 springs x3",
+    "50b rollers x4",
+    "162 stations L/R",
+    "164 guide R"
+   ],
+   "note": ""
+  },
+  {
+   "date": "2026-11-13 17:25",
+   "bambu_job": "p8-p12_plate_10",
+   "hours": 1.5,
+   "plate": "P2",
+   "version": 1,
+   "material": "PETG",
+   "grams": 32,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "172 reed coupon tray + floor",
+    "120 clip C1",
+    "213 servo saddle"
+   ],
+   "note": ""
+  },
+  {
+   "date": "2026-11-13 19:23",
+   "bambu_job": "p8-p12_plate_3",
+   "hours": 2.0,
+   "plate": "P4",
+   "version": 1,
+   "material": "PETG",
+   "grams": 63,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "160 rail R",
+    "161 rail L"
+   ],
+   "note": "missing the front face insert: drill 4.4"
+  },
+  {
+   "date": "2026-11-14 10:00",
+   "bambu_job": "p8-p12_plate_4",
+   "hours": 5.8,
+   "plate": "P13/P16/P18",
+   "version": 1,
+   "material": "PETG",
+   "grams": 142,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "215 camera bridge",
+    "214 trapdoors A/B",
+    "56 NEMA17 bracket",
+    "211 landing ramp",
+    "63 caps x2",
+    "57d slider",
+    "59b servo link"
+   ],
+   "note": ""
+  },
+  {
+   "date": "2026-11-14 16:12",
+   "bambu_job": "p8-p12_plate_12",
+   "hours": 2.2,
+   "plate": "P16",
+   "version": 1,
+   "material": "PETG",
+   "grams": 72,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "49b drum outlet plate"
+   ],
+   "note": ""
+  },
+  {
+   "date": "2026-11-14 19:28",
+   "bambu_job": "p8-p12_plate_15",
+   "hours": 0.5,
+   "plate": "P17",
+   "version": 1,
+   "material": "TPU",
+   "grams": 4,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "55 drum tire"
+   ],
+   "note": ""
+  },
+  {
+   "date": "2026-11-14 21:33",
+   "bambu_job": "p8-p12_plate_16",
+   "hours": 3.6,
+   "plate": "P18",
+   "version": 2,
+   "material": "PETG",
+   "grams": 103,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "210 scanner plate"
+   ],
+   "note": "confirm v2: 8 mm holes in the plate over each leg"
+  },
+  {
+   "date": "2026-11-15 01:20",
+   "bambu_job": "p8-p12_plate_11",
+   "hours": 10.6,
+   "plate": "P15",
+   "version": 1,
+   "material": "PETG",
+   "grams": 342,
+   "source": "estimate",
+   "status": "printing",
+   "parts": [
+    "47b drum barrel"
+   ],
+   "note": "3 walls"
   }
  ]
 }
