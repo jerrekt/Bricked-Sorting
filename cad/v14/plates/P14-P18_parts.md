@@ -37,7 +37,7 @@ All print without supports unless noted. Everything is PETG except P17 (TPU tire
 ## P18 — PETG — scanner and electronics (3 plates; M3 insert holes 4.4 for PETG)
 | Part | What it is |
 |---|---|
-| 210_scanner_plate | Platform where each brick stops to be scanned; sits on 4 standoffs on the deck. Small tree support (~15 cm²) |
+| 210_scanner_plate | Platform where each brick stops to be scanned; sits on 4 standoffs on the deck. Rev 2: no supports (flared feet, hinge tabs joined, screw access holes) |
 | 214_trapdoor_A, B | Trapdoors in the scanner plate; open to drop the brick after the scan |
 | 220_drop_funnel | Under the trapdoors; guides the brick down into the scoop cup. Small tree support |
 | 217_xiao_sense_camera_mount | Holds the XIAO ESP32-S3 Sense camera over the scanner |

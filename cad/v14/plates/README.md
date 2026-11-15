@@ -24,4 +24,4 @@ Runner kit plate comes after the PETG numbers are in.
 | P15_PETG_drum_barrel | PETG | 47b tumbler barrel (V13 reuse), outlet end down, ~7 h | v13_reuse/ STLs exported from cad/reference_v13 STEPs; ~2 cm2 tree support under the flight |
 | P16_PETG_drum_and_scanner_small_plate1-3 | PETG | 49b outlet plate, 48 rear guard, 54 drive core, 56 NEMA17 bracket, 2x 62 saddle, 2x 63 cap, 2x 59 door link, 59b, 57d, 60 | V13 reuse, no supports |
 | P17_TPU_drum_tire | TPU | 55 friction tire | |
-| P18_PETG_deck_scanner_electronics_plate1-3 | PETG (insert holes 4.4) | 210 scanner plate, 214 trapdoors A/B, 220 funnel, 225 electronics trays 1a/1b/2_pi, 227 PSU cover, 217 XIAO camera mount, 226 clip 3 | scanner plate, funnel, electronics trays: Tree (auto) supports, build plate only |
+| P18_PETG_deck_scanner_electronics_plate1-3 | PETG (insert holes 4.4) | 210 scanner plate, 214 trapdoors A/B, 220 funnel, 225 electronics trays 1a/1b/2_pi, 227 PSU cover, 217 XIAO camera mount, 226 clip 3 | scanner plate rev 2 no supports; funnel, electronics trays: Tree (auto) supports, build plate only |
