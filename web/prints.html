@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bricked Sorting Prints</title>
+<meta name="description" content="3D print progress for the Bricked Sorting machine: filament and print time used and left.">
+<meta property="og:title" content="Bricked Sorting">
+<meta property="og:description" content="3D print progress for Bricked Sorting.">
+<meta property="og:image" content="https://bricked-01.adsuaracloud.com/assets/logo-720.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#e3261c">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.prints{padding-top:16px;padding-bottom:24px;display:grid;gap:20px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--surface-2)}
+.kpi span{display:block;font-size:13px;color:var(--muted)}
+.kpi b{font-size:26px;font-variant-numeric:tabular-nums}
+.kpi.left b{color:var(--accent)}
+.kpi small{display:block;font-size:12px;color:var(--muted)}
+.bar{height:12px;border-radius:6px;background:var(--surface-2);overflow:hidden;margin:12px 0 4px;display:flex}
+.bar i{display:block;height:100%}
+.bar .d{background:var(--ok)} .bar .p{background:var(--pop)}
+.legend{display:flex;gap:14px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+th{font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+td.n,th.n{text-align:right}
+.grp{margin-top:10px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);overflow:hidden}
+.grp summary{cursor:pointer;display:flex;justify-content:space-between;gap:10px;padding:12px 16px;font-weight:700;list-style:none}
+.grp summary::-webkit-details-marker{display:none}
+.grp summary span{font-weight:600;color:var(--muted);font-size:14px}
+.grp .tw{overflow-x:auto;padding:0 8px 8px;background:var(--surface)}
+.st{font-size:12px;font-weight:700;padding:1px 7px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.st.done{background:var(--ok);border-color:var(--ok);color:#fff}
+.st.printing{background:var(--pop);border-color:var(--pop);color:var(--pop-fg)}
+@media (max-width:700px){.kpis{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<script src="assets/intro.js"></script>
+<header class="top"><div class="wrap">
+  <a class="logo" href="./"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
+  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.032</a>
+  <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="live.html">Live</a><a href="tasks.html">Tasks</a><a href="parts.html">Parts</a><a href="prints.html" aria-current="page">Prints</a><a href="camera.html">Camera</a></nav>
+</div></header>
+
+<main class="wrap prints">
+  <section class="card">
+    <h2>3D prints</h2>
+    <div class="kpis">
+      <div class="kpi"><span>Filament used</span><b id="k-used">–</b><small id="k-used-s"></small></div>
+      <div class="kpi left"><span>Filament left to print</span><b id="k-left">–</b><small id="k-left-s"></small></div>
+      <div class="kpi left"><span>Print time left</span><b id="k-time">–</b><small id="k-time-s"></small></div>
+      <div class="kpi"><span>Parts printed</span><b id="k-parts">–</b><small id="k-parts-s"></small></div>
+    </div>
+    <div class="bar" id="bar" aria-label="Machine printed by weight"></div>
+    <div class="legend"><span><i style="background:var(--ok)"></i>Printed</span><span><i style="background:var(--pop)"></i>Printing now</span><span><i style="background:var(--surface-2);border:1px solid var(--line)"></i>Left</span></div>
+    <p class="muted small" id="note"></p>
+  </section>
+  <section class="card">
+    <h2>By section</h2>
+    <div id="groups"></div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><span>Bricked Sorting task board.</span><nav class="foot-links"><a href="https://github.com/jerrekt/Bricked-Sorting" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://bja.adsuaracloud.com" target="_blank" rel="noopener noreferrer">bja.adsuaracloud.com</a><a href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Changelog</a></nav><span class="foot-course">SJSU Tech 190A, Senior Project I, Fall 2026 · Instructor Vlad Ionescu</span></div></footer>
+<script>
+(async () => {
+  const $ = id => document.getElementById(id);
+  const kg = g => (g / 1000).toFixed(2) + ' kg';
+  let d;
+  try { d = await (await fetch('data/prints.json', {cache: 'no-store'})).json(); } catch (e) { $('note').textContent = 'Could not load data/prints.json.'; return; }
+  const S = d.summary, tot = S.total.grams;
+  $('k-used').textContent = kg(d.used_so_far.grams);
+  $('k-used-s').textContent = `${d.used_so_far.jobs} jobs, ${Math.round(d.used_so_far.hours)} h (tests included)`;
+  $('k-left').textContent = kg(S.left.grams);
+  $('k-left-s').textContent = `of ${kg(tot)} for the whole machine`;
+  $('k-time').textContent = '~' + d.left_at_pace_hours + ' h';
+  $('k-time-s').textContent = `CAD estimate ${Math.round(S.left.hours)} h x ${d.pace_factor} (BJ's real pace)`;
+  let n = 0, nd = 0;
+  d.parts.forEach(p => { n += p.qty; nd += p.done; });
+  $('k-parts').textContent = `${nd} / ${n}`;
+  $('k-parts-s').textContent = d.printing_now.length ? 'printing: ' + d.printing_now.join(', ') : '';
+  const pct = g => (100 * g / tot).toFixed(1) + '%';
+  $('bar').innerHTML = `<i class="d" style="width:${pct(S.done.grams)}"></i><i class="p" style="width:${pct(S.printing.grams)}"></i>`;
+  $('note').textContent = `Updated ${d.updated}. Estimates from the CAD (no supports, brim or purge); "used" is from the Bambu print history.`;
+  const groups = {};
+  d.parts.forEach(p => (groups[p.module] = groups[p.module] || []).push(p));
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+  $('groups').innerHTML = Object.entries(groups).map(([m, ps]) => {
+    const M = d.modules[m];
+    const rows = ps.map(p => {
+      const st = p.left === 0 && p.printing === 0 ? '<span class="st done">done</span>' : p.printing ? '<span class="st printing">printing</span>' : p.done ? `<span class="st">${p.done}/${p.qty}</span>` : '<span class="st">to print</span>';
+      return `<tr><td>${esc(p.part)}</td><td>${esc(p.material)}</td><td class="n">${p.qty}</td><td class="n">${Math.round(p.g_each * p.qty)}</td><td class="n">${(p.h_each * p.qty).toFixed(1)}</td><td>${st}</td></tr>`;
+    }).join('');
+    return `<details class="grp"><summary>${esc(m)}<span>${kg(M.left_g)} / ${Math.round(M.left_h * d.pace_factor)} h left · ${M.parts - M.parts_left} of ${M.parts} parts</span></summary>
+      <div class="tw"><table><thead><tr><th>Part</th><th>Design material</th><th class="n">Qty</th><th class="n">g</th><th class="n">h (CAD)</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
+  }).join('');
+})();
+</script>
+</body>
+</html>
