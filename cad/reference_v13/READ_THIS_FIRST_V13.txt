@@ -1,0 +1,58 @@
+BRICKED SORTING - V13: STATIC DRUM OUTLET PLATE + HELICAL FLIGHT
+2026-11-05 PT. Units mm. Made by Claude in CadQuery on top of V12 (read
+READ_THIS_FIRST_V12.txt first; everything there still holds, same body
+1040 x 520 x 1248 plus the hopper). PROPOSED, NOT A PRINT RELEASE.
+Scripts: build_drum_v13.py (the two new drum parts, in the V7 barrel frame),
+build_machine_v13.py (V12 plus the drum swap) and render_machine_v13.py.
+Checks: machine_checks.json and isolate_v13/drum_v13_checks.json.
+
+WHAT CHANGED (BJ 2026-11-04: "the circle at the end of the tumbler should be
+static. the inside should be a spiral to help push it forward")
+47b TUMBLER BARREL WITH HELICAL FLIGHT replaces 47 (three straight ribs).
+    Same 160 OD x 152 ID x 180 tube, same three end bosses and M3 inserts, so
+    the drive core 54, tire 55, rollers 50 and cradles 52 are unchanged.
+    Inside: one triangular flight, 12 tall x 12 wide at the wall, pitch 90,
+    1.75 turns from z 8 to z 165. Underside is 45 deg, so it prints with the
+    axis vertical and no supports. Every turn of the drum walks a brick 90
+    forward; at 4 rpm that is 6 mm/s, about 30 s end to end, while the
+    tumbling still separates the pieces. 410 cm3 of PLA.
+49b STATIC OUTLET PLATE replaces the rotating eccentric cap 49 AND the
+    thrust holder 57. One printed part, 172 dia x 26, face down on the bed:
+    - face plate 4 thick at the barrel's front end, 1 mm off the barrel,
+    - inner spill lip 8 wide reaching 6 mm into the bore (r 58..67) so
+      pieces cannot fall out between barrel and plate, cut away over the
+      outlet,
+    - thrust ring r 68..80 that the barrel's front bosses run against (the
+      plate carries the end load; the 9th 625 bearing on 57 is gone),
+    - outlet window 65 wide, r 28..68, at the bottom (the barrel's +X, down
+      side). The window's inner edge sits 8 mm in from the wall, so a brick
+      has to ride up the flight and tip over the lip: nothing falls out on
+      its own, the spiral has to deliver it.
+    - two ears, one per cradle: 8 x 40 tab on the top of the plate and a
+      4 mm strip on the cradle's inner face (y 83.5..87.5 from the drum
+      axis), two M3 each, through the cradle plate. Print the ears at 100%
+      walls; the whole drum's thrust goes through them.
+DROPPED: 49 eccentric cap, 57 thrust holder, one 625 bearing (9 -> 8).
+NO OTHER PART MOVED. Cradles, rollers, motor bridge, chute and hopper are the
+V12 files; the chute still aims into the barrel's rear end.
+
+CHECKS RUN (geometry only, all clean)
+- Barrel turned in 30 deg steps against the static plate: 0 mm3 at all 12.
+- Same 12 angles against every fixed part near the drum in the machine: 0.
+- Isolation modules: only the by-design drum core/tire overlap.
+- Lift and scoop at 24 poses, doors open vs scoop, drawers out 350 mm,
+  latch: unchanged from V12, all clean.
+- 47b and 49b: single valid watertight solids, fit the 248 x 248 x 256 bed.
+NOT checked: whether 1.75 turns is the right dwell (make it a variable:
+PITCH and TURNS at the top of build_drum_v13.py), how fast bricks really
+climb the 45 deg underside, friction of the bosses on the printed thrust
+ring (a PTFE or wax ring glued on r 68..80 is the easy fix), ear stiffness.
+
+PRINT ORDER (runbook: test small first)
+1 49b plate alone: check the ears on the cradles and the window edge.
+2 47b barrel (axis vertical, outlet end down, about 7 h): spin by hand on the
+  rollers against the plate, then drop ten mixed bricks in and time them.
+3 If pieces take too long, cut TURNS to 1.25; if they shoot through, 2.25.
+
+ANIMATION: v13_one_piece_run.mp4 is kinematic (drum turns, brick advances at
+the flight rate, no physics).

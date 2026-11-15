@@ -1,0 +1,89 @@
+BRICKED SORTING - V10 BINS, LOCATORS AND COMPACT SCOOP (600 x 350 OPTION)
+2026-11-03. Units mm. Made by Claude from the V9 selected design and the
+2026-10-30 allocation update. PROPOSED GEOMETRY, NOT A PRINT RELEASE.
+Source: build_bins_v10.py and render_bins_v10.py (copies here; to rerun,
+put them in the package root next to render_previews_v3.py, CadQuery 2.8). All checks
+and numbers: dimensions_and_checks.json. Picture: V10_overview.png.
+
+WHAT THIS IS
+Two tiers of 8 wedge bins around the scoop yaw axis, one 22.5 deg slot each,
+so the scoop turns the same step for every bin. BJ 2026-11-03 12:34 PT: each
+floor standardizes to its biggest size; the only difference is floor 1 vs 2.
+So there are just two bin types, and every mouth is the same width:
+  Floor 1 (lower, bricks), 8 x part 40: walls 140, inner wall (sill) 70. The
+    opening above the sill is the receiving window; the upper carrier sits 10
+    above the rim.
+  Floor 2 (upper, other parts), 8 x part 41: walls 140, open top (the old L).
+The allocation's S/M/L classes no longer change any geometry.
+Geometric volume: floor 1 0.68 L each to the sill, floor 2 1.29 L each to
+10 below the rim. Floor 2 share 65% (allocation target 60%). These are
+geometric numbers before packing voids, not measured LEGO loose-fill. Do the
+loose-fill measurement from ALLOCATION_UPDATE before trusting any capacity.
+
+FOOTPRINT
+Both tiers 596 wide x 298 deep from the yaw axis (lip edge), so they fit the
+600 x 350 target with 52 mm for the carrier front and runners. Stack 320 tall
+from the lower carrier top. Bins 6 mm apart. Every bin and locator was
+intersected with every other one: no clashes.
+
+PARTS (all fit a 248 x 248 bed; single solid, watertight, checked)
+40 floor 1 bin x8      106 x 148 x 140   print upright, open top
+41 floor 2 bin x8      106 x 148 x 140   print upright, open top
+42 bin locator x16     114 x 147 x 16.5  print flat, bottom on bed
+43 compact scoop x1    print flat; 252 long, so rotate it about 45 deg on
+                       the bed (fits at 236 x 236)
+Bin walls and floor 2.4 (same as test bins V1/V2). No supports: the
+deflector and grip lip undersides are 45 deg.
+
+BIN FEATURES (selections N and P1)
+- Integral receiving mouth (P1): the inner wall is the sill, with a 45 deg
+  deflector inside it so a part that clips the edge slides into the bin.
+- Easy grip for kids (N): an 8 mm grip lip around the outer wall top. Grab the
+  lip from outside with fingers over the rim. No latch, no tool, no bar.
+- Shallow locating pocket (N): each bin drops into its own locator, a 3 mm
+  pocket with 0.6 mm clearance per side. Loose on purpose so kids can lift
+  bins out. Runbook fits (0.07 sliding, -0.02 press) are for joints, not this.
+- Presence switch: a pocket in each locator holds a KW11-3Z roller-lever
+  switch upright, lever up through a 4.6 x 24 window. The empty bin's weight
+  presses the roller. Wires run in a 6 x 4 groove to the inner edge.
+  The switch body size is NOT measured: SW_L 20, SW_W 6.4, SW_H 10.3 are
+  typical values. Measure one of your 40 switches with calipers and edit SW_*
+  before printing 16 locators. The carrier underneath traps the switch.
+- Three M3 countersunk holes per locator screw it down to the carrier
+  (carrier holes and inserts are not designed yet).
+
+COMPACT SCOOP (part 43, replaces V3 part 05, same hub 06 and 4 M3 screws)
+110 wide catch area under the scanner tapering to a 40 wide outlet, 40 deg
+floor, outlet floor at r 135. Everything is trimmed inside r 137 so the scoop
+can turn and move up/down at any height without touching a bin or locator
+(locators start at r 149, bins at r 152). Checked at all 16 delivery poses:
+no clashes. Outlet 40 vs bin mouth 49.5: 4.2 mm margin after 1 deg yaw error
+each side. Parts wider than 40 across do not fit the outlet: the 6x8 plate
+(48 wide) needs an exclusion or a wider outlet.
+
+PART FLIGHT (estimate, not tested)
+The part leaves the outlet and has to cross 17.5 mm to the bin wall while
+dropping 39 mm. Estimated exit speed 0.8 to 1.2 m/s (friction 0.6 to 0.3),
+which crosses 31 to 36 mm. Below about 0.45 m/s a part could drop into the
+centre column under the scoop. Test with real parts before printing 16 bins.
+
+MUST CHANGE ELSEWHERE
+1 Lift travel: delivery heights need 236 mm of lift travel (lowest scoop point
+  from 118.5 at the lower bins to 355 at the floor 2 bins, both measured from
+  the lower carrier top). A 30 mm tall part on the outlet clears the upper
+  carrier by 10.8 mm at the lower tier. The V3 lift CAD
+  has 105 (H 95 to 200). The 350 mm rods and 300 mm T8 screw in the BOM may
+  allow it; the tower, brace and switch mounts need a taller version. Or make
+  the floor 2 bins shorter (each 10 mm off saves 10 mm of travel).
+2 Carriers: U-shaped trays with the r 150 cutout from V5, flat under the
+  locators, with M3 holes for the locators. Not designed here.
+3 Filament: CAD solid volume is about 2.8 L for the 16 bins (walls are nearly
+  solid at 4 loops) and 2.7 L for the 16 locators (mostly infill). Expect
+  roughly 3 to 4 kg of PLA; slice to confirm. This is far above the BOM line.
+
+PRINT ORDER (runbook rule: test small first)
+1 Measure a KW11-3Z switch; edit SW_*; print ONE locator.
+2 Print ONE floor 1 bin and ONE floor 2 bin. Check the drop-in fit, the lip grip
+  and that an empty bin presses the switch.
+3 Print the compact scoop and slide 20 real parts down it into a bin by hand.
+4 Only then batch the rest.

@@ -1,0 +1,414 @@
+{
+  "status": "PROPOSED V10 GEOMETRY, not a print release",
+  "units": "mm",
+  "parts": {
+    "40_bin_lower_PRINT_8": {
+      "valid_single_solid": true,
+      "watertight_mesh": true,
+      "triangles": 2002,
+      "extent_xyz": [
+        106.45,
+        147.73,
+        140.0
+      ],
+      "best_bed_rotation_deg": 0,
+      "bed_footprint_at_best": [
+        106.4,
+        147.7
+      ],
+      "fits_248x248x256": true,
+      "solid_volume_cm3": 170.6,
+      "sha256_stl": "6f0d5bbdccc86a8881d300b78e9bc3af676e1791341c003e5e2422652e7a3472"
+    },
+    "41_bin_upper_PRINT_8": {
+      "valid_single_solid": true,
+      "watertight_mesh": true,
+      "triangles": 1990,
+      "extent_xyz": [
+        106.45,
+        147.73,
+        140.0
+      ],
+      "best_bed_rotation_deg": 0,
+      "bed_footprint_at_best": [
+        106.4,
+        147.7
+      ],
+      "fits_248x248x256": true,
+      "solid_volume_cm3": 178.9,
+      "sha256_stl": "750e48119cabc9a7d29cb3c8f590e0954f02b5aab5d03eae5ee40f84b42dc512"
+    },
+    "42_bin_locator_PRINT_16": {
+      "valid_single_solid": true,
+      "watertight_mesh": true,
+      "triangles": 6254,
+      "extent_xyz": [
+        113.58,
+        146.65,
+        16.5
+      ],
+      "best_bed_rotation_deg": 0,
+      "bed_footprint_at_best": [
+        113.6,
+        146.7
+      ],
+      "fits_248x248x256": true,
+      "solid_volume_cm3": 167.6,
+      "sha256_stl": "a4ce90563b2821777431bfcbb848c994021b05b15abdaaa778fc7aa8cada9741"
+    },
+    "43_compact_scoop_PRINT_FLAT": {
+      "valid_single_solid": true,
+      "watertight_mesh": true,
+      "triangles": 6420,
+      "extent_xyz": [
+        122.0,
+        251.81,
+        48.2
+      ],
+      "best_bed_rotation_deg": 45,
+      "bed_footprint_at_best": [
+        235.6,
+        235.6
+      ],
+      "fits_248x248x256": true,
+      "solid_volume_cm3": 160.3,
+      "sha256_stl": "4095f82a43c8d0112d11c55f34204020e6439106c977a59be7679408dc9954b3"
+    }
+  },
+  "frame": "Z = yaw axis; Z0 = top of lower carrier; +Y = pull-out direction",
+  "radii": {
+    "bin_inner_face": 152.0,
+    "bin_outer_face": 290.0,
+    "grip_lip_outer": 298.0,
+    "locator_inner_edge": 149.0,
+    "locator_outer_edge": 293.0,
+    "scoop_sweep_radius_measured": 137.0,
+    "scoop_outlet_floor_radius": 134.5
+  },
+  "radial_clearance_scoop_to_locator": 12.0,
+  "heights": {
+    "lower_seat": 13.5,
+    "lower_bin_walls": 140.0,
+    "lower_sill": 70.0,
+    "upper_carrier_underside": 163.5,
+    "upper_seat": 180.0,
+    "upper_bins": {
+      "S": 140.0,
+      "M": 140.0,
+      "L": 140.0
+    },
+    "stack_top": 320.0
+  },
+  "footprint": {
+    "x": [
+      -298.0,
+      298.0
+    ],
+    "y": [
+      0.2,
+      298.0
+    ],
+    "z_top": 320.0,
+    "width": 596.0,
+    "depth_from_yaw_axis": 298.0
+  },
+  "fits_600x350": true,
+  "bin_and_locator_clashes": [],
+  "scoop_clashes_at_16_delivery_poses": [],
+  "delivery_poses": [
+    {
+      "tier": "lower",
+      "slot": 1,
+      "yaw_deg": 78.75,
+      "scoop_lowest_z": 118.5,
+      "outlet_floor_top_z": 122.7,
+      "sill_or_inner_wall_top_z": 83.5,
+      "drop_part_bottom_to_sill": 39.2,
+      "part_top_if_30mm": 152.7
+    },
+    {
+      "tier": "lower",
+      "slot": 2,
+      "yaw_deg": 56.25,
+      "scoop_lowest_z": 118.5,
+      "outlet_floor_top_z": 122.7,
+      "sill_or_inner_wall_top_z": 83.5,
+      "drop_part_bottom_to_sill": 39.2,
+      "part_top_if_30mm": 152.7
+    },
+    {
+      "tier": "lower",
+      "slot": 3,
+      "yaw_deg": 33.75,
+      "scoop_lowest_z": 118.5,
+      "outlet_floor_top_z": 122.7,
+      "sill_or_inner_wall_top_z": 83.5,
+      "drop_part_bottom_to_sill": 39.2,
+      "part_top_if_30mm": 152.7
+    },
+    {
+      "tier": "lower",
+      "slot": 4,
+      "yaw_deg": 11.25,
+      "scoop_lowest_z": 118.5,
+      "outlet_floor_top_z": 122.7,
+      "sill_or_inner_wall_top_z": 83.5,
+      "drop_part_bottom_to_sill": 39.2,
+      "part_top_if_30mm": 152.7
+    },
+    {
+      "tier": "lower",
+      "slot": 5,
+      "yaw_deg": -11.25,
+      "scoop_lowest_z": 118.5,
+      "outlet_floor_top_z": 122.7,
+      "sill_or_inner_wall_top_z": 83.5,
+      "drop_part_bottom_to_sill": 39.2,
+      "part_top_if_30mm": 152.7
+    },
+    {
+      "tier": "lower",
+      "slot": 6,
+      "yaw_deg": -33.75,
+      "scoop_lowest_z": 118.5,
+      "outlet_floor_top_z": 122.7,
+      "sill_or_inner_wall_top_z": 83.5,
+      "drop_part_bottom_to_sill": 39.2,
+      "part_top_if_30mm": 152.7
+    },
+    {
+      "tier": "lower",
+      "slot": 7,
+      "yaw_deg": -56.25,
+      "scoop_lowest_z": 118.5,
+      "outlet_floor_top_z": 122.7,
+      "sill_or_inner_wall_top_z": 83.5,
+      "drop_part_bottom_to_sill": 39.2,
+      "part_top_if_30mm": 152.7
+    },
+    {
+      "tier": "lower",
+      "slot": 8,
+      "yaw_deg": -78.75,
+      "scoop_lowest_z": 118.5,
+      "outlet_floor_top_z": 122.7,
+      "sill_or_inner_wall_top_z": 83.5,
+      "drop_part_bottom_to_sill": 39.2,
+      "part_top_if_30mm": 152.7
+    },
+    {
+      "tier": "upper",
+      "slot": 1,
+      "yaw_deg": 78.75,
+      "scoop_lowest_z": 355.0,
+      "outlet_floor_top_z": 359.2,
+      "sill_or_inner_wall_top_z": 320.0,
+      "drop_part_bottom_to_sill": 39.2,
+      "part_top_if_30mm": 389.2
+    },
+    {
+      "tier": "upper",
+      "slot": 2,
+      "yaw_deg": 56.25,
+      "scoop_lowest_z": 355.0,
+      "outlet_floor_top_z": 359.2,
+      "sill_or_inner_wall_top_z": 320.0,
+      "drop_part_bottom_to_sill": 39.2,
+      "part_top_if_30mm": 389.2
+    },
+    {
+      "tier": "upper",
+      "slot": 3,
+      "yaw_deg": 33.75,
+      "scoop_lowest_z": 355.0,
+      "outlet_floor_top_z": 359.2,
+      "sill_or_inner_wall_top_z": 320.0,
+      "drop_part_bottom_to_sill": 39.2,
+      "part_top_if_30mm": 389.2
+    },
+    {
+      "tier": "upper",
+      "slot": 4,
+      "yaw_deg": 11.25,
+      "scoop_lowest_z": 355.0,
+      "outlet_floor_top_z": 359.2,
+      "sill_or_inner_wall_top_z": 320.0,
+      "drop_part_bottom_to_sill": 39.2,
+      "part_top_if_30mm": 389.2
+    },
+    {
+      "tier": "upper",
+      "slot": 5,
+      "yaw_deg": -11.25,
+      "scoop_lowest_z": 355.0,
+      "outlet_floor_top_z": 359.2,
+      "sill_or_inner_wall_top_z": 320.0,
+      "drop_part_bottom_to_sill": 39.2,
+      "part_top_if_30mm": 389.2
+    },
+    {
+      "tier": "upper",
+      "slot": 6,
+      "yaw_deg": -33.75,
+      "scoop_lowest_z": 355.0,
+      "outlet_floor_top_z": 359.2,
+      "sill_or_inner_wall_top_z": 320.0,
+      "drop_part_bottom_to_sill": 39.2,
+      "part_top_if_30mm": 389.2
+    },
+    {
+      "tier": "upper",
+      "slot": 7,
+      "yaw_deg": -56.25,
+      "scoop_lowest_z": 355.0,
+      "outlet_floor_top_z": 359.2,
+      "sill_or_inner_wall_top_z": 320.0,
+      "drop_part_bottom_to_sill": 39.2,
+      "part_top_if_30mm": 389.2
+    },
+    {
+      "tier": "upper",
+      "slot": 8,
+      "yaw_deg": -78.75,
+      "scoop_lowest_z": 355.0,
+      "outlet_floor_top_z": 359.2,
+      "sill_or_inner_wall_top_z": 320.0,
+      "drop_part_bottom_to_sill": 39.2,
+      "part_top_if_30mm": 389.2
+    }
+  ],
+  "lift_travel_needed_mm": 236.5,
+  "lift_travel_in_existing_CAD_mm": 105,
+  "lower_window_margin_30mm_part_mm": 10.8,
+  "mouth_clear_width_at_inner_wall": 49.5,
+  "outlet_width": 40.0,
+  "mouth_margin_after_1deg_yaw_error_each_side": 4.2,
+  "flight_estimate": [
+    {
+      "tier": "lower",
+      "exit_speed_mm_s": 300,
+      "drop_mm": 39.2,
+      "horizontal_mm": 16.5,
+      "gap_to_cross_mm": 17.5
+    },
+    {
+      "tier": "lower",
+      "exit_speed_mm_s": 500,
+      "drop_mm": 39.2,
+      "horizontal_mm": 23.9,
+      "gap_to_cross_mm": 17.5
+    },
+    {
+      "tier": "lower",
+      "exit_speed_mm_s": 800,
+      "drop_mm": 39.2,
+      "horizontal_mm": 31.4,
+      "gap_to_cross_mm": 17.5
+    },
+    {
+      "tier": "lower",
+      "exit_speed_mm_s": 1100,
+      "drop_mm": 39.2,
+      "horizontal_mm": 36.0,
+      "gap_to_cross_mm": 17.5
+    },
+    {
+      "tier": "upper",
+      "exit_speed_mm_s": 300,
+      "drop_mm": 39.2,
+      "horizontal_mm": 16.5,
+      "gap_to_cross_mm": 17.5
+    },
+    {
+      "tier": "upper",
+      "exit_speed_mm_s": 500,
+      "drop_mm": 39.2,
+      "horizontal_mm": 23.9,
+      "gap_to_cross_mm": 17.5
+    },
+    {
+      "tier": "upper",
+      "exit_speed_mm_s": 800,
+      "drop_mm": 39.2,
+      "horizontal_mm": 31.4,
+      "gap_to_cross_mm": 17.5
+    },
+    {
+      "tier": "upper",
+      "exit_speed_mm_s": 1100,
+      "drop_mm": 39.2,
+      "horizontal_mm": 36.0,
+      "gap_to_cross_mm": 17.5
+    }
+  ],
+  "exit_speed_estimate_mm_s_by_friction": {
+    "0.3": 1186.0,
+    "0.45": 1008.0,
+    "0.6": 790.0
+  },
+  "capacity_geometric_liters": {
+    "1": {
+      "group": "Red / Orange",
+      "lower_L_to_sill": 0.684,
+      "upper_class": "M",
+      "upper_L_to_10mm_below_rim": 1.291
+    },
+    "2": {
+      "group": "Yellow",
+      "lower_L_to_sill": 0.684,
+      "upper_class": "S",
+      "upper_L_to_10mm_below_rim": 1.291
+    },
+    "3": {
+      "group": "Green / Lime",
+      "lower_L_to_sill": 0.684,
+      "upper_class": "S",
+      "upper_L_to_10mm_below_rim": 1.291
+    },
+    "4": {
+      "group": "Blue / Azure",
+      "lower_L_to_sill": 0.684,
+      "upper_class": "M",
+      "upper_L_to_10mm_below_rim": 1.291
+    },
+    "5": {
+      "group": "Pink / Purple",
+      "lower_L_to_sill": 0.684,
+      "upper_class": "S",
+      "upper_L_to_10mm_below_rim": 1.291
+    },
+    "6": {
+      "group": "Black / Dark Gray",
+      "lower_L_to_sill": 0.684,
+      "upper_class": "L",
+      "upper_L_to_10mm_below_rim": 1.291
+    },
+    "7": {
+      "group": "White / Light Gray",
+      "lower_L_to_sill": 0.684,
+      "upper_class": "L",
+      "upper_L_to_10mm_below_rim": 1.291
+    },
+    "8": {
+      "group": "Unknown color",
+      "lower_L_to_sill": 0.684,
+      "upper_class": "M",
+      "upper_L_to_10mm_below_rim": 1.291
+    }
+  },
+  "tier_totals_L": {
+    "lower": 5.47,
+    "upper": 10.33,
+    "upper_share": 0.654
+  },
+  "not_verified": [
+    "physical print fit",
+    "switch body size and roller height (SW_* parameters)",
+    "actuation by bin weight",
+    "loose-fill volume per color group",
+    "part flight and bounce",
+    "drawer carriers, runners, latches",
+    "lift travel extension",
+    "scanner/trapdoor drop onto the compact scoop"
+  ]
+}
