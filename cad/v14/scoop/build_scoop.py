@@ -15,6 +15,11 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
 from common import csk_cone
 from common import IF, M3_CLR, INSERT_D, INSERT_DEPTH, CB_D, CB_DEPTH, WOOD_SCREW, FIT, print_pose, bed_fit, export, bbox, grams, hours, render
+# BJ prints the scoop in PETG (2026-11-15): his PETG fits (vault runbooks/3d-printing.md 'PETG fits')
+FIT = 0.20             # sliding / keyed fit per side (PLA was 0.07; PETG 0.15 very tight)
+INSERT_D = 4.4         # M3 heat-set insert (PLA 4.3)
+M5_AXLE_R = 2.55       # M5 through the carriage plates: 5.1 push fit (5.0 screws in)
+STUB_R = 2.40          # printed 5 mm stub axle into a 625 bore: 4.8 in PETG (was 4.9)
 
 SZ = IF['zones']['S_scoop']; Z_MIN = SZ['z'][0]            # 134
 BM = IF['beam']; BX = BM['span_x']; BY = BM['zone_yz']['y']; BZ = BM['zone_yz']['z']   # +-335, +-15, 138..188
@@ -118,9 +123,9 @@ def carriage_local():
             sgn = 1 if p[1] > 0 else -1
             for z0 in (p[2] - ROLL_W / 2 - 6, p[2] + ROLL_W / 2):
                 c = c.union(box(p[0] - 6, p[0] + 6, *sorted((p[1] - sgn * 3, sgn * (yo + SIDE_T))), z0, z0 + 6))
-            c = c.cut(cylc((p[0], p[1], p[2]), (0, 0, 1), 2.5, 40))
+            c = c.cut(cylc((p[0], p[1], p[2]), (0, 0, 1), M5_AXLE_R, 40))
         else:            # top roller: axle along y through the two webs
-            c = c.cut(cylc((p[0], 0, p[2]), (0, 1, 0), 2.5, 40))
+            c = c.cut(cylc((p[0], 0, p[2]), (0, 1, 0), M5_AXLE_R, 40))
     for (p, a) in roller_specs():
         c = c.cut(cylc(p, a, ROLL_D / 2 + 1.0, ROLL_W + 1.2))
     c = c.cut(box(-CAR_X - 1, CAR_X + 1, BY[0] - 0.6, BY[1] + 0.6, BZ[0] - 0.6, BZ[1] + 0.6))
@@ -202,7 +207,7 @@ def cup_local():
     fl = fl.union(keel)
     # hubs on the end walls at the pivot, 5 mm stub axles into the tower 625s (both sides, 0.5 off the wall)
     for sx in (-1, 1):
-        fl = fl.union(cylc((sx * (SC_W + 3.0), 0, PIVOT_Z), (1, 0, 0), 2.45, 7.0))
+        fl = fl.union(cylc((sx * (SC_W + 3.0), 0, PIVOT_Z), (1, 0, 0), STUB_R, 7.0))
     # crank lever on the -x end wall (x -46.5 .. -45): r CRANK_R up from the pivot, M3 pin hole for the pushrod
     crank = box(CRANK_X - 1.5, -SC_W + 0.01, -5, 5, PIVOT_Z - 3, PIVOT_Z + CRANK_R + 5)
     crank = crank.cut(cylc((CRANK_X, 0, PIVOT_Z + CRANK_R), (1, 0, 0), 1.6, 10))

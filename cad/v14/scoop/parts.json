@@ -15,7 +15,7 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 139.8,
+   "est_grams": 139.7,
    "est_hours": 3.1
   },
   {
@@ -31,7 +31,7 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 117.7,
+   "est_grams": 117.6,
    "est_hours": 2.6
   },
   {
@@ -90,12 +90,12 @@
    "bed_face": "flat",
    "bed_extent": [
     26.0,
-    37.3,
+    37.16,
     18.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 6.6,
+   "est_grams": 6.4,
    "est_hours": 0.1
   },
   {
@@ -288,6 +288,6 @@
    "use": "rolling loop to the deck electronics"
   }
  ],
- "est_total_grams": 623,
+ "est_total_grams": 622,
  "est_total_hours": 13.8
 }
