@@ -14,8 +14,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 41.3,
-   "est_hours_each": 0.55,
+   "est_grams_each": 27.5,
+   "est_hours_each": 0.37,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -30,8 +30,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 82.1,
-   "est_hours_each": 1.09,
+   "est_grams_each": 52.5,
+   "est_hours_each": 0.7,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -46,8 +46,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 82.1,
-   "est_hours_each": 1.09,
+   "est_grams_each": 52.5,
+   "est_hours_each": 0.7,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -62,8 +62,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 36.7,
-   "est_hours_each": 0.49,
+   "est_grams_each": 24.0,
+   "est_hours_each": 0.32,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -78,8 +78,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 94.4,
-   "est_hours_each": 1.26,
+   "est_grams_each": 60.2,
+   "est_hours_each": 0.8,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -94,8 +94,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 94.4,
-   "est_hours_each": 1.26,
+   "est_grams_each": 60.2,
+   "est_hours_each": 0.8,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -110,8 +110,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 36.7,
-   "est_hours_each": 0.49,
+   "est_grams_each": 24.0,
+   "est_hours_each": 0.32,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -126,8 +126,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 94.4,
-   "est_hours_each": 1.26,
+   "est_grams_each": 60.2,
+   "est_hours_each": 0.8,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -142,8 +142,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 94.4,
-   "est_hours_each": 1.26,
+   "est_grams_each": 60.2,
+   "est_hours_each": 0.8,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -158,8 +158,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 41.3,
-   "est_hours_each": 0.55,
+   "est_grams_each": 27.5,
+   "est_hours_each": 0.37,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -174,8 +174,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 82.1,
-   "est_hours_each": 1.09,
+   "est_grams_each": 52.5,
+   "est_hours_each": 0.7,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -190,8 +190,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 82.1,
-   "est_hours_each": 1.09,
+   "est_grams_each": 52.5,
+   "est_hours_each": 0.7,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -206,8 +206,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 37.3,
-   "est_hours_each": 0.5,
+   "est_grams_each": 24.9,
+   "est_hours_each": 0.33,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -222,8 +222,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 71.9,
-   "est_hours_each": 0.96,
+   "est_grams_each": 46.2,
+   "est_hours_each": 0.62,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -238,8 +238,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 70.9,
-   "est_hours_each": 0.95,
+   "est_grams_each": 48.2,
+   "est_hours_each": 0.64,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -254,8 +254,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 40.7,
-   "est_hours_each": 0.54,
+   "est_grams_each": 26.5,
+   "est_hours_each": 0.35,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -270,8 +270,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 62.5,
-   "est_hours_each": 0.83,
+   "est_grams_each": 40.2,
+   "est_hours_each": 0.54,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -286,8 +286,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 29.0,
-   "est_hours_each": 0.39,
+   "est_grams_each": 19.7,
+   "est_hours_each": 0.26,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -318,8 +318,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 40.7,
-   "est_hours_each": 0.54,
+   "est_grams_each": 26.5,
+   "est_hours_each": 0.35,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -334,8 +334,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 62.5,
-   "est_hours_each": 0.83,
+   "est_grams_each": 40.2,
+   "est_hours_each": 0.54,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -350,8 +350,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 29.0,
-   "est_hours_each": 0.39,
+   "est_grams_each": 19.7,
+   "est_hours_each": 0.26,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -382,8 +382,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 37.3,
-   "est_hours_each": 0.5,
+   "est_grams_each": 24.9,
+   "est_hours_each": 0.33,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -398,8 +398,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 71.9,
-   "est_hours_each": 0.96,
+   "est_grams_each": 46.2,
+   "est_hours_each": 0.62,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -414,8 +414,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 71.9,
-   "est_hours_each": 0.96,
+   "est_grams_each": 46.2,
+   "est_hours_each": 0.62,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -430,8 +430,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 82.1,
-   "est_hours_each": 1.09,
+   "est_grams_each": 52.5,
+   "est_hours_each": 0.7,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -446,8 +446,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 82.1,
-   "est_hours_each": 1.09,
+   "est_grams_each": 52.5,
+   "est_hours_each": 0.7,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -462,8 +462,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 82.1,
-   "est_hours_each": 1.09,
+   "est_grams_each": 52.5,
+   "est_hours_each": 0.7,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -478,8 +478,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 82.1,
-   "est_hours_each": 1.09,
+   "est_grams_each": 52.5,
+   "est_hours_each": 0.7,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -494,8 +494,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 82.1,
-   "est_hours_each": 1.09,
+   "est_grams_each": 52.5,
+   "est_hours_each": 0.7,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -510,8 +510,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 82.1,
-   "est_hours_each": 1.09,
+   "est_grams_each": 52.5,
+   "est_hours_each": 0.7,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -526,8 +526,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 82.1,
-   "est_hours_each": 1.09,
+   "est_grams_each": 52.5,
+   "est_hours_each": 0.7,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -542,8 +542,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 82.1,
-   "est_hours_each": 1.09,
+   "est_grams_each": 52.5,
+   "est_hours_each": 0.7,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -558,8 +558,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 82.1,
-   "est_hours_each": 1.09,
+   "est_grams_each": 52.5,
+   "est_hours_each": 0.7,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -574,8 +574,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 82.1,
-   "est_hours_each": 1.09,
+   "est_grams_each": 52.5,
+   "est_hours_each": 0.7,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -590,8 +590,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 82.1,
-   "est_hours_each": 1.09,
+   "est_grams_each": 52.5,
+   "est_hours_each": 0.7,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -606,8 +606,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 82.1,
-   "est_hours_each": 1.09,
+   "est_grams_each": 52.5,
+   "est_hours_each": 0.7,
    "orientation": "outer face on the bed, ribs up"
   },
   {
@@ -1420,7 +1420,7 @@
   },
   {
    "item": "red PLA",
-   "qty": "~4.3 kg"
+   "qty": "~3.5 kg"
   }
  ],
  "h_clip_positions": [
@@ -1876,10 +1876,10 @@
   }
  ],
  "totals": {
-  "printed_grams": 4338,
-  "printed_hours": 59.6,
+  "printed_grams": 3459,
+  "printed_hours": 47.9,
   "grams_by_group": {
-   "skin walls": 2470,
+   "skin walls": 1586,
    "access panel": 236,
    "roof": 606,
    "keeper bars": 40,

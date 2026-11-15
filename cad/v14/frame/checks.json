@@ -454,10 +454,10 @@
  },
  "skin_inside_wood_faces": [],
  "totals": {
-  "printed_grams": 4338,
-  "printed_hours": 59.6,
+  "printed_grams": 3459,
+  "printed_hours": 47.9,
   "grams_by_group": {
-   "skin walls": 2470,
+   "skin walls": 1586,
    "access panel": 236,
    "roof": 606,
    "keeper bars": 40,

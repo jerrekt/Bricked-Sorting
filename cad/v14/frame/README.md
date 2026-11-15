@@ -72,3 +72,7 @@ Correction: the 2026-11-06 run reported the faces 6 mm too deep. That was a fram
 
 ## Stud cap 131: no supports (2026-11-10 14:35 PT)
 Printed cap-top-down (P9), the screw ring at the open end was a 10 mm flat overhang and Bambu Studio asked for supports. The ring (r 96..105.6, 8 mm) now has a 45 deg face toward the cap top, so it prints with no supports; inserts at r 102 keep their full 5.8 depth. ~275 g, ~3.7 h. Checks unchanged (0 clashes).
+
+## Thinner wall tiles (2026-11-15 PT)
+BJ asked for less skin filament. Wall tiles 110-113: face 2.0 -> 1.2 mm (5 layers at 0.24), ribs 2.8 -> 3.6 so the outer face and rib tips stay where they were: clips, wood and D_WOOD unchanged. The IEC inlet tile keeps a 2.0 pad 6.5 mm around its cutout for the snap-in clips. Roof tiles, access panels and corner caps stay 2.0 (csk M3 screws). Skin walls 2470 -> 1586 g (frame printed 4338 -> 3459 g, 59.6 -> 47.9 h); support check 0.
+Vault line: `2026-11-15 PT, claim, Bricked Sorting: wall skin tiles 1.2 mm face (was 2.0), ribs 3.6, -0.9 kg; cad-v14-frame5.`

@@ -5,7 +5,7 @@ drilling_map.md/.json/.png and 4 stills).
 Machine coordinates (interface.json): origin floor centre, +Y front, +Z up, +X = front viewer's left.
 
 Skin system (all printed, no visible screws except the 8 access-panel screws):
-- tile = 2.0 mm face, printed face-down, with 1.6 x 2.8 mm ribs on the back (border ribs follow the outline,
+- tile = 1.2 mm face (2.0 until 2026-11-15; roof tiles, access panels, caps stay 2.0), printed face-down, with 1.6 x 3.6 mm ribs on the back (border ribs follow the outline,
   plus a rib on every wood line it crosses). Face outer at |x| 360 / |y| 180; ribs reach 4.8 in; the wood is 6 in.
 - C1 clip: channel block screwed to the wood (#6 x 3/4) that grips one rib (slot = rib + 2 x 0.07, runbook sliding fit).
 - C2 clip: same, slot for the two ribs at a tile seam over wood (beam posts).
@@ -31,6 +31,8 @@ W = IF['wood']; SK = IF['skin']; ST = IF['studs']
 XO, YO = 360.0, 180.0                                            # outer skin faces (interface skin.outer_faces; the 5.1 envelope y +-192 includes the drawer faces)
 Z_ROOF = 612.0; T_SKIN = 2.0; GAP = 4.0; D_WOOD = T_SKIN + GAP    # roof skin z 612..614; wood faces 6 in from the skin
 RIB_T, RIB_H = 1.6, 2.8                                           # rib thickness / height off the face back
+T_FACE = 1.2     # wall tile face (BJ 2026-11-15: thinner skin, -40 % filament). Outer face and rib tips stay put: ribs grow by T_SKIN - T_FACE,
+                 # so the clips, wood and D_WOOD do not change. Roof tiles, access panels and corner caps stay 2.0 (csk M3 screws).
 SLOT1 = RIB_T + 2 * FIT_SLIDE; SLOT2 = 2 * RIB_T + 2 * FIT_SLIDE
 CLIP_H = 3.4; SLOT_DEPTH = 2.4                                    # clip height off the wood (0.6 under the face), rib engagement
 OPEN = SK['drawer_openings']['front_and_back_walls']              # x -300..300, z 12..134
@@ -125,7 +127,7 @@ def rib_ring(poly):
 def build_tile(wall, poly, extra_ribs=(), notch_strips=(), face_cuts=(), rib_clear=None):
     """poly in (w, z). extra_ribs: (w0, w1, z0, z1) rectangles in (w, z) for ribs on wood lines.
     notch_strips: (w0, w1) vertical strips where no rib may be (keeper bars pass behind). face_cuts: (w, z) csk M3 holes."""
-    face = multi_to_cq(loc2d(wall, poly), T_SKIN, 0.0)
+    face = multi_to_cq(loc2d(wall, poly), T_FACE, 0.0)
     ribs2d = rib_ring(poly)
     for (w0, w1, z0, z1) in extra_ribs:
         ribs2d = ribs2d.union(sbox(w0, z0, w1, z1).intersection(poly.buffer(-RIB_T * 0.5, join_style='mitre')))
@@ -134,8 +136,11 @@ def build_tile(wall, poly, extra_ribs=(), notch_strips=(), face_cuts=(), rib_cle
     if rib_clear is not None:   # snap-in module: keep 6 mm of bare 2 mm face around the cutout for its clips, stiffening ring outside that
         ribs2d = ribs2d.difference(rib_clear.buffer(6.5, join_style='mitre'))
         ribs2d = ribs2d.union(rib_clear.buffer(9.5, join_style='mitre').difference(rib_clear.buffer(6.5, join_style='mitre')).intersection(poly))
-    ribs = multi_to_cq(loc2d(wall, ribs2d), RIB_H, T_SKIN - 0.01)
+    ribs = multi_to_cq(loc2d(wall, ribs2d), RIB_H + T_SKIN - T_FACE, T_FACE - 0.01)
     body = face.union(ribs) if ribs is not None else face
+    if rib_clear is not None:   # the snap-in module clips need the full 2.0 face: pad the 6.5 mm border back up to T_SKIN
+        pad = multi_to_cq(loc2d(wall, rib_clear.buffer(6.5, join_style='mitre').intersection(poly)), T_SKIN - T_FACE + 0.01, T_FACE - 0.01)
+        body = body.union(pad)
     s = WALLS[wall]['sgn']
     for (cw, cz) in face_cuts:
         body = body.cut(cyl((s * cw, cz, -1), (0, 0, 1), M3_CLR / 2, 10)).cut(csk_cone((s * cw, cz, -0.01), (0, 0, 1), M3_CSK_D))
