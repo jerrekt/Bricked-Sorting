@@ -26,7 +26,7 @@ def section_below(mesh, z):
     try:
         s = mesh.section(plane_origin=[0, 0, z], plane_normal=[0, 0, 1])
         if s is None: return Polygon()
-        p, _ = s.to_planar(to_2D=np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, -z], [0, 0, 0, 1]]))
+        p, _ = s.to_2D(to_2D=np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, -z], [0, 0, 0, 1]]))
         return unary_union([g for g in p.polygons_full]) if p.polygons_full else Polygon()
     except Exception:
         return Polygon()
@@ -45,15 +45,24 @@ def check(f):
         below = section_below(m, z - 0.3)
         floating = reg.difference(below.buffer(0.01))
         if floating.is_empty or floating.area < 1: continue
-        # max distance from floating area to supported edge ~ half the bridge span
-        d, lo, hi = 0.0, 0.0, 200.0
-        for _ in range(14):
-            mid = (lo + hi) / 2
-            if floating.buffer(-mid).is_empty: hi = mid
-            else: lo = mid
-        span = 2 * lo
-        worst = max(worst, span)
-        if span > BRIDGE: bad += floating.area
+        geoms = list(floating.geoms) if hasattr(floating, 'geoms') else [floating]
+        for g in geoms:
+            if g.area < 1: continue
+            anchor = g.boundary.intersection(below.buffer(0.4))
+            if anchor.is_empty:                       # floating island: nothing to bridge from
+                bad += g.area; worst = max(worst, 999); continue
+            # farthest point of the area from its anchored edge, and the inscribed width
+            d = max(anchor.distance(__import__('shapely').geometry.Point(c)) for c in
+                    list(g.exterior.coords) + [tuple(g.representative_point().coords)[0]])
+            lo, hi = 0.0, 200.0
+            for _ in range(14):
+                mid = (lo + hi) / 2
+                if g.buffer(-mid).is_empty: hi = mid
+                else: lo = mid
+            width = 2 * lo
+            if d <= 3.0: continue                     # short overhang, prints off the wall below
+            if width <= BRIDGE and d <= 0.7 * width + 1.0: continue   # held on two sides: a bridge
+            bad += g.area; worst = max(worst, d)
     st = m.area_faces[steep].sum()
     return worst, bad, st
 

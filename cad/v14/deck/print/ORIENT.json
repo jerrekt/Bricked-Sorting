@@ -64,11 +64,11 @@
  },
  "210_scanner_plate_PRINT_1.stl": {
   "pose": "as posed",
-  "support": 1474,
-  "steep": 78,
+  "support": 5,
+  "steep": 77,
   "was": {
-   "support": 1474,
-   "steep": 78
+   "support": 5,
+   "steep": 77
   }
  },
  "211_landing_ramp_low_PRINT_1.stl": {

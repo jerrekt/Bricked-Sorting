@@ -300,10 +300,12 @@ def scanner_parts():
     plate = plate.cut(boxc(PLATE_X0 - 1, PLATE_X0 + 45, 25, 92, Z_S - 5, Z_S + 1))      # notch (x 125..170, y 25..92) under V2's saddle and last spring
     for xs_ in (-1, 1):
         for ys_ in (-1, 1):
-            plate = plate.union(box(xs_ * 50, ys_ * HY, Z_S - 14, 5, 12, 10.1))
+            plate = plate.union(box(xs_ * 50, ys_ * HY, Z_S - 14, 5, 12, 11.1))     # hinge tab, up into the plate (was 10.1: floated 0.9 below it)
             plate = plate.cut(cyl((xs_ * 53, ys_ * HY, Z_S - HZ), (-xs_, 0, 0), 1.7, 10))
     for (sx, sy) in STANDOFFS:
         plate = plate.union(box(sx, sy, DECK_TOP, 14, 14, Z_S - 3 - DECK_TOP)).union(box(sx, sy, DECK_TOP, 24, 24, 4))
+        plate = plate.union(cq.Workplane('XY').workplane(offset=DECK_TOP + 4).rect(24, 24).workplane(offset=5).rect(14, 14).loft()
+                            .translate((sx, sy, 0)))     # 45 deg flare foot->column: prints upside down with no support
     P['210_scanner_plate'] = plate
     ramp = cq.Workplane('XZ').polyline([(-85, Z_S), (-35.6, Z_S), (-85, RAMP_TOP)]).close().extrude(30, both=True).translate((0, -6, 0))
     ramp = ramp.union(box(-60.3, -37.5, Z_S, 49.4, 3, 40))
@@ -363,6 +365,9 @@ def scanner_parts():
     for (sx, sy) in STANDOFFS:
         for dx, dy in ((9, 9), (-9, -9)):
             out['210_scanner_plate'] = wood_hole(out['210_scanner_plate'], SX + sx + dx, sy + dy, DECK_TOP + 4); holes.append((SX + sx + dx, sy + dy))
+            # driver access: 7.5 bore up through the flare and an 8 hole through the plate above (plate covered the screws)
+            out['210_scanner_plate'] = out['210_scanner_plate'].cut(cyl((SX + sx + dx, sy + dy, DECK_TOP + 4), (0, 0, 1), 3.75, Z_S - DECK_TOP - 4.5))
+            out['210_scanner_plate'] = out['210_scanner_plate'].cut(cyl((SX + sx + dx, sy + dy, Z_S - 4), (0, 0, 1), 4.0, 6))
     return out, holes
 
 
