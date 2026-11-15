@@ -37,7 +37,7 @@ def main(out_dir):
         idx = [f'# Bricked Sorting prints', '',
                'One folder for every print. File names: `P<n>_v<version>_<material>_<what>.3mf`.',
                'If a plate number has a higher version than what you printed, check the change log below to see if you need to reprint.', '',
-               ver.get('_folders', ''), '', '| Plate | Version | Folder | Material | What | Files |', '|---|---|---|---|---|---|'] + rows + ['', '## Change log', ''] + (log or ['- none yet'])
+               ver.get('_folders', ''), '', ver.get('_naming', ''), '', '| Plate | Version | Folder | Material | What | Files |', '|---|---|---|---|---|---|'] + rows + ['', '## Change log', ''] + (log or ['- none yet'])
         pl = json.loads((HERE / 'print_log.json').read_text())
         tot = {}
         for e in pl['prints']: tot[e['material']] = tot.get(e['material'], 0) + e['grams']

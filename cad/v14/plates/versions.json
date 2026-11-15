@@ -54,7 +54,7 @@
   "log": [],
   "folder": "2_later",
   "done_files": [
-   "P6_PLA_face_B1.3mf"
+   "P6_PLAred_face_B1.3mf"
   ]
  },
  "P7": {
@@ -154,5 +154,6 @@
   "log": [],
   "folder": "1_now"
  },
- "_folders": "done = printed (kept for reprints); 1_now = barebones to print next (makes it sort); 2_later = after it sorts (back drawer, faces, skin)"
+ "_folders": "done = printed (kept for reprints); 1_now = barebones to print next (makes it sort); 2_later = after it sorts (back drawer, faces, skin)",
+ "_naming": "Material in the file name is what to load: PETG (functional, any colour), PLAred (visible red shell parts: studs, hopper, corner caps, drawer faces with black lettering in slot 2), TPU, PLA (PLA calibration only). Renamed 2026-11-15, no geometry change."
 }
