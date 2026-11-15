@@ -18,7 +18,7 @@ import numpy as np
 import cadquery as cq
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-from k_common import (IF, BED, INSERT_M3_D, INSERT_M3_DEPTH, M3_CLR, M3_CSK_D, WOOD_SCREW_CLR, WOOD_SCREW_CSK, print_pose, bed_fit,
+from k_common import (teardrop, IF, BED, INSERT_M3_D, INSERT_M3_DEPTH, M3_CLR, M3_CSK_D, WOOD_SCREW_CLR, WOOD_SCREW_CSK, print_pose, bed_fit,
                       export, bbox, extent, grams, hours, cyl, boxc, box, ov, vol, render)
 
 REF = HERE.parent.parent / 'reference_v13'
@@ -586,6 +586,9 @@ def main():
             for ax in ((1, 0, 0), (0, 1, 0)):
                 b2, d2 = print_pose(w.rotate((0, 0, 0), ax, 90))
                 if bed_fit(b2)['fits_248']: bedp, diag = b2, d2; break
+        if lab[:3] in ('205', '206', '212', '216'):     # teardrop the sideways holes (BJ 2026-11-15)
+            bedp, n_td = teardrop(bedp)
+            print('teardrop', lab, n_td)
         export(bedp, prn / f'{lab}_PRINT_1.stl')
         m = mat.get(lab[:3], 'PLA'); g = grams(w, m)
         plist.append({'label': lab, 'part_no': lab[:3], 'qty': 1, 'material': m, **bed_fit(bedp), 'diagonal_on_bed': diag,

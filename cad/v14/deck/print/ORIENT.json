@@ -37,30 +37,33 @@
  },
  "205_drum_cradle_A_ypos_PRINT_1.stl": {
   "pose": "as posed",
-  "support": 3,
-  "steep": 70,
+  "support": 0,
+  "steep": 0,
   "was": {
    "support": 3,
    "steep": 70
-  }
+  },
+  "note": "teardrop holes 2026-11-15"
  },
  "205_drum_cradle_B_yneg_PRINT_1.stl": {
   "pose": "as posed",
-  "support": 3,
-  "steep": 70,
+  "support": 0,
+  "steep": 0,
   "was": {
    "support": 3,
    "steep": 70
-  }
+  },
+  "note": "teardrop holes 2026-11-15"
  },
  "206_motor_wall_PRINT_1.stl": {
   "pose": "as posed",
-  "support": 11,
-  "steep": 78,
+  "support": 0,
+  "steep": 0,
   "was": {
    "support": 11,
    "steep": 78
-  }
+  },
+  "note": "teardrop holes 2026-11-15"
  },
  "210_scanner_plate_PRINT_1.stl": {
   "pose": "as posed",

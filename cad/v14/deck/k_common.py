@@ -142,3 +142,42 @@ def render(items, path, cam, focal, up=(0, 0, 1), size=(1280, 800), title=None, 
     rw.Render()
     w2i = vtk.vtkWindowToImageFilter(); w2i.SetInput(rw); w2i.Update()
     wr = vtk.vtkPNGWriter(); wr.SetFileName(str(path)); wr.SetInputConnection(w2i.GetOutputPort()); wr.Write()
+
+
+def teardrop(shape, tad=0.5, rmax=6.0):
+    """Give every horizontal round hole (in the print pose, axis within ~6 deg of level, radius <= rmax) a small pointed top
+    so it prints without sag: the 45 deg teardrop lines, cut off `tad` mm above the circle (BJ 2026-11-15: 'just a tad')."""
+    import math
+    w = shape if isinstance(shape, cq.Workplane) else cq.Workplane().add(shape)
+    solid = w.val()
+    cuts = []
+    for f in solid.Faces():
+        if f.geomType() != 'CYLINDER':
+            continue
+        s = f._geomAdaptor()
+        cyl = s.Cylinder(); r = cyl.Radius()
+        ax = cyl.Axis(); d = ax.Direction(); o = ax.Location()
+        dv = cq.Vector(d.X(), d.Y(), d.Z())
+        if r > rmax or abs(dv.z) > 0.1:
+            continue
+        ov = cq.Vector(o.X(), o.Y(), o.Z())
+        # extent of the hole along its axis
+        bb = f.BoundingBox()
+        ts = [(cq.Vector(x, y, z) - ov).dot(dv) for x in (bb.xmin, bb.xmax) for y in (bb.ymin, bb.ymax) for z in (bb.zmin, bb.zmax)]
+        t0, t1 = min(ts), max(ts)
+        # hole, not a boss or fillet: the axis runs through air
+        if solid.isInside(ov + dv * ((t0 + t1) / 2), 1e-3):
+            continue
+        p0 = ov + dv * t0
+        h = min(r * math.sqrt(2), r + tad)
+        a = r / math.sqrt(2); top = math.sqrt(2) * r - h
+        u = dv.cross(cq.Vector(0, 0, 1)).normalized()       # horizontal, perpendicular to the axis
+        pts2 = [(0, 0), (a, a), (top, h), (-top, h), (-a, a)]
+        plane = cq.Plane(origin=p0.toTuple(), xDir=u.toTuple(), normal=dv.toTuple())
+        # plane y must be +z: plane.yDir = normal x xDir
+        if plane.yDir.z < 0:
+            plane = cq.Plane(origin=p0.toTuple(), xDir=(-u).toTuple(), normal=dv.toTuple())
+        cuts.append(cq.Workplane(plane).polyline(pts2).close().extrude(t1 - t0))
+    for c in cuts:
+        w = w.cut(c)
+    return w, len(cuts)
