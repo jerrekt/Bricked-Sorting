@@ -365,18 +365,18 @@
   {
    "date": "2026-11-15 01:20",
    "bambu_job": "p8-p12_plate_11",
-   "hours": 10.6,
+   "hours": 11.1,
    "plate": "P15",
    "version": 1,
    "material": "PETG",
    "grams": 342,
    "source": "estimate",
-   "status": "printing",
+   "status": "done",
    "parts": [
     "47b drum barrel"
    ],
-   "note": "3 walls"
+   "note": "3 walls; finished 2026-11-15 ~12:26"
   }
  ],
- "updated": "2026-11-15 01:35 PT"
+ "updated": "2026-11-15 12:58 PT"
 }

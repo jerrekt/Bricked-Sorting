@@ -41,7 +41,7 @@ def main(out_dir):
         pl = json.loads((HERE / 'print_log.json').read_text())
         tot = {}
         for e in pl['prints']: tot[e['material']] = tot.get(e['material'], 0) + e['grams']
-        idx += ['', '## Filament used', '', f'**Total: {sum(tot.values())} g** (' + ', '.join(f'{m} {g} g' for m, g in sorted(tot.items())) + f") over {sum(e.get('hours', 0) for e in pl['prints']):.0f} h of printing (P15 barrel still printing)", '',
+        idx += ['', '## Filament used', '', f'**Total: {sum(tot.values())} g** (' + ', '.join(f'{m} {g} g' for m, g in sorted(tot.items())) + f") over {sum(e.get('hours', 0) for e in pl['prints']):.0f} h of printing", '',
                 pl['_note'], '', '| When | Bambu job | h | Plate | Ver | Material | g | Status | Parts / note |', '|---|---|---|---|---|---|---|---|---|']
         idx += [f"| {e['date']} | {e.get('bambu_job', '')} | {e.get('hours', '')} | {e['plate']} | v{e['version']} | {e['material']} | {e['grams']} ({e['source']}) | {e.get('status', 'done')} | {', '.join(e['parts'])}{' (' + e['note'] + ')' if e['note'] else ''} |" for e in pl['prints']]
         parts = HERE / 'P14-P18_parts.md'

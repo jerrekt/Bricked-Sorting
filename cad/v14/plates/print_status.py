@@ -27,8 +27,8 @@ DONE = {'130_stud_ring_left_hopper': 1, '131_stud_cap_right': 1, '120_clip_C1_si
         '160_rail_R': 1, '161_rail_L': 1, '162_station_R': 1, '162_station_L': 1, '164_guide_R': 1, '168_face_B1': 1, '168_face_B1_ink': 1,
         '172_reed_coupon_tray': 1, '172_reed_coupon_floor': 1,
         '49b_drum_static_outlet_plate': 1, '55_drum_friction_tire_TPU': 1, '56_drum_NEMA17_adjustable_bracket': 1, '57d_door_slider': 1,
-        '59b_servo_link': 1, '63_vib_motor_cap': 2}
-PRINTING = {'47b_tumbler_barrel_helical_flight': 1}
+        '59b_servo_link': 1, '63_vib_motor_cap': 2, '47b_tumbler_barrel_helical_flight': 1}
+PRINTING = {}
 
 
 def est_v13(name, mat, walls, gph):
