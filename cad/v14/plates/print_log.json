@@ -376,7 +376,26 @@
     "47b drum barrel"
    ],
    "note": "3 walls; finished 2026-11-15 ~12:26"
+  },
+  {
+   "date": "2026-11-15 ~12:40",
+   "bambu_job": "p8-p12 plate 3 (P16 v2 parts)",
+   "hours": 0,
+   "plate": "P16",
+   "version": 2,
+   "material": "PETG",
+   "grams": 54,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "48 rear guard",
+    "54 drive hub",
+    "59 door link x2",
+    "60 servo arm",
+    "62 vib saddle x2"
+   ],
+   "note": "marked done by BJ 2026-11-15; hours not known yet"
   }
  ],
- "updated": "2026-11-15 12:58 PT"
+ "updated": "2026-11-15 13:02 PT"
 }
