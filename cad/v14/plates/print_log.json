@@ -360,7 +360,7 @@
    "parts": [
     "210 scanner plate"
    ],
-   "note": "confirm v2: 8 mm holes in the plate over each leg"
+   "note": "scanner plate rev 2, confirmed v2 by BJ (access holes there)"
   },
   {
    "date": "2026-11-15 01:20",
@@ -377,5 +377,6 @@
    ],
    "note": "3 walls"
   }
- ]
+ ],
+ "updated": "2026-11-15 01:35 PT"
 }
