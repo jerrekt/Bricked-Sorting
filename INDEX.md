@@ -24,22 +24,24 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 | P10 | v1 | 2_later | PLAred | 12 corner caps, red (5 mm brim) | 1 |
 | P11 | v1 | done | PLAred | Hopper (rev 2, no supports), red | 1 |
 | P12 | v1 | done | PETG | Feed chute, red | 1 |
-| P13 | v2 | 1_now | PETG | Deck parts left: drum cradle A, webcam mount, webcam cable spool, APDS9960 mount, USB clips 1-2 | 1 |
+| P13 | v3 | 1_now | PETG | Deck parts left: drum cradle A, webcam mount, webcam cable spool, APDS9960 mount, USB clips 1-2 | 1 |
 | P14 | v1 | done | PETG | V2 tray, 3 leaf springs, 4 drum rollers (625 pocket 16.1) | 1 |
 | P15 | v1 | done | PETG | Drum barrel (3 walls), printing 2026-11-15, ~10.6 h | 1 |
 | P16 | v2 | 1_now | PETG | Drum + gate small parts left: rear guard, drive hub (drill 5 mm if tight), 2 door links, servo arm, 2 vib motor saddles | 1 |
 | P17 | v1 | done | TPU | Drum friction tire (TPU) | 1 |
 | P18 | v3 | 1_now | PETG | Drop funnel, PSU terminal cover, 3 electronics trays, XIAO camera mount, USB clip 3 (2 plates) | 2 |
-| P19 | v1 | 1_now | PETG | Deck parts missing from your project: drum cradle B, motor wall, slider post, LED holders A/B | 1 |
+| P19 | v2 | 1_now | PETG | Deck parts missing from your project: drum cradle B, motor wall, slider post, LED holders A/B | 1 |
 | P20 | v1 | 1_now | PETG | Scoop (PETG fits): 3 beam segments, carriage (tree support ~28 cm2), cup (small tree support), motor bracket, idler channel/slider/wheel, endstop mount, pushrod, servo bracket. ~600 g, one long plate | 1 |
 | P21 | v1 | 1_now | TPU | Scoop cup pad (TPU) | 1 |
 
 ## Change log
 
 - **P13** v2 2026-11-15: only the parts not printed yet (camera bridge and landing ramp are done); cradle B, motor wall, slider post, LED holders moved to P19
+- **P13** v3 2026-11-15: 0.5 mm teardrop tops on cradle A sideways holes
 - **P16** v2 2026-11-15: only the parts not printed yet (outlet plate, NEMA bracket, vib caps, gate slider, servo link are done)
 - **P18** v2 2026-11-14: PETG insert holes 4.4 on the electronics trays; scanner plate rev 2 (hinge tabs were floating 0.9 mm off the plate, feet now flare so no supports, screwdriver holes over the foot screws). Reprint the scanner plate if you printed v1; v1 trays OK if inserts go in with a push
 - **P18** v3 2026-11-15: only the parts not printed yet (scanner plate v2 and both trapdoors are done)
+- **P19** v2 2026-11-15: 0.5 mm teardrop tops on the sideways holes (cradle B, motor wall). If you already printed v1, it is fine: just clean the hole tops
 
 ## Filament used
 
