@@ -384,8 +384,8 @@
    "plate": "P16",
    "version": 2,
    "material": "PETG",
-   "grams": 54,
-   "source": "estimate",
+   "grams": 50.29,
+   "source": "slicer",
    "status": "done",
    "parts": [
     "48 rear guard",
