@@ -30,13 +30,14 @@ def main(out_dir):
             names = []
             for f in groups[k]:
                 nm = f'{k}_v{v}_{f.name.split("_", 1)[1]}'
-                z.write(f, f'{NAME}/{nm}'); names.append(nm)
-            rows.append(f'| {k} | v{v} | {"/".join(mats)} | {ver[k]["what"]} | {len(names)} |')
+                fold = 'done' if f.name in ver[k].get('done_files', []) else ver[k].get('folder', '1_now')
+                z.write(f, f'{NAME}/{fold}/{nm}'); names.append(nm)
+            rows.append(f'| {k} | v{v} | {ver[k].get("folder", "")} | {"/".join(mats)} | {ver[k]["what"]} | {len(names)} |')
             log += [f'- **{k}** {line}' for line in ver[k]['log']]
         idx = [f'# Bricked Sorting prints', '',
                'One folder for every print. File names: `P<n>_v<version>_<material>_<what>.3mf`.',
                'If a plate number has a higher version than what you printed, check the change log below to see if you need to reprint.', '',
-               '| Plate | Version | Material | What | Files |', '|---|---|---|---|---|'] + rows + ['', '## Change log', ''] + (log or ['- none yet'])
+               ver.get('_folders', ''), '', '| Plate | Version | Folder | Material | What | Files |', '|---|---|---|---|---|---|'] + rows + ['', '## Change log', ''] + (log or ['- none yet'])
         pl = json.loads((HERE / 'print_log.json').read_text())
         tot = {}
         for e in pl['prints']: tot[e['material']] = tot.get(e['material'], 0) + e['grams']

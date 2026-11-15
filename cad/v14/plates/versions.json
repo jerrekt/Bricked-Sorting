@@ -3,123 +3,156 @@
  "P1": {
   "v": 1,
   "what": "PETG calibration rev 1 (done)",
-  "log": []
+  "log": [],
+  "folder": "done"
  },
  "P1b": {
   "v": 1,
   "what": "PETG dovetails rev 1 (done)",
-  "log": []
+  "log": [],
+  "folder": "done"
  },
  "P1c": {
   "v": 1,
-  "what": "PETG dovetails rev 2 + insert holes rev 2 (done: dovetail 0.20, insert 4.4)",
-  "log": []
+  "what": "PETG dovetails rev 2 + insert holes rev 2 (done: dovetail 0.20, insert 4.4) - not printed, not needed",
+  "log": [],
+  "folder": "done"
  },
  "P1d": {
   "v": 1,
   "what": "PETG insert holes only (done)",
-  "log": []
+  "log": [],
+  "folder": "done"
  },
  "P2": {
   "v": 1,
   "what": "Coupons: reed tray + floor with magnet pocket, C1 skin clip, servo saddle",
-  "log": []
+  "log": [],
+  "folder": "done"
  },
  "P3": {
   "v": 1,
   "what": "V1 vibration tray + 1 leaf spring",
-  "log": []
+  "log": [],
+  "folder": "done"
  },
  "P4": {
   "v": 1,
-  "what": "Runner kit (PETG): 2 rails, 2 stations, guide. Print 2x (front + back drawers)",
-  "log": []
+  "what": "Runner kit: 2 rails, 2 stations, guide. Front kit printed 2026-11-13 (drill the 4.4 face insert in its rails); print 1 more for the back drawer",
+  "log": [],
+  "folder": "2_later"
  },
  "P5": {
   "v": 1,
   "what": "PLA insert-hole bar (done: PLA 4.3)",
-  "log": []
+  "log": [],
+  "folder": "done"
  },
  "P6": {
   "v": 1,
-  "what": "Drawer faces F1-F3, B1-B3, red with black lettering (one face per plate)",
-  "log": []
+  "what": "Drawer faces, red + black lettering, one per plate. B1 printed 2026-11-09 (in done/); F1-F3, B2, B3 left",
+  "log": [],
+  "folder": "2_later",
+  "done_files": [
+   "P6_PLA_face_B1.3mf"
+  ]
  },
  "P7": {
   "v": 1,
   "what": "Drawer retaining bars + closed-switch mounts",
-  "log": []
+  "log": [],
+  "folder": "1_now"
  },
  "P8": {
   "v": 1,
   "what": "Left stud (open ring, holds the hopper), red",
-  "log": []
+  "log": [],
+  "folder": "done"
  },
  "P9": {
   "v": 1,
   "what": "Right stud (capped), red",
-  "log": []
+  "log": [],
+  "folder": "done"
  },
  "P10": {
   "v": 1,
   "what": "12 corner caps, red (5 mm brim)",
-  "log": []
+  "log": [],
+  "folder": "2_later"
  },
  "P11": {
   "v": 1,
   "what": "Hopper (rev 2, no supports), red",
-  "log": []
+  "log": [],
+  "folder": "done"
  },
  "P12": {
   "v": 1,
   "what": "Feed chute, red",
-  "log": []
+  "log": [],
+  "folder": "done"
  },
  "P13": {
-  "v": 1,
-  "what": "Deck parts: drum cradles A/B, motor wall, landing ramp, slider post, camera bridge, LED holders, webcam + APDS mounts, cable spool, 2 USB clips (2 plates)",
-  "log": []
+  "v": 2,
+  "folder": "1_now",
+  "what": "Deck parts left: drum cradle A, webcam mount, webcam cable spool, APDS9960 mount, USB clips 1-2",
+  "log": [
+   "v2 2026-11-15: only the parts not printed yet (camera bridge and landing ramp are done); cradle B, motor wall, slider post, LED holders moved to P19"
+  ]
  },
  "P14": {
   "v": 1,
   "what": "V2 tray, 3 leaf springs, 4 drum rollers (625 pocket 16.1)",
-  "log": []
+  "log": [],
+  "folder": "done"
  },
  "P15": {
   "v": 1,
-  "what": "Drum barrel (spiral inside), ~7 h, small tree support",
-  "log": []
+  "what": "Drum barrel (3 walls), printing 2026-11-15, ~10.6 h",
+  "log": [],
+  "folder": "done"
  },
  "P16": {
-  "v": 1,
-  "what": "Drum + gate small parts: outlet plate, rear guard, NEMA17 bracket, drive hub, vib motor saddles/caps, gate slider, servo arm + links (3 plates)",
-  "log": []
+  "v": 2,
+  "folder": "1_now",
+  "what": "Drum + gate small parts left: rear guard, drive hub (drill 5 mm if tight), 2 door links, servo arm, 2 vib motor saddles",
+  "log": [
+   "v2 2026-11-15: only the parts not printed yet (outlet plate, NEMA bracket, vib caps, gate slider, servo link are done)"
+  ]
  },
  "P17": {
   "v": 1,
   "what": "Drum friction tire (TPU)",
-  "log": []
+  "log": [],
+  "folder": "done"
  },
  "P18": {
-  "v": 2,
-  "what": "Scanner plate, trapdoors, drop funnel, XIAO camera mount, electronics trays, PSU cover, cable clip (3 plates)",
+  "v": 3,
+  "what": "Drop funnel, PSU terminal cover, 3 electronics trays, XIAO camera mount, USB clip 3 (2 plates)",
   "log": [
-   "v2 2026-11-14: PETG insert holes 4.4 on the electronics trays; scanner plate rev 2 (hinge tabs were floating 0.9 mm off the plate, feet now flare so no supports, screwdriver holes over the foot screws). Reprint the scanner plate if you printed v1; v1 trays OK if inserts go in with a push"
-  ]
+   "v2 2026-11-14: PETG insert holes 4.4 on the electronics trays; scanner plate rev 2 (hinge tabs were floating 0.9 mm off the plate, feet now flare so no supports, screwdriver holes over the foot screws). Reprint the scanner plate if you printed v1; v1 trays OK if inserts go in with a push",
+   "v3 2026-11-15: only the parts not printed yet (scanner plate v2 and both trapdoors are done)"
+  ],
+  "folder": "1_now"
  },
  "P19": {
   "v": 1,
   "what": "Deck parts missing from your project: drum cradle B, motor wall, slider post, LED holders A/B",
-  "log": []
+  "log": [],
+  "folder": "1_now"
  },
  "P20": {
   "v": 1,
   "what": "Scoop (PETG fits): 3 beam segments, carriage (tree support ~28 cm2), cup (small tree support), motor bracket, idler channel/slider/wheel, endstop mount, pushrod, servo bracket. ~600 g, one long plate",
-  "log": []
+  "log": [],
+  "folder": "1_now"
  },
  "P21": {
   "v": 1,
   "what": "Scoop cup pad (TPU)",
-  "log": []
- }
+  "log": [],
+  "folder": "1_now"
+ },
+ "_folders": "done = printed (kept for reprints); 1_now = barebones to print next (makes it sort); 2_later = after it sorts (back drawer, faces, skin)"
 }
