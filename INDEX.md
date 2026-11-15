@@ -3,36 +3,41 @@
 One folder for every print. File names: `P<n>_v<version>_<material>_<what>.3mf`.
 If a plate number has a higher version than what you printed, check the change log below to see if you need to reprint.
 
-| Plate | Version | Material | What | Files |
-|---|---|---|---|---|
-| P1 | v1 | PETG | PETG calibration rev 1 (done) | 1 |
-| P1b | v1 | PETG | PETG dovetails rev 1 (done) | 1 |
-| P1c | v1 | PETG | PETG dovetails rev 2 + insert holes rev 2 (done: dovetail 0.20, insert 4.4) | 1 |
-| P1d | v1 | PETG | PETG insert holes only (done) | 1 |
-| P2 | v1 | PLA | Coupons: reed tray + floor with magnet pocket, C1 skin clip, servo saddle | 1 |
-| P3 | v1 | PETG | V1 vibration tray + 1 leaf spring | 1 |
-| P4 | v1 | PETG | Runner kit (PETG): 2 rails, 2 stations, guide. Print 2x (front + back drawers) | 1 |
-| P5 | v1 | PLA | PLA insert-hole bar (done: PLA 4.3) | 1 |
-| P6 | v1 | PLA | Drawer faces F1-F3, B1-B3, red with black lettering (one face per plate) | 6 |
-| P7 | v1 | PLA | Drawer retaining bars + closed-switch mounts | 1 |
-| P8 | v1 | PLA | Left stud (open ring, holds the hopper), red | 1 |
-| P9 | v1 | PLA | Right stud (capped), red | 1 |
-| P10 | v1 | PLA | 12 corner caps, red (5 mm brim) | 1 |
-| P11 | v1 | PLA | Hopper (rev 2, no supports), red | 1 |
-| P12 | v1 | PLA | Feed chute, red | 1 |
-| P13 | v1 | PLA | Deck parts: drum cradles A/B, motor wall, landing ramp, slider post, camera bridge, LED holders, webcam + APDS mounts, cable spool, 2 USB clips (2 plates) | 2 |
-| P14 | v1 | PETG | V2 tray, 3 leaf springs, 4 drum rollers (625 pocket 16.1) | 1 |
-| P15 | v1 | PETG | Drum barrel (spiral inside), ~7 h, small tree support | 1 |
-| P16 | v1 | PETG | Drum + gate small parts: outlet plate, rear guard, NEMA17 bracket, drive hub, vib motor saddles/caps, gate slider, servo arm + links (3 plates) | 3 |
-| P17 | v1 | TPU | Drum friction tire (TPU) | 1 |
-| P18 | v2 | PETG | Scanner plate, trapdoors, drop funnel, XIAO camera mount, electronics trays, PSU cover, cable clip (3 plates) | 3 |
-| P19 | v1 | PETG | Deck parts missing from your project: drum cradle B, motor wall, slider post, LED holders A/B | 1 |
-| P20 | v1 | PETG | Scoop (PETG fits): 3 beam segments, carriage (tree support ~28 cm2), cup (small tree support), motor bracket, idler channel/slider/wheel, endstop mount, pushrod, servo bracket. ~600 g, one long plate | 1 |
-| P21 | v1 | TPU | Scoop cup pad (TPU) | 1 |
+done = printed (kept for reprints); 1_now = barebones to print next (makes it sort); 2_later = after it sorts (back drawer, faces, skin)
+
+| Plate | Version | Folder | Material | What | Files |
+|---|---|---|---|---|---|
+| P1 | v1 | done | PETG | PETG calibration rev 1 (done) | 1 |
+| P1b | v1 | done | PETG | PETG dovetails rev 1 (done) | 1 |
+| P1c | v1 | done | PETG | PETG dovetails rev 2 + insert holes rev 2 (done: dovetail 0.20, insert 4.4) - not printed, not needed | 1 |
+| P1d | v1 | done | PETG | PETG insert holes only (done) | 1 |
+| P2 | v1 | done | PLA | Coupons: reed tray + floor with magnet pocket, C1 skin clip, servo saddle | 1 |
+| P3 | v1 | done | PETG | V1 vibration tray + 1 leaf spring | 1 |
+| P4 | v1 | 2_later | PETG | Runner kit: 2 rails, 2 stations, guide. Front kit printed 2026-11-13 (drill the 4.4 face insert in its rails); print 1 more for the back drawer | 1 |
+| P5 | v1 | done | PLA | PLA insert-hole bar (done: PLA 4.3) | 1 |
+| P6 | v1 | 2_later | PLA | Drawer faces, red + black lettering, one per plate. B1 printed 2026-11-09 (in done/); F1-F3, B2, B3 left | 6 |
+| P7 | v1 | 1_now | PLA | Drawer retaining bars + closed-switch mounts | 1 |
+| P8 | v1 | done | PLA | Left stud (open ring, holds the hopper), red | 1 |
+| P9 | v1 | done | PLA | Right stud (capped), red | 1 |
+| P10 | v1 | 2_later | PLA | 12 corner caps, red (5 mm brim) | 1 |
+| P11 | v1 | done | PLA | Hopper (rev 2, no supports), red | 1 |
+| P12 | v1 | done | PLA | Feed chute, red | 1 |
+| P13 | v2 | 1_now | PETG | Deck parts left: drum cradle A, webcam mount, webcam cable spool, APDS9960 mount, USB clips 1-2 | 1 |
+| P14 | v1 | done | PETG | V2 tray, 3 leaf springs, 4 drum rollers (625 pocket 16.1) | 1 |
+| P15 | v1 | done | PETG | Drum barrel (3 walls), printing 2026-11-15, ~10.6 h | 1 |
+| P16 | v2 | 1_now | PETG | Drum + gate small parts left: rear guard, drive hub (drill 5 mm if tight), 2 door links, servo arm, 2 vib motor saddles | 1 |
+| P17 | v1 | done | TPU | Drum friction tire (TPU) | 1 |
+| P18 | v3 | 1_now | PETG | Drop funnel, PSU terminal cover, 3 electronics trays, XIAO camera mount, USB clip 3 (2 plates) | 2 |
+| P19 | v1 | 1_now | PETG | Deck parts missing from your project: drum cradle B, motor wall, slider post, LED holders A/B | 1 |
+| P20 | v1 | 1_now | PETG | Scoop (PETG fits): 3 beam segments, carriage (tree support ~28 cm2), cup (small tree support), motor bracket, idler channel/slider/wheel, endstop mount, pushrod, servo bracket. ~600 g, one long plate | 1 |
+| P21 | v1 | 1_now | TPU | Scoop cup pad (TPU) | 1 |
 
 ## Change log
 
+- **P13** v2 2026-11-15: only the parts not printed yet (camera bridge and landing ramp are done); cradle B, motor wall, slider post, LED holders moved to P19
+- **P16** v2 2026-11-15: only the parts not printed yet (outlet plate, NEMA bracket, vib caps, gate slider, servo link are done)
 - **P18** v2 2026-11-14: PETG insert holes 4.4 on the electronics trays; scanner plate rev 2 (hinge tabs were floating 0.9 mm off the plate, feet now flare so no supports, screwdriver holes over the foot screws). Reprint the scanner plate if you printed v1; v1 trays OK if inserts go in with a push
+- **P18** v3 2026-11-15: only the parts not printed yet (scanner plate v2 and both trapdoors are done)
 
 ## Filament used
 
