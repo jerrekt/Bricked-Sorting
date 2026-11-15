@@ -380,7 +380,7 @@
   {
    "date": "2026-11-15 ~12:40",
    "bambu_job": "p8-p12 plate 3 (P16 v2 parts)",
-   "hours": 0,
+   "hours": 1.75,
    "plate": "P16",
    "version": 2,
    "material": "PETG",
@@ -394,7 +394,7 @@
     "60 servo arm",
     "62 vib saddle x2"
    ],
-   "note": "marked done by BJ 2026-11-15; hours not known yet"
+   "note": "marked done by BJ 2026-11-15; 1 h 45 min"
   }
  ],
  "updated": "2026-11-15 13:02 PT"

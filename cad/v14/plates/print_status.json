@@ -19,11 +19,11 @@
    "hours": 114.6
   }
  },
- "pace_factor": 1.06,
- "left_at_pace_hours": 121,
+ "pace_factor": 1.1,
+ "left_at_pace_hours": 126,
  "used_so_far": {
   "grams": 1761,
-  "hours": 59.1,
+  "hours": 60.9,
   "jobs": 25
  },
  "printing_now": [],
