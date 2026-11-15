@@ -10,7 +10,7 @@ Coordinates: origin floor centre, +Y front, +Z up, +X = the front viewer's left.
 | Group | Parts | Grams (day profile) |
 |---|---|---|
 | Wood (100-109) | 4 posts 2x2 x 600, 2+2 top rails, 2+2 deck cleats, 2 bottom rails, 2 beam posts (1x2), **2 roof cross rails 1x2 x 310 laid flat at x -292 / -68 (z 593..612)**, floor ply 720 x 360, deck ply 708 x 348 notched + 56 mm funnel hole | bought, see `cut_list.md` |
-| Skin walls (110-113) | 36 tiles, 2.0 mm face + 1.6 x 2.8 ribs on the back. Front/back columns at x 0, +-180 (front) / 0, +-200 (back, so the panel edges are seams), rows z 212 / 412. Sides: columns at y 0, rows 212 / 412. Drawer openings x +-310, z 12..136 in both walls (drawer faces overlay them) | 2470 |
+| Skin walls (110-113) | 36 tiles, 1.2 mm face + 1.6 x 3.6 ribs on the back (2.0 + 2.8 until 2026-11-15). Front/back columns at x 0, +-180 (front) / 0, +-200 (back, so the panel edges are seams), rows z 212 / 412. Sides: columns at y 0, rows 212 / 412. Drawer openings x +-310, z 12..136 in both walls (drawer faces overlay them) | 1586 |
 | Access panel (115) | two halves x -200..0 / 0..200, z 330..560, 8 countersunk M3 into keeper bars | 236 |
 | Keeper bars (116/117) | 8 bars screwed to the deck cleat / top rail, M3 inserts behind the panel's top and bottom edges | 40 |
 | Roof (114) | 8 tiles 180 x 180 at z 612..614 on the top rails and the two cross rails (locator ribs hug the cross rails' sides, no ribs over them), hole r 90 at (-180, 0), csk M3 from below into the studs | 606 |
