@@ -4,6 +4,9 @@ Site and repo version. One bump per merged pull request (see `tools/bump_version
 It counts updates to this repo, not how finished the machine is; the Tasks page shows that.
 V1.001 to V1.014 were numbered afterwards, in merge order.
 
+## V1.032 · 2026-11-15
+- Prints page: filament used and left, print time left, every part with its status (from cad/v14/plates/print_status.py)
+
 ## V1.031 · 2026-11-08
 - Parts: V14 buy list (wood frame, deck, drawers, scoop; Pi + USB webcam is the plan), Nov 8 Amazon order marked
 

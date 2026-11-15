@@ -1,6 +1,6 @@
 {
- "version": "V1.031",
- "date": "2026-11-08",
- "note": "Parts: V14 buy list (wood frame, deck, drawers, scoop; Pi + USB webcam is the plan), Nov 8 Amazon order marked",
+ "version": "V1.032",
+ "date": "2026-11-15",
+ "note": "Prints page: filament used and left, print time left, every part with its status (from cad/v14/plates/print_status.py)",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }
