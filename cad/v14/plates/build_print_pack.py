@@ -37,6 +37,12 @@ def main(out_dir):
                'One folder for every print. File names: `P<n>_v<version>_<material>_<what>.3mf`.',
                'If a plate number has a higher version than what you printed, check the change log below to see if you need to reprint.', '',
                '| Plate | Version | Material | What | Files |', '|---|---|---|---|---|'] + rows + ['', '## Change log', ''] + (log or ['- none yet'])
+        pl = json.loads((HERE / 'print_log.json').read_text())
+        tot = {}
+        for e in pl['prints']: tot[e['material']] = tot.get(e['material'], 0) + e['grams']
+        idx += ['', '## Filament used', '', f'**Total: {sum(tot.values())} g** (' + ', '.join(f'{m} {g} g' for m, g in sorted(tot.items())) + ')', '',
+                pl['_note'], '', '| When | Plate | Ver | Material | g | Source | Parts / note |', '|---|---|---|---|---|---|---|']
+        idx += [f"| {e['date']} | {e['plate']} | v{e['version']} | {e['material']} | {e['grams']} | {e['source']} | {', '.join(e['parts'])}{' (' + e['note'] + ')' if e['note'] else ''} |" for e in pl['prints']]
         parts = HERE / 'P14-P18_parts.md'
         if parts.exists():
             idx += ['', '---', '', parts.read_text()]

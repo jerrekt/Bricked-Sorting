@@ -1,0 +1,244 @@
+{
+ "_note": "Filament used, one entry per print. source=estimate: geometry at 2 walls / 15% infill, no supports, brim or purge (slicer usually reads 5-15% higher). Replace with source=slicer when BJ sends Bambu grams.",
+ "prints": [
+  {
+   "date": "by 2026-11-15",
+   "plate": "P1",
+   "version": 1,
+   "material": "PETG",
+   "parts": [
+    "P1_PETG_calibration"
+   ],
+   "grams": 35,
+   "source": "estimate",
+   "note": "calibration"
+  },
+  {
+   "date": "by 2026-11-15",
+   "plate": "P1b",
+   "version": 1,
+   "material": "PETG",
+   "parts": [
+    "P1b_PETG_dovetails_only"
+   ],
+   "grams": 16,
+   "source": "estimate",
+   "note": "calibration"
+  },
+  {
+   "date": "by 2026-11-15",
+   "plate": "P1c",
+   "version": 1,
+   "material": "PETG",
+   "parts": [
+    "P1c_PETG_dovetails_rev2_and_inserts"
+   ],
+   "grams": 20,
+   "source": "estimate",
+   "note": "calibration"
+  },
+  {
+   "date": "by 2026-11-15",
+   "plate": "P1d",
+   "version": 1,
+   "material": "PETG",
+   "parts": [
+    "P1d_PETG_inserts_only"
+   ],
+   "grams": 4,
+   "source": "estimate",
+   "note": "calibration"
+  },
+  {
+   "date": "by 2026-11-15",
+   "plate": "P5",
+   "version": 1,
+   "material": "PLA",
+   "parts": [
+    "P5_PLA_insert_holes"
+   ],
+   "grams": 4,
+   "source": "estimate",
+   "note": "calibration"
+  },
+  {
+   "date": "by 2026-11-15",
+   "plate": "P8",
+   "version": "1",
+   "material": "PLA",
+   "parts": [
+    "130_stud_ring_left_hopper"
+   ],
+   "grams": 148,
+   "source": "estimate",
+   "note": "red"
+  },
+  {
+   "date": "by 2026-11-15",
+   "plate": "P9",
+   "version": "1",
+   "material": "PLA",
+   "parts": [
+    "131_stud_cap_right"
+   ],
+   "grams": 172,
+   "source": "estimate",
+   "note": "red"
+  },
+  {
+   "date": "by 2026-11-15",
+   "plate": "P11",
+   "version": "1",
+   "material": "PLA",
+   "parts": [
+    "201_hopper"
+   ],
+   "grams": 152,
+   "source": "estimate",
+   "note": "red; rev 1 hopper, printed with supports (support not counted)"
+  },
+  {
+   "date": "by 2026-11-15",
+   "plate": "P12",
+   "version": "1",
+   "material": "PLA",
+   "parts": [
+    "202_feed_chute"
+   ],
+   "grams": 30,
+   "source": "estimate",
+   "note": "red"
+  },
+  {
+   "date": "by 2026-11-15",
+   "plate": "P3",
+   "version": "1",
+   "material": "PETG",
+   "parts": [
+    "203_V1_tray",
+    "207_leaf_spring_V1_1"
+   ],
+   "grams": 37,
+   "source": "estimate",
+   "note": ""
+  },
+  {
+   "date": "by 2026-11-15",
+   "plate": "P4",
+   "version": "1",
+   "material": "PETG",
+   "parts": [
+    "160_rail_R_guided",
+    "161_rail_L_floating"
+   ],
+   "grams": 63,
+   "source": "estimate",
+   "note": "rails missing the front face insert: drill 4.4"
+  },
+  {
+   "date": "by 2026-11-15",
+   "plate": "P14+P4",
+   "version": "1",
+   "material": "PETG",
+   "parts": [
+    "204_V2_tray",
+    "207_leaf_spring_V1_2",
+    "207_leaf_spring_V2_1",
+    "207_leaf_spring_V2_2",
+    "50b_drum_625_roller_PETG_pocket16.1_1",
+    "50b_drum_625_roller_PETG_pocket16.1_2",
+    "50b_drum_625_roller_PETG_pocket16.1_3",
+    "50b_drum_625_roller_PETG_pocket16.1_4",
+    "162_station_L",
+    "162_station_R",
+    "164_guide_block_R"
+   ],
+   "grams": 120,
+   "source": "estimate",
+   "note": ""
+  },
+  {
+   "date": "by 2026-11-15",
+   "plate": "P2",
+   "version": "1",
+   "material": "PETG",
+   "parts": [
+    "172_reed_coupon_tray",
+    "172_reed_coupon_floor",
+    "120_clip_C1_single",
+    "213_servo_saddle"
+   ],
+   "grams": 32,
+   "source": "estimate",
+   "note": ""
+  },
+  {
+   "date": "by 2026-11-15",
+   "plate": "P13/P16/P18",
+   "version": "1",
+   "material": "PETG",
+   "parts": [
+    "215_camera_bridge",
+    "214_trapdoor_A",
+    "214_trapdoor_B",
+    "56_drum_NEMA17_adjustable_bracket",
+    "211_landing_ramp_low",
+    "63_vib_motor_cap_1",
+    "63_vib_motor_cap_2",
+    "57d_door_slider",
+    "59b_servo_link"
+   ],
+   "grams": 142,
+   "source": "estimate",
+   "note": ""
+  },
+  {
+   "date": "by 2026-11-15",
+   "plate": "P16",
+   "version": "1",
+   "material": "PETG",
+   "parts": [
+    "49b_drum_static_outlet_plate"
+   ],
+   "grams": 72,
+   "source": "estimate",
+   "note": ""
+  },
+  {
+   "date": "by 2026-11-15",
+   "plate": "P17",
+   "version": "1",
+   "material": "TPU",
+   "parts": [
+    "55_drum_friction_tire_TPU"
+   ],
+   "grams": 4,
+   "source": "estimate",
+   "note": ""
+  },
+  {
+   "date": "2026-11-15",
+   "plate": "P18",
+   "version": "2",
+   "material": "PETG",
+   "parts": [
+    "210_scanner_plate"
+   ],
+   "grams": 103,
+   "source": "estimate",
+   "note": "scanner plate rev 2"
+  },
+  {
+   "date": "by 2026-11-08",
+   "plate": "P4 (old 4.x kit)",
+   "version": 0,
+   "material": "PETG",
+   "parts": [
+    "old runner kit, superseded"
+   ],
+   "grams": 0,
+   "source": "unknown",
+   "note": "printed before the 5.1 kit; grams not known"
+  }
+ ]
+}

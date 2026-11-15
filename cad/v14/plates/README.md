@@ -29,3 +29,4 @@ Runner kit plate comes after the PETG numbers are in.
 ## The print pack (BJ 2026-11-14)
 BJ gets ONE folder: `python3 build_print_pack.py OUT` -> `Bricked_Sorting_Prints.zip` with every plate as `P<n>_v<version>_<rest>.3mf` + INDEX.md.
 When any plate's parts change: rebuild its .3mf here, bump its `v` in `versions.json`, add a log line (what changed, reprint needed or not), rebuild the pack, send the same zip name. Never send loose one-off zips.
+Filament: every finished print gets a line in `print_log.json` (grams, material, estimate or slicer); the pack INDEX shows the running total (BJ 2026-11-15).
