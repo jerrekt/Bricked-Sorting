@@ -395,7 +395,30 @@
     "62 vib saddle x2"
    ],
    "note": "marked done by BJ 2026-11-15; 1 h 45 min"
+  },
+  {
+   "date": "2026-11-15 14:39",
+   "bambu_job": "P19_v2+P13_v3_PETG_combined",
+   "hours": 9.87,
+   "plate": "P19+P13",
+   "version": 2,
+   "material": "PETG",
+   "grams": 290,
+   "source": "slicer",
+   "status": "printing",
+   "parts": [
+    "205 cradle A",
+    "205 cradle B",
+    "206 motor wall",
+    "212 slider post",
+    "216 LED holders A/B",
+    "217 webcam mount",
+    "218 APDS mount",
+    "228 cable spool",
+    "226 USB clips 1-2"
+   ],
+   "note": "done ~00:30 Nov 16"
   }
  ],
- "updated": "2026-11-15 13:02 PT"
+ "updated": "2026-11-15 14:40 PT"
 }
