@@ -5,23 +5,25 @@ If a plate number has a higher version than what you printed, check the change l
 
 done = printed (kept for reprints); 1_now = barebones to print next (makes it sort); 2_later = after it sorts (back drawer, faces, skin)
 
+Material in the file name is what to load: PETG (functional, any colour), PLAred (visible red shell parts: studs, hopper, corner caps, drawer faces with black lettering in slot 2), TPU, PLA (PLA calibration only). Renamed 2026-11-15, no geometry change.
+
 | Plate | Version | Folder | Material | What | Files |
 |---|---|---|---|---|---|
 | P1 | v1 | done | PETG | PETG calibration rev 1 (done) | 1 |
 | P1b | v1 | done | PETG | PETG dovetails rev 1 (done) | 1 |
 | P1c | v1 | done | PETG | PETG dovetails rev 2 + insert holes rev 2 (done: dovetail 0.20, insert 4.4) - not printed, not needed | 1 |
 | P1d | v1 | done | PETG | PETG insert holes only (done) | 1 |
-| P2 | v1 | done | PLA | Coupons: reed tray + floor with magnet pocket, C1 skin clip, servo saddle | 1 |
+| P2 | v1 | done | PETG | Coupons: reed tray + floor with magnet pocket, C1 skin clip, servo saddle | 1 |
 | P3 | v1 | done | PETG | V1 vibration tray + 1 leaf spring | 1 |
 | P4 | v1 | 2_later | PETG | Runner kit: 2 rails, 2 stations, guide. Front kit printed 2026-11-13 (drill the 4.4 face insert in its rails); print 1 more for the back drawer | 1 |
 | P5 | v1 | done | PLA | PLA insert-hole bar (done: PLA 4.3) | 1 |
-| P6 | v1 | 2_later | PLA | Drawer faces, red + black lettering, one per plate. B1 printed 2026-11-09 (in done/); F1-F3, B2, B3 left | 6 |
-| P7 | v1 | 1_now | PLA | Drawer retaining bars + closed-switch mounts | 1 |
-| P8 | v1 | done | PLA | Left stud (open ring, holds the hopper), red | 1 |
-| P9 | v1 | done | PLA | Right stud (capped), red | 1 |
-| P10 | v1 | 2_later | PLA | 12 corner caps, red (5 mm brim) | 1 |
-| P11 | v1 | done | PLA | Hopper (rev 2, no supports), red | 1 |
-| P12 | v1 | done | PLA | Feed chute, red | 1 |
+| P6 | v1 | 2_later | PLAred | Drawer faces, red + black lettering, one per plate. B1 printed 2026-11-09 (in done/); F1-F3, B2, B3 left | 6 |
+| P7 | v1 | 1_now | PETG | Drawer retaining bars + closed-switch mounts | 1 |
+| P8 | v1 | done | PLAred | Left stud (open ring, holds the hopper), red | 1 |
+| P9 | v1 | done | PLAred | Right stud (capped), red | 1 |
+| P10 | v1 | 2_later | PLAred | 12 corner caps, red (5 mm brim) | 1 |
+| P11 | v1 | done | PLAred | Hopper (rev 2, no supports), red | 1 |
+| P12 | v1 | done | PETG | Feed chute, red | 1 |
 | P13 | v2 | 1_now | PETG | Deck parts left: drum cradle A, webcam mount, webcam cable spool, APDS9960 mount, USB clips 1-2 | 1 |
 | P14 | v1 | done | PETG | V2 tray, 3 leaf springs, 4 drum rollers (625 pocket 16.1) | 1 |
 | P15 | v1 | done | PETG | Drum barrel (3 walls), printing 2026-11-15, ~10.6 h | 1 |
