@@ -426,13 +426,13 @@
    "plate": "P20",
    "version": 3,
    "material": "PETG",
-   "grams": 292,
-   "source": "slicer (v2 slice)",
+   "grams": 350,
+   "source": "slicer",
    "status": "printing",
    "parts": [
     "180 beam segments 1-3"
    ],
-   "note": "done ~9 am"
+   "note": "3 walls, 15% gyroid, 0.2 mm, supports off; done ~9 am"
   }
  ],
  "updated": "2026-11-16 01:58 PT"
