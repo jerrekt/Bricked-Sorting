@@ -57,8 +57,8 @@ td.n,th.n{text-align:right}
     <h2>3D prints</h2>
     <div class="kpis">
       <div class="kpi"><span>Filament used</span><b id="k-used">–</b><small id="k-used-s"></small></div>
-      <div class="kpi left"><span>Filament left to print</span><b id="k-left">–</b><small id="k-left-s"></small></div>
-      <div class="kpi left"><span>Print time left</span><b id="k-time">–</b><small id="k-time-s"></small></div>
+      <div class="kpi left"><span>POC filament left</span><b id="k-left">–</b><small id="k-left-s"></small></div>
+      <div class="kpi left"><span>POC print time left</span><b id="k-time">–</b><small id="k-time-s"></small></div>
       <div class="kpi"><span>Parts printed</span><b id="k-parts">–</b><small id="k-parts-s"></small></div>
     </div>
     <div class="bar" id="bar" aria-label="Machine printed by weight"></div>
@@ -80,10 +80,11 @@ td.n,th.n{text-align:right}
   const S = d.summary, tot = S.total.grams;
   $('k-used').textContent = kg(d.used_so_far.grams);
   $('k-used-s').textContent = `${d.used_so_far.jobs} jobs, ${Math.round(d.used_so_far.hours)} h (tests included)`;
-  $('k-left').textContent = kg(S.left.grams);
-  $('k-left-s').textContent = `of ${kg(tot)} for the whole machine`;
-  $('k-time').textContent = '~' + d.left_at_pace_hours + ' h';
-  $('k-time-s').textContent = `CAD estimate ${Math.round(S.left.hours)} h x ${d.pace_factor} (BJ's real pace)`;
+  const P = d.poc || S;
+  $('k-left').textContent = kg(P.left.grams);
+  $('k-left-s').textContent = `semester-1 POC (frame + top + deck + scoop); full machine ${kg(S.left.grams)}`;
+  $('k-time').textContent = '~' + Math.round(P.left.hours * d.pace_factor) + ' h';
+  $('k-time-s').textContent = `full machine ~${d.left_at_pace_hours} h (walls, drawers: semester 2)`;
   let n = 0, nd = 0;
   d.parts.forEach(p => { n += p.qty; nd += p.done; });
   $('k-parts').textContent = `${nd} / ${n}`;
@@ -97,7 +98,7 @@ td.n,th.n{text-align:right}
   $('groups').innerHTML = Object.entries(groups).map(([m, ps]) => {
     const M = d.modules[m];
     const rows = ps.map(p => {
-      const st = p.left === 0 && p.printing === 0 ? '<span class="st done">done</span>' : p.printing ? '<span class="st printing">printing</span>' : p.done ? `<span class="st">${p.done}/${p.qty}</span>` : '<span class="st">to print</span>';
+      const st = p.left === 0 && p.printing === 0 ? '<span class="st done">done</span>' : p.printing ? '<span class="st printing">printing</span>' : p.scope === 'sem2' ? '<span class="st">semester 2</span>' : p.done ? `<span class="st">${p.done}/${p.qty}</span>` : '<span class="st">to print</span>';
       return `<tr><td>${esc(p.part)}</td><td>${esc(p.material)}</td><td class="n">${p.qty}</td><td class="n">${Math.round(p.g_each * p.qty)}</td><td class="n">${(p.h_each * p.qty).toFixed(1)}</td><td>${st}</td></tr>`;
     }).join('');
     return `<details class="grp"><summary>${esc(m)}<span>${kg(M.left_g)} / ${Math.round(M.left_h * d.pace_factor)} h left · ${M.parts - M.parts_left} of ${M.parts} parts</span></summary>
