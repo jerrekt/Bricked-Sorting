@@ -1,8 +1,8 @@
 {
  "interface": "v14-interface-5.1 (2026-11-06 19:35): drawer fits through the skin opening (bins 70 wide at 76 pitch, body x +-306, opening +-310, overlay face +-330); roof support under the hopper stud",
  "modules": {
-  "F": 291,
-  "K": 48,
+  "F": 292,
+  "K": 71,
   "D": 102,
   "S_fixed": 9
  },
@@ -133,24 +133,24 @@
  },
  "printed_totals": {
   "F_frame_skin": {
-   "grams": 4312,
-   "hours": 59.2
+   "grams": 3459,
+   "hours": 47.9
   },
   "K_deck": {
-   "grams": 1366,
-   "hours": 23.1
+   "grams": 1478,
+   "hours": 27.2
   },
   "D_drawers": {
-   "grams": 2379,
+   "grams": 2378,
    "hours": 53
   },
   "S_scoop": {
-   "grams": 623,
+   "grams": 622,
    "hours": 13.8
   },
   "ALL": {
-   "grams": 8680,
-   "hours": 149.1,
+   "grams": 7937,
+   "hours": 141.9,
    "budget": "printed total <= ~9.5 kg and <= ~200 h (skin ~4.6 kg, studs ~0.5, mechanisms ~3.5, bins ~1)"
   }
  },
@@ -190,18 +190,11 @@
     "use": ""
    }
   ],
-  "#8 x 2 in": [
-   {
-    "module": "F",
-    "qty": 8,
-    "use": ""
-   }
-  ],
   "#6 x 1.25 in": [
    {
     "module": "F",
-    "qty": 12,
-    "use": ""
+    "qty": 28,
+    "use": "deck ply to cleats (12), posts to floor ply (16)"
    }
   ],
   "M3 heat-set inserts": [
@@ -217,8 +210,8 @@
    },
    {
     "module": "K",
-    "qty": 30,
-    "use": "electronics pads"
+    "qty": 34,
+    "use": "electronics pads (32) + PSU cover (2)"
    }
   ],
   "M3 x 8 countersunk": [
@@ -236,7 +229,7 @@
   "red PLA": [
    {
     "module": "F",
-    "qty": "~4.3 kg",
+    "qty": "~3.5 kg",
     "use": ""
    }
   ],
@@ -294,11 +287,11 @@
     "use": "scanner doors"
    }
   ],
-  "XIAO ESP32-S3 Sense": [
+  "USB webcam (model TBD)": [
    {
     "module": "K",
     "qty": 1,
-    "use": "camera on 217"
+    "use": "strapped face-down on 217, cable to the Pi via 215 post slots, clips 226, spool 228"
    }
   ],
   "APDS-9960 (GY-9960)": [
@@ -315,11 +308,32 @@
     "use": "on 216"
    }
   ],
-  "XIAO ESP32-C3, MCP23017, 3 x TMC2209, DRV8833, 12-5 V buck, 12 V PSU": [
+  "Pi 4B, XIAO ESP32-C3, 2 x TMC2209 (2-slot carrier), DRV8833, buck >= 5 A, buck >= 3 A, 12 V 10 A PSU, XT30 + fuse": [
    {
     "module": "K",
     "qty": 1,
-    "use": "electronics trays 225 (BJ owns most)"
+    "use": "trays 225 1a / 1b / 2 (deck MCP23017 dropped: Pi GPIO)"
+   }
+  ],
+  "IEC C14 fused + switched snap-in inlet": [
+   {
+    "module": "K",
+    "qty": 1,
+    "use": "frame back tile B c1 r3 (cutout 47.5 x 27.5 placeholder)"
+   }
+  ],
+  "M2 x 16 + nut": [
+   {
+    "module": "K",
+    "qty": 4,
+    "use": "Pi 4B to tray 2 (nut traps underneath)"
+   }
+  ],
+  "hook-and-loop strap or 2 zip ties": [
+   {
+    "module": "K",
+    "qty": 2,
+    "use": "PSU to tray 1a until its hole pattern is measured"
    }
   ],
   "M3 x 10 / x 12 screws": [
@@ -332,7 +346,7 @@
   "#6 x 3/4 in wood screws": [
    {
     "module": "K",
-    "qty": 48,
+    "qty": 59,
     "use": "everything that stands on the deck ply"
    }
   ],
@@ -350,11 +364,11 @@
     "use": "6 roller + 2 guide per drawer"
    }
   ],
-  "M5 x 25 screw + nut": [
+  "M5 x 20 screw + nyloc": [
    {
     "module": "D",
     "qty": 12,
-    "use": "station roller axles (3 per station)"
+    "use": "station roller axles (3 per station); head outside, nyloc in the trap; tip ends 0.5 short of the rail slot floor, so NOT longer than 20"
    }
   ],
   "M5 x 16 screw": [
@@ -498,18 +512,18 @@
     "use": "top roller axles (through both side plates)"
    }
   ],
-  "M5 x 25 screw + nyloc": [
+  "M5 x 25-30 screw + nyloc": [
    {
     "module": "S",
     "qty": 5,
-    "use": "side roller axles (4), idler axle (1)"
+    "use": "side roller axles (4, grip 17: an M5 x 30 tip ends at z 141.5, 3.5 above the anti-lift hook), idler axle (1, grip 18)"
    }
   ],
-  "M3 x 30 screw": [
+  "M3 x 25 screw": [
    {
     "module": "S",
     "qty": 1,
-    "use": "belt tensioner"
+    "use": "belt tensioner (20-30 all fit: clearance run-out past the insert)"
    }
   ],
   "M3 insert": [
