@@ -130,11 +130,11 @@
  },
  "P18": {
   "v": 4,
-  "what": "Plate 1: PSU tray 1a + Pi tray 2 (flat). Plate 2: power I/O tray 1b, drop funnel, PSU terminal cover, USB clip 3, 16 tray legs. No supports on anything",
+  "what": "Plate 1: PSU tray 1a + Pi tray 2 (flat). Plate 2: power I/O tray 1b, drop funnel, PSU terminal cover, 16 tray legs. No supports on anything",
   "log": [
    "v2 2026-11-14: PETG insert holes 4.4 on the electronics trays; scanner plate rev 2 (hinge tabs were floating 0.9 mm off the plate, feet now flare so no supports, screwdriver holes over the foot screws). Reprint the scanner plate if you printed v1; v1 trays OK if inserts go in with a push",
    "v3 2026-11-15: only the parts not printed yet (scanner plate v2 and both trapdoors are done)",
-   "v4 2026-11-16: no supports: funnel has a 45 deg gusset under its flange (prints mouth-down; also removes a 4 mm lip that was inside the bore), electronics tray legs are separate parts (16 x 225_tray_leg, the #6 goes through tray + leg), XIAO camera mount dropped (Pi + Logitech webcam). Throw away v3 files"
+   "v4 2026-11-16: no supports: funnel has a 45 deg gusset under its flange (prints mouth-down; also removes a 4 mm lip that was inside the bore), electronics tray legs are separate parts (16 x 225_tray_leg, the #6 goes through tray + leg), XIAO camera mount dropped (Pi + Logitech webcam); USB clip 3 dropped (stale part from an old layout, it hit a frame post). Throw away v3 files"
   ],
   "folder": "1_now"
  },
