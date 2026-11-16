@@ -428,12 +428,12 @@
    "material": "PETG",
    "grams": 350,
    "source": "slicer",
-   "status": "printing",
+   "status": "done",
    "parts": [
     "180 beam segments 1-3"
    ],
-   "note": "3 walls, 15% gyroid, 0.2 mm, supports off, slow/quiet speed; done ~12:45 pm"
+   "note": "3 walls, 15% gyroid, 0.2 mm, supports off, slow/quiet speed; finished 2026-11-16 ~12:45 pm"
   }
  ],
- "updated": "2026-11-16 01:58 PT"
+ "updated": "2026-11-16 14:28 PT"
 }

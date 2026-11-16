@@ -28,10 +28,10 @@ DONE = {'130_stud_ring_left_hopper': 1, '131_stud_cap_right': 1, '120_clip_C1_si
         '172_reed_coupon_tray': 1, '172_reed_coupon_floor': 1,
         '49b_drum_static_outlet_plate': 1, '55_drum_friction_tire_TPU': 1, '56_drum_NEMA17_adjustable_bracket': 1, '57d_door_slider': 1,
         '59b_servo_link': 1, '63_vib_motor_cap': 2, '47b_tumbler_barrel_helical_flight': 1,
-        '48_drum_rear_feed_guard': 1, '54_drum_drive_core_5mm': 1, '59_door_link': 2, '60_servo_horn_arm': 1, '62_vib_motor_saddle': 2,
+        '48_drum_rear_feed_guard': 1, '54_drum_drive_core_5mm': 1, '59_door_link': 2, '60_servo_horn_arm': 1, '62_vib_motor_saddle': 2, '180_beam_seg_1': 1, '180_beam_seg_2': 1, '180_beam_seg_3': 1,
         '205_drum_cradle_A_ypos': 1, '205_drum_cradle_B_yneg': 1, '206_motor_wall': 1, '212_slider_post': 1, '216_led_bar_holder_A': 1,
             '216_led_bar_holder_B': 1, '217_webcam_mount_generic': 1, '218_apds9960_mount': 1, '228_webcam_cable_spool': 1, '226_usb_cable_clip_1': 1, '226_usb_cable_clip_2': 1}
-PRINTING = {'180_beam_seg_1': 1, '180_beam_seg_2': 1, '180_beam_seg_3': 1}
+PRINTING = {}
 SKIP = {'217_xiao_sense_camera_mount'}   # BJ 2026-11-16: POC uses the Pi + Logitech USB webcam, no XIAO camera
 
 # POC scope (BJ 2026-11-16): semester-1 proof of concept = open wood frame + the very top (roof tiles, studs, hopper)
