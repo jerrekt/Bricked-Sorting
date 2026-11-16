@@ -3,7 +3,7 @@
 One folder for every print. File names: `P<n>_v<version>_<material>_<what>.3mf`.
 If a plate number has a higher version than what you printed, check the change log below to see if you need to reprint.
 
-done = printed (kept for reprints); 1_now = barebones to print next (makes it sort); 2_later = after it sorts (back drawer, faces, skin)
+done = printed (kept for reprints); 1_now = what the semester-1 POC still needs; 3_semester2 = the finished machine only (back drawer, drawer bars, faces, corner caps, walls, drawers)
 
 Material in the file name is what to load: PETG (functional, any colour), PLAred (visible red shell parts: studs, hopper, corner caps, drawer faces with black lettering in slot 2), TPU, PLA (PLA calibration only). Renamed 2026-11-15, no geometry change.
 
@@ -15,13 +15,13 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 | P1d | v1 | done | PETG | PETG insert holes only (done) | 1 |
 | P2 | v1 | done | PETG | Coupons: reed tray + floor with magnet pocket, C1 skin clip, servo saddle | 1 |
 | P3 | v1 | done | PETG | V1 vibration tray + 1 leaf spring | 1 |
-| P4 | v1 | 2_later | PETG | Runner kit: 2 rails, 2 stations, guide. Front kit printed 2026-11-13 (drill the 4.4 face insert in its rails); print 1 more for the back drawer | 1 |
+| P4 | v1 | 3_semester2 | PETG | Runner kit: 2 rails, 2 stations, guide. Front kit printed 2026-11-13 (drill the 4.4 face insert in its rails); print 1 more for the back drawer | 1 |
 | P5 | v1 | done | PLA | PLA insert-hole bar (done: PLA 4.3) | 1 |
-| P6 | v1 | 2_later | PLAred | Drawer faces, red + black lettering, one per plate. B1 printed 2026-11-09 (in done/); F1-F3, B2, B3 left | 6 |
-| P7 | v1 | 1_now | PETG | Drawer retaining bars + closed-switch mounts | 1 |
+| P6 | v1 | 3_semester2 | PLAred | Drawer faces, red + black lettering, one per plate. B1 printed 2026-11-09 (in done/); F1-F3, B2, B3 left | 6 |
+| P7 | v1 | 3_semester2 | PETG | Drawer retaining bars + closed-switch mounts | 1 |
 | P8 | v1 | done | PLAred | Left stud (open ring, holds the hopper), red | 1 |
 | P9 | v1 | done | PLAred | Right stud (capped), red | 1 |
-| P10 | v1 | 2_later | PLAred | 12 corner caps, red (5 mm brim) | 1 |
+| P10 | v1 | 3_semester2 | PLAred | 12 corner caps, red (5 mm brim) | 1 |
 | P11 | v1 | done | PLAred | Hopper (rev 2, no supports), red | 1 |
 | P12 | v1 | done | PETG | Feed chute, red | 1 |
 | P13 | v3 | done | PETG | Deck parts left: drum cradle A, webcam mount, webcam cable spool, APDS9960 mount, USB clips 1-2 - printed 2026-11-16 | 1 |
@@ -49,7 +49,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 
 ## Filament used
 
-**Total: 2339.29 g** (PETG 1763.29 g, PLA 572 g, TPU 4 g) over 79 h of printing
+**Total: 2397.29 g** (PETG 1821.29 g, PLA 572 g, TPU 4 g) over 83 h of printing
 
 Filament used, one line per Bambu job (from BJ's print history). grams source=estimate: part geometry at 2 walls / 15% infill, no supports, brim or purge (the slicer usually reads 5-15% higher); replace with source=slicer when BJ sends the grams Bambu shows for a job. Other projects (JE, SJSU SAEC, SME sign) are not counted.
 
@@ -81,7 +81,7 @@ Filament used, one line per Bambu job (from BJ's print history). grams source=es
 | 2026-11-15 01:20 | p8-p12_plate_11 | 11.1 | P15 | v1 | PETG | 342 (estimate) | done | 47b drum barrel (3 walls; finished 2026-11-15 ~12:26) |
 | 2026-11-15 ~12:40 | p8-p12 plate 3 (P16 v2 parts) | 1.75 | P16 | v2 | PETG | 50.29 (slicer) | done | 48 rear guard, 54 drive hub, 59 door link x2, 60 servo arm, 62 vib saddle x2 (marked done by BJ 2026-11-15; 1 h 45 min) |
 | 2026-11-15 14:39 | P19_v2+P13_v3_PETG_combined | 9.87 | P19+P13 | v2 | PETG | 290 (slicer) | done | 205 cradle A, 205 cradle B, 206 motor wall, 212 slider post, 216 LED holders A/B, 217 webcam mount, 218 APDS mount, 228 cable spool, 226 USB clips 1-2 (finished ~00:30 Nov 16) |
-| 2026-11-16 00:45 | P20_v3_PETG_scoop_plate1_beam | 8.3 | P20 | v3 | PETG | 292 (slicer (v2 slice)) | printing | 180 beam segments 1-3 (done ~9 am) |
+| 2026-11-16 00:45 | P20_v3_PETG_scoop_plate1_beam | 12.0 | P20 | v3 | PETG | 350 (slicer) | printing | 180 beam segments 1-3 (3 walls, 15% gyroid, 0.2 mm, supports off, slow/quiet speed; done ~12:45 pm) |
 
 ---
 
