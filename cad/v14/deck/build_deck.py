@@ -390,11 +390,17 @@ def drop_funnel():
     inner = inner.union(cyl((x, y, z_step1), (0, 0, 1), r_in_up, F_TUBE_TOP - z_step1))
     inner = inner.union(cq.Workplane().add(cq.Solid.makeCone(r_in_up, F_MOUTH_R, F_MOUTH_Z - F_TUBE_TOP + 0.5, cq.Vector(x, y, F_TUBE_TOP), cq.Vector(0, 0, 1))))
     f = outer.cut(inner)
-    fl = cyl((x, y, DECK_TOP), (0, 0, 1), 60, 4).cut(cyl((x, y, DECK_TOP - 1), (0, 0, 1), FUNNEL_TUBE_R + 2.5 - 0.01, 6))
+    # flange r 53 on the deck, with a 45 deg gusset up to the cone so it prints mouth-down with no support (BJ 2026-11-15);
+    # the gusset is hollowed by the cone's own inner surface, and each #6 gets a 7.5 driver bore up through it
+    FL_R = 53.0
+    fl = cyl((x, y, DECK_TOP), (0, 0, 1), FL_R, 4).cut(cyl((x, y, DECK_TOP - 1), (0, 0, 1), FUNNEL_TUBE_R + 2.5 - 0.01, 6))
+    gus = cq.Workplane().add(cq.Solid.makeCone(FL_R, 0.0, FL_R, cq.Vector(x, y, DECK_TOP + 4 - 0.01), cq.Vector(0, 0, 1)))
+    gus = gus.intersect(cyl((x, y, DECK_TOP + 3.9), (0, 0, 1), FL_R, F_MOUTH_Z - DECK_TOP - 4)).cut(inner)
     holes = [(x + 46 * math.cos(math.radians(a)), y + 46 * math.sin(math.radians(a))) for a in (45, 135, 225, 315)]
-    f = f.union(fl)
+    f = f.union(fl).union(gus).cut(inner)        # cut the bore again: the flange used to leave a 4 mm lip inside the funnel
     for (hx, hy) in holes:
         f = wood_hole(f, hx, hy, DECK_TOP + 4)
+        f = f.cut(cyl((hx, hy, DECK_TOP + 4), (0, 0, 1), 3.75, 40))
     return f, holes, (F_MOUTH_Z, F_MOUTH_R, F_TUBE_TOP, r_in_up, r_in_tube)
 
 
@@ -421,10 +427,20 @@ def _legs_tray(outline, legs):
     """outline: shapely polygon (x, y); 2.4 mm plate at EL_Z, legs to the deck with #6 wood screws."""
     from shapely.geometry import Polygon as SP
     t = cq.Workplane('XY').workplane(offset=EL_Z - 2.4).polyline([(float(a), float(b)) for a, b in list(outline.exterior.coords)[:-1]]).close().extrude(2.4)
-    for (gx, gy) in legs:
-        t = t.union(box(gx, gy, DECK_TOP, 12, 12, EL_Z - 2.4 - DECK_TOP)).union(box(gx, gy, DECK_TOP, 20, 20, 4))
-        t = t.cut(cyl((gx, gy, DECK_TOP - 1), (0, 0, 1), WOOD_SCREW_CLR / 2, EL_Z - DECK_TOP + 2)).cut(csk_cone((gx, gy, EL_Z + 0.01), (0, 0, -1), WOOD_SCREW_CSK))
+    for (gx, gy) in legs:   # legs are separate parts now (225_tray_leg, prints foot down); the #6 goes through tray + leg into the deck
+        t = t.cut(cyl((gx, gy, EL_Z - 3), (0, 0, 1), WOOD_SCREW_CLR / 2, 4)).cut(csk_cone((gx, gy, EL_Z + 0.01), (0, 0, -1), WOOD_SCREW_CSK))
+        TRAY_LEGS.append((gx, gy))
     return t
+
+
+TRAY_LEGS = []
+
+
+def tray_leg(gx, gy):
+    """12 x 12 post + 20 x 20 foot, deck to the tray underside, #6 clearance through (BJ 2026-11-15: split off the trays so
+    the trays print flat with no support)."""
+    lg = box(gx, gy, DECK_TOP, 12, 12, EL_Z - 2.4 - DECK_TOP).union(box(gx, gy, DECK_TOP, 20, 20, 4))
+    return lg.cut(cyl((gx, gy, DECK_TOP - 1), (0, 0, 1), WOOD_SCREW_CLR / 2, EL_Z - DECK_TOP + 2))
 
 
 def _m3_pads(t, ex, ey, dx, dy):
@@ -559,6 +575,8 @@ def main():
     fun, fun_holes, fun_geo = drop_funnel(); parts.append(('220_drop_funnel', fun, 'fixed')); screws += [('220_drop_funnel', x, y) for x, y in fun_holes]
     eparts, escrews, dummies = electronics()
     parts += eparts; screws += escrews
+    for k, (gx, gy) in enumerate(TRAY_LEGS):
+        parts.append((f'225_tray_leg' if k == 0 else f'leg_{k + 1:02d}_225_tray_leg', tray_leg(gx, gy), 'fixed'))
     for n, d in dummies: parts.append((f'dummy_{n}', d, 'dummy'))
     parts.append(('dummy_USB_webcam_placeholder', box(SX, 0, CAM[2] + 8, 60, 40, 35), 'dummy'))
 
@@ -591,7 +609,7 @@ def main():
             print('teardrop', lab, n_td)
         export(bedp, prn / f'{lab}_PRINT_1.stl')
         m = mat.get(lab[:3], 'PLA'); g = grams(w, m)
-        plist.append({'label': lab, 'part_no': lab[:3], 'qty': 1, 'material': m, **bed_fit(bedp), 'diagonal_on_bed': diag,
+        plist.append({'label': lab, 'part_no': lab[:3], 'qty': len(TRAY_LEGS) if lab == '225_tray_leg' else 1, 'material': m, **bed_fit(bedp), 'diagonal_on_bed': diag,
                       'est_grams_each': g, 'est_hours_each': hours(g, w), 'orientation': notes.get(lab[:3], 'flat')})
     rb = cq.Workplane().add(roller_50b()); g50 = grams(rb, 'PETG')
     export(rb, prn / '50b_drum_625_roller_PETG_pocket16.1_PRINT_4.stl')

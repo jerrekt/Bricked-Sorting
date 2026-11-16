@@ -174,56 +174,56 @@
   }
  },
  "220_drop_funnel_PRINT_1.stl": {
-  "pose": "+y down",
-  "support": 945,
-  "steep": 2376,
+  "pose": "as posed",
+  "support": 0,
+  "steep": 7558,
   "was": {
-   "support": 8279,
-   "steep": 6433
+   "support": 0,
+   "steep": 7558
   }
  },
  "225_electronics_tray_1_PRINT_1.stl": {
-  "pose": "+y down",
+  "pose": "as posed",
   "support": 0,
   "steep": 0,
   "was": {
-   "support": 1071,
-   "steep": 703
+   "support": 0,
+   "steep": 0
   }
  },
  "225_electronics_tray_1a_psu_PRINT_1.stl": {
-  "pose": "-x down",
-  "support": 613,
-  "steep": 292,
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
   "was": {
-   "support": 24597,
+   "support": 0,
    "steep": 0
   }
  },
  "225_electronics_tray_1b_power_io_PRINT_1.stl": {
-  "pose": "-x down",
-  "support": 287,
-  "steep": 759,
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
   "was": {
-   "support": 9918,
+   "support": 0,
    "steep": 0
   }
  },
  "225_electronics_tray_2_PRINT_1.stl": {
-  "pose": "-y down",
+  "pose": "as posed",
   "support": 480,
   "steep": 392,
   "was": {
-   "support": 9758,
-   "steep": 0
+   "support": 480,
+   "steep": 392
   }
  },
  "225_electronics_tray_2_pi_PRINT_1.stl": {
-  "pose": "-y down",
-  "support": 358,
-  "steep": 460,
+  "pose": "as posed",
+  "support": 16,
+  "steep": 0,
   "was": {
-   "support": 15408,
+   "support": 16,
    "steep": 0
   }
  },
@@ -273,6 +273,15 @@
   }
  },
  "50b_drum_625_roller_PETG_pocket16.1_PRINT_4.stl": {
+  "pose": "as posed",
+  "support": 0,
+  "steep": 0,
+  "was": {
+   "support": 0,
+   "steep": 0
+  }
+ },
+ "225_tray_leg_PRINT_1.stl": {
   "pose": "as posed",
   "support": 0,
   "steep": 0,

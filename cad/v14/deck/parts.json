@@ -185,13 +185,13 @@
    "material": "PLA",
    "bed_extent": [
     220.0,
-    184.04,
+    186.4,
     62.16
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 159.7,
-   "est_hours_each": 3.26,
+   "est_grams_each": 158.1,
+   "est_hours_each": 3.23,
    "orientation": "upside down"
   },
   {
@@ -360,14 +360,14 @@
    "qty": 1,
    "material": "PLA",
    "bed_extent": [
-    120.08,
-    120.08,
-    60.45
+    106.27,
+    106.27,
+    60.49
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 71.8,
-   "est_hours_each": 0.96,
+   "est_grams_each": 70.7,
+   "est_hours_each": 1.44,
    "orientation": "mouth down (cone inside at 45 deg)"
   },
   {
@@ -378,12 +378,12 @@
    "bed_extent": [
     230.0,
     112.0,
-    28.0
+    8.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 109.8,
-   "est_hours_each": 1.46,
+   "est_grams_each": 82.7,
+   "est_hours_each": 1.1,
    "orientation": "tray top up"
   },
   {
@@ -394,12 +394,12 @@
    "bed_extent": [
     94.0,
     112.0,
-    26.01
+    6.41
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 51.8,
-   "est_hours_each": 0.69,
+   "est_grams_each": 33.7,
+   "est_hours_each": 0.45,
    "orientation": "tray top up"
   },
   {
@@ -410,12 +410,12 @@
    "bed_extent": [
     164.0,
     112.0,
-    28.0
+    8.4
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 76.5,
-   "est_hours_each": 1.02,
+   "est_grams_each": 49.3,
+   "est_hours_each": 0.66,
    "orientation": "tray top up"
   },
   {
@@ -481,6 +481,22 @@
    "est_grams_each": 2.0,
    "est_hours_each": 0.03,
    "orientation": "base down"
+  },
+  {
+   "label": "225_tray_leg",
+   "part_no": "225",
+   "qty": 16,
+   "material": "PLA",
+   "bed_extent": [
+    20.0,
+    20.0,
+    19.6
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams_each": 4.0,
+   "est_hours_each": 0.08,
+   "orientation": "tray top up"
   },
   {
    "label": "50b_drum_625_roller",
@@ -880,6 +896,6 @@
    "y": -140.0
   }
  ],
- "est_total_grams_new_parts": 1549,
- "est_total_hours_new_parts": 27.7
+ "est_total_grams_new_parts": 1478,
+ "est_total_hours_new_parts": 27.2
 }
