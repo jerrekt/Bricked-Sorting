@@ -29,9 +29,9 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 | P15 | v1 | done | PETG | Drum barrel (3 walls), printing 2026-11-15, ~10.6 h | 1 |
 | P16 | v2 | done | PETG | Drum + gate small parts left: rear guard, drive hub (drill 5 mm if tight), 2 door links, servo arm, 2 vib motor saddles - printed 2026-11-15 | 1 |
 | P17 | v1 | done | TPU | Drum friction tire (TPU) | 1 |
-| P18 | v4 | 1_now | PETG | Plate 1: PSU tray 1a + Pi tray 2 (flat). Plate 2: power I/O tray 1b, drop funnel, PSU terminal cover, 16 tray legs. No supports on anything | 2 |
+| P18 | v5 | 1_now | PETG | Plate 1: PSU tray 1a (slim PSU 142x40x28, M3 grid) + Pi tray 2 (M3 grid). Plate 2: tray 1b (M3 grid), drop funnel, PSU AC-end cover, 16 tray legs. No supports | 2 |
 | P19 | v2 | done | PETG | Deck parts missing from your project: drum cradle B, motor wall, slider post, LED holders A/B - printed 2026-11-16 | 1 |
-| P20 | v1 | 1_now | PETG | Scoop (PETG fits): 3 beam segments, carriage (tree support ~28 cm2), cup (small tree support), motor bracket, idler channel/slider/wheel, endstop mount, pushrod, servo bracket. ~600 g, one long plate | 1 |
+| P20 | v2 | 1_now | PETG | Plate 1: 3 beam segments, SUPPORTS OFF (closed box, support would get trapped inside), 5 mm brim; end segments stand on their end plates, middle segment lies flat. Plate 2: carriage, cup, motor bracket, idler channel/slider/wheel, endstop mount, pushrod, servo bracket; tree support (carriage + cup) | 2 |
 | P21 | v1 | 1_now | TPU | Scoop cup pad (TPU) | 1 |
 
 ## Change log
@@ -42,7 +42,9 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 - **P18** v2 2026-11-14: PETG insert holes 4.4 on the electronics trays; scanner plate rev 2 (hinge tabs were floating 0.9 mm off the plate, feet now flare so no supports, screwdriver holes over the foot screws). Reprint the scanner plate if you printed v1; v1 trays OK if inserts go in with a push
 - **P18** v3 2026-11-15: only the parts not printed yet (scanner plate v2 and both trapdoors are done)
 - **P18** v4 2026-11-16: no supports: funnel has a 45 deg gusset under its flange (prints mouth-down; also removes a 4 mm lip that was inside the bore), electronics tray legs are separate parts (16 x 225_tray_leg, the #6 goes through tray + leg), XIAO camera mount dropped (Pi + Logitech webcam); USB clip 3 dropped (stale part from an old layout, it hit a frame post). Throw away v3 files
+- **P18** v5 2026-11-16: trays fitted to the real parts: slim PSU S-120-12 (142 x 40 x 28) on rails, screwed by its 2 end tabs into M3 inserts, AC-end cover resized; trays 1b and 2 (and the free part of 1a) are a universal 10 mm M3 hole grid for boards on nylon standoffs, no guessed board pads. Throw away v4
 - **P19** v2 2026-11-15: 0.5 mm teardrop tops on the sideways holes (cradle B, motor wall). If you already printed v1, it is fine: just clean the hole tops
+- **P20** v2 2026-11-16: split in 2 plates and spaced out: v1 in one plate sliced to 23 h / 576 g with 134 g of support (some trapped inside the beam) and a path conflict between the tall segments. Throw away v1
 
 ## Filament used
 
