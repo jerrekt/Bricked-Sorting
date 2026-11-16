@@ -378,11 +378,11 @@
    "bed_extent": [
     230.0,
     112.0,
-    8.4
+    10.9
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 82.7,
+   "est_grams_each": 82.8,
    "est_hours_each": 1.1,
    "orientation": "tray top up"
   },
@@ -394,12 +394,12 @@
    "bed_extent": [
     94.0,
     112.0,
-    6.41
+    2.42
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 33.7,
-   "est_hours_each": 0.45,
+   "est_grams_each": 29.0,
+   "est_hours_each": 0.39,
    "orientation": "tray top up"
   },
   {
@@ -414,8 +414,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 49.3,
-   "est_hours_each": 0.66,
+   "est_grams_each": 46.9,
+   "est_hours_each": 0.63,
    "orientation": "tray top up"
   },
   {
@@ -425,13 +425,13 @@
    "material": "PLA",
    "bed_extent": [
     34.5,
-    103.0,
-    45.0
+    45.0,
+    34.5
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 22.9,
-   "est_hours_each": 0.31,
+   "est_grams_each": 10.8,
+   "est_hours_each": 0.14,
    "orientation": "top face down"
   },
   {
@@ -584,7 +584,7 @@
    "use": "on 216"
   },
   {
-   "item": "Pi 4B, XIAO ESP32-C3, 2 x TMC2209 (2-slot carrier), DRV8833, buck >= 5 A, buck >= 3 A, 12 V 10 A PSU, XT30 + fuse",
+   "item": "Pi 4B, 2 x TMC2209 (2-slot carrier), DRV8833, buck >= 5 A, buck >= 3 A, 12 V 10 A slim PSU S-120-12, XT30 + fuse",
    "qty": 1,
    "use": "trays 225 1a / 1b / 2 (deck MCP23017 dropped: Pi GPIO)"
   },
@@ -599,14 +599,19 @@
    "use": "Pi 4B to tray 2 (nut traps underneath)"
   },
   {
-   "item": "hook-and-loop strap or 2 zip ties",
+   "item": "M3 x 8 screws + washers",
    "qty": 2,
-   "use": "PSU to tray 1a until its hole pattern is measured"
+   "use": "slim PSU end tabs to the 2 inserts in tray 1a"
+  },
+  {
+   "item": "M3 nylon standoff kit (M3 x 6-10 standoffs, screws, nuts)",
+   "qty": 1,
+   "use": "boards on the 10 mm grid of trays 1a / 1b / 2"
   },
   {
    "item": "M3 heat-set inserts",
-   "qty": 34,
-   "use": "electronics pads (32) + PSU cover (2)"
+   "qty": 4,
+   "use": "PSU tabs (2) + PSU cover (2)"
   },
   {
    "item": "M3 x 8 countersunk",
@@ -896,6 +901,6 @@
    "y": -140.0
   }
  ],
- "est_total_grams_new_parts": 1478,
- "est_total_hours_new_parts": 27.2
+ "est_total_grams_new_parts": 1459,
+ "est_total_hours_new_parts": 27.0
 }

@@ -40,30 +40,27 @@
   "support": 0,
   "steep": 0,
   "was": {
-   "support": 3,
-   "steep": 70
-  },
-  "note": "teardrop holes 2026-11-15"
+   "support": 0,
+   "steep": 0
+  }
  },
  "205_drum_cradle_B_yneg_PRINT_1.stl": {
   "pose": "as posed",
   "support": 0,
   "steep": 0,
   "was": {
-   "support": 3,
-   "steep": 70
-  },
-  "note": "teardrop holes 2026-11-15"
+   "support": 0,
+   "steep": 0
+  }
  },
  "206_motor_wall_PRINT_1.stl": {
   "pose": "as posed",
   "support": 0,
   "steep": 0,
   "was": {
-   "support": 11,
-   "steep": 78
-  },
-  "note": "teardrop holes 2026-11-15"
+   "support": 0,
+   "steep": 0
+  }
  },
  "210_scanner_plate_PRINT_1.stl": {
   "pose": "as posed",
@@ -192,13 +189,10 @@
   }
  },
  "225_electronics_tray_2_pi_PRINT_1.stl": {
-  "pose": "as posed",
+  "pose": "as posed (kept flat by hand)",
   "support": 16,
   "steep": 0,
-  "was": {
-   "support": 16,
-   "steep": 0
-  }
+  "note": "16 mm2 = the Pi nut traps under the plate, bridges fine"
  },
  "226_usb_cable_clip_1_PRINT_1.stl": {
   "pose": "as posed",
@@ -220,10 +214,10 @@
  },
  "227_psu_terminal_cover_PRINT_1.stl": {
   "pose": "as posed",
-  "support": 138,
+  "support": 112,
   "steep": 0,
   "was": {
-   "support": 138,
+   "support": 112,
    "steep": 0
   }
  },
