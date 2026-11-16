@@ -24,13 +24,13 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 | P10 | v1 | 2_later | PLAred | 12 corner caps, red (5 mm brim) | 1 |
 | P11 | v1 | done | PLAred | Hopper (rev 2, no supports), red | 1 |
 | P12 | v1 | done | PETG | Feed chute, red | 1 |
-| P13 | v3 | 1_now | PETG | Deck parts left: drum cradle A, webcam mount, webcam cable spool, APDS9960 mount, USB clips 1-2 | 1 |
+| P13 | v3 | done | PETG | Deck parts left: drum cradle A, webcam mount, webcam cable spool, APDS9960 mount, USB clips 1-2 - printed 2026-11-16 | 1 |
 | P14 | v1 | done | PETG | V2 tray, 3 leaf springs, 4 drum rollers (625 pocket 16.1) | 1 |
 | P15 | v1 | done | PETG | Drum barrel (3 walls), printing 2026-11-15, ~10.6 h | 1 |
 | P16 | v2 | done | PETG | Drum + gate small parts left: rear guard, drive hub (drill 5 mm if tight), 2 door links, servo arm, 2 vib motor saddles - printed 2026-11-15 | 1 |
 | P17 | v1 | done | TPU | Drum friction tire (TPU) | 1 |
 | P18 | v3 | 1_now | PETG | Drop funnel, PSU terminal cover, 3 electronics trays, XIAO camera mount, USB clip 3 (2 plates) | 2 |
-| P19 | v2 | 1_now | PETG | Deck parts missing from your project: drum cradle B, motor wall, slider post, LED holders A/B | 1 |
+| P19 | v2 | done | PETG | Deck parts missing from your project: drum cradle B, motor wall, slider post, LED holders A/B - printed 2026-11-16 | 1 |
 | P20 | v1 | 1_now | PETG | Scoop (PETG fits): 3 beam segments, carriage (tree support ~28 cm2), cup (small tree support), motor bracket, idler channel/slider/wheel, endstop mount, pushrod, servo bracket. ~600 g, one long plate | 1 |
 | P21 | v1 | 1_now | TPU | Scoop cup pad (TPU) | 1 |
 
@@ -45,7 +45,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 
 ## Filament used
 
-**Total: 1761 g** (PETG 1185 g, PLA 572 g, TPU 4 g) over 59 h of printing
+**Total: 2047.29 g** (PETG 1471.29 g, PLA 572 g, TPU 4 g) over 71 h of printing
 
 Filament used, one line per Bambu job (from BJ's print history). grams source=estimate: part geometry at 2 walls / 15% infill, no supports, brim or purge (the slicer usually reads 5-15% higher); replace with source=slicer when BJ sends the grams Bambu shows for a job. Other projects (JE, SJSU SAEC, SME sign) are not counted.
 
@@ -75,7 +75,8 @@ Filament used, one line per Bambu job (from BJ's print history). grams source=es
 | 2026-11-14 19:28 | p8-p12_plate_15 | 0.5 | P17 | v1 | TPU | 4 (estimate) | done | 55 drum tire |
 | 2026-11-14 21:33 | p8-p12_plate_16 | 3.6 | P18 | v2 | PETG | 103 (estimate) | done | 210 scanner plate (scanner plate rev 2, confirmed v2 by BJ (access holes there)) |
 | 2026-11-15 01:20 | p8-p12_plate_11 | 11.1 | P15 | v1 | PETG | 342 (estimate) | done | 47b drum barrel (3 walls; finished 2026-11-15 ~12:26) |
-| 2026-11-15 ~12:40 | p8-p12 plate 3 (P16 v2 parts) | 0 | P16 | v2 | PETG | 54 (estimate) | done | 48 rear guard, 54 drive hub, 59 door link x2, 60 servo arm, 62 vib saddle x2 (marked done by BJ 2026-11-15; hours not known yet) |
+| 2026-11-15 ~12:40 | p8-p12 plate 3 (P16 v2 parts) | 1.75 | P16 | v2 | PETG | 50.29 (slicer) | done | 48 rear guard, 54 drive hub, 59 door link x2, 60 servo arm, 62 vib saddle x2 (marked done by BJ 2026-11-15; 1 h 45 min) |
+| 2026-11-15 14:39 | P19_v2+P13_v3_PETG_combined | 9.87 | P19+P13 | v2 | PETG | 290 (slicer) | done | 205 cradle A, 205 cradle B, 206 motor wall, 212 slider post, 216 LED holders A/B, 217 webcam mount, 218 APDS mount, 228 cable spool, 226 USB clips 1-2 (finished ~00:30 Nov 16) |
 
 ---
 
