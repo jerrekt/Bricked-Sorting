@@ -3,24 +3,24 @@
  "updated": "2026-11-16 00:08 PT",
  "summary": {
   "total": {
-   "grams": 8541,
-   "hours": 152.2
+   "grams": 8511,
+   "hours": 153.0
   },
   "done": {
-   "grams": 2508,
-   "hours": 46.8
+   "grams": 2507,
+   "hours": 47.0
   },
   "printing": {
    "grams": 0,
    "hours": 0.0
   },
   "left": {
-   "grams": 6033,
-   "hours": 105.5
+   "grams": 6004,
+   "hours": 106.0
   }
  },
- "pace_factor": 0.89,
- "left_at_pace_hours": 94,
+ "pace_factor": 0.88,
+ "left_at_pace_hours": 93,
  "used_so_far": {
   "grams": 2047,
   "hours": 70.8,
@@ -36,11 +36,11 @@
    "parts_left": 313
   },
   "Deck": {
-   "total_g": 1571.0,
-   "left_g": 332.8,
-   "left_h": 4.4,
-   "parts": 34,
-   "parts_left": 5
+   "total_g": 1540.8,
+   "left_g": 304.2,
+   "left_h": 5.0,
+   "parts": 50,
+   "parts_left": 21
   },
   "Drawers": {
    "total_g": 2378.3,
@@ -983,8 +983,8 @@
    "part": "210_scanner_plate",
    "material": "PLA",
    "qty": 1,
-   "g_each": 159.7,
-   "h_each": 3.26,
+   "g_each": 158.1,
+   "h_each": 3.23,
    "done": 1,
    "printing": 0,
    "left": 0
@@ -1104,8 +1104,8 @@
    "part": "220_drop_funnel",
    "material": "PLA",
    "qty": 1,
-   "g_each": 71.8,
-   "h_each": 0.96,
+   "g_each": 70.7,
+   "h_each": 1.44,
    "done": 0,
    "printing": 0,
    "left": 1
@@ -1115,8 +1115,8 @@
    "part": "225_electronics_tray_1a_psu",
    "material": "PLA",
    "qty": 1,
-   "g_each": 109.8,
-   "h_each": 1.46,
+   "g_each": 82.8,
+   "h_each": 1.1,
    "done": 0,
    "printing": 0,
    "left": 1
@@ -1126,8 +1126,8 @@
    "part": "225_electronics_tray_1b_power_io",
    "material": "PLA",
    "qty": 1,
-   "g_each": 51.8,
-   "h_each": 0.69,
+   "g_each": 29.0,
+   "h_each": 0.39,
    "done": 0,
    "printing": 0,
    "left": 1
@@ -1137,8 +1137,8 @@
    "part": "225_electronics_tray_2_pi",
    "material": "PLA",
    "qty": 1,
-   "g_each": 76.5,
-   "h_each": 1.02,
+   "g_each": 46.9,
+   "h_each": 0.63,
    "done": 0,
    "printing": 0,
    "left": 1
@@ -1148,8 +1148,8 @@
    "part": "227_psu_terminal_cover",
    "material": "PLA",
    "qty": 1,
-   "g_each": 22.9,
-   "h_each": 0.31,
+   "g_each": 10.8,
+   "h_each": 0.14,
    "done": 0,
    "printing": 0,
    "left": 1
@@ -1186,6 +1186,17 @@
    "done": 1,
    "printing": 0,
    "left": 0
+  },
+  {
+   "module": "Deck",
+   "part": "225_tray_leg",
+   "material": "PLA",
+   "qty": 16,
+   "g_each": 4.0,
+   "h_each": 0.08,
+   "done": 0,
+   "printing": 0,
+   "left": 16
   },
   {
    "module": "Deck",
@@ -1710,7 +1721,7 @@
    "material": "PETG",
    "qty": 1,
    "g_each": 342.1,
-   "h_each": 6.12,
+   "h_each": 6.33,
    "done": 1,
    "printing": 0,
    "left": 0
@@ -1721,7 +1732,7 @@
    "material": "PETG",
    "qty": 1,
    "g_each": 17.8,
-   "h_each": 0.32,
+   "h_each": 0.33,
    "done": 1,
    "printing": 0,
    "left": 0
@@ -1732,7 +1743,7 @@
    "material": "PETG",
    "qty": 1,
    "g_each": 72.0,
-   "h_each": 1.29,
+   "h_each": 1.33,
    "done": 1,
    "printing": 0,
    "left": 0
@@ -1765,7 +1776,7 @@
    "material": "PETG",
    "qty": 1,
    "g_each": 22.2,
-   "h_each": 0.4,
+   "h_each": 0.41,
    "done": 1,
    "printing": 0,
    "left": 0
@@ -1820,7 +1831,7 @@
    "material": "PETG",
    "qty": 2,
    "g_each": 14.0,
-   "h_each": 0.25,
+   "h_each": 0.26,
    "done": 2,
    "printing": 0,
    "left": 0

@@ -2,7 +2,7 @@
  "interface": "v14-interface-5.1 (2026-11-06 19:35): drawer fits through the skin opening (bins 70 wide at 76 pitch, body x +-306, opening +-310, overlay face +-330); roof support under the hopper stud",
  "modules": {
   "F": 292,
-  "K": 71,
+  "K": 70,
   "D": 102,
   "S_fixed": 9
  },
@@ -137,8 +137,8 @@
    "hours": 47.9
   },
   "K_deck": {
-   "grams": 1478,
-   "hours": 27.2
+   "grams": 1459,
+   "hours": 27.0
   },
   "D_drawers": {
    "grams": 2378,
@@ -149,8 +149,8 @@
    "hours": 13.8
   },
   "ALL": {
-   "grams": 7937,
-   "hours": 141.9,
+   "grams": 7918,
+   "hours": 141.7,
    "budget": "printed total <= ~9.5 kg and <= ~200 h (skin ~4.6 kg, studs ~0.5, mechanisms ~3.5, bins ~1)"
   }
  },
@@ -210,8 +210,8 @@
    },
    {
     "module": "K",
-    "qty": 34,
-    "use": "electronics pads (32) + PSU cover (2)"
+    "qty": 4,
+    "use": "PSU tabs (2) + PSU cover (2)"
    }
   ],
   "M3 x 8 countersunk": [
@@ -308,7 +308,7 @@
     "use": "on 216"
    }
   ],
-  "Pi 4B, XIAO ESP32-C3, 2 x TMC2209 (2-slot carrier), DRV8833, buck >= 5 A, buck >= 3 A, 12 V 10 A PSU, XT30 + fuse": [
+  "Pi 4B, 2 x TMC2209 (2-slot carrier), DRV8833, buck >= 5 A, buck >= 3 A, 12 V 10 A slim PSU S-120-12, XT30 + fuse": [
    {
     "module": "K",
     "qty": 1,
@@ -329,11 +329,18 @@
     "use": "Pi 4B to tray 2 (nut traps underneath)"
    }
   ],
-  "hook-and-loop strap or 2 zip ties": [
+  "M3 x 8 screws + washers": [
    {
     "module": "K",
     "qty": 2,
-    "use": "PSU to tray 1a until its hole pattern is measured"
+    "use": "slim PSU end tabs to the 2 inserts in tray 1a"
+   }
+  ],
+  "M3 nylon standoff kit (M3 x 6-10 standoffs, screws, nuts)": [
+   {
+    "module": "K",
+    "qty": 1,
+    "use": "boards on the 10 mm grid of trays 1a / 1b / 2"
    }
   ],
   "M3 x 10 / x 12 screws": [
