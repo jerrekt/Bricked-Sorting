@@ -74,7 +74,9 @@ def beam_segment(i):
     if i < 2:
         s = s.union(box(x1, x1 + 20, BY[0] + T + FIT, BY[1] - T - FIT, BZ[0] + T + FIT, BZ[1] - T - FIT).cut(
             box(x1 - 1, x1 + 21, BY[0] + 2 * T + FIT, BY[1] - 2 * T - FIT, BZ[0] + 2 * T + FIT, BZ[1] - 2 * T - FIT)))
-        s = s.cut(box(x1 - 1, x1 + 1, BY[0] - 1, BY[1] + 1, BZ[0] - 1, BZ[1] + 1).intersect(box(x1 - 1, x1 + 1, BY[0] + T, BY[1] - T, BZ[0] + T, BZ[1] - T)))
+        # collar inside the +x end fuses the plug to the beam walls (the plug alone sat FIT clear of the walls: a loose ring)
+        s = s.union(box(x1 - 15, x1 + 0.5, BY[0] + T - 0.01, BY[1] - T + 0.01, BZ[0] + T - 0.01, BZ[1] - T + 0.01).cut(
+            box(x1 - 16, x1 + 1, BY[0] + 2 * T + FIT, BY[1] - 2 * T - FIT, BZ[0] + 2 * T + FIT, BZ[1] - 2 * T - FIT)))
     for xs in ([x1 + 10] if i < 2 else []) + ([x0 + 10] if i > 0 else []):
         s = s.cut(cylc((xs, 0, 163.0), (0, 1, 0), M3_CLR / 2, 40))
     # end plates: 6 mm plate on the beam end, screwed to the post inner face (x = +-335) with 3 x #6 (axis x)
@@ -138,13 +140,15 @@ def carriage_local():
     c = c.union(box(-CAR_TOP_X, CAR_TOP_X, -14, 14, TOP_Z, TOP_Z + 3))
     for sx in (-1, 1):
         tw = box(*sorted((sx * TOWER_X[0], sx * TOWER_X[1])), -12, 12, TOP_Z, PIVOT_Z + 12)
-        tw = tw.cut(cylc((sx * (TOWER_X[0] + 4), 0, PIVOT_Z), (1, 0, 0), 8.05, 5.4)).cut(cylc((sx * (TOWER_X[0] + 4), 0, PIVOT_Z), (1, 0, 0), 3.0, 20))
+        # 625 pocket from the inner face (the bearing sits at |x| 46..51), 6 mm through hole for the stub tip
+        tw = tw.cut(cylc((sx * (TOWER_X[0] - 0.01), 0, PIVOT_Z), (sx, 0, 0), 8.05, 5.4)).cut(cylc((sx * (TOWER_X[0] - 1), 0, PIVOT_Z), (sx, 0, 0), 3.0, 20))
         c = c.union(tw)
     # servo bracket is a separate part (servo_bracket_local), bolted to the -y side plate: 2 x M3 bosses here
     for xx in (-56.0, -48.0):
         c = c.cut(cylc((xx, -yo - SIDE_T + 2, 170.0), (0, 1, 0), M3_CLR / 2, 10))
     # endstop flag on -x, -y side
     c = c.union(box(-CAR_TOP_X - 4, -CAR_TOP_X, -24, -20, TOP_Z - 6, TOP_Z + 3))
+    c = c.union(box(-CAR_TOP_X - 1, -CAR_TOP_X + 6, -24, -13.99, TOP_Z, TOP_Z + 3))   # web onto the top plate: the flag floated 6 mm off it (kept inside x so it clears the end plate at home)
     return c
 
 
@@ -206,8 +210,9 @@ def cup_local():
     keel = box(-SC_W + 1, SC_W - 1, -4, 4, PIVOT_Z - 3, zf - SC_T + 0.01)
     fl = fl.union(keel)
     # hubs on the end walls at the pivot, 5 mm stub axles into the tower 625s (both sides, 0.5 off the wall)
-    for sx in (-1, 1):
-        fl = fl.union(cylc((sx * (SC_W + 3.0), 0, PIVOT_Z), (1, 0, 0), STUB_R, 7.0))
+    for sx in (-1, 1):   # stub from inside the end wall through the tower 625 (|x| 46..51), collar to 0.5 off the tower
+        fl = fl.union(cylc((sx * (SC_W - 1.0), 0, PIVOT_Z), (sx, 0, 0), STUB_R, TOWER_X[0] + 5.5 - (SC_W - 1.0)))
+        fl = fl.union(cylc((sx * (SC_W - 1.0), 0, PIVOT_Z), (sx, 0, 0), 4.0, TOWER_X[0] - 0.5 - (SC_W - 1.0)))
     # crank lever on the -x end wall (x -46.5 .. -45): r CRANK_R up from the pivot, M3 pin hole for the pushrod
     crank = box(CRANK_X - 1.5, -SC_W + 0.01, -5, 5, PIVOT_Z - 3, PIVOT_Z + CRANK_R + 5)
     crank = crank.cut(cylc((CRANK_X, 0, PIVOT_Z + CRANK_R), (1, 0, 0), 1.6, 10))
@@ -246,11 +251,15 @@ def idler_block():
     the carriage rollers and the beam post) and an M3 tension screw pulls it toward +x."""
     ch = box(301.0, 334.0, BY[1] - 0.01, BY[1] + 8, 150.0, 176.0).cut(box(300.0, 335.0, BY[1] + 2, BY[1] + 8.1, 154.0, 172.0))
     sl = box(IDLER_X - 20, IDLER_X + 6, BY[1] + 2 + FIT, BY[1] + 8 - FIT, 154.0 + FIT, 172.0 - FIT)
-    arm = box(IDLER_X - 6, IDLER_X + 6, BY[1] + 8 - 0.01, PUL_Y + 8, 154.0, 158.0).union(box(IDLER_X - 6, IDLER_X + 6, BY[1] + 8 - 0.01, PUL_Y + 8, 168.0, 172.0))
+    arm = box(IDLER_X - 6, IDLER_X + 6, BY[1] + 8 - FIT - 0.5, PUL_Y + 8, 154.0 + FIT, 158.0).union(box(IDLER_X - 6, IDLER_X + 6, BY[1] + 8 - FIT - 0.5, PUL_Y + 8, 168.0, 172.0 - FIT))
     sl = sl.union(arm).cut(cylc((IDLER_X, PUL_Y, 163), (0, 0, 1), 2.65, 40))
-    ch = ch.union(box(334.0, 340.0, BY[1] + 8, BY[1] + 20, 154.0, 172.0)).cut(cylc((337, BY[1] + 14, 163), (1, 0, 0), M3_CLR / 2, 8))
-    sl = sl.cut(cylc((IDLER_X + 6, BY[1] + 5, 163), (1, 0, 0), INSERT_D / 2, 2 * INSERT_DEPTH))
-    sl = sl.cut(cylc((IDLER_X + 6 - 11, BY[1] + 5, 163), (1, 0, 0), M3_CLR / 2, 22))   # screw run-out past the insert: M3 x 20-30 all fit
+    # end block for the tension screw, outboard of the beam post (post x 335..354, y +-19): a front web (y 19.2..23) joins it to
+    # the channel and stops the slider; the screw runs at y 29 into the slider's lug (the old screw missed the slider)
+    ch = ch.union(box(333.0, 340.0, 19.2, BY[1] + 8 + 0.1, 150.0, 176.0)).union(box(334.0, 340.0, BY[1] + 8 - 0.1, BY[1] + 20, 154.0, 172.0))
+    ch = ch.cut(cylc((332.5, 29.0, 163), (1, 0, 0), M3_CLR / 2, 9))
+    lug = box(IDLER_X, IDLER_X + 6, BY[1] + 8 - FIT - 0.5, 34.0, 154.0 + FIT, 172.0 - FIT)          # tension lug between the arms (wheel starts at y 35)
+    sl = sl.union(lug).cut(cylc((IDLER_X + 6 + 0.01, 29.0, 163), (-1, 0, 0), INSERT_D / 2, INSERT_DEPTH))
+    sl = sl.cut(cylc((IDLER_X + 6 - INSERT_DEPTH + 0.5, 29.0, 163), (-1, 0, 0), M3_CLR / 2, 12))   # run-out past the insert: M3 x 12-20 fit
     return ch, sl
 
 

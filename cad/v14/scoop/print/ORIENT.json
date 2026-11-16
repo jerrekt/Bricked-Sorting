@@ -1,20 +1,20 @@
 {
  "181_carriage_PRINT_1.stl": {
   "pose": "+x down",
-  "support": 2776,
+  "support": 2619,
   "steep": 158,
   "was": {
-   "support": 6723,
-   "steep": 150
+   "support": 6791,
+   "steep": 121
   }
  },
  "182_scoop_cup_PRINT_1.stl": {
   "pose": "+y down",
-  "support": 633,
-  "steep": 31,
+  "support": 632,
+  "steep": 36,
   "was": {
-   "support": 9778,
-   "steep": 4182
+   "support": 10386,
+   "steep": 4207
   }
  },
  "183_cup_pad_TPU_PRINT_1.stl": {
@@ -37,20 +37,20 @@
  },
  "185_idler_channel_PRINT_1.stl": {
   "pose": "+x down",
-  "support": 100,
+  "support": 70,
   "steep": 0,
   "was": {
-   "support": 271,
-   "steep": 11
+   "support": 265,
+   "steep": 5
   }
  },
  "186_idler_slider_PRINT_1.stl": {
   "pose": "+x down",
   "support": 3,
-  "steep": 22,
+  "steep": 21,
   "was": {
-   "support": 369,
-   "steep": 42
+   "support": 289,
+   "steep": 12
   }
  },
  "187_idler_wheel_PRINT_1.stl": {
@@ -88,5 +88,13 @@
    "support": 1296,
    "steep": 11
   }
+ },
+ "180_beam_seg_1_PRINT_1.stl": {
+  "pose": "plug end up (flipped after auto_orient)",
+  "note": "only the 25 mm diaphragm bridges inside; supports OFF"
+ },
+ "180_beam_seg_2_PRINT_1.stl": {
+  "pose": "plug end up (flipped after auto_orient)",
+  "note": "only the 25 mm diaphragm bridges inside; supports OFF"
  }
 }

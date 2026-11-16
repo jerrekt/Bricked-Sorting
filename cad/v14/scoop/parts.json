@@ -15,8 +15,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 139.7,
-   "est_hours": 3.1
+   "est_grams": 146.4,
+   "est_hours": 3.3
   },
   {
    "label": "180_beam_seg_2",
@@ -31,8 +31,8 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 117.6,
-   "est_hours": 2.6
+   "est_grams": 124.4,
+   "est_hours": 2.8
   },
   {
    "label": "180_beam_seg_3",
@@ -79,7 +79,7 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 5.6,
+   "est_grams": 6.5,
    "est_hours": 0.1
   },
   {
@@ -91,12 +91,12 @@
    "bed_extent": [
     26.0,
     37.16,
-    18.0
+    17.6
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 6.4,
-   "est_hours": 0.1
+   "est_grams": 6.8,
+   "est_hours": 0.2
   },
   {
    "label": "187_idler_wheel",
@@ -143,7 +143,7 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 99.3,
+   "est_grams": 98.4,
    "est_hours": 2.2
   },
   {
@@ -169,13 +169,13 @@
    "material": "PLA",
    "bed_face": "floor down (keel up)",
    "bed_extent": [
-    93.0,
+    90.5,
     176.0,
-    36.0
+    37.0
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 52.8,
+   "est_grams": 53.0,
    "est_hours": 1.2
   },
   {
@@ -288,6 +288,6 @@
    "use": "rolling loop to the deck electronics"
   }
  ],
- "est_total_grams": 622,
- "est_total_hours": 13.8
+ "est_total_grams": 636,
+ "est_total_hours": 14.1
 }

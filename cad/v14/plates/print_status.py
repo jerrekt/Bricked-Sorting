@@ -31,7 +31,7 @@ DONE = {'130_stud_ring_left_hopper': 1, '131_stud_cap_right': 1, '120_clip_C1_si
         '48_drum_rear_feed_guard': 1, '54_drum_drive_core_5mm': 1, '59_door_link': 2, '60_servo_horn_arm': 1, '62_vib_motor_saddle': 2,
         '205_drum_cradle_A_ypos': 1, '205_drum_cradle_B_yneg': 1, '206_motor_wall': 1, '212_slider_post': 1, '216_led_bar_holder_A': 1,
             '216_led_bar_holder_B': 1, '217_webcam_mount_generic': 1, '218_apds9960_mount': 1, '228_webcam_cable_spool': 1, '226_usb_cable_clip_1': 1, '226_usb_cable_clip_2': 1}
-PRINTING = {}
+PRINTING = {'180_beam_seg_1': 1, '180_beam_seg_2': 1, '180_beam_seg_3': 1}
 SKIP = {'217_xiao_sense_camera_mount'}   # BJ 2026-11-16: POC uses the Pi + Logitech USB webcam, no XIAO camera
 
 

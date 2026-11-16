@@ -418,7 +418,22 @@
     "226 USB clips 1-2"
    ],
    "note": "finished ~00:30 Nov 16"
+  },
+  {
+   "date": "2026-11-16 00:45",
+   "bambu_job": "P20_v3_PETG_scoop_plate1_beam",
+   "hours": 8.3,
+   "plate": "P20",
+   "version": 3,
+   "material": "PETG",
+   "grams": 292,
+   "source": "slicer (v2 slice)",
+   "status": "printing",
+   "parts": [
+    "180 beam segments 1-3"
+   ],
+   "note": "done ~9 am"
   }
  ],
- "updated": "2026-11-16 00:08 PT"
+ "updated": "2026-11-16 01:58 PT"
 }

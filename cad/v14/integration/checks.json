@@ -145,12 +145,12 @@
    "hours": 53
   },
   "S_scoop": {
-   "grams": 622,
-   "hours": 13.8
+   "grams": 636,
+   "hours": 14.1
   },
   "ALL": {
-   "grams": 7918,
-   "hours": 141.7,
+   "grams": 7932,
+   "hours": 142.0,
    "budget": "printed total <= ~9.5 kg and <= ~200 h (skin ~4.6 kg, studs ~0.5, mechanisms ~3.5, bins ~1)"
   }
  },
