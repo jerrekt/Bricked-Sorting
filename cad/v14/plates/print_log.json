@@ -405,7 +405,7 @@
    "material": "PETG",
    "grams": 290,
    "source": "slicer",
-   "status": "printing",
+   "status": "done",
    "parts": [
     "205 cradle A",
     "205 cradle B",
@@ -417,8 +417,8 @@
     "228 cable spool",
     "226 USB clips 1-2"
    ],
-   "note": "done ~00:30 Nov 16"
+   "note": "finished ~00:30 Nov 16"
   }
  ],
- "updated": "2026-11-15 14:40 PT"
+ "updated": "2026-11-16 00:08 PT"
 }

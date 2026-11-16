@@ -95,8 +95,8 @@
  },
  "P13": {
   "v": 3,
-  "folder": "1_now",
-  "what": "Deck parts left: drum cradle A, webcam mount, webcam cable spool, APDS9960 mount, USB clips 1-2",
+  "folder": "done",
+  "what": "Deck parts left: drum cradle A, webcam mount, webcam cable spool, APDS9960 mount, USB clips 1-2 - printed 2026-11-16",
   "log": [
    "v2 2026-11-15: only the parts not printed yet (camera bridge and landing ramp are done); cradle B, motor wall, slider post, LED holders moved to P19",
    "v3 2026-11-15: 0.5 mm teardrop tops on cradle A sideways holes"
@@ -139,11 +139,11 @@
  },
  "P19": {
   "v": 2,
-  "what": "Deck parts missing from your project: drum cradle B, motor wall, slider post, LED holders A/B",
+  "what": "Deck parts missing from your project: drum cradle B, motor wall, slider post, LED holders A/B - printed 2026-11-16",
   "log": [
    "v2 2026-11-15: 0.5 mm teardrop tops on the sideways holes (cradle B, motor wall). If you already printed v1, it is fine: just clean the hole tops"
   ],
-  "folder": "1_now"
+  "folder": "done"
  },
  "P20": {
   "v": 1,
