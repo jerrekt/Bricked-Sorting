@@ -155,15 +155,6 @@
    "steep": 0
   }
  },
- "217_xiao_sense_camera_mount_PRINT_1.stl": {
-  "pose": "as posed",
-  "support": 0,
-  "steep": 0,
-  "was": {
-   "support": 0,
-   "steep": 0
-  }
- },
  "218_apds9960_mount_PRINT_1.stl": {
   "pose": "as posed",
   "support": 0,
@@ -182,15 +173,6 @@
    "steep": 7558
   }
  },
- "225_electronics_tray_1_PRINT_1.stl": {
-  "pose": "as posed",
-  "support": 0,
-  "steep": 0,
-  "was": {
-   "support": 0,
-   "steep": 0
-  }
- },
  "225_electronics_tray_1a_psu_PRINT_1.stl": {
   "pose": "as posed",
   "support": 0,
@@ -207,15 +189,6 @@
   "was": {
    "support": 0,
    "steep": 0
-  }
- },
- "225_electronics_tray_2_PRINT_1.stl": {
-  "pose": "as posed",
-  "support": 480,
-  "steep": 392,
-  "was": {
-   "support": 480,
-   "steep": 392
   }
  },
  "225_electronics_tray_2_pi_PRINT_1.stl": {
@@ -237,15 +210,6 @@
   }
  },
  "226_usb_cable_clip_2_PRINT_1.stl": {
-  "pose": "as posed",
-  "support": 0,
-  "steep": 0,
-  "was": {
-   "support": 0,
-   "steep": 0
-  }
- },
- "226_usb_cable_clip_3_PRINT_1.stl": {
   "pose": "as posed",
   "support": 0,
   "steep": 0,
