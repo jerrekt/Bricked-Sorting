@@ -422,7 +422,7 @@
   {
    "date": "2026-11-16 00:45",
    "bambu_job": "P20_v3_PETG_scoop_plate1_beam",
-   "hours": 8.3,
+   "hours": 12.0,
    "plate": "P20",
    "version": 3,
    "material": "PETG",
@@ -432,7 +432,7 @@
    "parts": [
     "180 beam segments 1-3"
    ],
-   "note": "3 walls, 15% gyroid, 0.2 mm, supports off; done ~9 am"
+   "note": "3 walls, 15% gyroid, 0.2 mm, supports off, slow/quiet speed; done ~12:45 pm"
   }
  ],
  "updated": "2026-11-16 01:58 PT"
