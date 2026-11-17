@@ -31,7 +31,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 | P17 | v1 | done | TPU | Drum friction tire (TPU) | 1 |
 | P18 | v5 | 1_now | PETG | Plate 1: PSU tray 1a (slim PSU 142x40x28, M3 grid) + Pi tray 2 (M3 grid). Plate 2: tray 1b (M3 grid), drop funnel, PSU AC-end cover, 16 tray legs. No supports | 2 |
 | P19 | v2 | done | PETG | Deck parts missing from your project: drum cradle B, motor wall, slider post, LED holders A/B - printed 2026-11-16 | 1 |
-| P20 | v3 | 1_now | PETG | Plate 1: 3 beam segments standing plug-end up, SUPPORTS OFF (only 25 mm bridges inside the closed box), 5 mm brim. Plate 2: carriage, cup, motor bracket, idler channel/slider/wheel, endstop mount, pushrod, servo bracket; tree support | 2 |
+| P20 | v3 | done | PETG | Plate 1: 3 beam segments standing plug-end up, SUPPORTS OFF (only 25 mm bridges inside the closed box), 5 mm brim. Plate 2: carriage, cup, motor bracket, idler channel/slider/wheel, endstop mount, pushrod, servo bracket; tree support | 2 |
 | P21 | v1 | 1_now | TPU | Scoop cup pad (TPU) | 1 |
 
 ## Change log
@@ -82,6 +82,7 @@ Filament used, one line per Bambu job (from BJ's print history). grams source=es
 | 2026-11-15 ~12:40 | p8-p12 plate 3 (P16 v2 parts) | 1.75 | P16 | v2 | PETG | 50.29 (slicer) | done | 48 rear guard, 54 drive hub, 59 door link x2, 60 servo arm, 62 vib saddle x2 (marked done by BJ 2026-11-15; 1 h 45 min) |
 | 2026-11-15 14:39 | P19_v2+P13_v3_PETG_combined | 9.87 | P19+P13 | v2 | PETG | 290 (slicer) | done | 205 cradle A, 205 cradle B, 206 motor wall, 212 slider post, 216 LED holders A/B, 217 webcam mount, 218 APDS mount, 228 cable spool, 226 USB clips 1-2 (finished ~00:30 Nov 16) |
 | 2026-11-16 00:45 | P20_v3_PETG_scoop_plate1_beam | 12.0 | P20 | v3 | PETG | 350 (slicer) | done | 180 beam segments 1-3 (3 walls, 15% gyroid, 0.2 mm, supports off, slow/quiet speed; finished 2026-11-16 ~12:45 pm) |
+| 2026-11-17 by 05:57 | P20_v3_PETG_scoop_plate2_carriage_cup_brackets | 0 | P20 | v3 | PETG | 0 (unknown) | done | 181 carriage, 182 cup, 184 motor bracket, 185 idler channel, 186 idler slider, 187 idler wheel, 188 endstop mount, 189 pushrod, 190 servo bracket (grams/time not sent yet) |
 
 ---
 
