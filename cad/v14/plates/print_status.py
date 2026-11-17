@@ -28,7 +28,7 @@ DONE = {'130_stud_ring_left_hopper': 1, '131_stud_cap_right': 1, '120_clip_C1_si
         '172_reed_coupon_tray': 1, '172_reed_coupon_floor': 1,
         '49b_drum_static_outlet_plate': 1, '55_drum_friction_tire_TPU': 1, '56_drum_NEMA17_adjustable_bracket': 1, '57d_door_slider': 1,
         '59b_servo_link': 1, '63_vib_motor_cap': 2, '47b_tumbler_barrel_helical_flight': 1,
-        '48_drum_rear_feed_guard': 1, '54_drum_drive_core_5mm': 1, '59_door_link': 2, '60_servo_horn_arm': 1, '62_vib_motor_saddle': 2, '180_beam_seg_1': 1, '180_beam_seg_2': 1, '180_beam_seg_3': 1, '181_carriage': 1, '182_scoop_cup': 1, '184_motor_bracket': 1, '185_idler_channel': 1, '186_idler_slider': 1, '187_idler_wheel': 1, '188_endstop_mount': 1, '189_pushrod': 1, '190_servo_bracket': 1,
+        '48_drum_rear_feed_guard': 1, '54_drum_drive_core_5mm': 1, '59_door_link': 2, '60_servo_horn_arm': 1, '62_vib_motor_saddle': 2, '180_beam_seg_1': 1, '180_beam_seg_2': 1, '180_beam_seg_3': 1, '181_carriage': 1, '182_scoop_cup': 1, '184_motor_bracket': 1, '185_idler_channel': 1, '186_idler_slider': 1, '187_idler_wheel': 1, '188_endstop_mount': 1, '189_pushrod': 1, '190_servo_bracket': 1, '220_drop_funnel': 1, '225_electronics_tray_1b_power_io': 1, '227_psu_terminal_cover': 1, '225_tray_leg': 16,
         '205_drum_cradle_A_ypos': 1, '205_drum_cradle_B_yneg': 1, '206_motor_wall': 1, '212_slider_post': 1, '216_led_bar_holder_A': 1,
             '216_led_bar_holder_B': 1, '217_webcam_mount_generic': 1, '218_apds9960_mount': 1, '228_webcam_cable_spool': 1, '226_usb_cable_clip_1': 1, '226_usb_cable_clip_2': 1}
 PRINTING = {}

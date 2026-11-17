@@ -137,7 +137,10 @@
    "v4 2026-11-16: no supports: funnel has a 45 deg gusset under its flange (prints mouth-down; also removes a 4 mm lip that was inside the bore), electronics tray legs are separate parts (16 x 225_tray_leg, the #6 goes through tray + leg), XIAO camera mount dropped (Pi + Logitech webcam); USB clip 3 dropped (stale part from an old layout, it hit a frame post). Throw away v3 files",
    "v5 2026-11-16: trays fitted to the real parts: slim PSU S-120-12 (142 x 40 x 28) on rails, screwed by its 2 end tabs into M3 inserts, AC-end cover resized; trays 1b and 2 (and the free part of 1a) are a universal 10 mm M3 hole grid for boards on nylon standoffs, no guessed board pads. Throw away v4"
   ],
-  "folder": "1_now"
+  "folder": "1_now",
+  "done_files": [
+   "P18_PETG_funnel_and_electronics_plate2.3mf"
+  ]
  },
  "P19": {
   "v": 2,
