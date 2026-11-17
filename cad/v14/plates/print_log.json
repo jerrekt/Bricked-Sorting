@@ -433,7 +433,30 @@
     "180 beam segments 1-3"
    ],
    "note": "3 walls, 15% gyroid, 0.2 mm, supports off, slow/quiet speed; finished 2026-11-16 ~12:45 pm"
+  },
+  {
+   "date": "2026-11-17 by 05:57",
+   "bambu_job": "P20_v3_PETG_scoop_plate2_carriage_cup_brackets",
+   "hours": 0,
+   "plate": "P20",
+   "version": 3,
+   "material": "PETG",
+   "grams": 0,
+   "source": "unknown",
+   "status": "done",
+   "parts": [
+    "181 carriage",
+    "182 cup",
+    "184 motor bracket",
+    "185 idler channel",
+    "186 idler slider",
+    "187 idler wheel",
+    "188 endstop mount",
+    "189 pushrod",
+    "190 servo bracket"
+   ],
+   "note": "grams/time not sent yet"
   }
  ],
- "updated": "2026-11-16 14:28 PT"
+ "updated": "2026-11-17 05:59 PT"
 }
