@@ -29,10 +29,12 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 | P15 | v1 | done | PETG | Drum barrel (3 walls), printing 2026-11-15, ~10.6 h | 1 |
 | P16 | v2 | done | PETG | Drum + gate small parts left: rear guard, drive hub (drill 5 mm if tight), 2 door links, servo arm, 2 vib motor saddles - printed 2026-11-15 | 1 |
 | P17 | v1 | done | TPU | Drum friction tire (TPU) | 1 |
-| P18 | v5 | 1_now | PETG | Plate 1: PSU tray 1a (slim PSU 142x40x28, M3 grid) + Pi tray 2 (M3 grid). Plate 2: tray 1b (M3 grid), drop funnel, PSU AC-end cover, 16 tray legs. No supports | 2 |
+| P18 | v5 | done | PETG | Plate 1: PSU tray 1a (slim PSU 142x40x28, M3 grid) + Pi tray 2 (M3 grid). Plate 2: tray 1b (M3 grid), drop funnel, PSU AC-end cover, 16 tray legs. No supports | 2 |
 | P19 | v2 | done | PETG | Deck parts missing from your project: drum cradle B, motor wall, slider post, LED holders A/B - printed 2026-11-16 | 1 |
 | P20 | v3 | done | PETG | Plate 1: 3 beam segments standing plug-end up, SUPPORTS OFF (only 25 mm bridges inside the closed box), 5 mm brim. Plate 2: carriage, cup, motor bracket, idler channel/slider/wheel, endstop mount, pushrod, servo bracket; tree support | 2 |
 | P21 | v1 | 1_now | TPU | Scoop cup pad (TPU) | 1 |
+| P22 | v1 | 1_now | PLAred | Roof tiles (8 files, one 180 x 180 tile per plate, ~1 h each), red PLA, face down, no supports. Layout: c1..c4 left to right, r1 back / r2 front | 8 |
+| P23 | v1 | 1_now | PLA | Roof clips: 24 C3 (screw to the top rails, hold the tile ribs) + 12 H (join the roof seams). Print in your calibrated Inland PLA: the slot fit is PLA-sized | 1 |
 
 ## Change log
 
@@ -84,6 +86,7 @@ Filament used, one line per Bambu job (from BJ's print history). grams source=es
 | 2026-11-16 00:45 | P20_v3_PETG_scoop_plate1_beam | 12.0 | P20 | v3 | PETG | 350 (slicer) | done | 180 beam segments 1-3 (3 walls, 15% gyroid, 0.2 mm, supports off, slow/quiet speed; finished 2026-11-16 ~12:45 pm) |
 | 2026-11-17 by 05:57 | P20_v3_PETG_scoop_plate2_carriage_cup_brackets | 0 | P20 | v3 | PETG | 0 (unknown) | done | 181 carriage, 182 cup, 184 motor bracket, 185 idler channel, 186 idler slider, 187 idler wheel, 188 endstop mount, 189 pushrod, 190 servo bracket (grams/time not sent yet) |
 | 2026-11-17 by 15:05 | P18_v5_PETG_funnel_and_electronics_plate2 | 0 | P18 | v5 | PETG | 0 (unknown) | done | 220 drop funnel, 225 tray 1b, 227 PSU cover, 225 tray legs x16 (grams/time not sent yet) |
+| 2026-11-17 by 22:19 | P18_v5_PETG_funnel_and_electronics_plate1 | 0 | P18 | v5 | PETG | 0 (unknown) | done | 225 tray 1a PSU, 225 tray 2 Pi (grams/time not sent yet) |
 
 ---
 
