@@ -65,6 +65,11 @@ td.n,th.n{text-align:right}
     <div class="legend"><span><i style="background:var(--ok)"></i>Printed</span><span><i style="background:var(--pop)"></i>Printing now</span><span><i style="background:var(--surface-2);border:1px solid var(--line)"></i>Left</span></div>
     <p class="muted small" id="note"></p>
   </section>
+  <section class="card" id="cost" hidden>
+    <h2>Project cost</h2>
+    <p class="muted small">Rough value of what the machine actually uses (quantity x typical unit price, not whole packs), before tax.</p>
+    <div class="tw"><table><tbody id="cost-rows"></tbody></table></div>
+  </section>
   <section class="card">
     <h2>By section</h2>
     <div id="groups"></div>
@@ -97,6 +102,13 @@ td.n,th.n{text-align:right}
   const pct = g => (100 * g / tot).toFixed(1) + '%';
   $('bar').innerHTML = `<i class="d" style="width:${pct(S.done.grams)}"></i><i class="p" style="width:${pct(S.printing.grams)}"></i>`;
   $('note').textContent = `Updated ${d.updated}. Estimates from the CAD (no supports, brim or purge); "used" is from the Bambu print history.`;
+  if (d.bom_value && d.bom_value.sections) {
+    const rows = Object.entries(d.bom_value.sections).sort((a, b) => b[1] - a[1])
+      .map(([k, v]) => `<tr><td>${k}</td><td class="n">$${v.toFixed(2)}</td></tr>`).join('');
+    $('cost-rows').innerHTML = rows + `<tr><td><b>Total</b></td><td class="n"><b>$${d.bom_value.total.toFixed(2)}</b></td></tr>`
+      + (d.cost ? `<tr><td class="muted">Filament bought so far (incl. tax)</td><td class="n">$${d.cost.used.toFixed(2)}</td></tr>` : '');
+    $('cost').hidden = false;
+  }
   const groups = {};
   d.parts.forEach(p => (groups[p.module] = groups[p.module] || []).push(p));
   const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));

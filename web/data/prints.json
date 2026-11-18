@@ -2033,5 +2033,17 @@
    "left": 0,
    "scope": "poc"
   }
- ]
+ ],
+ "bom_value": {
+  "sections": {
+   "Wood": 46.66,
+   "Filament": 80.72,
+   "Motion": 56.6,
+   "Electronics": 93.0,
+   "Power + wiring": 38.0,
+   "Fasteners": 15.49
+  },
+  "total": 330.47,
+  "note": "rough value of what is used (qty x typical unit price, not whole packs), full machine, before tax"
+ }
 }
