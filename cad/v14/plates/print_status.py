@@ -114,6 +114,11 @@ def main(out):
                             'note': 'rough value of what is used (qty x typical unit price, not whole packs), full machine, before tax'}
     except Exception as e:
         res['bom_value'] = {'error': str(e)}
+    pv = HERE / 'previews.json'          # from make_previews.py: printed size + preview image per part
+    if pv.exists():
+        P = json.loads(pv.read_text())
+        for r in res['parts']:
+            if r['part'] in P: r['dims'] = P[r['part']]['dims']; r['png'] = P[r['part']]['png']
     Path(out).write_text(json.dumps(res, indent=1))
     print('COST', res['cost'])
     print('POC', json.dumps(res['poc']), 'left at pace', round(res['poc']['left']['hours'] * pace))

@@ -48,6 +48,11 @@ def main(out_dir):
         if parts.exists():
             idx += ['', '---', '', parts.read_text()]
         z.writestr(f'{NAME}/INDEX.md', '\n'.join(idx) + '\n')
+        import os
+        pv = os.environ.get('PREVIEWS_DIR')          # rendered by make_previews.py (PNGs are not kept on cad-v14-all)
+        if pv:
+            for png in sorted(Path(pv).glob('*.png')):
+                z.write(png, f'{NAME}/previews/{png.name}')
         if (HERE / 'print_status.json').exists():   # the website Prints page reads this from the prints branch
             z.write(HERE / 'print_status.json', f'{NAME}/status.json')
     print(out, len(files), 'files')

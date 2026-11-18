@@ -1,0 +1,1298 @@
+{
+ "110_tile_F_c1_r1": {
+  "dims": [
+   156.0,
+   200.0,
+   4.8
+  ],
+  "png": "previews/110_tile_F_c1_r1.png"
+ },
+ "110_tile_F_c1_r2": {
+  "dims": [
+   156.0,
+   200.0,
+   4.8
+  ],
+  "png": "previews/110_tile_F_c1_r2.png"
+ },
+ "110_tile_F_c1_r3": {
+  "dims": [
+   156.0,
+   200.0,
+   4.8
+  ],
+  "png": "previews/110_tile_F_c1_r3.png"
+ },
+ "110_tile_F_c2_r1": {
+  "dims": [
+   180.0,
+   76.0,
+   4.8
+  ],
+  "png": "previews/110_tile_F_c2_r1.png"
+ },
+ "110_tile_F_c2_r2": {
+  "dims": [
+   180.0,
+   200.0,
+   4.8
+  ],
+  "png": "previews/110_tile_F_c2_r2.png"
+ },
+ "110_tile_F_c2_r3": {
+  "dims": [
+   180.0,
+   200.0,
+   4.8
+  ],
+  "png": "previews/110_tile_F_c2_r3.png"
+ },
+ "110_tile_F_c3_r1": {
+  "dims": [
+   180.0,
+   76.0,
+   4.8
+  ],
+  "png": "previews/110_tile_F_c3_r1.png"
+ },
+ "110_tile_F_c3_r2": {
+  "dims": [
+   180.0,
+   200.0,
+   4.8
+  ],
+  "png": "previews/110_tile_F_c3_r2.png"
+ },
+ "110_tile_F_c3_r3": {
+  "dims": [
+   180.0,
+   200.0,
+   4.8
+  ],
+  "png": "previews/110_tile_F_c3_r3.png"
+ },
+ "110_tile_F_c4_r1": {
+  "dims": [
+   156.0,
+   200.0,
+   4.8
+  ],
+  "png": "previews/110_tile_F_c4_r1.png"
+ },
+ "110_tile_F_c4_r2": {
+  "dims": [
+   156.0,
+   200.0,
+   4.8
+  ],
+  "png": "previews/110_tile_F_c4_r2.png"
+ },
+ "110_tile_F_c4_r3": {
+  "dims": [
+   156.0,
+   200.0,
+   4.8
+  ],
+  "png": "previews/110_tile_F_c4_r3.png"
+ },
+ "111_tile_B_c1_r1": {
+  "dims": [
+   136.0,
+   200.0,
+   4.8
+  ],
+  "png": "previews/111_tile_B_c1_r1.png"
+ },
+ "111_tile_B_c1_r2": {
+  "dims": [
+   136.0,
+   200.0,
+   4.8
+  ],
+  "png": "previews/111_tile_B_c1_r2.png"
+ },
+ "111_tile_B_c1_r3": {
+  "dims": [
+   136.0,
+   200.0,
+   4.8
+  ],
+  "png": "previews/111_tile_B_c1_r3.png"
+ },
+ "111_tile_B_c2_r1": {
+  "dims": [
+   200.0,
+   76.0,
+   4.8
+  ],
+  "png": "previews/111_tile_B_c2_r1.png"
+ },
+ "111_tile_B_c2_r2": {
+  "dims": [
+   200.0,
+   118.0,
+   4.8
+  ],
+  "png": "previews/111_tile_B_c2_r2.png"
+ },
+ "111_tile_B_c2_r3": {
+  "dims": [
+   200.0,
+   52.0,
+   4.8
+  ],
+  "png": "previews/111_tile_B_c2_r3.png"
+ },
+ "115_access_panel_x_neg": {
+  "dims": [
+   200.0,
+   230.0,
+   4.8
+  ],
+  "png": "previews/115_access_panel_x_neg.png"
+ },
+ "111_tile_B_c3_r1": {
+  "dims": [
+   200.0,
+   76.0,
+   4.8
+  ],
+  "png": "previews/111_tile_B_c3_r1.png"
+ },
+ "111_tile_B_c3_r2": {
+  "dims": [
+   200.0,
+   118.0,
+   4.8
+  ],
+  "png": "previews/111_tile_B_c3_r2.png"
+ },
+ "111_tile_B_c3_r3": {
+  "dims": [
+   200.0,
+   52.0,
+   4.8
+  ],
+  "png": "previews/111_tile_B_c3_r3.png"
+ },
+ "115_access_panel_x_pos": {
+  "dims": [
+   200.0,
+   230.0,
+   4.8
+  ],
+  "png": "previews/115_access_panel_x_pos.png"
+ },
+ "111_tile_B_c4_r1": {
+  "dims": [
+   136.0,
+   200.0,
+   4.8
+  ],
+  "png": "previews/111_tile_B_c4_r1.png"
+ },
+ "111_tile_B_c4_r2": {
+  "dims": [
+   136.0,
+   200.0,
+   4.8
+  ],
+  "png": "previews/111_tile_B_c4_r2.png"
+ },
+ "111_tile_B_c4_r3": {
+  "dims": [
+   136.0,
+   200.0,
+   4.8
+  ],
+  "png": "previews/111_tile_B_c4_r3.png"
+ },
+ "112_tile_L_c1_r1": {
+  "dims": [
+   200.0,
+   156.0,
+   4.8
+  ],
+  "png": "previews/112_tile_L_c1_r1.png"
+ },
+ "112_tile_L_c1_r2": {
+  "dims": [
+   200.0,
+   156.0,
+   4.8
+  ],
+  "png": "previews/112_tile_L_c1_r2.png"
+ },
+ "112_tile_L_c1_r3": {
+  "dims": [
+   200.0,
+   156.0,
+   4.8
+  ],
+  "png": "previews/112_tile_L_c1_r3.png"
+ },
+ "112_tile_L_c2_r1": {
+  "dims": [
+   200.0,
+   156.0,
+   4.8
+  ],
+  "png": "previews/112_tile_L_c2_r1.png"
+ },
+ "112_tile_L_c2_r2": {
+  "dims": [
+   200.0,
+   156.0,
+   4.8
+  ],
+  "png": "previews/112_tile_L_c2_r2.png"
+ },
+ "112_tile_L_c2_r3": {
+  "dims": [
+   200.0,
+   156.0,
+   4.8
+  ],
+  "png": "previews/112_tile_L_c2_r3.png"
+ },
+ "113_tile_R_c1_r1": {
+  "dims": [
+   200.0,
+   156.0,
+   4.8
+  ],
+  "png": "previews/113_tile_R_c1_r1.png"
+ },
+ "113_tile_R_c1_r2": {
+  "dims": [
+   200.0,
+   156.0,
+   4.8
+  ],
+  "png": "previews/113_tile_R_c1_r2.png"
+ },
+ "113_tile_R_c1_r3": {
+  "dims": [
+   200.0,
+   156.0,
+   4.8
+  ],
+  "png": "previews/113_tile_R_c1_r3.png"
+ },
+ "113_tile_R_c2_r1": {
+  "dims": [
+   200.0,
+   156.0,
+   4.8
+  ],
+  "png": "previews/113_tile_R_c2_r1.png"
+ },
+ "113_tile_R_c2_r2": {
+  "dims": [
+   200.0,
+   156.0,
+   4.8
+  ],
+  "png": "previews/113_tile_R_c2_r2.png"
+ },
+ "113_tile_R_c2_r3": {
+  "dims": [
+   200.0,
+   156.0,
+   4.8
+  ],
+  "png": "previews/113_tile_R_c2_r3.png"
+ },
+ "114_roof_tile_c1_r1": {
+  "dims": [
+   180.0,
+   180.0,
+   4.8
+  ],
+  "png": "previews/114_roof_tile_c1_r1.png"
+ },
+ "114_roof_tile_c1_r2": {
+  "dims": [
+   180.0,
+   180.0,
+   4.8
+  ],
+  "png": "previews/114_roof_tile_c1_r2.png"
+ },
+ "114_roof_tile_c2_r1": {
+  "dims": [
+   180.0,
+   180.0,
+   4.8
+  ],
+  "png": "previews/114_roof_tile_c2_r1.png"
+ },
+ "114_roof_tile_c2_r2": {
+  "dims": [
+   180.0,
+   180.0,
+   4.8
+  ],
+  "png": "previews/114_roof_tile_c2_r2.png"
+ },
+ "114_roof_tile_c3_r1": {
+  "dims": [
+   180.0,
+   180.0,
+   4.8
+  ],
+  "png": "previews/114_roof_tile_c3_r1.png"
+ },
+ "114_roof_tile_c3_r2": {
+  "dims": [
+   180.0,
+   180.0,
+   4.8
+  ],
+  "png": "previews/114_roof_tile_c3_r2.png"
+ },
+ "114_roof_tile_c4_r1": {
+  "dims": [
+   180.0,
+   180.0,
+   4.8
+  ],
+  "png": "previews/114_roof_tile_c4_r1.png"
+ },
+ "114_roof_tile_c4_r2": {
+  "dims": [
+   180.0,
+   180.0,
+   4.8
+  ],
+  "png": "previews/114_roof_tile_c4_r2.png"
+ },
+ "116_panel_keeper_bottom_x-150": {
+  "dims": [
+   16.0,
+   78.0,
+   5.8
+  ],
+  "png": "previews/116_panel_keeper_bottom_x-150.png"
+ },
+ "117_panel_keeper_top_x-150": {
+  "dims": [
+   16.0,
+   56.0,
+   5.8
+  ],
+  "png": "previews/117_panel_keeper_top_x-150.png"
+ },
+ "116_panel_keeper_bottom_x-50": {
+  "dims": [
+   16.0,
+   78.0,
+   5.8
+  ],
+  "png": "previews/116_panel_keeper_bottom_x-50.png"
+ },
+ "117_panel_keeper_top_x-50": {
+  "dims": [
+   16.0,
+   56.0,
+   5.8
+  ],
+  "png": "previews/117_panel_keeper_top_x-50.png"
+ },
+ "116_panel_keeper_bottom_x50": {
+  "dims": [
+   16.0,
+   78.0,
+   5.8
+  ],
+  "png": "previews/116_panel_keeper_bottom_x50.png"
+ },
+ "117_panel_keeper_top_x50": {
+  "dims": [
+   16.0,
+   56.0,
+   5.8
+  ],
+  "png": "previews/117_panel_keeper_top_x50.png"
+ },
+ "116_panel_keeper_bottom_x150": {
+  "dims": [
+   16.0,
+   78.0,
+   5.8
+  ],
+  "png": "previews/116_panel_keeper_bottom_x150.png"
+ },
+ "117_panel_keeper_top_x150": {
+  "dims": [
+   16.0,
+   56.0,
+   5.8
+  ],
+  "png": "previews/117_panel_keeper_top_x150.png"
+ },
+ "130_stud_ring_left_hopper": {
+  "dims": [
+   216.0,
+   216.0,
+   50.0
+  ],
+  "png": "previews/130_stud_ring_left_hopper.png"
+ },
+ "131_stud_cap_right": {
+  "dims": [
+   216.0,
+   216.0,
+   50.0
+  ],
+  "png": "previews/131_stud_cap_right.png"
+ },
+ "135_corner_cap_RB_r1": {
+  "dims": [
+   24.0,
+   24.0,
+   200.0
+  ],
+  "png": "previews/135_corner_cap_RB_r1.png"
+ },
+ "135_corner_cap_RB_r2": {
+  "dims": [
+   24.0,
+   24.0,
+   200.0
+  ],
+  "png": "previews/135_corner_cap_RB_r2.png"
+ },
+ "135_corner_cap_RB_r3": {
+  "dims": [
+   24.0,
+   24.0,
+   200.0
+  ],
+  "png": "previews/135_corner_cap_RB_r3.png"
+ },
+ "135_corner_cap_RF_r1": {
+  "dims": [
+   24.0,
+   24.0,
+   200.0
+  ],
+  "png": "previews/135_corner_cap_RF_r1.png"
+ },
+ "135_corner_cap_RF_r2": {
+  "dims": [
+   24.0,
+   24.0,
+   200.0
+  ],
+  "png": "previews/135_corner_cap_RF_r2.png"
+ },
+ "135_corner_cap_RF_r3": {
+  "dims": [
+   24.0,
+   24.0,
+   200.0
+  ],
+  "png": "previews/135_corner_cap_RF_r3.png"
+ },
+ "135_corner_cap_LB_r1": {
+  "dims": [
+   24.0,
+   24.0,
+   200.0
+  ],
+  "png": "previews/135_corner_cap_LB_r1.png"
+ },
+ "135_corner_cap_LB_r2": {
+  "dims": [
+   24.0,
+   24.0,
+   200.0
+  ],
+  "png": "previews/135_corner_cap_LB_r2.png"
+ },
+ "135_corner_cap_LB_r3": {
+  "dims": [
+   24.0,
+   24.0,
+   200.0
+  ],
+  "png": "previews/135_corner_cap_LB_r3.png"
+ },
+ "135_corner_cap_LF_r1": {
+  "dims": [
+   24.0,
+   24.0,
+   200.0
+  ],
+  "png": "previews/135_corner_cap_LF_r1.png"
+ },
+ "135_corner_cap_LF_r2": {
+  "dims": [
+   24.0,
+   24.0,
+   200.0
+  ],
+  "png": "previews/135_corner_cap_LF_r2.png"
+ },
+ "135_corner_cap_LF_r3": {
+  "dims": [
+   24.0,
+   24.0,
+   200.0
+  ],
+  "png": "previews/135_corner_cap_LF_r3.png"
+ },
+ "120_clip_C1_single": {
+  "dims": [
+   24.0,
+   13.9,
+   3.4
+  ],
+  "png": "previews/120_clip_C1_single.png"
+ },
+ "121_clip_C2_seam": {
+  "dims": [
+   24.0,
+   15.5,
+   3.4
+  ],
+  "png": "previews/121_clip_C2_seam.png"
+ },
+ "122_clip_H_bridge": {
+  "dims": [
+   24.0,
+   6.5,
+   3.4
+  ],
+  "png": "previews/122_clip_H_bridge.png"
+ },
+ "123_clip_C3_roof": {
+  "dims": [
+   24.0,
+   4.9,
+   33.8
+  ],
+  "png": "previews/123_clip_C3_roof.png"
+ },
+ "205_drum_cradle_A_ypos": {
+  "dims": [
+   185.4,
+   45.8,
+   214.1
+  ],
+  "png": "previews/205_drum_cradle_A_ypos.png"
+ },
+ "205_drum_cradle_B_yneg": {
+  "dims": [
+   185.4,
+   45.8,
+   214.1
+  ],
+  "png": "previews/205_drum_cradle_B_yneg.png"
+ },
+ "206_motor_wall": {
+  "dims": [
+   61.2,
+   26.0,
+   136.7
+  ],
+  "png": "previews/206_motor_wall.png"
+ },
+ "201_hopper": {
+  "dims": [
+   200.0,
+   200.0,
+   106.0
+  ],
+  "png": "previews/201_hopper.png"
+ },
+ "202_feed_chute": {
+  "dims": [
+   92.7,
+   70.0,
+   115.2
+  ],
+  "png": "previews/202_feed_chute.png"
+ },
+ "203_V1_tray": {
+  "dims": [
+   44.0,
+   32.0,
+   141.6
+  ],
+  "png": "previews/203_V1_tray.png"
+ },
+ "204_V2_tray": {
+  "dims": [
+   134.1,
+   34.3,
+   166.4
+  ],
+  "png": "previews/204_V2_tray.png"
+ },
+ "207_leaf_spring_V1_1": {
+  "dims": [
+   30.0,
+   104.5,
+   64.4
+  ],
+  "png": "previews/207_leaf_spring_V1_1.png"
+ },
+ "207_leaf_spring_V1_2": {
+  "dims": [
+   30.0,
+   96.2,
+   61.4
+  ],
+  "png": "previews/207_leaf_spring_V1_2.png"
+ },
+ "207_leaf_spring_V2_1": {
+  "dims": [
+   37.5,
+   84.4,
+   40.8
+  ],
+  "png": "previews/207_leaf_spring_V2_1.png"
+ },
+ "207_leaf_spring_V2_2": {
+  "dims": [
+   43.7,
+   76.2,
+   49.8
+  ],
+  "png": "previews/207_leaf_spring_V2_2.png"
+ },
+ "210_scanner_plate": {
+  "dims": [
+   220.0,
+   184.0,
+   62.2
+  ],
+  "png": "previews/210_scanner_plate.png"
+ },
+ "211_landing_ramp_low": {
+  "dims": [
+   49.4,
+   63.0,
+   40.0
+  ],
+  "png": "previews/211_landing_ramp_low.png"
+ },
+ "212_slider_post": {
+  "dims": [
+   24.0,
+   34.0,
+   100.0
+  ],
+  "png": "previews/212_slider_post.png"
+ },
+ "213_servo_saddle": {
+  "dims": [
+   36.5,
+   56.7,
+   48.9
+  ],
+  "png": "previews/213_servo_saddle.png"
+ },
+ "214_trapdoor_A": {
+  "dims": [
+   12.0,
+   66.7,
+   85.0
+  ],
+  "png": "previews/214_trapdoor_A.png"
+ },
+ "214_trapdoor_B": {
+  "dims": [
+   12.0,
+   66.7,
+   85.0
+  ],
+  "png": "previews/214_trapdoor_B.png"
+ },
+ "215_camera_bridge": {
+  "dims": [
+   134.0,
+   80.0,
+   133.0
+  ],
+  "png": "previews/215_camera_bridge.png"
+ },
+ "216_led_bar_holder_A": {
+  "dims": [
+   74.0,
+   23.0,
+   46.0
+  ],
+  "png": "previews/216_led_bar_holder_A.png"
+ },
+ "216_led_bar_holder_B": {
+  "dims": [
+   74.0,
+   23.0,
+   46.0
+  ],
+  "png": "previews/216_led_bar_holder_B.png"
+ },
+ "217_webcam_mount_generic": {
+  "dims": [
+   50.0,
+   66.0,
+   3.0
+  ],
+  "png": "previews/217_webcam_mount_generic.png"
+ },
+ "218_apds9960_mount": {
+  "dims": [
+   28.0,
+   19.5,
+   19.9
+  ],
+  "png": "previews/218_apds9960_mount.png"
+ },
+ "220_drop_funnel": {
+  "dims": [
+   106.0,
+   106.0,
+   60.2
+  ],
+  "png": "previews/220_drop_funnel.png"
+ },
+ "225_electronics_tray_1a_psu": {
+  "dims": [
+   230.0,
+   112.0,
+   10.9
+  ],
+  "png": "previews/225_electronics_tray_1a_psu.png"
+ },
+ "225_electronics_tray_1b_power_io": {
+  "dims": [
+   94.0,
+   112.0,
+   2.4
+  ],
+  "png": "previews/225_electronics_tray_1b_power_io.png"
+ },
+ "225_electronics_tray_2_pi": {
+  "dims": [
+   164.0,
+   112.0,
+   8.4
+  ],
+  "png": "previews/225_electronics_tray_2_pi.png"
+ },
+ "227_psu_terminal_cover": {
+  "dims": [
+   34.5,
+   45.0,
+   34.5
+  ],
+  "png": "previews/227_psu_terminal_cover.png"
+ },
+ "228_webcam_cable_spool": {
+  "dims": [
+   76.0,
+   76.0,
+   39.0
+  ],
+  "png": "previews/228_webcam_cable_spool.png"
+ },
+ "226_usb_cable_clip_1": {
+  "dims": [
+   10.0,
+   26.0,
+   12.0
+  ],
+  "png": "previews/226_usb_cable_clip_1.png"
+ },
+ "226_usb_cable_clip_2": {
+  "dims": [
+   26.0,
+   10.0,
+   12.0
+  ],
+  "png": "previews/226_usb_cable_clip_2.png"
+ },
+ "225_tray_leg": {
+  "dims": [
+   20.0,
+   20.0,
+   19.6
+  ],
+  "png": "previews/225_tray_leg.png"
+ },
+ "50b_drum_625_roller": {
+  "dims": [
+   32.0,
+   32.0,
+   14.0
+  ],
+  "png": "previews/50b_drum_625_roller.png"
+ },
+ "160_rail_R": {
+  "dims": [
+   24.5,
+   220.0,
+   16.0
+  ],
+  "png": "previews/160_rail_R.png"
+ },
+ "161_rail_L": {
+  "dims": [
+   24.5,
+   220.0,
+   16.0
+  ],
+  "png": "previews/161_rail_L.png"
+ },
+ "162_station_R": {
+  "dims": [
+   50.9,
+   65.0,
+   22.0
+  ],
+  "png": "previews/162_station_R.png"
+ },
+ "162_station_L": {
+  "dims": [
+   50.9,
+   65.0,
+   22.0
+  ],
+  "png": "previews/162_station_L.png"
+ },
+ "164_guide_R": {
+  "dims": [
+   26.1,
+   48.0,
+   8.0
+  ],
+  "png": "previews/164_guide_R.png"
+ },
+ "166_tray_tile_front_1": {
+  "dims": [
+   164.0,
+   108.4,
+   128.0
+  ],
+  "png": "previews/166_tray_tile_front_1.png"
+ },
+ "166_tray_tile_front_2": {
+  "dims": [
+   162.0,
+   108.1,
+   128.0
+  ],
+  "png": "previews/166_tray_tile_front_2.png"
+ },
+ "166_tray_tile_front_3": {
+  "dims": [
+   162.0,
+   100.5,
+   128.0
+  ],
+  "png": "previews/166_tray_tile_front_3.png"
+ },
+ "166_tray_tile_front_4": {
+  "dims": [
+   154.0,
+   100.5,
+   128.0
+  ],
+  "png": "previews/166_tray_tile_front_4.png"
+ },
+ "167_face_F1": {
+  "dims": [
+   234.8,
+   132.0,
+   18.0
+  ],
+  "png": "previews/167_face_F1.png"
+ },
+ "167_face_F1_ink": {
+  "dims": [
+   175.7,
+   16.5,
+   0.6
+  ],
+  "png": "previews/167_face_F1_ink.png"
+ },
+ "167_face_F2": {
+  "dims": [
+   189.5,
+   132.0,
+   18.0
+  ],
+  "png": "previews/167_face_F2.png"
+ },
+ "167_face_F2_ink": {
+  "dims": [
+   99.5,
+   16.5,
+   0.6
+  ],
+  "png": "previews/167_face_F2_ink.png"
+ },
+ "167_face_F3": {
+  "dims": [
+   234.8,
+   132.0,
+   18.0
+  ],
+  "png": "previews/167_face_F3.png"
+ },
+ "167_face_F3_ink": {
+  "dims": [
+   175.5,
+   16.5,
+   0.6
+  ],
+  "png": "previews/167_face_F3_ink.png"
+ },
+ "166_tray_tile_back_1": {
+  "dims": [
+   164.0,
+   108.4,
+   128.0
+  ],
+  "png": "previews/166_tray_tile_back_1.png"
+ },
+ "166_tray_tile_back_2": {
+  "dims": [
+   108.1,
+   128.0,
+   162.0
+  ],
+  "png": "previews/166_tray_tile_back_2.png"
+ },
+ "166_tray_tile_back_3": {
+  "dims": [
+   162.0,
+   100.5,
+   128.0
+  ],
+  "png": "previews/166_tray_tile_back_3.png"
+ },
+ "166_tray_tile_back_4": {
+  "dims": [
+   154.0,
+   100.5,
+   128.0
+  ],
+  "png": "previews/166_tray_tile_back_4.png"
+ },
+ "168_face_B1": {
+  "dims": [
+   234.8,
+   132.0,
+   18.0
+  ],
+  "png": "previews/168_face_B1.png"
+ },
+ "168_face_B1_ink": {
+  "dims": [
+   177.3,
+   16.5,
+   0.6
+  ],
+  "png": "previews/168_face_B1_ink.png"
+ },
+ "168_face_B2": {
+  "dims": [
+   189.5,
+   132.0,
+   18.0
+  ],
+  "png": "previews/168_face_B2.png"
+ },
+ "168_face_B2_ink": {
+  "dims": [
+   101.1,
+   16.5,
+   0.6
+  ],
+  "png": "previews/168_face_B2_ink.png"
+ },
+ "168_face_B3": {
+  "dims": [
+   234.8,
+   132.0,
+   18.0
+  ],
+  "png": "previews/168_face_B3.png"
+ },
+ "168_face_B3_ink": {
+  "dims": [
+   177.1,
+   16.5,
+   0.6
+  ],
+  "png": "previews/168_face_B3_ink.png"
+ },
+ "169_bin": {
+  "dims": [
+   68.8,
+   93.8,
+   85.0
+  ],
+  "png": "previews/169_bin.png"
+ },
+ "170_bar_1": {
+  "dims": [
+   151.1,
+   5.0,
+   4.0
+  ],
+  "png": "previews/170_bar_1.png"
+ },
+ "170_bar_2": {
+  "dims": [
+   151.6,
+   5.0,
+   4.0
+  ],
+  "png": "previews/170_bar_2.png"
+ },
+ "170_bar_3": {
+  "dims": [
+   151.6,
+   5.0,
+   4.0
+  ],
+  "png": "previews/170_bar_3.png"
+ },
+ "170_bar_4": {
+  "dims": [
+   151.1,
+   5.0,
+   4.0
+  ],
+  "png": "previews/170_bar_4.png"
+ },
+ "171_closed_switch_mount": {
+  "dims": [
+   22.0,
+   36.0,
+   10.3
+  ],
+  "png": "previews/171_closed_switch_mount.png"
+ },
+ "172_reed_coupon_tray": {
+  "dims": [
+   6.0,
+   60.0,
+   44.0
+  ],
+  "png": "previews/172_reed_coupon_tray.png"
+ },
+ "172_reed_coupon_floor": {
+  "dims": [
+   44.0,
+   44.0,
+   2.6
+  ],
+  "png": "previews/172_reed_coupon_floor.png"
+ },
+ "180_beam_seg_1": {
+  "dims": [
+   90.0,
+   38.0,
+   243.0
+  ],
+  "png": "previews/180_beam_seg_1.png"
+ },
+ "180_beam_seg_2": {
+  "dims": [
+   50.0,
+   30.0,
+   244.0
+  ],
+  "png": "previews/180_beam_seg_2.png"
+ },
+ "180_beam_seg_3": {
+  "dims": [
+   90.0,
+   38.0,
+   223.0
+  ],
+  "png": "previews/180_beam_seg_3.png"
+ },
+ "184_motor_bracket": {
+  "dims": [
+   20.0,
+   83.4,
+   46.0
+  ],
+  "png": "previews/184_motor_bracket.png"
+ },
+ "185_idler_channel": {
+  "dims": [
+   26.0,
+   20.0,
+   39.0
+  ],
+  "png": "previews/185_idler_channel.png"
+ },
+ "186_idler_slider": {
+  "dims": [
+   17.6,
+   37.2,
+   26.0
+  ],
+  "png": "previews/186_idler_slider.png"
+ },
+ "187_idler_wheel": {
+  "dims": [
+   22.0,
+   22.0,
+   11.0
+  ],
+  "png": "previews/187_idler_wheel.png"
+ },
+ "188_endstop_mount": {
+  "dims": [
+   25.0,
+   20.0,
+   14.0
+  ],
+  "png": "previews/188_endstop_mount.png"
+ },
+ "181_carriage": {
+  "dims": [
+   98.0,
+   81.1,
+   124.0
+  ],
+  "png": "previews/181_carriage.png"
+ },
+ "190_servo_bracket": {
+  "dims": [
+   109.5,
+   43.0,
+   79.8
+  ],
+  "png": "previews/190_servo_bracket.png"
+ },
+ "182_scoop_cup": {
+  "dims": [
+   90.5,
+   37.0,
+   176.0
+  ],
+  "png": "previews/182_scoop_cup.png"
+ },
+ "183_cup_pad_TPU": {
+  "dims": [
+   76.0,
+   130.0,
+   1.5
+  ],
+  "png": "previews/183_cup_pad_TPU.png"
+ },
+ "189_pushrod": {
+  "dims": [
+   39.0,
+   8.0,
+   5.0
+  ],
+  "png": "previews/189_pushrod.png"
+ },
+ "47b_tumbler_barrel_helical_flight": {
+  "dims": [
+   160.0,
+   160.0,
+   180.0
+  ],
+  "png": "previews/47b_tumbler_barrel_helical_flight.png"
+ },
+ "48_drum_rear_feed_guard": {
+  "dims": [
+   160.0,
+   160.0,
+   4.0
+  ],
+  "png": "previews/48_drum_rear_feed_guard.png"
+ },
+ "49b_drum_static_outlet_plate": {
+  "dims": [
+   172.0,
+   175.0,
+   26.0
+  ],
+  "png": "previews/49b_drum_static_outlet_plate.png"
+ },
+ "54_drum_drive_core_5mm": {
+  "dims": [
+   24.0,
+   24.0,
+   14.0
+  ],
+  "png": "previews/54_drum_drive_core_5mm.png"
+ },
+ "55_drum_friction_tire_TPU": {
+  "dims": [
+   32.0,
+   32.0,
+   14.0
+  ],
+  "png": "previews/55_drum_friction_tire_TPU.png"
+ },
+ "56_drum_NEMA17_adjustable_bracket": {
+  "dims": [
+   64.0,
+   64.0,
+   40.0
+  ],
+  "png": "previews/56_drum_NEMA17_adjustable_bracket.png"
+ },
+ "57d_door_slider": {
+  "dims": [
+   18.0,
+   30.0,
+   7.0
+  ],
+  "png": "previews/57d_door_slider.png"
+ },
+ "59_door_link": {
+  "dims": [
+   79.0,
+   7.0,
+   3.0
+  ],
+  "png": "previews/59_door_link.png"
+ },
+ "59b_servo_link": {
+  "dims": [
+   45.0,
+   7.0,
+   3.0
+  ],
+  "png": "previews/59b_servo_link.png"
+ },
+ "60_servo_horn_arm": {
+  "dims": [
+   33.5,
+   16.0,
+   4.0
+  ],
+  "png": "previews/60_servo_horn_arm.png"
+ },
+ "62_vib_motor_saddle": {
+  "dims": [
+   50.0,
+   45.0,
+   24.0
+  ],
+  "png": "previews/62_vib_motor_saddle.png"
+ },
+ "63_vib_motor_cap": {
+  "dims": [
+   50.0,
+   24.0,
+   16.0
+  ],
+  "png": "previews/63_vib_motor_cap.png"
+ }
+}
