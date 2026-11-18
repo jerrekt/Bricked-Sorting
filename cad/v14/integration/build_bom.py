@@ -78,6 +78,20 @@ ROWS = [
  ('Fasteners', 'M2 x 8 / x 12 + nut', '', 10, 'pc', 'D switch 4, S servo/endstop 6', 'Y', 0, 1, False, '', 'M2-M5 kit'),
 ]
 
+# rough value of what is actually USED (qty x typical unit price), not whole packs (BJ 2026-11-18: most packs are only
+# partly used). 0 = no longer in the design (Pi + USB webcam replaced the XIAO camera; MCP23017 dropped).
+UNIT_VALUE = {'2x2 x 8 ft': 5.50, '1x2 x 8 ft': 3.00, '1/2 in plywood 2 x 4 ft': 16.00, '#8 x 2.5 in wood screw': 0.10,
+    '#6 x 3/4 in wood screw': 0.04, '#6 x 1.25 in wood screw': 0.06, 'PLA red': 9.99, 'PLA (any colour)': 9.99, 'PETG': 10.00,
+    '625ZZ bearing': 0.50, 'NEMA17 stepper': 12.00, 'GT2 20T pulley 5 mm bore + 6 mm belt': 4.00, 'MG996R servo': 5.00,
+    '24 mm coin vibration motor': 0.80, 'PTFE tape / film': 1.00, 'Raspberry Pi 4B': 55.00, 'XIAO ESP32-S3 Sense': 0,
+    'OV5640 AF camera for XIAO': 0, 'XIAO ESP32-C3': 0, 'APDS-9960 colour sensor (GY-9960-3.3)': 0, 'MCP23017 I2C expander module': 0,
+    'TMC2209 stepper driver': 6.00, 'DRV8833 motor driver': 2.00, 'Reed switch N/O, glass 2 x 14 mm': 0.40,
+    'Neodymium magnet 6 x 2 mm disc': 0.10, 'KW11-3Z roller limit switch': 0.50, 'White COB LED strip 12 V, 1 m': 6.00,
+    'MOSFET trigger module': 1.50, '12 V PSU': 15.00, '12 V to 5 V buck': 8.00, 'AC cord 16/3': 6.00, '4-core flexible cable': 1.50,
+    'Servo extension lead 3-wire': 2.00, 'Silicone wire 22 AWG kit': 2.00, 'XT30 connectors': 1.00, 'M3 heat-set insert': 0.06,
+    'M3 x 8 countersunk': 0.05, 'M3 x 10 / x 12 socket': 0.03, 'M3 x 12 + nut': 0.04, 'M3 x 16 / x 25': 0.05, 'M5 x 20 + nyloc': 0.20,
+    'M5 x 30 + nyloc': 0.22, 'M5 x 50 + nyloc': 0.55, 'M5 x 16 + nut': 0.15, 'M2 x 8 / x 12 + nut': 0.03}
+
 
 def main():
     wb = Workbook(); ws = wb.active; ws.title = 'BOM'
@@ -89,7 +103,7 @@ def main():
                 'not checked; others are what BJ paid (Parts page). Quantities from each module\'s parts.json and the frame cut list.')
     ws['A2'].font = Font(name=F, italic=True, size=9); ws.merge_cells('A2:N2'); ws.row_dimensions[2].height = 28
     ws['A2'].alignment = Alignment(wrap_text=True, vertical='top')
-    cols = ['Section', 'Item', 'Spec', 'Qty', 'Unit', 'Where used', 'Owned (Y/N/part)', 'Pack price ($)', 'Pack size', 'Approx', 'Packs to buy', 'Cost to buy ($)', 'Source', 'Note']
+    cols = ['Section', 'Item', 'Spec', 'Qty', 'Unit', 'Where used', 'Owned (Y/N/part)', 'Pack price ($)', 'Pack size', 'Approx', 'Packs to buy', 'Cost to buy ($)', 'Source', 'Note', 'Unit value ($)', 'Value used ($)']
     for c, h in enumerate(cols, 1):
         cell = ws.cell(row=4, column=c, value=h); cell.font = hdr; cell.fill = fill; cell.alignment = Alignment(wrap_text=True, vertical='center')
     r = 5
@@ -102,9 +116,17 @@ def main():
         ws.cell(row=r, column=11, value=f'=IF(G{r}="Y",0,IF(I{r}>0,ROUNDUP(D{r}/I{r},0),0))').font = base
         ws.cell(row=r, column=12, value=f'=K{r}*H{r}').font = base
         ws.cell(row=r, column=8).number_format = '$#,##0.00;($#,##0.00);-'; ws.cell(row=r, column=12).number_format = '$#,##0.00;($#,##0.00);-'
+        ws.cell(row=r, column=15, value=UNIT_VALUE.get(item, (price / per) if per else 0)).font = inp
+        ws.cell(row=r, column=16, value=f'=D{r}*O{r}').font = base
+        ws.cell(row=r, column=15).number_format = '$#,##0.00;($#,##0.00);-'; ws.cell(row=r, column=16).number_format = '$#,##0.00;($#,##0.00);-'
         r += 1
     last = r - 1
     ws.cell(row=r + 1, column=11, value='Total to buy').font = bold
+    ws.cell(row=r + 1, column=15, value='Value used').font = bold
+    ws.cell(row=r + 1, column=16, value=f'=SUM(P5:P{last})').font = bold; ws.cell(row=r + 1, column=16).number_format = '$#,##0.00'
+    for k2, s2 in enumerate(secs_all := list(dict.fromkeys(row[0] for row in ROWS))):
+        ws.cell(row=r + 3 + k2, column=15, value=s2).font = base
+        c2 = ws.cell(row=r + 3 + k2, column=16, value=f'=SUMIFS(P5:P{last},A5:A{last},O{r + 3 + k2})'); c2.font = base; c2.number_format = '$#,##0.00'
     ws.cell(row=r + 1, column=12, value=f'=SUM(L5:L{last})').font = bold; ws.cell(row=r + 1, column=12).number_format = '$#,##0.00'
     ws.cell(row=r + 2, column=11, value='by section:').font = base
     secs = []
