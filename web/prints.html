@@ -79,10 +79,10 @@ td.n,th.n{text-align:right}
   try { d = await (await fetch('data/prints.json', {cache: 'no-store'})).json(); } catch (e) { $('note').textContent = 'Could not load data/prints.json.'; return; }
   const S = d.summary, tot = S.total.grams;
   $('k-used').textContent = kg(d.used_so_far.grams);
-  $('k-used-s').textContent = `${d.used_so_far.jobs} jobs, ${Math.round(d.used_so_far.hours)} h (tests included)`;
+  $('k-used-s').textContent = `${d.used_so_far.jobs} jobs, ${Math.round(d.used_so_far.hours)} h` + (d.cost ? ` · $${d.cost.used.toFixed(2)} incl. tax` : '');
   const P = d.poc || S;
   $('k-left').textContent = kg(P.left.grams);
-  $('k-left-s').textContent = `semester-1 POC (frame + top + deck + scoop); full machine ${kg(S.left.grams)}`;
+  $('k-left-s').textContent = (d.cost ? `~$${d.cost.left_poc.toFixed(2)} · ` : '') + `full machine ${kg(S.left.grams)}` + (d.cost ? ` (~$${d.cost.left_machine.toFixed(0)})` : '');
   $('k-time').textContent = '~' + Math.round(P.left.hours * d.pace_factor) + ' h';
   $('k-time-s').textContent = `full machine ~${d.left_at_pace_hours} h (walls, drawers: semester 2)`;
   let n = 0, nd = 0;
