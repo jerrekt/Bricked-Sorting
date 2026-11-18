@@ -51,7 +51,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 
 ## Filament used
 
-**Total: 2397.29 g** (PETG 1821.29 g, PLA 572 g, TPU 4 g) over 83 h of printing
+**Total: 2788.29 g** (PETG 2212.29 g, PLA 572 g, TPU 4 g) over 83 h of printing
 
 Filament used, one line per Bambu job (from BJ's print history). grams source=estimate: part geometry at 2 walls / 15% infill, no supports, brim or purge (the slicer usually reads 5-15% higher); replace with source=slicer when BJ sends the grams Bambu shows for a job. Other projects (JE, SJSU SAEC, SME sign) are not counted.
 
@@ -84,9 +84,9 @@ Filament used, one line per Bambu job (from BJ's print history). grams source=es
 | 2026-11-15 ~12:40 | p8-p12 plate 3 (P16 v2 parts) | 1.75 | P16 | v2 | PETG | 50.29 (slicer) | done | 48 rear guard, 54 drive hub, 59 door link x2, 60 servo arm, 62 vib saddle x2 (marked done by BJ 2026-11-15; 1 h 45 min) |
 | 2026-11-15 14:39 | P19_v2+P13_v3_PETG_combined | 9.87 | P19+P13 | v2 | PETG | 290 (slicer) | done | 205 cradle A, 205 cradle B, 206 motor wall, 212 slider post, 216 LED holders A/B, 217 webcam mount, 218 APDS mount, 228 cable spool, 226 USB clips 1-2 (finished ~00:30 Nov 16) |
 | 2026-11-16 00:45 | P20_v3_PETG_scoop_plate1_beam | 12.0 | P20 | v3 | PETG | 350 (slicer) | done | 180 beam segments 1-3 (3 walls, 15% gyroid, 0.2 mm, supports off, slow/quiet speed; finished 2026-11-16 ~12:45 pm) |
-| 2026-11-17 by 05:57 | P20_v3_PETG_scoop_plate2_carriage_cup_brackets | 0 | P20 | v3 | PETG | 0 (unknown) | done | 181 carriage, 182 cup, 184 motor bracket, 185 idler channel, 186 idler slider, 187 idler wheel, 188 endstop mount, 189 pushrod, 190 servo bracket (grams/time not sent yet) |
-| 2026-11-17 by 15:05 | P18_v5_PETG_funnel_and_electronics_plate2 | 0 | P18 | v5 | PETG | 0 (unknown) | done | 220 drop funnel, 225 tray 1b, 227 PSU cover, 225 tray legs x16 (grams/time not sent yet) |
-| 2026-11-17 by 22:19 | P18_v5_PETG_funnel_and_electronics_plate1 | 0 | P18 | v5 | PETG | 0 (unknown) | done | 225 tray 1a PSU, 225 tray 2 Pi (grams/time not sent yet) |
+| 2026-11-17 by 05:57 | P20_v3_PETG_scoop_plate2_carriage_cup_brackets | 0 | P20 | v3 | PETG | 163 (estimate (CAD x 0.75, Bambu ran ~25-35 % under CAD)) | done | 181 carriage, 182 cup, 184 motor bracket, 185 idler channel, 186 idler slider, 187 idler wheel, 188 endstop mount, 189 pushrod, 190 servo bracket (grams/time not sent yet) |
+| 2026-11-17 by 15:05 | P18_v5_PETG_funnel_and_electronics_plate2 | 0 | P18 | v5 | PETG | 131 (estimate (CAD x 0.75, Bambu ran ~25-35 % under CAD)) | done | 220 drop funnel, 225 tray 1b, 227 PSU cover, 225 tray legs x16 (grams/time not sent yet) |
+| 2026-11-17 by 22:19 | P18_v5_PETG_funnel_and_electronics_plate1 | 0 | P18 | v5 | PETG | 97 (estimate (CAD x 0.75, Bambu ran ~25-35 % under CAD)) | done | 225 tray 1a PSU, 225 tray 2 Pi (grams/time not sent yet) |
 
 ---
 
