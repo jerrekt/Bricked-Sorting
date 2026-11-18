@@ -107,9 +107,8 @@
           '<div class="bin-label">' + esc(s.label) + '</div><span class="bin-flag" id="flag-' + code + '" hidden></span>' +
           '<div class="bin-count" id="cnt-' + code + '">0</div>' +
           '<canvas class="pile" width="160" height="128" aria-hidden="true"></canvas><span class="fill" title="How full, sized for 3 boxes"><i></i></span>';
-        d.addEventListener('click', function () {
-          if (d.classList.contains('is-recount')) ask('recounted', 'Bin ' + code + ' recounted?', code);
-        });
+        d.title = 'Click when you emptied this bin: its count goes back to 0';
+        d.addEventListener('click', function () { binClick(code, d); });
         el.appendChild(d);
       });
     });
@@ -164,20 +163,31 @@
     $('bin-alert-list').innerHTML = lines.join('');
     $('bin-alert').hidden = !lines.length;
     $('sensors').textContent = TEST ? 'Bin switches: test mode (fake, this page only)' :
-      b.sensors ? 'Bin switches: reporting' : 'Bin switches: not reporting';
+      b.sensors ? 'Bin switches: reporting' : 'Bin switches: not reporting. Click a bin after you empty it to set its count to 0.';
     $('sensors').className = 'sensors' + (b.sensors || TEST ? ' on' : '');
   }
 
   /* ?test=bins: fake switch changes in this page only, so the look can be checked without the Pi */
-  function testBins() {
-    var steps = [
-      { sensors: true, open: {}, recount: [], drawers_open: [] },
-      { sensors: true, open: { '1-1': 1 }, recount: [], drawers_open: [] },
-      { sensors: true, open: {}, recount: ['1-1'], drawers_open: [] },
-      { sensors: true, open: { '2-4': 1 }, recount: ['1-1'], drawers_open: ['front'] },
-      { sensors: true, open: {}, recount: ['1-1', '2-4'], drawers_open: [] }
-    ], i = 0;
-    (function next() { drawBins(steps[i]); i = (i + 1) % steps.length; setTimeout(next, 3000); })();
+  /* Click a bin: an open bin waits until it is put back; any closed bin (flagged Recount by its switch,
+     or any bin while the POC has no switches) asks to mark it emptied, which sets its count to 0. */
+  function binClick(code, d) {
+    if (TEST) { testClick(code); return; }
+    if (d.classList.contains('is-open')) return;
+    ask('recounted', d.classList.contains('is-recount') ? 'Bin ' + code + ' emptied? (Recount)' : 'Empty bin ' + code + '?', code);
+  }
+
+  /* ?test=bins: fake switches on this page only. Click a bin to lift it (Open), click again to put it
+     back (Recount), click once more to mark it emptied (count 0). Nothing is sent to the server. */
+  function testBins() { drawBins({ sensors: true, open: {}, recount: [], drawers_open: [] }); }
+  function testClick(code) {
+    var b = { sensors: true, open: Object.assign({}, binState.open), recount: (binState.recount || []).slice(), drawers_open: [] };
+    if (code in b.open) { delete b.open[code]; b.recount.push(code); drawBins(b); return; }
+    if (b.recount.indexOf(code) >= 0) { ask('recounted', 'Bin ' + code + ' emptied? (Recount)', code); return; }
+    b.open[code] = 1; drawBins(b);
+  }
+  function emptiedHere(code) {  /* what the server does, done on the page (test mode, and right away after OK) */
+    var b = { sensors: binState.sensors, open: binState.open || {}, recount: (binState.recount || []).filter(function (c) { return c !== code; }), drawers_open: binState.drawers_open || [] };
+    delete counts.live[code]; delete counts.sim[code]; drawCounts(); drawBins(b);
   }
 
   var MODE_TEXT = { live: ['Live camera', 'live', 'Pieces from the camera, identified on our server.'],
@@ -315,13 +325,15 @@
 
   /* controls */
   var pending = null, pendingCode = '';
-  var MSG = { recounted: 'Only after you poured this bin back into the hopper: its Recount flag clears and its count goes to 0, so the pieces get counted again. Other bins keep their counts.',
+  var MSG = { recounted: 'Do this after you emptied the bin (poured it back into the hopper, or took the pieces out). Its count goes to 0 and its Recount flag clears, so pieces get counted again. Other bins keep their counts.',
               reset: 'Sets every bin count to 0 and clears every Recount flag.' };
   function ask(action, title, code) {
     pending = action; pendingCode = code || ''; $('dlg-title').textContent = title;
     $('dlg-msg').textContent = MSG[action] || ''; $('dlg-msg').hidden = !MSG[action];
     $('dlg-name').innerHTML = '<option value="">Pick your name</option>' + NAMES.map(function (n) { return '<option>' + esc(n) + '</option>'; }).join('');
     $('dlg-name').value = lastName; $('dlg-pass').value = pass; $('dlg-err').textContent = '';
+    var local = TEST && action === 'recounted';  /* test mode: nothing goes to the server, so no password */
+    $('dlg-pass').required = !local; $('dlg-pass').parentNode.hidden = local;
     $('dlg').showModal(); ($('dlg-name').value ? $('dlg-pass') : $('dlg-name')).focus();
   }
   $('b-start').addEventListener('click', function () { ask('start', 'Start simulator'); });
@@ -332,6 +344,7 @@
     ev.preventDefault();
     var name = $('dlg-name').value, pw = $('dlg-pass').value;
     if (!name) { $('dlg-err').textContent = 'Pick your name.'; return; }
+    if (TEST && pending === 'recounted') { lastName = name; $('dlg').close(); emptiedHere(pendingCode); return; }
     $('dlg-ok').disabled = true;
     fetch(API + '/live/control', { method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name: name, password: pw, action: pending, code: pendingCode, rate: +$('rate').value, minutes: 5 }) })
@@ -339,7 +352,9 @@
       .then(function (res) {
         $('dlg-ok').disabled = false;
         if (!res.ok) { $('dlg-err').textContent = res.j.detail || 'That did not work. Try again.'; return; }
-        pass = pw; lastName = name; $('dlg').close(); loadState().catch(function () {});
+        pass = pw; lastName = name; $('dlg').close();
+        if (pending === 'recounted') emptiedHere(pendingCode);
+        loadState().catch(function () {});
       }, function () { $('dlg-ok').disabled = false; $('dlg-err').textContent = 'Could not reach the server.'; });
   });
 

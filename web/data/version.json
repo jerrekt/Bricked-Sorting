@@ -1,6 +1,6 @@
 {
- "version": "V1.033",
+ "version": "V1.034",
  "date": "2026-11-18",
- "note": "Prints page reads live numbers from the prints branch (status.json), so the filament/time/cost totals update after every print without a site PR; POC scope and filament cost",
+ "note": "Live page: click any closed bin to mark it emptied (count to 0, Recount clears); works without bin switches; test mode is click-driven",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }

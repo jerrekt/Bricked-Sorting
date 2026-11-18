@@ -4,6 +4,9 @@ Site and repo version. One bump per merged pull request (see `tools/bump_version
 It counts updates to this repo, not how finished the machine is; the Tasks page shows that.
 V1.001 to V1.014 were numbered afterwards, in merge order.
 
+## V1.034 · 2026-11-18
+- Live page: click any closed bin to mark it emptied (count to 0, Recount clears); works without bin switches; test mode is click-driven
+
 ## V1.033 · 2026-11-18
 - Prints page reads live numbers from the prints branch (status.json), so the filament/time/cost totals update after every print without a site PR; POC scope and filament cost
 

@@ -242,11 +242,11 @@ def test_recounted_clears_one_bin_only(c):
     assert c.get("/live/state").json()["bins"]["recount"] == ["1-4"]
 
 
-def test_recounted_refuses_open_or_unflagged_bins(c):
+def test_recounted_refuses_open_bins_only(c):
     bins(c, ["1-3"])
     assert control(c, "recounted", code="1-3").status_code == 409   # still lifted
     bins(c, [])
-    assert control(c, "recounted", code="2-2").status_code == 409   # never flagged
+    assert control(c, "recounted", code="2-2").status_code == 200   # never flagged: still allowed (no switches in the POC)
     assert control(c, "recounted", code="9-9").status_code == 400
     assert control(c, "recounted", code="1-3", pw="nope").status_code == 401
 
@@ -274,3 +274,14 @@ def test_long_poll_wakes_on_bin_change(c):
     t = time.time()
     r = c.get(f"/live/events?after={last}&wait=5").json()
     assert time.time() - t < 3 and "1-2" in r["bins"]["open"] and r["events"] == []
+
+
+def test_recounted_zeroes_that_bin_without_switches(c):
+    """No bin switches: clicking a bin still empties it (count to 0), other bins keep theirs."""
+    with live.HUB.lock:
+        live.HUB.counts["live"] = {"1-2": 7, "1-5": 3}
+        live.HUB.counts["sim"] = {"1-2": 4}
+    assert control(c, "recounted", code="1-2").status_code == 200
+    s = c.get("/live/state").json()
+    assert live.HUB.counts["live"] == {"1-5": 3} and live.HUB.counts["sim"] == {}
+    assert s["bins"]["recount"] == []

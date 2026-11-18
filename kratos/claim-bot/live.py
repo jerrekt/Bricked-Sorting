@@ -448,12 +448,13 @@ def live_control(body: Control, request: Request, bg: BackgroundTasks):
         with HUB.lock:
             if code in HUB.open:
                 raise HTTPException(409, f"Bin {code} is still open. Put it back first.")
-            if code not in HUB.recount:
-                raise HTTPException(409, f"Bin {code} doesn't need a recount.")
+            # Any closed bin can be marked emptied: a switch flag is not required (the POC has
+            # no bin switches yet, so nothing would ever be flagged and the button did nothing).
             HUB.recount.discard(code)
             HUB.counts["live"].pop(code, None)
+            HUB.counts["sim"].pop(code, None)
             HUB.bins_rev += 1
-        text = f"**{name}** recounted bin {code} on the Live page"
+        text = f"**{name}** emptied bin {code} on the Live page (count back to 0)"
     elif act == "reset":
         with HUB.lock:
             HUB.counts = {"live": {}, "sim": {}}
