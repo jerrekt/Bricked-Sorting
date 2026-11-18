@@ -48,6 +48,8 @@ def main(out_dir):
         if parts.exists():
             idx += ['', '---', '', parts.read_text()]
         z.writestr(f'{NAME}/INDEX.md', '\n'.join(idx) + '\n')
+        if (HERE / 'print_status.json').exists():   # the website Prints page reads this from the prints branch
+            z.write(HERE / 'print_status.json', f'{NAME}/status.json')
     print(out, len(files), 'files')
 
 
