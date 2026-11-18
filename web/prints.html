@@ -48,7 +48,7 @@ td.n,th.n{text-align:right}
 <script src="assets/intro.js"></script>
 <header class="top"><div class="wrap">
   <a class="logo" href="./"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
-  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.032</a>
+  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.033</a>
   <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="live.html">Live</a><a href="tasks.html">Tasks</a><a href="parts.html">Parts</a><a href="prints.html" aria-current="page">Prints</a><a href="camera.html">Camera</a></nav>
 </div></header>
 
@@ -76,7 +76,12 @@ td.n,th.n{text-align:right}
   const $ = id => document.getElementById(id);
   const kg = g => (g / 1000).toFixed(2) + ' kg';
   let d;
-  try { d = await (await fetch('data/prints.json', {cache: 'no-store'})).json(); } catch (e) { $('note').textContent = 'Could not load data/prints.json.'; return; }
+  // live numbers come from the prints branch (updated after every print, no site deploy needed); local copy is the fallback
+  const LIVE = 'https://raw.githubusercontent.com/jerrekt/Bricked-Sorting/prints/status.json';
+  for (const u of [LIVE + '?t=' + Date.now(), 'data/prints.json']) {
+    try { d = await (await fetch(u, {cache: 'no-store'})).json(); break; } catch (e) { /* try the next source */ }
+  }
+  if (!d) { $('note').textContent = 'Could not load the print status.'; return; }
   const S = d.summary, tot = S.total.grams;
   $('k-used').textContent = kg(d.used_so_far.grams);
   $('k-used-s').textContent = `${d.used_so_far.jobs} jobs, ${Math.round(d.used_so_far.hours)} h` + (d.cost ? ` · $${d.cost.used.toFixed(2)} incl. tax` : '');
