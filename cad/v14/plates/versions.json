@@ -137,10 +137,7 @@
    "v4 2026-11-16: no supports: funnel has a 45 deg gusset under its flange (prints mouth-down; also removes a 4 mm lip that was inside the bore), electronics tray legs are separate parts (16 x 225_tray_leg, the #6 goes through tray + leg), XIAO camera mount dropped (Pi + Logitech webcam); USB clip 3 dropped (stale part from an old layout, it hit a frame post). Throw away v3 files",
    "v5 2026-11-16: trays fitted to the real parts: slim PSU S-120-12 (142 x 40 x 28) on rails, screwed by its 2 end tabs into M3 inserts, AC-end cover resized; trays 1b and 2 (and the free part of 1a) are a universal 10 mm M3 hole grid for boards on nylon standoffs, no guessed board pads. Throw away v4"
   ],
-  "folder": "1_now",
-  "done_files": [
-   "P18_PETG_funnel_and_electronics_plate2.3mf"
-  ]
+  "folder": "done"
  },
  "P19": {
   "v": 2,
@@ -166,5 +163,17 @@
   "folder": "1_now"
  },
  "_folders": "done = printed (kept for reprints); 1_now = what the semester-1 POC still needs; 3_semester2 = the finished machine only (back drawer, drawer bars, faces, corner caps, walls, drawers)",
- "_naming": "Material in the file name is what to load: PETG (functional, any colour), PLAred (visible red shell parts: studs, hopper, corner caps, drawer faces with black lettering in slot 2), TPU, PLA (PLA calibration only). Renamed 2026-11-15, no geometry change."
+ "_naming": "Material in the file name is what to load: PETG (functional, any colour), PLAred (visible red shell parts: studs, hopper, corner caps, drawer faces with black lettering in slot 2), TPU, PLA (PLA calibration only). Renamed 2026-11-15, no geometry change.",
+ "P22": {
+  "v": 1,
+  "folder": "1_now",
+  "what": "Roof tiles (8 files, one 180 x 180 tile per plate, ~1 h each), red PLA, face down, no supports. Layout: c1..c4 left to right, r1 back / r2 front",
+  "log": []
+ },
+ "P23": {
+  "v": 1,
+  "folder": "1_now",
+  "what": "Roof clips: 24 C3 (screw to the top rails, hold the tile ribs) + 12 H (join the roof seams). Print in your calibrated Inland PLA: the slot fit is PLA-sized",
+  "log": []
+ }
 }

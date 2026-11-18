@@ -474,7 +474,23 @@
     "225 tray legs x16"
    ],
    "note": "grams/time not sent yet"
+  },
+  {
+   "date": "2026-11-17 by 22:19",
+   "bambu_job": "P18_v5_PETG_funnel_and_electronics_plate1",
+   "hours": 0,
+   "plate": "P18",
+   "version": 5,
+   "material": "PETG",
+   "grams": 0,
+   "source": "unknown",
+   "status": "done",
+   "parts": [
+    "225 tray 1a PSU",
+    "225 tray 2 Pi"
+   ],
+   "note": "grams/time not sent yet"
   }
  ],
- "updated": "2026-11-17 15:06 PT"
+ "updated": "2026-11-17 22:21 PT"
 }
