@@ -48,7 +48,7 @@ td.n,th.n{text-align:right}
 <script src="assets/intro.js"></script>
 <header class="top"><div class="wrap">
   <a class="logo" href="./"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
-  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.032</a>
+  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.033</a>
   <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="live.html">Live</a><a href="tasks.html">Tasks</a><a href="parts.html">Parts</a><a href="prints.html" aria-current="page">Prints</a><a href="camera.html">Camera</a></nav>
 </div></header>
 
@@ -57,13 +57,18 @@ td.n,th.n{text-align:right}
     <h2>3D prints</h2>
     <div class="kpis">
       <div class="kpi"><span>Filament used</span><b id="k-used">–</b><small id="k-used-s"></small></div>
-      <div class="kpi left"><span>Filament left to print</span><b id="k-left">–</b><small id="k-left-s"></small></div>
-      <div class="kpi left"><span>Print time left</span><b id="k-time">–</b><small id="k-time-s"></small></div>
+      <div class="kpi left"><span>POC filament left</span><b id="k-left">–</b><small id="k-left-s"></small></div>
+      <div class="kpi left"><span>POC print time left</span><b id="k-time">–</b><small id="k-time-s"></small></div>
       <div class="kpi"><span>Parts printed</span><b id="k-parts">–</b><small id="k-parts-s"></small></div>
     </div>
     <div class="bar" id="bar" aria-label="Machine printed by weight"></div>
     <div class="legend"><span><i style="background:var(--ok)"></i>Printed</span><span><i style="background:var(--pop)"></i>Printing now</span><span><i style="background:var(--surface-2);border:1px solid var(--line)"></i>Left</span></div>
     <p class="muted small" id="note"></p>
+  </section>
+  <section class="card" id="cost" hidden>
+    <h2>Project cost</h2>
+    <p class="muted small">Rough value of what the machine actually uses (quantity x typical unit price, not whole packs), before tax.</p>
+    <div class="tw"><table><tbody id="cost-rows"></tbody></table></div>
   </section>
   <section class="card">
     <h2>By section</h2>
@@ -76,14 +81,20 @@ td.n,th.n{text-align:right}
   const $ = id => document.getElementById(id);
   const kg = g => (g / 1000).toFixed(2) + ' kg';
   let d;
-  try { d = await (await fetch('data/prints.json', {cache: 'no-store'})).json(); } catch (e) { $('note').textContent = 'Could not load data/prints.json.'; return; }
+  // live numbers come from the prints branch (updated after every print, no site deploy needed); local copy is the fallback
+  const LIVE = 'https://raw.githubusercontent.com/jerrekt/Bricked-Sorting/prints/status.json';
+  for (const u of [LIVE + '?t=' + Date.now(), 'data/prints.json']) {
+    try { d = await (await fetch(u, {cache: 'no-store'})).json(); break; } catch (e) { /* try the next source */ }
+  }
+  if (!d) { $('note').textContent = 'Could not load the print status.'; return; }
   const S = d.summary, tot = S.total.grams;
   $('k-used').textContent = kg(d.used_so_far.grams);
-  $('k-used-s').textContent = `${d.used_so_far.jobs} jobs, ${Math.round(d.used_so_far.hours)} h (tests included)`;
-  $('k-left').textContent = kg(S.left.grams);
-  $('k-left-s').textContent = `of ${kg(tot)} for the whole machine`;
-  $('k-time').textContent = '~' + d.left_at_pace_hours + ' h';
-  $('k-time-s').textContent = `CAD estimate ${Math.round(S.left.hours)} h x ${d.pace_factor} (BJ's real pace)`;
+  $('k-used-s').textContent = `${d.used_so_far.jobs} jobs, ${Math.round(d.used_so_far.hours)} h` + (d.cost ? ` · $${d.cost.used.toFixed(2)} incl. tax` : '');
+  const P = d.poc || S;
+  $('k-left').textContent = kg(P.left.grams);
+  $('k-left-s').textContent = (d.cost ? `~$${d.cost.left_poc.toFixed(2)} · ` : '') + `full machine ${kg(S.left.grams)}` + (d.cost ? ` (~$${d.cost.left_machine.toFixed(0)})` : '');
+  $('k-time').textContent = '~' + Math.round(P.left.hours * d.pace_factor) + ' h';
+  $('k-time-s').textContent = `full machine ~${d.left_at_pace_hours} h (walls, drawers: semester 2)`;
   let n = 0, nd = 0;
   d.parts.forEach(p => { n += p.qty; nd += p.done; });
   $('k-parts').textContent = `${nd} / ${n}`;
@@ -91,13 +102,20 @@ td.n,th.n{text-align:right}
   const pct = g => (100 * g / tot).toFixed(1) + '%';
   $('bar').innerHTML = `<i class="d" style="width:${pct(S.done.grams)}"></i><i class="p" style="width:${pct(S.printing.grams)}"></i>`;
   $('note').textContent = `Updated ${d.updated}. Estimates from the CAD (no supports, brim or purge); "used" is from the Bambu print history.`;
+  if (d.bom_value && d.bom_value.sections) {
+    const rows = Object.entries(d.bom_value.sections).sort((a, b) => b[1] - a[1])
+      .map(([k, v]) => `<tr><td>${k}</td><td class="n">$${v.toFixed(2)}</td></tr>`).join('');
+    $('cost-rows').innerHTML = rows + `<tr><td><b>Total</b></td><td class="n"><b>$${d.bom_value.total.toFixed(2)}</b></td></tr>`
+      + (d.cost ? `<tr><td class="muted">Filament bought so far (incl. tax)</td><td class="n">$${d.cost.used.toFixed(2)}</td></tr>` : '');
+    $('cost').hidden = false;
+  }
   const groups = {};
   d.parts.forEach(p => (groups[p.module] = groups[p.module] || []).push(p));
   const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
   $('groups').innerHTML = Object.entries(groups).map(([m, ps]) => {
     const M = d.modules[m];
     const rows = ps.map(p => {
-      const st = p.left === 0 && p.printing === 0 ? '<span class="st done">done</span>' : p.printing ? '<span class="st printing">printing</span>' : p.done ? `<span class="st">${p.done}/${p.qty}</span>` : '<span class="st">to print</span>';
+      const st = p.left === 0 && p.printing === 0 ? '<span class="st done">done</span>' : p.printing ? '<span class="st printing">printing</span>' : p.scope === 'sem2' ? '<span class="st">semester 2</span>' : p.done ? `<span class="st">${p.done}/${p.qty}</span>` : '<span class="st">to print</span>';
       return `<tr><td>${esc(p.part)}</td><td>${esc(p.material)}</td><td class="n">${p.qty}</td><td class="n">${Math.round(p.g_each * p.qty)}</td><td class="n">${(p.h_each * p.qty).toFixed(1)}</td><td>${st}</td></tr>`;
     }).join('');
     return `<details class="grp"><summary>${esc(m)}<span>${kg(M.left_g)} / ${Math.round(M.left_h * d.pace_factor)} h left · ${M.parts - M.parts_left} of ${M.parts} parts</span></summary>

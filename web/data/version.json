@@ -1,6 +1,6 @@
 {
- "version": "V1.032",
- "date": "2026-11-15",
- "note": "Prints page: filament used and left, print time left, every part with its status (from cad/v14/plates/print_status.py)",
+ "version": "V1.033",
+ "date": "2026-11-18",
+ "note": "Prints page reads live numbers from the prints branch (status.json), so the filament/time/cost totals update after every print without a site PR; POC scope and filament cost",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }
