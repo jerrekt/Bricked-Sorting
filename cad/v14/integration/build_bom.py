@@ -32,9 +32,9 @@ ROWS = [
   ('Wood', '#6 x 1.25 in wood screw', '', 28, 'pc', 'F: deck ply to cleats 12, posts to floor ply 16 (replaces #8 x 2)', 'Y', 0, 1, False, '', 'BJ has 100 (2026-11-08)'),
  ('Wood', '#6 x 3/4 in wood screw', 'flat/bugle head (all seats countersunk 90 deg, 7.0)', 252, 'pc', 'F clips 176, K 48, D 22, S 6', 'Y', 0, 1, False, 'Wensilon', 'BJ has 400 (2026-11-08)'),
  # ---------------- filament ----------------
- ('Filament', 'PLA red', 'skin, studs, corner caps, hopper', red_kg, 'kg', 'F skin (+ K hopper)', 'part', 15.68, 1, False, 'eBay (Parts page price)', 'day-profile estimate; slice before buying'),
+ ('Filament', 'PLA red', 'skin, studs, corner caps, hopper', red_kg, 'kg', 'F skin (+ K hopper)', 'part', 9.99, 1, False, 'Micro Center ($9.99 / 1 kg, BJ 2026-11-18)', 'day-profile estimate; slice before buying'),
  ('Filament', 'PLA (any colour)', 'trays, bins, faces, deck and scoop parts', other_kg, 'kg', 'D, K, S', 'part', 10.00, 1, True, 'Micro Center / Amazon', 'faces in 2 colours + white inlay on the AMS'),
- ('Filament', 'PETG', 'rails, stations, guides, V trays, springs', petg_kg, 'kg', 'D runners, K trays', 'Y', 0, 1, False, '', 'on hand'),
+ ('Filament', 'PETG', 'rails, stations, guides, V trays, springs, deck + scoop (BJ prints these in PETG)', petg_kg, 'kg', 'D runners, K, S', 'part', 39.99, 4, False, 'Micro Center ($39.99 / 4 kg, BJ 2026-11-18)', 'running total in plates/print_status.json'),
  # ---------------- motion ----------------
  ('Motion', '625ZZ bearing', '5 x 16 x 5', 32, 'pc', 'D 16, K 8, S 8', 'N', 10.00, 50, True, 'AliExpress / Amazon', 'test the 625 pocket coupon first'),
  ('Motion', 'NEMA17 stepper', 'salvaged, 5 mm shaft', 2, 'pc', 'K drum drive, S slide', 'Y', 0, 1, False, '', '2 salvaged from a printer'),

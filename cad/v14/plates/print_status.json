@@ -37,10 +37,16 @@
    "hours": 10.1
   }
  },
+ "cost": {
+  "used": 30.45,
+  "left_poc": 7.81,
+  "left_machine": 55.66,
+  "note": "USD incl. 9.375 % tax; PLA $9.99/kg, PETG $10.00/kg (Micro Center)"
+ },
  "pace_factor": 0.81,
  "left_at_pace_hours": 71,
  "used_so_far": {
-  "grams": 2397,
+  "grams": 2788,
   "hours": 82.8,
   "jobs": 30
  },

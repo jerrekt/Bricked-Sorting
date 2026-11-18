@@ -441,8 +441,8 @@
    "plate": "P20",
    "version": 3,
    "material": "PETG",
-   "grams": 0,
-   "source": "unknown",
+   "grams": 163,
+   "source": "estimate (CAD x 0.75, Bambu ran ~25-35 % under CAD)",
    "status": "done",
    "parts": [
     "181 carriage",
@@ -464,8 +464,8 @@
    "plate": "P18",
    "version": 5,
    "material": "PETG",
-   "grams": 0,
-   "source": "unknown",
+   "grams": 131,
+   "source": "estimate (CAD x 0.75, Bambu ran ~25-35 % under CAD)",
    "status": "done",
    "parts": [
     "220 drop funnel",
@@ -482,8 +482,8 @@
    "plate": "P18",
    "version": 5,
    "material": "PETG",
-   "grams": 0,
-   "source": "unknown",
+   "grams": 97,
+   "source": "estimate (CAD x 0.75, Bambu ran ~25-35 % under CAD)",
    "status": "done",
    "parts": [
     "225 tray 1a PSU",
