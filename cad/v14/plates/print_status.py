@@ -102,6 +102,18 @@ def main(out):
            'printing_now': [r['part'] for r in rows if r['printing']],
            'modules': {k: {kk: round(vv, 1) if isinstance(vv, float) else vv for kk, vv in v.items()} for k, v in mods.items()},
            'parts': rows}
+    try:   # rough value of what the machine actually uses, by BOM section (integration/build_bom.py UNIT_VALUE)
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('bom', HERE.parent / 'integration' / 'build_bom.py')
+        bom = importlib.util.module_from_spec(spec); spec.loader.exec_module(bom)
+        bv = {}
+        for row in bom.ROWS:
+            sec, item, qty, price, per = row[0], row[1], row[3], row[7], row[8]
+            bv[sec] = bv.get(sec, 0) + qty * bom.UNIT_VALUE.get(item, (price / per) if per else 0)
+        res['bom_value'] = {'sections': {k: round(v, 2) for k, v in bv.items()}, 'total': round(sum(bv.values()), 2),
+                            'note': 'rough value of what is used (qty x typical unit price, not whole packs), full machine, before tax'}
+    except Exception as e:
+        res['bom_value'] = {'error': str(e)}
     Path(out).write_text(json.dumps(res, indent=1))
     print('COST', res['cost'])
     print('POC', json.dumps(res['poc']), 'left at pace', round(res['poc']['left']['hours'] * pace))
