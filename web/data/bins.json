@@ -17,8 +17,8 @@
   }
  ],
  "rules": {
-  "brickPattern": "Regular rectangular brick (Brick N x M). Plates, tiles, slopes, round and modified bricks go to floor 2.",
-  "platesAreBricks": false,
+  "brickPattern": "Plain rectangular brick or plate (Brick N x M, Plate N x M; BJ 2026-11-18). Tiles, slopes, round and modified pieces go to floor 2.",
+  "platesAreBricks": true,
   "unknownSlot": 8
  },
  "slots": [
