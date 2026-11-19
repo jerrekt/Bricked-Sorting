@@ -4,7 +4,7 @@ Usage: python3 check_bodies.py [files...]   (default: every print STL in all mod
 import glob, os, sys
 import trimesh
 ROOTS = ['/home/claude/wt_frame5/cad/v14/frame/print', '/home/claude/wt_deck5/cad/v14/deck/print',
-         '/home/claude/wt_all/cad/v14/drawer/print', '/home/claude/wt_all/cad/v14/scoop/print', '/home/claude/wt_all/cad/v14/plates/v13_reuse']
+         '/home/claude/wt_all/cad/v14/drawer/print', '/home/claude/wt_all/cad/v14/scoop/print', '/home/claude/wt_all/cad/v14/vac/print', '/home/claude/wt_all/cad/v14/plates/v13_reuse']
 files = sys.argv[1:] or sorted(f for r in ROOTS for f in glob.glob(r + '/*.stl'))
 bad = []
 for f in files:

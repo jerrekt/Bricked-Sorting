@@ -13,7 +13,8 @@ ROOT = Path('/home/claude')
 MODS = [('Frame and skin', ROOT / 'wt_frame5/cad/v14/frame/parts.json', 'printed'),
         ('Deck', ROOT / 'wt_deck5/cad/v14/deck/parts.json', 'printed_new'),
         ('Drawers', ROOT / 'wt_all/cad/v14/drawer/parts.json', 'printed'),
-        ('Scoop', ROOT / 'wt_all/cad/v14/scoop/parts.json', 'printed')]
+        ('Scoop', ROOT / 'wt_all/cad/v14/scoop/parts.json', 'printed'),
+        ('Vacuum canister', ROOT / 'wt_all/cad/v14/vac/parts.json', 'printed')]   # accessory, BJ 2026-11-18: wanted for the December demo
 V13 = [('47b_tumbler_barrel_helical_flight', 1, 'PETG', 3), ('48_drum_rear_feed_guard', 1, 'PETG', 2), ('49b_drum_static_outlet_plate', 1, 'PETG', 2),
        ('54_drum_drive_core_5mm', 1, 'PETG', 2), ('55_drum_friction_tire_TPU', 1, 'TPU', 2), ('56_drum_NEMA17_adjustable_bracket', 1, 'PETG', 2),
        ('57d_door_slider', 1, 'PETG', 2), ('59_door_link', 2, 'PETG', 2), ('59b_servo_link', 1, 'PETG', 2), ('60_servo_horn_arm', 1, 'PETG', 2),

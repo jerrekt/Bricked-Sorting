@@ -3,8 +3,8 @@
  "updated": "2026-11-17 22:21 PT",
  "summary": {
   "total": {
-   "grams": 8525,
-   "hours": 153.5
+   "grams": 10969,
+   "hours": 207.7
   },
   "done": {
    "grams": 3431,
@@ -15,14 +15,14 @@
    "hours": 0.0
   },
   "left": {
-   "grams": 5094,
-   "hours": 87.8
+   "grams": 7538,
+   "hours": 142.0
   }
  },
  "poc": {
   "total": {
-   "grams": 3870,
-   "hours": 69.9
+   "grams": 6314,
+   "hours": 124.1
   },
   "done": {
    "grams": 3155,
@@ -33,18 +33,18 @@
    "hours": 0.0
   },
   "left": {
-   "grams": 714,
-   "hours": 10.1
+   "grams": 3159,
+   "hours": 64.3
   }
  },
  "cost": {
   "used": 30.45,
-  "left_poc": 7.81,
-  "left_machine": 55.66,
+  "left_poc": 34.54,
+  "left_machine": 82.39,
   "note": "USD incl. 9.375 % tax; PLA $9.99/kg, PETG $10.00/kg (Micro Center)"
  },
  "pace_factor": 0.81,
- "left_at_pace_hours": 71,
+ "left_at_pace_hours": 115,
  "used_so_far": {
   "grams": 2788,
   "hours": 82.8,
@@ -79,6 +79,13 @@
    "left_h": 0.4,
    "parts": 13,
    "parts_left": 1
+  },
+  "Vacuum canister": {
+   "total_g": 2444.3,
+   "left_g": 2444.3,
+   "left_h": 54.2,
+   "parts": 16,
+   "parts_left": 16
   },
   "Drum (V13 parts)": {
    "total_g": 510.9,
@@ -2790,6 +2797,240 @@
    "png": "previews/189_pushrod.png"
   },
   {
+   "module": "Vacuum canister",
+   "part": "250_vac_shell_lower",
+   "material": "PETG",
+   "qty": 1,
+   "g_each": 563.7,
+   "h_each": 12.5,
+   "done": 0,
+   "printing": 0,
+   "left": 1,
+   "scope": "poc",
+   "dims": [
+    232.0,
+    231.5,
+    235.6
+   ],
+   "png": "previews/250_vac_shell_lower.png"
+  },
+  {
+   "module": "Vacuum canister",
+   "part": "251_vac_funnel",
+   "material": "PETG",
+   "qty": 1,
+   "g_each": 388.2,
+   "h_each": 8.6,
+   "done": 0,
+   "printing": 0,
+   "left": 1,
+   "scope": "poc",
+   "dims": [
+    215.8,
+    215.8,
+    83.0
+   ],
+   "png": "previews/251_vac_funnel.png"
+  },
+  {
+   "module": "Vacuum canister",
+   "part": "252_vac_gate_disc",
+   "material": "PETG",
+   "qty": 1,
+   "g_each": 143.0,
+   "h_each": 3.2,
+   "done": 0,
+   "printing": 0,
+   "left": 1,
+   "scope": "poc",
+   "dims": [
+    215.6,
+    211.2,
+    14.0
+   ],
+   "png": "previews/252_vac_gate_disc.png"
+  },
+  {
+   "module": "Vacuum canister",
+   "part": "253_vac_pivot_cap",
+   "material": "PETG",
+   "qty": 1,
+   "g_each": 1.9,
+   "h_each": 0.0,
+   "done": 0,
+   "printing": 0,
+   "left": 1,
+   "scope": "poc",
+   "dims": [
+    20.0,
+    20.0,
+    7.8
+   ],
+   "png": "previews/253_vac_pivot_cap.png"
+  },
+  {
+   "module": "Vacuum canister",
+   "part": "254_vac_screen",
+   "material": "PETG",
+   "qty": 1,
+   "g_each": 127.6,
+   "h_each": 2.8,
+   "done": 0,
+   "printing": 0,
+   "left": 1,
+   "scope": "poc",
+   "dims": [
+    217.2,
+    241.0,
+    11.0
+   ],
+   "png": "previews/254_vac_screen.png"
+  },
+  {
+   "module": "Vacuum canister",
+   "part": "255_vac_lid",
+   "material": "PETG",
+   "qty": 1,
+   "g_each": 395.4,
+   "h_each": 8.8,
+   "done": 0,
+   "printing": 0,
+   "left": 1,
+   "scope": "poc",
+   "dims": [
+    224.0,
+    224.0,
+    127.4
+   ],
+   "png": "previews/255_vac_lid.png"
+  },
+  {
+   "module": "Vacuum canister",
+   "part": "256_vac_hose_port",
+   "material": "PETG",
+   "qty": 1,
+   "g_each": 88.5,
+   "h_each": 2.0,
+   "done": 0,
+   "printing": 0,
+   "left": 1,
+   "scope": "poc",
+   "dims": [
+    104.0,
+    104.0,
+    36.0
+   ],
+   "png": "previews/256_vac_hose_port.png"
+  },
+  {
+   "module": "Vacuum canister",
+   "part": "257_vac_mouthpiece",
+   "material": "PETG",
+   "qty": 1,
+   "g_each": 50.7,
+   "h_each": 1.1,
+   "done": 0,
+   "printing": 0,
+   "left": 1,
+   "scope": "poc",
+   "dims": [
+    98.0,
+    98.0,
+    44.0
+   ],
+   "png": "previews/257_vac_mouthpiece.png"
+  },
+  {
+   "module": "Vacuum canister",
+   "part": "258_vac_wand_elbow",
+   "material": "PETG",
+   "qty": 2,
+   "g_each": 87.9,
+   "h_each": 2.0,
+   "done": 0,
+   "printing": 0,
+   "left": 2,
+   "scope": "poc",
+   "dims": [
+    94.0,
+    63.9,
+    129.5
+   ],
+   "png": "previews/258_vac_wand_elbow.png"
+  },
+  {
+   "module": "Vacuum canister",
+   "part": "259_vac_wand_tube",
+   "material": "PETG",
+   "qty": 3,
+   "g_each": 127.8,
+   "h_each": 2.8,
+   "done": 0,
+   "printing": 0,
+   "left": 3,
+   "scope": "poc",
+   "dims": [
+    63.9,
+    63.9,
+    240.0
+   ],
+   "png": "previews/259_vac_wand_tube.png"
+  },
+  {
+   "module": "Vacuum canister",
+   "part": "260_vac_handle",
+   "material": "PETG",
+   "qty": 1,
+   "g_each": 73.0,
+   "h_each": 1.6,
+   "done": 0,
+   "printing": 0,
+   "left": 1,
+   "scope": "poc",
+   "dims": [
+    234.0,
+    60.5,
+    20.0
+   ],
+   "png": "previews/260_vac_handle.png"
+  },
+  {
+   "module": "Vacuum canister",
+   "part": "265_vac_coupon_socket_ring",
+   "material": "PETG",
+   "qty": 1,
+   "g_each": 32.4,
+   "h_each": 0.7,
+   "done": 0,
+   "printing": 0,
+   "left": 1,
+   "scope": "poc",
+   "dims": [
+    224.0,
+    224.0,
+    10.0
+   ],
+   "png": "previews/265_vac_coupon_socket_ring.png"
+  },
+  {
+   "module": "Vacuum canister",
+   "part": "266_vac_coupon_hose_socket",
+   "material": "PETG",
+   "qty": 1,
+   "g_each": 20.7,
+   "h_each": 0.5,
+   "done": 0,
+   "printing": 0,
+   "left": 1,
+   "scope": "poc",
+   "dims": [
+    63.5,
+    63.5,
+    36.0
+   ],
+   "png": "previews/266_vac_coupon_hose_socket.png"
+  },
+  {
    "module": "Drum (V13 parts)",
    "part": "47b_tumbler_barrel_helical_flight",
    "material": "PETG",
@@ -3009,13 +3250,13 @@
  "bom_value": {
   "sections": {
    "Wood": 46.66,
-   "Filament": 80.72,
+   "Filament": 105.12,
    "Motion": 56.6,
    "Electronics": 93.0,
    "Power + wiring": 38.0,
-   "Fasteners": 15.49
+   "Fasteners": 17.38
   },
-  "total": 330.47,
+  "total": 356.76,
   "note": "rough value of what is used (qty x typical unit price, not whole packs), full machine, before tax"
  }
 }

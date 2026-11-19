@@ -175,5 +175,11 @@
   "folder": "1_now",
   "what": "Roof clips: 24 C3 (screw to the top rails, hold the tile ribs) + 12 H (join the roof seams). Print in your calibrated Inland PLA: the slot fit is PLA-sized",
   "log": []
+ },
+ "P24": {
+  "v": 1,
+  "folder": "1_now",
+  "what": "Vacuum canister (accessory, docks on the left stud): 9 files, all PETG, no supports. PRINT FILE 1 (2 coupons) FIRST and report: does the ring slide onto the stud, and how many mm does your hose cuff go into the small socket. Yellow: 2 lower shell, 3 lid, 4 hose port (+ pivot cap, any colour). Black: 5 funnel, 6 gate disc, 7 screen, 8 mouthpiece + handle + 2 wand elbows, 9 three wand tubes (skip 9 if your vac's own wands fit the mouthpiece). The hose parts (4, 8, 9) are sized for a 57.0-58.5 mm cuff until the coupon result is in",
+  "log": []
  }
 }
