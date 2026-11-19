@@ -6,6 +6,7 @@ Built on `cad-v14-vac` (from `cad-v14-all`), 2026-11-18. Script `build_vac.py` r
 Nothing on the machine changes.
 
 **Status: plate P24 v2, not printed. Print the two coupons (P24 file 1) before anything else.**
+Print files are in the `vac` folder of the print pack (BJ 2026-11-18), not `1_now`.
 
 The print pack on the `prints` branch (2026-11-18) was built from this branch. Until `cad-v14-vac` is merged into
 `cad-v14-all`, rebuild the pack from here, or P24 drops out of it.
@@ -130,7 +131,7 @@ None. It uses the stud OD, the stud rim and the hopper's 4 open screw bores as p
   4 pins in the hopper screw bores; tilted 2.4 mm slot screen; hose port on top; 2 elbows on the mouth for the vac's
   own wands; 2 glued-in black eyes. Docked check 0 clashes; machine + canister 927 mm.
 - 2026-11-18, decision, BJ: canister is carried while vacuuming, 2.5 in shop-vac hose, rigid wand, original look with
-  the stud kept on top, wanted for the December demo (plate folder `1_now`). Yellow parts in PLA. The vac's own wands
+  the stud kept on top, wanted for the December demo. Print files go in their own `vac` folder of the print pack. Yellow parts in PLA. The vac's own wands
   fit a cuff, so no wand tubes are printed.
 - 2026-11-18, open, 3d-printing runbook: PLA large round fit drawn 0.15 per side for the 216 stud socket and the lid
   joint; coupon 265 tests 0.15 and 0.10, file the result under PLA fits. Hose cuff not measured (drawn 57.0 tip /
