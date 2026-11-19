@@ -107,3 +107,41 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+def gate_still():
+    """still_6_gate.png: what turns and what does not. Left: the canister's underside. Right: the stud and hopper from above."""
+    from PIL import ImageDraw, ImageFont
+    sh, _ = b.shell_lower(); fu, _ = b.funnel(); disc = b.gate_disc(); cap = b.pivot_cap()
+    low = cq.Workplane('XY').box(400, 400, 60, centered=(True, True, False)).translate((0, 0, -25))
+    pins = None
+    for a in (45, 135, 225, 315):
+        p = b.pol(b.BORE_R, a, -b.PIN_L - 0.2)
+        c = b.cyl(p, (0, 0, 1), b.PIN_D / 2 + 0.15, b.PIN_L + 0.1); pins = c if pins is None else pins.union(c)
+    stop = b.cyl(b.pol(b.SOCK_R - b.STOP_PROTR, b.STOP_A, b.STOP_Z), (1, 0, 0), 1.6, b.STOP_PROTR + 8.2).union(b.cyl(b.pol(b.COLLAR_R, b.STOP_A, b.STOP_Z), (1, 0, 0), 2.9, 3.0))
+    capc = b.cyl((0, 0, -2.8), (0, 0, 1), 10.2, 2.6)
+    left = [(sh.intersect(low), Y, 1.0), (fu.intersect(low), GREY, 1.0), (disc, (0.30, 0.31, 0.34), 1.0), (pins, ORG, 1.0), (capc, BLUE, 1.0), (stop, RED, 1.0)]
+    render(left, HERE / 'preview_frames' / 'gate_left.png', cam=(150, -260, -560), focal=(0, 0, -5), up=(0, 1, 0), size=(800, 760))
+    fr, dk = Path('/home/claude/wt_frame5/cad/v14/frame/world'), Path('/home/claude/wt_deck5/cad/v14/deck/world')
+    off = (-b.ORIGIN[0], -b.ORIGIN[1], -b.ORIGIN[2])
+    ld_ = lambda p: cq.Workplane().add(cq.importers.importStep(str(p)).val()).translate(off)
+    rings = None
+    for a in (45, 135, 225, 315):
+        r = b.ring(b.BORE_D / 2 + 0.4, b.BORE_D / 2 + 2.6, -0.95, -0.6).translate(b.pol(b.BORE_R, a, 0)); rings = r if rings is None else rings.union(r)
+    right = [(ld_(fr / '130_stud_ring_left_hopper.step'), (0.78, 0.12, 0.10), 1.0), (ld_(dk / '201_hopper.step'), (0.90, 0.45, 0.40), 1.0), (rings, ORG, 1.0)]
+    render(right, HERE / 'preview_frames' / 'gate_right.png', cam=(150, 260, 520), focal=(0, 0, -30), up=(0, 0, 1), size=(800, 760))
+    im = Image.new('RGB', (1600, 900), (246, 247, 248))
+    im.paste(Image.open(HERE / 'preview_frames' / 'gate_left.png').convert('RGB'), (0, 50)); im.paste(Image.open(HERE / 'preview_frames' / 'gate_right.png').convert('RGB'), (800, 50))
+    d = ImageDraw.Draw(im)
+    try:
+        f = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 22); fb = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 24)
+    except Exception:
+        f = fb = ImageFont.load_default()
+    d.text((24, 14), 'Underside of the canister', font=fb, fill=(30, 30, 34)); d.text((824, 14), 'Left stud and hopper from above', font=fb, fill=(30, 30, 34))
+    rows = [(ORG, '4 pins under the gate disc drop into the 4 screw bores in the hopper top: the disc cannot turn'),
+            (BLUE, 'pivot cap + 1 screw: holds the disc up and lets the body spin around it'),
+            (RED, 'stop screw in the collar: its tip rides in the half-circle recess on the disc rim (half-turn limit, click at each end)')]
+    for k, (c, t) in enumerate(rows):
+        y = 812 + 28 * k
+        d.rectangle([24, y + 4, 46, y + 22], fill=tuple(int(255 * v) for v in c)); d.text((58, y), t, font=f, fill=(30, 30, 34))
+    im.save(HERE / 'still_6_gate.png'); print(HERE / 'still_6_gate.png')
