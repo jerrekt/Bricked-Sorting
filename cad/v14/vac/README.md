@@ -2,7 +2,8 @@
 
 Built on `cad-v14-vac` (from `cad-v14-all`), 2026-11-18. Script `build_vac.py` reads `../interface.json` and writes
 `world/` (STEP, docked on the left stud, gate closed), `collect/` (STEP of the wand elbows on the mouth, same frame),
-`print/` (STL on the bed), `parts.json`, `checks.json` and 4 stills. Plates: `make_plates.sh` -> `../plates/P24_*`.
+`print/` (STL on the bed), `parts.json`, `checks.json` and 5 stills. `build_preview.py` -> `how_it_works.gif` (9 frames,
+cut in half: collect, dock, half turn, drop). Plates: `make_plates.sh` -> `../plates/P24_*`.
 Nothing on the machine changes.
 
 **Status: plate P24 v2, not printed. Print the two coupons (P24 file 1) before anything else.**
@@ -70,6 +71,11 @@ Bought: none except the yellow PLA. From the kit: 21 M3 heat-set inserts, 15 M3 
 ## Checks (`checks.json`, `../integration/checks.json`)
 - Docked, gate closed: **0 clashes** with the frame (studs, roof tiles, clips) and the deck (hopper). Run by
   `integration/build_integration.py` (key `V_vac_docked`); the other machine checks are unchanged and still 0.
+- **The deck's `201_hopper.step` is not a valid solid** (`isValid()` is False): OCC cut / intersect on it return garbage
+  without an error, so any boolean clash result against the hopper, from any module, proves nothing. The canister was
+  re-checked on the meshes instead (`checks.json` -> `dock.mesh_check`): pins 0.40 from the bore walls (drawn 0.40),
+  disc underside 1.00 above the hopper ring and resting on the stud rim, shell 0.14 from the stud (drawn 0.15) and
+  8.1 from the hopper.
 - 0 clashes between canister parts, closed and open. Stop screw: free from 0 to 180 deg, bumps at 6 and 174, hard
   stops beyond.
 - `plates/check_bodies.py`: all 13 print STLs are one solid. `plates/support_check.py`: 0 mm2 needing support; the only
@@ -125,6 +131,8 @@ its centre.
 ## INTERFACE REQUESTS
 None. It uses the stud OD, the stud rim and the hopper's 4 open screw bores as printed.
 
+Note for the deck chat (K): re-export `201_hopper.step` as a valid solid so the integration clash check can see it.
+
 ## Vault log lines (for the main chat; nothing was pushed to Mnemosyne)
 - 2026-11-18, claim, Bricked Sorting: vacuum canister accessory V drafted on `cad-v14-vac` (`cad/v14/vac/`, parts
   250-266, plate P24 v2, 8 files): yellow canister 224 x 283 that docks on the left stud; half-turn gate disc held by
@@ -136,5 +144,7 @@ None. It uses the stud OD, the stud rim and the hopper's 4 open screw bores as p
 - 2026-11-18, open, 3d-printing runbook: PLA large round fit drawn 0.15 per side for the 216 stud socket and the lid
   joint; coupon 265 tests 0.15 and 0.10, file the result under PLA fits. Hose cuff not measured (drawn 57.0 tip /
   58.5 base); file the coupon 266 result. Yellow PLA is not on file.
+- 2026-11-18, finding: `cad-v14-deck5` `201_hopper.step` is not a valid solid, so the integration's boolean clash
+  checks against the hopper are blind; the canister was verified on meshes instead. Deck chat should re-export it.
 - 2026-11-18, estimate: canister 1.81 kg / ~40 h plus elbows 0.18 kg / 4 h, day profile; yellow PLA 1.02 kg, black
   PETG 0.96 kg; 21 M3 inserts, 15 M3 x 8, 6 M3 x 12 from the kit.

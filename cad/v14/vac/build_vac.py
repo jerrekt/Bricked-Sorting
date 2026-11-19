@@ -416,6 +416,38 @@ def on_bed(s):
     return s.translate((-(b[0] + b[3]) / 2, -(b[1] + b[4]) / 2, -b[2]))
 
 
+def tri_mesh(shape, tol=0.03):
+    import os, tempfile, trimesh
+    fd, p = tempfile.mkstemp(suffix='.stl'); os.close(fd)
+    cq.exporters.export(W(shape), p, tolerance=tol, angularTolerance=0.1)
+    m = trimesh.load(p); os.remove(p)
+    return m
+
+
+def mesh_half(shape, keep_normal=(-1, 0, 0), origin=(0, 0, 0)):
+    """half of a part as vtkPolyData, cut on the mesh. For solids OCC cannot cut: the deck's 201_hopper.step is not a
+    valid solid (isValid() False), so cut/intersect on it return garbage without raising."""
+    import numpy as np, vtk
+    from vtk.util.numpy_support import numpy_to_vtk, numpy_to_vtkIdTypeArray
+    m = tri_mesh(shape, 0.1).slice_plane(plane_origin=origin, plane_normal=keep_normal, cap=False)
+    pts = vtk.vtkPoints(); pts.SetData(numpy_to_vtk(m.vertices.astype(np.float64), deep=True))
+    ca = vtk.vtkCellArray()
+    ca.SetCells(len(m.faces), numpy_to_vtkIdTypeArray(np.hstack([np.full((len(m.faces), 1), 3), m.faces]).astype(np.int64).ravel(), deep=True))
+    pd = vtk.vtkPolyData(); pd.SetPoints(pts); pd.SetPolys(ca)
+    n = vtk.vtkPolyDataNormals(); n.SetInputData(pd); n.SetFeatureAngle(35); n.Update()
+    return n.GetOutput()
+
+
+def mesh_gap(part, target_mesh, z_max=None, z_band=None, n=60000):
+    """closest surface-to-surface distance (mm) from a canister part (machine frame) to a machine part's mesh."""
+    import numpy as np, trimesh
+    pts, _ = trimesh.sample.sample_surface(tri_mesh(part), n)
+    if z_max is not None: pts = pts[pts[:, 2] < z_max]
+    if z_band is not None: pts = pts[np.abs(pts[:, 2] - z_band) < 0.02]
+    if len(pts) == 0: return None
+    return round(float(trimesh.proximity.closest_point(target_mesh, pts)[1].min()), 2)
+
+
 def vol_common(a, b):
     c = a.intersect(b)
     return round(c.val().Volume(), 2) if c.vals() else 0.0
@@ -569,10 +601,20 @@ def main():
         mach.append((W(cq.importers.importStep(str(dk / '201_hopper.step')).val()), (0.85, 0.2, 0.2), 1.0))
         items = mach + [(s.translate(ORIGIN), c_of(n), 1.0) for n, s in body]
         render(items, HERE / 'still_1_docked.png', cam=(-1150, 950, 1200), focal=(-150, 0, 760), title=f'Docked on the left stud: machine + canister = {STUD_TOP + top_z:.0f} mm tall')
+        # independent of OCC booleans (they are not reliable on the hopper solid): closest distances on the meshes
+        hop_s, stud_s = cq.importers.importStep(str(dk / '201_hopper.step')).val(), cq.importers.importStep(str(fr / '130_stud_ring_left_hopper.step')).val()
+        hm, sm = tri_mesh(hop_s), tri_mesh(stud_s)
+        dw, sw = disc.translate(ORIGIN), sh.translate(ORIGIN)
+        res['dock']['mesh_check'] = {
+            'hopper_step_is_valid_solid': bool(hop_s.isValid()),
+            'pins_to_hopper_bore_wall': mesh_gap(dw, hm, z_max=STUD_TOP - 0.05), 'expected': round((BORE_D - PIN_D) / 2, 2),
+            'disc_underside_to_hopper_ring': mesh_gap(dw, hm, z_band=STUD_TOP), 'disc_underside_to_stud_rim': mesh_gap(dw, sm, z_band=STUD_TOP),
+            'shell_to_stud': mesh_gap(sw, sm, z_max=STUD_TOP + 8, n=150000), 'shell_to_hopper': mesh_gap(sw, hm, z_max=STUD_TOP + 8, n=150000),
+            'note': 'closest surface-to-surface distance in mm, sampled; 0.00 on the stud rim is the disc resting on it'}
+        (HERE / 'checks.json').write_text(json.dumps(res, indent=1))
         cutb = cq.Workplane('XY').box(400, 800, 900, centered=(False, True, True)).translate((0, 0, 100))
         sec = [(s.cut(cutb).translate(ORIGIN), c_of(n) if not n.startswith('251') else (0.35, 0.36, 0.40), 1.0) for n, s in body]
-        mcut = cq.Workplane('XY').box(400, 800, 900, centered=(False, True, True)).translate((ORIGIN[0], 0, 600))
-        msec = [(W(cq.importers.importStep(str(p)).val()).cut(mcut), c, 1.0) for p, c in ((fr / '130_stud_ring_left_hopper.step', (0.78, 0.12, 0.10)), (dk / '201_hopper.step', (0.9, 0.45, 0.4)))]
+        msec = [(mesh_half(stud_s, origin=ORIGIN), (0.78, 0.12, 0.10), 1.0), (mesh_half(hop_s, origin=ORIGIN), (0.9, 0.45, 0.4), 1.0)]
         render(sec + msec, HERE / 'still_2_section.png', cam=(-180 + 700, 60, 790), focal=(-180, 10, 760), size=(1100, 1000),
                title='Section: mouth -> tilted screen -> top port; funnel -> gate disc -> hopper')
     except Exception as e:

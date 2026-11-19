@@ -84,7 +84,17 @@
   "socket_wall": 7.8,
   "skirt_bottom_z_machine": 644.0,
   "roof_top_z_machine": 614.0,
-  "clear_above_roof": 30.0
+  "clear_above_roof": 30.0,
+  "mesh_check": {
+   "hopper_step_is_valid_solid": false,
+   "pins_to_hopper_bore_wall": 0.4,
+   "expected": 0.4,
+   "disc_underside_to_hopper_ring": 1.0,
+   "disc_underside_to_stud_rim": 0.0,
+   "shell_to_stud": 0.14,
+   "shell_to_hopper": 8.14,
+   "note": "closest surface-to-surface distance in mm, sampled; 0.00 on the stud rim is the disc resting on it"
+  }
  },
  "screen": {
   "slots": 199,
