@@ -106,14 +106,14 @@
   }
  },
  "V_vac_docked": {
-  "parts": 9,
+  "parts": 10,
   "vs_F": [],
   "vs_K": [],
   "top_z": 927.0,
   "bottom_z": 644.0,
   "printed": {
-   "grams": 2444.3,
-   "hours": 54.3
+   "grams": 2045.2,
+   "hours": 45.4
   },
   "note": "accessory: outside the machine envelope and the print budget"
  },

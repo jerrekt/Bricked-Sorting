@@ -27,12 +27,16 @@ HOP_MOUTH_R = 75.0                            # hopper mouth (deck5 k HOP_TOP_R)
 HOP_RING_Z = -1.0                             # hopper flat top ring r 75..100, 1 mm under the stud rim
 BORE_R, BORE_D, BORE_DEPTH = 92.5, 6.4, 12.0  # 4 hopper screw bores at 45/135/225/315, heads at z -13
 
-# ---------------- PETG fits (runbook, SUNLU PETG Matte) ----------------
-SLIDE = 0.20                                  # sliding fit per side
-INS_D, INS_DEPTH = 4.4, 5.8                   # M3 heat-set insert hole
+# ---------------- fits (runbook) ----------------
+# BJ 2026-11-18: the yellow parts (lower shell 250, lid 255, hose port 256) are PLA; the black parts stay PETG.
+SLIDE = 0.20                                  # PETG sliding fit per side (SUNLU PETG Matte)
+FIT_PLA = 0.15                                # PLA, large round parts that must turn or drop together: the runbook's "loose"
+                                              # (0.10 = "a tad loose", 0.07 = dovetail). Coupon 265 tests 0.15 and 0.10.
+INS_D, INS_DEPTH = 4.4, 5.8                   # M3 heat-set insert hole in PETG
+INS_PLA = 4.3                                 # M3 heat-set insert hole in PLA (BJ 2026-11-09)
 M3_CLR = 3.6                                  # M3 clearance (radial holes get a teardrop)
 M3_HEAD = 6.5                                 # socket head / driver access bore
-DENSITY = 1.27
+DENSITY = {'PETG': 1.27, 'PLA': 1.24}
 
 # ---------------- hose (NOT measured yet: BJ said 2.5 in; print the hose coupon 266 first) ----------------
 # Default = a common 2-1/2 in shop-vac cuff: tapered male end about 57.0 at the tip to 58.5 at the base.
@@ -47,7 +51,7 @@ WAND_T = 2.0                                  # wand wall
 R_OUT = 112.0                                 # shell outside radius (224 across)
 COLLAR_R = 116.0                              # base collar (thicker socket wall, takes the handle and the stop screw)
 COLLAR_TOP, COLLAR_CH = 10.0, 4.0
-SOCK_R = STUD_R + SLIDE                       # 108.2 socket bore
+SOCK_R = STUD_R + FIT_PLA                     # 108.15 socket bore (PLA shell on the PLA stud; the body turns on it)
 DOCK_DEPTH = 20.0                             # socket depth over the stud
 DISC_T, DISC_R, PLAY = 5.0, 107.8, 0.3
 FUN_Z0 = DISC_T + PLAY                        # funnel underside 5.3
@@ -68,7 +72,7 @@ TT, CT, ST = math.tan(math.radians(THETA)), math.cos(math.radians(THETA)), math.
 SCR_ZC = 96.0 + R_IN * TT                     # screen plane z = SCR_ZC + y tan(25): 96 at the back wall
 SCR_T, SCR_R = 3.0, R_IN - 0.4
 SPIG_H0, SEAM_H = SCR_T + 0.2, 15.0           # lid spigot end / outside seam, measured square to the screen plane
-SPIG_R = R_IN - SLIDE                         # 108.8
+SPIG_R = R_IN - FIT_PLA                       # 108.85 (PLA lid in the PLA shell)
 LID_IN_R = 106.0
 ROOF_T, ROOF_CH = 3.0, 6.0
 SEAM_A = (45.0, 135.0, 225.0, 315.0)
@@ -83,8 +87,13 @@ HANDLE_W = 20.0
 FOOT_LO_Z, FOOT_HI_Z = (-20.0, 10.0), (180.0, 214.0)
 FOOT_LO_SCREW, FOOT_HI_SCREW = (-12.0, 3.0), (189.0, 205.0)
 PIN_D, PIN_L = 5.6, 9.0
+# eyes (BJ 2026-11-18: "the eyes are the important part"): two black capsules leaning in at the top, glued into flat-
+# floored pockets in the lower shell above the mouth. An original face: do not swap in a copy of the LEGO minifigure face.
+EYE_X, EYE_Z, EYE_W, EYE_H, EYE_TILT = 36.0, 192.0, 16.0, 34.0, 12.0
+EYE_FLOOR_R, EYE_T, EYE_CLR = 110.6, 2.2, 0.10      # pocket floor 1.4 under the surface at the eye centre; piece 0.8 proud
 ELBOW_DEG, ELBOW_R = 42.0, 55.0
 TUBE_L = 240.0
+PRINT_WAND_TUBES = False                      # BJ 2026-11-18: the vac's own wands fit a cuff, so only the 2 elbows are printed
 
 SEAM_FRONT_Z = SCR_ZC + R_OUT * TT + SEAM_H / CT
 ROOF_Z = math.ceil(SEAM_FRONT_Z + 5.0 + ROOF_CH)      # outside roof height
@@ -146,6 +155,17 @@ def seam_z(a, r=SPIG_R, h=SEAM_SCREW_H):
     return SCR_ZC + r * math.sin(math.radians(a)) * TT + h / CT
 
 
+def eye_plane(sx):
+    """flat pocket floor for one eye (sx = +1 at +X, -1 at -X): x' along the wall, y' up, normal pointing out."""
+    a, b = sx * EYE_X / R_OUT, math.sqrt(1 - (EYE_X / R_OUT) ** 2)
+    return cq.Plane(origin=(a * EYE_FLOOR_R, b * EYE_FLOOR_R, EYE_Z), xDir=(-b, a, 0), normal=(a, b, 0))
+
+
+def eye(sx, clr=0.0, t=6.0):
+    """capsule standing on the pocket floor, top leaning toward the middle of the face."""
+    return cq.Workplane(eye_plane(sx)).slot2D(EYE_H - 2 * clr, EYE_W - 2 * clr, 90 - sx * EYE_TILT).extrude(t)
+
+
 # ---------------- 250 lower shell ----------------
 def shell_lower():
     top = ROOF_Z + 5
@@ -164,18 +184,20 @@ def shell_lower():
     s = s.cut(tear((0, PAD_Y + 1, MOUTH_Z), (0, -1, 0), 2 * MOUTH_R, 40, tad=6.0))
     for a in (45, 135, 225, 315):
         x, z = FLANGE_PCD_R * math.cos(math.radians(a)), MOUTH_Z + FLANGE_PCD_R * math.sin(math.radians(a))
-        s = s.cut(tear((x, PAD_Y + 0.01, z), (0, -1, 0), INS_D, INS_DEPTH)).cut(tear((x, PAD_Y, z), (0, -1, 0), 3.4, 9.0))
+        s = s.cut(tear((x, PAD_Y + 0.01, z), (0, -1, 0), INS_PLA, INS_DEPTH)).cut(tear((x, PAD_Y, z), (0, -1, 0), 3.4, 9.0))
+    for sx in (1, -1):               # eye pockets
+        s = s.cut(eye(sx))
     # radial screws into the funnel insert, seam screws into the lid spigot, stop screw through the collar
     for a in FUN_SCREW_A:
         s = s.cut(radial_hole(a, FUN_SCREW_Z, R_OUT + 1, 6, M3_CLR))
     for a in SEAM_A:
         s = s.cut(radial_hole(a, seam_z(a), R_OUT + 1, 5, M3_CLR))
-    s = s.cut(radial_hole(STOP_A, STOP_Z, COLLAR_R + 0.01, INS_DEPTH, INS_D)).cut(radial_hole(STOP_A, STOP_Z, COLLAR_R, 9, 3.4))
+    s = s.cut(radial_hole(STOP_A, STOP_Z, COLLAR_R + 0.01, INS_DEPTH, INS_PLA)).cut(radial_hole(STOP_A, STOP_Z, COLLAR_R, 9, 3.4))
     # handle foot: a small flat on the collar at the back, 2 inserts
     fy = -math.sqrt(COLLAR_R ** 2 - (HANDLE_W / 2 + 1) ** 2)
     s = s.cut(cq.Workplane('XY').box(HANDLE_W + 2, 10, COLLAR_TOP - FOOT_LO_Z[0] + 2, centered=(True, False, False)).translate((0, fy - 10, FOOT_LO_Z[0] - 1)))
     for z in FOOT_LO_SCREW:
-        s = s.cut(tear((0, fy - 0.01, z), (0, 1, 0), INS_D, INS_DEPTH))
+        s = s.cut(tear((0, fy - 0.01, z), (0, 1, 0), INS_PLA, INS_DEPTH))
     return s, fy
 
 
@@ -276,11 +298,11 @@ def lid():
         s = s.cut(cyl(pol(PORT_PCD_R, a, ROOF_Z - ROOF_T - 1), (0, 0, 1), 1.7, ROOF_T + 2))
     up = (0, 0, -1)                       # printed roof-down
     for a in SEAM_A:
-        s = s.cut(radial_hole(a, seam_z(a), SPIG_R + 0.01, INS_DEPTH, INS_D, up)).cut(radial_hole(a, seam_z(a), SPIG_R, 7.8, 3.4, up))
+        s = s.cut(radial_hole(a, seam_z(a), SPIG_R + 0.01, INS_DEPTH, INS_PLA, up)).cut(radial_hole(a, seam_z(a), SPIG_R, 7.8, 3.4, up))
     fy = -math.sqrt(R_OUT ** 2 - (HANDLE_W / 2 + 1) ** 2)
     s = s.cut(cq.Workplane('XY').box(HANDLE_W + 2, 10, FOOT_HI_Z[1] - FOOT_HI_Z[0] + 2, centered=(True, False, False)).translate((0, fy - 10, FOOT_HI_Z[0] - 1)))
     for z in FOOT_HI_SCREW:
-        s = s.cut(tear((0, fy - 0.01, z), (0, 1, 0), INS_D, INS_DEPTH, up)).cut(tear((0, fy, z), (0, 1, 0), 3.4, 9.0, up))
+        s = s.cut(tear((0, fy - 0.01, z), (0, 1, 0), INS_PLA, INS_DEPTH, up)).cut(tear((0, fy, z), (0, 1, 0), 3.4, 9.0, up))
     return s, fy
 
 
@@ -296,7 +318,7 @@ def hose_port():
     s = s.cut(socket_cut(ROOF_Z))
     s = s.cut(W(cq.Solid.makeCone(SOCK_TOP_R, SOCK_TOP_R + 1.5, 1.5, V(0, 0, ROOF_Z + PORT_H - 1.5), V(0, 0, 1))))   # lead-in
     for a in (45, 135, 225, 315):
-        s = s.cut(cyl(pol(PORT_PCD_R, a, ROOF_Z - 0.01), (0, 0, 1), INS_D / 2, INS_DEPTH)).cut(cyl(pol(PORT_PCD_R, a, ROOF_Z), (0, 0, 1), 1.7, 8.0))
+        s = s.cut(cyl(pol(PORT_PCD_R, a, ROOF_Z - 0.01), (0, 0, 1), INS_PLA / 2, INS_DEPTH)).cut(cyl(pol(PORT_PCD_R, a, ROOF_Z), (0, 0, 1), 1.7, 8.0))
     return s
 
 
@@ -367,7 +389,9 @@ def handle(fy_lo, fy_hi):
 
 # ---------------- 265 / 266 coupons ----------------
 def coupon_socket():
-    s = ring(SOCK_R, R_OUT, 0, 10.0)
+    """PLA ring for the stud, two fits in one: the chamfered end (bed side, 6 mm) is the drawn 0.15 per side, the plain
+    end (6 mm) is 0.10. Chamfered end first onto the stud; flip it to feel the tighter fit on its own."""
+    s = ring(STUD_R + 0.10, R_OUT, 0, 12.0).cut(cyl((0, 0, -1), (0, 0, 1), SOCK_R, 7.0))
     return s.cut(W(cq.Solid.makeCone(SOCK_R + 1.5, SOCK_R, 1.5, V(0, 0, -0.01), V(0, 0, 1))))
 
 
@@ -376,11 +400,11 @@ def coupon_hose():
 
 
 # ---------------- estimate ----------------
-def grams(shape, shell=1.5, infill=0.15):
+def grams(shape, mat='PETG', shell=1.5, infill=0.15):
     s = shape.val() if isinstance(shape, cq.Workplane) else shape
     v, a = s.Volume(), s.Area()
     solid = min(v, a * shell)
-    return round((solid + (v - solid) * infill) / 1000 * DENSITY, 1)
+    return round((solid + (v - solid) * infill) / 1000 * DENSITY[mat], 1)
 
 
 def flipx(s):
@@ -412,33 +436,37 @@ def main():
     hd = handle(fy_lo, fy_hi)
     tube = wand_tube(); elb, e_c, e_d = wand_elbow()
     c_sock, c_hose = coupon_socket(), coupon_hose()
+    eyes = eye(1, EYE_CLR, EYE_T).union(eye(-1, EYE_CLR, EYE_T))
+    eye_flat = cq.Workplane('XY').slot2D(EYE_H - 2 * EYE_CLR, EYE_W - 2 * EYE_CLR, 0).extrude(EYE_T)
 
-    # name: (shape in canister frame, print pose, qty, colour, bed face)
     yaw = lambda s, a: s.rotate((0, 0, 0), (0, 0, 1), a)
+    # name: (shape in canister frame, print pose, qty, material, colour, bed face)
     parts = {
-        '250_vac_shell_lower': (sh, on_bed(sh), 1, 'yellow', 'collar (socket end) down, as it stands'),
-        '251_vac_funnel': (fu, on_bed(fu), 1, 'black', 'foot (gate face) down'),
-        '252_vac_gate_disc': (disc, on_bed(flipx(disc)), 1, 'black', 'top face down, pins up'),
-        '253_vac_pivot_cap': (cap, on_bed(cap), 1, 'black', 'flange down'),
-        '254_vac_screen': (scr, on_bed(scr_flat), 1, 'black', 'flat, ribs up'),
-        '255_vac_lid': (ld, on_bed(flipx(ld)), 1, 'yellow', 'roof down'),
-        '256_vac_hose_port': (port, on_bed(port), 1, 'yellow', 'base (insert face) down'),
-        '257_vac_mouthpiece': (mp, on_bed(mp.rotate((0, 0, 0), (1, 0, 0), 90)), 1, 'black', 'flange down'),
-        '258_vac_wand_elbow': (None, on_bed(elb), 2, 'black', 'socket end down'),
-        '259_vac_wand_tube': (None, on_bed(tube), 3, 'black', 'socket end down, 5 mm brim'),
-        '260_vac_handle': (hd, on_bed(hd.rotate((0, 0, 0), (0, 1, 0), -90)), 1, 'black', 'on its side'),
-        '265_vac_coupon_socket_ring': (None, on_bed(c_sock), 1, 'any', 'flat'),
-        '266_vac_coupon_hose_socket': (None, on_bed(c_hose), 1, 'any', 'small end down'),
+        '250_vac_shell_lower': (sh, on_bed(sh), 1, 'PLA', 'yellow', 'collar (socket end) down, as it stands'),
+        '251_vac_funnel': (fu, on_bed(fu), 1, 'PETG', 'black', 'foot (gate face) down'),
+        '252_vac_gate_disc': (disc, on_bed(flipx(disc)), 1, 'PETG', 'black', 'top face down, pins up'),
+        '253_vac_pivot_cap': (cap, on_bed(cap), 1, 'PLA', 'any (hidden)', 'flange down'),
+        '254_vac_screen': (scr, on_bed(scr_flat), 1, 'PETG', 'black', 'flat, ribs up'),
+        '255_vac_lid': (ld, on_bed(flipx(ld)), 1, 'PLA', 'yellow', 'roof down'),
+        '256_vac_hose_port': (port, on_bed(port), 1, 'PLA', 'yellow', 'base (insert face) down'),
+        '257_vac_mouthpiece': (mp, on_bed(mp.rotate((0, 0, 0), (1, 0, 0), 90)), 1, 'PETG', 'black', 'flange down'),
+        '258_vac_wand_elbow': (None, on_bed(elb), 2, 'PETG', 'black', 'socket end down'),
+        '260_vac_handle': (hd, on_bed(hd.rotate((0, 0, 0), (0, 1, 0), -90)), 1, 'PETG', 'black', 'on its side'),
+        '261_vac_eye': (eyes, on_bed(eye_flat), 2, 'PETG', 'black', 'flat (either face: left and right are the same piece)'),
+        '265_vac_coupon_socket_ring': (None, on_bed(c_sock), 1, 'PLA', 'any', 'chamfered (0.15) end down'),
+        '266_vac_coupon_hose_socket': (None, on_bed(c_hose), 1, 'PLA', 'any', 'small end down'),
     }
-    plist, tot = [], 0.0
-    for name, (real, bed, qty, colour, face) in parts.items():
+    if PRINT_WAND_TUBES:
+        parts['259_vac_wand_tube'] = (None, on_bed(tube), 3, 'PETG', 'black', 'socket end down, 5 mm brim')
+    plist, tot, by_mat = [], 0.0, {}
+    for name, (real, bed, qty, mat, colour, face) in parts.items():
         export(bed, prn / f'{name}_PRINT_1.stl')
         if real is not None:
             export(real.translate(ORIGIN), world / f'{name}.step')
-        g = grams(bed); bf = bed_fit(bed)
-        plist.append({'label': name, 'part_no': name[:3], 'qty': qty, 'material': 'PETG', 'colour': colour, 'bed_face': face, **bf,
+        g = grams(bed, mat); bf = bed_fit(bed)
+        plist.append({'label': name, 'part_no': name[:3], 'qty': qty, 'material': mat, 'colour': colour, 'bed_face': face, **bf,
                       'diagonal_on_bed': False, 'est_grams': g, 'est_hours': hours(g)})
-        tot += g * qty
+        tot += g * qty; by_mat[mat] = by_mat.get(mat, 0) + g * qty
     # collect pose: mouthpiece + 2 elbows + 3 tubes (canister frame), for the stills and collect/ only
     def frame(shape, c, zx, xx):
         """move a wand part (socket entry at the origin, axis +Z, bend toward +X) to entry c, axis zx, bend toward xx."""
@@ -459,7 +487,8 @@ def main():
     c0 = c0 + d0 * SEAT                            # tip of the last tube
     wand_reach = round(MOUTH_Z - c0.z, 0)
     for n, s in wand:                              # same machine frame as world/, wand pushed onto the mouth
-        export(s.translate(ORIGIN), col / f'{n}.step')
+        if PRINT_WAND_TUBES or n.startswith('258'):
+            export(s.translate(ORIGIN), col / f'{n}.step')
 
     # ---------------- checks ----------------
     res = {'interface': IF['version'], 'frame': {'origin_machine': list(ORIGIN), 'mouth': '+Y (front) when docked and closed'}}
@@ -497,7 +526,10 @@ def main():
     res['gate']['closed_hole_fully_covered'] = abs(vol_common(cyl((0, -HOLE_E, 0), (0, 0, 1), HOLE_R, DISC_T), disc) - math.pi * HOLE_R ** 2 * DISC_T) < 5.0
     res['pins'] = {'d': PIN_D, 'bore_d': BORE_D, 'tip_z_machine': STUD_TOP - PIN_L, 'screw_heads_z_machine': STUD_TOP - 1 - BORE_DEPTH,
                    'clear_of_heads_mm': round((STUD_TOP - PIN_L) - (STUD_TOP - 1 - BORE_DEPTH), 1), 'in_bore_mm': PIN_L - 1.0}
-    res['dock'] = {'socket_id': 2 * SOCK_R, 'stud_od': 2 * STUD_R, 'fit_per_side': SLIDE, 'depth': DOCK_DEPTH,
+    res['eyes'] = {'pieces': 2, 'size': [EYE_W - 2 * EYE_CLR, EYE_H - 2 * EYE_CLR, EYE_T], 'pocket_depth_at_centre': round(R_OUT - EYE_FLOOR_R, 2), 'clearance_per_side': EYE_CLR,
+                   'fixing': 'glue (the pocket is in a vertical wall, so the runbook press fit measured on flat prints does not carry over)',
+                   'min_wall_behind_pocket': round(EYE_FLOOR_R - R_IN, 2)}
+    res['dock'] = {'socket_id': 2 * SOCK_R, 'stud_od': 2 * STUD_R, 'fit_per_side': FIT_PLA, 'material': 'PLA shell on the PLA stud', 'depth': DOCK_DEPTH,
                    'socket_wall': round(COLLAR_R - SOCK_R, 1), 'skirt_bottom_z_machine': STUD_TOP - DOCK_DEPTH, 'roof_top_z_machine': 614.0,
                    'clear_above_roof': STUD_TOP - DOCK_DEPTH - 614.0}
     hose_area = math.pi * (CUFF_TIP / 2 - 2.5) ** 2
@@ -514,13 +546,15 @@ def main():
                    'socket_entry_d': round(2 * SOCK_TOP_R, 2), 'socket_d_at_36': round(2 * SOCK_BOT_R, 2),
                    'mm_of_depth_per_mm_of_diameter': round(SOCK_DEPTH / (2 * SOCK_TOP_R - 2 * SOCK_BOT_R), 1)}
     res['bed_fit'] = {p['label']: {'extent': p['bed_extent'], 'ok': p['fits_248']} for p in plist}
-    res['filament'] = {'grams': round(tot), 'hours': round(tot / 45.0, 1),
-                       'canister_only_grams': round(sum(p['est_grams'] * p['qty'] for p in plist if p['part_no'] in ('250', '251', '252', '253', '254', '255', '256', '257', '260')))}
+    res['filament'] = {'grams': round(tot), 'hours': round(tot / 45.0, 1), 'by_material': {k: round(v) for k, v in by_mat.items()},
+                       'yellow_PLA_grams': round(sum(p['est_grams'] * p['qty'] for p in plist if p['colour'] == 'yellow')),
+                       'canister_only_grams': round(sum(p['est_grams'] * p['qty'] for p in plist if p['part_no'] in ('250', '251', '252', '253', '254', '255', '256', '257', '260', '261')))}
     bought = [{'item': 'M3 heat-set insert', 'qty': 20, 'use': 'mouth pad 4, funnel 3 + pivot 1, stop 1, collar handle foot 2, lid seam 4, lid handle 2, hose port 4 (rounded up 1)'},
               {'item': 'M3 x 8 socket', 'qty': 11, 'use': 'funnel 3, seam 4, hose port 4'},
               {'item': 'M3 x 12 socket', 'qty': 10, 'use': 'mouthpiece 4, handle 4, stop 1, pivot 1'}]
     (HERE / 'parts.json').write_text(json.dumps({'module': 'V', 'interface': IF['version'], 'printed': plist, 'bought': bought,
-                                                 'est_total_grams': round(tot, 1), 'est_total_hours': round(tot / 45.0, 1)}, indent=1))
+                                                 'est_total_grams': round(tot, 1), 'est_total_hours': round(tot / 45.0, 1),
+                                                 'est_grams_by_material': {k: round(v, 1) for k, v in by_mat.items()}}, indent=1))
     (HERE / 'checks.json').write_text(json.dumps(res, indent=1))
 
     # ---------------- stills ----------------
@@ -543,12 +577,13 @@ def main():
                title='Section: mouth -> tilted screen -> top port; funnel -> gate disc -> hopper')
     except Exception as e:
         print('machine stills skipped:', e)
-    render([(s, c_of(n), 1.0) for n, s in body] + [(s, K, 1.0) for n, s in wand], HERE / 'still_3_collect.png', cam=(1500, 1500, 500), focal=(0, 80, -230),
-           size=(1000, 1100), title=f'Collect pose: hose on the top port, wand on the mouth (reach {wand_reach:.0f} mm below the mouth)')
-    ex = {'250': 0, '251': -130, '252': -230, '253': -290, '254': 130, '255': 230, '256': 330, '257': 0, '260': 0}
-    exy = {'257': 90, '260': -90}
+    render([(s, c_of(n), 1.0) for n, s in body] + [(s, K if (PRINT_WAND_TUBES or n.startswith('258')) else G, 1.0) for n, s in wand], HERE / 'still_3_collect.png', cam=(1500, 1500, 500), focal=(0, 80, -230),
+           size=(1000, 1100), title='Collect pose: hose on the top port; 2 printed elbows on the mouth, then the vac\'s own wand (grey, 3 x 240 shown)')
+    render([(s, c_of(n), 1.0) for n, s in body], HERE / 'still_5_face.png', cam=(0, 900, 150), focal=(0, 0, 122), size=(900, 900), title='Face: eyes and mouth (gate closed, mouth to the front)')
+    ex = {'250': 0, '251': -130, '252': -230, '253': -290, '254': 130, '255': 230, '256': 330, '257': 0, '260': 0, '261': 0}
+    exy = {'257': 90, '260': -90, '261': 60}
     render([(s.translate((0, exy.get(n[:3], 0), ex[n[:3]])), c_of(n), 1.0) for n, s in body], HERE / 'still_4_exploded.png', cam=(1500, 1150, 700), focal=(0, 0, 40),
-           size=(1000, 1200), title='Exploded: port, lid, screen, shell, mouthpiece, handle, funnel, gate disc, pivot cap')
+           size=(1000, 1200), title='Exploded: port, lid, screen, shell, eyes, mouthpiece, handle, funnel, gate disc, pivot cap')
     return res, plist
 
 

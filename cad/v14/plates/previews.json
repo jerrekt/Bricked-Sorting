@@ -1209,8 +1209,8 @@
  },
  "251_vac_funnel": {
   "dims": [
-   215.8,
-   215.8,
+   215.7,
+   215.7,
    83.0
   ],
   "png": "previews/251_vac_funnel.png"
@@ -1218,7 +1218,7 @@
  "252_vac_gate_disc": {
   "dims": [
    215.6,
-   211.2,
+   211.1,
    14.0
   ],
   "png": "previews/252_vac_gate_disc.png"
@@ -1271,14 +1271,6 @@
   ],
   "png": "previews/258_vac_wand_elbow.png"
  },
- "259_vac_wand_tube": {
-  "dims": [
-   63.9,
-   63.9,
-   240.0
-  ],
-  "png": "previews/259_vac_wand_tube.png"
- },
  "260_vac_handle": {
   "dims": [
    234.0,
@@ -1287,11 +1279,19 @@
   ],
   "png": "previews/260_vac_handle.png"
  },
+ "261_vac_eye": {
+  "dims": [
+   33.8,
+   15.8,
+   2.2
+  ],
+  "png": "previews/261_vac_eye.png"
+ },
  "265_vac_coupon_socket_ring": {
   "dims": [
    224.0,
    224.0,
-   10.0
+   12.0
   ],
   "png": "previews/265_vac_coupon_socket_ring.png"
  },

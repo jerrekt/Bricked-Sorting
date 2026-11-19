@@ -3,8 +3,8 @@
  "updated": "2026-11-17 22:21 PT",
  "summary": {
   "total": {
-   "grams": 10969,
-   "hours": 207.7
+   "grams": 10570,
+   "hours": 198.9
   },
   "done": {
    "grams": 3431,
@@ -15,14 +15,14 @@
    "hours": 0.0
   },
   "left": {
-   "grams": 7538,
-   "hours": 142.0
+   "grams": 7139,
+   "hours": 133.2
   }
  },
  "poc": {
   "total": {
-   "grams": 6314,
-   "hours": 124.1
+   "grams": 5915,
+   "hours": 115.3
   },
   "done": {
    "grams": 3155,
@@ -33,18 +33,18 @@
    "hours": 0.0
   },
   "left": {
-   "grams": 3159,
-   "hours": 64.3
+   "grams": 2760,
+   "hours": 55.5
   }
  },
  "cost": {
   "used": 30.45,
-  "left_poc": 34.54,
-  "left_machine": 82.39,
+  "left_poc": 30.16,
+  "left_machine": 78.02,
   "note": "USD incl. 9.375 % tax; PLA $9.99/kg, PETG $10.00/kg (Micro Center)"
  },
  "pace_factor": 0.81,
- "left_at_pace_hours": 115,
+ "left_at_pace_hours": 108,
  "used_so_far": {
   "grams": 2788,
   "hours": 82.8,
@@ -81,11 +81,11 @@
    "parts_left": 1
   },
   "Vacuum canister": {
-   "total_g": 2444.3,
-   "left_g": 2444.3,
-   "left_h": 54.2,
-   "parts": 16,
-   "parts_left": 16
+   "total_g": 2045.2,
+   "left_g": 2045.2,
+   "left_h": 45.4,
+   "parts": 15,
+   "parts_left": 15
   },
   "Drum (V13 parts)": {
    "total_g": 510.9,
@@ -2799,10 +2799,10 @@
   {
    "module": "Vacuum canister",
    "part": "250_vac_shell_lower",
-   "material": "PETG",
+   "material": "PLA",
    "qty": 1,
-   "g_each": 563.7,
-   "h_each": 12.5,
+   "g_each": 551.1,
+   "h_each": 12.2,
    "done": 0,
    "printing": 0,
    "left": 1,
@@ -2819,15 +2819,15 @@
    "part": "251_vac_funnel",
    "material": "PETG",
    "qty": 1,
-   "g_each": 388.2,
+   "g_each": 387.9,
    "h_each": 8.6,
    "done": 0,
    "printing": 0,
    "left": 1,
    "scope": "poc",
    "dims": [
-    215.8,
-    215.8,
+    215.7,
+    215.7,
     83.0
    ],
    "png": "previews/251_vac_funnel.png"
@@ -2837,7 +2837,7 @@
    "part": "252_vac_gate_disc",
    "material": "PETG",
    "qty": 1,
-   "g_each": 143.0,
+   "g_each": 142.9,
    "h_each": 3.2,
    "done": 0,
    "printing": 0,
@@ -2845,7 +2845,7 @@
    "scope": "poc",
    "dims": [
     215.6,
-    211.2,
+    211.1,
     14.0
    ],
    "png": "previews/252_vac_gate_disc.png"
@@ -2853,7 +2853,7 @@
   {
    "module": "Vacuum canister",
    "part": "253_vac_pivot_cap",
-   "material": "PETG",
+   "material": "PLA",
    "qty": 1,
    "g_each": 1.9,
    "h_each": 0.0,
@@ -2889,10 +2889,10 @@
   {
    "module": "Vacuum canister",
    "part": "255_vac_lid",
-   "material": "PETG",
+   "material": "PLA",
    "qty": 1,
-   "g_each": 395.4,
-   "h_each": 8.8,
+   "g_each": 386.1,
+   "h_each": 8.6,
    "done": 0,
    "printing": 0,
    "left": 1,
@@ -2907,10 +2907,10 @@
   {
    "module": "Vacuum canister",
    "part": "256_vac_hose_port",
-   "material": "PETG",
+   "material": "PLA",
    "qty": 1,
-   "g_each": 88.5,
-   "h_each": 2.0,
+   "g_each": 86.4,
+   "h_each": 1.9,
    "done": 0,
    "printing": 0,
    "left": 1,
@@ -2960,24 +2960,6 @@
   },
   {
    "module": "Vacuum canister",
-   "part": "259_vac_wand_tube",
-   "material": "PETG",
-   "qty": 3,
-   "g_each": 127.8,
-   "h_each": 2.8,
-   "done": 0,
-   "printing": 0,
-   "left": 3,
-   "scope": "poc",
-   "dims": [
-    63.9,
-    63.9,
-    240.0
-   ],
-   "png": "previews/259_vac_wand_tube.png"
-  },
-  {
-   "module": "Vacuum canister",
    "part": "260_vac_handle",
    "material": "PETG",
    "qty": 1,
@@ -2996,11 +2978,29 @@
   },
   {
    "module": "Vacuum canister",
-   "part": "265_vac_coupon_socket_ring",
+   "part": "261_vac_eye",
    "material": "PETG",
+   "qty": 2,
+   "g_each": 1.3,
+   "h_each": 0.0,
+   "done": 0,
+   "printing": 0,
+   "left": 2,
+   "scope": "poc",
+   "dims": [
+    33.8,
+    15.8,
+    2.2
+   ],
+   "png": "previews/261_vac_eye.png"
+  },
+  {
+   "module": "Vacuum canister",
+   "part": "265_vac_coupon_socket_ring",
+   "material": "PLA",
    "qty": 1,
-   "g_each": 32.4,
-   "h_each": 0.7,
+   "g_each": 38.9,
+   "h_each": 0.9,
    "done": 0,
    "printing": 0,
    "left": 1,
@@ -3008,16 +3008,16 @@
    "dims": [
     224.0,
     224.0,
-    10.0
+    12.0
    ],
    "png": "previews/265_vac_coupon_socket_ring.png"
   },
   {
    "module": "Vacuum canister",
    "part": "266_vac_coupon_hose_socket",
-   "material": "PETG",
+   "material": "PLA",
    "qty": 1,
-   "g_each": 20.7,
+   "g_each": 20.3,
    "h_each": 0.5,
    "done": 0,
    "printing": 0,
@@ -3250,13 +3250,13 @@
  "bom_value": {
   "sections": {
    "Wood": 46.66,
-   "Filament": 105.12,
+   "Filament": 101.11,
    "Motion": 56.6,
    "Electronics": 93.0,
    "Power + wiring": 38.0,
    "Fasteners": 17.38
   },
-  "total": 356.76,
+  "total": 352.75,
   "note": "rough value of what is used (qty x typical unit price, not whole packs), full machine, before tax"
  }
 }

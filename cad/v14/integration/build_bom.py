@@ -22,7 +22,7 @@ red_kg = round(G['F'] / 1000, 2)
 other_kg = round((G['K'] + G['D'] + G['S'] - petg) / 1000, 2)
 petg_kg = round(petg / 1000 + 0.15, 2)          # + deck trays/springs (PETG) ~0.15
 pv = json.loads((VAC / 'parts.json').read_text())      # accessory V: vacuum canister (2026-11-18)
-vac_kg = round(pv['est_total_grams'] / 1000, 2)
+vac_pla_kg = round(pv['est_grams_by_material'].get('PLA', 0) / 1000, 2); vac_petg_kg = round(pv['est_grams_by_material'].get('PETG', 0) / 1000, 2)
 
 # section, item, spec, qty (number), unit, where used, owned (Y/N/part), unit price, price per, approx, source, note
 ROWS = [
@@ -37,7 +37,8 @@ ROWS = [
  ('Filament', 'PLA red', 'skin, studs, corner caps, hopper', red_kg, 'kg', 'F skin (+ K hopper)', 'part', 9.99, 1, False, 'Micro Center ($9.99 / 1 kg, BJ 2026-11-18)', 'day-profile estimate; slice before buying'),
  ('Filament', 'PLA (any colour)', 'trays, bins, faces, deck and scoop parts', other_kg, 'kg', 'D, K, S', 'part', 10.00, 1, True, 'Micro Center / Amazon', 'faces in 2 colours + white inlay on the AMS'),
  ('Filament', 'PETG', 'rails, stations, guides, V trays, springs, deck + scoop (BJ prints these in PETG)', petg_kg, 'kg', 'D runners, K, S', 'part', 39.99, 4, False, 'Micro Center ($39.99 / 4 kg, BJ 2026-11-18)', 'running total in plates/print_status.json'),
- ('Filament', 'PETG (vacuum canister)', 'accessory V: yellow shell ~1.0 kg, black parts ~1.4 kg incl. the wand', vac_kg, 'kg', 'V canister + wand', 'part', 39.99, 4, True, 'Micro Center', 'yellow PETG is not on file: ask BJ; price taken as the black PETG price'),
+ ('Filament', 'PLA yellow (vacuum canister)', 'accessory V: lower shell, lid, hose port (+ coupons)', vac_pla_kg, 'kg', 'V canister shell', 'N', 9.99, 1, True, 'Micro Center', 'yellow is not on file; price taken as the red PLA price. About 1.02 kg of yellow by the estimate: slice files 2-4 before buying one spool'),
+ ('Filament', 'PETG (vacuum canister)', 'accessory V: funnel, gate disc, screen, mouthpiece, handle, 2 elbows', vac_petg_kg, 'kg', 'V canister black parts', 'part', 39.99, 4, False, 'Micro Center ($39.99 / 4 kg)', 'black PETG on hand'),
  # ---------------- motion ----------------
  ('Motion', '625ZZ bearing', '5 x 16 x 5', 32, 'pc', 'D 16, K 8, S 8', 'N', 10.00, 50, True, 'AliExpress / Amazon', 'test the 625 pocket coupon first'),
  ('Motion', 'NEMA17 stepper', 'salvaged, 5 mm shaft', 2, 'pc', 'K drum drive, S slide', 'Y', 0, 1, False, '', '2 salvaged from a printer'),
@@ -93,7 +94,7 @@ UNIT_VALUE = {'2x2 x 8 ft': 5.50, '1x2 x 8 ft': 3.00, '1/2 in plywood 2 x 4 ft':
     'Neodymium magnet 6 x 2 mm disc': 0.10, 'KW11-3Z roller limit switch': 0.50, 'White COB LED strip 12 V, 1 m': 6.00,
     'MOSFET trigger module': 1.50, '12 V PSU': 15.00, '12 V to 5 V buck': 8.00, 'AC cord 16/3': 6.00, '4-core flexible cable': 1.50,
     'Servo extension lead 3-wire': 2.00, 'Silicone wire 22 AWG kit': 2.00, 'XT30 connectors': 1.00, 'M3 heat-set insert': 0.06,
-    'M3 x 8 countersunk': 0.05, 'M3 x 8 socket': 0.03, 'PETG (vacuum canister)': 10.00, 'M3 x 10 / x 12 socket': 0.03, 'M3 x 12 + nut': 0.04, 'M3 x 16 / x 25': 0.05, 'M5 x 20 + nyloc': 0.20,
+    'M3 x 8 countersunk': 0.05, 'M3 x 8 socket': 0.03, 'PETG (vacuum canister)': 10.00, 'PLA yellow (vacuum canister)': 9.99, 'M3 x 10 / x 12 socket': 0.03, 'M3 x 12 + nut': 0.04, 'M3 x 16 / x 25': 0.05, 'M5 x 20 + nyloc': 0.20,
     'M5 x 30 + nyloc': 0.22, 'M5 x 50 + nyloc': 0.55, 'M5 x 16 + nut': 0.15, 'M2 x 8 / x 12 + nut': 0.03}
 
 
