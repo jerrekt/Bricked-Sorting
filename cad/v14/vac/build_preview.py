@@ -145,3 +145,52 @@ def gate_still():
         y = 812 + 28 * k
         d.rectangle([24, y + 4, 46, y + 22], fill=tuple(int(255 * v) for v in c)); d.text((58, y), t, font=f, fill=(30, 30, 34))
     im.save(HERE / 'still_6_gate.png'); print(HERE / 'still_6_gate.png')
+
+
+def gate_preview():
+    """how_gate_turns.gif: the body turning half a turn on the held disc. Left: underside. Right: looking down into the
+    canister with the lid, screen and upper shell removed."""
+    from PIL import ImageDraw, ImageFont
+    out = HERE / 'preview_frames'; out.mkdir(exist_ok=True)
+    sh, fy_lo = b.shell_lower(); fu, _ = b.funnel(); disc = b.gate_disc(); mp = b.mouthpiece(); ld, fy_hi = b.lid(); hd = b.handle(fy_lo, fy_hi)
+    low = cq.Workplane('XY').box(500, 500, 60, centered=(True, True, False)).translate((0, 0, -25))
+    mid = cq.Workplane('XY').box(500, 500, 185, centered=(True, True, False)).translate((0, 0, -25))
+    pins = None
+    for a in (45, 135, 225, 315):
+        c = b.cyl(b.pol(b.BORE_R, a, -b.PIN_L - 0.2), (0, 0, 1), b.PIN_D / 2 + 0.15, b.PIN_L + 0.1); pins = c if pins is None else pins.union(c)
+    stop = b.cyl(b.pol(b.SOCK_R - b.STOP_PROTR, b.STOP_A, b.STOP_Z), (1, 0, 0), 1.8, b.STOP_PROTR + 8.2).union(b.cyl(b.pol(b.COLLAR_R, b.STOP_A, b.STOP_Z), (1, 0, 0), 4.0, 4.0))
+    capc = b.cyl((0, 0, -2.8), (0, 0, 1), 10.2, 2.6)
+    body_low = [(sh.intersect(low), Y), (fu.intersect(low), GREY), (hd.intersect(low), K), (stop, RED)]          # turns
+    body_top = [(sh.intersect(mid), Y), (fu, GREY), (mp, K), (hd.intersect(mid), K), (stop, RED)]                # turns
+    DISC = (0.30, 0.31, 0.34)
+    fr, dk = Path('/home/claude/wt_frame5/cad/v14/frame/world'), Path('/home/claude/wt_deck5/cad/v14/deck/world')
+    off = (-b.ORIGIN[0], -b.ORIGIN[1], -b.ORIGIN[2])
+    ld_ = lambda p: cq.Workplane().add(cq.importers.importStep(str(p)).val()).translate(off)
+    machine = [(ld_(fr / '130_stud_ring_left_hopper.step'), (0.78, 0.12, 0.10), 1.0), (ld_(dk / '201_hopper.step'), (0.90, 0.45, 0.40), 1.0)]
+    try:
+        f = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 22); fb = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 26)
+    except Exception:
+        f = fb = ImageFont.load_default()
+    steps = [(0, 'Shut. Docked: the pins are in the hopper bores'), (-30, 'Body turned 30 deg. The disc has not moved'), (-60, '60 deg. Still shut'),
+             (-90, '90 deg. The two holes are just starting to overlap'), (-120, '120 deg. Opening'), (-150, '150 deg'), (-180, '180 deg: click. Open, pieces drop into the hopper')]
+    rot = lambda s, a: s.rotate((0, 0, 0), (0, 0, 1), a) if a else s
+    imgs = []
+    for k, (a, cap_t) in enumerate(steps):
+        left = [(rot(s, a), c, 1.0) for s, c in body_low] + [(disc, DISC, 1.0), (pins, ORG, 1.0), (capc, BLUE, 1.0)]
+        render(left, out / 'g_l.png', cam=(150, -260, -560), focal=(0, 0, -5), up=(0, 1, 0), size=(800, 700))
+        right = [(rot(s, a), c, 1.0) for s, c in body_top] + [(disc, DISC, 1.0)] + machine
+        render(right, out / 'g_r.png', cam=(0, -330, 760), focal=(0, 0, 30), up=(0, 1, 0), size=(800, 700))
+        im = Image.new('RGB', (1600, 900), (246, 247, 248))
+        im.paste(Image.open(out / 'g_l.png').convert('RGB'), (0, 60)); im.paste(Image.open(out / 'g_r.png').convert('RGB'), (800, 60))
+        d = ImageDraw.Draw(im)
+        d.text((24, 12), f'{k + 1}/{len(steps)}  {cap_t}', font=fb, fill=(30, 30, 34))
+        d.text((24, 52), 'From underneath', font=f, fill=(90, 90, 96)); d.text((824, 52), 'Looking down into the canister (lid, screen and upper shell removed)', font=f, fill=(90, 90, 96))
+        rows = [((0.30, 0.31, 0.34), 'gate disc: held still by its 4 pins (orange) in the hopper bores'), (Y, 'body (yellow shell + grey funnel): this is what you turn, by the handle'),
+                (RED, 'stop screw: turns with the body, its tip runs round the recess in the disc rim and stops it at half a turn')]
+        for j, (c, t) in enumerate(rows):
+            y = 800 + 30 * j
+            d.rectangle([24, y + 4, 46, y + 22], fill=tuple(int(255 * v) for v in c)); d.text((58, y), t, font=f, fill=(30, 30, 34))
+        im.save(out / f'gate_{k + 1}.png'); imgs.append(im.convert('P', palette=Image.ADAPTIVE)); print('gate frame', k + 1)
+    durs = [2600] + [1100] * (len(steps) - 2) + [3200]
+    imgs[0].save(HERE / 'how_gate_turns.gif', save_all=True, append_images=imgs[1:], duration=durs, loop=0)
+    print(HERE / 'how_gate_turns.gif')
