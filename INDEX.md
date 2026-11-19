@@ -35,6 +35,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 | P21 | v1 | 1_now | TPU | Scoop cup pad (TPU) | 1 |
 | P22 | v1 | 1_now | PLAred | Roof tiles (8 files, one 180 x 180 tile per plate, ~1 h each), red PLA, face down, no supports. Layout: c1..c4 left to right, r1 back / r2 front | 8 |
 | P23 | v1 | 1_now | PLA | Roof clips: 24 C3 (screw to the top rails, hold the tile ribs) + 12 H (join the roof seams). Print in your calibrated Inland PLA: the slot fit is PLA-sized | 1 |
+| P24 | v1 | 1_now | PETG | Vacuum canister (accessory, docks on the left stud): 9 files, all PETG, no supports. PRINT FILE 1 (2 coupons) FIRST and report: does the ring slide onto the stud, and how many mm does your hose cuff go into the small socket. Yellow: 2 lower shell, 3 lid, 4 hose port (+ pivot cap, any colour). Black: 5 funnel, 6 gate disc, 7 screen, 8 mouthpiece + handle + 2 wand elbows, 9 three wand tubes (skip 9 if your vac's own wands fit the mouthpiece). The hose parts (4, 8, 9) are sized for a 57.0-58.5 mm cuff until the coupon result is in | 9 |
 
 ## Change log
 
