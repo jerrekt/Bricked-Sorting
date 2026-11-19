@@ -7,6 +7,9 @@ Nothing on the machine changes.
 
 **Status: first draft, not printed. Print the two coupons (P24 file 1) before anything else.**
 
+The print pack on the `prints` branch (2026-11-18) was built from this branch. Until `cad-v14-vac` is merged into
+`cad-v14-all`, rebuild the pack from here, or P24 drops out of it.
+
 ## What it is
 A yellow canister, 224 across and 283 tall, with a black mouth at the front, a black handle at the back and a round
 hose port on top. BJ's brief (2026-11-18): carried while vacuuming, 2.5 in shop-vac hose, rigid wand down to the floor
