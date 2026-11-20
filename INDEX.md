@@ -3,7 +3,7 @@
 One folder for every print. File names: `P<n>_v<version>_<material>_<what>.3mf`.
 If a plate number has a higher version than what you printed, check the change log below to see if you need to reprint.
 
-done = printed (kept for reprints); 1_now = what the semester-1 POC still needs; 3_semester2 = the finished machine only (back drawer, drawer bars, faces, corner caps, walls, drawers)
+done = printed (kept for reprints); 1_now = what the semester-1 POC still needs; 3_semester2 = the finished machine only (back drawer, drawer bars, faces, corner caps, walls, drawers); vac = the vacuum canister accessory (wanted for the December demo, not part of the machine)
 
 Material in the file name is what to load: PETG (functional, any colour), PLAred (visible red shell parts: studs, hopper, corner caps, drawer faces with black lettering in slot 2), TPU, PLA (PLA calibration only). Renamed 2026-11-15, no geometry change.
 
@@ -35,6 +35,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 | P21 | v1 | 1_now | TPU | Scoop cup pad (TPU) | 1 |
 | P22 | v1 | 1_now | PLAred | Roof tiles: 8 DIFFERENT files, print each once (one 180 x 180 tile per plate, ~1 h each), red PLA, face down, no supports. c1/c2 have the quarter cutout around the funnel stud (screw hole r 104), c3/c4 go under the capped stud (hole r 102). Layout: c1..c4, r1 back / r2 front. c1_r1 printed 2026-11-19 (in done/) | 8 |
 | P23 | v1 | 1_now | PLA | Roof clips: 24 C3 (screw to the top rails, hold the tile ribs) + 12 H (join the roof seams). Print in your calibrated Inland PLA: the slot fit is PLA-sized | 1 |
+| P24 | v2 | vac | PETG/PLA/PLAyellow | Vacuum canister (accessory, docks on the left stud): 8 files, no supports. PRINT FILE 1 (2 PLA coupons) FIRST and report: does the ring slide onto the stud and turn (chamfered end = 0.15 fit, other end = 0.10), and how many mm does your hose cuff go into the small socket. Yellow PLA: 2 lower shell, 3 lid, 4 hose port (+ pivot cap). Black PETG: 5 funnel, 6 gate disc + 2 eyes (glue the eyes into their pockets above the mouth), 7 screen, 8 mouthpiece + handle + 2 wand elbows. The hose parts (4, 8) are sized for a 57.0-58.5 mm cuff until the coupon result is in | 8 |
 
 ## Change log
 
@@ -48,6 +49,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 - **P19** v2 2026-11-15: 0.5 mm teardrop tops on the sideways holes (cradle B, motor wall). If you already printed v1, it is fine: just clean the hole tops
 - **P20** v2 2026-11-16: split in 2 plates and spaced out: v1 in one plate sliced to 23 h / 576 g with 134 g of support (some trapped inside the beam) and a path conflict between the tall segments. Throw away v1
 - **P20** v3 2026-11-16: fixed parts that were not one piece: beam plugs (the 20 mm joint plug floated 1 mm off segments 1-2, Bambu "empty layer"), carriage endstop flag, cup +x stub axle, idler slider arms, idler tension: block moved outboard of the beam post (it hit post L) and the screw now goes into a lug on the slider; cup stubs now run through the tower 625s (pockets from the inner face). Segments stand plug-up. 18 scoop poses clash-free. Throw away v1/v2
+- **P24** v2 2026-11-18: yellow parts (lower shell, lid, hose port) are PLA now (BJ): insert holes 4.3, stud socket and lid joint at 0.15 per side, coupons in PLA with a 0.15 / 0.10 stepped ring; wand tubes dropped (the vac's own wands fit, old file 9); 2 black eyes added (file 6) with pockets in the lower shell; other black parts unchanged except 0.05 mm on the funnel rim and disc recess. Nothing was printed from v1: throw v1 away
 
 ## Filament used
 
