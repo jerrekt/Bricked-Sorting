@@ -5,8 +5,8 @@ Shared by the website, Kratos (classification) and the Indicate controller. The 
 
 ## Bin codes
 `floor-slot`, for example `1-3`.
-- Floor 1 = bottom row = regular rectangular bricks (Brick N x M).
-- Floor 2 = top row = everything else (plates, tiles, slopes, round and modified bricks, wheels...).
+- Floor 1 = bottom row = regular rectangular bricks and plates (Brick N x M, Plate N x M).
+- Floor 2 = top row = everything else (tiles, slopes, round and modified pieces, wheels...). Plain plates (Plate N x M) count as bricks and go to floor 1 (BJ 2026-11-18).
 - Slots 1-7 = color groups, left to right. Slot 8 = unknown color for that floor.
 
 | Slot | Group | Merged shades (10696) |

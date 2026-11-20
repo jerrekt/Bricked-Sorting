@@ -51,7 +51,7 @@
 "color": "Black",
 "hex": "#1B2A34",
 "part": "Plate 2 x 4",
-"brick": false
+"brick": true
 },
 {
 "qty": 1,
@@ -163,7 +163,7 @@
 "color": "Blue",
 "hex": "#0055BF",
 "part": "Plate 4 x 4",
-"brick": false
+"brick": true
 },
 {
 "qty": 1,
@@ -219,14 +219,14 @@
 "color": "Bright Green",
 "hex": "#4B9F4A",
 "part": "Plate 4 x 4",
-"brick": false
+"brick": true
 },
 {
 "qty": 1,
 "color": "Bright Green",
 "hex": "#4B9F4A",
 "part": "Plate 8 x 16",
-"brick": false
+"brick": true
 },
 {
 "qty": 2,
@@ -296,14 +296,14 @@
 "color": "Dark Blue",
 "hex": "#0A3463",
 "part": "Plate 1 x 4",
-"brick": false
+"brick": true
 },
 {
 "qty": 2,
 "color": "Dark Blue",
 "hex": "#0A3463",
 "part": "Plate 4 x 6",
-"brick": false
+"brick": true
 },
 {
 "qty": 2,
@@ -345,7 +345,7 @@
 "color": "Dark Bluish Gray",
 "hex": "#6C6E68",
 "part": "Plate 6 x 8",
-"brick": false
+"brick": true
 },
 {
 "qty": 4,
@@ -415,7 +415,7 @@
 "color": "Dark Orange",
 "hex": "#A95500",
 "part": "Plate 1 x 4",
-"brick": false
+"brick": true
 },
 {
 "qty": 4,
@@ -457,7 +457,7 @@
 "color": "Dark Purple",
 "hex": "#3F3691",
 "part": "Plate 1 x 2",
-"brick": false
+"brick": true
 },
 {
 "qty": 4,
@@ -478,14 +478,14 @@
 "color": "Dark Red",
 "hex": "#720E0F",
 "part": "Plate 1 x 2",
-"brick": false
+"brick": true
 },
 {
 "qty": 2,
 "color": "Dark Red",
 "hex": "#720E0F",
 "part": "Plate 1 x 4",
-"brick": false
+"brick": true
 },
 {
 "qty": 1,
@@ -527,14 +527,14 @@
 "color": "Green",
 "hex": "#237841",
 "part": "Plate 2 x 3",
-"brick": false
+"brick": true
 },
 {
 "qty": 1,
 "color": "Green",
 "hex": "#237841",
 "part": "Plate 2 x 8",
-"brick": false
+"brick": true
 },
 {
 "qty": 2,
@@ -611,14 +611,14 @@
 "color": "Light Bluish Gray",
 "hex": "#A0A5A9",
 "part": "Plate 1 x 4",
-"brick": false
+"brick": true
 },
 {
 "qty": 2,
 "color": "Light Bluish Gray",
 "hex": "#A0A5A9",
 "part": "Plate 2 x 4",
-"brick": false
+"brick": true
 },
 {
 "qty": 2,
@@ -709,7 +709,7 @@
 "color": "Lime",
 "hex": "#BBE90B",
 "part": "Plate 2 x 6",
-"brick": false
+"brick": true
 },
 {
 "qty": 1,
@@ -765,7 +765,7 @@
 "color": "Medium Azure",
 "hex": "#36AEBF",
 "part": "Plate 1 x 6",
-"brick": false
+"brick": true
 },
 {
 "qty": 4,
@@ -842,7 +842,7 @@
 "color": "Orange",
 "hex": "#FE8A18",
 "part": "Plate 2 x 4",
-"brick": false
+"brick": true
 },
 {
 "qty": 1,
@@ -905,14 +905,14 @@
 "color": "Red",
 "hex": "#C91A09",
 "part": "Plate 1 x 2",
-"brick": false
+"brick": true
 },
 {
 "qty": 2,
 "color": "Red",
 "hex": "#C91A09",
 "part": "Plate 2 x 2",
-"brick": false
+"brick": true
 },
 {
 "qty": 2,
@@ -1017,7 +1017,7 @@
 "color": "Tan",
 "hex": "#E4CD9E",
 "part": "Plate 1 x 3",
-"brick": false
+"brick": true
 },
 {
 "qty": 4,
@@ -1108,14 +1108,14 @@
 "color": "White",
 "hex": "#FFFFFF",
 "part": "Plate 2 x 4",
-"brick": false
+"brick": true
 },
 {
 "qty": 1,
 "color": "White",
 "hex": "#FFFFFF",
 "part": "Plate 2 x 6",
-"brick": false
+"brick": true
 },
 {
 "qty": 2,
@@ -1227,21 +1227,21 @@
 "color": "Yellow",
 "hex": "#F2CD37",
 "part": "Plate 1 x 4",
-"brick": false
+"brick": true
 },
 {
 "qty": 2,
 "color": "Yellow",
 "hex": "#F2CD37",
 "part": "Plate 2 x 3",
-"brick": false
+"brick": true
 },
 {
 "qty": 1,
 "color": "Yellow",
 "hex": "#F2CD37",
 "part": "Plate 4 x 8",
-"brick": false
+"brick": true
 },
 {
 "qty": 4,
