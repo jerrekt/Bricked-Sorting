@@ -490,7 +490,22 @@
     "225 tray 2 Pi"
    ],
    "note": "grams/time not sent yet"
+  },
+  {
+   "date": "2026-11-19 by 20:36",
+   "bambu_job": "P22_v1_PLAred_roof_tile_c1_r1 x8",
+   "hours": 5.8,
+   "plate": "P22",
+   "version": 1,
+   "material": "PLAred",
+   "grams": 407,
+   "source": "estimate (8 x 67.8 g CAD x 0.75)",
+   "status": "done",
+   "parts": [
+    "114 roof tile c1_r1 x8 (1 used, 7 spares)"
+   ],
+   "note": "printed the same tile file 8 times; each P22 file is a different roof spot, so 7 tiles still to print. grams/time not sent yet"
   }
  ],
- "updated": "2026-11-17 22:21 PT"
+ "updated": "2026-11-19 20:40 PT"
 }
