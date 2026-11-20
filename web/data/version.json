@@ -1,6 +1,6 @@
 {
- "version": "V1.033",
+ "version": "V1.034",
  "date": "2026-11-18",
- "note": "Prints page reads live numbers from the prints branch (status.json), so the filament/time/cost totals update after every print without a site PR; POC scope and filament cost",
+ "note": "Plain plates (Plate N x M) count as bricks: bottom floor. bins.json platesAreBricks, set 10696 data (26 plates), docs; deploy/plates-are-bricks.sh patches the CT 150 classifier",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }
