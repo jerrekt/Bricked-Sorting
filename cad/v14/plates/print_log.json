@@ -505,7 +505,67 @@
     "114 roof tile c1_r1 x8 (1 used, 7 spares)"
    ],
    "note": "printed the same tile file 8 times; each P22 file is a different roof spot, so 7 tiles still to print. grams/time not sent yet"
+  },
+  {
+   "date": "2026-11-20 by 22:09",
+   "bambu_job": "P22_v1_PLAred_roof_tile_c2_r1",
+   "hours": 0.73,
+   "plate": "P22",
+   "version": 1,
+   "material": "PLAred",
+   "grams": 51,
+   "source": "estimate (67.8 g CAD x 0.75)",
+   "status": "done",
+   "parts": [
+    "114 roof tile c2_r1"
+   ],
+   "note": "matched from BJ's print-history thumbnails; Bambu grams not sent"
+  },
+  {
+   "date": "2026-11-20 by 22:09",
+   "bambu_job": "P22_v1_PLAred_roof_tile_c2_r2",
+   "hours": 0.73,
+   "plate": "P22",
+   "version": 1,
+   "material": "PLAred",
+   "grams": 51,
+   "source": "estimate (67.8 g CAD x 0.75)",
+   "status": "done",
+   "parts": [
+    "114 roof tile c2_r2"
+   ],
+   "note": "matched from BJ's print-history thumbnails; Bambu grams not sent"
+  },
+  {
+   "date": "2026-11-20 by 22:09",
+   "bambu_job": "P22_v1_PLAred_roof_tile_c3_r1",
+   "hours": 0.73,
+   "plate": "P22",
+   "version": 1,
+   "material": "PLAred",
+   "grams": 51,
+   "source": "estimate (67.8 g CAD x 0.75)",
+   "status": "done",
+   "parts": [
+    "114 roof tile c3_r1"
+   ],
+   "note": "matched from BJ's print-history thumbnails; Bambu grams not sent"
+  },
+  {
+   "date": "2026-11-20 by 22:09",
+   "bambu_job": "P22_v1_PLAred_roof_tile_c3_r2",
+   "hours": 0.73,
+   "plate": "P22",
+   "version": 1,
+   "material": "PLAred",
+   "grams": 51,
+   "source": "estimate (67.8 g CAD x 0.75)",
+   "status": "done",
+   "parts": [
+    "114 roof tile c3_r2"
+   ],
+   "note": "matched from BJ's print-history thumbnails; Bambu grams not sent"
   }
  ],
- "updated": "2026-11-19 20:40 PT"
+ "updated": "2026-11-20 22:20 PT"
 }
