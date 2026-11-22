@@ -1199,6 +1199,110 @@
   ],
   "png": "previews/189_pushrod.png"
  },
+ "250_vac_shell_lower": {
+  "dims": [
+   232.0,
+   231.5,
+   235.6
+  ],
+  "png": "previews/250_vac_shell_lower.png"
+ },
+ "251_vac_funnel": {
+  "dims": [
+   215.7,
+   215.7,
+   83.0
+  ],
+  "png": "previews/251_vac_funnel.png"
+ },
+ "252_vac_gate_disc": {
+  "dims": [
+   215.6,
+   211.1,
+   14.0
+  ],
+  "png": "previews/252_vac_gate_disc.png"
+ },
+ "253_vac_pivot_cap": {
+  "dims": [
+   20.0,
+   20.0,
+   7.8
+  ],
+  "png": "previews/253_vac_pivot_cap.png"
+ },
+ "254_vac_screen": {
+  "dims": [
+   217.2,
+   241.0,
+   11.0
+  ],
+  "png": "previews/254_vac_screen.png"
+ },
+ "255_vac_lid": {
+  "dims": [
+   224.0,
+   224.0,
+   127.4
+  ],
+  "png": "previews/255_vac_lid.png"
+ },
+ "256_vac_hose_port": {
+  "dims": [
+   104.0,
+   104.0,
+   36.0
+  ],
+  "png": "previews/256_vac_hose_port.png"
+ },
+ "257_vac_mouthpiece": {
+  "dims": [
+   98.0,
+   98.0,
+   44.0
+  ],
+  "png": "previews/257_vac_mouthpiece.png"
+ },
+ "258_vac_wand_elbow": {
+  "dims": [
+   94.0,
+   63.9,
+   129.5
+  ],
+  "png": "previews/258_vac_wand_elbow.png"
+ },
+ "260_vac_handle": {
+  "dims": [
+   234.0,
+   60.5,
+   20.0
+  ],
+  "png": "previews/260_vac_handle.png"
+ },
+ "261_vac_eye": {
+  "dims": [
+   33.8,
+   15.8,
+   2.2
+  ],
+  "png": "previews/261_vac_eye.png"
+ },
+ "265_vac_coupon_socket_ring": {
+  "dims": [
+   224.0,
+   224.0,
+   12.0
+  ],
+  "png": "previews/265_vac_coupon_socket_ring.png"
+ },
+ "266_vac_coupon_hose_socket": {
+  "dims": [
+   63.5,
+   63.5,
+   36.0
+  ],
+  "png": "previews/266_vac_coupon_hose_socket.png"
+ },
  "47b_tumbler_barrel_helical_flight": {
   "dims": [
    160.0,

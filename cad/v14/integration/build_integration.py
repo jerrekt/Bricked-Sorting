@@ -1,5 +1,7 @@
 """V14 integration, interface 5.1: load every module's world/ STEPs and check the whole machine.
 Modules: F from cad-v14-frame5, K from cad-v14-deck5 (worktrees given below), D and S from this branch.
+Accessory V (vacuum canister, vac/) is checked docked on the left stud against F and K; it is not part of the machine
+envelope or the print budget.
 Checks: cross-module clashes (drawers closed / both open, scoop at 17 poses, deck, frame), envelope, totals
 (grams/hours from each parts.json), merged buy list, stills and a one-brick animation (GIF).
 Run: python3 build_integration.py
@@ -12,7 +14,7 @@ sys.path.insert(0, str(HERE.parent))
 from common import IF, bbox, render
 
 WT_FRAME = Path('/home/claude/wt_frame5/cad/v14/frame'); WT_DECK = Path('/home/claude/wt_deck5/cad/v14/deck')
-DRAWER = HERE.parent / 'drawer'; SCOOP = HERE.parent / 'scoop'
+DRAWER = HERE.parent / 'drawer'; SCOOP = HERE.parent / 'scoop'; VAC = HERE.parent / 'vac'
 E = IF['envelope']; TRAVEL = IF['drawer']['travel_y']
 
 
@@ -61,6 +63,15 @@ def main():
         parts = [('carriage', mv['carriage']), ('bracket', mv['bracket']), ('servo', mv['servo']), ('cup', mv['cup']), ('link', mv['link']), ('lead', mv['lead'])] + [(f'roller_{k}', r) for k, r in enumerate(mv['rollers'])]
         poses[name] = {'vs_F': clash(parts, F), 'vs_K': clash(parts, K), 'vs_D_closed': clash(parts, D)}
     res['scoop_poses'] = poses
+    # accessory V: vacuum canister docked on the left stud (gate closed), against the frame (studs, roof tiles, clips) and the deck (hopper)
+    Vp = load_dir(VAC / 'world') if (VAC / 'world').exists() else []
+    if Vp:
+        pv = json.loads((VAC / 'parts.json').read_text())
+        vb = [bbox(s) for n, s in Vp]
+        res['V_vac_docked'] = {'parts': len(Vp), 'vs_F': clash(Vp, F), 'vs_K': clash(Vp, K),
+                               'top_z': round(max(b[5] for b in vb), 1), 'bottom_z': round(min(b[2] for b in vb), 1),
+                               'printed': {'grams': pv['est_total_grams'], 'hours': pv['est_total_hours']},
+                               'note': 'accessory: outside the machine envelope and the print budget'}
     allp = F + K + D + S_fixed
     bbs = [bbox(s) for n, s in allp]
     env = [min(b[0] for b in bbs), min(b[1] for b in bbs), min(b[2] for b in bbs), max(b[3] for b in bbs), max(b[4] for b in bbs), max(b[5] for b in bbs)]
@@ -137,3 +148,5 @@ if __name__ == '__main__':
     bad = {k: v for k, v in r['scoop_poses'].items() if v['vs_F'] or v['vs_K'] or v['vs_D_closed']}
     print('scoop pose hits:', {k: {kk: vv[:3] for kk, vv in v.items() if vv} for k, v in bad.items()})
     print('envelope', r['envelope']); print('totals', r['printed_totals'])
+    if 'V_vac_docked' in r:
+        print('V vacuum canister docked: vs_F', len(r['V_vac_docked']['vs_F']), r['V_vac_docked']['vs_F'][:6], 'vs_K', len(r['V_vac_docked']['vs_K']), r['V_vac_docked']['vs_K'][:6], 'top z', r['V_vac_docked']['top_z'])

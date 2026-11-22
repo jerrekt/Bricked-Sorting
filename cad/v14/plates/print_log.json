@@ -610,7 +610,23 @@
     "114 roof tile c4_r2"
    ],
    "note": "BJ: studs and roof tiles assembled; Bambu grams not sent"
+  },
+  {
+   "date": "2026-11-22 by 14:53",
+   "bambu_job": "P23_v1_PLA_roof_clips",
+   "hours": 1.5,
+   "plate": "P23",
+   "version": 1,
+   "material": "PLA",
+   "grams": 75,
+   "source": "estimate",
+   "status": "done",
+   "parts": [
+    "24 x 123 clip C3 roof",
+    "12 x 122 clip H (roof)"
+   ],
+   "note": "Bambu grams/time not sent"
   }
  ],
- "updated": "2026-11-21 17:50 PT"
+ "updated": "2026-11-22 15:00 PT"
 }

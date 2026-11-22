@@ -9,8 +9,8 @@ from vtk.util.numpy_support import numpy_to_vtk, numpy_to_vtkIdTypeArray
 
 HERE = Path(__file__).resolve().parent
 ROOTS = ['/home/claude/wt_frame5/cad/v14/frame/print', '/home/claude/wt_deck5/cad/v14/deck/print',
-         '/home/claude/wt_all/cad/v14/drawer/print', '/home/claude/wt_all/cad/v14/scoop/print', str(HERE / 'v13_reuse')]
-COL = {'PETG': (0.30, 0.32, 0.36), 'PLA': (0.80, 0.10, 0.06), 'TPU': (0.15, 0.15, 0.15)}
+         '/home/claude/wt_all/cad/v14/drawer/print', '/home/claude/wt_all/cad/v14/scoop/print', '/home/claude/wt_all/cad/v14/vac/print', str(HERE / 'v13_reuse')]
+COL = {'PETG': (0.30, 0.32, 0.36), 'PLA': (0.80, 0.10, 0.06), 'TPU': (0.15, 0.15, 0.15), 'YEL': (0.96, 0.78, 0.10), 'BLK': (0.16, 0.16, 0.17)}
 
 
 def find(part):
@@ -48,6 +48,8 @@ def main(out):
         # colour = what BJ loads: red PLA for the visible shell (skin, studs, hopper, faces), TPU black, everything else PETG
         red = p['part'].startswith(('11', '12', '13', '201_', '168_face')) and '_ink' not in p['part']
         mat = 'TPU' if 'TPU' in p['part'] or 'TPU' in p['material'] else ('PLA' if red else 'PETG')
+        if '_vac_' in p['part']:          # vacuum canister: yellow shell, black everything else
+            mat = 'YEL' if p['part'].startswith(('250_', '255_', '256_')) else 'BLK'
         render(m, out / f"{p['part']}.png", COL[mat])
         res[p['part']] = {'dims': [round(float(v), 1) for v in m.extents], 'png': f"previews/{p['part']}.png"}
     (out / 'previews.json').write_text(json.dumps(res, indent=1))

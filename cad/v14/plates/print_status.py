@@ -13,7 +13,8 @@ ROOT = Path('/home/claude')
 MODS = [('Frame and skin', ROOT / 'wt_frame5/cad/v14/frame/parts.json', 'printed'),
         ('Deck', ROOT / 'wt_deck5/cad/v14/deck/parts.json', 'printed_new'),
         ('Drawers', ROOT / 'wt_all/cad/v14/drawer/parts.json', 'printed'),
-        ('Scoop', ROOT / 'wt_all/cad/v14/scoop/parts.json', 'printed')]
+        ('Scoop', ROOT / 'wt_all/cad/v14/scoop/parts.json', 'printed'),
+        ('Vacuum canister', ROOT / 'wt_all/cad/v14/vac/parts.json', 'printed')]   # accessory, BJ 2026-11-18: wanted for the December demo
 V13 = [('47b_tumbler_barrel_helical_flight', 1, 'PETG', 3), ('48_drum_rear_feed_guard', 1, 'PETG', 2), ('49b_drum_static_outlet_plate', 1, 'PETG', 2),
        ('54_drum_drive_core_5mm', 1, 'PETG', 2), ('55_drum_friction_tire_TPU', 1, 'TPU', 2), ('56_drum_NEMA17_adjustable_bracket', 1, 'PETG', 2),
        ('57d_door_slider', 1, 'PETG', 2), ('59_door_link', 2, 'PETG', 2), ('59b_servo_link', 1, 'PETG', 2), ('60_servo_horn_arm', 1, 'PETG', 2),
@@ -23,7 +24,7 @@ PRICE_PER_KG = {'PLA': 9.99, 'PETG': 39.99 / 4, 'TPU': 39.99 / 4}
 TAX = 0.09375
 DEN = {'PETG': 1.27, 'PLA': 1.24, 'TPU': 1.21}
 # label -> qty printed (BJ's Bambu history, 2026-11-15). 'printing' counts separately.
-DONE = {'130_stud_ring_left_hopper': 1, '131_stud_cap_right': 1, '120_clip_C1_single': 1,
+DONE = {'130_stud_ring_left_hopper': 1, '123_clip_C3_roof': 24, '122_clip_H_bridge': 12, '131_stud_cap_right': 1, '120_clip_C1_single': 1,
         '201_hopper': 1, '202_feed_chute': 1, '203_V1_tray': 1, '204_V2_tray': 1, '207_leaf_spring_V1_1': 1, '207_leaf_spring_V1_2': 1,
         '207_leaf_spring_V2_1': 1, '207_leaf_spring_V2_2': 1, '210_scanner_plate': 1, '211_landing_ramp_low': 1, '213_servo_saddle': 1,
         '214_trapdoor_A': 1, '214_trapdoor_B': 1, '215_camera_bridge': 1, '50b_drum_625_roller': 4,
@@ -46,7 +47,7 @@ def scope_of(module, part):
     if module == 'Drawers':
         return 'sem2'
     if module == 'Frame and skin':
-        return 'poc' if part.startswith(('114_roof', '123_clip_C3', '122_clip_H', '130_', '131_')) else 'sem2'
+        return 'poc' if part.startswith(('114_roof', '123_clip_C3', '130_', '131_')) else 'sem2'  # 122 H: the 12 roof ones are done, the other 78 join the semester-2 wall tiles
     return 'poc'
 
 

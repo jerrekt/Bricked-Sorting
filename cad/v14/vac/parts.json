@@ -1,0 +1,250 @@
+{
+ "module": "V",
+ "interface": "v14-interface-5.1 (2026-11-06 19:35): drawer fits through the skin opening (bins 70 wide at 76 pitch, body x +-306, opening +-310, overlay face +-330); roof support under the hopper stud",
+ "printed": [
+  {
+   "label": "250_vac_shell_lower",
+   "part_no": "250",
+   "qty": 1,
+   "material": "PLA",
+   "colour": "yellow",
+   "bed_face": "collar (socket end) down, as it stands",
+   "bed_extent": [
+    232.21,
+    231.69,
+    235.8
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 551.1,
+   "est_hours": 12.2
+  },
+  {
+   "label": "251_vac_funnel",
+   "part_no": "251",
+   "qty": 1,
+   "material": "PETG",
+   "colour": "black",
+   "bed_face": "foot (gate face) down",
+   "bed_extent": [
+    216.56,
+    216.56,
+    84.77
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 387.9,
+   "est_hours": 8.6
+  },
+  {
+   "label": "252_vac_gate_disc",
+   "part_no": "252",
+   "qty": 1,
+   "material": "PETG",
+   "colour": "black",
+   "bed_face": "top face down, pins up",
+   "bed_extent": [
+    215.72,
+    211.3,
+    14.1
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 142.9,
+   "est_hours": 3.2
+  },
+  {
+   "label": "253_vac_pivot_cap",
+   "part_no": "253",
+   "qty": 1,
+   "material": "PLA",
+   "colour": "any (hidden)",
+   "bed_face": "flange down",
+   "bed_extent": [
+    20.01,
+    20.01,
+    7.81
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 1.9,
+   "est_hours": 0.0
+  },
+  {
+   "label": "254_vac_screen",
+   "part_no": "254",
+   "qty": 1,
+   "material": "PETG",
+   "colour": "black",
+   "bed_face": "flat, ribs up",
+   "bed_extent": [
+    217.27,
+    241.15,
+    11.05
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 127.6,
+   "est_hours": 2.8
+  },
+  {
+   "label": "255_vac_lid",
+   "part_no": "255",
+   "qty": 1,
+   "material": "PLA",
+   "colour": "yellow",
+   "bed_face": "roof down",
+   "bed_extent": [
+    224.27,
+    224.27,
+    127.58
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 386.1,
+   "est_hours": 8.6
+  },
+  {
+   "label": "256_vac_hose_port",
+   "part_no": "256",
+   "qty": 1,
+   "material": "PLA",
+   "colour": "yellow",
+   "bed_face": "base (insert face) down",
+   "bed_extent": [
+    104.1,
+    104.1,
+    36.13
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 86.4,
+   "est_hours": 1.9
+  },
+  {
+   "label": "257_vac_mouthpiece",
+   "part_no": "257",
+   "qty": 1,
+   "material": "PETG",
+   "colour": "black",
+   "bed_face": "flange down",
+   "bed_extent": [
+    98.07,
+    98.07,
+    44.1
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 50.7,
+   "est_hours": 1.1
+  },
+  {
+   "label": "258_vac_wand_elbow",
+   "part_no": "258",
+   "qty": 2,
+   "material": "PETG",
+   "colour": "black",
+   "bed_face": "socket end down",
+   "bed_extent": [
+    94.19,
+    64.07,
+    129.71
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 87.9,
+   "est_hours": 2.0
+  },
+  {
+   "label": "260_vac_handle",
+   "part_no": "260",
+   "qty": 1,
+   "material": "PETG",
+   "colour": "black",
+   "bed_face": "on its side",
+   "bed_extent": [
+    234.01,
+    60.55,
+    20.02
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 73.0,
+   "est_hours": 1.6
+  },
+  {
+   "label": "261_vac_eye",
+   "part_no": "261",
+   "qty": 2,
+   "material": "PETG",
+   "colour": "black",
+   "bed_face": "flat (either face: left and right are the same piece)",
+   "bed_extent": [
+    33.81,
+    15.81,
+    2.21
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 1.3,
+   "est_hours": 0.0
+  },
+  {
+   "label": "265_vac_coupon_socket_ring",
+   "part_no": "265",
+   "qty": 1,
+   "material": "PLA",
+   "colour": "any",
+   "bed_face": "chamfered (0.15) end down",
+   "bed_extent": [
+    224.16,
+    224.16,
+    12.16
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 38.9,
+   "est_hours": 0.9
+  },
+  {
+   "label": "266_vac_coupon_hose_socket",
+   "part_no": "266",
+   "qty": 1,
+   "material": "PLA",
+   "colour": "any",
+   "bed_face": "small end down",
+   "bed_extent": [
+    63.68,
+    63.68,
+    36.18
+   ],
+   "fits_248": true,
+   "diagonal_on_bed": false,
+   "est_grams": 20.3,
+   "est_hours": 0.5
+  }
+ ],
+ "bought": [
+  {
+   "item": "M3 heat-set insert",
+   "qty": 20,
+   "use": "mouth pad 4, funnel 3 + pivot 1, stop 1, collar handle foot 2, lid seam 4, lid handle 2, hose port 4 (rounded up 1)"
+  },
+  {
+   "item": "M3 x 8 socket",
+   "qty": 11,
+   "use": "funnel 3, seam 4, hose port 4"
+  },
+  {
+   "item": "M3 x 12 socket",
+   "qty": 10,
+   "use": "mouthpiece 4, handle 4, stop 1, pivot 1"
+  }
+ ],
+ "est_total_grams": 2045.2,
+ "est_total_hours": 45.4,
+ "est_grams_by_material": {
+  "PLA": 1084.7,
+  "PETG": 960.5
+ }
+}
