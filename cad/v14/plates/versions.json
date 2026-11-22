@@ -166,15 +166,18 @@
  "_naming": "Material in the file name is what to load: PETG (functional, any colour), PLAred (visible red shell parts: studs, hopper, corner caps, drawer faces with black lettering in slot 2), TPU, PLA (PLA calibration only). Renamed 2026-11-15, no geometry change.",
  "P22": {
   "v": 1,
-  "folder": "1_now",
-  "what": "Roof tiles: 8 DIFFERENT files, print each once (one 180 x 180 tile per plate, ~1 h each), red PLA, face down, no supports. c1/c2 have the quarter cutout around the funnel stud (screw hole r 104), c3/c4 go under the capped stud (hole r 102). Layout: c1..c4, r1 back / r2 front. c1_r1 printed 2026-11-19; c2_r1, c2_r2, c3_r1, c3_r2 printed by 2026-11-20 (in done/). Left: c1_r2, c4_r1, c4_r2",
+  "folder": "done",
+  "what": "Roof tiles: 8 DIFFERENT files, print each once (one 180 x 180 tile per plate, ~1 h each), red PLA, face down, no supports. c1/c2 have the quarter cutout around the funnel stud (screw hole r 104), c3/c4 go under the capped stud (hole r 102). Layout: c1..c4, r1 back / r2 front. All 8 printed by 2026-11-21; roof + studs assembled.",
   "log": [],
   "done_files": [
    "P22_PLAred_roof_tile_c1_r1.3mf",
    "P22_PLAred_roof_tile_c2_r1.3mf",
    "P22_PLAred_roof_tile_c2_r2.3mf",
    "P22_PLAred_roof_tile_c3_r1.3mf",
-   "P22_PLAred_roof_tile_c3_r2.3mf"
+   "P22_PLAred_roof_tile_c3_r2.3mf",
+   "P22_PLAred_roof_tile_c1_r2.3mf",
+   "P22_PLAred_roof_tile_c4_r1.3mf",
+   "P22_PLAred_roof_tile_c4_r2.3mf"
   ]
  },
  "P23": {
