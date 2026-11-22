@@ -626,7 +626,22 @@
     "12 x 122 clip H (roof)"
    ],
    "note": "Bambu grams/time not sent"
+  },
+  {
+   "date": "2026-11-22 15:00",
+   "bambu_job": "P24_v2_PLAyellow_vac_3_lid",
+   "hours": 6.15,
+   "plate": "P24",
+   "version": 2,
+   "material": "PLAyellow",
+   "grams": 242.9,
+   "source": "slicer",
+   "status": "printing",
+   "parts": [
+    "255 vac lid"
+   ],
+   "note": "Inland PLA yellow (AMS slot 6), 6h9m, 636 layers"
   }
  ],
- "updated": "2026-11-22 15:00 PT"
+ "updated": "2026-11-22 15:02 PT"
 }

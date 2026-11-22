@@ -38,7 +38,7 @@ DONE = {'130_stud_ring_left_hopper': 1, '123_clip_C3_roof': 24, '122_clip_H_brid
         '114_roof_tile_c1_r1': 1, '114_roof_tile_c2_r1': 1, '114_roof_tile_c2_r2': 1,
         '114_roof_tile_c3_r1': 1, '114_roof_tile_c3_r2': 1,
         '114_roof_tile_c1_r2': 1, '114_roof_tile_c4_r1': 1, '114_roof_tile_c4_r2': 1}
-PRINTING = {}
+PRINTING = {'255_vac_lid': 1}
 SKIP = {'217_xiao_sense_camera_mount'}   # BJ 2026-11-16: POC uses the Pi + Logitech USB webcam, no XIAO camera
 
 # POC scope (BJ 2026-11-16): semester-1 proof of concept = open wood frame + the very top (roof tiles, studs, hopper)
