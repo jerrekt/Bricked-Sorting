@@ -33,7 +33,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 | P19 | v2 | done | PETG | Deck parts missing from your project: drum cradle B, motor wall, slider post, LED holders A/B - printed 2026-11-16 | 1 |
 | P20 | v3 | done | PETG | Plate 1: 3 beam segments standing plug-end up, SUPPORTS OFF (only 25 mm bridges inside the closed box), 5 mm brim. Plate 2: carriage, cup, motor bracket, idler channel/slider/wheel, endstop mount, pushrod, servo bracket; tree support | 2 |
 | P21 | v1 | 1_now | TPU | Scoop cup pad (TPU) | 1 |
-| P22 | v1 | 1_now | PLAred | Roof tiles: 8 DIFFERENT files, print each once (one 180 x 180 tile per plate, ~1 h each), red PLA, face down, no supports. c1/c2 have the quarter cutout around the funnel stud (screw hole r 104), c3/c4 go under the capped stud (hole r 102). Layout: c1..c4, r1 back / r2 front. c1_r1 printed 2026-11-19; c2_r1, c2_r2, c3_r1, c3_r2 printed by 2026-11-20 (in done/). Left: c1_r2, c4_r1, c4_r2 | 8 |
+| P22 | v1 | done | PLAred | Roof tiles: 8 DIFFERENT files, print each once (one 180 x 180 tile per plate, ~1 h each), red PLA, face down, no supports. c1/c2 have the quarter cutout around the funnel stud (screw hole r 104), c3/c4 go under the capped stud (hole r 102). Layout: c1..c4, r1 back / r2 front. All 8 printed by 2026-11-21; roof + studs assembled. | 8 |
 | P23 | v1 | 1_now | PLA | Roof clips: 24 C3 (screw to the top rails, hold the tile ribs) + 12 H (join the roof seams). Print in your calibrated Inland PLA: the slot fit is PLA-sized | 1 |
 
 ## Change log
@@ -51,7 +51,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 
 ## Filament used
 
-**Total: 3399.29 g** (PETG 2212.29 g, PLA 572 g, PLAred 611 g, TPU 4 g) over 91 h of printing
+**Total: 3552.29 g** (PETG 2212.29 g, PLA 572 g, PLAred 764 g, TPU 4 g) over 94 h of printing
 
 Filament used, one line per Bambu job (from BJ's print history). grams source=estimate: part geometry at 2 walls / 15% infill, no supports, brim or purge (the slicer usually reads 5-15% higher); replace with source=slicer when BJ sends the grams Bambu shows for a job. Other projects (JE, SJSU SAEC, SME sign) are not counted.
 
@@ -92,6 +92,9 @@ Filament used, one line per Bambu job (from BJ's print history). grams source=es
 | 2026-11-20 by 22:09 | P22_v1_PLAred_roof_tile_c2_r2 | 0.73 | P22 | v1 | PLAred | 51 (estimate (67.8 g CAD x 0.75)) | done | 114 roof tile c2_r2 (matched from BJ's print-history thumbnails; Bambu grams not sent) |
 | 2026-11-20 by 22:09 | P22_v1_PLAred_roof_tile_c3_r1 | 0.73 | P22 | v1 | PLAred | 51 (estimate (67.8 g CAD x 0.75)) | done | 114 roof tile c3_r1 (matched from BJ's print-history thumbnails; Bambu grams not sent) |
 | 2026-11-20 by 22:09 | P22_v1_PLAred_roof_tile_c3_r2 | 0.73 | P22 | v1 | PLAred | 51 (estimate (67.8 g CAD x 0.75)) | done | 114 roof tile c3_r2 (matched from BJ's print-history thumbnails; Bambu grams not sent) |
+| 2026-11-21 by 17:46 | P22_v1_PLAred_roof_tile_c1_r2 | 0.73 | P22 | v1 | PLAred | 51 (estimate (67.8 g CAD x 0.75)) | done | 114 roof tile c1_r2 (BJ: studs and roof tiles assembled; Bambu grams not sent) |
+| 2026-11-21 by 17:46 | P22_v1_PLAred_roof_tile_c4_r1 | 0.73 | P22 | v1 | PLAred | 51 (estimate (67.8 g CAD x 0.75)) | done | 114 roof tile c4_r1 (BJ: studs and roof tiles assembled; Bambu grams not sent) |
+| 2026-11-21 by 17:46 | P22_v1_PLAred_roof_tile_c4_r2 | 0.73 | P22 | v1 | PLAred | 51 (estimate (67.8 g CAD x 0.75)) | done | 114 roof tile c4_r2 (BJ: studs and roof tiles assembled; Bambu grams not sent) |
 
 ---
 
