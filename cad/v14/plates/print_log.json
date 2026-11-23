@@ -636,12 +636,12 @@
    "material": "PLAyellow",
    "grams": 242.9,
    "source": "slicer",
-   "status": "printing",
+   "status": "done",
    "parts": [
     "255 vac lid"
    ],
-   "note": "Inland PLA yellow (AMS slot 6), 6h9m, 636 layers"
+   "note": "Inland PLA yellow (AMS slot 6), 6h9m, 636 layers; finished by 2026-11-22 22:31"
   }
  ],
- "updated": "2026-11-22 15:02 PT"
+ "updated": "2026-11-22 22:33 PT"
 }
