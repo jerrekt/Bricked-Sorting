@@ -641,7 +641,22 @@
     "255 vac lid"
    ],
    "note": "Inland PLA yellow (AMS slot 6), 6h9m, 636 layers; finished by 2026-11-22 22:31"
+  },
+  {
+   "date": "2026-11-22 22:35",
+   "bambu_job": "P24_v2_PETG_vac_5_black_funnel",
+   "hours": 7.65,
+   "plate": "P24",
+   "version": 2,
+   "material": "PETG",
+   "grams": 309,
+   "source": "slicer",
+   "status": "printing",
+   "parts": [
+    "251 vac funnel"
+   ],
+   "note": "black PETG, 7h39m"
   }
  ],
- "updated": "2026-11-22 22:33 PT"
+ "updated": "2026-11-22 22:36 PT"
 }
