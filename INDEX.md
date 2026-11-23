@@ -54,7 +54,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 
 ## Filament used
 
-**Total: 3870.19 g** (PETG 2212.29 g, PLA 647 g, PLAred 764 g, PLAyellow 242.9 g, TPU 4 g) over 101 h of printing
+**Total: 4179.19 g** (PETG 2521.29 g, PLA 647 g, PLAred 764 g, PLAyellow 242.9 g, TPU 4 g) over 109 h of printing
 
 Filament used, one line per Bambu job (from BJ's print history). grams source=estimate: part geometry at 2 walls / 15% infill, no supports, brim or purge (the slicer usually reads 5-15% higher); replace with source=slicer when BJ sends the grams Bambu shows for a job. Other projects (JE, SJSU SAEC, SME sign) are not counted.
 
@@ -100,6 +100,7 @@ Filament used, one line per Bambu job (from BJ's print history). grams source=es
 | 2026-11-21 by 17:46 | P22_v1_PLAred_roof_tile_c4_r2 | 0.73 | P22 | v1 | PLAred | 51 (estimate (67.8 g CAD x 0.75)) | done | 114 roof tile c4_r2 (BJ: studs and roof tiles assembled; Bambu grams not sent) |
 | 2026-11-22 by 14:53 | P23_v1_PLA_roof_clips | 1.5 | P23 | v1 | PLA | 75 (estimate) | done | 24 x 123 clip C3 roof, 12 x 122 clip H (roof) (Bambu grams/time not sent) |
 | 2026-11-22 15:00 | P24_v2_PLAyellow_vac_3_lid | 6.15 | P24 | v2 | PLAyellow | 242.9 (slicer) | done | 255 vac lid (Inland PLA yellow (AMS slot 6), 6h9m, 636 layers; finished by 2026-11-22 22:31) |
+| 2026-11-22 22:35 | P24_v2_PETG_vac_5_black_funnel | 7.65 | P24 | v2 | PETG | 309 (slicer) | printing | 251 vac funnel (black PETG, 7h39m) |
 
 ---
 
