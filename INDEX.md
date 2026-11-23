@@ -50,6 +50,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 - **P20** v2 2026-11-16: split in 2 plates and spaced out: v1 in one plate sliced to 23 h / 576 g with 134 g of support (some trapped inside the beam) and a path conflict between the tall segments. Throw away v1
 - **P20** v3 2026-11-16: fixed parts that were not one piece: beam plugs (the 20 mm joint plug floated 1 mm off segments 1-2, Bambu "empty layer"), carriage endstop flag, cup +x stub axle, idler slider arms, idler tension: block moved outboard of the beam post (it hit post L) and the screw now goes into a lug on the slider; cup stubs now run through the tower 625s (pockets from the inner face). Segments stand plug-up. 18 scoop poses clash-free. Throw away v1/v2
 - **P24** v2 2026-11-18: yellow parts (lower shell, lid, hose port) are PLA now (BJ): insert holes 4.3, stud socket and lid joint at 0.15 per side, coupons in PLA with a 0.15 / 0.10 stepped ring; wand tubes dropped (the vac's own wands fit, old file 9); 2 black eyes added (file 6) with pockets in the lower shell; other black parts unchanged except 0.05 mm on the funnel rim and disc recess. Nothing was printed from v1: throw v1 away
+- **P24** 2026-11-22: file 3 (lid) printed, 242.9 g, 6 h 9 m (in done/)
 
 ## Filament used
 
@@ -98,7 +99,7 @@ Filament used, one line per Bambu job (from BJ's print history). grams source=es
 | 2026-11-21 by 17:46 | P22_v1_PLAred_roof_tile_c4_r1 | 0.73 | P22 | v1 | PLAred | 51 (estimate (67.8 g CAD x 0.75)) | done | 114 roof tile c4_r1 (BJ: studs and roof tiles assembled; Bambu grams not sent) |
 | 2026-11-21 by 17:46 | P22_v1_PLAred_roof_tile_c4_r2 | 0.73 | P22 | v1 | PLAred | 51 (estimate (67.8 g CAD x 0.75)) | done | 114 roof tile c4_r2 (BJ: studs and roof tiles assembled; Bambu grams not sent) |
 | 2026-11-22 by 14:53 | P23_v1_PLA_roof_clips | 1.5 | P23 | v1 | PLA | 75 (estimate) | done | 24 x 123 clip C3 roof, 12 x 122 clip H (roof) (Bambu grams/time not sent) |
-| 2026-11-22 15:00 | P24_v2_PLAyellow_vac_3_lid | 6.15 | P24 | v2 | PLAyellow | 242.9 (slicer) | printing | 255 vac lid (Inland PLA yellow (AMS slot 6), 6h9m, 636 layers) |
+| 2026-11-22 15:00 | P24_v2_PLAyellow_vac_3_lid | 6.15 | P24 | v2 | PLAyellow | 242.9 (slicer) | done | 255 vac lid (Inland PLA yellow (AMS slot 6), 6h9m, 636 layers; finished by 2026-11-22 22:31) |
 
 ---
 
