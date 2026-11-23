@@ -32,6 +32,14 @@
 .steps .card h3{display:flex;align-items:center;gap:8px}
 .steps .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--pop);color:var(--pop-fg);font-size:14px;font-weight:700}
 .steps p{margin:0;color:var(--muted)}
+.build{margin-top:32px}
+.build-lead{margin:0 0 12px;color:var(--muted)}
+.build-grid{display:grid;gap:12px}
+@media (min-width:720px){.build-grid{grid-template-columns:repeat(3,1fr)}}
+.build figure{margin:0}
+.build img{display:block;width:100%;height:auto;border-radius:8px;background:#fff}
+.build figcaption{margin-top:6px;font-size:14px;color:var(--muted)}
+.build figcaption b{color:inherit;font-weight:700}
 .codes{margin-top:32px}
 .codes table{border-collapse:collapse;width:100%;font-size:14px}
 .codes th,.codes td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left}
@@ -55,7 +63,7 @@
 <script src="assets/intro.js"></script>
 <header class="top"><div class="wrap">
   <a class="logo" href="./" aria-current="page"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
-  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.035</a>
+  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.036</a>
   <nav><a href="./" aria-current="page">About</a><a href="demo.html">Demo</a><a href="live.html">Live</a><a href="tasks.html">Tasks</a><a href="parts.html">Parts</a><a href="prints.html">Prints</a><a href="camera.html">Camera</a></nav>
 </div></header>
 
@@ -81,6 +89,19 @@
     <div class="card"><h3><span class="num">1</span>Isolate</h3><p>A drum and two vibrating trays spread the pile out and send one piece at a time onto the scanner.</p></div>
     <div class="card"><h3><span class="num">2</span>Identify</h3><p>A camera takes a picture. A server on our home lab decides: brick or other piece, and which color group.</p></div>
     <div class="card"><h3><span class="num">3</span>Indicate</h3><p>A lift takes a scoop to the right floor, the scoop turns to the right bin, and trapdoors drop the piece in. Each bin has a switch that notes when it is opened.</p></div>
+  </section>
+
+  <section class="build card" id="build">
+    <h2>How it goes together</h2>
+    <p class="build-lead">The machine is a wood frame with one stage added at a time. Each picture shows the frame from the front with one stage in color.</p>
+    <div class="build-grid">
+      <figure><img src="assets/build/1-wood-frame.webp" alt="Wood frame: Posts, rails, floor and deck." width="800" height="632" loading="lazy"><figcaption><b>Wood frame.</b> Posts, rails, floor and deck.</figcaption></figure>
+      <figure><img src="assets/build/2-isolate.webp" alt="Isolate: Hopper, chute, drum and two vibration trays on the deck." width="800" height="632" loading="lazy"><figcaption><b>Isolate.</b> Hopper, chute, drum and two vibration trays on the deck.</figcaption></figure>
+      <figure><img src="assets/build/3-identify.webp" alt="Identify: Scanner plate with trapdoors, camera and lights." width="800" height="632" loading="lazy"><figcaption><b>Identify.</b> Scanner plate with trapdoors, camera and lights.</figcaption></figure>
+      <figure><img src="assets/build/4-indicate.webp" alt="Indicate: The scoop on its beam under the deck, and the drop funnel." width="800" height="632" loading="lazy"><figcaption><b>Indicate.</b> The scoop on its beam under the deck, and the drop funnel.</figcaption></figure>
+      <figure><img src="assets/build/5-electronics.webp" alt="Electronics: Power supply, Raspberry Pi and motor drivers." width="800" height="632" loading="lazy"><figcaption><b>Electronics.</b> Power supply, Raspberry Pi and motor drivers.</figcaption></figure>
+      <figure><img src="assets/build/6-all.webp" alt="All together: Every stage, with the roof and studs on." width="800" height="632" loading="lazy"><figcaption><b>All together.</b> Every stage, with the roof and studs on.</figcaption></figure>
+    </div>
   </section>
 
   <section class="team" id="team">

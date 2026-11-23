@@ -4,6 +4,9 @@ Site and repo version. One bump per merged pull request (see `tools/bump_version
 It counts updates to this repo, not how finished the machine is; the Tasks page shows that.
 V1.001 to V1.014 were numbered afterwards, in merge order.
 
+## V1.036 · 2026-11-22
+- About page: How it goes together, the wood frame with one stage at a time (isolate, identify, indicate, electronics)
+
 ## V1.035 · 2026-11-20
 - Live page: click any closed bin to mark it emptied (count to 0, Recount clears); works without bin switches; test mode is click-driven
 
