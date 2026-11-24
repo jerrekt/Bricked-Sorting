@@ -54,6 +54,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 - **P24** 2026-11-23: file 5 (funnel) printed, 309 g slicer, 7 h 39 m (in done/)
 - **P24** v3 2026-11-23: only file 2 (lower shell) changed. Coupon: the 0.15 ring was tight on the stud but fit (BJ), so the skirt bore over the stud is 0.25 per side now (216.5). The bore above the stud rim, funnel seat, gate disc and lid joint are unchanged, so the v2 lid and funnel you printed still fit. Files 1, 4, 6, 7, 8 are the same parts as v2
 - **P24** 2026-11-23: file 1 (coupons) printed; ring result above, hose result still to come (in done/)
+- **P24** 2026-11-24: file 2 (lower shell, v3) printed (in done/)
 
 ## Filament used
 
@@ -105,7 +106,7 @@ Filament used, one line per Bambu job (from BJ's print history). grams source=es
 | 2026-11-22 15:00 | P24_v2_PLAyellow_vac_3_lid | 6.15 | P24 | v2 | PLAyellow | 242.9 (slicer) | done | 255 vac lid (Inland PLA yellow (AMS slot 6), 6h9m, 636 layers; finished by 2026-11-22 22:31) |
 | 2026-11-22 22:35 | P24_v2_PETG_vac_5_black_funnel | 7.65 | P24 | v2 | PETG | 309 (slicer) | done | 251 vac funnel (black PETG, 7h39m; done by 2026-11-23 18:40) |
 | 2026-11-23 19:00 | P24_v2_PLA_vac_1_coupons_PRINT_FIRST | 1.4 | P24 | v2 | PLA | 59 (CAD estimate) | done | 265 vac coupon socket ring, 266 vac coupon hose socket (ring at 0.15 tight on the stud but fits; hose depth not reported yet) |
-| 2026-11-24 06:46 | P24_v3_PLAyellow_vac_2_shell_lower | 12.2 | P24 | v3 | PLA | 551 (CAD estimate) | printing | 250 vac shell lower (yellow PLA; slicer time and grams not reported yet) |
+| 2026-11-24 06:46 | P24_v3_PLAyellow_vac_2_shell_lower | 12.2 | P24 | v3 | PLA | 551 (CAD estimate) | done | 250 vac shell lower (yellow PLA; done by 2026-11-24 14:34; slicer time and grams not reported (CAD estimate)) |
 
 ---
 
