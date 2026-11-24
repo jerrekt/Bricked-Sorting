@@ -196,7 +196,8 @@
    "2026-11-23: file 5 (funnel) printed, 309 g slicer, 7 h 39 m (in done/)",
    "v3 2026-11-23: only file 2 (lower shell) changed. Coupon: the 0.15 ring was tight on the stud but fit (BJ), so the skirt bore over the stud is 0.25 per side now (216.5). The bore above the stud rim, funnel seat, gate disc and lid joint are unchanged, so the v2 lid and funnel you printed still fit. Files 1, 4, 6, 7, 8 are the same parts as v2",
    "2026-11-23: file 1 (coupons) printed; ring result above, hose result still to come (in done/)",
-   "2026-11-24: file 2 (lower shell, v3) printed (in done/)"
+   "2026-11-24: file 2 (lower shell, v3) printed (in done/)",
+   "2026-11-24: v3 lower shell on the left stud: fits (BJ). 0.25 per side confirmed for the dock"
   ],
   "done_files": [
    "P24_PLAyellow_vac_3_lid.3mf",
