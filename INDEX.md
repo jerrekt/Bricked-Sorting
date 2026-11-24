@@ -35,7 +35,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 | P21 | v1 | 1_now | TPU | Scoop cup pad (TPU) | 1 |
 | P22 | v1 | done | PLAred | Roof tiles: 8 DIFFERENT files, print each once (one 180 x 180 tile per plate, ~1 h each), red PLA, face down, no supports. c1/c2 have the quarter cutout around the funnel stud (screw hole r 104), c3/c4 go under the capped stud (hole r 102). Layout: c1..c4, r1 back / r2 front. All 8 printed by 2026-11-21; roof + studs assembled. | 8 |
 | P23 | v1 | done | PLA | Roof clips: 24 C3 (screw to the top rails, hold the tile ribs) + 12 H (join the roof seams). Print in your calibrated Inland PLA: the slot fit is PLA-sized - printed 2026-11-22 | 1 |
-| P24 | v2 | vac | PETG/PLA/PLAyellow | Vacuum canister (accessory, docks on the left stud): 8 files, no supports. PRINT FILE 1 (2 PLA coupons) FIRST and report: does the ring slide onto the stud and turn (chamfered end = 0.15 fit, other end = 0.10), and how many mm does your hose cuff go into the small socket. Yellow PLA: 2 lower shell, 3 lid, 4 hose port (+ pivot cap). Black PETG: 5 funnel, 6 gate disc + 2 eyes (glue the eyes into their pockets above the mouth), 7 screen, 8 mouthpiece + handle + 2 wand elbows. The hose parts (4, 8) are sized for a 57.0-58.5 mm cuff until the coupon result is in | 8 |
+| P24 | v3 | vac | PETG/PLA/PLAyellow | Vacuum canister (accessory, docks on the left stud): 8 files, no supports. PRINT FILE 1 (2 PLA coupons) FIRST and report: does the ring slide onto the stud and turn (chamfered end = 0.15 fit, other end = 0.10), and how many mm does your hose cuff go into the small socket. Yellow PLA: 2 lower shell, 3 lid, 4 hose port (+ pivot cap). Black PETG: 5 funnel, 6 gate disc + 2 eyes (glue the eyes into their pockets above the mouth), 7 screen, 8 mouthpiece + handle + 2 wand elbows. The hose parts (4, 8) are sized for a 57.0-58.5 mm cuff until the coupon result is in | 8 |
 
 ## Change log
 
@@ -52,10 +52,12 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 - **P24** v2 2026-11-18: yellow parts (lower shell, lid, hose port) are PLA now (BJ): insert holes 4.3, stud socket and lid joint at 0.15 per side, coupons in PLA with a 0.15 / 0.10 stepped ring; wand tubes dropped (the vac's own wands fit, old file 9); 2 black eyes added (file 6) with pockets in the lower shell; other black parts unchanged except 0.05 mm on the funnel rim and disc recess. Nothing was printed from v1: throw v1 away
 - **P24** 2026-11-22: file 3 (lid) printed, 242.9 g, 6 h 9 m (in done/)
 - **P24** 2026-11-23: file 5 (funnel) printed, 309 g slicer, 7 h 39 m (in done/)
+- **P24** v3 2026-11-23: only file 2 (lower shell) changed. Coupon: the 0.15 ring was tight on the stud but fit (BJ), so the skirt bore over the stud is 0.25 per side now (216.5). The bore above the stud rim, funnel seat, gate disc and lid joint are unchanged, so the v2 lid and funnel you printed still fit. Files 1, 4, 6, 7, 8 are the same parts as v2
+- **P24** 2026-11-23: file 1 (coupons) printed; ring result above, hose result still to come (in done/)
 
 ## Filament used
 
-**Total: 4179.19 g** (PETG 2521.29 g, PLA 647 g, PLAred 764 g, PLAyellow 242.9 g, TPU 4 g) over 109 h of printing
+**Total: 4238.19 g** (PETG 2521.29 g, PLA 706 g, PLAred 764 g, PLAyellow 242.9 g, TPU 4 g) over 110 h of printing
 
 Filament used, one line per Bambu job (from BJ's print history). grams source=estimate: part geometry at 2 walls / 15% infill, no supports, brim or purge (the slicer usually reads 5-15% higher); replace with source=slicer when BJ sends the grams Bambu shows for a job. Other projects (JE, SJSU SAEC, SME sign) are not counted.
 
@@ -102,6 +104,7 @@ Filament used, one line per Bambu job (from BJ's print history). grams source=es
 | 2026-11-22 by 14:53 | P23_v1_PLA_roof_clips | 1.5 | P23 | v1 | PLA | 75 (estimate) | done | 24 x 123 clip C3 roof, 12 x 122 clip H (roof) (Bambu grams/time not sent) |
 | 2026-11-22 15:00 | P24_v2_PLAyellow_vac_3_lid | 6.15 | P24 | v2 | PLAyellow | 242.9 (slicer) | done | 255 vac lid (Inland PLA yellow (AMS slot 6), 6h9m, 636 layers; finished by 2026-11-22 22:31) |
 | 2026-11-22 22:35 | P24_v2_PETG_vac_5_black_funnel | 7.65 | P24 | v2 | PETG | 309 (slicer) | done | 251 vac funnel (black PETG, 7h39m; done by 2026-11-23 18:40) |
+| 2026-11-23 19:00 | P24_v2_PLA_vac_1_coupons_PRINT_FIRST | 1.4 | P24 | v2 | PLA | 59 (CAD estimate) | done | 265 vac coupon socket ring, 266 vac coupon hose socket (ring at 0.15 tight on the stud but fits; hose depth not reported yet) |
 
 ---
 
