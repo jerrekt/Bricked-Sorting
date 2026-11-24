@@ -57,7 +57,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 
 ## Filament used
 
-**Total: 4238.19 g** (PETG 2521.29 g, PLA 706 g, PLAred 764 g, PLAyellow 242.9 g, TPU 4 g) over 110 h of printing
+**Total: 4789.19 g** (PETG 2521.29 g, PLA 1257 g, PLAred 764 g, PLAyellow 242.9 g, TPU 4 g) over 123 h of printing
 
 Filament used, one line per Bambu job (from BJ's print history). grams source=estimate: part geometry at 2 walls / 15% infill, no supports, brim or purge (the slicer usually reads 5-15% higher); replace with source=slicer when BJ sends the grams Bambu shows for a job. Other projects (JE, SJSU SAEC, SME sign) are not counted.
 
@@ -105,6 +105,7 @@ Filament used, one line per Bambu job (from BJ's print history). grams source=es
 | 2026-11-22 15:00 | P24_v2_PLAyellow_vac_3_lid | 6.15 | P24 | v2 | PLAyellow | 242.9 (slicer) | done | 255 vac lid (Inland PLA yellow (AMS slot 6), 6h9m, 636 layers; finished by 2026-11-22 22:31) |
 | 2026-11-22 22:35 | P24_v2_PETG_vac_5_black_funnel | 7.65 | P24 | v2 | PETG | 309 (slicer) | done | 251 vac funnel (black PETG, 7h39m; done by 2026-11-23 18:40) |
 | 2026-11-23 19:00 | P24_v2_PLA_vac_1_coupons_PRINT_FIRST | 1.4 | P24 | v2 | PLA | 59 (CAD estimate) | done | 265 vac coupon socket ring, 266 vac coupon hose socket (ring at 0.15 tight on the stud but fits; hose depth not reported yet) |
+| 2026-11-24 06:46 | P24_v3_PLAyellow_vac_2_shell_lower | 12.2 | P24 | v3 | PLA | 551 (CAD estimate) | printing | 250 vac shell lower (yellow PLA; slicer time and grams not reported yet) |
 
 ---
 
