@@ -51,7 +51,9 @@ WAND_T = 2.0                                  # wand wall
 R_OUT = 112.0                                 # shell outside radius (224 across)
 COLLAR_R = 116.0                              # base collar (thicker socket wall, takes the handle and the stop screw)
 COLLAR_TOP, COLLAR_CH = 10.0, 4.0
-SOCK_R = STUD_R + FIT_PLA                     # 108.15 socket bore (PLA shell on the PLA stud; the body turns on it)
+SOCK_R = STUD_R + FIT_PLA                     # 108.15 bore above the stud rim (funnel insert and gate disc sit here)
+FIT_DOCK = 0.25                               # BJ 2026-11-23: coupon 265 at 0.15 "tight for the stud but fits, maybe go looser"
+DOCK_R = STUD_R + FIT_DOCK                    # 108.25 skirt bore over the stud only (z < 0); funnel, disc and lid unchanged
 DOCK_DEPTH = 20.0                             # socket depth over the stud
 DISC_T, DISC_R, PLAY = 5.0, 107.8, 0.3
 FUN_Z0 = DISC_T + PLAY                        # funnel underside 5.3
@@ -176,7 +178,7 @@ def shell_lower():
     s = s.union(W(cq.Solid.extrudeLinear(face, V(0, -34, -34))))
     # inside: socket bore, 45 deg stop for the funnel insert, thick wall up to the screen, thin wall above it
     zb = FUN_ZT - BEAD - PLAY
-    s = s.cut(rev([(0, -DOCK_DEPTH - 1), (SOCK_R + 2.5, -DOCK_DEPTH - 1), (SOCK_R, -DOCK_DEPTH + 1.5), (SOCK_R, zb),
+    s = s.cut(rev([(0, -DOCK_DEPTH - 1), (DOCK_R + 2.5, -DOCK_DEPTH - 1), (DOCK_R, -DOCK_DEPTH + 1.5), (DOCK_R, 0.0), (SOCK_R, 0.0), (SOCK_R, zb),
                    (R_MID, zb + BEAD), (R_MID, top + 1), (0, top + 1)]))
     s = s.cut(cyl((0, 0, 0), (0, 0, 1), R_IN, top + 1).intersect(slab(0, 400)))
     s = s.cut(slab(SEAM_H, 500))
@@ -561,7 +563,7 @@ def main():
     res['eyes'] = {'pieces': 2, 'size': [EYE_W - 2 * EYE_CLR, EYE_H - 2 * EYE_CLR, EYE_T], 'pocket_depth_at_centre': round(R_OUT - EYE_FLOOR_R, 2), 'clearance_per_side': EYE_CLR,
                    'fixing': 'glue (the pocket is in a vertical wall, so the runbook press fit measured on flat prints does not carry over)',
                    'min_wall_behind_pocket': round(EYE_FLOOR_R - R_IN, 2)}
-    res['dock'] = {'socket_id': 2 * SOCK_R, 'stud_od': 2 * STUD_R, 'fit_per_side': FIT_PLA, 'material': 'PLA shell on the PLA stud', 'depth': DOCK_DEPTH,
+    res['dock'] = {'socket_id': 2 * DOCK_R, 'stud_od': 2 * STUD_R, 'fit_per_side': FIT_DOCK, 'material': 'PLA shell on the PLA stud', 'depth': DOCK_DEPTH,
                    'socket_wall': round(COLLAR_R - SOCK_R, 1), 'skirt_bottom_z_machine': STUD_TOP - DOCK_DEPTH, 'roof_top_z_machine': 614.0,
                    'clear_above_roof': STUD_TOP - DOCK_DEPTH - 614.0}
     hose_area = math.pi * (CUFF_TIP / 2 - 2.5) ** 2

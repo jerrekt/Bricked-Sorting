@@ -16,7 +16,7 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 551.1,
+   "est_grams": 550.9,
    "est_hours": 12.2
   },
   {
@@ -241,10 +241,10 @@
    "use": "mouthpiece 4, handle 4, stop 1, pivot 1"
   }
  ],
- "est_total_grams": 2045.2,
+ "est_total_grams": 2045.0,
  "est_total_hours": 45.4,
  "est_grams_by_material": {
-  "PLA": 1084.7,
+  "PLA": 1084.5,
   "PETG": 960.5
  }
 }

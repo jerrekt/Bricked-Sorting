@@ -76,9 +76,9 @@
   "min_wall_behind_pocket": 1.6
  },
  "dock": {
-  "socket_id": 216.3,
+  "socket_id": 216.5,
   "stud_od": 216.0,
-  "fit_per_side": 0.15,
+  "fit_per_side": 0.25,
   "material": "PLA shell on the PLA stud",
   "depth": 20.0,
   "socket_wall": 7.8,
@@ -91,8 +91,8 @@
    "expected": 0.4,
    "disc_underside_to_hopper_ring": 1.0,
    "disc_underside_to_stud_rim": 0.0,
-   "shell_to_stud": 0.14,
-   "shell_to_hopper": 8.14,
+   "shell_to_stud": 0.15,
+   "shell_to_hopper": 8.21,
    "note": "closest surface-to-surface distance in mm, sampled; 0.00 on the stud rim is the disc resting on it"
   }
  },
@@ -238,10 +238,10 @@
   "grams": 2045,
   "hours": 45.4,
   "by_material": {
-   "PLA": 1085,
+   "PLA": 1084,
    "PETG": 961
   },
-  "yellow_PLA_grams": 1024,
+  "yellow_PLA_grams": 1023,
   "canister_only_grams": 1810
  }
 }

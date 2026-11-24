@@ -187,17 +187,25 @@
   "log": []
  },
  "P24": {
-  "v": 2,
+  "v": 3,
   "folder": "vac",
   "what": "Vacuum canister (accessory, docks on the left stud): 8 files, no supports. PRINT FILE 1 (2 PLA coupons) FIRST and report: does the ring slide onto the stud and turn (chamfered end = 0.15 fit, other end = 0.10), and how many mm does your hose cuff go into the small socket. Yellow PLA: 2 lower shell, 3 lid, 4 hose port (+ pivot cap). Black PETG: 5 funnel, 6 gate disc + 2 eyes (glue the eyes into their pockets above the mouth), 7 screen, 8 mouthpiece + handle + 2 wand elbows. The hose parts (4, 8) are sized for a 57.0-58.5 mm cuff until the coupon result is in",
   "log": [
    "v2 2026-11-18: yellow parts (lower shell, lid, hose port) are PLA now (BJ): insert holes 4.3, stud socket and lid joint at 0.15 per side, coupons in PLA with a 0.15 / 0.10 stepped ring; wand tubes dropped (the vac's own wands fit, old file 9); 2 black eyes added (file 6) with pockets in the lower shell; other black parts unchanged except 0.05 mm on the funnel rim and disc recess. Nothing was printed from v1: throw v1 away",
    "2026-11-22: file 3 (lid) printed, 242.9 g, 6 h 9 m (in done/)",
-   "2026-11-23: file 5 (funnel) printed, 309 g slicer, 7 h 39 m (in done/)"
+   "2026-11-23: file 5 (funnel) printed, 309 g slicer, 7 h 39 m (in done/)",
+   "v3 2026-11-23: only file 2 (lower shell) changed. Coupon: the 0.15 ring was tight on the stud but fit (BJ), so the skirt bore over the stud is 0.25 per side now (216.5). The bore above the stud rim, funnel seat, gate disc and lid joint are unchanged, so the v2 lid and funnel you printed still fit. Files 1, 4, 6, 7, 8 are the same parts as v2",
+   "2026-11-23: file 1 (coupons) printed; ring result above, hose result still to come (in done/)"
   ],
   "done_files": [
    "P24_PLAyellow_vac_3_lid.3mf",
-   "P24_PETG_vac_5_black_funnel.3mf"
-  ]
+   "P24_PETG_vac_5_black_funnel.3mf",
+   "P24_PLA_vac_1_coupons_PRINT_FIRST.3mf"
+  ],
+  "file_v": {
+   "P24_PLAyellow_vac_3_lid.3mf": 2,
+   "P24_PETG_vac_5_black_funnel.3mf": 2,
+   "P24_PLA_vac_1_coupons_PRINT_FIRST.3mf": 2
+  }
  }
 }

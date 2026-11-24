@@ -29,7 +29,7 @@ def main(out_dir):
             mats = sorted({f.name.split('_')[1] for f in groups[k]})
             names = []
             for f in groups[k]:
-                nm = f'{k}_v{v}_{f.name.split("_", 1)[1]}'
+                nm = f'{k}_v{ver[k].get("file_v", {}).get(f.name, v)}_{f.name.split("_", 1)[1]}'   # done files keep the version printed
                 fold = 'done' if f.name in ver[k].get('done_files', []) else ver[k].get('folder', '1_now')
                 z.write(f, f'{NAME}/{fold}/{nm}'); names.append(nm)
             rows.append(f'| {k} | v{v} | {ver[k].get("folder", "")} | {"/".join(mats)} | {ver[k]["what"]} | {len(names)} |')
