@@ -672,7 +672,22 @@
     "266 vac coupon hose socket"
    ],
    "note": "ring at 0.15 tight on the stud but fits; hose depth not reported yet"
+  },
+  {
+   "date": "2026-11-24 06:46",
+   "bambu_job": "P24_v3_PLAyellow_vac_2_shell_lower",
+   "hours": 12.2,
+   "plate": "P24",
+   "version": 3,
+   "material": "PLA",
+   "grams": 551,
+   "source": "CAD estimate",
+   "status": "printing",
+   "parts": [
+    "250 vac shell lower"
+   ],
+   "note": "yellow PLA; slicer time and grams not reported yet"
   }
  ],
- "updated": "2026-11-23 21:20 PT"
+ "updated": "2026-11-24 06:50 PT"
 }

@@ -38,7 +38,7 @@ DONE = {'265_vac_coupon_socket_ring': 1, '266_vac_coupon_hose_socket': 1, '251_v
         '114_roof_tile_c1_r1': 1, '114_roof_tile_c2_r1': 1, '114_roof_tile_c2_r2': 1,
         '114_roof_tile_c3_r1': 1, '114_roof_tile_c3_r2': 1,
         '114_roof_tile_c1_r2': 1, '114_roof_tile_c4_r1': 1, '114_roof_tile_c4_r2': 1}
-PRINTING = {}
+PRINTING = {'250_vac_shell_lower': 1}
 SKIP = {'217_xiao_sense_camera_mount'}   # BJ 2026-11-16: POC uses the Pi + Logitech USB webcam, no XIAO camera
 
 # POC scope (BJ 2026-11-16): semester-1 proof of concept = open wood frame + the very top (roof tiles, studs, hopper)
