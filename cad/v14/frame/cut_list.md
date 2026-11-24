@@ -15,7 +15,7 @@ All straight crosscuts. Nominal 2x2 = 38 x 38 actual, 1x2 = 19 x 38 actual (chec
 | 107 | floor plywood | 1/2 in ply | 720 x 360 | 28.35 x 14.17 | 1 | z 0..12 |
 | 108 | deck plywood | 1/2 in ply | 708 x 348 | 27.87 x 13.70 | 1 | z 300..312; 38 x 38 notch at each corner; 56 mm (2 3/16 in) hole at (240, 0) for the drop funnel |
 
-Stock: 2x2 x 8 ft x 1 (4 x 600 = 2400 of 2438, cut carefully), 1x2 x 8 ft x 3 (632 + 632 + 272 + 272 + 272 = 2080; 632 + 632 + 272 + 272 + 212 + 212 = 2232; 310 + 310 = 620), 1/2 in plywood 2 x 4 ft handy panel x 1.
+Stock: 2x2 x 8 ft x 1 (4 x 600 = 2400 of 2438, cut carefully), 1x2 x 8 ft x 3 (632 + 632 + 272 + 272 + 272 = 2080; 632 + 632 + 272 + 272 + 212 + 212 = 2232; 310 + 310 + 272 = 892; the sixth 272 goes on the third board), 1/2 in plywood 2 x 4 ft handy panel x 1.
 
 ## Wood-to-wood screws (pilot 2.5 mm for #6, 3 mm for #8)
 
