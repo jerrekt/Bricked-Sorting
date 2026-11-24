@@ -56,7 +56,7 @@ lg.text(0.07,y,'Floor  1/2" ply',fontsize=13,weight='bold',va='bottom'); lg.text
 y-=0.085
 lg.add_patch(Rectangle((0,y-0.02),0.05,0.05,fc=P['ply'],ec='k'))
 lg.text(0.07,y,'Deck  1/2" ply',fontsize=13,weight='bold',va='bottom'); lg.text(0.07,y-0.005,f'{frac(708)} x {frac(348)}  (708 x 348)',fontsize=13,va='top')
-lg.text(0,0.0,'Buy: 2 x 2x2x8ft, 3 x 1x2x8ft, 1 x 1/2" ply 2x4 ft\n2x2 = 1 1/2" square, 1x2 = 3/4" x 1 1/2": measure yours',fontsize=12,va='bottom')
+lg.text(0,0.0,'Buy: 2 x 2x2x8ft, 3 x 1x2x8ft, 2 x 1/2" ply 2x4 ft\n2x2 = 1 1/2" square, 1x2 = 3/4" x 1 1/2": measure yours',fontsize=12,va='bottom')
 lg.set_xlim(0,1); lg.set_ylim(0,1)
 # ---- front elevation (screen x = -X)
 a=fig.add_axes([0.05,0.33,0.56,0.24])
