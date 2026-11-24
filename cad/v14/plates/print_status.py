@@ -24,7 +24,7 @@ PRICE_PER_KG = {'PLA': 9.99, 'PETG': 39.99 / 4, 'TPU': 39.99 / 4}
 TAX = 0.09375
 DEN = {'PETG': 1.27, 'PLA': 1.24, 'TPU': 1.21}
 # label -> qty printed (BJ's Bambu history, 2026-11-15). 'printing' counts separately.
-DONE = {'265_vac_coupon_socket_ring': 1, '266_vac_coupon_hose_socket': 1, '251_vac_funnel': 1, '255_vac_lid': 1, '130_stud_ring_left_hopper': 1, '123_clip_C3_roof': 24, '122_clip_H_bridge': 12, '131_stud_cap_right': 1, '120_clip_C1_single': 1,
+DONE = {'250_vac_shell_lower': 1, '265_vac_coupon_socket_ring': 1, '266_vac_coupon_hose_socket': 1, '251_vac_funnel': 1, '255_vac_lid': 1, '130_stud_ring_left_hopper': 1, '123_clip_C3_roof': 24, '122_clip_H_bridge': 12, '131_stud_cap_right': 1, '120_clip_C1_single': 1,
         '201_hopper': 1, '202_feed_chute': 1, '203_V1_tray': 1, '204_V2_tray': 1, '207_leaf_spring_V1_1': 1, '207_leaf_spring_V1_2': 1,
         '207_leaf_spring_V2_1': 1, '207_leaf_spring_V2_2': 1, '210_scanner_plate': 1, '211_landing_ramp_low': 1, '213_servo_saddle': 1,
         '214_trapdoor_A': 1, '214_trapdoor_B': 1, '215_camera_bridge': 1, '50b_drum_625_roller': 4,
@@ -38,7 +38,7 @@ DONE = {'265_vac_coupon_socket_ring': 1, '266_vac_coupon_hose_socket': 1, '251_v
         '114_roof_tile_c1_r1': 1, '114_roof_tile_c2_r1': 1, '114_roof_tile_c2_r2': 1,
         '114_roof_tile_c3_r1': 1, '114_roof_tile_c3_r2': 1,
         '114_roof_tile_c1_r2': 1, '114_roof_tile_c4_r1': 1, '114_roof_tile_c4_r2': 1}
-PRINTING = {'250_vac_shell_lower': 1}
+PRINTING = {}
 SKIP = {'217_xiao_sense_camera_mount'}   # BJ 2026-11-16: POC uses the Pi + Logitech USB webcam, no XIAO camera
 
 # POC scope (BJ 2026-11-16): semester-1 proof of concept = open wood frame + the very top (roof tiles, studs, hopper)

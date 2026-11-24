@@ -682,12 +682,12 @@
    "material": "PLA",
    "grams": 551,
    "source": "CAD estimate",
-   "status": "printing",
+   "status": "done",
    "parts": [
     "250 vac shell lower"
    ],
-   "note": "yellow PLA; slicer time and grams not reported yet"
+   "note": "yellow PLA; done by 2026-11-24 14:34; slicer time and grams not reported (CAD estimate)"
   }
  ],
- "updated": "2026-11-24 06:50 PT"
+ "updated": "2026-11-24 14:35 PT"
 }
