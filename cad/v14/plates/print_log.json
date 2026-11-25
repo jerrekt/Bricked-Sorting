@@ -702,7 +702,23 @@
     "183 cup pad TPU"
    ],
    "note": "done by 2026-11-24 17:42; last POC print"
+  },
+  {
+   "date": "2026-11-24 18:00",
+   "bambu_job": "P24_v3_PETG_vac_6_black_gate_disc_and_eyes",
+   "hours": 3.3,
+   "plate": "P24",
+   "version": 3,
+   "material": "PETG",
+   "grams": 145,
+   "source": "CAD estimate",
+   "status": "done",
+   "parts": [
+    "252 vac gate disc",
+    "261 vac eye x2"
+   ],
+   "note": "black PETG; done by 2026-11-24 20:59"
   }
  ],
- "updated": "2026-11-24 17:43 PT"
+ "updated": "2026-11-24 21:00 PT"
 }

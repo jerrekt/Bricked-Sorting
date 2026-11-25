@@ -206,19 +206,22 @@
    "v4 2026-11-24: hose cuff measured (BJ: cuff went about 2/5 into the coupon socket, about 14 of 36 mm, so the tip is about 58.0, 1 mm over the drawn 57.0). Files 4 (hose port) and 8 (mouthpiece + 2 elbows) are 1.0 mm bigger. Files 6 and 7 are unchanged parts. Nothing printed needs reprinting",
    "v5 2026-11-24: 3 wand elbows instead of 2 (BJ: bend it more so the mouth and wand make a 7). File 8 now has the handle, mouthpiece and 3 elbows (126 deg turn); the wand ends under the handle, no clash with the canister. Old handle kept. No other file changed",
    "v6 2026-11-24: elbows 35 deg each (3 x 35 = 105 deg turn; BJ: 126 was a bit too much angle). Only the 3 elbows in file 8 changed",
-   "2026-11-24 20:56: BJ: the v3 shell is a little too tight on the stud to twist easily. Fix without reprinting: sand the inside of the skirt (bottom 20 mm) and wax it. If the shell is ever reprinted, use 0.35 per side"
+   "2026-11-24 20:56: BJ: the v3 shell is a little too tight on the stud to twist easily. Fix without reprinting: sand the inside of the skirt (bottom 20 mm) and wax it. If the shell is ever reprinted, use 0.35 per side",
+   "2026-11-24: file 6 (gate disc + 2 eyes) printed (in done/)"
   ],
   "done_files": [
    "P24_PLAyellow_vac_3_lid.3mf",
    "P24_PETG_vac_5_black_funnel.3mf",
    "P24_PLA_vac_1_coupons_PRINT_FIRST.3mf",
-   "P24_PLAyellow_vac_2_shell_lower.3mf"
+   "P24_PLAyellow_vac_2_shell_lower.3mf",
+   "P24_PETG_vac_6_black_gate_disc_and_eyes.3mf"
   ],
   "file_v": {
    "P24_PLAyellow_vac_3_lid.3mf": 2,
    "P24_PETG_vac_5_black_funnel.3mf": 2,
    "P24_PLA_vac_1_coupons_PRINT_FIRST.3mf": 2,
-   "P24_PLAyellow_vac_2_shell_lower.3mf": 3
+   "P24_PLAyellow_vac_2_shell_lower.3mf": 3,
+   "P24_PETG_vac_6_black_gate_disc_and_eyes.3mf": 3
   }
  }
 }
