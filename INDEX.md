@@ -65,7 +65,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 
 ## Filament used
 
-**Total: 4950.19 g** (PETG 2666.29 g, PLA 1257 g, PLAred 764 g, PLAyellow 242.9 g, TPU 20 g) over 126 h of printing
+**Total: 4974.19 g** (PETG 2666.29 g, PLA 1280 g, PLAred 764 g, PLAyellow 242.9 g, TPU 21 g) over 137 h of printing
 
 Filament used, one line per Bambu job (from BJ's print history). grams source=estimate: part geometry at 2 walls / 15% infill, no supports, brim or purge (the slicer usually reads 5-15% higher); replace with source=slicer when BJ sends the grams Bambu shows for a job. Other projects (JE, SJSU SAEC, SME sign) are not counted.
 
@@ -95,8 +95,8 @@ Filament used, one line per Bambu job (from BJ's print history). grams source=es
 | 2026-11-14 19:28 | p8-p12_plate_15 | 0.5 | P17 | v1 | TPU | 4 (estimate) | done | 55 drum tire |
 | 2026-11-14 21:33 | p8-p12_plate_16 | 3.6 | P18 | v2 | PETG | 103 (estimate) | done | 210 scanner plate (scanner plate rev 2, confirmed v2 by BJ (access holes there)) |
 | 2026-11-15 01:20 | p8-p12_plate_11 | 11.1 | P15 | v1 | PETG | 342 (estimate) | done | 47b drum barrel (3 walls; finished 2026-11-15 ~12:26) |
-| 2026-11-15 ~12:40 | p8-p12 plate 3 (P16 v2 parts) | 1.75 | P16 | v2 | PETG | 50.29 (slicer) | done | 48 rear guard, 54 drive hub, 59 door link x2, 60 servo arm, 62 vib saddle x2 (marked done by BJ 2026-11-15; 1 h 45 min) |
 | 2026-11-15 14:39 | P19_v2+P13_v3_PETG_combined | 9.87 | P19+P13 | v2 | PETG | 290 (slicer) | done | 205 cradle A, 205 cradle B, 206 motor wall, 212 slider post, 216 LED holders A/B, 217 webcam mount, 218 APDS mount, 228 cable spool, 226 USB clips 1-2 (finished ~00:30 Nov 16) |
+| 2026-11-15 ~12:40 | p8-p12 plate 3 (P16 v2 parts) | 1.75 | P16 | v2 | PETG | 50.29 (slicer) | done | 48 rear guard, 54 drive hub, 59 door link x2, 60 servo arm, 62 vib saddle x2 (marked done by BJ 2026-11-15; 1 h 45 min) |
 | 2026-11-16 00:45 | P20_v3_PETG_scoop_plate1_beam | 12.0 | P20 | v3 | PETG | 350 (slicer) | done | 180 beam segments 1-3 (3 walls, 15% gyroid, 0.2 mm, supports off, slow/quiet speed; finished 2026-11-16 ~12:45 pm) |
 | 2026-11-17 by 05:57 | P20_v3_PETG_scoop_plate2_carriage_cup_brackets | 0 | P20 | v3 | PETG | 163 (estimate (CAD x 0.75, Bambu ran ~25-35 % under CAD)) | done | 181 carriage, 182 cup, 184 motor bracket, 185 idler channel, 186 idler slider, 187 idler wheel, 188 endstop mount, 189 pushrod, 190 servo bracket (grams/time not sent yet) |
 | 2026-11-17 by 15:05 | P18_v5_PETG_funnel_and_electronics_plate2 | 0 | P18 | v5 | PETG | 131 (estimate (CAD x 0.75, Bambu ran ~25-35 % under CAD)) | done | 220 drop funnel, 225 tray 1b, 227 PSU cover, 225 tray legs x16 (grams/time not sent yet) |
@@ -109,13 +109,16 @@ Filament used, one line per Bambu job (from BJ's print history). grams source=es
 | 2026-11-21 by 17:46 | P22_v1_PLAred_roof_tile_c1_r2 | 0.73 | P22 | v1 | PLAred | 51 (estimate (67.8 g CAD x 0.75)) | done | 114 roof tile c1_r2 (BJ: studs and roof tiles assembled; Bambu grams not sent) |
 | 2026-11-21 by 17:46 | P22_v1_PLAred_roof_tile_c4_r1 | 0.73 | P22 | v1 | PLAred | 51 (estimate (67.8 g CAD x 0.75)) | done | 114 roof tile c4_r1 (BJ: studs and roof tiles assembled; Bambu grams not sent) |
 | 2026-11-21 by 17:46 | P22_v1_PLAred_roof_tile_c4_r2 | 0.73 | P22 | v1 | PLAred | 51 (estimate (67.8 g CAD x 0.75)) | done | 114 roof tile c4_r2 (BJ: studs and roof tiles assembled; Bambu grams not sent) |
-| 2026-11-22 by 14:53 | P23_v1_PLA_roof_clips | 1.5 | P23 | v1 | PLA | 75 (estimate) | done | 24 x 123 clip C3 roof, 12 x 122 clip H (roof) (Bambu grams/time not sent) |
+| 2026-11-22 10:34 | P23_v1_PLA_roof_clips | 3.4 | P23 | v1 | PLA | 75 (estimate) | done | 24 x 123 clip C3 roof, 12 x 122 clip H (roof) (Bambu grams/time not sent; time from Bambu history (BJ screenshot 2026-11-24)) |
 | 2026-11-22 15:00 | P24_v2_PLAyellow_vac_3_lid | 6.15 | P24 | v2 | PLAyellow | 242.9 (slicer) | done | 255 vac lid (Inland PLA yellow (AMS slot 6), 6h9m, 636 layers; finished by 2026-11-22 22:31) |
-| 2026-11-22 22:35 | P24_v2_PETG_vac_5_black_funnel | 7.65 | P24 | v2 | PETG | 309 (slicer) | done | 251 vac funnel (black PETG, 7h39m; done by 2026-11-23 18:40) |
-| 2026-11-23 19:00 | P24_v2_PLA_vac_1_coupons_PRINT_FIRST | 1.4 | P24 | v2 | PLA | 59 (CAD estimate) | done | 265 vac coupon socket ring, 266 vac coupon hose socket (ring at 0.15 tight on the stud but fits; hose depth not reported yet) |
-| 2026-11-24 06:46 | P24_v3_PLAyellow_vac_2_shell_lower | 12.2 | P24 | v3 | PLA | 551 (CAD estimate) | done | 250 vac shell lower (yellow PLA; done by 2026-11-24 14:34; slicer time and grams not reported (CAD estimate)) |
-| 2026-11-24 15:00 | P21_v1_TPU_scoop_cup_pad | 0.4 | P21 | v1 | TPU | 16 (CAD estimate) | done | 183 cup pad TPU (done by 2026-11-24 17:42; last POC print) |
-| 2026-11-24 18:00 | P24_v3_PETG_vac_6_black_gate_disc_and_eyes | 3.3 | P24 | v3 | PETG | 145 (CAD estimate) | done | 252 vac gate disc, 261 vac eye x2 (black PETG; done by 2026-11-24 20:59) |
+| 2026-11-22 15:02 | P24_v2_PLAyellow_vac_3_lid | 0.38 | P24 | v2 | PLA | 15 (estimate from time) | canceled | 255 vac lid (canceled after 23 min (Bambu history)) |
+| 2026-11-22 22:35 | P24_v2_PETG_vac_5_black_funnel | 11.4 | P24 | v2 | PETG | 309 (slicer) | done | 251 vac funnel (black PETG, 7h39m; done by 2026-11-23 18:40; time from Bambu history (BJ screenshot 2026-11-24)) |
+| 2026-11-23 18:48 | P24_v2_PLA_vac_1_coupons_PRINT_FIRST | 0.17 | P24 | v2 | PLA | 8 (estimate from time) | canceled | 265/266 vac coupons (canceled after 10 min (Bambu history)) |
+| 2026-11-23 19:01 | P24_v2_PLA_vac_1_coupons_PRINT_FIRST | 1.2 | P24 | v2 | PLA | 59 (CAD estimate) | done | 265 vac coupon socket ring, 266 vac coupon hose socket (ring at 0.15 tight on the stud but fits; hose depth not reported yet; time from Bambu history (BJ screenshot 2026-11-24)) |
+| 2026-11-23 21:34 | P24_v3_PLAyellow_vac_2_shell_lower | 16.8 | P24 | v3 | PLA | 551 (CAD estimate) | done | 250 vac shell lower (yellow PLA; done by 2026-11-24 14:34; slicer time and grams not reported (CAD estimate); time from Bambu history (BJ screenshot 2026-11-24)) |
+| 2026-11-24 14:43 | P21_v1_TPU_scoop_cup_pad | 0.03 | P21 | v1 | TPU | 1 (estimate from time) | canceled | 183 cup pad (canceled after 2 min (Bambu history)) |
+| 2026-11-24 14:46 | P21_v1_TPU_scoop_cup_pad | 1.4 | P21 | v1 | TPU | 16 (CAD estimate) | done | 183 cup pad TPU (done by 2026-11-24 17:42; last POC print; time from Bambu history (BJ screenshot 2026-11-24)) |
+| 2026-11-24 17:57 | P24_v3_PETG_vac_6_black_gate_disc_and_eyes | 2.6 | P24 | v3 | PETG | 145 (CAD estimate) | done | 252 vac gate disc, 261 vac eye x2 (black PETG; done by 2026-11-24 20:59; time from Bambu history (BJ screenshot 2026-11-24)) |
 
 ---
 
