@@ -60,10 +60,12 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 - **P24** v4 2026-11-24: hose cuff measured (BJ: cuff went about 2/5 into the coupon socket, about 14 of 36 mm, so the tip is about 58.0, 1 mm over the drawn 57.0). Files 4 (hose port) and 8 (mouthpiece + 2 elbows) are 1.0 mm bigger. Files 6 and 7 are unchanged parts. Nothing printed needs reprinting
 - **P24** v5 2026-11-24: 3 wand elbows instead of 2 (BJ: bend it more so the mouth and wand make a 7). File 8 now has the handle, mouthpiece and 3 elbows (126 deg turn); the wand ends under the handle, no clash with the canister. Old handle kept. No other file changed
 - **P24** v6 2026-11-24: elbows 35 deg each (3 x 35 = 105 deg turn; BJ: 126 was a bit too much angle). Only the 3 elbows in file 8 changed
+- **P24** 2026-11-24 20:56: BJ: the v3 shell is a little too tight on the stud to twist easily. Fix without reprinting: sand the inside of the skirt (bottom 20 mm) and wax it. If the shell is ever reprinted, use 0.35 per side
+- **P24** 2026-11-24: file 6 (gate disc + 2 eyes) printed (in done/)
 
 ## Filament used
 
-**Total: 4805.19 g** (PETG 2521.29 g, PLA 1257 g, PLAred 764 g, PLAyellow 242.9 g, TPU 20 g) over 123 h of printing
+**Total: 4950.19 g** (PETG 2666.29 g, PLA 1257 g, PLAred 764 g, PLAyellow 242.9 g, TPU 20 g) over 126 h of printing
 
 Filament used, one line per Bambu job (from BJ's print history). grams source=estimate: part geometry at 2 walls / 15% infill, no supports, brim or purge (the slicer usually reads 5-15% higher); replace with source=slicer when BJ sends the grams Bambu shows for a job. Other projects (JE, SJSU SAEC, SME sign) are not counted.
 
@@ -113,6 +115,7 @@ Filament used, one line per Bambu job (from BJ's print history). grams source=es
 | 2026-11-23 19:00 | P24_v2_PLA_vac_1_coupons_PRINT_FIRST | 1.4 | P24 | v2 | PLA | 59 (CAD estimate) | done | 265 vac coupon socket ring, 266 vac coupon hose socket (ring at 0.15 tight on the stud but fits; hose depth not reported yet) |
 | 2026-11-24 06:46 | P24_v3_PLAyellow_vac_2_shell_lower | 12.2 | P24 | v3 | PLA | 551 (CAD estimate) | done | 250 vac shell lower (yellow PLA; done by 2026-11-24 14:34; slicer time and grams not reported (CAD estimate)) |
 | 2026-11-24 15:00 | P21_v1_TPU_scoop_cup_pad | 0.4 | P21 | v1 | TPU | 16 (CAD estimate) | done | 183 cup pad TPU (done by 2026-11-24 17:42; last POC print) |
+| 2026-11-24 18:00 | P24_v3_PETG_vac_6_black_gate_disc_and_eyes | 3.3 | P24 | v3 | PETG | 145 (CAD estimate) | done | 252 vac gate disc, 261 vac eye x2 (black PETG; done by 2026-11-24 20:59) |
 
 ---
 
