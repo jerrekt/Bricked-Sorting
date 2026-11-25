@@ -192,7 +192,7 @@
   "log": []
  },
  "P24": {
-  "v": 5,
+  "v": 6,
   "folder": "vac",
   "what": "Vacuum canister (accessory, docks on the left stud): 8 files, no supports. PRINT FILE 1 (2 PLA coupons) FIRST and report: does the ring slide onto the stud and turn (chamfered end = 0.15 fit, other end = 0.10), and how many mm does your hose cuff go into the small socket. Yellow PLA: 2 lower shell, 3 lid, 4 hose port (+ pivot cap). Black PETG: 5 funnel, 6 gate disc + 2 eyes (glue the eyes into their pockets above the mouth), 7 screen, 8 mouthpiece + handle + 2 wand elbows. The hose parts (4, 8) are sized for a 57.0-58.5 mm cuff until the coupon result is in",
   "log": [
@@ -204,7 +204,8 @@
    "2026-11-24: file 2 (lower shell, v3) printed (in done/)",
    "2026-11-24: v3 lower shell on the left stud: fits (BJ). 0.25 per side confirmed for the dock",
    "v4 2026-11-24: hose cuff measured (BJ: cuff went about 2/5 into the coupon socket, about 14 of 36 mm, so the tip is about 58.0, 1 mm over the drawn 57.0). Files 4 (hose port) and 8 (mouthpiece + 2 elbows) are 1.0 mm bigger. Files 6 and 7 are unchanged parts. Nothing printed needs reprinting",
-   "v5 2026-11-24: 3 wand elbows instead of 2 (BJ: bend it more so the mouth and wand make a 7). File 8 now has the handle, mouthpiece and 3 elbows (126 deg turn); the wand ends under the handle, no clash with the canister. Old handle kept. No other file changed"
+   "v5 2026-11-24: 3 wand elbows instead of 2 (BJ: bend it more so the mouth and wand make a 7). File 8 now has the handle, mouthpiece and 3 elbows (126 deg turn); the wand ends under the handle, no clash with the canister. Old handle kept. No other file changed",
+   "v6 2026-11-24: elbows 35 deg each (3 x 35 = 105 deg turn; BJ: 126 was a bit too much angle). Only the 3 elbows in file 8 changed"
   ],
   "done_files": [
    "P24_PLAyellow_vac_3_lid.3mf",

@@ -118,15 +118,15 @@
   "height_above_stud": 263.0,
   "overall_height": 283.0,
   "machine_height_docked": 927.0,
-  "wand_reach_below_mouth": 708.0
+  "wand_reach_below_mouth": 786.0
  },
  "wand": {
   "elbows": 3,
-  "turn_deg": 126.0,
+  "turn_deg": 105.0,
   "tip_canister_frame": [
    0,
-   -129,
-   -586
+   113,
+   -664
   ],
   "clash_with_body_mm3": {
    "258_vac_wand_elbow_1": 0.0,
@@ -212,9 +212,9 @@
   },
   "258_vac_wand_elbow": {
    "extent": [
-    95.06,
+    89.26,
     65.07,
-    130.55
+    125.56
    ],
    "ok": true
   },
@@ -252,11 +252,11 @@
   }
  },
  "filament": {
-  "grams": 2143,
-  "hours": 47.6,
+  "grams": 2129,
+  "hours": 47.3,
   "by_material": {
    "PLA": 1084,
-   "PETG": 1059
+   "PETG": 1045
   },
   "yellow_PLA_grams": 1023,
   "canister_only_grams": 1810

@@ -93,8 +93,8 @@ PIN_D, PIN_L = 5.6, 9.0
 # floored pockets in the lower shell above the mouth. An original face: do not swap in a copy of the LEGO minifigure face.
 EYE_X, EYE_Z, EYE_W, EYE_H, EYE_TILT = 36.0, 192.0, 16.0, 34.0, 12.0
 EYE_FLOOR_R, EYE_T, EYE_CLR = 110.6, 2.2, 0.10      # pocket floor 1.4 under the surface at the eye centre; piece 0.8 proud
-ELBOW_DEG, ELBOW_R = 42.0, 55.0
-N_ELBOWS = 3                                  # BJ 2026-11-24: bend the wand more so mouth + wand make a 7 (was 2 = 84 deg; 3 = 126 deg)
+ELBOW_DEG, ELBOW_R = 35.0, 55.0                # BJ 2026-11-24: 3 x 42 was "a bit too much angle"; 3 x 35 = 105
+N_ELBOWS = 3                                  # BJ 2026-11-24: bend the wand more so mouth + wand make a 7 (was 2 x 42 = 84 deg, then 3 x 42 = 126, now 3 x 35 = 105)
 TUBE_L = 240.0
 PRINT_WAND_TUBES = False                      # BJ 2026-11-18: the vac's own wands fit a cuff, so only the 2 elbows are printed
 
