@@ -687,7 +687,22 @@
     "250 vac shell lower"
    ],
    "note": "yellow PLA; done by 2026-11-24 14:34; slicer time and grams not reported (CAD estimate)"
+  },
+  {
+   "date": "2026-11-24 15:00",
+   "bambu_job": "P21_v1_TPU_scoop_cup_pad",
+   "hours": 0.4,
+   "plate": "P21",
+   "version": 1,
+   "material": "TPU",
+   "grams": 16,
+   "source": "CAD estimate",
+   "status": "done",
+   "parts": [
+    "183 cup pad TPU"
+   ],
+   "note": "done by 2026-11-24 17:42; last POC print"
   }
  ],
- "updated": "2026-11-24 14:35 PT"
+ "updated": "2026-11-24 17:43 PT"
 }

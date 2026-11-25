@@ -159,8 +159,13 @@
  "P21": {
   "v": 1,
   "what": "Scoop cup pad (TPU)",
-  "log": [],
-  "folder": "1_now"
+  "log": [
+   "2026-11-24: printed (in done/)"
+  ],
+  "folder": "1_now",
+  "done_files": [
+   "P21_TPU_scoop_cup_pad.3mf"
+  ]
  },
  "_folders": "done = printed (kept for reprints); 1_now = what the semester-1 POC still needs; 3_semester2 = the finished machine only (back drawer, drawer bars, faces, corner caps, walls, drawers); vac = the vacuum canister accessory (wanted for the December demo, not part of the machine)",
  "_naming": "Material in the file name is what to load: PETG (functional, any colour), PLAred (visible red shell parts: studs, hopper, corner caps, drawer faces with black lettering in slot 2), TPU, PLA (PLA calibration only). Renamed 2026-11-15, no geometry change.",
