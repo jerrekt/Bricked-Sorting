@@ -378,25 +378,6 @@
    "note": "3 walls; finished 2026-11-15 ~12:26"
   },
   {
-   "date": "2026-11-15 ~12:40",
-   "bambu_job": "p8-p12 plate 3 (P16 v2 parts)",
-   "hours": 1.75,
-   "plate": "P16",
-   "version": 2,
-   "material": "PETG",
-   "grams": 50.29,
-   "source": "slicer",
-   "status": "done",
-   "parts": [
-    "48 rear guard",
-    "54 drive hub",
-    "59 door link x2",
-    "60 servo arm",
-    "62 vib saddle x2"
-   ],
-   "note": "marked done by BJ 2026-11-15; 1 h 45 min"
-  },
-  {
    "date": "2026-11-15 14:39",
    "bambu_job": "P19_v2+P13_v3_PETG_combined",
    "hours": 9.87,
@@ -418,6 +399,25 @@
     "226 USB clips 1-2"
    ],
    "note": "finished ~00:30 Nov 16"
+  },
+  {
+   "date": "2026-11-15 ~12:40",
+   "bambu_job": "p8-p12 plate 3 (P16 v2 parts)",
+   "hours": 1.75,
+   "plate": "P16",
+   "version": 2,
+   "material": "PETG",
+   "grams": 50.29,
+   "source": "slicer",
+   "status": "done",
+   "parts": [
+    "48 rear guard",
+    "54 drive hub",
+    "59 door link x2",
+    "60 servo arm",
+    "62 vib saddle x2"
+   ],
+   "note": "marked done by BJ 2026-11-15; 1 h 45 min"
   },
   {
    "date": "2026-11-16 00:45",
@@ -612,9 +612,9 @@
    "note": "BJ: studs and roof tiles assembled; Bambu grams not sent"
   },
   {
-   "date": "2026-11-22 by 14:53",
+   "date": "2026-11-22 10:34",
    "bambu_job": "P23_v1_PLA_roof_clips",
-   "hours": 1.5,
+   "hours": 3.4,
    "plate": "P23",
    "version": 1,
    "material": "PLA",
@@ -625,7 +625,7 @@
     "24 x 123 clip C3 roof",
     "12 x 122 clip H (roof)"
    ],
-   "note": "Bambu grams/time not sent"
+   "note": "Bambu grams/time not sent; time from Bambu history (BJ screenshot 2026-11-24)"
   },
   {
    "date": "2026-11-22 15:00",
@@ -643,9 +643,24 @@
    "note": "Inland PLA yellow (AMS slot 6), 6h9m, 636 layers; finished by 2026-11-22 22:31"
   },
   {
+   "date": "2026-11-22 15:02",
+   "bambu_job": "P24_v2_PLAyellow_vac_3_lid",
+   "hours": 0.38,
+   "plate": "P24",
+   "version": 2,
+   "material": "PLA",
+   "grams": 15,
+   "source": "estimate from time",
+   "status": "canceled",
+   "parts": [
+    "255 vac lid"
+   ],
+   "note": "canceled after 23 min (Bambu history)"
+  },
+  {
    "date": "2026-11-22 22:35",
    "bambu_job": "P24_v2_PETG_vac_5_black_funnel",
-   "hours": 7.65,
+   "hours": 11.4,
    "plate": "P24",
    "version": 2,
    "material": "PETG",
@@ -655,12 +670,27 @@
    "parts": [
     "251 vac funnel"
    ],
-   "note": "black PETG, 7h39m; done by 2026-11-23 18:40"
+   "note": "black PETG, 7h39m; done by 2026-11-23 18:40; time from Bambu history (BJ screenshot 2026-11-24)"
   },
   {
-   "date": "2026-11-23 19:00",
+   "date": "2026-11-23 18:48",
    "bambu_job": "P24_v2_PLA_vac_1_coupons_PRINT_FIRST",
-   "hours": 1.4,
+   "hours": 0.17,
+   "plate": "P24",
+   "version": 2,
+   "material": "PLA",
+   "grams": 8,
+   "source": "estimate from time",
+   "status": "canceled",
+   "parts": [
+    "265/266 vac coupons"
+   ],
+   "note": "canceled after 10 min (Bambu history)"
+  },
+  {
+   "date": "2026-11-23 19:01",
+   "bambu_job": "P24_v2_PLA_vac_1_coupons_PRINT_FIRST",
+   "hours": 1.2,
    "plate": "P24",
    "version": 2,
    "material": "PLA",
@@ -671,12 +701,12 @@
     "265 vac coupon socket ring",
     "266 vac coupon hose socket"
    ],
-   "note": "ring at 0.15 tight on the stud but fits; hose depth not reported yet"
+   "note": "ring at 0.15 tight on the stud but fits; hose depth not reported yet; time from Bambu history (BJ screenshot 2026-11-24)"
   },
   {
-   "date": "2026-11-24 06:46",
+   "date": "2026-11-23 21:34",
    "bambu_job": "P24_v3_PLAyellow_vac_2_shell_lower",
-   "hours": 12.2,
+   "hours": 16.8,
    "plate": "P24",
    "version": 3,
    "material": "PLA",
@@ -686,12 +716,27 @@
    "parts": [
     "250 vac shell lower"
    ],
-   "note": "yellow PLA; done by 2026-11-24 14:34; slicer time and grams not reported (CAD estimate)"
+   "note": "yellow PLA; done by 2026-11-24 14:34; slicer time and grams not reported (CAD estimate); time from Bambu history (BJ screenshot 2026-11-24)"
   },
   {
-   "date": "2026-11-24 15:00",
+   "date": "2026-11-24 14:43",
    "bambu_job": "P21_v1_TPU_scoop_cup_pad",
-   "hours": 0.4,
+   "hours": 0.03,
+   "plate": "P21",
+   "version": 1,
+   "material": "TPU",
+   "grams": 1,
+   "source": "estimate from time",
+   "status": "canceled",
+   "parts": [
+    "183 cup pad"
+   ],
+   "note": "canceled after 2 min (Bambu history)"
+  },
+  {
+   "date": "2026-11-24 14:46",
+   "bambu_job": "P21_v1_TPU_scoop_cup_pad",
+   "hours": 1.4,
    "plate": "P21",
    "version": 1,
    "material": "TPU",
@@ -701,12 +746,12 @@
    "parts": [
     "183 cup pad TPU"
    ],
-   "note": "done by 2026-11-24 17:42; last POC print"
+   "note": "done by 2026-11-24 17:42; last POC print; time from Bambu history (BJ screenshot 2026-11-24)"
   },
   {
-   "date": "2026-11-24 18:00",
+   "date": "2026-11-24 17:57",
    "bambu_job": "P24_v3_PETG_vac_6_black_gate_disc_and_eyes",
-   "hours": 3.3,
+   "hours": 2.6,
    "plate": "P24",
    "version": 3,
    "material": "PETG",
@@ -717,8 +762,8 @@
     "252 vac gate disc",
     "261 vac eye x2"
    ],
-   "note": "black PETG; done by 2026-11-24 20:59"
+   "note": "black PETG; done by 2026-11-24 20:59; time from Bambu history (BJ screenshot 2026-11-24)"
   }
  ],
- "updated": "2026-11-24 21:00 PT"
+ "updated": "2026-11-24 21:05 PT"
 }
