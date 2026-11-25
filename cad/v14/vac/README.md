@@ -18,8 +18,8 @@ back and a round hose port on top. BJ's brief (2026-11-18): carried while vacuum
 from the mouth, an original look (not a copy of the LEGO minifigure head), keep the stud on top, needed for the
 December demo. The eyes are the important part. Yellow parts in PLA, and the vac's own wands fit a cuff, so no wand tubes are printed.
 
-- **Collect.** The vac hose pushes into the top port (256). Two printed elbows (258) push onto the mouthpiece (257)
-  and turn the mouth 84 deg downward; the vac's own wands push onto the second elbow. Pieces come in through the
+- **Collect.** The vac hose pushes into the top port (256). Three printed elbows (258) push onto the mouthpiece (257)
+  and turn the mouth 126 deg (down and back, a 7 shape, BJ 2026-11-24); the vac's own wands push onto the second elbow. Pieces come in through the
   mouth, glance off the tilted screen (254, 25 deg, slots running down the slope) and drop into the funnel. Air goes
   up through the screen to the port. When the vac stops, anything held on the screen falls off.
 - **Feed.** Pull the hose and wand off, carry it by the handle (260), set it on the left stud and turn it until the 4

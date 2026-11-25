@@ -3,8 +3,8 @@
  "updated": "2026-11-24 17:43 PT",
  "summary": {
   "total": {
-   "grams": 10577,
-   "hours": 198.9
+   "grams": 10668,
+   "hours": 200.9
   },
   "done": {
    "grams": 5499,
@@ -15,14 +15,14 @@
    "hours": 0.0
   },
   "left": {
-   "grams": 5078,
-   "hours": 93.0
+   "grams": 5169,
+   "hours": 95.0
   }
  },
  "poc": {
   "total": {
-   "grams": 5885,
-   "hours": 114.4
+   "grams": 5977,
+   "hours": 116.4
   },
   "done": {
    "grams": 5218,
@@ -33,18 +33,18 @@
    "hours": 0.0
   },
   "left": {
-   "grams": 667,
-   "hours": 14.6
+   "grams": 758,
+   "hours": 16.6
   }
  },
  "cost": {
   "used": 52.5,
-  "left_poc": 7.3,
-  "left_machine": 55.49,
+  "left_poc": 8.29,
+  "left_machine": 56.49,
   "note": "USD incl. 9.375 % tax; PLA $9.99/kg, PETG $10.00/kg (Micro Center)"
  },
  "pace_factor": 0.89,
- "left_at_pace_hours": 83,
+ "left_at_pace_hours": 85,
  "used_so_far": {
   "grams": 4805,
   "hours": 123.0,
@@ -81,11 +81,11 @@
    "parts_left": 0
   },
   "Vacuum canister": {
-   "total_g": 2051.8,
-   "left_g": 667.4,
-   "left_h": 14.6,
-   "parts": 15,
-   "parts_left": 10
+   "total_g": 2142.9,
+   "left_g": 758.5,
+   "left_h": 16.6,
+   "parts": 16,
+   "parts_left": 11
   },
   "Drum (V13 parts)": {
    "total_g": 510.9,
@@ -2944,12 +2944,12 @@
    "module": "Vacuum canister",
    "part": "258_vac_wand_elbow",
    "material": "PETG",
-   "qty": 2,
+   "qty": 3,
    "g_each": 91.1,
    "h_each": 2.0,
    "done": 0,
    "printing": 0,
-   "left": 2,
+   "left": 3,
    "scope": "poc",
    "dims": [
     94.0,
@@ -3250,13 +3250,13 @@
  "bom_value": {
   "sections": {
    "Wood": 46.66,
-   "Filament": 101.21,
+   "Filament": 102.11,
    "Motion": 56.6,
    "Electronics": 93.0,
    "Power + wiring": 38.0,
    "Fasteners": 17.38
   },
-  "total": 352.85,
+  "total": 353.75,
   "note": "rough value of what is used (qty x typical unit price, not whole packs), full machine, before tax"
  }
 }

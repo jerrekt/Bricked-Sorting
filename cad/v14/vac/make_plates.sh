@@ -13,4 +13,4 @@ python3 make_plate.py P24_PLAyellow_vac_4_hose_port_and_pivot_cap $V/256_vac_hos
 python3 make_plate.py P24_PETG_vac_5_black_funnel $V/251_vac_funnel_PRINT_1.stl
 python3 make_plate.py P24_PETG_vac_6_black_gate_disc_and_eyes $V/252_vac_gate_disc_PRINT_1.stl $V/261_vac_eye_PRINT_1.stl:2
 python3 make_plate.py P24_PETG_vac_7_black_screen $V/254_vac_screen_PRINT_1.stl
-python3 make_plate.py P24_PETG_vac_8_black_mouthpiece_handle_elbows $V/260_vac_handle_PRINT_1.stl $V/257_vac_mouthpiece_PRINT_1.stl $V/258_vac_wand_elbow_PRINT_1.stl:2
+python3 make_plate.py P24_PETG_vac_8_black_mouthpiece_handle_elbows $V/260_vac_handle_PRINT_1.stl $V/257_vac_mouthpiece_PRINT_1.stl $V/258_vac_wand_elbow_PRINT_1.stl:3

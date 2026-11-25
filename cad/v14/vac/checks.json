@@ -118,7 +118,24 @@
   "height_above_stud": 263.0,
   "overall_height": 283.0,
   "machine_height_docked": 927.0,
-  "wand_reach_below_mouth": 741.0
+  "wand_reach_below_mouth": 708.0
+ },
+ "wand": {
+  "elbows": 3,
+  "turn_deg": 126.0,
+  "tip_canister_frame": [
+   0,
+   -129,
+   -586
+  ],
+  "clash_with_body_mm3": {
+   "258_vac_wand_elbow_1": 0.0,
+   "258_vac_wand_elbow_2": 0.0,
+   "258_vac_wand_elbow_3": 0.0,
+   "259_vac_wand_tube_1": 0.0,
+   "259_vac_wand_tube_2": 0.0,
+   "259_vac_wand_tube_3": 0.0
+  }
  },
  "hose": {
   "status": "MEASURED by coupon 266 (BJ 2026-11-24): cuff went about 2/5 in, tip ~58.0",
@@ -235,11 +252,11 @@
   }
  },
  "filament": {
-  "grams": 2052,
-  "hours": 45.6,
+  "grams": 2143,
+  "hours": 47.6,
   "by_material": {
    "PLA": 1084,
-   "PETG": 968
+   "PETG": 1059
   },
   "yellow_PLA_grams": 1023,
   "canister_only_grams": 1810

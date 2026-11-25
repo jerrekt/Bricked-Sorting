@@ -141,7 +141,7 @@
   {
    "label": "258_vac_wand_elbow",
    "part_no": "258",
-   "qty": 2,
+   "qty": 3,
    "material": "PETG",
    "colour": "black",
    "bed_face": "socket end down",
@@ -241,10 +241,10 @@
    "use": "mouthpiece 4, handle 4, stop 1, pivot 1"
   }
  ],
- "est_total_grams": 2051.8,
- "est_total_hours": 45.6,
+ "est_total_grams": 2142.9,
+ "est_total_hours": 47.6,
  "est_grams_by_material": {
   "PLA": 1084.0,
-  "PETG": 967.8
+  "PETG": 1058.9
  }
 }

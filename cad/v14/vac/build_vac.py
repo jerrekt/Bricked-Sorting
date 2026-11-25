@@ -94,6 +94,7 @@ PIN_D, PIN_L = 5.6, 9.0
 EYE_X, EYE_Z, EYE_W, EYE_H, EYE_TILT = 36.0, 192.0, 16.0, 34.0, 12.0
 EYE_FLOOR_R, EYE_T, EYE_CLR = 110.6, 2.2, 0.10      # pocket floor 1.4 under the surface at the eye centre; piece 0.8 proud
 ELBOW_DEG, ELBOW_R = 42.0, 55.0
+N_ELBOWS = 3                                  # BJ 2026-11-24: bend the wand more so mouth + wand make a 7 (was 2 = 84 deg; 3 = 126 deg)
 TUBE_L = 240.0
 PRINT_WAND_TUBES = False                      # BJ 2026-11-18: the vac's own wands fit a cuff, so only the 2 elbows are printed
 
@@ -484,7 +485,7 @@ def main():
         '255_vac_lid': (ld, on_bed(flipx(ld)), 1, 'PLA', 'yellow', 'roof down'),
         '256_vac_hose_port': (port, on_bed(port), 1, 'PLA', 'yellow', 'base (insert face) down'),
         '257_vac_mouthpiece': (mp, on_bed(mp.rotate((0, 0, 0), (1, 0, 0), 90)), 1, 'PETG', 'black', 'flange down'),
-        '258_vac_wand_elbow': (None, on_bed(elb), 2, 'PETG', 'black', 'socket end down'),
+        '258_vac_wand_elbow': (None, on_bed(elb), N_ELBOWS, 'PETG', 'black', 'socket end down'),
         '260_vac_handle': (hd, on_bed(hd.rotate((0, 0, 0), (0, 1, 0), -90)), 1, 'PETG', 'black', 'on its side'),
         '261_vac_eye': (eyes, on_bed(eye_flat), 2, 'PETG', 'black', 'flat (either face: left and right are the same piece)'),
         '265_vac_coupon_socket_ring': (None, on_bed(c_sock), 1, 'PLA', 'any', 'chamfered (0.15) end down'),
@@ -501,14 +502,14 @@ def main():
         plist.append({'label': name, 'part_no': name[:3], 'qty': qty, 'material': mat, 'colour': colour, 'bed_face': face, **bf,
                       'diagonal_on_bed': False, 'est_grams': g, 'est_hours': hours(g)})
         tot += g * qty; by_mat[mat] = by_mat.get(mat, 0) + g * qty
-    # collect pose: mouthpiece + 2 elbows + 3 tubes (canister frame), for the stills and collect/ only
+    # collect pose: mouthpiece + N_ELBOWS elbows + 3 tubes (canister frame), for the stills and collect/ only
     def frame(shape, c, zx, xx):
         """move a wand part (socket entry at the origin, axis +Z, bend toward +X) to entry c, axis zx, bend toward xx."""
         return W(shape.val().moved(cq.Location(cq.Plane(origin=c.toTuple(), xDir=xx.toTuple(), normal=zx.toTuple()))))
     SEAT = 33.0                                    # a socket goes about 33 mm onto a cuff
     wand = []
     c0 = V(0, PAD_Y + FLANGE_T + CUFF_LEN - SEAT, MOUTH_Z); d0 = V(0, 1, 0)
-    for k in range(2):
+    for k in range(N_ELBOWS):
         dn = V(0, 0, -1) - d0 * V(0, 0, -1).dot(d0); xx = dn.normalized()
         wand.append((f'258_vac_wand_elbow_{k + 1}', frame(elb, c0, d0, xx)))
         base = c0 + xx * e_c[0] + d0 * e_c[2]
@@ -520,6 +521,7 @@ def main():
         c0 = c0 + d0 * (TUBE_L - SEAT)
     c0 = c0 + d0 * SEAT                            # tip of the last tube
     wand_reach = round(MOUTH_Z - c0.z, 0)
+    wand_tip = c0
     for n, s in wand:                              # same machine frame as world/, wand pushed onto the mouth
         if PRINT_WAND_TUBES or n.startswith('258'):
             export(s.translate(ORIGIN), col / f'{n}.step')
@@ -576,6 +578,8 @@ def main():
     top_z = ROOF_Z + PORT_H
     res['size'] = {'body_od': 2 * R_OUT, 'collar_od': 2 * COLLAR_R, 'height_above_stud': top_z, 'overall_height': top_z + DOCK_DEPTH,
                    'machine_height_docked': STUD_TOP + top_z, 'wand_reach_below_mouth': wand_reach}
+    res['wand'] = {'elbows': N_ELBOWS, 'turn_deg': N_ELBOWS * ELBOW_DEG, 'tip_canister_frame': [round(wand_tip.x), round(wand_tip.y), round(wand_tip.z)],
+                   'clash_with_body_mm3': {n: round(sum(vol_common(w, b) for _, b in body), 1) for n, w in wand}}
     res['hose'] = {'status': 'MEASURED by coupon 266 (BJ 2026-11-24): cuff went about 2/5 in, tip ~58.0', 'cuff_tip_od': CUFF_TIP, 'cuff_base_od': CUFF_BASE,
                    'socket_entry_d': round(2 * SOCK_TOP_R, 2), 'socket_d_at_36': round(2 * SOCK_BOT_R, 2),
                    'mm_of_depth_per_mm_of_diameter': round(SOCK_DEPTH / (2 * SOCK_TOP_R - 2 * SOCK_BOT_R), 1)}
@@ -622,7 +626,9 @@ def main():
     except Exception as e:
         print('machine stills skipped:', e)
     render([(s, c_of(n), 1.0) for n, s in body] + [(s, K if (PRINT_WAND_TUBES or n.startswith('258')) else G, 1.0) for n, s in wand], HERE / 'still_3_collect.png', cam=(1500, 1500, 500), focal=(0, 80, -230),
-           size=(1000, 1100), title='Collect pose: hose on the top port; 2 printed elbows on the mouth, then the vac\'s own wand (grey, 3 x 240 shown)')
+           size=(1000, 1100), title=f'Collect pose: hose on the top port; {N_ELBOWS} printed elbows on the mouth ({N_ELBOWS * ELBOW_DEG:.0f} deg), then the vac\'s own wand (grey)')
+    render([(s, c_of(n), 1.0) for n, s in body] + [(s, K if (PRINT_WAND_TUBES or n.startswith('258')) else G, 1.0) for n, s in wand], HERE / 'still_3b_collect_side.png', cam=(2600, 60, 0), focal=(0, 60, -200),
+           size=(1000, 1100), title=f'Side view: mouth + {N_ELBOWS} elbows + wand make the 7 (handle on the left)')
     render([(s, c_of(n), 1.0) for n, s in body], HERE / 'still_5_face.png', cam=(0, 900, 150), focal=(0, 0, 122), size=(900, 900), title='Face: eyes and mouth (gate closed, mouth to the front)')
     ex = {'250': 0, '251': -130, '252': -230, '253': -290, '254': 130, '255': 230, '256': 330, '257': 0, '260': 0, '261': 0}
     exy = {'257': 90, '260': -90, '261': 60}
