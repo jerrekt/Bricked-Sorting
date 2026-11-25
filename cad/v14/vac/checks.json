@@ -103,8 +103,8 @@
   "open_area_mm2": 12172,
   "limit_slot_w": 2.5,
   "tilt_deg": 25.0,
-  "hose_bore_area_mm2": 2124,
-  "open_to_hose_ratio": 5.7
+  "hose_bore_area_mm2": 2206,
+  "open_to_hose_ratio": 5.5
  },
  "capacity": {
   "funnel_L": 1.25,
@@ -121,11 +121,11 @@
   "wand_reach_below_mouth": 741.0
  },
  "hose": {
-  "status": "NOT MEASURED: default 2-1/2 in cuff",
-  "cuff_tip_od": 57.0,
-  "cuff_base_od": 58.5,
-  "socket_entry_d": 58.7,
-  "socket_d_at_36": 56.85,
+  "status": "MEASURED by coupon 266 (BJ 2026-11-24): cuff went about 2/5 in, tip ~58.0",
+  "cuff_tip_od": 58.0,
+  "cuff_base_od": 59.5,
+  "socket_entry_d": 59.7,
+  "socket_d_at_36": 57.85,
   "mm_of_depth_per_mm_of_diameter": 19.5
  },
  "bed_fit": {
@@ -189,15 +189,15 @@
    "extent": [
     98.07,
     98.07,
-    44.1
+    44.11
    ],
    "ok": true
   },
   "258_vac_wand_elbow": {
    "extent": [
-    94.19,
-    64.07,
-    129.71
+    95.06,
+    65.07,
+    130.55
    ],
    "ok": true
   },
@@ -227,19 +227,19 @@
   },
   "266_vac_coupon_hose_socket": {
    "extent": [
-    63.68,
-    63.68,
+    64.68,
+    64.68,
     36.18
    ],
    "ok": true
   }
  },
  "filament": {
-  "grams": 2045,
-  "hours": 45.4,
+  "grams": 2052,
+  "hours": 45.6,
   "by_material": {
    "PLA": 1084,
-   "PETG": 961
+   "PETG": 968
   },
   "yellow_PLA_grams": 1023,
   "canister_only_grams": 1810

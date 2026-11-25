@@ -3,11 +3,11 @@
  "updated": "2026-11-24 17:43 PT",
  "summary": {
   "total": {
-   "grams": 10570,
+   "grams": 10577,
    "hours": 198.9
   },
   "done": {
-   "grams": 5498,
+   "grams": 5499,
    "hours": 105.9
   },
   "printing": {
@@ -15,13 +15,13 @@
    "hours": 0.0
   },
   "left": {
-   "grams": 5072,
+   "grams": 5078,
    "hours": 93.0
   }
  },
  "poc": {
   "total": {
-   "grams": 5879,
+   "grams": 5885,
    "hours": 114.4
   },
   "done": {
@@ -33,14 +33,14 @@
    "hours": 0.0
   },
   "left": {
-   "grams": 661,
+   "grams": 667,
    "hours": 14.6
   }
  },
  "cost": {
   "used": 52.5,
-  "left_poc": 7.23,
-  "left_machine": 55.42,
+  "left_poc": 7.3,
+  "left_machine": 55.49,
   "note": "USD incl. 9.375 % tax; PLA $9.99/kg, PETG $10.00/kg (Micro Center)"
  },
  "pace_factor": 0.89,
@@ -81,8 +81,8 @@
    "parts_left": 0
   },
   "Vacuum canister": {
-   "total_g": 2045.0,
-   "left_g": 660.9,
+   "total_g": 2051.8,
+   "left_g": 667.4,
    "left_h": 14.6,
    "parts": 15,
    "parts_left": 10
@@ -2909,7 +2909,7 @@
    "part": "256_vac_hose_port",
    "material": "PLA",
    "qty": 1,
-   "g_each": 86.4,
+   "g_each": 85.6,
    "h_each": 1.9,
    "done": 0,
    "printing": 0,
@@ -2927,7 +2927,7 @@
    "part": "257_vac_mouthpiece",
    "material": "PETG",
    "qty": 1,
-   "g_each": 50.7,
+   "g_each": 51.6,
    "h_each": 1.1,
    "done": 0,
    "printing": 0,
@@ -2945,7 +2945,7 @@
    "part": "258_vac_wand_elbow",
    "material": "PETG",
    "qty": 2,
-   "g_each": 87.9,
+   "g_each": 91.1,
    "h_each": 2.0,
    "done": 0,
    "printing": 0,
@@ -3017,7 +3017,7 @@
    "part": "266_vac_coupon_hose_socket",
    "material": "PLA",
    "qty": 1,
-   "g_each": 20.3,
+   "g_each": 20.6,
    "h_each": 0.5,
    "done": 1,
    "printing": 0,
@@ -3250,13 +3250,13 @@
  "bom_value": {
   "sections": {
    "Wood": 46.66,
-   "Filament": 101.11,
+   "Filament": 101.21,
    "Motion": 56.6,
    "Electronics": 93.0,
    "Power + wiring": 38.0,
    "Fasteners": 17.38
   },
-  "total": 352.75,
+  "total": 352.85,
   "note": "rough value of what is used (qty x typical unit price, not whole packs), full machine, before tax"
  }
 }

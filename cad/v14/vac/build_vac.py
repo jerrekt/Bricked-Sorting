@@ -40,7 +40,7 @@ DENSITY = {'PETG': 1.27, 'PLA': 1.24}
 
 # ---------------- hose (NOT measured yet: BJ said 2.5 in; print the hose coupon 266 first) ----------------
 # Default = a common 2-1/2 in shop-vac cuff: tapered male end about 57.0 at the tip to 58.5 at the base.
-CUFF_TIP, CUFF_BASE, CUFF_LEN = 57.0, 58.5, 40.0
+CUFF_TIP, CUFF_BASE, CUFF_LEN = 58.0, 59.5, 40.0   # BJ 2026-11-24: cuff went ~2/5 into coupon 266 (~14 of 36 mm) -> tip ~58.0, +1.0 on v3
 SOCK_TOP_R = (CUFF_BASE + 0.2) / 2            # female socket: entry radius
 SOCK_BOT_R = (CUFF_TIP - 0.15) / 2            # radius 36 mm in: the cuff wedges ~3 mm before the bottom
 SOCK_DEPTH = 36.0
@@ -576,7 +576,7 @@ def main():
     top_z = ROOF_Z + PORT_H
     res['size'] = {'body_od': 2 * R_OUT, 'collar_od': 2 * COLLAR_R, 'height_above_stud': top_z, 'overall_height': top_z + DOCK_DEPTH,
                    'machine_height_docked': STUD_TOP + top_z, 'wand_reach_below_mouth': wand_reach}
-    res['hose'] = {'status': 'NOT MEASURED: default 2-1/2 in cuff', 'cuff_tip_od': CUFF_TIP, 'cuff_base_od': CUFF_BASE,
+    res['hose'] = {'status': 'MEASURED by coupon 266 (BJ 2026-11-24): cuff went about 2/5 in, tip ~58.0', 'cuff_tip_od': CUFF_TIP, 'cuff_base_od': CUFF_BASE,
                    'socket_entry_d': round(2 * SOCK_TOP_R, 2), 'socket_d_at_36': round(2 * SOCK_BOT_R, 2),
                    'mm_of_depth_per_mm_of_diameter': round(SOCK_DEPTH / (2 * SOCK_TOP_R - 2 * SOCK_BOT_R), 1)}
     res['bed_fit'] = {p['label']: {'extent': p['bed_extent'], 'ok': p['fits_248']} for p in plist}

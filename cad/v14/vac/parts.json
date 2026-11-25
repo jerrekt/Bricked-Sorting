@@ -118,7 +118,7 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 86.4,
+   "est_grams": 85.6,
    "est_hours": 1.9
   },
   {
@@ -131,11 +131,11 @@
    "bed_extent": [
     98.07,
     98.07,
-    44.1
+    44.11
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 50.7,
+   "est_grams": 51.6,
    "est_hours": 1.1
   },
   {
@@ -146,13 +146,13 @@
    "colour": "black",
    "bed_face": "socket end down",
    "bed_extent": [
-    94.19,
-    64.07,
-    129.71
+    95.06,
+    65.07,
+    130.55
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 87.9,
+   "est_grams": 91.1,
    "est_hours": 2.0
   },
   {
@@ -214,13 +214,13 @@
    "colour": "any",
    "bed_face": "small end down",
    "bed_extent": [
-    63.68,
-    63.68,
+    64.68,
+    64.68,
     36.18
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams": 20.3,
+   "est_grams": 20.6,
    "est_hours": 0.5
   }
  ],
@@ -241,10 +241,10 @@
    "use": "mouthpiece 4, handle 4, stop 1, pivot 1"
   }
  ],
- "est_total_grams": 2045.0,
- "est_total_hours": 45.4,
+ "est_total_grams": 2051.8,
+ "est_total_hours": 45.6,
  "est_grams_by_material": {
-  "PLA": 1084.5,
-  "PETG": 960.5
+  "PLA": 1084.0,
+  "PETG": 967.8
  }
 }
