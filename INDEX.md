@@ -49,16 +49,18 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 - **P19** v2 2026-11-15: 0.5 mm teardrop tops on the sideways holes (cradle B, motor wall). If you already printed v1, it is fine: just clean the hole tops
 - **P20** v2 2026-11-16: split in 2 plates and spaced out: v1 in one plate sliced to 23 h / 576 g with 134 g of support (some trapped inside the beam) and a path conflict between the tall segments. Throw away v1
 - **P20** v3 2026-11-16: fixed parts that were not one piece: beam plugs (the 20 mm joint plug floated 1 mm off segments 1-2, Bambu "empty layer"), carriage endstop flag, cup +x stub axle, idler slider arms, idler tension: block moved outboard of the beam post (it hit post L) and the screw now goes into a lug on the slider; cup stubs now run through the tower 625s (pockets from the inner face). Segments stand plug-up. 18 scoop poses clash-free. Throw away v1/v2
+- **P21** 2026-11-24: printed (in done/)
 - **P24** v2 2026-11-18: yellow parts (lower shell, lid, hose port) are PLA now (BJ): insert holes 4.3, stud socket and lid joint at 0.15 per side, coupons in PLA with a 0.15 / 0.10 stepped ring; wand tubes dropped (the vac's own wands fit, old file 9); 2 black eyes added (file 6) with pockets in the lower shell; other black parts unchanged except 0.05 mm on the funnel rim and disc recess. Nothing was printed from v1: throw v1 away
 - **P24** 2026-11-22: file 3 (lid) printed, 242.9 g, 6 h 9 m (in done/)
 - **P24** 2026-11-23: file 5 (funnel) printed, 309 g slicer, 7 h 39 m (in done/)
 - **P24** v3 2026-11-23: only file 2 (lower shell) changed. Coupon: the 0.15 ring was tight on the stud but fit (BJ), so the skirt bore over the stud is 0.25 per side now (216.5). The bore above the stud rim, funnel seat, gate disc and lid joint are unchanged, so the v2 lid and funnel you printed still fit. Files 1, 4, 6, 7, 8 are the same parts as v2
 - **P24** 2026-11-23: file 1 (coupons) printed; ring result above, hose result still to come (in done/)
 - **P24** 2026-11-24: file 2 (lower shell, v3) printed (in done/)
+- **P24** 2026-11-24: v3 lower shell on the left stud: fits (BJ). 0.25 per side confirmed for the dock
 
 ## Filament used
 
-**Total: 4789.19 g** (PETG 2521.29 g, PLA 1257 g, PLAred 764 g, PLAyellow 242.9 g, TPU 4 g) over 123 h of printing
+**Total: 4805.19 g** (PETG 2521.29 g, PLA 1257 g, PLAred 764 g, PLAyellow 242.9 g, TPU 20 g) over 123 h of printing
 
 Filament used, one line per Bambu job (from BJ's print history). grams source=estimate: part geometry at 2 walls / 15% infill, no supports, brim or purge (the slicer usually reads 5-15% higher); replace with source=slicer when BJ sends the grams Bambu shows for a job. Other projects (JE, SJSU SAEC, SME sign) are not counted.
 
@@ -107,6 +109,7 @@ Filament used, one line per Bambu job (from BJ's print history). grams source=es
 | 2026-11-22 22:35 | P24_v2_PETG_vac_5_black_funnel | 7.65 | P24 | v2 | PETG | 309 (slicer) | done | 251 vac funnel (black PETG, 7h39m; done by 2026-11-23 18:40) |
 | 2026-11-23 19:00 | P24_v2_PLA_vac_1_coupons_PRINT_FIRST | 1.4 | P24 | v2 | PLA | 59 (CAD estimate) | done | 265 vac coupon socket ring, 266 vac coupon hose socket (ring at 0.15 tight on the stud but fits; hose depth not reported yet) |
 | 2026-11-24 06:46 | P24_v3_PLAyellow_vac_2_shell_lower | 12.2 | P24 | v3 | PLA | 551 (CAD estimate) | done | 250 vac shell lower (yellow PLA; done by 2026-11-24 14:34; slicer time and grams not reported (CAD estimate)) |
+| 2026-11-24 15:00 | P21_v1_TPU_scoop_cup_pad | 0.4 | P21 | v1 | TPU | 16 (CAD estimate) | done | 183 cup pad TPU (done by 2026-11-24 17:42; last POC print) |
 
 ---
 
