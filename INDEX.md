@@ -35,7 +35,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 | P21 | v1 | 1_now | TPU | Scoop cup pad (TPU) | 1 |
 | P22 | v1 | done | PLAred | Roof tiles: 8 DIFFERENT files, print each once (one 180 x 180 tile per plate, ~1 h each), red PLA, face down, no supports. c1/c2 have the quarter cutout around the funnel stud (screw hole r 104), c3/c4 go under the capped stud (hole r 102). Layout: c1..c4, r1 back / r2 front. All 8 printed by 2026-11-21; roof + studs assembled. | 8 |
 | P23 | v1 | done | PLA | Roof clips: 24 C3 (screw to the top rails, hold the tile ribs) + 12 H (join the roof seams). Print in your calibrated Inland PLA: the slot fit is PLA-sized - printed 2026-11-22 | 1 |
-| P24 | v5 | vac | PETG/PLA/PLAyellow | Vacuum canister (accessory, docks on the left stud): 8 files, no supports. PRINT FILE 1 (2 PLA coupons) FIRST and report: does the ring slide onto the stud and turn (chamfered end = 0.15 fit, other end = 0.10), and how many mm does your hose cuff go into the small socket. Yellow PLA: 2 lower shell, 3 lid, 4 hose port (+ pivot cap). Black PETG: 5 funnel, 6 gate disc + 2 eyes (glue the eyes into their pockets above the mouth), 7 screen, 8 mouthpiece + handle + 2 wand elbows. The hose parts (4, 8) are sized for a 57.0-58.5 mm cuff until the coupon result is in | 8 |
+| P24 | v6 | vac | PETG/PLA/PLAyellow | Vacuum canister (accessory, docks on the left stud): 8 files, no supports. PRINT FILE 1 (2 PLA coupons) FIRST and report: does the ring slide onto the stud and turn (chamfered end = 0.15 fit, other end = 0.10), and how many mm does your hose cuff go into the small socket. Yellow PLA: 2 lower shell, 3 lid, 4 hose port (+ pivot cap). Black PETG: 5 funnel, 6 gate disc + 2 eyes (glue the eyes into their pockets above the mouth), 7 screen, 8 mouthpiece + handle + 2 wand elbows. The hose parts (4, 8) are sized for a 57.0-58.5 mm cuff until the coupon result is in | 8 |
 
 ## Change log
 
@@ -59,6 +59,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 - **P24** 2026-11-24: v3 lower shell on the left stud: fits (BJ). 0.25 per side confirmed for the dock
 - **P24** v4 2026-11-24: hose cuff measured (BJ: cuff went about 2/5 into the coupon socket, about 14 of 36 mm, so the tip is about 58.0, 1 mm over the drawn 57.0). Files 4 (hose port) and 8 (mouthpiece + 2 elbows) are 1.0 mm bigger. Files 6 and 7 are unchanged parts. Nothing printed needs reprinting
 - **P24** v5 2026-11-24: 3 wand elbows instead of 2 (BJ: bend it more so the mouth and wand make a 7). File 8 now has the handle, mouthpiece and 3 elbows (126 deg turn); the wand ends under the handle, no clash with the canister. Old handle kept. No other file changed
+- **P24** v6 2026-11-24: elbows 35 deg each (3 x 35 = 105 deg turn; BJ: 126 was a bit too much angle). Only the 3 elbows in file 8 changed
 
 ## Filament used
 
