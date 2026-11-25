@@ -763,7 +763,22 @@
     "261 vac eye x2"
    ],
    "note": "black PETG; done by 2026-11-24 20:59; time from Bambu history (BJ screenshot 2026-11-24)"
+  },
+  {
+   "date": "2026-11-24 21:10",
+   "bambu_job": "P24_v6_PETG_vac_7_black_screen",
+   "hours": 2.8,
+   "plate": "P24",
+   "version": 6,
+   "material": "PETG",
+   "grams": 128,
+   "source": "CAD estimate",
+   "status": "done",
+   "parts": [
+    "254 vac screen"
+   ],
+   "note": "black PETG on the Cryo plate, bed 70 C; done by 2026-11-25 00:40; real time not reported"
   }
  ],
- "updated": "2026-11-24 21:05 PT"
+ "updated": "2026-11-25 00:41 PT"
 }
