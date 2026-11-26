@@ -6,7 +6,7 @@ Built on `cad-v14-vac` (from `cad-v14-all`), 2026-11-18. Script `build_vac.py` r
 cut in half: collect, dock, half turn, drop). Plates: `make_plates.sh` -> `../plates/P24_*`.
 Nothing on the machine changes.
 
-**Status: P24 v6, all parts printed (2026-11-25). Dock is a little tight to twist: sand the skirt and wax. Dyson adapter waits on the Adapter Base STEP from BJ.**
+**Status: P24 v6, printed and fully assembled (BJ 2026-11-25 22:41 PT). Dock is a little tight to twist: sand the skirt and wax. Dyson adapter waits on the Adapter Base STEP from BJ.**
 Print files are in the `vac` folder of the print pack (BJ 2026-11-18), not `1_now`.
 
 The print pack on the `prints` branch (2026-11-18) was built from this branch. Until `cad-v14-vac` is merged into
