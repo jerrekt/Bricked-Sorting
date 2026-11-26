@@ -795,7 +795,23 @@
     "258 vac wand elbow x3"
    ],
    "note": "black PETG, Cryo plate 70 C; done by 2026-11-25 16:17 PT; real time not reported"
+  },
+  {
+   "date": "2026-11-25 16:20",
+   "bambu_job": "P24_v6_PLAyellow_vac_4_hose_port_and_pivot_cap",
+   "hours": 1.9,
+   "plate": "P24",
+   "version": 6,
+   "material": "PLA",
+   "grams": 88,
+   "source": "CAD estimate",
+   "status": "done",
+   "parts": [
+    "256 vac hose port",
+    "253 vac pivot cap"
+   ],
+   "note": "yellow PLA; done by 2026-11-25 19:25 PT; real time not reported. Vac complete"
   }
  ],
- "updated": "2026-11-25 16:18 PT"
+ "updated": "2026-11-25 19:26 PT"
 }

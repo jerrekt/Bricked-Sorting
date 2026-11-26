@@ -6,7 +6,7 @@ Built on `cad-v14-vac` (from `cad-v14-all`), 2026-11-18. Script `build_vac.py` r
 cut in half: collect, dock, half turn, drop). Plates: `make_plates.sh` -> `../plates/P24_*`.
 Nothing on the machine changes.
 
-**Status: plate P24 v4. Printed: coupons (ring at 0.15 tight but fits, so the stud skirt is 0.25 now), lid and funnel (v2, still fit). Hose cuff measured with coupon 266 (about 2/5 in, tip ~58.0): hose port, mouthpiece and elbows are +1.0 in v4. Lower shell printed and fits the stud.**
+**Status: P24 v6, all parts printed (2026-11-25). Dock is a little tight to twist: sand the skirt and wax. Dyson adapter waits on the Adapter Base STEP from BJ.**
 Print files are in the `vac` folder of the print pack (BJ 2026-11-18), not `1_now`.
 
 The print pack on the `prints` branch (2026-11-18) was built from this branch. Until `cad-v14-vac` is merged into
