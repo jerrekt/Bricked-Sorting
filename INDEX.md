@@ -63,10 +63,11 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 - **P24** 2026-11-24 20:56: BJ: the v3 shell is a little too tight on the stud to twist easily. Fix without reprinting: sand the inside of the skirt (bottom 20 mm) and wax it. If the shell is ever reprinted, use 0.35 per side
 - **P24** 2026-11-24: file 6 (gate disc + 2 eyes) printed (in done/)
 - **P24** 2026-11-25: file 7 (screen) printed (in done/)
+- **P24** 2026-11-25: file 8 (mouthpiece, handle, 3 elbows) printed (in done/)
 
 ## Filament used
 
-**Total: 5102.19 g** (PETG 2794.29 g, PLA 1280 g, PLAred 764 g, PLAyellow 242.9 g, TPU 21 g) over 140 h of printing
+**Total: 5487.19 g** (PETG 3179.29 g, PLA 1280 g, PLAred 764 g, PLAyellow 242.9 g, TPU 21 g) over 148 h of printing
 
 Filament used, one line per Bambu job (from BJ's print history). grams source=estimate: part geometry at 2 walls / 15% infill, no supports, brim or purge (the slicer usually reads 5-15% higher); replace with source=slicer when BJ sends the grams Bambu shows for a job. Other projects (JE, SJSU SAEC, SME sign) are not counted.
 
@@ -121,6 +122,7 @@ Filament used, one line per Bambu job (from BJ's print history). grams source=es
 | 2026-11-24 14:46 | P21_v1_TPU_scoop_cup_pad | 1.4 | P21 | v1 | TPU | 16 (CAD estimate) | done | 183 cup pad TPU (done by 2026-11-24 17:42; last POC print; time from Bambu history (BJ screenshot 2026-11-24)) |
 | 2026-11-24 17:57 | P24_v3_PETG_vac_6_black_gate_disc_and_eyes | 2.6 | P24 | v3 | PETG | 145 (CAD estimate) | done | 252 vac gate disc, 261 vac eye x2 (black PETG; done by 2026-11-24 20:59; time from Bambu history (BJ screenshot 2026-11-24)) |
 | 2026-11-24 21:10 | P24_v6_PETG_vac_7_black_screen | 2.8 | P24 | v6 | PETG | 128 (CAD estimate) | done | 254 vac screen (black PETG on the Cryo plate, bed 70 C; done by 2026-11-25 00:40; real time not reported) |
+| 2026-11-25 00:45 | P24_v6_PETG_vac_8_black_mouthpiece_handle_elbows | 8.0 | P24 | v6 | PETG | 385 (CAD estimate) | done | 257 vac mouthpiece, 260 vac handle, 258 vac wand elbow x3 (black PETG, Cryo plate 70 C; done by 2026-11-25 16:17 PT; real time not reported) |
 
 ---
 
