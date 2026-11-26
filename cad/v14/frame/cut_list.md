@@ -28,7 +28,7 @@ Stock: 2x2 x 8 ft x 1 (4 x 600 = 2400 of 2438, cut carefully), 1x2 x 8 ft x 3 (6
 - Rails stay flush with the posts' outside faces. Cross rails (310), beam posts (212) and posts (600) do not change.
 - 1x2 must be 3/4 in (19) thick, or the clips on the rail inner faces miss the roof ribs. Measure it before cutting.
 
-## Wood-to-wood screws (pilot 2.5 mm for #6, 3 mm for #8)
+## Wood-to-wood screws (pilot 2.5 mm for #6, 3.5 mm (9/64) for the #9 BJ uses instead of #8; clearance 3/16 through the first piece)
 
 | Joint | Screw | Qty | Where |
 |---|---|---|---|
