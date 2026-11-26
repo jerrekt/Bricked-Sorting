@@ -17,6 +17,17 @@ All straight crosscuts. Nominal 2x2 = 38 x 38 actual, 1x2 = 19 x 38 actual (chec
 
 Stock: 2x2 x 8 ft x 1 (4 x 600 = 2400 of 2438, cut carefully), 1x2 x 8 ft x 3 (632 + 632 + 272 + 272 + 272 = 2080; 632 + 632 + 272 + 272 + 212 + 212 = 2232; 310 + 310 + 272 = 892; the sixth 272 goes on the third board), 1/2 in plywood (or 7/16 OSB) 2 x 4 ft handy panel x 2 (610 x 1219 each: one floor, one deck; both pieces do not fit on one panel).
 
+## Measured lumber (BJ 2026-11-26)
+
+2x2 "furring strip" from Home Depot is not square and not 38: two boards measured 1.500 x 1.375 in (38.1 x 34.9) and
+1.447 x 1.510 in (36.8 x 38.4). Keep the frame's outside size (708 x 348 over the posts) so the roof and skin clips line up:
+- Turn every post so its ~1.5 in (38) face runs along the LONG side. Long rails and cleats (B, C) stay **632**.
+- Short rails, cleats and bottom rails (D, E, F): screw the posts to the floor first (6 mm in from every floor edge, outside
+  faces square), measure each gap at the top, middle and bottom, and cut each piece to its gap (expect about 274-278).
+- Deck corner notches: cut each to its own post.
+- Rails stay flush with the posts' outside faces. Cross rails (310), beam posts (212) and posts (600) do not change.
+- 1x2 must be 3/4 in (19) thick, or the clips on the rail inner faces miss the roof ribs. Measure it before cutting.
+
 ## Wood-to-wood screws (pilot 2.5 mm for #6, 3 mm for #8)
 
 | Joint | Screw | Qty | Where |
