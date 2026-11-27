@@ -1,7 +1,7 @@
 {
  "interface": "v14-interface-5.1 (2026-11-06 19:35): drawer fits through the skin opening (bins 70 wide at 76 pitch, body x +-306, opening +-310, overlay face +-330); roof support under the hopper stud",
  "modules": {
-  "F": 292,
+  "F": 86,
   "K": 70,
   "D": 102,
   "S_fixed": 9
@@ -145,8 +145,8 @@
  },
  "printed_totals": {
   "F_frame_skin": {
-   "grams": 3379,
-   "hours": 46.9
+   "grams": 3397,
+   "hours": 46.8
   },
   "K_deck": {
    "grams": 1459,
@@ -161,8 +161,8 @@
    "hours": 14.1
   },
   "ALL": {
-   "grams": 7852,
-   "hours": 141.0,
+   "grams": 7870,
+   "hours": 140.9,
    "budget": "printed total <= ~9.5 kg and <= ~200 h (skin ~4.6 kg, studs ~0.5, mechanisms ~3.5, bins ~1)"
   }
  },
@@ -191,7 +191,7 @@
   "#6 x 3/4 in wood screws (clips, keeper bars)": [
    {
     "module": "F",
-    "qty": 152,
+    "qty": 198,
     "use": ""
    }
   ],
@@ -771,6 +771,17 @@
     -49.0,
     155.0,
     612.0
+   ]
+  },
+  {
+   "label": "118_mid_rail_front",
+   "bbox": [
+    -316.0,
+    155.0,
+    354.0,
+    316.0,
+    174.0,
+    392.0
    ]
   },
   {

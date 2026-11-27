@@ -76,10 +76,12 @@
   "folder": "done"
  },
  "P10": {
-  "v": 1,
-  "what": "12 corner caps, red (5 mm brim)",
-  "log": [],
-  "folder": "3_semester2"
+  "v": 2,
+  "what": "12 corner caps v2, red (5 mm brim), standing on end. They screw to the posts: 4 x #6 x 3/4 each through slotted countersunk pads (48 screws), no clips.",
+  "log": [
+   "v2 2026-11-26: clip ribs replaced by screw pads with slotted holes"
+  ],
+  "folder": "walls"
  },
  "P11": {
   "v": 1,
@@ -181,7 +183,7 @@
  "P23": {
   "v": 1,
   "folder": "done",
-  "what": "Roof clips: 24 C3 (screw to the top rails, hold the tile ribs) + 12 H (join the roof seams). Print in your calibrated Inland PLA: the slot fit is PLA-sized - printed 2026-11-22",
+  "what": "Roof clips: 24 C3 (screw to the top rails, hold the tile ribs) + 12 H (join the roof seams). Print in your calibrated Inland PLA: the slot fit is PLA-sized - printed 2026-11-22 OBSOLETE 2026-11-26: roof v2 and walls v2 screw down, the clips are not used.",
   "log": []
  },
  "P24": {
@@ -225,5 +227,13 @@
    "P24_PETG_vac_8_black_mouthpiece_handle_elbows.3mf": 6,
    "P24_PLAyellow_vac_4_hose_port_and_pivot_cap.3mf": 6
   }
+ },
+ "P25": {
+  "v": 1,
+  "folder": "walls",
+  "what": "Wall tiles v2 (screw-down, no clips): 32 tiles + 2 access panel halves, one file each, red PLA, outer face down, no supports. Every tile screws to the wood with #6 x 3/4 flat head through slotted countersunk bosses (+-2 mm); 132 screws. Front top row (F_c1..c4_r3) has the white \"Bricked Sorting\" lettering and the two-brick icon as 0.6 mm inlays: load white in AMS slot 2 and blue in slot 3 (only F_c3_r3 uses blue). Needs one new piece of wood first: front mid rail, 1x2 x 24-7/8 in between the front posts, centre 14-11/16 in (373 mm) above the floor top. Names: F front, B back, L = the front viewer's left end, R right end; c = column left to right seen from outside... r1 bottom, r3 top.",
+  "log": [
+   "v1 2026-11-26: BJ: no snap clips against wood, screws instead, and put Bricked Sorting with the logo on the side. Replaces the clip-on wall tiles (never printed)."
+  ]
  }
 }
