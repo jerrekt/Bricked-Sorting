@@ -1,6 +1,6 @@
 {
  "version": "V1.036",
  "date": "2026-11-26",
- "note": "About page: how it goes together, build progress photo and walls; tasks, parts and prints data refreshed (frame built, POC parts printed, vacuum built, screw-down roof and walls)",
+ "note": "Build section with frame photo and walls; tasks, parts and prints data updated",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }

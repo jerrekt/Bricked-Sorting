@@ -5,7 +5,7 @@ It counts updates to this repo, not how finished the machine is; the Tasks page 
 V1.001 to V1.014 were numbered afterwards, in merge order.
 
 ## V1.036 · 2026-11-26
-- Progress update: frame built, all POC parts printed, vacuum built, roof and walls now screw down; tasks, parts and prints data refreshed
+- Build section: frame photo and walls; tasks, parts and prints data updated
 - About page: How it goes together, the wood frame with one stage at a time (isolate, identify, indicate, electronics)
 
 ## V1.035 · 2026-11-20

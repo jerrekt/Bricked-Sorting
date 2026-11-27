@@ -153,7 +153,7 @@
    "size": "S",
    "phase": "poc",
    "owner": "Branden",
-   "detail": "Decided 2026-11-20: plain plates count as bricks (floor 1). Site V1.034."
+   "detail": "Decided 2026-11-20: plates count as bricks (floor 1)."
   },
   {
    "id": "bins-04",
@@ -339,7 +339,7 @@
    "size": "L",
    "phase": "final",
    "owner": "Branden",
-   "detail": "V14: wood frame with a 2 mm red PLA skin. Frame built 2026-11-26. Roof tiles v2 (screw-down) printing; wall tiles v2 and corner caps designed (screw-down, \"Bricked Sorting\" lettering on the front), to print after the proof of concept."
+   "detail": "V14: wood frame, 2 mm red PLA tiles screwed on. Frame built; roof tiles printing; walls in CAD."
   },
   {
    "id": "hw-03",
@@ -469,7 +469,7 @@
    "phase": "poc",
    "owner": "Marshall",
    "due": "2026-12-01",
-   "detail": "Draft written (49 pages) 2026-11-22; Marshall edits. Measured results and photos still to add. Due Tue Dec 1, 5 pm."
+   "detail": "Draft done 2026-11-22. Results and photos missing. Due Dec 1, 5 pm."
   },
   {
    "id": "course-07",
@@ -480,7 +480,7 @@
    "phase": "poc",
    "owner": "Branden",
    "due": "2026-12-02",
-   "detail": "Slides drafted 2026-11-23. The proof of concept is the real V14 machine on the wood frame (not cardboard): frame and electronics working, panels not needed."
+   "detail": "Slides drafted 2026-11-23. Due Dec 2."
   },
   {
    "id": "course-08",
@@ -811,7 +811,7 @@
    "size": "L",
    "phase": "final",
    "owner": "Branden",
-   "detail": "V14 (2026-11-13): wood frame (2x2 posts, 1x2 rails, OSB floor and deck) replaces the aluminum extrusion. Roof and walls are 2 mm printed tiles that screw to the wood."
+   "detail": "V14 (2026-11-13): wood frame replaces the aluminum extrusion."
   },
   {
    "id": "cad-hw-02",
@@ -851,7 +851,7 @@
    "size": "L",
    "phase": "poc",
    "owner": "All",
-   "detail": "The semester 1 checkpoint, Dec 2. Now on the real wood frame: a few bricks from the hopper to the scoop. If the trays are not tuned, bricks are fed by hand onto the scanner."
+   "detail": "Dec 2. On the real frame. Hand-feed the scanner if the trays are not tuned."
   },
   {
    "id": "fin-iso-01",
@@ -861,7 +861,7 @@
    "size": "L",
    "phase": "final",
    "owner": "Branden",
-   "detail": "V14: hopper, chute, drum and both trays printed (2026-11-15 to 11-19). Next: mount on the deck. Vibration motors (R370, 24 mm) still to buy and test."
+   "detail": "Printed. Not mounted. Vibration motors not bought."
   },
   {
    "id": "fin-iso-02",
@@ -881,7 +881,7 @@
    "size": "L",
    "phase": "final",
    "owner": "Branden",
-   "detail": "V14: scanner plate, trapdoors, camera bridge, LED holders and webcam mount printed. Next: mount on the deck and wire the servo."
+   "detail": "Printed. Not mounted."
   },
   {
    "id": "fin-id-02",
@@ -911,7 +911,7 @@
    "size": "L",
    "phase": "final",
    "owner": "Branden",
-   "detail": "V14 scoop on its beam printed (beam, carriage, cup, brackets, TPU pad). Bins and drawers are semester 2. Next: mount under the deck, belt and motor."
+   "detail": "Scoop printed, not mounted. Bins and drawers are semester 2."
   },
   {
    "id": "fin-ind-02",
@@ -951,7 +951,7 @@
    "size": "L",
    "phase": "poc",
    "owner": "Branden",
-   "detail": "Built 2026-11-26: 2x2 posts, 1x2 rails and cleats, OSB floor and deck. Lumber was not the nominal size (posts 35-38 mm), so short rails were cut to fit. Lesson filed: no tight fits against wood."
+   "detail": "Built 2026-11-26. Short rails cut to fit; the lumber was not nominal size."
   },
   {
    "id": "hw-08",
@@ -961,7 +961,7 @@
    "size": "M",
    "phase": "poc",
    "owner": "Branden",
-   "detail": "8 tiles reprinted with slotted countersunk holes for #6 x 3/4 screws (32 screws), replacing the clip-on tiles. Printing since 2026-11-26."
+   "detail": "8 tiles, 32 x #6 screws through slotted holes. Printing."
   },
   {
    "id": "hw-09",
@@ -971,7 +971,7 @@
    "size": "L",
    "phase": "poc",
    "owner": "Branden",
-   "detail": "All POC parts are printed. Deck parts screw to the deck; the scoop beam goes under it. Then wiring."
+   "detail": "All POC parts are printed."
   },
   {
    "id": "hw-10",
@@ -981,7 +981,7 @@
    "size": "L",
    "phase": "poc",
    "owner": "Branden",
-   "detail": "Pi, TMC2209 drivers, DRV8833, servos, 12 V supply with a fuse. Pin map and wiring diagram, then a script that runs drum, trays, trapdoors and scoop."
+   "detail": "Pin map, wiring diagram, then a script for the drum, trays, trapdoors and scoop."
   },
   {
    "id": "hw-11",
@@ -991,7 +991,7 @@
    "size": "L",
    "phase": "final",
    "owner": "Branden",
-   "detail": "Printed and assembled 2026-11-25 (about 2.1 kg, yellow PLA and black PETG). Docks on the hopper stud; a half turn opens the gate. Still to test with the shop vac; the stud fit is a little tight. A Dyson adapter is planned."
+   "detail": "Printed and assembled 2026-11-25. Not tested with a vacuum yet. Stud fit is tight."
   },
   {
    "id": "hw-12",
@@ -1001,7 +1001,7 @@
    "size": "L",
    "phase": "final",
    "owner": "Branden",
-   "detail": "Designed 2026-11-26: 32 tiles, 2 access panel halves and 12 corner caps, all screwed to the wood through slotted holes. White lettering inlaid on the front. About 2.3 kg of red PLA; needs one more 1x2 rail on the front."
+   "detail": "CAD done 2026-11-26. About 2.3 kg of red PLA. Needs one more 1x2 on the front."
   },
   {
    "id": "cad-iso-08",
@@ -1011,7 +1011,7 @@
    "size": "M",
    "phase": "poc",
    "owner": "Branden",
-   "detail": "The printed saddles fit a 24 mm motor. Run one tray on its leaf springs with real bricks before the full flow test."
+   "detail": "The printed saddles fit a 24 mm motor."
   }
  ]
 }
