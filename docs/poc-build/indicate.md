@@ -75,14 +75,21 @@ Measure between their **inside faces**, about 6 in above the floor. The beam nee
 
 16 containers, each up to **2 11/16 in wide × 3 11/16 in deep × 4 1/2 in tall**, on the floor.
 
-| | Centres from the X line | Rows |
+**Spacing for the POC (found 2026-11-26):** the carriage's flag hits the home switch mount 1/16 in past home, so it can't reach the drawers' hopper-end bin column (1 in past home). The POC containers are loose, so space them to suit the travel instead: 8 columns evenly from home to the scanner end (pitch 2 27/32 in).
+
+| | Centres | |
 |---|---|---|
-| Columns | 1 1/2, 4 1/2, 7 1/2, 10 1/2 in, both sides | Front row and back row, centred **4 1/16 in** from the Y line |
+| Columns (from the X line) | 9 7/16 in toward the hopper end, 6 5/8 in toward the hopper end, 3 3/4 in toward the hopper end, 15/16 in toward the hopper end, 1 15/16 in toward the scanner end, 4 3/4 in toward the scanner end, 7 5/8 in toward the scanner end, 10 1/2 in toward the scanner end | |
+| Rows | front and back, centred **4 1/16 in** from the Y line | |
 | Names | F1 at the hopper end → F8 at the scanner end | B1 at the scanner end → B8 at the hopper end |
+
+Column 1 is the home position; the receive spot (under the funnel) is between columns 7 and 8. The bin positions in the code must use these numbers, not the drawer ones. The drawers (next semester) need the home switch moved.
 
 ## 6. Checks
 
 - Carriage runs end to end by hand: no rub on the posts, the end plates or the containers.
 - **Receive spot:** move the carriage under the funnel. The funnel exit is centred over the cup, about 1 11/16 in above the cup floor. Mark this spot on the beam (CAD: 9 7/16 in toward the scanner end from the X line).
-- Tilt front and back: a piece slides off into the front or back container, not onto the floor.
+- Tilt front and back at every column: a piece slides off into the front or back container, not onto the floor.
+- Drive toward the hopper end slowly: the carriage stops on the home switch with the cup over column 1. Do not drive past it; 1/16 in further the flag hits the switch mount.
 - Home switch clicks before anything hits.
+- With the hopper-end wall tiles on: the scoop motor is **1/8 in** from them in the CAD. If it touches, the motor hums the wall.

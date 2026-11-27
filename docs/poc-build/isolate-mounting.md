@@ -79,9 +79,13 @@ Drill 3/32 in pilots through the 8 cradle holes, #6 × 3/4.
 ![trays](img/isolate-3-trays.png)
 
 1. Each tray gets its 2 leaf springs (V1: S1, S2. V2: S3, S4). Mark through the pad holes onto the tray underside, drill 1/8 in, M3 × 12 flat head from **inside** the tray (flush, nothing for a piece to catch on), nut under the pad.
-2. Stand V1 in front of the outlet plate. Its back wall is **1/16 – 1/8 in** off the plate face (must not touch when it vibrates).
+2. Stand V1 in front of the outlet plate. Its back wall is about **1/8 in** off the plate face (CAD 3.3 mm; must not touch when it vibrates).
 3. Stand V2 so V1's low end sits over V2's notch, and V2's low end points at the scanner landing ramp.
-4. Check 1/8 in clearance all around both trays. Pilots through the spring feet, #6 × 3/4.
+4. Check 1/8 in clearance all around both trays and their springs (CAD: springs to cradles 9/64 in, V1 spring to V2 spring 3/32 in). Pilots through the spring feet, #6 × 3/4.
+
+> **V1 → V2 hand-off does not work as drawn (found 2026-11-26, see `fit-checks.md`).** Pieces leave V1 over its whole end, but V2 is only under the last ~1/4 of that width: the rest fall about 4 in to the deck. Pieces that do land on V2 then pass under V1 with 1/8–1/4 in of headroom, so bricks jam. V2 also touches V1's side wall and V1's front spring (S2). Mount the drum and the drive; **hold the trays** until the fix is chosen.
+
+![hand-off](img/isolate-tray-handoff.png)
 
 Spring foot holes from the centre lines, in inches (check only; place by steps 2–3, not by these):
 
@@ -127,6 +131,7 @@ The printed chute (P12) has two gaps. Both are fixed here with scrap, no reprint
 ## 6. Checks (roof back on)
 
 - Spin the drum 2 turns by hand: no rubbing on the roof cross rail (CAD has only **3/16 in** there).
+- Watch the drum's back rim under the hopper while it turns: CAD has only **1/16 in** between the hopper's outside and the turning rear guard. If it touches: sand the hopper's outside at that spot (up to 1/32 in) or lift the hopper with thin washers under its flange (then re-trim the chute block).
 - Plumb (string + nut) from the hopper outlet centre: it lands on the drum axis line, within 1/8 in.
 - Nothing within 1/8 in of either tray.
 - Note any gap or rub with a photo so the CAD can be updated.

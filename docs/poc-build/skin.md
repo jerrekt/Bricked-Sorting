@@ -65,6 +65,8 @@ Every screw is a dot in the drawing (from outside each wall). Squares = corner c
 
 ## 5. Checks
 
+Checked in CAD (2026-11-26): all 220 skin screws still land at least 5/32 in inside the wood with the smallest boards measured (2x2 at 34.9 mm, 1x2 at 36.4 mm).
+
 ![on](img/skin-3-walls-on.png)
 
 - No tile is bowed by a screw. If one is, back that screw off a turn.

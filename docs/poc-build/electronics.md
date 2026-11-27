@@ -28,15 +28,18 @@ Printed: P18 (trays 1a/1b/2, PSU cover, 16 legs), P13 (cable spool, clips). CAD:
 
 | Tray | From the X line | Holds |
 |---|---|---|
-| 1a | 3 3/8 to 12 7/16 in toward the hopper end | PSU, AC end at the hopper end, under the inlet |
+| 1a | 3 1/4 to 12 5/16 in toward the hopper end | PSU, AC end at the hopper end, under the inlet |
 | 1b | 3 1/4 in toward the hopper end to 1/2 in toward the scanner end | 5 A buck, 3 A buck, XT30 + fuse, DRV8833 |
 | 2 | 5/8 to 7 1/16 in toward the scanner end | Pi 4B (USB end toward the scanner), 2 × TMC2209 |
 
-All three: back edge about 1/16 in in from the deck's back edge, front edge about 2 3/8 in behind the Y line.
+**Fit first (found 2026-11-26):** in the CAD the trays' back edges touch the 4 bottom keeper bars of the access panel, tray 1a touches the hopper-end back post, and the front legs are only 3/32 in from drum cradle B. So:
 
-1. Keep tray 1a's end legs **1/8 in clear of the hopper-end posts**. Slide the trays toward the scanner end if needed; there is 1/8 in between trays.
-2. Tray 2's L-shape clears the scanner's foot 1.
-3. Pilots 3/32 in, #6 × 1 1/4 through each tray hole and its leg into the deck.
+1. Put the 4 **bottom keeper bars** on first (Skin step 2) so you can see them.
+2. **Notch each tray's back edge** at the keeper bars: 4 notches, **7/8 in wide × 3/16 in deep**, centred **1 15/16 in** and **5 7/8 in** either side of the X line (tray 1a gets the one at 5 7/8 toward the hopper end, 1b the one at 1 15/16 toward the hopper end, tray 2 both on the scanner side). Coping saw or flush cutters, then file.
+3. Tray 1a: end **1/8 in clear of the hopper-end post** (it then sits almost against 1b; that is fine). 1b and 2 where the table says: moving 1b toward the scanner end puts its leg against a keeper bar.
+4. Back edges in line with the keeper bars' inside face (the notches clear the bars). Front legs at least **1/16 in** from cradle B.
+5. Tray 2's L-shape clears the scanner's foot 1 (3/16 in).
+6. Pilots 3/32 in, #6 × 1 1/4 through each tray hole and its leg into the deck.
 
 ## 1. Mount
 

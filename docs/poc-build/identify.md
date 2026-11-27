@@ -69,7 +69,7 @@ Centre: on the Y line, **9 7/16 in** toward the scanner end from the X line. Cut
 ![parts](img/identify-2-parts.png)
 ![back](img/identify-3-back.png)
 
-1. **Landing ramp 211** under V2's low end, sloping down toward the doors, its tall wall on the back side. Glue it only after V2 delivers pieces onto it and they slide onto the closed doors.
+1. **Landing ramp 211** under V2's low end, sloping down toward the doors, its tall wall on the back side. V2's end sits about **1/8 in** above it and V2's low spring (S4) is **3/32 in** from its side (CAD): neither may touch it. Glue it only after V2 delivers pieces onto it and they slide onto the closed doors.
 2. **LED holders 216 A/B** on the front and back of the window. LED bars clip in at 45°. Glue.
 3. **Camera bridge 215:** its post at the scanner-end side of the window. Glue or 2 × M3 from below through the plate.
 4. **Webcam** face down on **mount 217**, lens over the bridge hole, 2 zip ties. Mount 217 to the bridge with 2 × M3 in the slots (slide it until the lens is centred over the doors). Lens to doors: about **5 in**.
