@@ -45,6 +45,6 @@ Order: posts onto the floor ply; bottom rails 105; beam posts 106; cleats 103/10
 ## Added 2026-11-26 for the screw-down walls
 | # | Piece | Stock | Cut | Qty | Position |
 |---|---|---|---|---|---|
-| 118 | front mid rail | 1x2 (38 tall) | cut to fit between the front posts, about 632 mm (24-7/8 in) | 1 | front face, flush with the posts' outside, centre 373 mm (14-11/16 in) above the floor top; 2 screws per end like the other rails |
+| 118 | front mid rail | 1x2 (38 tall) | cut to fit between the front posts, about 632 mm (24-7/8 in) | 1 | front face, flush with the posts' outside, centre 9-7/16 in (239 mm) below the top edge of the front top rail (z 373 in CAD, measured from the floor underside; 14-11/16 in above the floor top was wrong by the floor thickness); 2 screws per end like the other rails |
 
 The front wall tiles' middle seam screws into it. Roof and wall tiles: #6 x 3/4 flat head through the slotted holes, 3/32 pilot into the wood (32 roof + 132 wall + 48 corner caps).
