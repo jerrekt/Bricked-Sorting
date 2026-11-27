@@ -4,18 +4,13 @@
   "110_tile_F_c1_r1": true,
   "110_tile_F_c1_r2": true,
   "110_tile_F_c1_r3": true,
-  "110_tile_F_c1_r3_inkw": true,
   "110_tile_F_c2_r2": true,
   "110_tile_F_c2_r3": true,
-  "110_tile_F_c2_r3_inkw": true,
   "110_tile_F_c3_r2": true,
   "110_tile_F_c3_r3": true,
-  "110_tile_F_c3_r3_inkw": true,
-  "110_tile_F_c3_r3_inkb": true,
   "110_tile_F_c4_r1": true,
   "110_tile_F_c4_r2": true,
   "110_tile_F_c4_r3": true,
-  "110_tile_F_c4_r3_inkw": true,
   "111_tile_B_c1_r1": true,
   "111_tile_B_c1_r2": true,
   "111_tile_B_c1_r3": true,
@@ -95,18 +90,13 @@
   "108_deck_ply": "in envelope",
   "110_tile_F_c1_r1": "in envelope",
   "110_tile_F_c1_r2": "in envelope",
-  "110_tile_F_c1_r3_inkw": "in envelope",
   "110_tile_F_c1_r3": "in envelope",
   "110_tile_F_c2_r2": "in envelope",
-  "110_tile_F_c2_r3_inkw": "in envelope",
   "110_tile_F_c2_r3": "in envelope",
   "110_tile_F_c3_r2": "in envelope",
-  "110_tile_F_c3_r3_inkw": "in envelope",
-  "110_tile_F_c3_r3_inkb": "in envelope",
   "110_tile_F_c3_r3": "in envelope",
   "110_tile_F_c4_r1": "in envelope",
   "110_tile_F_c4_r2": "in envelope",
-  "110_tile_F_c4_r3_inkw": "in envelope",
   "110_tile_F_c4_r3": "in envelope",
   "111_tile_B_c1_r1": "in envelope",
   "111_tile_B_c1_r2": "in envelope",
@@ -351,10 +341,10 @@
   ]
  ],
  "totals": {
-  "printed_grams": 3397,
-  "printed_hours": 46.8,
+  "printed_grams": 3317,
+  "printed_hours": 45.8,
   "grams_by_group": {
-   "skin walls": 1539,
+   "skin walls": 1463,
    "access panel": 236,
    "roof": 582,
    "keeper bars": 40,
@@ -367,7 +357,7 @@
    "C3": 0
   },
   "H_bridge_clips": 0,
-  "tiles": 47,
+  "tiles": 42,
   "wood_screws_for_clips": 188
  },
  "wall_screw_holes": {
@@ -378,22 +368,16 @@
   }
  },
  "logo": {
-  "text": "Bricked Sorting",
-  "font": "Poppins Bold",
-  "em": 64.0,
-  "z": 478.0,
-  "word1_X": [
-   -304.3,
-   -62.6
+  "logo": "web/assets/logo-720.png",
+  "card_X": [
+   -293.5,
+   293.5
   ],
-  "word2_X": [
-   48.8,
-   281.1
+  "card_z": [
+   395.0,
+   580.0
   ],
-  "icon_X": [
-   -58.3,
-   -14.3
-  ]
+  "inlays": "make_logo_inks.py (white card, red, blue, black, green)"
  },
  "roof_screw_holes": {
   "note": "#6 x 3/4 flat head down into the wood, slotted countersinks (BJ 2026-11-26)",

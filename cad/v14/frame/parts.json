@@ -42,29 +42,13 @@
    "bed_extent": [
     156.0,
     239.0,
-    6.03
+    6.02
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 59.4,
-   "est_hours_each": 0.79,
-   "orientation": "outer face on the bed; inlay prints with its tile (AMS)"
-  },
-  {
-   "label": "110_tile_F_c1_r3_inkw",
-   "part_no": "110",
-   "qty": 1,
-   "material": "PLA",
-   "bed_extent": [
-    98.58,
-    68.9,
-    0.65
-   ],
-   "fits_248": true,
-   "diagonal_on_bed": false,
-   "est_grams_each": 2.1,
-   "est_hours_each": 0.03,
-   "orientation": "outer face on the bed; inlay prints with its tile (AMS)"
+   "est_grams_each": 45.9,
+   "est_hours_each": 0.61,
+   "orientation": "outer face on the bed, ribs up"
   },
   {
    "label": "110_tile_F_c2_r2",
@@ -90,29 +74,13 @@
    "bed_extent": [
     180.0,
     239.0,
-    6.08
+    6.02
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 67.4,
-   "est_hours_each": 0.9,
-   "orientation": "outer face on the bed; inlay prints with its tile (AMS)"
-  },
-  {
-   "label": "110_tile_F_c2_r3_inkw",
-   "part_no": "110",
-   "qty": 1,
-   "material": "PLA",
-   "bed_extent": [
-    128.71,
-    46.12,
-    0.76
-   ],
-   "fits_248": true,
-   "diagonal_on_bed": false,
-   "est_grams_each": 2.2,
-   "est_hours_each": 0.03,
-   "orientation": "outer face on the bed; inlay prints with its tile (AMS)"
+   "est_grams_each": 44.9,
+   "est_hours_each": 0.6,
+   "orientation": "outer face on the bed, ribs up"
   },
   {
    "label": "110_tile_F_c3_r2",
@@ -142,41 +110,9 @@
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 66.4,
-   "est_hours_each": 0.89,
-   "orientation": "outer face on the bed; inlay prints with its tile (AMS)"
-  },
-  {
-   "label": "110_tile_F_c3_r3_inkw",
-   "part_no": "110",
-   "qty": 1,
-   "material": "PLA",
-   "bed_extent": [
-    156.51,
-    47.89,
-    0.64
-   ],
-   "fits_248": true,
-   "diagonal_on_bed": false,
-   "est_grams_each": 2.7,
-   "est_hours_each": 0.04,
-   "orientation": "outer face on the bed; inlay prints with its tile (AMS)"
-  },
-  {
-   "label": "110_tile_F_c3_r3_inkb",
-   "part_no": "110",
-   "qty": 1,
-   "material": "PLA",
-   "bed_extent": [
-    44.0,
-    15.71,
-    0.6
-   ],
-   "fits_248": true,
-   "diagonal_on_bed": false,
-   "est_grams_each": 0.5,
-   "est_hours_each": 0.01,
-   "orientation": "outer face on the bed; inlay prints with its tile (AMS)"
+   "est_grams_each": 44.9,
+   "est_hours_each": 0.6,
+   "orientation": "outer face on the bed, ribs up"
   },
   {
    "label": "110_tile_F_c4_r1",
@@ -218,29 +154,13 @@
    "bed_extent": [
     156.0,
     239.0,
-    6.03
+    6.02
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 59.3,
-   "est_hours_each": 0.79,
-   "orientation": "outer face on the bed; inlay prints with its tile (AMS)"
-  },
-  {
-   "label": "110_tile_F_c4_r3_inkw",
-   "part_no": "110",
-   "qty": 1,
-   "material": "PLA",
-   "bed_extent": [
-    121.36,
-    51.8,
-    0.65
-   ],
-   "fits_248": true,
-   "diagonal_on_bed": false,
-   "est_grams_each": 2.2,
-   "est_hours_each": 0.03,
-   "orientation": "outer face on the bed; inlay prints with its tile (AMS)"
+   "est_grams_each": 45.9,
+   "est_hours_each": 0.61,
+   "orientation": "outer face on the bed, ribs up"
   },
   {
    "label": "111_tile_B_c1_r1",
@@ -1383,15 +1303,15 @@
   },
   {
    "item": "red PLA",
-   "qty": "~3.4 kg"
+   "qty": "~3.3 kg"
   }
  ],
  "h_clip_positions": [],
  "totals": {
-  "printed_grams": 3397,
-  "printed_hours": 46.8,
+  "printed_grams": 3317,
+  "printed_hours": 45.8,
   "grams_by_group": {
-   "skin walls": 1539,
+   "skin walls": 1463,
    "access panel": 236,
    "roof": 582,
    "keeper bars": 40,
@@ -1404,7 +1324,7 @@
    "C3": 0
   },
   "H_bridge_clips": 0,
-  "tiles": 47,
+  "tiles": 42,
   "wood_screws_for_clips": 188
  }
 }

@@ -111,6 +111,7 @@ BOSS_R = 5.5         # screw boss radius; the boss runs from the face to the woo
 MID_Z = 373.0        # front wall: seam between rows 2 and 3, on the added front mid rail 118 (1x2, z 354..392)
 FONT_LOGO = '/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf'
 LOGO_EM, LOGO_Z, INK_T = 64.0, 478.0, 0.6
+LOGO_CARD_X, LOGO_CARD_Z = 293.5, (395.0, 580.0)   # white logo card on the front top row (keep in step with make_logo_inks.py)
 WALL_HOLES = []
 
 
@@ -495,20 +496,15 @@ def skin_parts_screwed():
                 bs = tile_bosses(wall, poly, w0, w1, z0, z1, post_edge=(w0 if ci == 0 else w1), seam_w=(-9.5 if ci == 0 else 9.5))
                 lab = f'{112 if wall == "L" else 113}_tile_{wall}_c{ci + 1}_r{ri + 1}'
                 P.append((lab, build_tile(wall, poly, cross(w0, w1, z0, z1), bosses=bs), 'skin'))
-    # lettering on the front top row
-    inkw, inkb, info = logo_inks()
+    # logo card pocket on the front top row: 0.6 deep, filled by the colour inlays from make_logo_inks.py (BJ 2026-11-26: the team logo)
     out = []
     for lab, w, kind in P:
         if lab.startswith('110_tile_F_') and lab.endswith('_r3'):
             ci = int(lab.split('_c')[1][0]) - 1
             x0, x1 = COLS_F[ci]
-            slab = boxc(x0, x1, YO - INK_T - 0.01, YO + 0.01, MID_Z, Z_ROOF)
-            for suf, ink in (('_inkw', inkw), ('_inkb', inkb)):
-                part = ink.intersect(slab)
-                if part.solids().size() and sum(q.Volume() for q in part.solids().vals()) > 1.0:
-                    w = w.cut(part)
-                    out.append((lab + suf, part, 'ink'))
+            w = w.cut(boxc(max(x0, -LOGO_CARD_X), min(x1, LOGO_CARD_X), YO - INK_T, YO + 0.01, LOGO_CARD_Z[0], LOGO_CARD_Z[1]))
         out.append((lab, w, kind))
+    info = dict(logo='web/assets/logo-720.png', card_X=[-LOGO_CARD_X, LOGO_CARD_X], card_z=list(LOGO_CARD_Z), inlays='make_logo_inks.py (white card, red, blue, black, green)')
     LOGO_INFO.update(info)
     return out, []
 

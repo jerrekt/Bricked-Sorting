@@ -1,0 +1,74 @@
+{
+ "card_X": [
+  -293.5,
+  293.5
+ ],
+ "card_z": [
+  395.0,
+  580.0
+ ],
+ "ink_t": 0.6,
+ "source": "logo-720.png",
+ "parts": {
+  "c1_k": {
+   "bodies": 2,
+   "area_mm2": 2479
+  },
+  "c1_b": {
+   "bodies": 3,
+   "area_mm2": 4605
+  },
+  "c1_w": {
+   "bodies": 7,
+   "area_mm2": 13913
+  },
+  "c2_k": {
+   "bodies": 5,
+   "area_mm2": 7373
+  },
+  "c2_b": {
+   "bodies": 1,
+   "area_mm2": 4786
+  },
+  "c2_r": {
+   "bodies": 3,
+   "area_mm2": 2078
+  },
+  "c2_w": {
+   "bodies": 12,
+   "area_mm2": 19063
+  },
+  "c3_k": {
+   "bodies": 7,
+   "area_mm2": 10978
+  },
+  "c3_r": {
+   "bodies": 5,
+   "area_mm2": 7326
+  },
+  "c3_w": {
+   "bodies": 11,
+   "area_mm2": 14995
+  },
+  "c4_k": {
+   "bodies": 10,
+   "area_mm2": 1884
+  },
+  "c4_b": {
+   "bodies": 2,
+   "area_mm2": 1638
+  },
+  "c4_r": {
+   "bodies": 3,
+   "area_mm2": 1350
+  },
+  "c4_g": {
+   "bodies": 9,
+   "area_mm2": 1228
+  },
+  "c4_w": {
+   "bodies": 1,
+   "area_mm2": 14897
+  }
+ }
+}
