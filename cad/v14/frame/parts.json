@@ -618,12 +618,12 @@
    "bed_extent": [
     180.0,
     180.0,
-    4.79
+    4.81
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 67.8,
-   "est_hours_each": 0.9,
+   "est_grams_each": 64.2,
+   "est_hours_each": 0.86,
    "orientation": "top face on the bed, ribs up"
   },
   {
@@ -634,12 +634,12 @@
    "bed_extent": [
     180.0,
     180.0,
-    4.79
+    4.81
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 67.8,
-   "est_hours_each": 0.9,
+   "est_grams_each": 64.2,
+   "est_hours_each": 0.86,
    "orientation": "top face on the bed, ribs up"
   },
   {
@@ -650,12 +650,12 @@
    "bed_extent": [
     180.0,
     180.0,
-    4.79
+    4.81
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 68.3,
-   "est_hours_each": 0.91,
+   "est_grams_each": 65.4,
+   "est_hours_each": 0.87,
    "orientation": "top face on the bed, ribs up"
   },
   {
@@ -666,12 +666,12 @@
    "bed_extent": [
     180.0,
     180.0,
-    4.79
+    4.81
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 68.3,
-   "est_hours_each": 0.91,
+   "est_grams_each": 65.4,
+   "est_hours_each": 0.87,
    "orientation": "top face on the bed, ribs up"
   },
   {
@@ -682,12 +682,12 @@
    "bed_extent": [
     180.0,
     180.0,
-    4.79
+    4.81
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 84.0,
-   "est_hours_each": 1.12,
+   "est_grams_each": 81.5,
+   "est_hours_each": 1.09,
    "orientation": "top face on the bed, ribs up"
   },
   {
@@ -698,12 +698,12 @@
    "bed_extent": [
     180.0,
     180.0,
-    4.79
+    4.81
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 84.0,
-   "est_hours_each": 1.12,
+   "est_grams_each": 81.5,
+   "est_hours_each": 1.09,
    "orientation": "top face on the bed, ribs up"
   },
   {
@@ -714,12 +714,12 @@
    "bed_extent": [
     180.0,
     180.0,
-    4.79
+    4.81
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 83.4,
-   "est_hours_each": 1.11,
+   "est_grams_each": 80.3,
+   "est_hours_each": 1.07,
    "orientation": "top face on the bed, ribs up"
   },
   {
@@ -730,12 +730,12 @@
    "bed_extent": [
     180.0,
     180.0,
-    4.79
+    4.81
    ],
    "fits_248": true,
    "diagonal_on_bed": false,
-   "est_grams_each": 83.4,
-   "est_hours_each": 1.11,
+   "est_grams_each": 80.3,
+   "est_hours_each": 1.07,
    "orientation": "top face on the bed, ribs up"
   },
   {
@@ -1141,7 +1141,7 @@
   {
    "label": "123_clip_C3_roof",
    "part_no": "123",
-   "qty": 24,
+   "qty": 0,
    "material": "PLA",
    "bed_extent": [
     24.0,
@@ -1392,7 +1392,7 @@
   },
   {
    "item": "#6 x 3/4 in wood screws (clips, keeper bars)",
-   "qty": 176
+   "qty": 152
   },
   {
    "item": "#8 x 2.5 in wood screws",
@@ -1420,7 +1420,7 @@
   },
   {
    "item": "red PLA",
-   "qty": "~3.5 kg"
+   "qty": "~3.4 kg"
   }
  ],
  "h_clip_positions": [
@@ -1876,24 +1876,24 @@
   }
  ],
  "totals": {
-  "printed_grams": 3459,
-  "printed_hours": 47.9,
+  "printed_grams": 3379,
+  "printed_hours": 46.9,
   "grams_by_group": {
    "skin walls": 1586,
    "access panel": 236,
-   "roof": 606,
+   "roof": 582,
    "keeper bars": 40,
    "studs": 484,
    "corner caps": 300,
-   "clips": 198
+   "clips": 143
   },
   "clips_screwed": {
    "C1": 128,
    "C2": 6,
-   "C3": 24
+   "C3": 0
   },
   "H_bridge_clips": 90,
   "tiles": 46,
-  "wood_screws_for_clips": 166
+  "wood_screws_for_clips": 142
  }
 }

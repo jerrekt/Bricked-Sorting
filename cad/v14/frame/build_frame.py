@@ -83,6 +83,27 @@ def apply_m(w, M):
     return cq.Workplane().add(s.moved(cq.Location(t)))
 
 
+ROOF_SCREWS = True   # BJ 2026-11-26: roof tiles screw straight down into the wood (#6 x 3/4 flat head) through slotted
+                     # countersinks, no C3 clips or hanging ribs. Slots give +-2 mm (+-3 over the cross rails) for real wood.
+ROOF_CSK_D = 7.6     # countersink top diameter for the #6 deck screw head
+ROOF_SLOT_W = 3.9    # slot width for the #6 shank (3.5)
+
+
+def slot_csk(p, axis, half):
+    """slotted countersink through a roof tile (top at p[2]): +-half mm along axis ('x' or 'y')."""
+    out = None
+    n = max(2, int(half / 0.5) * 2 + 1)
+    for k in range(n):
+        t = -half + 2 * half * k / (n - 1)
+        q = (p[0] + (t if axis == 'x' else 0), p[1] + (t if axis == 'y' else 0), p[2])
+        c = csk_cone((q[0], q[1], q[2] + 0.01), (0, 0, -1), ROOF_CSK_D)
+        out = c if out is None else out.union(c)
+    L = 2 * half
+    bx, by = (L, 0) if axis == 'x' else (0, L)
+    slot = cq.Workplane('XY').slot2D(L + ROOF_SLOT_W, ROOF_SLOT_W, 0 if axis == 'x' else 90).extrude(10).translate((p[0], p[1], p[2] - 8))
+    return out.union(slot)
+
+
 def csk_cone(p, d, big):
     """90 deg countersink cone of top diameter big, apex along d"""
     return cq.Workplane(obj=cq.Solid.makeCone(big / 2, 0.0, big / 2, cq.Vector(*p), cq.Vector(*d)))
@@ -352,6 +373,9 @@ def keeper_bars():
 
 
 # ---------------- roof, studs, corner caps ----------------
+ROOF_HOLES = []
+
+
 def roof_parts():
     P, clips = [], []
     cols = [(-360.0, -180.0), (-180.0, 0.0), (0.0, 180.0), (180.0, 360.0)]
@@ -369,6 +393,31 @@ def roof_parts():
             for ys in (y0, y1):
                 if abs(ys) < 100:
                     seams.append(sbox(x0, ys - RIB_T, x1, ys) if ys > (y0 + y1) / 2 else sbox(x0, ys, x1, ys + RIB_T))
+            if ROOF_SCREWS:           # seam stiffeners only, at least 5 mm off every wood face (rails, cross rails)
+                rp = unary_union(seams).intersection(poly.buffer(-0.01)).intersection(sbox(-POST_X + 5, -POST_Y + 5, POST_X - 5, POST_Y - 5))
+                for xc in CROSS_X:
+                    rp = rp.difference(sbox(xc - CROSS_W / 2 - 5, -200, xc + CROSS_W / 2 + 5, 200))
+                rp = rp.difference(Point(STUD_C[1][0], STUD_C[1][1]).buffer(112.0, 64))   # stay off the capped stud foot screws
+                ribs = multi_to_cq(rp, RIB_H, Z_ROOF - RIB_H + 0.01) if not rp.is_empty else None
+                w = face.union(ribs) if ribs is not None else face
+                xs_B = {0: (-255.0, -205.0), 1: (-150.0, -30.0), 2: (30.0, 150.0), 3: (205.0, 280.0)}[ci]
+                yB = 164.5 if y1 > 0 else -164.5
+                ys = (35.0, 110.0) if y1 > 0 else (-110.0, -35.0)
+                holes = [((x, yB), 'y', 2.0) for x in xs_B]
+                if ci in (0, 3): holes += [(((-344.5 if ci == 0 else 344.5), y), 'x', 2.0) for y in ys]
+                for xc in CROSS_X:
+                    if x0 < xc < x1: holes += [((xc, (40.0 if y1 > 0 else -40.0)), 'x', 3.0), ((xc, (110.0 if y1 > 0 else -110.0)), 'x', 3.0)]
+                for (hx, hy), ax, hf in holes:
+                    w = w.cut(slot_csk((hx, hy, Z_ROOF + T_SKIN), ax, hf))
+                for (sx, sy) in STUD_C:
+                    r_hole = 104.0 if sx < 0 else 102.0
+                    for a in (45, 135, 225, 315):
+                        bx, by = sx + r_hole * math.cos(math.radians(a)), sy + r_hole * math.sin(math.radians(a))
+                        if x0 < bx < x1 and y0 < by < y1:
+                            w = w.cut(cyl((bx, by, Z_ROOF - 1), (0, 0, 1), M3_CLR / 2, 5)).cut(csk_cone((bx, by, Z_ROOF - 0.01), (0, 0, 1), M3_CSK_D))
+                P.append((f'114_roof_tile_c{ci + 1}_r{ri + 1}', w, 'skin'))
+                ROOF_HOLES.extend([dict(tile=f'c{ci + 1}_r{ri + 1}', x=hx, y=hy, slot_axis=ax, slot_half=hf) for (hx, hy), ax, hf in holes])
+                continue
             yr = (POST_Y - 1.6 - RIB_T) if y1 > 0 else -(POST_Y - 1.6)          # hanging ribs: y 151.8..153.4 / -153.4..-151.8
             seams.append(sbox(max(x0, -310), yr, min(x1, 310), yr + RIB_T))                                         # stop before the posts (|x| 316)
             if ci == 0: seams.append(sbox(-(POST_X - 1.6 - RIB_T) - RIB_T, -130, -(POST_X - 1.6 - RIB_T), 130))      # x -333.4..-331.8, |y| < 130 (posts at 136)
@@ -686,6 +735,7 @@ def main():
         byg[k] = round(byg.get(k, 0) + p['est_grams_each'] * p['qty'])
     res['totals'] = {'printed_grams': round(tot_g), 'printed_hours': round(tot_h, 1), 'grams_by_group': byg, 'clips_screwed': ncl, 'H_bridge_clips': len(hpos),
                      'tiles': len([p for p in plist if p['part_no'] in ('110', '111', '112', '113', '114', '115')]), 'wood_screws_for_clips': len(screws)}
+    res['roof_screw_holes'] = {'note': '#6 x 3/4 flat head down into the wood, slotted countersinks (BJ 2026-11-26)', 'count': len(ROOF_HOLES), 'holes': ROOF_HOLES}
     (HERE / 'checks.json').write_text(json.dumps(res, indent=1))
     (HERE / 'parts.json').write_text(json.dumps({'module': 'F', 'interface': IF['version'], 'printed': plist,
         'wood': [{'label': lab, 'bbox': bbox(w)} for lab, w, kind in wood],

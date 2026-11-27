@@ -297,154 +297,9 @@
   "120_clip_C1_L_126": "in envelope",
   "120_clip_C1_F_127": "in envelope",
   "120_clip_C1_L_128": "in envelope",
-  "123_clip_C3_roof_1": "in envelope",
-  "123_clip_C3_roof_2": "in envelope",
-  "123_clip_C3_roof_3": "in envelope",
-  "123_clip_C3_roof_4": "in envelope",
-  "123_clip_C3_roof_5": "in envelope",
-  "123_clip_C3_roof_6": "in envelope",
-  "123_clip_C3_roof_7": "in envelope",
-  "123_clip_C3_roof_8": "in envelope",
-  "123_clip_C3_roof_9": "in envelope",
-  "123_clip_C3_roof_10": "in envelope",
-  "123_clip_C3_roof_11": "in envelope",
-  "123_clip_C3_roof_12": "in envelope",
-  "123_clip_C3_roof_13": "in envelope",
-  "123_clip_C3_roof_14": "in envelope",
-  "123_clip_C3_roof_15": "in envelope",
-  "123_clip_C3_roof_16": "in envelope",
-  "123_clip_C3_roof_17": "in envelope",
-  "123_clip_C3_roof_18": "in envelope",
-  "123_clip_C3_roof_19": "in envelope",
-  "123_clip_C3_roof_20": "in envelope",
-  "123_clip_C3_roof_21": "in envelope",
-  "123_clip_C3_roof_22": "in envelope",
-  "123_clip_C3_roof_23": "in envelope",
-  "123_clip_C3_roof_24": "in envelope",
   "119_dummy_IEC_C14_inlet": "in envelope"
  },
- "zone_intrusions": [
-  [
-   "123_clip_C3_roof_1",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_2",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_3",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_4",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_5",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_6",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_7",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_8",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_9",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_10",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_11",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_12",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_13",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_14",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_15",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_16",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_17",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_18",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_19",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_20",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_21",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_22",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_23",
-   "K",
-   1566.7
-  ],
-  [
-   "123_clip_C3_roof_24",
-   "K",
-   1566.7
-  ]
- ],
+ "zone_intrusions": [],
  "clashes": [],
  "openings": {
   "front_drawer_opening_clear": true,
@@ -454,24 +309,254 @@
  },
  "skin_inside_wood_faces": [],
  "totals": {
-  "printed_grams": 3459,
-  "printed_hours": 47.9,
+  "printed_grams": 3379,
+  "printed_hours": 46.9,
   "grams_by_group": {
    "skin walls": 1586,
    "access panel": 236,
-   "roof": 606,
+   "roof": 582,
    "keeper bars": 40,
    "studs": 484,
    "corner caps": 300,
-   "clips": 198
+   "clips": 143
   },
   "clips_screwed": {
    "C1": 128,
    "C2": 6,
-   "C3": 24
+   "C3": 0
   },
   "H_bridge_clips": 90,
   "tiles": 46,
-  "wood_screws_for_clips": 166
+  "wood_screws_for_clips": 142
+ },
+ "roof_screw_holes": {
+  "note": "#6 x 3/4 flat head down into the wood, slotted countersinks (BJ 2026-11-26)",
+  "count": 32,
+  "holes": [
+   {
+    "tile": "c1_r1",
+    "x": -255.0,
+    "y": -164.5,
+    "slot_axis": "y",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c1_r1",
+    "x": -205.0,
+    "y": -164.5,
+    "slot_axis": "y",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c1_r1",
+    "x": -344.5,
+    "y": -110.0,
+    "slot_axis": "x",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c1_r1",
+    "x": -344.5,
+    "y": -35.0,
+    "slot_axis": "x",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c1_r1",
+    "x": -292.0,
+    "y": -40.0,
+    "slot_axis": "x",
+    "slot_half": 3.0
+   },
+   {
+    "tile": "c1_r1",
+    "x": -292.0,
+    "y": -110.0,
+    "slot_axis": "x",
+    "slot_half": 3.0
+   },
+   {
+    "tile": "c1_r2",
+    "x": -255.0,
+    "y": 164.5,
+    "slot_axis": "y",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c1_r2",
+    "x": -205.0,
+    "y": 164.5,
+    "slot_axis": "y",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c1_r2",
+    "x": -344.5,
+    "y": 35.0,
+    "slot_axis": "x",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c1_r2",
+    "x": -344.5,
+    "y": 110.0,
+    "slot_axis": "x",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c1_r2",
+    "x": -292.0,
+    "y": 40.0,
+    "slot_axis": "x",
+    "slot_half": 3.0
+   },
+   {
+    "tile": "c1_r2",
+    "x": -292.0,
+    "y": 110.0,
+    "slot_axis": "x",
+    "slot_half": 3.0
+   },
+   {
+    "tile": "c2_r1",
+    "x": -150.0,
+    "y": -164.5,
+    "slot_axis": "y",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c2_r1",
+    "x": -30.0,
+    "y": -164.5,
+    "slot_axis": "y",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c2_r1",
+    "x": -68.0,
+    "y": -40.0,
+    "slot_axis": "x",
+    "slot_half": 3.0
+   },
+   {
+    "tile": "c2_r1",
+    "x": -68.0,
+    "y": -110.0,
+    "slot_axis": "x",
+    "slot_half": 3.0
+   },
+   {
+    "tile": "c2_r2",
+    "x": -150.0,
+    "y": 164.5,
+    "slot_axis": "y",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c2_r2",
+    "x": -30.0,
+    "y": 164.5,
+    "slot_axis": "y",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c2_r2",
+    "x": -68.0,
+    "y": 40.0,
+    "slot_axis": "x",
+    "slot_half": 3.0
+   },
+   {
+    "tile": "c2_r2",
+    "x": -68.0,
+    "y": 110.0,
+    "slot_axis": "x",
+    "slot_half": 3.0
+   },
+   {
+    "tile": "c3_r1",
+    "x": 30.0,
+    "y": -164.5,
+    "slot_axis": "y",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c3_r1",
+    "x": 150.0,
+    "y": -164.5,
+    "slot_axis": "y",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c3_r2",
+    "x": 30.0,
+    "y": 164.5,
+    "slot_axis": "y",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c3_r2",
+    "x": 150.0,
+    "y": 164.5,
+    "slot_axis": "y",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c4_r1",
+    "x": 205.0,
+    "y": -164.5,
+    "slot_axis": "y",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c4_r1",
+    "x": 280.0,
+    "y": -164.5,
+    "slot_axis": "y",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c4_r1",
+    "x": 344.5,
+    "y": -110.0,
+    "slot_axis": "x",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c4_r1",
+    "x": 344.5,
+    "y": -35.0,
+    "slot_axis": "x",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c4_r2",
+    "x": 205.0,
+    "y": 164.5,
+    "slot_axis": "y",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c4_r2",
+    "x": 280.0,
+    "y": 164.5,
+    "slot_axis": "y",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c4_r2",
+    "x": 344.5,
+    "y": 35.0,
+    "slot_axis": "x",
+    "slot_half": 2.0
+   },
+   {
+    "tile": "c4_r2",
+    "x": 344.5,
+    "y": 110.0,
+    "slot_axis": "x",
+    "slot_half": 2.0
+   }
+  ]
  }
 }

@@ -138,37 +138,13 @@ Every hole: 2.5 mm pilot for a #6 x 3/4 in wood screw, drilled perpendicular to 
 | 132 | clip C1 | x +354 (post / rail outer face) | 354.0 | 160.5 | 312.0 | post, corner cap rib |
 | 133 | clip C1 | y +174 (post / cleat / rail outer face) | 339.5 | 174.0 | 512.0 | post, corner cap rib |
 | 134 | clip C1 | x +354 (post / rail outer face) | 354.0 | 160.5 | 512.0 | post, corner cap rib |
-| 135 | clip C3 | long top rail inner face y -155 | -244.0 | -155.0 | 586.2 | top rail inner face, roof rib |
-| 136 | clip C3 | long top rail inner face y -155 | -210.0 | -155.0 | 586.2 | top rail inner face, roof rib |
-| 137 | clip C3 | short top rail inner face x -335 | -335.0 | -120.0 | 586.2 | short top rail inner face, roof rib |
-| 138 | clip C3 | short top rail inner face x -335 | -335.0 | -60.0 | 586.2 | short top rail inner face, roof rib |
-| 139 | clip C3 | long top rail inner face y +155 | -244.0 | 155.0 | 586.2 | top rail inner face, roof rib |
-| 140 | clip C3 | long top rail inner face y +155 | -210.0 | 155.0 | 586.2 | top rail inner face, roof rib |
-| 141 | clip C3 | short top rail inner face x -335 | -335.0 | 60.0 | 586.2 | short top rail inner face, roof rib |
-| 142 | clip C3 | short top rail inner face x -335 | -335.0 | 120.0 | 586.2 | short top rail inner face, roof rib |
-| 143 | clip C3 | long top rail inner face y -155 | -150.0 | -155.0 | 586.2 | top rail inner face, roof rib |
-| 144 | clip C3 | long top rail inner face y -155 | -30.0 | -155.0 | 586.2 | top rail inner face, roof rib |
-| 145 | clip C3 | long top rail inner face y +155 | -150.0 | 155.0 | 586.2 | top rail inner face, roof rib |
-| 146 | clip C3 | long top rail inner face y +155 | -30.0 | 155.0 | 586.2 | top rail inner face, roof rib |
-| 147 | clip C3 | long top rail inner face y -155 | 30.0 | -155.0 | 586.2 | top rail inner face, roof rib |
-| 148 | clip C3 | long top rail inner face y -155 | 150.0 | -155.0 | 586.2 | top rail inner face, roof rib |
-| 149 | clip C3 | long top rail inner face y +155 | 30.0 | 155.0 | 586.2 | top rail inner face, roof rib |
-| 150 | clip C3 | long top rail inner face y +155 | 150.0 | 155.0 | 586.2 | top rail inner face, roof rib |
-| 151 | clip C3 | long top rail inner face y -155 | 210.0 | -155.0 | 586.2 | top rail inner face, roof rib |
-| 152 | clip C3 | long top rail inner face y -155 | 280.0 | -155.0 | 586.2 | top rail inner face, roof rib |
-| 153 | clip C3 | short top rail inner face x +335 | 335.0 | -120.0 | 586.2 | short top rail inner face, roof rib |
-| 154 | clip C3 | short top rail inner face x +335 | 335.0 | -60.0 | 586.2 | short top rail inner face, roof rib |
-| 155 | clip C3 | long top rail inner face y +155 | 210.0 | 155.0 | 586.2 | top rail inner face, roof rib |
-| 156 | clip C3 | long top rail inner face y +155 | 280.0 | 155.0 | 586.2 | top rail inner face, roof rib |
-| 157 | clip C3 | short top rail inner face x +335 | 335.0 | 60.0 | 586.2 | short top rail inner face, roof rib |
-| 158 | clip C3 | short top rail inner face x +335 | 335.0 | 120.0 | 586.2 | short top rail inner face, roof rib |
-| 159 | keeper bar 116 | y -174 (deck cleat outer face) | -150.0 | -174.0 | 281.0 | access panel keeper |
-| 160 | keeper bar 117 | y -174 (top rail outer face) | -150.0 | -174.0 | 593.0 | access panel keeper |
-| 161 | keeper bar 116 | y -174 (deck cleat outer face) | -50.0 | -174.0 | 281.0 | access panel keeper |
-| 162 | keeper bar 117 | y -174 (top rail outer face) | -50.0 | -174.0 | 593.0 | access panel keeper |
-| 163 | keeper bar 116 | y -174 (deck cleat outer face) | 50.0 | -174.0 | 281.0 | access panel keeper |
-| 164 | keeper bar 117 | y -174 (top rail outer face) | 50.0 | -174.0 | 593.0 | access panel keeper |
-| 165 | keeper bar 116 | y -174 (deck cleat outer face) | 150.0 | -174.0 | 281.0 | access panel keeper |
-| 166 | keeper bar 117 | y -174 (top rail outer face) | 150.0 | -174.0 | 593.0 | access panel keeper |
+| 135 | keeper bar 116 | y -174 (deck cleat outer face) | -150.0 | -174.0 | 281.0 | access panel keeper |
+| 136 | keeper bar 117 | y -174 (top rail outer face) | -150.0 | -174.0 | 593.0 | access panel keeper |
+| 137 | keeper bar 116 | y -174 (deck cleat outer face) | -50.0 | -174.0 | 281.0 | access panel keeper |
+| 138 | keeper bar 117 | y -174 (top rail outer face) | -50.0 | -174.0 | 593.0 | access panel keeper |
+| 139 | keeper bar 116 | y -174 (deck cleat outer face) | 50.0 | -174.0 | 281.0 | access panel keeper |
+| 140 | keeper bar 117 | y -174 (top rail outer face) | 50.0 | -174.0 | 593.0 | access panel keeper |
+| 141 | keeper bar 116 | y -174 (deck cleat outer face) | 150.0 | -174.0 | 281.0 | access panel keeper |
+| 142 | keeper bar 117 | y -174 (top rail outer face) | 150.0 | -174.0 | 593.0 | access panel keeper |
 
-Total: 166 #6 screws. Wood-to-wood screws are in cut_list.md; deck-module screws into the deck ply are in the deck README.
+Total: 142 #6 screws. Wood-to-wood screws are in cut_list.md; deck-module screws into the deck ply are in the deck README.
