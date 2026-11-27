@@ -3,8 +3,8 @@
  "updated": "2026-11-25 19:26 PT",
  "summary": {
   "total": {
-   "grams": 10593,
-   "hours": 199.6
+   "grams": 10512,
+   "hours": 198.5
   },
   "done": {
    "grams": 5656,
@@ -15,8 +15,8 @@
    "hours": 0.0
   },
   "left": {
-   "grams": 4937,
-   "hours": 85.3
+   "grams": 4856,
+   "hours": 84.2
   }
  },
  "poc": {
@@ -40,11 +40,11 @@
  "cost": {
   "used": 60.92,
   "left_poc": 5.49,
-  "left_machine": 53.94,
+  "left_machine": 53.06,
   "note": "USD incl. 9.375 % tax; PLA $9.99/kg, PETG $10.00/kg (Micro Center)"
  },
  "pace_factor": 1.05,
- "left_at_pace_hours": 90,
+ "left_at_pace_hours": 88,
  "used_so_far": {
   "grams": 5575,
   "hours": 149.9,
@@ -53,11 +53,11 @@
  "printing_now": [],
  "modules": {
   "Frame and skin": {
-   "total_g": 3397.4,
-   "left_g": 2833.7,
-   "left_h": 37.9,
-   "parts": 69,
-   "parts_left": 66
+   "total_g": 3316.8,
+   "left_g": 2753.1,
+   "left_h": 36.8,
+   "parts": 64,
+   "parts_left": 61
   },
   "Deck": {
    "total_g": 1540.8,
@@ -137,8 +137,8 @@
    "part": "110_tile_F_c1_r3",
    "material": "PLA",
    "qty": 1,
-   "g_each": 59.4,
-   "h_each": 0.79,
+   "g_each": 45.9,
+   "h_each": 0.61,
    "done": 0,
    "printing": 0,
    "left": 1,
@@ -149,18 +149,6 @@
     4.8
    ],
    "png": "previews/110_tile_F_c1_r3.png"
-  },
-  {
-   "module": "Frame and skin",
-   "part": "110_tile_F_c1_r3_inkw",
-   "material": "PLA",
-   "qty": 1,
-   "g_each": 2.1,
-   "h_each": 0.03,
-   "done": 0,
-   "printing": 0,
-   "left": 1,
-   "scope": "sem2"
   },
   {
    "module": "Frame and skin",
@@ -185,8 +173,8 @@
    "part": "110_tile_F_c2_r3",
    "material": "PLA",
    "qty": 1,
-   "g_each": 67.4,
-   "h_each": 0.9,
+   "g_each": 44.9,
+   "h_each": 0.6,
    "done": 0,
    "printing": 0,
    "left": 1,
@@ -197,18 +185,6 @@
     4.8
    ],
    "png": "previews/110_tile_F_c2_r3.png"
-  },
-  {
-   "module": "Frame and skin",
-   "part": "110_tile_F_c2_r3_inkw",
-   "material": "PLA",
-   "qty": 1,
-   "g_each": 2.2,
-   "h_each": 0.03,
-   "done": 0,
-   "printing": 0,
-   "left": 1,
-   "scope": "sem2"
   },
   {
    "module": "Frame and skin",
@@ -233,8 +209,8 @@
    "part": "110_tile_F_c3_r3",
    "material": "PLA",
    "qty": 1,
-   "g_each": 66.4,
-   "h_each": 0.89,
+   "g_each": 44.9,
+   "h_each": 0.6,
    "done": 0,
    "printing": 0,
    "left": 1,
@@ -245,30 +221,6 @@
     4.8
    ],
    "png": "previews/110_tile_F_c3_r3.png"
-  },
-  {
-   "module": "Frame and skin",
-   "part": "110_tile_F_c3_r3_inkw",
-   "material": "PLA",
-   "qty": 1,
-   "g_each": 2.7,
-   "h_each": 0.04,
-   "done": 0,
-   "printing": 0,
-   "left": 1,
-   "scope": "sem2"
-  },
-  {
-   "module": "Frame and skin",
-   "part": "110_tile_F_c3_r3_inkb",
-   "material": "PLA",
-   "qty": 1,
-   "g_each": 0.5,
-   "h_each": 0.01,
-   "done": 0,
-   "printing": 0,
-   "left": 1,
-   "scope": "sem2"
   },
   {
    "module": "Frame and skin",
@@ -311,8 +263,8 @@
    "part": "110_tile_F_c4_r3",
    "material": "PLA",
    "qty": 1,
-   "g_each": 59.3,
-   "h_each": 0.79,
+   "g_each": 45.9,
+   "h_each": 0.61,
    "done": 0,
    "printing": 0,
    "left": 1,
@@ -323,18 +275,6 @@
     4.8
    ],
    "png": "previews/110_tile_F_c4_r3.png"
-  },
-  {
-   "module": "Frame and skin",
-   "part": "110_tile_F_c4_r3_inkw",
-   "material": "PLA",
-   "qty": 1,
-   "g_each": 2.2,
-   "h_each": 0.03,
-   "done": 0,
-   "printing": 0,
-   "left": 1,
-   "scope": "sem2"
   },
   {
    "module": "Frame and skin",
@@ -3166,13 +3106,13 @@
  "bom_value": {
   "sections": {
    "Wood": 46.66,
-   "Filament": 101.41,
+   "Filament": 100.61,
    "Motion": 56.6,
    "Electronics": 93.0,
    "Power + wiring": 38.0,
    "Fasteners": 17.38
   },
-  "total": 353.05,
+  "total": 352.25,
   "note": "rough value of what is used (qty x typical unit price, not whole packs), full machine, before tax"
  }
 }

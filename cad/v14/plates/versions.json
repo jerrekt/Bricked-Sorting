@@ -229,11 +229,12 @@
   }
  },
  "P25": {
-  "v": 1,
+  "v": 2,
   "folder": "walls",
-  "what": "Wall tiles v2 (screw-down, no clips): 32 tiles + 2 access panel halves, one file each, red PLA, outer face down, no supports. Every tile screws to the wood with #6 x 3/4 flat head through slotted countersunk bosses (+-2 mm); 132 screws. Front top row (F_c1..c4_r3) has the white \"Bricked Sorting\" lettering and the two-brick icon as 0.6 mm inlays: load white in AMS slot 2 and blue in slot 3 (only F_c3_r3 uses blue). Needs one new piece of wood first: front mid rail, 1x2 x 24-7/8 in between the front posts, centre 14-11/16 in (373 mm) above the floor top. Names: F front, B back, L = the front viewer's left end, R right end; c = column left to right seen from outside... r1 bottom, r3 top.",
+  "what": "Wall tiles v2 (screw-down, no clips): 32 tiles + 2 access panel halves, one file each, red PLA, outer face down, no supports. Every tile screws to the wood with #6 x 3/4 flat head through slotted countersunk bosses (+-2 mm); 132 screws. Front top row (F_c1..c4_r3) carries the team logo as a 0.6 mm colour inlay on a white card (587 x 185 mm across the four tiles; on the front, c4 is the left end with the bricks, c1 the right end). Filaments: red slot 1, white slot 2, blue slot 3, black slot 4, green slot 5. c1 uses red/white/blue/black, c2 and c3 red/white/blue/black (c3 no blue), c4 all five (green is only the small brick on c4). Needs one new piece of wood first: front mid rail, 1x2 x 24-7/8 in between the front posts, centre 14-11/16 in (373 mm) above the floor top. Names: F front, B back, L = the front viewer's left end, R right end; c = column left to right seen from outside... r1 bottom, r3 top.",
   "log": [
-   "v1 2026-11-26: BJ: no snap clips against wood, screws instead, and put Bricked Sorting with the logo on the side. Replaces the clip-on wall tiles (never printed)."
+   "v1 2026-11-26: BJ: no snap clips against wood, screws instead, and put Bricked Sorting with the logo on the side. Replaces the clip-on wall tiles (never printed).",
+   "v2 2026-11-26: BJ: \"wrong logo its this one\". The Poppins lettering and two-brick icon are replaced by the real logo (logo-720.png) as colour inlays. Only the four F_c*_r3 files changed."
   ]
  }
 }

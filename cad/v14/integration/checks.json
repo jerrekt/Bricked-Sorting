@@ -145,8 +145,8 @@
  },
  "printed_totals": {
   "F_frame_skin": {
-   "grams": 3397,
-   "hours": 46.8
+   "grams": 3317,
+   "hours": 45.8
   },
   "K_deck": {
    "grams": 1459,
@@ -161,8 +161,8 @@
    "hours": 14.1
   },
   "ALL": {
-   "grams": 7870,
-   "hours": 140.9,
+   "grams": 7790,
+   "hours": 139.9,
    "budget": "printed total <= ~9.5 kg and <= ~200 h (skin ~4.6 kg, studs ~0.5, mechanisms ~3.5, bins ~1)"
   }
  },
@@ -241,7 +241,7 @@
   "red PLA": [
    {
     "module": "F",
-    "qty": "~3.4 kg",
+    "qty": "~3.3 kg",
     "use": ""
    }
   ],
