@@ -4,6 +4,9 @@ Site and repo version. One bump per merged pull request (see `tools/bump_version
 It counts updates to this repo, not how finished the machine is; the Tasks page shows that.
 V1.001 to V1.014 were numbered afterwards, in merge order.
 
+## V1.037 · 2026-11-27
+- New look on every page: engineering drawing x LEGO (stud plate dark, build instructions light), bundled fonts; About page: numbered sections, brick cards, title block
+
 ## V1.036 · 2026-11-26
 - Progress update: frame built, all POC parts printed, vacuum built, roof and walls now screw down; tasks, parts and prints data refreshed
 - About page: How it goes together, the wood frame with one stage at a time (isolate, identify, indicate, electronics)
