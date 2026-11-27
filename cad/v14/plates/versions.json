@@ -231,11 +231,20 @@
  "P25": {
   "v": 3,
   "folder": "walls",
-  "what": "Wall tiles v2 (screw-down, no clips): 32 tiles + 2 access panel halves, one file each, red PLA, outer face down, no supports. Every tile screws to the wood with #6 x 3/4 flat head through slotted countersunk bosses (+-2 mm); 132 screws. Front top row (F_c1..c4_r3) carries the team logo as a 0.6 mm colour inlay straight on the red tile, no background card (on the front, c4 is the left end with the bricks, c1 the right end). Every file fits 4 AMS slots: 1 red, 2 white, 3 blue, 4 black; for F_c4_r3 only, put green in slot 2 instead of white. Needs one new piece of wood first: front mid rail, 1x2 x 24-7/8 in between the front posts, centre 14-11/16 in (373 mm) above the floor top. Names: F front, B back, L = the front viewer's left end, R right end; c = column left to right seen from outside... r1 bottom, r3 top.",
+  "what": "Wall tiles v2 (screw-down, no clips): 32 tiles + 2 access panel halves, one file each, red PLA, outer face down, no supports. Every tile screws to the wood with #6 x 3/4 flat head through slotted countersunk bosses (+-2 mm); 132 screws. Front top row (F_c1..c4_r3) carries the team logo as a 0.6 mm colour inlay straight on the red tile, no background card (on the front, c4 is the left end with the bricks, c1 the right end). Every file fits 4 AMS slots: 1 red, 2 white, 3 blue, 4 black; for F_c4_r3 only, put green in slot 2 instead of white. Needs one new piece of wood first: front mid rail, 1x2 cut to fit between the front posts (about 24-7/8 in), flush with the posts' outside, its centre 9-7/16 in (239 mm) below the top edge of the front top rail. Names: F front, B back, L = scanner end, R = hopper end; on the front and back c1 is at the hopper end, on L and R c1 is at the back; r1 bottom, r3 top. Build guide: repo docs/poc-build/skin.md.",
   "log": [
    "v1 2026-11-26: BJ: no snap clips against wood, screws instead, and put Bricked Sorting with the logo on the side. Replaces the clip-on wall tiles (never printed).",
    "v2 2026-11-26: BJ: \"wrong logo its this one\". The Poppins lettering and two-brick icon are replaced by the real logo (logo-720.png) as colour inlays. Only the four F_c*_r3 files changed.",
-   "v3 2026-11-26: BJ: transparent background, black outline on the green and the red brick. White card removed; highlights on c4 dropped so green can use slot 2. Only the four F_c*_r3 files changed."
+   "v3 2026-11-26: BJ: transparent background, black outline on the green and the red brick. White card removed; highlights on c4 dropped so green can use slot 2. Only the four F_c*_r3 files changed.",
+   "2026-11-26 (no file change): front mid rail height corrected. It was given as 14-11/16 in above the floor top, which measured from the floor underside (12 mm off). Use 9-7/16 in below the top edge of the front top rail."
+  ]
+ },
+ "P26": {
+  "v": 1,
+  "folder": "walls",
+  "what": "Access panel keeper bars 116/117: 8 bars on one plate, red PLA, no supports (~40 g, ~1 h). Each takes one M3 heat-set insert (4.3 hole, PLA) for the panel screws. 4 bottom bars screw to the back deck cleat, 4 top bars to the back top rail, one #6 x 3/4 each. Needed before the two access panel halves (P25) can go on.",
+  "log": [
+   "v1 2026-11-26: the bars were in the frame CAD but never on a print plate; found while writing the skin build guide."
   ]
  }
 }
