@@ -26,7 +26,8 @@ Sides are named the same way everywhere below:
 | M3 × 12 flat head + nut | 8 | leaf spring pads to the tray floors |
 | #6 × 3/4 in wood screw | 20 | cradles 8, motor wall 4, springs 8 |
 | M3 × 8 flat head | 4 | hopper flange into the stud inserts |
-| 1x2 offcut (~9 in), thin card, hot glue | | chute support block and deflector |
+| 1x2 offcut (~9 in), thin card, hot glue | | chute support block and deflector; V1 end stop |
+| M3 washers | 4–8 | V1 tilt shims (1/16 in, or 1/8 in) |
 | Drill bits | | 3/32 in (pilots), 1/8 in (M3 through the tray floors) |
 
 ## 0. Centre lines
@@ -83,9 +84,34 @@ Drill 3/32 in pilots through the 8 cradle holes, #6 × 3/4.
 3. Stand V2 so V1's low end sits over V2's notch, and V2's low end points at the scanner landing ramp.
 4. Check 1/8 in clearance all around both trays and their springs (CAD: springs to cradles 9/64 in, V1 spring to V2 spring 3/32 in). Pilots through the spring feet, #6 × 3/4.
 
-> **V1 → V2 hand-off does not work as drawn (found 2026-11-26, see `fit-checks.md`).** Pieces leave V1 over its whole end, but V2 is only under the last ~1/4 of that width: the rest fall about 4 in to the deck. Pieces that do land on V2 then pass under V1 with 1/8–1/4 in of headroom, so bricks jam. V2 also touches V1's side wall and V1's front spring (S2). Mount the drum and the drive; **hold the trays** until the fix is chosen.
+Before steps 2–4 on the trays, do the cuts in **4b**: as printed, the trays don't hand pieces over.
+
+### 4b. V1 → V2 hand-off fix (no reprint)
+
+As printed, pieces leaving V1's end mostly miss V2, and the ones that land on V2 jam under V1 (first picture). The fix makes V1 drop its pieces off its side instead, onto a part of V2 with nothing above it. Checked in CAD: every gap between the two trays and their springs is at least 3/32 in, and pieces drop 5/16–1/2 in onto V2 with open space above. Not tested with real pieces yet.
 
 ![hand-off](img/isolate-tray-handoff.png)
+
+![cuts](img/isolate-6-tray-cuts.png)
+
+Red = cut away, blue = card. Flush cutters and a file; PETG cuts cleanly.
+
+**V1** (its high end is the one whose drum-side wall is low for the first 3 1/8 in):
+1. **Scanner-side wall:** cut it off flush with the floor for the last **1 7/16 in** at the low end.
+2. **End stop:** glue a card about **1 9/16 × 3/4 in** across the low end, standing on the floor between the walls.
+3. **Tilt:** when you mount V1, put **1/16 in of washers** between each spring pad and the tray at the pad's **drum-side** screw only. V1 then tips about 5° toward its open side.
+
+**V2** (its high end is the one whose drum-side wall is already notched low):
+1. **Drum-side wall,** first **1 7/16 in** from the high end: cut it down to the floor.
+2. **Same wall,** from **1 7/16 to 2 1/16 in**: cut it down to **3/16 in** above the floor.
+3. **Floor,** on the drum side from **5/16 to 1 1/8 in** from the high end: cut it back **3/8 in** from the outside face of the wall.
+
+**After mounting** (steps 2–4):
+- A 1/16 in card slides between V1 and V2, between V1's front spring and V2, and between the two trays' springs.
+- Drop 10 pieces on V1 and tap it (or run its motor): they walk to the low end and slide off the open side onto V2.
+- If they stay on V1, go to **1/8 in** of washers (about 10°). The CAD still clears by 1/8 in at that tilt.
+
+![fixed](img/isolate-7-trays-fixed.png)
 
 Spring foot holes from the centre lines, in inches (check only; place by steps 2–3, not by these):
 

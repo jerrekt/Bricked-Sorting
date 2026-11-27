@@ -32,7 +32,7 @@ Still to fill before Dec 2: photo of the built machine (Our Proof of Concept), t
 3. **Access panel keeper bars** were in the CAD but on no print plate. Now **P26 v1** in `walls/`.
 4. **625ZZ count:** the scoop needs 12 (8 carriage rollers, 2 cup pivots, idler), not 8. About 20 for drum + scoop.
 5. Funnel hole: cut **2 1/4 in**, not 2 3/16 (the funnel tube is 2 3/16 in OD).
-6. **V1 → V2 hand-off does not work** (pieces miss V2 or jam under V1). Trays on hold until a fix is chosen. See `fit-checks.md`.
+6. **V1 → V2 hand-off did not work** (pieces missed V2 or jammed under V1). Fixed without a reprint: cut both trays and tip V1 so it drops pieces off its side (Isolate 4b).
 7. Electronics trays touch the access-panel keeper bars and a post: notch the trays, move tray 1a 1/8 in.
 8. The scoop can't reach the drawers' hopper-end bin column (home switch in the way): POC containers spaced to the real travel.
 

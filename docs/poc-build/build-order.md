@@ -10,7 +10,7 @@ The order across all the guides, then how to bring the machine up for the Dec 2 
 | 1 | **Wood:** front mid rail. Measure between the beam posts (needs 26 3/8 in). | Skin 0, Indicate 0 |
 | 2 | **Deck:** centre lines, funnel hole (2 1/4 in). | Isolate 0, Identify 0 |
 | 3 | **Under the deck** while the sides are open: scoop beam, carriage, drive, home switch, cup. | Indicate 1–4 |
-| 4 | **Drum** unit and drive on the deck. Trays wait for the V1 → V2 fix. | Isolate 1–3 |
+| 4 | **Drum** unit and drive on the deck. Cut the two trays (4b), then mount them on their springs. | Isolate 1–4b |
 | 5 | **Scanner:** funnel, plate with doors and linkage, servo, top parts. | Identify 1–4 |
 | 6 | **Back:** bottom keeper bars, then the electronics trays (notched), boards, wiring. Wire the IEC inlet into tile B c1 r3 before that tile goes on. | Skin 2, Electronics 0–5 |
 | 7 | **Power-up checks**, then the motion tests below (sides still open, easy to reach). | Electronics 6, below |
@@ -56,4 +56,4 @@ Repeat with 20 mixed pieces. Write down for each: identified right (yes/no), rig
 
 - Motion code (drum, scoop, doors, trays) is not written.
 - The pin map in `electronics.md` is a proposal: confirm with Ethan, Vivek and Marshall.
-- V1 → V2 hand-off fix not chosen; vibration motors not bought.
+- Tray fix (Isolate 4b) checked in CAD only; vibration motors not bought.

@@ -4,14 +4,16 @@ What was checked in the CAD before building, and what to watch for with the real
 
 Method: every pair of separately placed parts was meshed and the smallest gap measured (the whole-machine clash check only finds overlaps, and the deck check had allowed any spring-to-tray contact). Plus: every skin screw against the smallest boards measured, screw tips under the deck against the scoop, and ray tests for where pieces fall.
 
-## Does not fit (decision needed)
+## Did not fit as drawn: fixed with cuts, no reprint
 
-| Where | CAD | What happens | Guide |
-|---|---|---|---|
-| **V1 → V2 hand-off** | V2 is under only ~1/4 of V1's outlet | Pieces leaving V1 at x 40–72 mm fall 97 mm to the deck. Pieces that land on V2 run under V1 with 2.8–6 mm of headroom: bricks (9.6 mm) jam. | Isolate step 4, trays on hold |
-| V2 ↔ V1 front spring (S2) | 0.0 mm | Both vibrate: they rub | same |
-| V2 ↔ V1 side wall | 0.02 mm | same | same |
-| Scoop carriage ↔ home switch mount | flag hits the mount 2 mm past home | the hopper-end bin column (26 mm past home) can't be reached | POC: containers spaced to the real travel (Indicate 5). Drawers: switch must move (CAD) |
+| Where | CAD as drawn | Fix | After the fix (CAD) | Guide |
+|---|---|---|---|---|
+| **V1 → V2 hand-off** | V2 under only ~1/4 of V1's outlet; the rest falls 97 mm to the deck. Pieces on V2 run under V1 with 2.8–6 mm headroom: bricks jam. | V1 drops pieces off its side: scanner-side wall cut for the last 1 7/16 in, card end stop, V1 tipped 5° with 1/16 in washers | pieces drop 8–13 mm onto V2 with open space above | Isolate 4b |
+| V2 ↔ V1 front spring (S2) | 0.0 mm | V2's drum-side wall cut to the floor for 1 7/16 in, floor cut back 3/8 in at 5/16–1 1/8 in | 2.5 mm | Isolate 4b |
+| V2 ↔ V1 side wall | 0.02 mm | V2's drum-side wall cut to 3/16 in from 1 7/16 to 2 1/16 in | 4.4 mm (3.3 at a 10° tilt) | Isolate 4b |
+| Scoop carriage ↔ home switch mount | flag hits the mount 2 mm past home | POC containers spaced to the real travel | all 8 columns reachable | Indicate 5 |
+
+The tray fix is checked in CAD only. Drawers next semester still need the home switch moved, and a proper V2 should be redrawn for the final machine.
 
 ## Fixed in the guides
 
