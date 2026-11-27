@@ -56,7 +56,7 @@
   },
   "c4_k": {
    "bodies": 10,
-   "area_mm2": 1884
+   "area_mm2": 2274
   },
   "c4_b": {
    "bodies": 2,
@@ -67,8 +67,8 @@
    "area_mm2": 1231
   },
   "c4_r": {
-   "bodies": 3,
-   "area_mm2": 16245
+   "bodies": 4,
+   "area_mm2": 15854
   }
  }
 }

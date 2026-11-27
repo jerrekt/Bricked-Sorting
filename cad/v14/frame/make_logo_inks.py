@@ -19,6 +19,7 @@ PAL = {'r': [(228, 35, 28), (150, 40, 40), (225, 110, 40)], 'b': [(25, 120, 235)
        'g': [(165, 200, 70), (120, 150, 50)], 'w': [(255, 255, 255), (225, 225, 230)]}
 RGB = {'w': (245, 245, 245), 'r': (201, 26, 9), 'b': (30, 95, 201), 'k': (27, 27, 27), 'g': (120, 170, 50)}
 UP = 4
+BRICK_X, OUTLINE = -195.0, 1.6     # the bricks are left of this viewer X; outline width
 import os
 CARD = os.environ.get('LOGO_CARD', 'k')          # card colour: 'k' black card, 'r' no card (the red tile shows through)
 
@@ -37,8 +38,8 @@ def labels():
     # white inside the artwork (the gloss highlights) stays white.
     n, cc = cv2.connectedComponents((lab == W).astype(np.uint8), connectivity=4)
     edge = set(np.unique(np.r_[cc[0], cc[-1], cc[:, 0], cc[:, -1]])) - {0}
-    lab[np.isin(cc, list(edge))] = list(PAL).index(CARD)
-    return lab
+    bg = np.isin(cc, list(edge)); lab[bg] = list(PAL).index(CARD)
+    return lab, bg
 
 
 def polys(mask, sx, sz):
@@ -60,7 +61,7 @@ def polys(mask, sx, sz):
 
 
 def main():
-    lab = labels(); H, Wd = lab.shape
+    lab, bg = labels(); H, Wd = lab.shape
     sx = (CARD_X[1] - CARD_X[0]) / Wd; sz = (CARD_Z[1] - CARD_Z[0]) / H
     card = sbox(CARD_X[0], CARD_Z[0], CARD_X[1], CARD_Z[1])
     geo, used = {}, None
@@ -71,6 +72,13 @@ def main():
         if used is not None: g = g.difference(used)
         g = g.buffer(-0.2).buffer(0.2)                  # drop slivers thinner than a nozzle line
         geo[k] = g; used = g if used is None else unary_union([used, g])
+    if CARD == 'r':                                     # BJ 2026-11-26: black outline round the green and the red brick (they sit on red)
+        left = sbox(CARD_X[0], CARD_Z[0], BRICK_X, CARD_Z[1])
+        rb = polys((lab == list(PAL).index('r')) & ~bg, sx, sz)
+        br = unary_union([g_ for g_ in (rb, geo.get('g')) if g_ is not None]).intersection(left)
+        br = unary_union([p_ for p_ in (br.geoms if hasattr(br, 'geoms') else [br]) if p_.geom_type == 'Polygon' and p_.area > 30])
+        ring = br.buffer(OUTLINE).difference(br).difference(unary_union([geo[c] for c in geo if c != 'k'])).intersection(card)
+        geo['k'] = unary_union([geo['k'], ring]).buffer(0); used = unary_union([used, ring])
     geo[CARD] = card.difference(used)
     prn = HERE / 'print'; info = {}
     for f in prn.glob('110_tile_F_c*_r3_ink*_PRINT_1.stl'): f.unlink()
