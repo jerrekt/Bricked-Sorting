@@ -41,3 +41,10 @@ Stock: 2x2 x 8 ft x 1 (4 x 600 = 2400 of 2438, cut carefully), 1x2 x 8 ft x 3 (6
 | cross rails 109 to long top rails | #8 x 2.5 in toe-screwed (pocket style) down from the cross rail top face into the long rail, 2 per end, before the roof goes on | 8 | at x -292 / -68, y +-140, ~15 deg off vertical toward the long rail |
 
 Order: posts onto the floor ply; bottom rails 105; beam posts 106; cleats 103/104; top rails 101/102; drill the clip pilots (drilling_map.md); clips; deck ply last (after the drawer rails, which screw into the floor).
+
+## Added 2026-11-26 for the screw-down walls
+| # | Piece | Stock | Cut | Qty | Position |
+|---|---|---|---|---|---|
+| 118 | front mid rail | 1x2 (38 tall) | cut to fit between the front posts, about 632 mm (24-7/8 in) | 1 | front face, flush with the posts' outside, centre 373 mm (14-11/16 in) above the floor top; 2 screws per end like the other rails |
+
+The front wall tiles' middle seam screws into it. Roof and wall tiles: #6 x 3/4 flat head through the slotted holes, 3/32 pilot into the wood (32 roof + 132 wall + 48 corner caps).

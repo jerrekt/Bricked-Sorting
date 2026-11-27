@@ -47,7 +47,7 @@ PANEL_SCREW_Z = (PANEL['z'][0] + 8.0, PANEL['z'][1] - 8.0)        # 338, 552
 BAR_W = 16.0
 
 COL = {'wood': (0.82, 0.68, 0.45), 'ply': (0.88, 0.80, 0.62), 'skin': (0.78, 0.10, 0.10), 'panel': (0.55, 0.08, 0.08),
-       'clip': (0.25, 0.25, 0.28), 'stud': (0.80, 0.12, 0.12), 'cap': (0.70, 0.08, 0.08), 'bar': (0.30, 0.30, 0.34), 'dummy': (0.12, 0.12, 0.14)}
+       'clip': (0.25, 0.25, 0.28), 'stud': (0.80, 0.12, 0.12), 'cap': (0.70, 0.08, 0.08), 'bar': (0.30, 0.30, 0.34), 'dummy': (0.12, 0.12, 0.14), 'ink': (0.97, 0.97, 0.97)}
 
 
 # ---------------- small helpers ----------------
@@ -104,6 +104,34 @@ def slot_csk(p, axis, half):
     return out.union(slot)
 
 
+WALL_SCREWS = True   # BJ 2026-11-26: no snap clips against wood. Wall tiles and corner caps screw to the wood through
+                     # slotted countersunk bosses (#6 x 3/4 flat head, +-2 mm). Vault runbook wood-and-real-parts.
+WALL_RIB_D = 3.0     # wall rib depth from the outer face (wood is at 6.0: 3 mm clear of any wood it crosses)
+BOSS_R = 5.5         # screw boss radius; the boss runs from the face to the wood (D_WOOD)
+MID_Z = 373.0        # front wall: seam between rows 2 and 3, on the added front mid rail 118 (1x2, z 354..392)
+FONT_LOGO = '/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf'
+LOGO_EM, LOGO_Z, INK_T = 64.0, 478.0, 0.6
+WALL_HOLES = []
+
+
+def slot_hole_local(u, v, axis, half=2.0):
+    """cutter in a wall tile's local frame (x = u, y = z, z = depth inward, outer face at z 0): slotted countersink."""
+    out = None
+    n = int(half / 0.5) * 2 + 1
+    for k in range(n):
+        t = -half + 2 * half * k / (n - 1)
+        c = csk_cone((u + (t if axis == 'h' else 0), v + (t if axis == 'v' else 0), -0.01), (0, 0, 1), ROOF_CSK_D)
+        out = c if out is None else out.union(c)
+    slot = cq.Workplane('XY').slot2D(2 * half + ROOF_SLOT_W, ROOF_SLOT_W, 0 if axis == 'h' else 90).extrude(12).translate((u, v, -1))
+    return out.union(slot)
+
+
+def slot_hole_world(origin, xdir, normal, half=2.0):
+    """same cutter placed in the world: outer face point origin, slot along xdir, hole going along normal (into the part)."""
+    c = slot_hole_local(0, 0, 'h', half)
+    return cq.Workplane().add(c.val().moved(cq.Location(cq.Plane(origin=origin, xDir=xdir, normal=normal))))
+
+
 def csk_cone(p, d, big):
     """90 deg countersink cone of top diameter big, apex along d"""
     return cq.Workplane(obj=cq.Solid.makeCone(big / 2, 0.0, big / 2, cq.Vector(*p), cq.Vector(*d)))
@@ -145,7 +173,7 @@ def rib_ring(poly):
     return poly.difference(poly.buffer(-RIB_T, join_style='mitre'))
 
 
-def build_tile(wall, poly, extra_ribs=(), notch_strips=(), face_cuts=(), rib_clear=None):
+def build_tile(wall, poly, extra_ribs=(), notch_strips=(), face_cuts=(), rib_clear=None, bosses=()):
     """poly in (w, z). extra_ribs: (w0, w1, z0, z1) rectangles in (w, z) for ribs on wood lines.
     notch_strips: (w0, w1) vertical strips where no rib may be (keeper bars pass behind). face_cuts: (w, z) csk M3 holes."""
     face = multi_to_cq(loc2d(wall, poly), T_FACE, 0.0)
@@ -157,14 +185,19 @@ def build_tile(wall, poly, extra_ribs=(), notch_strips=(), face_cuts=(), rib_cle
     if rib_clear is not None:   # snap-in module: keep 6 mm of bare 2 mm face around the cutout for its clips, stiffening ring outside that
         ribs2d = ribs2d.difference(rib_clear.buffer(6.5, join_style='mitre'))
         ribs2d = ribs2d.union(rib_clear.buffer(9.5, join_style='mitre').difference(rib_clear.buffer(6.5, join_style='mitre')).intersection(poly))
-    ribs = multi_to_cq(loc2d(wall, ribs2d), RIB_H + T_SKIN - T_FACE, T_FACE - 0.01)
+    ribs = multi_to_cq(loc2d(wall, ribs2d), (WALL_RIB_D - T_FACE) if WALL_SCREWS else (RIB_H + T_SKIN - T_FACE), T_FACE - 0.01)
     body = face.union(ribs) if ribs is not None else face
+    sb_ = WALLS[wall]['sgn']
+    for (bw, bz, ax) in bosses:          # screw bosses from the face to the wood
+        body = body.union(cyl((sb_ * bw, bz, 0), (0, 0, 1), BOSS_R, D_WOOD))
     if rib_clear is not None:   # the snap-in module clips need the full 2.0 face: pad the 6.5 mm border back up to T_SKIN
         pad = multi_to_cq(loc2d(wall, rib_clear.buffer(6.5, join_style='mitre').intersection(poly)), T_SKIN - T_FACE + 0.01, T_FACE - 0.01)
         body = body.union(pad)
     s = WALLS[wall]['sgn']
     for (cw, cz) in face_cuts:
         body = body.cut(cyl((s * cw, cz, -1), (0, 0, 1), M3_CLR / 2, 10)).cut(csk_cone((s * cw, cz, -0.01), (0, 0, 1), M3_CSK_D))
+    for (bw, bz, ax) in bosses:
+        body = body.cut(slot_hole_local(s * bw, bz, ax))
     return to_world(body, wall)
 
 
@@ -251,6 +284,8 @@ def wood_parts():
         P.append((f'106_beam_post_{"L" if sx > 0 else "R"}', boxc(X[0], X[1], bp['y'][0], bp['y'][1], bp['z'][0], bp['z'][1]), 'wood'))
     for k, xc in enumerate(CROSS_X):
         P.append((f'109_roof_cross_rail_{k + 1}', boxc(xc - CROSS_W / 2, xc + CROSS_W / 2, -py[1] + 19, py[1] - 19, pz[1] - CROSS_H, pz[1]), 'wood'))
+    if WALL_SCREWS:      # added 2026-11-26: the front tiles' middle seam needs wood behind it (no drawer or panel there)
+        P.append(('118_mid_rail_front', boxc(-px[0], px[0], py[1] - 19, py[1], MID_Z - 19, MID_Z + 19), 'wood'))
     fp = W['floor_ply']
     P.append(('107_floor_ply', boxc(fp['x'][0], fp['x'][1], fp['y'][0], fp['y'][1], fp['z'][0], fp['z'][1]), 'ply'))
     dp = W['deck_ply']; hx, hy = dp['size'][0] / 2, dp['size'][1] / 2
@@ -346,6 +381,139 @@ def skin_parts():
                     for zc in (110.0, 185.0): clips.append(dict(kind='C2', wall=wall, w=0.0, z=zc, along='v', wing=-1, what='beam post, seam ribs'))
                 if ci == 0 and ri == 1: clips.append(dict(kind='C2', wall=wall, w=0.0, z=240.0, along='v', wing=-1, what='beam post, seam ribs'))
     return P, clips
+
+
+def logo_inks():
+    """'Bricked Sorting' + the two-brick icon as 0.6 mm inlays in the front wall's top row (white and blue on the AMS).
+    Viewer coordinates X = -x (the front viewer's left is +x). Each word sits across one tile seam (X -180 / +180) with
+    the seam in a gap between letters; the gap between the words is on the middle seam."""
+    pl = cq.Plane(origin=(0, YO - INK_T, LOGO_Z), xDir=(-1, 0, 0), normal=(0, 1, 0))
+    sol = cq.Workplane(pl).text('Bricked Sorting', LOGO_EM, INK_T, fontPath=FONT_LOGO, halign='center', valign='center').solids().vals()
+    iv = sorted([(-b.xmax, -b.xmin) for b in (q.BoundingBox() for q in sol)])
+    L = []
+    for a, b in iv:
+        if L and a < L[-1][1] - 0.01: L[-1] = (L[-1][0], max(L[-1][1], b))
+        else: L.append((a, b))
+    assert len(L) == 14, len(L)
+    g1 = (L[3][1] + L[4][0]) / 2; g2 = (L[10][1] + L[11][0]) / 2          # Bric|ked, Sort|ing
+    split = (L[6][1] + L[7][0]) / 2
+    white = None
+    ext = []
+    for q in sol:
+        b = q.BoundingBox(); xm = -(b.xmin + b.xmax) / 2
+        dX = (-180.0 - g1) if xm < split else (180.0 - g2)
+        m = cq.Workplane().add(q.translate(cq.Vector(-dX, 0, 0)))
+        ext += [-b.xmax + dX, -b.xmin + dX]
+        white = m if white is None else white.union(m)
+    # icon (from web/assets/icons/favicon.svg, 64 units): blue brick under a brick with two studs, 44 mm wide, between the words
+    w1_right = max(e for e in ext if e < 0)
+    k = 44.0 / 56.0; Xc = (w1_right - 8.0) / 2 - 1.0; zc = LOGO_Z
+
+    def rr(x0, y0, x1, y1, r=1.5):     # svg rect (y down) -> shapely in (world x, z)
+        g = sbox(-(Xc + (x1 - 32) * k), zc + (33 - y1) * k, -(Xc + (x0 - 32) * k), zc + (33 - y0) * k)
+        return g.buffer(-r, join_style='round').buffer(r, join_style='round')
+    top = unary_union([rr(12, 16, 52, 38), rr(17, 8, 29, 17, 1.0), rr(35, 8, 47, 17, 1.0)])
+    bot = rr(4, 38, 60, 58)
+    top = top.difference(bot.buffer(0.01))
+    icon_w = to_world(multi_to_cq(loc2d('F', top), INK_T, 0.0), 'F')
+    icon_b = to_world(multi_to_cq(loc2d('F', bot), INK_T, 0.0), 'F')
+    info = dict(text='Bricked Sorting', font='Poppins Bold', em=LOGO_EM, z=LOGO_Z, word1_X=[round(min(e for e in ext if e < 0), 1), round(w1_right, 1)],
+                word2_X=[round(min(e for e in ext if e > 0), 1), round(max(ext), 1)], icon_X=[round(Xc - 22, 1), round(Xc + 22, 1)])
+    return white.union(icon_w), icon_b, info
+
+
+def tile_bosses(wall, poly, w0, w1, z0, z1, post_edge=None, seam_w=None, off=35.0):
+    """screw points (w, z, slot axis) for a wall tile: on every wood line it covers. 'v' slot on horizontal wood, 'h' on posts."""
+    out = []
+    lines = [CLEAT_Z, RAIL_Z] + ([BRAIL_Z] if wall in ('L', 'R') else [])
+    if wall == 'F':
+        if abs(z1 - MID_Z) < 0.1: lines.append(MID_Z - 9.5)
+        if abs(z0 - MID_Z) < 0.1: lines.append(MID_Z + 9.5)
+    for zl in lines:
+        if z0 + 6 < zl < z1 - 6:
+            ws = (w0 + off, w1 - off) if (w1 - w0) > 2 * off + 30 else ((w0 + w1) / 2,)
+            out += [(wc, zl, 'v') for wc in ws]
+    if post_edge is not None:
+        wr = post_edge + (10.0 if post_edge < 0 else -10.0)
+        out += [(wr, zc, 'h') for zc in (z0 + 40, z1 - 40)]
+    if seam_w is not None:                                # side walls: the beam post behind the middle seam (z 50..262)
+        for zc in (110.0, 185.0, 240.0):
+            if z0 + 10 < zc < z1 - 10: out.append((seam_w, zc, 'h'))
+    keep = []
+    for (bw, bz, ax) in out:
+        if not Point(bw, bz).buffer(BOSS_R + 0.3).within(poly): continue
+        if any(abs(bw - kw) < 2 * BOSS_R + 2 and abs(bz - kz) < 2 * BOSS_R + 2 for kw, kz, _ in keep): continue
+        keep.append((bw, bz, ax))
+    for (bw, bz, ax) in keep:
+        WALL_HOLES.append(dict(part='wall tile', wall=wall, w=round(bw, 1), z=round(bz, 1), slot=('vertical' if ax == 'v' else 'horizontal'),
+                               xyz=wall_point(wall, bw, bz, D_WOOD)))
+    return keep
+
+
+def skin_parts_screwed():
+    """wall tiles that screw to the wood (no clips). Rows on the front/back follow the drawer opening top (134) and the
+    front mid rail (373); the back middle keeps the access panel."""
+    P = []
+    RFB = [(12.0, OPEN['z'][1]), (OPEN['z'][1], MID_Z), (MID_Z, Z_ROOF)]
+    RB_MID = [(12.0, OPEN['z'][1]), (OPEN['z'][1], PANEL['z'][0]), (PANEL['z'][1], Z_ROOF)]
+
+    def cross(w0, w1, z0, z1):
+        wc, zc = (w0 + w1) / 2, (z0 + z1) / 2
+        return [(wc - RIB_T / 2, wc + RIB_T / 2, z0, z1), (w0, w1, zc - RIB_T / 2, zc + RIB_T / 2)]
+    for wall, cols in (('F', COLS_F), ('B', COLS_B)):
+        for ci, (w0, w1) in enumerate(cols):
+            outer = ci in (0, 3)
+            rows = RFB if (outer or wall == 'F') else RB_MID
+            for ri, (z0, z1) in enumerate(rows):
+                inlet_here = wall == 'B' and w0 <= INLET['x'] <= w1 and z0 <= INLET['z'] <= z1
+                poly = tile_poly(w0, w1, z0, z1, cuts=[OPEN_CUT] + ([PANEL_CUT] if wall == 'B' else []) + ([INLET_CUT] if inlet_here else []))
+                if poly.is_empty or poly.area < 100: continue
+                b = poly.bounds
+                notches = [(x - 9, x + 9) for x in PANEL_SCREW_X if w0 < x < w1] if (wall == 'B' and not outer and ri > 0) else []
+                bs = tile_bosses(wall, poly, b[0], b[2], b[1], b[3], post_edge=((w0 if ci == 0 else w1) if outer else None),
+                                 off=(70.0 if (wall == 'B' and not outer) else 35.0))
+                lab = f'{110 if wall == "F" else 111}_tile_{wall}_c{ci + 1}_r{ri + 1}'
+                ribs = cross(b[0], b[2], b[1], b[3]) if (b[2] - b[0]) > 80 and (b[3] - b[1]) > 80 else []
+                P.append((lab, build_tile(wall, poly, ribs, notches, rib_clear=(INLET_CUT if inlet_here else None), bosses=bs), 'skin'))
+            if not outer and wall == 'B':   # access panel halves 115 (M3 into the keeper bars, unchanged)
+                z0, z1 = PANEL['z']
+                poly = tile_poly(w0, w1, z0, z1)
+                cuts = [(x, z) for x in PANEL_SCREW_X if w0 < x < w1 for z in PANEL_SCREW_Z]
+                ring = rib_ring(poly)
+                for (cw, cz) in cuts:
+                    ring = ring.difference(sbox(cw - 9, cz - 12, cw + 9, cz + 12))
+                face = multi_to_cq(loc2d(wall, poly), T_SKIN, 0.0)
+                body = face.union(multi_to_cq(loc2d(wall, ring), RIB_H, T_SKIN - 0.01))
+                s = WALLS[wall]['sgn']
+                for (cw, cz) in cuts:
+                    body = body.cut(cyl((s * cw, cz, -1), (0, 0, 1), M3_CLR / 2, 10)).cut(csk_cone((s * cw, cz, -0.01), (0, 0, 1), M3_CSK_D))
+                P.append((f'115_access_panel_{"x_neg" if ci == 1 else "x_pos"}', to_world(body, wall), 'panel'))
+    for wall in ('L', 'R'):
+        for ci, (w0, w1) in enumerate(COLS_S):
+            for ri, (z0, z1) in enumerate(ROWS):
+                poly = tile_poly(w0, w1, z0, z1)
+                bs = tile_bosses(wall, poly, w0, w1, z0, z1, post_edge=(w0 if ci == 0 else w1), seam_w=(-9.5 if ci == 0 else 9.5))
+                lab = f'{112 if wall == "L" else 113}_tile_{wall}_c{ci + 1}_r{ri + 1}'
+                P.append((lab, build_tile(wall, poly, cross(w0, w1, z0, z1), bosses=bs), 'skin'))
+    # lettering on the front top row
+    inkw, inkb, info = logo_inks()
+    out = []
+    for lab, w, kind in P:
+        if lab.startswith('110_tile_F_') and lab.endswith('_r3'):
+            ci = int(lab.split('_c')[1][0]) - 1
+            x0, x1 = COLS_F[ci]
+            slab = boxc(x0, x1, YO - INK_T - 0.01, YO + 0.01, MID_Z, Z_ROOF)
+            for suf, ink in (('_inkw', inkw), ('_inkb', inkb)):
+                part = ink.intersect(slab)
+                if part.solids().size() and sum(q.Volume() for q in part.solids().vals()) > 1.0:
+                    w = w.cut(part)
+                    out.append((lab + suf, part, 'ink'))
+        out.append((lab, w, kind))
+    LOGO_INFO.update(info)
+    return out, []
+
+
+LOGO_INFO = {}
 
 
 def keeper_bars():
@@ -498,6 +666,20 @@ def corner_caps():
                 ribB = boxc(XB[0], XB[1], YB[0], YB[1], z0 + 2, z1 - 2)
                 w = legA.union(legB).union(ribA).union(ribB)
                 lab = f'135_corner_cap_{"L" if sx > 0 else "R"}{"F" if sy > 0 else "B"}_r{ri + 1}'
+                if WALL_SCREWS:      # pads from the leg to the post + slotted countersunk #6 holes (no clips)
+                    xa, yb = sx * 345.0, sy * 165.0
+                    XP, YP = sb(xa - BOSS_R, xa + BOSS_R), sb(yo - sy * T_SKIN, yo - sy * D_WOOD)
+                    padA = boxc(XP[0], XP[1], YP[0], YP[1], z0 + 2, z1 - 2)
+                    XQ, YQ = sb(xo - sx * T_SKIN, xo - sx * D_WOOD), sb(yb - BOSS_R, yb + BOSS_R)
+                    padB = boxc(XQ[0], XQ[1], YQ[0], YQ[1], z0 + 2, z1 - 2)
+                    w = legA.union(legB).union(padA).union(padB)
+                    for zc in (z0 + 50, z1 - 50):
+                        w = w.cut(slot_hole_world((xa, yo, zc), (1, 0, 0), (0, -sy, 0)))
+                        w = w.cut(slot_hole_world((xo, yb, zc), (0, 1, 0), (-sx, 0, 0)))
+                        WALL_HOLES.append(dict(part='corner cap', wall=('F' if sy > 0 else 'B'), w=xa, z=zc, slot='horizontal', xyz=[xa, sy * (YO - D_WOOD), zc]))
+                        WALL_HOLES.append(dict(part='corner cap', wall=('L' if sx > 0 else 'R'), w=yb, z=zc, slot='horizontal', xyz=[sx * (XO - D_WOOD), yb, zc]))
+                    P.append((lab, w, 'cap'))
+                    continue
                 P.append((lab, w, 'cap'))
                 wallA, wallB = ('F' if sy > 0 else 'B'), ('L' if sx > 0 else 'R')
                 for zc in (z0 + 100,):
@@ -635,14 +817,16 @@ def drilling_map(screws, wood):
 def main():
     world = HERE / 'world'; prn = HERE / 'print'
     wood = wood_parts()
-    skin, wall_clips = skin_parts()
+    skin, wall_clips = skin_parts_screwed() if WALL_SCREWS else skin_parts()
     bars, bar_screws = keeper_bars()
     roof, roof_clips = roof_parts()
     studs = stud_parts()
     caps, cap_clips = corner_caps()
     clipsP, screws, ncl = clip_instances(wall_clips + cap_clips, roof_clips)
     screws += bar_screws
-    hpos = h_clip_plan()
+    hpos = [] if WALL_SCREWS else h_clip_plan()
+    if WALL_SCREWS:
+        screws = [dict(part=h['part'], on={'F': 'y +174 (front wood face)', 'B': 'y -174 (back wood face)', 'L': 'x +354 (left wood face)', 'R': 'x -354 (right wood face)'}[h['wall']], what='#6 x 3/4 through a slotted boss (' + h['slot'] + ' slot)', xyz=[round(float(v), 1) for v in h['xyz']]) for h in WALL_HOLES] + bar_screws
     inlet = boxc(INLET['x'] - INLET['w'] / 2, INLET['x'] + INLET['w'] / 2, -YO + T_SKIN, -YO + T_SKIN + INLET['depth'], INLET['z'] - INLET['h'] / 2, INLET['z'] + INLET['h'] / 2)
     inlet = inlet.union(boxc(INLET['x'] - INLET['w'] / 2 - 2, INLET['x'] + INLET['w'] / 2 + 2, -YO - 3, -YO, INLET['z'] - INLET['h'] / 2 - 2, INLET['z'] + INLET['h'] / 2 + 2))
     parts = wood + skin + bars + roof + studs + caps + clipsP + [('119_dummy_IEC_C14_inlet', inlet, 'dummy')]
@@ -669,9 +853,22 @@ def main():
         rot = {'F': ((1, 0, 0), -90), 'B': ((1, 0, 0), 90), 'L': ((0, 1, 0), 90), 'R': ((0, 1, 0), -90), 'roof': ((1, 0, 0), 180)}[wall]
         return lambda w: print_pose(w, rot=rot)
 
+    inks = {lab: w for lab, w, kind in skin if kind == 'ink'}
     for lab, w, kind in skin:
+        if kind == 'ink': continue
         wall = 'B' if lab.startswith('115') else lab.split('_')[2]
-        add_print(lab, w, 1, face_down(wall), 'outer face on the bed, ribs up')
+        mine = {k: v for k, v in inks.items() if k.startswith(lab + '_ink')}
+        if not mine:
+            add_print(lab, w, 1, face_down(wall), 'outer face on the bed, ribs up')
+            continue
+        rot = ((1, 0, 0), -90)                               # front wall: tile and its inlays keep one frame
+        full = w
+        for v in mine.values(): full = full.union(v)
+        fr = full.rotate((0, 0, 0), rot[0], rot[1]); b = bbox(fr)
+        mv = (-(b[0] + b[3]) / 2, -(b[1] + b[4]) / 2, -b[2])
+        for k_, v in [(lab, w)] + list(mine.items()):
+            posed = v.rotate((0, 0, 0), rot[0], rot[1]).translate(mv)
+            add_print(k_, v, 1, lambda _w, _p=posed: (_p, False), 'outer face on the bed; inlay prints with its tile (AMS)')
     for lab, w, kind in roof:
         add_print(lab, w, 1, face_down('roof'), 'top face on the bed, ribs up')
     for lab, w, kind in bars:
@@ -683,6 +880,7 @@ def main():
         add_print(lab, w, 1, lambda w: print_pose(w), 'standing on its end (200 tall L), ribs vertical; brim')
     qty = {'120': ncl['C1'], '121': ncl['C2'], '122': len(hpos), '123': ncl['C3']}
     for lab, w, kind in masters:
+        if qty[lab[:3]] == 0: continue
         add_print(lab, w, qty[lab[:3]], lambda w: print_pose(w), 'base on the bed, slot up (print 20-30 per plate)')
 
     # ---- checks ----
@@ -735,6 +933,8 @@ def main():
         byg[k] = round(byg.get(k, 0) + p['est_grams_each'] * p['qty'])
     res['totals'] = {'printed_grams': round(tot_g), 'printed_hours': round(tot_h, 1), 'grams_by_group': byg, 'clips_screwed': ncl, 'H_bridge_clips': len(hpos),
                      'tiles': len([p for p in plist if p['part_no'] in ('110', '111', '112', '113', '114', '115')]), 'wood_screws_for_clips': len(screws)}
+    res['wall_screw_holes'] = {'count': len(WALL_HOLES), 'by_part': {k: len([h for h in WALL_HOLES if h['part'] == k]) for k in ('wall tile', 'corner cap')}}
+    res['logo'] = LOGO_INFO
     res['roof_screw_holes'] = {'note': '#6 x 3/4 flat head down into the wood, slotted countersinks (BJ 2026-11-26)', 'count': len(ROOF_HOLES), 'holes': ROOF_HOLES}
     (HERE / 'checks.json').write_text(json.dumps(res, indent=1))
     (HERE / 'parts.json').write_text(json.dumps({'module': 'F', 'interface': IF['version'], 'printed': plist,
@@ -744,7 +944,7 @@ def main():
                    {'item': 'M3 heat-set inserts', 'qty': 16, 'use': 'stud feet (8), stud ledge (4) [+8 in keeper bars]'}, {'item': 'M3 heat-set inserts', 'qty': 8, 'use': 'keeper bars'},
                    {'item': 'M3 x 8 countersunk', 'qty': 16, 'use': 'stud feet through the roof (8), access panel (8)'}, {'item': 'red PLA', 'qty': f'~{tot_g / 1000:.1f} kg'}],
         'h_clip_positions': hpos, 'totals': res['totals']}, indent=1))
-    cut_list(screws); drilling_map(screws, wood)
+    drilling_map(screws, wood)        # cut_list.md is kept by hand since 2026-11-26 (measured lumber)
     stills(parts)
     return res
 

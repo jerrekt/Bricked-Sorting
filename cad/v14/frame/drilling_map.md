@@ -4,147 +4,193 @@ Every hole: 2.5 mm pilot for a #6 x 3/4 in wood screw, drilled perpendicular to 
 
 | # | Part | Face | x | y | z | Holds |
 |---|---|---|---|---|---|---|
-| 1 | clip C1 | y +174 (post / cleat / rail outer face) | -328.7 | 174.0 | 62.0 | post, tile edge rib |
-| 2 | clip C1 | y +174 (post / cleat / rail outer face) | -328.7 | 174.0 | 162.0 | post, tile edge rib |
-| 3 | clip C1 | y +174 (post / cleat / rail outer face) | -301.0 | 174.0 | 274.5 | cleat, tile rib |
-| 4 | clip C1 | y +174 (post / cleat / rail outer face) | -215.0 | 174.0 | 274.5 | cleat, tile rib |
-| 5 | clip C1 | y +174 (post / cleat / rail outer face) | -328.7 | 174.0 | 262.0 | post, tile edge rib |
-| 6 | clip C1 | y +174 (post / cleat / rail outer face) | -328.7 | 174.0 | 362.0 | post, tile edge rib |
-| 7 | clip C1 | y +174 (post / cleat / rail outer face) | -301.0 | 174.0 | 586.5 | top rail, tile rib |
-| 8 | clip C1 | y +174 (post / cleat / rail outer face) | -215.0 | 174.0 | 586.5 | top rail, tile rib |
-| 9 | clip C1 | y +174 (post / cleat / rail outer face) | -328.7 | 174.0 | 462.0 | post, tile edge rib |
-| 10 | clip C1 | y +174 (post / cleat / rail outer face) | -328.7 | 174.0 | 562.0 | post, tile edge rib |
-| 11 | clip C1 | y +174 (post / cleat / rail outer face) | -145.0 | 174.0 | 274.5 | cleat, tile rib |
-| 12 | clip C1 | y +174 (post / cleat / rail outer face) | -35.0 | 174.0 | 274.5 | cleat, tile rib |
-| 13 | clip C1 | y +174 (post / cleat / rail outer face) | -145.0 | 174.0 | 586.5 | top rail, tile rib |
-| 14 | clip C1 | y +174 (post / cleat / rail outer face) | -35.0 | 174.0 | 586.5 | top rail, tile rib |
-| 15 | clip C1 | y +174 (post / cleat / rail outer face) | 35.0 | 174.0 | 274.5 | cleat, tile rib |
-| 16 | clip C1 | y +174 (post / cleat / rail outer face) | 145.0 | 174.0 | 274.5 | cleat, tile rib |
-| 17 | clip C1 | y +174 (post / cleat / rail outer face) | 35.0 | 174.0 | 586.5 | top rail, tile rib |
-| 18 | clip C1 | y +174 (post / cleat / rail outer face) | 145.0 | 174.0 | 586.5 | top rail, tile rib |
-| 19 | clip C1 | y +174 (post / cleat / rail outer face) | 328.7 | 174.0 | 62.0 | post, tile edge rib |
-| 20 | clip C1 | y +174 (post / cleat / rail outer face) | 328.7 | 174.0 | 162.0 | post, tile edge rib |
-| 21 | clip C1 | y +174 (post / cleat / rail outer face) | 215.0 | 174.0 | 274.5 | cleat, tile rib |
-| 22 | clip C1 | y +174 (post / cleat / rail outer face) | 301.0 | 174.0 | 274.5 | cleat, tile rib |
-| 23 | clip C1 | y +174 (post / cleat / rail outer face) | 328.7 | 174.0 | 262.0 | post, tile edge rib |
-| 24 | clip C1 | y +174 (post / cleat / rail outer face) | 328.7 | 174.0 | 362.0 | post, tile edge rib |
-| 25 | clip C1 | y +174 (post / cleat / rail outer face) | 215.0 | 174.0 | 586.5 | top rail, tile rib |
-| 26 | clip C1 | y +174 (post / cleat / rail outer face) | 301.0 | 174.0 | 586.5 | top rail, tile rib |
-| 27 | clip C1 | y +174 (post / cleat / rail outer face) | 328.7 | 174.0 | 462.0 | post, tile edge rib |
-| 28 | clip C1 | y +174 (post / cleat / rail outer face) | 328.7 | 174.0 | 562.0 | post, tile edge rib |
-| 29 | clip C1 | y -174 (post / cleat / rail outer face) | -328.7 | -174.0 | 62.0 | post, tile edge rib |
-| 30 | clip C1 | y -174 (post / cleat / rail outer face) | -328.7 | -174.0 | 162.0 | post, tile edge rib |
-| 31 | clip C1 | y -174 (post / cleat / rail outer face) | -301.0 | -174.0 | 274.5 | cleat, tile rib |
-| 32 | clip C1 | y -174 (post / cleat / rail outer face) | -235.0 | -174.0 | 274.5 | cleat, tile rib |
-| 33 | clip C1 | y -174 (post / cleat / rail outer face) | -328.7 | -174.0 | 262.0 | post, tile edge rib |
-| 34 | clip C1 | y -174 (post / cleat / rail outer face) | -328.7 | -174.0 | 362.0 | post, tile edge rib |
-| 35 | clip C1 | y -174 (post / cleat / rail outer face) | -301.0 | -174.0 | 586.5 | top rail, tile rib |
-| 36 | clip C1 | y -174 (post / cleat / rail outer face) | -235.0 | -174.0 | 586.5 | top rail, tile rib |
-| 37 | clip C1 | y -174 (post / cleat / rail outer face) | -328.7 | -174.0 | 462.0 | post, tile edge rib |
-| 38 | clip C1 | y -174 (post / cleat / rail outer face) | -328.7 | -174.0 | 562.0 | post, tile edge rib |
-| 39 | clip C1 | y -174 (post / cleat / rail outer face) | -130.0 | -174.0 | 274.5 | cleat, tile rib |
-| 40 | clip C1 | y -174 (post / cleat / rail outer face) | -70.0 | -174.0 | 274.5 | cleat, tile rib |
-| 41 | clip C1 | y -174 (post / cleat / rail outer face) | -130.0 | -174.0 | 586.5 | top rail, tile rib |
-| 42 | clip C1 | y -174 (post / cleat / rail outer face) | -70.0 | -174.0 | 586.5 | top rail, tile rib |
-| 43 | clip C1 | y -174 (post / cleat / rail outer face) | 70.0 | -174.0 | 274.5 | cleat, tile rib |
-| 44 | clip C1 | y -174 (post / cleat / rail outer face) | 130.0 | -174.0 | 274.5 | cleat, tile rib |
-| 45 | clip C1 | y -174 (post / cleat / rail outer face) | 70.0 | -174.0 | 586.5 | top rail, tile rib |
-| 46 | clip C1 | y -174 (post / cleat / rail outer face) | 130.0 | -174.0 | 586.5 | top rail, tile rib |
-| 47 | clip C1 | y -174 (post / cleat / rail outer face) | 328.7 | -174.0 | 62.0 | post, tile edge rib |
-| 48 | clip C1 | y -174 (post / cleat / rail outer face) | 328.7 | -174.0 | 162.0 | post, tile edge rib |
-| 49 | clip C1 | y -174 (post / cleat / rail outer face) | 235.0 | -174.0 | 274.5 | cleat, tile rib |
-| 50 | clip C1 | y -174 (post / cleat / rail outer face) | 301.0 | -174.0 | 274.5 | cleat, tile rib |
-| 51 | clip C1 | y -174 (post / cleat / rail outer face) | 328.7 | -174.0 | 262.0 | post, tile edge rib |
-| 52 | clip C1 | y -174 (post / cleat / rail outer face) | 328.7 | -174.0 | 362.0 | post, tile edge rib |
-| 53 | clip C1 | y -174 (post / cleat / rail outer face) | 235.0 | -174.0 | 586.5 | top rail, tile rib |
-| 54 | clip C1 | y -174 (post / cleat / rail outer face) | 301.0 | -174.0 | 586.5 | top rail, tile rib |
-| 55 | clip C1 | y -174 (post / cleat / rail outer face) | 328.7 | -174.0 | 462.0 | post, tile edge rib |
-| 56 | clip C1 | y -174 (post / cleat / rail outer face) | 328.7 | -174.0 | 562.0 | post, tile edge rib |
-| 57 | clip C1 | x +354 (post / rail outer face) | 354.0 | -121.0 | 24.5 | bottom rail, tile rib |
-| 58 | clip C1 | x +354 (post / rail outer face) | 354.0 | -35.0 | 24.5 | bottom rail, tile rib |
-| 59 | clip C1 | x +354 (post / rail outer face) | 354.0 | -148.7 | 62.0 | post, tile edge rib |
-| 60 | clip C1 | x +354 (post / rail outer face) | 354.0 | -148.7 | 162.0 | post, tile edge rib |
-| 61 | clip C2 | x +354 (post / rail outer face) | 354.0 | 7.3 | 110.0 | beam post, seam ribs |
-| 62 | clip C2 | x +354 (post / rail outer face) | 354.0 | 7.3 | 185.0 | beam post, seam ribs |
-| 63 | clip C1 | x +354 (post / rail outer face) | 354.0 | -121.0 | 274.5 | cleat, tile rib |
-| 64 | clip C1 | x +354 (post / rail outer face) | 354.0 | -35.0 | 274.5 | cleat, tile rib |
-| 65 | clip C1 | x +354 (post / rail outer face) | 354.0 | -148.7 | 262.0 | post, tile edge rib |
-| 66 | clip C1 | x +354 (post / rail outer face) | 354.0 | -148.7 | 362.0 | post, tile edge rib |
-| 67 | clip C2 | x +354 (post / rail outer face) | 354.0 | 7.3 | 240.0 | beam post, seam ribs |
-| 68 | clip C1 | x +354 (post / rail outer face) | 354.0 | -121.0 | 586.5 | top rail, tile rib |
-| 69 | clip C1 | x +354 (post / rail outer face) | 354.0 | -35.0 | 586.5 | top rail, tile rib |
-| 70 | clip C1 | x +354 (post / rail outer face) | 354.0 | -148.7 | 462.0 | post, tile edge rib |
-| 71 | clip C1 | x +354 (post / rail outer face) | 354.0 | -148.7 | 562.0 | post, tile edge rib |
-| 72 | clip C1 | x +354 (post / rail outer face) | 354.0 | 35.0 | 24.5 | bottom rail, tile rib |
-| 73 | clip C1 | x +354 (post / rail outer face) | 354.0 | 121.0 | 24.5 | bottom rail, tile rib |
-| 74 | clip C1 | x +354 (post / rail outer face) | 354.0 | 148.7 | 62.0 | post, tile edge rib |
-| 75 | clip C1 | x +354 (post / rail outer face) | 354.0 | 148.7 | 162.0 | post, tile edge rib |
-| 76 | clip C1 | x +354 (post / rail outer face) | 354.0 | 35.0 | 274.5 | cleat, tile rib |
-| 77 | clip C1 | x +354 (post / rail outer face) | 354.0 | 121.0 | 274.5 | cleat, tile rib |
-| 78 | clip C1 | x +354 (post / rail outer face) | 354.0 | 148.7 | 262.0 | post, tile edge rib |
-| 79 | clip C1 | x +354 (post / rail outer face) | 354.0 | 148.7 | 362.0 | post, tile edge rib |
-| 80 | clip C1 | x +354 (post / rail outer face) | 354.0 | 35.0 | 586.5 | top rail, tile rib |
-| 81 | clip C1 | x +354 (post / rail outer face) | 354.0 | 121.0 | 586.5 | top rail, tile rib |
-| 82 | clip C1 | x +354 (post / rail outer face) | 354.0 | 148.7 | 462.0 | post, tile edge rib |
-| 83 | clip C1 | x +354 (post / rail outer face) | 354.0 | 148.7 | 562.0 | post, tile edge rib |
-| 84 | clip C1 | x -354 (post / rail outer face) | -354.0 | -121.0 | 24.5 | bottom rail, tile rib |
-| 85 | clip C1 | x -354 (post / rail outer face) | -354.0 | -35.0 | 24.5 | bottom rail, tile rib |
-| 86 | clip C1 | x -354 (post / rail outer face) | -354.0 | -148.7 | 62.0 | post, tile edge rib |
-| 87 | clip C1 | x -354 (post / rail outer face) | -354.0 | -148.7 | 162.0 | post, tile edge rib |
-| 88 | clip C2 | x -354 (post / rail outer face) | -354.0 | -7.3 | 110.0 | beam post, seam ribs |
-| 89 | clip C2 | x -354 (post / rail outer face) | -354.0 | -7.3 | 185.0 | beam post, seam ribs |
-| 90 | clip C1 | x -354 (post / rail outer face) | -354.0 | -121.0 | 274.5 | cleat, tile rib |
-| 91 | clip C1 | x -354 (post / rail outer face) | -354.0 | -35.0 | 274.5 | cleat, tile rib |
-| 92 | clip C1 | x -354 (post / rail outer face) | -354.0 | -148.7 | 262.0 | post, tile edge rib |
-| 93 | clip C1 | x -354 (post / rail outer face) | -354.0 | -148.7 | 362.0 | post, tile edge rib |
-| 94 | clip C2 | x -354 (post / rail outer face) | -354.0 | -7.3 | 240.0 | beam post, seam ribs |
-| 95 | clip C1 | x -354 (post / rail outer face) | -354.0 | -121.0 | 586.5 | top rail, tile rib |
-| 96 | clip C1 | x -354 (post / rail outer face) | -354.0 | -35.0 | 586.5 | top rail, tile rib |
-| 97 | clip C1 | x -354 (post / rail outer face) | -354.0 | -148.7 | 462.0 | post, tile edge rib |
-| 98 | clip C1 | x -354 (post / rail outer face) | -354.0 | -148.7 | 562.0 | post, tile edge rib |
-| 99 | clip C1 | x -354 (post / rail outer face) | -354.0 | 35.0 | 24.5 | bottom rail, tile rib |
-| 100 | clip C1 | x -354 (post / rail outer face) | -354.0 | 121.0 | 24.5 | bottom rail, tile rib |
-| 101 | clip C1 | x -354 (post / rail outer face) | -354.0 | 148.7 | 62.0 | post, tile edge rib |
-| 102 | clip C1 | x -354 (post / rail outer face) | -354.0 | 148.7 | 162.0 | post, tile edge rib |
-| 103 | clip C1 | x -354 (post / rail outer face) | -354.0 | 35.0 | 274.5 | cleat, tile rib |
-| 104 | clip C1 | x -354 (post / rail outer face) | -354.0 | 121.0 | 274.5 | cleat, tile rib |
-| 105 | clip C1 | x -354 (post / rail outer face) | -354.0 | 148.7 | 262.0 | post, tile edge rib |
-| 106 | clip C1 | x -354 (post / rail outer face) | -354.0 | 148.7 | 362.0 | post, tile edge rib |
-| 107 | clip C1 | x -354 (post / rail outer face) | -354.0 | 35.0 | 586.5 | top rail, tile rib |
-| 108 | clip C1 | x -354 (post / rail outer face) | -354.0 | 121.0 | 586.5 | top rail, tile rib |
-| 109 | clip C1 | x -354 (post / rail outer face) | -354.0 | 148.7 | 462.0 | post, tile edge rib |
-| 110 | clip C1 | x -354 (post / rail outer face) | -354.0 | 148.7 | 562.0 | post, tile edge rib |
-| 111 | clip C1 | y -174 (post / cleat / rail outer face) | -339.5 | -174.0 | 112.0 | post, corner cap rib |
-| 112 | clip C1 | x -354 (post / rail outer face) | -354.0 | -160.5 | 112.0 | post, corner cap rib |
-| 113 | clip C1 | y -174 (post / cleat / rail outer face) | -339.5 | -174.0 | 312.0 | post, corner cap rib |
-| 114 | clip C1 | x -354 (post / rail outer face) | -354.0 | -160.5 | 312.0 | post, corner cap rib |
-| 115 | clip C1 | y -174 (post / cleat / rail outer face) | -339.5 | -174.0 | 512.0 | post, corner cap rib |
-| 116 | clip C1 | x -354 (post / rail outer face) | -354.0 | -160.5 | 512.0 | post, corner cap rib |
-| 117 | clip C1 | y +174 (post / cleat / rail outer face) | -339.5 | 174.0 | 112.0 | post, corner cap rib |
-| 118 | clip C1 | x -354 (post / rail outer face) | -354.0 | 160.5 | 112.0 | post, corner cap rib |
-| 119 | clip C1 | y +174 (post / cleat / rail outer face) | -339.5 | 174.0 | 312.0 | post, corner cap rib |
-| 120 | clip C1 | x -354 (post / rail outer face) | -354.0 | 160.5 | 312.0 | post, corner cap rib |
-| 121 | clip C1 | y +174 (post / cleat / rail outer face) | -339.5 | 174.0 | 512.0 | post, corner cap rib |
-| 122 | clip C1 | x -354 (post / rail outer face) | -354.0 | 160.5 | 512.0 | post, corner cap rib |
-| 123 | clip C1 | y -174 (post / cleat / rail outer face) | 339.5 | -174.0 | 112.0 | post, corner cap rib |
-| 124 | clip C1 | x +354 (post / rail outer face) | 354.0 | -160.5 | 112.0 | post, corner cap rib |
-| 125 | clip C1 | y -174 (post / cleat / rail outer face) | 339.5 | -174.0 | 312.0 | post, corner cap rib |
-| 126 | clip C1 | x +354 (post / rail outer face) | 354.0 | -160.5 | 312.0 | post, corner cap rib |
-| 127 | clip C1 | y -174 (post / cleat / rail outer face) | 339.5 | -174.0 | 512.0 | post, corner cap rib |
-| 128 | clip C1 | x +354 (post / rail outer face) | 354.0 | -160.5 | 512.0 | post, corner cap rib |
-| 129 | clip C1 | y +174 (post / cleat / rail outer face) | 339.5 | 174.0 | 112.0 | post, corner cap rib |
-| 130 | clip C1 | x +354 (post / rail outer face) | 354.0 | 160.5 | 112.0 | post, corner cap rib |
-| 131 | clip C1 | y +174 (post / cleat / rail outer face) | 339.5 | 174.0 | 312.0 | post, corner cap rib |
-| 132 | clip C1 | x +354 (post / rail outer face) | 354.0 | 160.5 | 312.0 | post, corner cap rib |
-| 133 | clip C1 | y +174 (post / cleat / rail outer face) | 339.5 | 174.0 | 512.0 | post, corner cap rib |
-| 134 | clip C1 | x +354 (post / rail outer face) | 354.0 | 160.5 | 512.0 | post, corner cap rib |
-| 135 | keeper bar 116 | y -174 (deck cleat outer face) | -150.0 | -174.0 | 281.0 | access panel keeper |
-| 136 | keeper bar 117 | y -174 (top rail outer face) | -150.0 | -174.0 | 593.0 | access panel keeper |
-| 137 | keeper bar 116 | y -174 (deck cleat outer face) | -50.0 | -174.0 | 281.0 | access panel keeper |
-| 138 | keeper bar 117 | y -174 (top rail outer face) | -50.0 | -174.0 | 593.0 | access panel keeper |
-| 139 | keeper bar 116 | y -174 (deck cleat outer face) | 50.0 | -174.0 | 281.0 | access panel keeper |
-| 140 | keeper bar 117 | y -174 (top rail outer face) | 50.0 | -174.0 | 593.0 | access panel keeper |
-| 141 | keeper bar 116 | y -174 (deck cleat outer face) | 150.0 | -174.0 | 281.0 | access panel keeper |
-| 142 | keeper bar 117 | y -174 (top rail outer face) | 150.0 | -174.0 | 593.0 | access panel keeper |
+| 1 | wall tile | y +174 (front wood face) | -326.0 | 174.0 | 52.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 2 | wall tile | y +174 (front wood face) | -326.0 | 174.0 | 96.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 3 | wall tile | y +174 (front wood face) | -301.0 | 174.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 4 | wall tile | y +174 (front wood face) | -215.0 | 174.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 5 | wall tile | y +174 (front wood face) | -301.0 | 174.0 | 363.5 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 6 | wall tile | y +174 (front wood face) | -215.0 | 174.0 | 363.5 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 7 | wall tile | y +174 (front wood face) | -326.0 | 174.0 | 176.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 8 | wall tile | y +174 (front wood face) | -326.0 | 174.0 | 333.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 9 | wall tile | y +174 (front wood face) | -301.0 | 174.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 10 | wall tile | y +174 (front wood face) | -215.0 | 174.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 11 | wall tile | y +174 (front wood face) | -301.0 | 174.0 | 382.5 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 12 | wall tile | y +174 (front wood face) | -215.0 | 174.0 | 382.5 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 13 | wall tile | y +174 (front wood face) | -326.0 | 174.0 | 413.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 14 | wall tile | y +174 (front wood face) | -326.0 | 174.0 | 572.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 15 | wall tile | y +174 (front wood face) | -145.0 | 174.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 16 | wall tile | y +174 (front wood face) | -35.0 | 174.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 17 | wall tile | y +174 (front wood face) | -145.0 | 174.0 | 363.5 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 18 | wall tile | y +174 (front wood face) | -35.0 | 174.0 | 363.5 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 19 | wall tile | y +174 (front wood face) | -145.0 | 174.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 20 | wall tile | y +174 (front wood face) | -35.0 | 174.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 21 | wall tile | y +174 (front wood face) | -145.0 | 174.0 | 382.5 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 22 | wall tile | y +174 (front wood face) | -35.0 | 174.0 | 382.5 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 23 | wall tile | y +174 (front wood face) | 35.0 | 174.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 24 | wall tile | y +174 (front wood face) | 145.0 | 174.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 25 | wall tile | y +174 (front wood face) | 35.0 | 174.0 | 363.5 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 26 | wall tile | y +174 (front wood face) | 145.0 | 174.0 | 363.5 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 27 | wall tile | y +174 (front wood face) | 35.0 | 174.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 28 | wall tile | y +174 (front wood face) | 145.0 | 174.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 29 | wall tile | y +174 (front wood face) | 35.0 | 174.0 | 382.5 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 30 | wall tile | y +174 (front wood face) | 145.0 | 174.0 | 382.5 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 31 | wall tile | y +174 (front wood face) | 326.0 | 174.0 | 52.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 32 | wall tile | y +174 (front wood face) | 326.0 | 174.0 | 96.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 33 | wall tile | y +174 (front wood face) | 215.0 | 174.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 34 | wall tile | y +174 (front wood face) | 301.0 | 174.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 35 | wall tile | y +174 (front wood face) | 215.0 | 174.0 | 363.5 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 36 | wall tile | y +174 (front wood face) | 301.0 | 174.0 | 363.5 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 37 | wall tile | y +174 (front wood face) | 326.0 | 174.0 | 176.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 38 | wall tile | y +174 (front wood face) | 326.0 | 174.0 | 333.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 39 | wall tile | y +174 (front wood face) | 215.0 | 174.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 40 | wall tile | y +174 (front wood face) | 301.0 | 174.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 41 | wall tile | y +174 (front wood face) | 215.0 | 174.0 | 382.5 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 42 | wall tile | y +174 (front wood face) | 301.0 | 174.0 | 382.5 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 43 | wall tile | y +174 (front wood face) | 326.0 | 174.0 | 413.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 44 | wall tile | y +174 (front wood face) | 326.0 | 174.0 | 572.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 45 | wall tile | y -174 (back wood face) | -326.0 | -174.0 | 52.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 46 | wall tile | y -174 (back wood face) | -326.0 | -174.0 | 96.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 47 | wall tile | y -174 (back wood face) | -301.0 | -174.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 48 | wall tile | y -174 (back wood face) | -235.0 | -174.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 49 | wall tile | y -174 (back wood face) | -326.0 | -174.0 | 176.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 50 | wall tile | y -174 (back wood face) | -326.0 | -174.0 | 333.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 51 | wall tile | y -174 (back wood face) | -301.0 | -174.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 52 | wall tile | y -174 (back wood face) | -235.0 | -174.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 53 | wall tile | y -174 (back wood face) | -326.0 | -174.0 | 413.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 54 | wall tile | y -174 (back wood face) | -326.0 | -174.0 | 572.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 55 | wall tile | y -174 (back wood face) | -130.0 | -174.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 56 | wall tile | y -174 (back wood face) | -70.0 | -174.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 57 | wall tile | y -174 (back wood face) | -130.0 | -174.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 58 | wall tile | y -174 (back wood face) | -70.0 | -174.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 59 | wall tile | y -174 (back wood face) | 70.0 | -174.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 60 | wall tile | y -174 (back wood face) | 130.0 | -174.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 61 | wall tile | y -174 (back wood face) | 70.0 | -174.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 62 | wall tile | y -174 (back wood face) | 130.0 | -174.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 63 | wall tile | y -174 (back wood face) | 326.0 | -174.0 | 52.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 64 | wall tile | y -174 (back wood face) | 326.0 | -174.0 | 96.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 65 | wall tile | y -174 (back wood face) | 235.0 | -174.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 66 | wall tile | y -174 (back wood face) | 301.0 | -174.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 67 | wall tile | y -174 (back wood face) | 326.0 | -174.0 | 176.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 68 | wall tile | y -174 (back wood face) | 326.0 | -174.0 | 333.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 69 | wall tile | y -174 (back wood face) | 235.0 | -174.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 70 | wall tile | y -174 (back wood face) | 301.0 | -174.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 71 | wall tile | y -174 (back wood face) | 326.0 | -174.0 | 413.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 72 | wall tile | y -174 (back wood face) | 326.0 | -174.0 | 572.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 73 | wall tile | x +354 (left wood face) | 354.0 | -121.0 | 31.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 74 | wall tile | x +354 (left wood face) | 354.0 | -35.0 | 31.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 75 | wall tile | x +354 (left wood face) | 354.0 | -146.0 | 52.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 76 | wall tile | x +354 (left wood face) | 354.0 | -146.0 | 172.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 77 | wall tile | x +354 (left wood face) | 354.0 | -9.5 | 110.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 78 | wall tile | x +354 (left wood face) | 354.0 | -9.5 | 185.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 79 | wall tile | x +354 (left wood face) | 354.0 | -121.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 80 | wall tile | x +354 (left wood face) | 354.0 | -35.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 81 | wall tile | x +354 (left wood face) | 354.0 | -146.0 | 252.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 82 | wall tile | x +354 (left wood face) | 354.0 | -146.0 | 372.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 83 | wall tile | x +354 (left wood face) | 354.0 | -9.5 | 240.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 84 | wall tile | x +354 (left wood face) | 354.0 | -121.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 85 | wall tile | x +354 (left wood face) | 354.0 | -35.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 86 | wall tile | x +354 (left wood face) | 354.0 | -146.0 | 452.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 87 | wall tile | x +354 (left wood face) | 354.0 | -146.0 | 572.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 88 | wall tile | x +354 (left wood face) | 354.0 | 35.0 | 31.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 89 | wall tile | x +354 (left wood face) | 354.0 | 121.0 | 31.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 90 | wall tile | x +354 (left wood face) | 354.0 | 146.0 | 52.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 91 | wall tile | x +354 (left wood face) | 354.0 | 146.0 | 172.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 92 | wall tile | x +354 (left wood face) | 354.0 | 9.5 | 110.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 93 | wall tile | x +354 (left wood face) | 354.0 | 9.5 | 185.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 94 | wall tile | x +354 (left wood face) | 354.0 | 35.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 95 | wall tile | x +354 (left wood face) | 354.0 | 121.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 96 | wall tile | x +354 (left wood face) | 354.0 | 146.0 | 252.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 97 | wall tile | x +354 (left wood face) | 354.0 | 146.0 | 372.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 98 | wall tile | x +354 (left wood face) | 354.0 | 9.5 | 240.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 99 | wall tile | x +354 (left wood face) | 354.0 | 35.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 100 | wall tile | x +354 (left wood face) | 354.0 | 121.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 101 | wall tile | x +354 (left wood face) | 354.0 | 146.0 | 452.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 102 | wall tile | x +354 (left wood face) | 354.0 | 146.0 | 572.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 103 | wall tile | x -354 (right wood face) | -354.0 | -121.0 | 31.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 104 | wall tile | x -354 (right wood face) | -354.0 | -35.0 | 31.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 105 | wall tile | x -354 (right wood face) | -354.0 | -146.0 | 52.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 106 | wall tile | x -354 (right wood face) | -354.0 | -146.0 | 172.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 107 | wall tile | x -354 (right wood face) | -354.0 | -9.5 | 110.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 108 | wall tile | x -354 (right wood face) | -354.0 | -9.5 | 185.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 109 | wall tile | x -354 (right wood face) | -354.0 | -121.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 110 | wall tile | x -354 (right wood face) | -354.0 | -35.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 111 | wall tile | x -354 (right wood face) | -354.0 | -146.0 | 252.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 112 | wall tile | x -354 (right wood face) | -354.0 | -146.0 | 372.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 113 | wall tile | x -354 (right wood face) | -354.0 | -9.5 | 240.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 114 | wall tile | x -354 (right wood face) | -354.0 | -121.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 115 | wall tile | x -354 (right wood face) | -354.0 | -35.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 116 | wall tile | x -354 (right wood face) | -354.0 | -146.0 | 452.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 117 | wall tile | x -354 (right wood face) | -354.0 | -146.0 | 572.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 118 | wall tile | x -354 (right wood face) | -354.0 | 35.0 | 31.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 119 | wall tile | x -354 (right wood face) | -354.0 | 121.0 | 31.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 120 | wall tile | x -354 (right wood face) | -354.0 | 146.0 | 52.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 121 | wall tile | x -354 (right wood face) | -354.0 | 146.0 | 172.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 122 | wall tile | x -354 (right wood face) | -354.0 | 9.5 | 110.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 123 | wall tile | x -354 (right wood face) | -354.0 | 9.5 | 185.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 124 | wall tile | x -354 (right wood face) | -354.0 | 35.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 125 | wall tile | x -354 (right wood face) | -354.0 | 121.0 | 281.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 126 | wall tile | x -354 (right wood face) | -354.0 | 146.0 | 252.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 127 | wall tile | x -354 (right wood face) | -354.0 | 146.0 | 372.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 128 | wall tile | x -354 (right wood face) | -354.0 | 9.5 | 240.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 129 | wall tile | x -354 (right wood face) | -354.0 | 35.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 130 | wall tile | x -354 (right wood face) | -354.0 | 121.0 | 593.0 | #6 x 3/4 through a slotted boss (vertical slot) |
+| 131 | wall tile | x -354 (right wood face) | -354.0 | 146.0 | 452.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 132 | wall tile | x -354 (right wood face) | -354.0 | 146.0 | 572.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 133 | corner cap | y -174 (back wood face) | -345.0 | -174.0 | 62.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 134 | corner cap | x -354 (right wood face) | -354.0 | -165.0 | 62.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 135 | corner cap | y -174 (back wood face) | -345.0 | -174.0 | 162.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 136 | corner cap | x -354 (right wood face) | -354.0 | -165.0 | 162.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 137 | corner cap | y -174 (back wood face) | -345.0 | -174.0 | 262.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 138 | corner cap | x -354 (right wood face) | -354.0 | -165.0 | 262.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 139 | corner cap | y -174 (back wood face) | -345.0 | -174.0 | 362.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 140 | corner cap | x -354 (right wood face) | -354.0 | -165.0 | 362.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 141 | corner cap | y -174 (back wood face) | -345.0 | -174.0 | 462.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 142 | corner cap | x -354 (right wood face) | -354.0 | -165.0 | 462.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 143 | corner cap | y -174 (back wood face) | -345.0 | -174.0 | 562.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 144 | corner cap | x -354 (right wood face) | -354.0 | -165.0 | 562.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 145 | corner cap | y +174 (front wood face) | -345.0 | 174.0 | 62.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 146 | corner cap | x -354 (right wood face) | -354.0 | 165.0 | 62.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 147 | corner cap | y +174 (front wood face) | -345.0 | 174.0 | 162.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 148 | corner cap | x -354 (right wood face) | -354.0 | 165.0 | 162.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 149 | corner cap | y +174 (front wood face) | -345.0 | 174.0 | 262.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 150 | corner cap | x -354 (right wood face) | -354.0 | 165.0 | 262.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 151 | corner cap | y +174 (front wood face) | -345.0 | 174.0 | 362.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 152 | corner cap | x -354 (right wood face) | -354.0 | 165.0 | 362.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 153 | corner cap | y +174 (front wood face) | -345.0 | 174.0 | 462.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 154 | corner cap | x -354 (right wood face) | -354.0 | 165.0 | 462.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 155 | corner cap | y +174 (front wood face) | -345.0 | 174.0 | 562.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 156 | corner cap | x -354 (right wood face) | -354.0 | 165.0 | 562.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 157 | corner cap | y -174 (back wood face) | 345.0 | -174.0 | 62.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 158 | corner cap | x +354 (left wood face) | 354.0 | -165.0 | 62.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 159 | corner cap | y -174 (back wood face) | 345.0 | -174.0 | 162.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 160 | corner cap | x +354 (left wood face) | 354.0 | -165.0 | 162.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 161 | corner cap | y -174 (back wood face) | 345.0 | -174.0 | 262.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 162 | corner cap | x +354 (left wood face) | 354.0 | -165.0 | 262.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 163 | corner cap | y -174 (back wood face) | 345.0 | -174.0 | 362.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 164 | corner cap | x +354 (left wood face) | 354.0 | -165.0 | 362.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 165 | corner cap | y -174 (back wood face) | 345.0 | -174.0 | 462.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 166 | corner cap | x +354 (left wood face) | 354.0 | -165.0 | 462.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 167 | corner cap | y -174 (back wood face) | 345.0 | -174.0 | 562.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 168 | corner cap | x +354 (left wood face) | 354.0 | -165.0 | 562.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 169 | corner cap | y +174 (front wood face) | 345.0 | 174.0 | 62.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 170 | corner cap | x +354 (left wood face) | 354.0 | 165.0 | 62.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 171 | corner cap | y +174 (front wood face) | 345.0 | 174.0 | 162.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 172 | corner cap | x +354 (left wood face) | 354.0 | 165.0 | 162.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 173 | corner cap | y +174 (front wood face) | 345.0 | 174.0 | 262.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 174 | corner cap | x +354 (left wood face) | 354.0 | 165.0 | 262.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 175 | corner cap | y +174 (front wood face) | 345.0 | 174.0 | 362.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 176 | corner cap | x +354 (left wood face) | 354.0 | 165.0 | 362.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 177 | corner cap | y +174 (front wood face) | 345.0 | 174.0 | 462.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 178 | corner cap | x +354 (left wood face) | 354.0 | 165.0 | 462.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 179 | corner cap | y +174 (front wood face) | 345.0 | 174.0 | 562.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 180 | corner cap | x +354 (left wood face) | 354.0 | 165.0 | 562.0 | #6 x 3/4 through a slotted boss (horizontal slot) |
+| 181 | keeper bar 116 | y -174 (deck cleat outer face) | -150.0 | -174.0 | 281.0 | access panel keeper |
+| 182 | keeper bar 117 | y -174 (top rail outer face) | -150.0 | -174.0 | 593.0 | access panel keeper |
+| 183 | keeper bar 116 | y -174 (deck cleat outer face) | -50.0 | -174.0 | 281.0 | access panel keeper |
+| 184 | keeper bar 117 | y -174 (top rail outer face) | -50.0 | -174.0 | 593.0 | access panel keeper |
+| 185 | keeper bar 116 | y -174 (deck cleat outer face) | 50.0 | -174.0 | 281.0 | access panel keeper |
+| 186 | keeper bar 117 | y -174 (top rail outer face) | 50.0 | -174.0 | 593.0 | access panel keeper |
+| 187 | keeper bar 116 | y -174 (deck cleat outer face) | 150.0 | -174.0 | 281.0 | access panel keeper |
+| 188 | keeper bar 117 | y -174 (top rail outer face) | 150.0 | -174.0 | 593.0 | access panel keeper |
 
-Total: 142 #6 screws. Wood-to-wood screws are in cut_list.md; deck-module screws into the deck ply are in the deck README.
+Total: 188 #6 screws. Wood-to-wood screws are in cut_list.md; deck-module screws into the deck ply are in the deck README.

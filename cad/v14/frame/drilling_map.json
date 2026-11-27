@@ -1,1342 +1,1802 @@
 [
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -328.73,
+   -326.0,
    174.0,
-   62.0
+   52.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -328.73,
+   -326.0,
    174.0,
-   162.0
+   96.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    -301.0,
    174.0,
-   274.53
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    -215.0,
    174.0,
-   274.53
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
-  "xyz": [
-   -328.73,
-   174.0,
-   262.0
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
-  "xyz": [
-   -328.73,
-   174.0,
-   362.0
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    -301.0,
    174.0,
-   586.53
+   363.5
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    -215.0,
    174.0,
-   586.53
+   363.5
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -328.73,
+   -326.0,
    174.0,
-   462.0
+   176.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -328.73,
+   -326.0,
    174.0,
-   562.0
+   333.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   -301.0,
+   174.0,
+   593.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   -215.0,
+   174.0,
+   593.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   -301.0,
+   174.0,
+   382.5
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   -215.0,
+   174.0,
+   382.5
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -326.0,
+   174.0,
+   413.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -326.0,
+   174.0,
+   572.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    -145.0,
    174.0,
-   274.53
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    -35.0,
    174.0,
-   274.53
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    -145.0,
    174.0,
-   586.53
+   363.5
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    -35.0,
    174.0,
-   586.53
+   363.5
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   -145.0,
+   174.0,
+   593.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   -35.0,
+   174.0,
+   593.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   -145.0,
+   174.0,
+   382.5
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   -35.0,
+   174.0,
+   382.5
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    35.0,
    174.0,
-   274.53
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    145.0,
    174.0,
-   274.53
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    35.0,
    174.0,
-   586.53
+   363.5
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    145.0,
    174.0,
-   586.53
+   363.5
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
-   328.73,
+   35.0,
    174.0,
-   62.0
+   593.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
-   328.73,
+   145.0,
    174.0,
-   162.0
+   593.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   35.0,
+   174.0,
+   382.5
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   145.0,
+   174.0,
+   382.5
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   326.0,
+   174.0,
+   52.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   326.0,
+   174.0,
+   96.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    215.0,
    174.0,
-   274.53
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    301.0,
    174.0,
-   274.53
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
-  "xyz": [
-   328.73,
-   174.0,
-   262.0
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
-  "xyz": [
-   328.73,
-   174.0,
-   362.0
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    215.0,
    174.0,
-   586.53
+   363.5
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    301.0,
    174.0,
-   586.53
+   363.5
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   328.73,
+   326.0,
    174.0,
-   462.0
+   176.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   328.73,
+   326.0,
    174.0,
-   562.0
+   333.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
-   -328.73,
-   -174.0,
-   62.0
+   215.0,
+   174.0,
+   593.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
-   -328.73,
-   -174.0,
-   162.0
+   301.0,
+   174.0,
+   593.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   215.0,
+   174.0,
+   382.5
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   301.0,
+   174.0,
+   382.5
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   326.0,
+   174.0,
+   413.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   326.0,
+   174.0,
+   572.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -326.0,
+   -174.0,
+   52.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -326.0,
+   -174.0,
+   96.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    -301.0,
    -174.0,
-   274.53
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    -235.0,
    -174.0,
-   274.53
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -328.73,
+   -326.0,
    -174.0,
-   262.0
+   176.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -328.73,
+   -326.0,
    -174.0,
-   362.0
+   333.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    -301.0,
    -174.0,
-   586.53
+   593.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    -235.0,
    -174.0,
-   586.53
+   593.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -328.73,
+   -326.0,
    -174.0,
-   462.0
+   413.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -328.73,
+   -326.0,
    -174.0,
-   562.0
+   572.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "cleat, tile rib",
-  "xyz": [
-   -130.0,
-   -174.0,
-   274.53
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "cleat, tile rib",
-  "xyz": [
-   -70.0,
-   -174.0,
-   274.53
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    -130.0,
    -174.0,
-   586.53
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    -70.0,
    -174.0,
-   586.53
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   -130.0,
+   -174.0,
+   593.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   -70.0,
+   -174.0,
+   593.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    70.0,
    -174.0,
-   274.53
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    130.0,
    -174.0,
-   274.53
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    70.0,
    -174.0,
-   586.53
+   593.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    130.0,
    -174.0,
-   586.53
+   593.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   328.73,
+   326.0,
    -174.0,
-   62.0
+   52.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   328.73,
+   326.0,
    -174.0,
-   162.0
+   96.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "cleat, tile rib",
-  "xyz": [
-   235.0,
-   -174.0,
-   274.53
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "cleat, tile rib",
-  "xyz": [
-   301.0,
-   -174.0,
-   274.53
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
-  "xyz": [
-   328.73,
-   -174.0,
-   262.0
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
-  "xyz": [
-   328.73,
-   -174.0,
-   362.0
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    235.0,
    -174.0,
-   586.53
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    301.0,
    -174.0,
-   586.53
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   328.73,
+   326.0,
    -174.0,
-   462.0
+   176.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   328.73,
+   326.0,
    -174.0,
-   562.0
+   333.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "bottom rail, tile rib",
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   235.0,
+   -174.0,
+   593.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   301.0,
+   -174.0,
+   593.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   326.0,
+   -174.0,
+   413.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   326.0,
+   -174.0,
+   572.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    354.0,
    -121.0,
-   24.53
+   31.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "bottom rail, tile rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    354.0,
    -35.0,
-   24.53
+   31.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    354.0,
-   -148.73,
-   62.0
+   -146.0,
+   52.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    354.0,
-   -148.73,
-   162.0
+   -146.0,
+   172.0
   ]
  },
  {
-  "part": "clip C2",
-  "on": "x +354 (post / rail outer face)",
-  "what": "beam post, seam ribs",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    354.0,
-   7.27,
+   -9.5,
    110.0
   ]
  },
  {
-  "part": "clip C2",
-  "on": "x +354 (post / rail outer face)",
-  "what": "beam post, seam ribs",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    354.0,
-   7.27,
+   -9.5,
    185.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    354.0,
    -121.0,
-   274.53
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    354.0,
    -35.0,
-   274.53
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    354.0,
-   -148.73,
-   262.0
+   -146.0,
+   252.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    354.0,
-   -148.73,
-   362.0
+   -146.0,
+   372.0
   ]
  },
  {
-  "part": "clip C2",
-  "on": "x +354 (post / rail outer face)",
-  "what": "beam post, seam ribs",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    354.0,
-   7.27,
+   -9.5,
    240.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    354.0,
    -121.0,
-   586.53
+   593.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    354.0,
    -35.0,
-   586.53
+   593.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    354.0,
-   -148.73,
-   462.0
+   -146.0,
+   452.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    354.0,
-   -148.73,
-   562.0
+   -146.0,
+   572.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "bottom rail, tile rib",
-  "xyz": [
-   354.0,
-   35.0,
-   24.53
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "bottom rail, tile rib",
-  "xyz": [
-   354.0,
-   121.0,
-   24.53
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "post, tile edge rib",
-  "xyz": [
-   354.0,
-   148.73,
-   62.0
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "post, tile edge rib",
-  "xyz": [
-   354.0,
-   148.73,
-   162.0
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    354.0,
    35.0,
-   274.53
+   31.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    354.0,
    121.0,
-   274.53
+   31.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    354.0,
-   148.73,
-   262.0
+   146.0,
+   52.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    354.0,
-   148.73,
-   362.0
+   146.0,
+   172.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    354.0,
-   35.0,
-   586.53
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "top rail, tile rib",
-  "xyz": [
-   354.0,
-   121.0,
-   586.53
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "post, tile edge rib",
-  "xyz": [
-   354.0,
-   148.73,
-   462.0
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "post, tile edge rib",
-  "xyz": [
-   354.0,
-   148.73,
-   562.0
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "bottom rail, tile rib",
-  "xyz": [
-   -354.0,
-   -121.0,
-   24.53
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "bottom rail, tile rib",
-  "xyz": [
-   -354.0,
-   -35.0,
-   24.53
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "post, tile edge rib",
-  "xyz": [
-   -354.0,
-   -148.73,
-   62.0
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "post, tile edge rib",
-  "xyz": [
-   -354.0,
-   -148.73,
-   162.0
-  ]
- },
- {
-  "part": "clip C2",
-  "on": "x -354 (post / rail outer face)",
-  "what": "beam post, seam ribs",
-  "xyz": [
-   -354.0,
-   -7.27,
+   9.5,
    110.0
   ]
  },
  {
-  "part": "clip C2",
-  "on": "x -354 (post / rail outer face)",
-  "what": "beam post, seam ribs",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -354.0,
-   -7.27,
+   354.0,
+   9.5,
    185.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
-   -354.0,
-   -121.0,
-   274.53
+   354.0,
+   35.0,
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
-   -354.0,
-   -35.0,
-   274.53
+   354.0,
+   121.0,
+   281.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -354.0,
-   -148.73,
-   262.0
+   354.0,
+   146.0,
+   252.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -354.0,
-   -148.73,
-   362.0
+   354.0,
+   146.0,
+   372.0
   ]
  },
  {
-  "part": "clip C2",
-  "on": "x -354 (post / rail outer face)",
-  "what": "beam post, seam ribs",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -354.0,
-   -7.27,
+   354.0,
+   9.5,
    240.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   354.0,
+   35.0,
+   593.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   354.0,
+   121.0,
+   593.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   354.0,
+   146.0,
+   452.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   354.0,
+   146.0,
+   572.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    -354.0,
    -121.0,
-   586.53
+   31.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    -354.0,
    -35.0,
-   586.53
+   31.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    -354.0,
-   -148.73,
-   462.0
+   -146.0,
+   52.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    -354.0,
-   -148.73,
-   562.0
+   -146.0,
+   172.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "bottom rail, tile rib",
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -354.0,
+   -9.5,
+   110.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -354.0,
+   -9.5,
+   185.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   -354.0,
+   -121.0,
+   281.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   -354.0,
+   -35.0,
+   281.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -354.0,
+   -146.0,
+   252.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -354.0,
+   -146.0,
+   372.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -354.0,
+   -9.5,
+   240.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   -354.0,
+   -121.0,
+   593.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   -354.0,
+   -35.0,
+   593.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -354.0,
+   -146.0,
+   452.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -354.0,
+   -146.0,
+   572.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    -354.0,
    35.0,
-   24.53
+   31.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "bottom rail, tile rib",
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
   "xyz": [
    -354.0,
    121.0,
-   24.53
+   31.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    -354.0,
-   148.73,
+   146.0,
+   52.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -354.0,
+   146.0,
+   172.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -354.0,
+   9.5,
+   110.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -354.0,
+   9.5,
+   185.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   -354.0,
+   35.0,
+   281.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   -354.0,
+   121.0,
+   281.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -354.0,
+   146.0,
+   252.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -354.0,
+   146.0,
+   372.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -354.0,
+   9.5,
+   240.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   -354.0,
+   35.0,
+   593.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (vertical slot)",
+  "xyz": [
+   -354.0,
+   121.0,
+   593.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -354.0,
+   146.0,
+   452.0
+  ]
+ },
+ {
+  "part": "wall tile",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -354.0,
+   146.0,
+   572.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -345.0,
+   -174.0,
    62.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "corner cap",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    -354.0,
-   148.73,
+   -165.0,
+   62.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -345.0,
+   -174.0,
    162.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "corner cap",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    -354.0,
-   35.0,
-   274.53
+   -165.0,
+   162.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "cleat, tile rib",
+  "part": "corner cap",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -354.0,
-   121.0,
-   274.53
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "post, tile edge rib",
-  "xyz": [
-   -354.0,
-   148.73,
+   -345.0,
+   -174.0,
    262.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "corner cap",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    -354.0,
-   148.73,
+   -165.0,
+   262.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -345.0,
+   -174.0,
    362.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "corner cap",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    -354.0,
-   35.0,
-   586.53
+   -165.0,
+   362.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "top rail, tile rib",
+  "part": "corner cap",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -354.0,
-   121.0,
-   586.53
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "post, tile edge rib",
-  "xyz": [
-   -354.0,
-   148.73,
+   -345.0,
+   -174.0,
    462.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "post, tile edge rib",
+  "part": "corner cap",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    -354.0,
-   148.73,
+   -165.0,
+   462.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -345.0,
+   -174.0,
    562.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "post, corner cap rib",
-  "xyz": [
-   -339.53,
-   -174.0,
-   112.0
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "post, corner cap rib",
+  "part": "corner cap",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    -354.0,
-   -160.53,
-   112.0
+   -165.0,
+   562.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "post, corner cap rib",
+  "part": "corner cap",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -339.53,
-   -174.0,
-   312.0
+   -345.0,
+   174.0,
+   62.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "post, corner cap rib",
+  "part": "corner cap",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    -354.0,
-   -160.53,
-   312.0
+   165.0,
+   62.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "post, corner cap rib",
+  "part": "corner cap",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -339.53,
-   -174.0,
-   512.0
+   -345.0,
+   174.0,
+   162.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "post, corner cap rib",
+  "part": "corner cap",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    -354.0,
-   -160.53,
-   512.0
+   165.0,
+   162.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "post, corner cap rib",
+  "part": "corner cap",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -339.53,
+   -345.0,
    174.0,
-   112.0
+   262.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "post, corner cap rib",
+  "part": "corner cap",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    -354.0,
-   160.53,
-   112.0
+   165.0,
+   262.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "post, corner cap rib",
+  "part": "corner cap",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -339.53,
+   -345.0,
    174.0,
-   312.0
+   362.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "post, corner cap rib",
+  "part": "corner cap",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    -354.0,
-   160.53,
-   312.0
+   165.0,
+   362.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "post, corner cap rib",
+  "part": "corner cap",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   -339.53,
+   -345.0,
    174.0,
-   512.0
+   462.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x -354 (post / rail outer face)",
-  "what": "post, corner cap rib",
+  "part": "corner cap",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    -354.0,
-   160.53,
-   512.0
+   165.0,
+   462.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "post, corner cap rib",
+  "part": "corner cap",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   339.53,
-   -174.0,
-   112.0
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "post, corner cap rib",
-  "xyz": [
-   354.0,
-   -160.53,
-   112.0
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "post, corner cap rib",
-  "xyz": [
-   339.53,
-   -174.0,
-   312.0
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "post, corner cap rib",
-  "xyz": [
-   354.0,
-   -160.53,
-   312.0
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "y -174 (post / cleat / rail outer face)",
-  "what": "post, corner cap rib",
-  "xyz": [
-   339.53,
-   -174.0,
-   512.0
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "post, corner cap rib",
-  "xyz": [
-   354.0,
-   -160.53,
-   512.0
-  ]
- },
- {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "post, corner cap rib",
-  "xyz": [
-   339.53,
+   -345.0,
    174.0,
-   112.0
+   562.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "post, corner cap rib",
+  "part": "corner cap",
+  "on": "x -354 (right wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   -354.0,
+   165.0,
+   562.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   345.0,
+   -174.0,
+   62.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    354.0,
-   160.53,
-   112.0
+   -165.0,
+   62.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "post, corner cap rib",
+  "part": "corner cap",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   339.53,
+   345.0,
+   -174.0,
+   162.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   354.0,
+   -165.0,
+   162.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   345.0,
+   -174.0,
+   262.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   354.0,
+   -165.0,
+   262.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   345.0,
+   -174.0,
+   362.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   354.0,
+   -165.0,
+   362.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   345.0,
+   -174.0,
+   462.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   354.0,
+   -165.0,
+   462.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "y -174 (back wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   345.0,
+   -174.0,
+   562.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   354.0,
+   -165.0,
+   562.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   345.0,
    174.0,
-   312.0
+   62.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "post, corner cap rib",
+  "part": "corner cap",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    354.0,
-   160.53,
-   312.0
+   165.0,
+   62.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "y +174 (post / cleat / rail outer face)",
-  "what": "post, corner cap rib",
+  "part": "corner cap",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
-   339.53,
+   345.0,
    174.0,
-   512.0
+   162.0
   ]
  },
  {
-  "part": "clip C1",
-  "on": "x +354 (post / rail outer face)",
-  "what": "post, corner cap rib",
+  "part": "corner cap",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
   "xyz": [
    354.0,
-   160.53,
-   512.0
+   165.0,
+   162.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   345.0,
+   174.0,
+   262.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   354.0,
+   165.0,
+   262.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   345.0,
+   174.0,
+   362.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   354.0,
+   165.0,
+   362.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   345.0,
+   174.0,
+   462.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   354.0,
+   165.0,
+   462.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "y +174 (front wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   345.0,
+   174.0,
+   562.0
+  ]
+ },
+ {
+  "part": "corner cap",
+  "on": "x +354 (left wood face)",
+  "what": "#6 x 3/4 through a slotted boss (horizontal slot)",
+  "xyz": [
+   354.0,
+   165.0,
+   562.0
   ]
  },
  {

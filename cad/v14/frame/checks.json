@@ -4,23 +4,24 @@
   "110_tile_F_c1_r1": true,
   "110_tile_F_c1_r2": true,
   "110_tile_F_c1_r3": true,
-  "110_tile_F_c2_r1": true,
+  "110_tile_F_c1_r3_inkw": true,
   "110_tile_F_c2_r2": true,
   "110_tile_F_c2_r3": true,
-  "110_tile_F_c3_r1": true,
+  "110_tile_F_c2_r3_inkw": true,
   "110_tile_F_c3_r2": true,
   "110_tile_F_c3_r3": true,
+  "110_tile_F_c3_r3_inkw": true,
+  "110_tile_F_c3_r3_inkb": true,
   "110_tile_F_c4_r1": true,
   "110_tile_F_c4_r2": true,
   "110_tile_F_c4_r3": true,
+  "110_tile_F_c4_r3_inkw": true,
   "111_tile_B_c1_r1": true,
   "111_tile_B_c1_r2": true,
   "111_tile_B_c1_r3": true,
-  "111_tile_B_c2_r1": true,
   "111_tile_B_c2_r2": true,
   "111_tile_B_c2_r3": true,
   "115_access_panel_x_neg": true,
-  "111_tile_B_c3_r1": true,
   "111_tile_B_c3_r2": true,
   "111_tile_B_c3_r3": true,
   "115_access_panel_x_pos": true,
@@ -68,11 +69,7 @@
   "135_corner_cap_LB_r3": true,
   "135_corner_cap_LF_r1": true,
   "135_corner_cap_LF_r2": true,
-  "135_corner_cap_LF_r3": true,
-  "120_clip_C1_single": true,
-  "121_clip_C2_seam": true,
-  "122_clip_H_bridge": true,
-  "123_clip_C3_roof": true
+  "135_corner_cap_LF_r3": true
  },
  "envelope": {
   "100_post_2x2_RB": "in envelope",
@@ -93,28 +90,30 @@
   "106_beam_post_L": "in envelope",
   "109_roof_cross_rail_1": "in envelope",
   "109_roof_cross_rail_2": "in envelope",
+  "118_mid_rail_front": "in envelope",
   "107_floor_ply": "in envelope",
   "108_deck_ply": "in envelope",
   "110_tile_F_c1_r1": "in envelope",
   "110_tile_F_c1_r2": "in envelope",
+  "110_tile_F_c1_r3_inkw": "in envelope",
   "110_tile_F_c1_r3": "in envelope",
-  "110_tile_F_c2_r1": "in envelope",
   "110_tile_F_c2_r2": "in envelope",
+  "110_tile_F_c2_r3_inkw": "in envelope",
   "110_tile_F_c2_r3": "in envelope",
-  "110_tile_F_c3_r1": "in envelope",
   "110_tile_F_c3_r2": "in envelope",
+  "110_tile_F_c3_r3_inkw": "in envelope",
+  "110_tile_F_c3_r3_inkb": "in envelope",
   "110_tile_F_c3_r3": "in envelope",
   "110_tile_F_c4_r1": "in envelope",
   "110_tile_F_c4_r2": "in envelope",
+  "110_tile_F_c4_r3_inkw": "in envelope",
   "110_tile_F_c4_r3": "in envelope",
   "111_tile_B_c1_r1": "in envelope",
   "111_tile_B_c1_r2": "in envelope",
   "111_tile_B_c1_r3": "in envelope",
-  "111_tile_B_c2_r1": "in envelope",
   "111_tile_B_c2_r2": "in envelope",
   "111_tile_B_c2_r3": "in envelope",
   "115_access_panel_x_neg": "in envelope",
-  "111_tile_B_c3_r1": "in envelope",
   "111_tile_B_c3_r2": "in envelope",
   "111_tile_B_c3_r3": "in envelope",
   "115_access_panel_x_pos": "in envelope",
@@ -163,140 +162,6 @@
   "135_corner_cap_LF_r1": "in envelope",
   "135_corner_cap_LF_r2": "in envelope",
   "135_corner_cap_LF_r3": "in envelope",
-  "120_clip_C1_F_1": "in envelope",
-  "120_clip_C1_F_2": "in envelope",
-  "120_clip_C1_F_3": "in envelope",
-  "120_clip_C1_F_4": "in envelope",
-  "120_clip_C1_F_5": "in envelope",
-  "120_clip_C1_F_6": "in envelope",
-  "120_clip_C1_F_7": "in envelope",
-  "120_clip_C1_F_8": "in envelope",
-  "120_clip_C1_F_9": "in envelope",
-  "120_clip_C1_F_10": "in envelope",
-  "120_clip_C1_F_11": "in envelope",
-  "120_clip_C1_F_12": "in envelope",
-  "120_clip_C1_F_13": "in envelope",
-  "120_clip_C1_F_14": "in envelope",
-  "120_clip_C1_F_15": "in envelope",
-  "120_clip_C1_F_16": "in envelope",
-  "120_clip_C1_F_17": "in envelope",
-  "120_clip_C1_F_18": "in envelope",
-  "120_clip_C1_F_19": "in envelope",
-  "120_clip_C1_F_20": "in envelope",
-  "120_clip_C1_F_21": "in envelope",
-  "120_clip_C1_F_22": "in envelope",
-  "120_clip_C1_F_23": "in envelope",
-  "120_clip_C1_F_24": "in envelope",
-  "120_clip_C1_F_25": "in envelope",
-  "120_clip_C1_F_26": "in envelope",
-  "120_clip_C1_F_27": "in envelope",
-  "120_clip_C1_F_28": "in envelope",
-  "120_clip_C1_B_29": "in envelope",
-  "120_clip_C1_B_30": "in envelope",
-  "120_clip_C1_B_31": "in envelope",
-  "120_clip_C1_B_32": "in envelope",
-  "120_clip_C1_B_33": "in envelope",
-  "120_clip_C1_B_34": "in envelope",
-  "120_clip_C1_B_35": "in envelope",
-  "120_clip_C1_B_36": "in envelope",
-  "120_clip_C1_B_37": "in envelope",
-  "120_clip_C1_B_38": "in envelope",
-  "120_clip_C1_B_39": "in envelope",
-  "120_clip_C1_B_40": "in envelope",
-  "120_clip_C1_B_41": "in envelope",
-  "120_clip_C1_B_42": "in envelope",
-  "120_clip_C1_B_43": "in envelope",
-  "120_clip_C1_B_44": "in envelope",
-  "120_clip_C1_B_45": "in envelope",
-  "120_clip_C1_B_46": "in envelope",
-  "120_clip_C1_B_47": "in envelope",
-  "120_clip_C1_B_48": "in envelope",
-  "120_clip_C1_B_49": "in envelope",
-  "120_clip_C1_B_50": "in envelope",
-  "120_clip_C1_B_51": "in envelope",
-  "120_clip_C1_B_52": "in envelope",
-  "120_clip_C1_B_53": "in envelope",
-  "120_clip_C1_B_54": "in envelope",
-  "120_clip_C1_B_55": "in envelope",
-  "120_clip_C1_B_56": "in envelope",
-  "120_clip_C1_L_57": "in envelope",
-  "120_clip_C1_L_58": "in envelope",
-  "120_clip_C1_L_59": "in envelope",
-  "120_clip_C1_L_60": "in envelope",
-  "121_clip_C2_L_1": "in envelope",
-  "121_clip_C2_L_2": "in envelope",
-  "120_clip_C1_L_61": "in envelope",
-  "120_clip_C1_L_62": "in envelope",
-  "120_clip_C1_L_63": "in envelope",
-  "120_clip_C1_L_64": "in envelope",
-  "121_clip_C2_L_3": "in envelope",
-  "120_clip_C1_L_65": "in envelope",
-  "120_clip_C1_L_66": "in envelope",
-  "120_clip_C1_L_67": "in envelope",
-  "120_clip_C1_L_68": "in envelope",
-  "120_clip_C1_L_69": "in envelope",
-  "120_clip_C1_L_70": "in envelope",
-  "120_clip_C1_L_71": "in envelope",
-  "120_clip_C1_L_72": "in envelope",
-  "120_clip_C1_L_73": "in envelope",
-  "120_clip_C1_L_74": "in envelope",
-  "120_clip_C1_L_75": "in envelope",
-  "120_clip_C1_L_76": "in envelope",
-  "120_clip_C1_L_77": "in envelope",
-  "120_clip_C1_L_78": "in envelope",
-  "120_clip_C1_L_79": "in envelope",
-  "120_clip_C1_L_80": "in envelope",
-  "120_clip_C1_R_81": "in envelope",
-  "120_clip_C1_R_82": "in envelope",
-  "120_clip_C1_R_83": "in envelope",
-  "120_clip_C1_R_84": "in envelope",
-  "121_clip_C2_R_4": "in envelope",
-  "121_clip_C2_R_5": "in envelope",
-  "120_clip_C1_R_85": "in envelope",
-  "120_clip_C1_R_86": "in envelope",
-  "120_clip_C1_R_87": "in envelope",
-  "120_clip_C1_R_88": "in envelope",
-  "121_clip_C2_R_6": "in envelope",
-  "120_clip_C1_R_89": "in envelope",
-  "120_clip_C1_R_90": "in envelope",
-  "120_clip_C1_R_91": "in envelope",
-  "120_clip_C1_R_92": "in envelope",
-  "120_clip_C1_R_93": "in envelope",
-  "120_clip_C1_R_94": "in envelope",
-  "120_clip_C1_R_95": "in envelope",
-  "120_clip_C1_R_96": "in envelope",
-  "120_clip_C1_R_97": "in envelope",
-  "120_clip_C1_R_98": "in envelope",
-  "120_clip_C1_R_99": "in envelope",
-  "120_clip_C1_R_100": "in envelope",
-  "120_clip_C1_R_101": "in envelope",
-  "120_clip_C1_R_102": "in envelope",
-  "120_clip_C1_R_103": "in envelope",
-  "120_clip_C1_R_104": "in envelope",
-  "120_clip_C1_B_105": "in envelope",
-  "120_clip_C1_R_106": "in envelope",
-  "120_clip_C1_B_107": "in envelope",
-  "120_clip_C1_R_108": "in envelope",
-  "120_clip_C1_B_109": "in envelope",
-  "120_clip_C1_R_110": "in envelope",
-  "120_clip_C1_F_111": "in envelope",
-  "120_clip_C1_R_112": "in envelope",
-  "120_clip_C1_F_113": "in envelope",
-  "120_clip_C1_R_114": "in envelope",
-  "120_clip_C1_F_115": "in envelope",
-  "120_clip_C1_R_116": "in envelope",
-  "120_clip_C1_B_117": "in envelope",
-  "120_clip_C1_L_118": "in envelope",
-  "120_clip_C1_B_119": "in envelope",
-  "120_clip_C1_L_120": "in envelope",
-  "120_clip_C1_B_121": "in envelope",
-  "120_clip_C1_L_122": "in envelope",
-  "120_clip_C1_F_123": "in envelope",
-  "120_clip_C1_L_124": "in envelope",
-  "120_clip_C1_F_125": "in envelope",
-  "120_clip_C1_L_126": "in envelope",
-  "120_clip_C1_F_127": "in envelope",
-  "120_clip_C1_L_128": "in envelope",
   "119_dummy_IEC_C14_inlet": "in envelope"
  },
  "zone_intrusions": [],
@@ -307,27 +172,228 @@
   "back_panel_region_free_of_fixed_tiles": true,
   "roof_hole_r90_clear": true
  },
- "skin_inside_wood_faces": [],
+ "skin_inside_wood_faces": [
+  [
+   "110_tile_F_c1_r1",
+   135.0
+  ],
+  [
+   "110_tile_F_c1_r2",
+   404.9
+  ],
+  [
+   "110_tile_F_c1_r3",
+   404.9
+  ],
+  [
+   "110_tile_F_c2_r2",
+   269.9
+  ],
+  [
+   "110_tile_F_c2_r3",
+   269.9
+  ],
+  [
+   "110_tile_F_c3_r2",
+   269.9
+  ],
+  [
+   "110_tile_F_c3_r3",
+   269.9
+  ],
+  [
+   "110_tile_F_c4_r1",
+   135.0
+  ],
+  [
+   "110_tile_F_c4_r2",
+   404.9
+  ],
+  [
+   "110_tile_F_c4_r3",
+   404.9
+  ],
+  [
+   "111_tile_B_c1_r1",
+   135.0
+  ],
+  [
+   "111_tile_B_c1_r2",
+   269.9
+  ],
+  [
+   "111_tile_B_c1_r3",
+   269.9
+  ],
+  [
+   "111_tile_B_c2_r2",
+   135.0
+  ],
+  [
+   "111_tile_B_c2_r3",
+   135.0
+  ],
+  [
+   "111_tile_B_c3_r2",
+   135.0
+  ],
+  [
+   "111_tile_B_c3_r3",
+   135.0
+  ],
+  [
+   "111_tile_B_c4_r1",
+   135.0
+  ],
+  [
+   "111_tile_B_c4_r2",
+   269.9
+  ],
+  [
+   "111_tile_B_c4_r3",
+   269.9
+  ],
+  [
+   "112_tile_L_c1_r1",
+   404.9
+  ],
+  [
+   "112_tile_L_c1_r2",
+   337.4
+  ],
+  [
+   "112_tile_L_c1_r3",
+   269.9
+  ],
+  [
+   "112_tile_L_c2_r1",
+   404.9
+  ],
+  [
+   "112_tile_L_c2_r2",
+   337.4
+  ],
+  [
+   "112_tile_L_c2_r3",
+   269.9
+  ],
+  [
+   "113_tile_R_c1_r1",
+   404.9
+  ],
+  [
+   "113_tile_R_c1_r2",
+   337.4
+  ],
+  [
+   "113_tile_R_c1_r3",
+   269.9
+  ],
+  [
+   "113_tile_R_c2_r1",
+   404.9
+  ],
+  [
+   "113_tile_R_c2_r2",
+   337.4
+  ],
+  [
+   "113_tile_R_c2_r3",
+   269.9
+  ],
+  [
+   "135_corner_cap_RB_r1",
+   4201.8
+  ],
+  [
+   "135_corner_cap_RB_r2",
+   4201.8
+  ],
+  [
+   "135_corner_cap_RB_r3",
+   4201.8
+  ],
+  [
+   "135_corner_cap_RF_r1",
+   4201.8
+  ],
+  [
+   "135_corner_cap_RF_r2",
+   4201.8
+  ],
+  [
+   "135_corner_cap_RF_r3",
+   4201.8
+  ],
+  [
+   "135_corner_cap_LB_r1",
+   4201.8
+  ],
+  [
+   "135_corner_cap_LB_r2",
+   4201.8
+  ],
+  [
+   "135_corner_cap_LB_r3",
+   4201.8
+  ],
+  [
+   "135_corner_cap_LF_r1",
+   4201.8
+  ],
+  [
+   "135_corner_cap_LF_r2",
+   4201.8
+  ],
+  [
+   "135_corner_cap_LF_r3",
+   4201.8
+  ]
+ ],
  "totals": {
-  "printed_grams": 3379,
-  "printed_hours": 46.9,
+  "printed_grams": 3397,
+  "printed_hours": 46.8,
   "grams_by_group": {
-   "skin walls": 1586,
+   "skin walls": 1539,
    "access panel": 236,
    "roof": 582,
    "keeper bars": 40,
    "studs": 484,
-   "corner caps": 300,
-   "clips": 143
+   "corner caps": 516
   },
   "clips_screwed": {
-   "C1": 128,
-   "C2": 6,
+   "C1": 0,
+   "C2": 0,
    "C3": 0
   },
-  "H_bridge_clips": 90,
-  "tiles": 46,
-  "wood_screws_for_clips": 142
+  "H_bridge_clips": 0,
+  "tiles": 47,
+  "wood_screws_for_clips": 188
+ },
+ "wall_screw_holes": {
+  "count": 180,
+  "by_part": {
+   "wall tile": 132,
+   "corner cap": 48
+  }
+ },
+ "logo": {
+  "text": "Bricked Sorting",
+  "font": "Poppins Bold",
+  "em": 64.0,
+  "z": 478.0,
+  "word1_X": [
+   -304.3,
+   -62.6
+  ],
+  "word2_X": [
+   48.8,
+   281.1
+  ],
+  "icon_X": [
+   -58.3,
+   -14.3
+  ]
  },
  "roof_screw_holes": {
   "note": "#6 x 3/4 flat head down into the wood, slotted countersinks (BJ 2026-11-26)",
