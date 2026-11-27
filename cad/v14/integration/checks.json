@@ -145,8 +145,8 @@
  },
  "printed_totals": {
   "F_frame_skin": {
-   "grams": 3459,
-   "hours": 47.9
+   "grams": 3379,
+   "hours": 46.9
   },
   "K_deck": {
    "grams": 1459,
@@ -161,8 +161,8 @@
    "hours": 14.1
   },
   "ALL": {
-   "grams": 7932,
-   "hours": 142.0,
+   "grams": 7852,
+   "hours": 141.0,
    "budget": "printed total <= ~9.5 kg and <= ~200 h (skin ~4.6 kg, studs ~0.5, mechanisms ~3.5, bins ~1)"
   }
  },
@@ -191,7 +191,7 @@
   "#6 x 3/4 in wood screws (clips, keeper bars)": [
    {
     "module": "F",
-    "qty": 176,
+    "qty": 152,
     "use": ""
    }
   ],
@@ -241,7 +241,7 @@
   "red PLA": [
    {
     "module": "F",
-    "qty": "~3.5 kg",
+    "qty": "~3.4 kg",
     "use": ""
    }
   ],
