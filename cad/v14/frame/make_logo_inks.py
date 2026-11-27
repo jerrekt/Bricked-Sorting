@@ -1,6 +1,6 @@
 """Team logo (web/assets/logo-720.png, BJ 2026-11-26) as 0.6 mm colour inlays in the front wall's top row.
-The logo sits on a white card 587 x 185 mm (viewer X -293.5..293.5, z 395..580). build_frame.py cuts the card pocket out of
-tiles 110_tile_F_c1..c4_r3; this script fills it: white (card), red, blue, black, green, one STL per colour per tile, in the
+The logo sits on a black card (was white until BJ 2026-11-26 17:56) 587 x 185 mm (viewer X -293.5..293.5, z 395..580). build_frame.py cuts the card pocket out of
+tiles 110_tile_F_c1..c4_r3; this script fills it: black (card), red, blue, white highlights, green, one STL per colour per tile, in the
 tile's print frame (outer face on the bed), so make_plate.py can group them ("tile.stl+ink.stl+...").
 Run after build_frame.py:  python3 make_logo_inks.py [logo.png]   -> print/110_tile_F_c*_r3_ink{w,r,b,k,g}_PRINT_1.stl, logo_preview.png
 """
@@ -19,6 +19,8 @@ PAL = {'r': [(228, 35, 28), (150, 40, 40), (225, 110, 40)], 'b': [(25, 120, 235)
        'g': [(165, 200, 70), (120, 150, 50)], 'w': [(255, 255, 255), (225, 225, 230)]}
 RGB = {'w': (245, 245, 245), 'r': (201, 26, 9), 'b': (30, 95, 201), 'k': (27, 27, 27), 'g': (120, 170, 50)}
 UP = 4
+import os
+CARD = os.environ.get('LOGO_CARD', 'k')          # card colour: 'k' black card, 'r' no card (the red tile shows through)
 
 
 def labels():
@@ -28,8 +30,14 @@ def labels():
     keys = [k for k, v in PAL.items() for _ in v]; cols = np.array([c for v in PAL.values() for c in v], float)
     d = ((a[:, :, None, :3] - cols[None, None]) ** 2).sum(-1)
     lab = np.array([list(PAL).index(k) for k in keys])[d.argmin(-1)]
-    lab[a[:, :, 3] < 128] = list(PAL).index('w')
-    lab = np.asarray(Image.fromarray(lab.astype(np.uint8)).filter(ImageFilter.ModeFilter(9)))
+    W, K = list(PAL).index('w'), list(PAL).index('k')
+    lab[a[:, :, 3] < 128] = W
+    lab = np.asarray(Image.fromarray(lab.astype(np.uint8)).filter(ImageFilter.ModeFilter(9))).copy()
+    # BJ 2026-11-26: the logo's white background is transparent and the card is black. Background = white joined to the border;
+    # white inside the artwork (the gloss highlights) stays white.
+    n, cc = cv2.connectedComponents((lab == W).astype(np.uint8), connectivity=4)
+    edge = set(np.unique(np.r_[cc[0], cc[-1], cc[:, 0], cc[:, -1]])) - {0}
+    lab[np.isin(cc, list(edge))] = list(PAL).index(CARD)
     return lab
 
 
@@ -56,14 +64,14 @@ def main():
     sx = (CARD_X[1] - CARD_X[0]) / Wd; sz = (CARD_Z[1] - CARD_Z[0]) / H
     card = sbox(CARD_X[0], CARD_Z[0], CARD_X[1], CARD_Z[1])
     geo, used = {}, None
-    for k in ('k', 'b', 'r', 'g'):                      # priority order; each grows 0.15 mm so no gap is left between colours
+    for k in [c for c in ('w', 'k', 'b', 'r', 'g') if c != CARD]:                      # priority order; each grows 0.15 mm so no gap is left between colours
         g = polys(lab == list(PAL).index(k), sx, sz)
         if g is None: continue
         g = g.buffer(0.15).simplify(0.05).intersection(card)
         if used is not None: g = g.difference(used)
         g = g.buffer(-0.2).buffer(0.2)                  # drop slivers thinner than a nozzle line
         geo[k] = g; used = g if used is None else unary_union([used, g])
-    geo['w'] = card.difference(used)
+    geo[CARD] = card.difference(used)
     prn = HERE / 'print'; info = {}
     for f in prn.glob('110_tile_F_c*_r3_ink*_PRINT_1.stl'): f.unlink()
     meshes_prev = []
@@ -72,11 +80,16 @@ def main():
         col = sbox(-x1, 0, -x0, 1000)                    # viewer X = -x
         kept = {}
         for k, g in geo.items():
-            if k == 'w': continue
+            if k == CARD: continue
             part = g.intersection(col)
             ps = [p for p in (part.geoms if hasattr(part, 'geoms') else [part]) if p.geom_type == 'Polygon' and p.area > 0.3]
             if ps and sum(p.area for p in ps) >= 20: kept[k] = unary_union(ps)       # crumbs stay the card colour
-        kept['w'] = card.intersection(col).difference(unary_union(list(kept.values())).buffer(0)) if kept else card.intersection(col)
+        if 'g' in kept and 'w' in kept:                  # 4 AMS slots: on the tile with green, each highlight takes the colour around it
+            for wp in (kept['w'].geoms if hasattr(kept['w'], 'geoms') else [kept['w']]):
+                best = max((c for c in kept if c != 'w'), key=lambda c: kept[c].intersection(wp.buffer(0.4)).area)
+                kept[best] = unary_union([kept[best], wp.buffer(0.02)])
+            del kept['w']
+        kept[CARD] = card.intersection(col).difference(unary_union(list(kept.values())).buffer(0)) if kept else card.intersection(col)
         for k, part in kept.items():
             ps = [p for p in (part.geoms if hasattr(part, 'geoms') else [part]) if p.geom_type == 'Polygon' and p.area > 0.3]
             if not ps: continue
@@ -102,7 +115,7 @@ def main():
                 pass
     # holes: repaint in priority order instead (white first, then colours)
     img[:] = (201, 26, 9)
-    for k in ('w', 'r', 'g', 'b', 'k'):
+    for k in [CARD] + [c for c in ('k', 'r', 'g', 'b', 'w') if c != CARD]:
         for kk, part in meshes_prev:
             if kk != k: continue
             for p in (part.geoms if hasattr(part, 'geoms') else [part]):
