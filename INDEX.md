@@ -21,7 +21,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 | P7 | v1 | 3_semester2 | PETG | Drawer retaining bars + closed-switch mounts | 1 |
 | P8 | v1 | done | PLAred | Left stud (open ring, holds the hopper), red | 1 |
 | P9 | v1 | done | PLAred | Right stud (capped), red | 1 |
-| P10 | v1 | 3_semester2 | PLAred | 12 corner caps, red (5 mm brim) | 1 |
+| P10 | v2 | walls | PLAred | 12 corner caps v2, red (5 mm brim), standing on end. They screw to the posts: 4 x #6 x 3/4 each through slotted countersunk pads (48 screws), no clips. | 1 |
 | P11 | v1 | done | PLAred | Hopper (rev 2, no supports), red | 1 |
 | P12 | v1 | done | PETG | Feed chute, red | 1 |
 | P13 | v3 | done | PETG | Deck parts left: drum cradle A, webcam mount, webcam cable spool, APDS9960 mount, USB clips 1-2 - printed 2026-11-16 | 1 |
@@ -34,11 +34,13 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 | P20 | v3 | done | PETG | Plate 1: 3 beam segments standing plug-end up, SUPPORTS OFF (only 25 mm bridges inside the closed box), 5 mm brim. Plate 2: carriage, cup, motor bracket, idler channel/slider/wheel, endstop mount, pushrod, servo bracket; tree support | 2 |
 | P21 | v1 | 1_now | TPU | Scoop cup pad (TPU) | 1 |
 | P22 | v2 | 1_now | PLAred | Roof tiles v2: 8 DIFFERENT files, print each once (one 180 x 180 tile per plate), red PLA, face down, no supports. They screw straight down into the wood: #6 x 3/4 flat head through slotted countersinks (+-2 mm over the top rails, +-3 over the cross rails). No C3 clips or hanging ribs. c1 6 screws, c2 4, c3 2, c4 4 (x2 rows = 32). Studs still bolt on from below as before. Layout: c1..c4, r1 back / r2 front. | 8 |
-| P23 | v1 | done | PLA | Roof clips: 24 C3 (screw to the top rails, hold the tile ribs) + 12 H (join the roof seams). Print in your calibrated Inland PLA: the slot fit is PLA-sized - printed 2026-11-22 | 1 |
+| P23 | v1 | done | PLA | Roof clips: 24 C3 (screw to the top rails, hold the tile ribs) + 12 H (join the roof seams). Print in your calibrated Inland PLA: the slot fit is PLA-sized - printed 2026-11-22 OBSOLETE 2026-11-26: roof v2 and walls v2 screw down, the clips are not used. | 1 |
 | P24 | v6 | vac | PETG/PLA/PLAyellow | Vacuum canister (accessory, docks on the left stud): 8 files, no supports. PRINT FILE 1 (2 PLA coupons) FIRST and report: does the ring slide onto the stud and turn (chamfered end = 0.15 fit, other end = 0.10), and how many mm does your hose cuff go into the small socket. Yellow PLA: 2 lower shell, 3 lid, 4 hose port (+ pivot cap). Black PETG: 5 funnel, 6 gate disc + 2 eyes (glue the eyes into their pockets above the mouth), 7 screen, 8 mouthpiece + handle + 2 wand elbows. The hose parts (4, 8) are sized for a 57.0-58.5 mm cuff until the coupon result is in | 8 |
+| P25 | v1 | walls | PLAred | Wall tiles v2 (screw-down, no clips): 32 tiles + 2 access panel halves, one file each, red PLA, outer face down, no supports. Every tile screws to the wood with #6 x 3/4 flat head through slotted countersunk bosses (+-2 mm); 132 screws. Front top row (F_c1..c4_r3) has the white "Bricked Sorting" lettering and the two-brick icon as 0.6 mm inlays: load white in AMS slot 2 and blue in slot 3 (only F_c3_r3 uses blue). Needs one new piece of wood first: front mid rail, 1x2 x 24-7/8 in between the front posts, centre 14-11/16 in (373 mm) above the floor top. Names: F front, B back, L = the front viewer's left end, R right end; c = column left to right seen from outside... r1 bottom, r3 top. | 34 |
 
 ## Change log
 
+- **P10** v2 2026-11-26: clip ribs replaced by screw pads with slotted holes
 - **P13** v2 2026-11-15: only the parts not printed yet (camera bridge and landing ramp are done); cradle B, motor wall, slider post, LED holders moved to P19
 - **P13** v3 2026-11-15: 0.5 mm teardrop tops on cradle A sideways holes
 - **P16** v2 2026-11-15: only the parts not printed yet (outlet plate, NEMA bracket, vib caps, gate slider, servo link are done)
@@ -66,6 +68,7 @@ Material in the file name is what to load: PETG (functional, any colour), PLAred
 - **P24** 2026-11-25: file 7 (screen) printed (in done/)
 - **P24** 2026-11-25: file 8 (mouthpiece, handle, 3 elbows) printed (in done/)
 - **P24** 2026-11-25: file 4 (hose port + pivot cap) printed. All vac parts printed (in done/)
+- **P25** v1 2026-11-26: BJ: no snap clips against wood, screws instead, and put Bricked Sorting with the logo on the side. Replaces the clip-on wall tiles (never printed).
 
 ## Filament used
 
