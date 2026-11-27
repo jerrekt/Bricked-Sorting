@@ -149,11 +149,11 @@
    "id": "bins-03",
    "milestone": "bins",
    "title": "Decide whether plates count as bricks (floor 1 or 2)",
-   "status": "blocked",
+   "status": "done",
    "size": "S",
    "phase": "poc",
    "owner": "Branden",
-   "detail": "Open question q26."
+   "detail": "Decided 2026-11-20: plain plates count as bricks (floor 1). Site V1.034."
   },
   {
    "id": "bins-04",
@@ -334,12 +334,12 @@
   {
    "id": "hw-02",
    "milestone": "hardware",
-   "title": "Enclosure: scaled LEGO-brick shell, red PLA",
+   "title": "Enclosure: LEGO-brick shell on a wood frame, red PLA",
    "status": "in_progress",
    "size": "L",
    "phase": "final",
    "owner": "Branden",
-   "detail": "V12 shell: cut 3 mm sheet panels on the extrusion frame, printed stud rings. Panel cut list and the seam line still to draw; red PLA for the studs and corners."
+   "detail": "V14: wood frame with a 2 mm red PLA skin. Frame built 2026-11-26. Roof tiles v2 (screw-down) printing; wall tiles v2 and corner caps designed (screw-down, \"Bricked Sorting\" lettering on the front), to print after the proof of concept."
   },
   {
    "id": "hw-03",
@@ -464,23 +464,23 @@
    "id": "course-06",
    "milestone": "course",
    "title": "Written report due",
-   "status": "todo",
+   "status": "in_progress",
    "size": "L",
    "phase": "poc",
    "owner": "Marshall",
    "due": "2026-12-01",
-   "detail": "Canvas, 300 points."
+   "detail": "Draft written (49 pages) 2026-11-22; Marshall edits. Measured results and photos still to add. Due Tue Dec 1, 5 pm."
   },
   {
    "id": "course-07",
    "milestone": "course",
    "title": "Proof of concept + one-pager due",
-   "status": "todo",
+   "status": "in_progress",
    "size": "L",
    "phase": "poc",
    "owner": "Branden",
    "due": "2026-12-02",
-   "detail": "Canvas, 50 points. This is the cardboard POC checkpoint: semester 1 only needs a proof of concept, not a refined machine."
+   "detail": "Slides drafted 2026-11-23. The proof of concept is the real V14 machine on the wood frame (not cardboard): frame and electronics working, panels not needed."
   },
   {
    "id": "course-08",
@@ -806,12 +806,12 @@
   {
    "id": "cad-hw-01",
    "milestone": "hardware",
-   "title": "Frame and shell: printed frame or aluminum extrusion, then shell panels and studs",
+   "title": "Frame and shell: wood frame, printed tiles and studs",
    "status": "done",
    "size": "L",
    "phase": "final",
    "owner": "Branden",
-   "detail": "V12: 2020 aluminum extrusion frame (20.5 m, printed corners 69 and 77) replaces about 17 L of printed beams; shell walls are cut 3 mm sheet; the two roof studs print as quarter rings (78, 79). Done in the V12 CAD (2026-11-03); not test-printed."
+   "detail": "V14 (2026-11-13): wood frame (2x2 posts, 1x2 rails, OSB floor and deck) replaces the aluminum extrusion. Roof and walls are 2 mm printed tiles that screw to the wood."
   },
   {
    "id": "cad-hw-02",
@@ -846,22 +846,22 @@
   {
    "id": "hw-06",
    "milestone": "hardware",
-   "title": "Cardboard POC run: one handful of pieces from feeder to bins",
+   "title": "Proof of concept run: a few pieces from feeder to scoop",
    "status": "todo",
    "size": "L",
    "phase": "poc",
    "owner": "All",
-   "detail": "The semester 1 checkpoint. Isolate, Identify and Indicate working together, even if slowly. Needed for the Dec 2 proof of concept (course-07)."
+   "detail": "The semester 1 checkpoint, Dec 2. Now on the real wood frame: a few bricks from the hopper to the scoop. If the trays are not tuned, bricks are fed by hand onto the scanner."
   },
   {
    "id": "fin-iso-01",
    "milestone": "cad_isolate",
    "title": "Print and assemble the final Isolate stage: funnel, drum, V1 and V2 trays",
-   "status": "todo",
+   "status": "in_progress",
    "size": "L",
    "phase": "final",
    "owner": "Branden",
-   "detail": "From the V11 CAD, after the tray test (cad-iso-04)."
+   "detail": "V14: hopper, chute, drum and both trays printed (2026-11-15 to 11-19). Next: mount on the deck. Vibration motors (R370, 24 mm) still to buy and test."
   },
   {
    "id": "fin-iso-02",
@@ -877,11 +877,11 @@
    "id": "fin-id-01",
    "milestone": "cad_identify",
    "title": "Print and assemble the final scanner: trapdoors, servo, camera, LED bars",
-   "status": "todo",
+   "status": "in_progress",
    "size": "L",
    "phase": "final",
    "owner": "Branden",
-   "detail": "From the V11 CAD, after the trapdoor test (cad-id-04)."
+   "detail": "V14: scanner plate, trapdoors, camera bridge, LED holders and webcam mount printed. Next: mount on the deck and wire the servo."
   },
   {
    "id": "fin-id-02",
@@ -906,12 +906,12 @@
   {
    "id": "fin-ind-01",
    "milestone": "cad_indicate",
-   "title": "Print and assemble the lift, scoop, 16 bins, locators and drawers",
-   "status": "todo",
+   "title": "Print and assemble the scoop, then 16 bins and drawers",
+   "status": "in_progress",
    "size": "L",
    "phase": "final",
    "owner": "Branden",
-   "detail": "From the V10/V11 CAD, after the bin and scoop test (cad-ind-06)."
+   "detail": "V14 scoop on its beam printed (beam, carriage, cup, brackets, TPU pad). Bins and drawers are semester 2. Next: mount under the deck, belt and motor."
   },
   {
    "id": "fin-ind-02",
@@ -942,6 +942,76 @@
    "phase": "final",
    "owner": "All",
    "detail": "The semester 2 finish line."
+  },
+  {
+   "id": "hw-07",
+   "milestone": "hardware",
+   "title": "Build the wood frame",
+   "status": "done",
+   "size": "L",
+   "phase": "poc",
+   "owner": "Branden",
+   "detail": "Built 2026-11-26: 2x2 posts, 1x2 rails and cleats, OSB floor and deck. Lumber was not the nominal size (posts 35-38 mm), so short rails were cut to fit. Lesson filed: no tight fits against wood."
+  },
+  {
+   "id": "hw-08",
+   "milestone": "hardware",
+   "title": "Roof tiles v2: screw down into the wood",
+   "status": "in_progress",
+   "size": "M",
+   "phase": "poc",
+   "owner": "Branden",
+   "detail": "8 tiles reprinted with slotted countersunk holes for #6 x 3/4 screws (32 screws), replacing the clip-on tiles. Printing since 2026-11-26."
+  },
+  {
+   "id": "hw-09",
+   "milestone": "hardware",
+   "title": "Mount Isolate, Identify, Indicate and the electronics on the frame",
+   "status": "todo",
+   "size": "L",
+   "phase": "poc",
+   "owner": "Branden",
+   "detail": "All POC parts are printed. Deck parts screw to the deck; the scoop beam goes under it. Then wiring."
+  },
+  {
+   "id": "hw-10",
+   "milestone": "hardware",
+   "title": "Wire the POC and write the run script (poc_run.py)",
+   "status": "todo",
+   "size": "L",
+   "phase": "poc",
+   "owner": "Branden",
+   "detail": "Pi, TMC2209 drivers, DRV8833, servos, 12 V supply with a fuse. Pin map and wiring diagram, then a script that runs drum, trays, trapdoors and scoop."
+  },
+  {
+   "id": "hw-11",
+   "milestone": "hardware",
+   "title": "Vacuum canister: pick pieces up, dock on the stud, drop them in",
+   "status": "in_progress",
+   "size": "L",
+   "phase": "final",
+   "owner": "Branden",
+   "detail": "Printed and assembled 2026-11-25 (about 2.1 kg, yellow PLA and black PETG). Docks on the hopper stud; a half turn opens the gate. Still to test with the shop vac; the stud fit is a little tight. A Dyson adapter is planned."
+  },
+  {
+   "id": "hw-12",
+   "milestone": "hardware",
+   "title": "Wall tiles v2 and corner caps: screw-down, with the Bricked Sorting lettering",
+   "status": "todo",
+   "size": "L",
+   "phase": "final",
+   "owner": "Branden",
+   "detail": "Designed 2026-11-26: 32 tiles, 2 access panel halves and 12 corner caps, all screwed to the wood through slotted holes. White lettering inlaid on the front. About 2.3 kg of red PLA; needs one more 1x2 rail on the front."
+  },
+  {
+   "id": "cad-iso-08",
+   "milestone": "cad_isolate",
+   "title": "Buy R370 (24 mm) vibration motors and test one tray",
+   "status": "todo",
+   "size": "M",
+   "phase": "poc",
+   "owner": "Branden",
+   "detail": "The printed saddles fit a 24 mm motor. Run one tray on its leaf springs with real bricks before the full flow test."
   }
  ]
 }

@@ -38,6 +38,8 @@ td.n,th.n{text-align:right}
 .grp summary::-webkit-details-marker{display:none}
 .grp summary span{font-weight:600;color:var(--muted);font-size:14px}
 .grp .tw{overflow-x:auto;padding:0 8px 8px;background:var(--surface)}
+.pv{width:96px;height:72px;object-fit:contain;display:block;background:#fff;border-radius:6px}
+.dm{white-space:nowrap}
 .st{font-size:12px;font-weight:700;padding:1px 7px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
 .st.done{background:var(--ok);border-color:var(--ok);color:#fff}
 .st.printing{background:var(--pop);border-color:var(--pop);color:var(--pop-fg)}
@@ -48,7 +50,7 @@ td.n,th.n{text-align:right}
 <script src="assets/intro.js"></script>
 <header class="top"><div class="wrap">
   <a class="logo" href="./"><img class="logo-img" src="assets/logo-320.png" srcset="assets/logo-320.png 1x, assets/logo-720.png 2x" width="127" height="40" alt="Bricked Sorting"></a>
-  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.035</a>
+  <a class="ver" href="https://github.com/jerrekt/Bricked-Sorting/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" title="Site version: what changed">V1.036</a>
   <nav><a href="./">About</a><a href="demo.html">Demo</a><a href="live.html">Live</a><a href="tasks.html">Tasks</a><a href="parts.html">Parts</a><a href="prints.html" aria-current="page">Prints</a><a href="camera.html">Camera</a></nav>
 </div></header>
 
@@ -82,7 +84,8 @@ td.n,th.n{text-align:right}
   const kg = g => (g / 1000).toFixed(2) + ' kg';
   let d;
   // live numbers come from the prints branch (updated after every print, no site deploy needed); local copy is the fallback
-  const LIVE = 'https://raw.githubusercontent.com/jerrekt/Bricked-Sorting/prints/status.json';
+  const RAW = 'https://raw.githubusercontent.com/jerrekt/Bricked-Sorting/prints/';
+  const LIVE = RAW + 'status.json';
   for (const u of [LIVE + '?t=' + Date.now(), 'data/prints.json']) {
     try { d = await (await fetch(u, {cache: 'no-store'})).json(); break; } catch (e) { /* try the next source */ }
   }
@@ -116,10 +119,12 @@ td.n,th.n{text-align:right}
     const M = d.modules[m];
     const rows = ps.map(p => {
       const st = p.left === 0 && p.printing === 0 ? '<span class="st done">done</span>' : p.printing ? '<span class="st printing">printing</span>' : p.scope === 'sem2' ? '<span class="st">semester 2</span>' : p.done ? `<span class="st">${p.done}/${p.qty}</span>` : '<span class="st">to print</span>';
-      return `<tr><td>${esc(p.part)}</td><td>${esc(p.material)}</td><td class="n">${p.qty}</td><td class="n">${Math.round(p.g_each * p.qty)}</td><td class="n">${(p.h_each * p.qty).toFixed(1)}</td><td>${st}</td></tr>`;
+      const img = p.png ? `<img class="pv" loading="lazy" alt="" src="${RAW + p.png}">` : '';
+      const dims = p.dims ? p.dims.map(v => Math.round(v)).join(' × ') : '';
+      return `<tr><td>${img}</td><td>${esc(p.part)}</td><td class="n dm">${dims}</td><td class="n">${p.qty}</td><td class="n">${Math.round(p.g_each * p.qty)}</td><td class="n">${(p.h_each * p.qty).toFixed(1)}</td><td>${st}</td></tr>`;
     }).join('');
     return `<details class="grp"><summary>${esc(m)}<span>${kg(M.left_g)} / ${Math.round(M.left_h * d.pace_factor)} h left · ${M.parts - M.parts_left} of ${M.parts} parts</span></summary>
-      <div class="tw"><table><thead><tr><th>Part</th><th>Design material</th><th class="n">Qty</th><th class="n">g</th><th class="n">h (CAD)</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
+      <div class="tw"><table><thead><tr><th></th><th>Part</th><th class="n">Size mm (as printed)</th><th class="n">Qty</th><th class="n">g</th><th class="n">h (CAD)</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
   }).join('');
 })();
 </script>

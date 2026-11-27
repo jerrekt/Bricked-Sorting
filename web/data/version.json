@@ -1,6 +1,6 @@
 {
- "version": "V1.035",
- "date": "2026-11-20",
- "note": "Live page: click any closed bin to mark it emptied (count to 0, Recount clears); works without bin switches; test mode is click-driven",
+ "version": "V1.036",
+ "date": "2026-11-26",
+ "note": "About page: how it goes together, build progress photo and walls; tasks, parts and prints data refreshed (frame built, POC parts printed, vacuum built, screw-down roof and walls)",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }

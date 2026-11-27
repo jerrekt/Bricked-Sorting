@@ -188,7 +188,7 @@
     },
     {
       "id": "vib-motor",
-      "part": "Mini vibration motor, 3 to 5 V",
+      "part": "R370 vibration motor, 24 mm body, 6 V",
       "stage": "isolate",
       "versions": "all",
       "what": "One under each vibration tray (V1, V2), on the DRV8833.",
@@ -200,7 +200,7 @@
       "where": "AliExpress",
       "link": "",
       "bought": false,
-      "note": "May need a stronger motor; test one tray first."
+      "note": "The printed saddle clamps a 24 mm motor (bore 24.4). Coin motors are too small. Test one tray first."
     },
     {
       "id": "bearing-625",
@@ -544,15 +544,15 @@
       "stage": "structure",
       "versions": "all",
       "what": "Frame: 4 corner posts, 600 mm.",
-      "qty": "1",
+      "qty": "2",
       "price": "~$5.50",
       "cost": 5.5,
       "approx": true,
       "type": "materials",
       "where": "Home Depot / Lowe's",
       "link": "",
-      "bought": false,
-      "note": ""
+      "bought": true,
+      "note": "Bought 2026-11-23 (Home Depot furring strip, $3.14). Actual size 35-38 mm, not square: measure before cutting."
     },
     {
       "id": "wood-1x2",
@@ -567,24 +567,24 @@
       "type": "materials",
       "where": "Home Depot / Lowe's",
       "link": "",
-      "bought": false,
-      "note": ""
+      "bought": true,
+      "note": "Bought 2026-11-23 (common board, $4.98). One more needed for the front mid rail (walls v2)."
     },
     {
       "id": "plywood-half",
-      "part": "1/2 in plywood, 2 x 4 ft handy panel",
+      "part": "7/16 in OSB, 2 x 4 ft panel (floor and deck)",
       "stage": "structure",
       "versions": "all",
       "what": "Floor 720 x 360 and deck 708 x 348 (have the store cut it).",
-      "qty": "1",
+      "qty": "2",
       "price": "~$16",
       "cost": 16,
       "approx": true,
       "type": "materials",
       "where": "Home Depot / Lowe's",
       "link": "",
-      "bought": false,
-      "note": ""
+      "bought": true,
+      "note": "Bought 2026-11-23 ($6.65 each). Two panels: floor and deck do not fit on one."
     },
     {
       "id": "screw-6x34",
@@ -600,15 +600,15 @@
       "where": "Amazon",
       "link": "",
       "bought": true,
-      "note": "Ordered Nov 8 (Amazon)."
+      "note": "On hand (400). Roof 32, walls 132, corner caps 48, deck parts."
     },
     {
       "id": "screw-wood-onhand",
-      "part": "Wood screws #9 x 2-1/2 in+ and #6 x 1-1/4 in",
+      "part": "Wood screws #9 x 2-1/2 in and #6 x 1-1/4 in",
       "stage": "structure",
       "versions": "all",
       "what": "Frame joints (44) and plywood to the frame (28).",
-      "qty": "44 + 28",
+      "qty": "52 + 28",
       "price": "on hand",
       "cost": null,
       "approx": false,
@@ -616,7 +616,7 @@
       "where": "",
       "link": "",
       "bought": true,
-      "note": "On hand. Count before building."
+      "note": "On hand. #9 used in place of #8 for the frame joints."
     },
     {
       "id": "m5-hardware",
@@ -696,7 +696,7 @@
       "where": "eBay",
       "link": "",
       "bought": false,
-      "note": "Check what is on hand first."
+      "note": "Roof tiles v2 about 0.5 kg; walls and caps about 2.3 kg more."
     },
     {
       "id": "pla-bulk",
