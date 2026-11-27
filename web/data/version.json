@@ -1,6 +1,6 @@
 {
- "version": "V1.037",
+ "version": "V1.038",
  "date": "2026-11-27",
- "note": "New look on every page: engineering drawing x LEGO (stud plate dark, build instructions light), bundled fonts; About page: numbered sections, brick cards, title block",
+ "note": "Task board cleanup: drop cardboard-POC, decided and duplicate tasks; Pi instead of XIAO in final firmware tasks; CT 150 lockdown done; new heat-set insert task (hw-13)",
  "rule": "One bump per merged pull request. Run python3 tools/bump_version.py \"What changed\" before opening the PR."
 }

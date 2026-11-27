@@ -4,6 +4,9 @@ Site and repo version. One bump per merged pull request (see `tools/bump_version
 It counts updates to this repo, not how finished the machine is; the Tasks page shows that.
 V1.001 to V1.014 were numbered afterwards, in merge order.
 
+## V1.038 · 2026-11-27
+- Task board cleanup: drop cardboard-POC, decided and duplicate tasks; Pi instead of XIAO in final firmware tasks; CT 150 lockdown done; new heat-set insert task (hw-13)
+
 ## V1.037 · 2026-11-27
 - New look on every page: engineering drawing x LEGO (stud plate dark, build instructions light), bundled fonts; About page: numbered sections, brick cards, title block
 
