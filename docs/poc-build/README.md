@@ -1,12 +1,18 @@
 # POC build pack
 
-Everything for finishing the proof of concept (demo **Wed Dec 2, 1 pm**; report **Tue Dec 1, 5 pm**). Start here.
+Build instructions for the proof of concept (demo **Wed Dec 2, 1 pm**; report **Tue Dec 1, 5 pm**). Start here.
 
-| File | What |
-|---|---|
-| [`isolate-mounting.md`](isolate-mounting.md) | Mounting the drum, drive and V1/V2 trays on the deck: centre lines, positions in inches, hardware, checks. Chute is on hold (see its section 5). |
-| [`buy-list.md`](buy-list.md) | What to buy (vibration motors, servo lead) and what to check you have. |
-| `img/` | Top-view layout and isometric step views used by the guides. |
+| Order | Guide | What |
+|---|---|---|
+| 1 | [`isolate-mounting.md`](isolate-mounting.md) | Drum, drive, V1/V2 trays, hopper and chute (chute as printed, with a support block and a card deflector). Also sets the two centre lines every other guide uses. |
+| 2 | [`identify.md`](identify.md) | Funnel hole, funnel, scanner plate with trapdoors and linkage, servo, camera bridge, webcam, LEDs, colour sensor. |
+| 3 | [`indicate.md`](indicate.md) | Scoop beam (measure the beam posts first), carriage, belt drive, home switch, cup and tilt servo, 16 POC containers. |
+| 4 | [`electronics.md`](electronics.md) | Trays, PSU, mains inlet, bucks, drivers, power diagram, proposed pin map, cable routes, power-up checks. |
+| 5 | [`skin.md`](skin.md) | New front mid rail, wall tiles, access panel and keeper bars, corner caps, roof halves with the studs. |
+| | [`buy-list.md`](buy-list.md) | What to buy and what to check you have. |
+| | `img/` | Layouts and step views used by the guides. |
+
+Common to all guides: **front** = logo side, **back** = access panel side, **hopper end** / **scanner end**. Positions are in inches from the two centre lines on the deck (Isolate step 0), or from a part that is already in.
 
 ## Slides
 
@@ -17,12 +23,20 @@ Deck: "Bricked Sorting: Proof of Concept" (Claude Slides artifact, private to BJ
 
 Still to fill before Dec 2: photo of the built machine (Our Proof of Concept), test results (Specification Sheet, Performance), weight. The Current Status "Working" list still says every stage is mounted; correct it the day before.
 
+## Found while writing these (2026-11-26)
+
+1. **Chute (P12)** leaves about 38 % of the hopper outlet open and has no support. Not redesigned: Isolate section 5 fixes it with a scrap block and a card deflector.
+2. **Front mid rail height** was given as 14 11/16 in above the floor top. That number measured from the floor's underside. Correct: centre **9 7/16 in below the top edge of the front top rail** (Skin step 0).
+3. **Access panel keeper bars** were in the CAD but on no print plate. Now **P26 v1** in `walls/`.
+4. **625ZZ count:** the scoop needs 12 (8 carriage rollers, 2 cup pivots, idler), not 8. About 20 for drum + scoop.
+5. Funnel hole: cut **2 1/4 in**, not 2 3/16 (the funnel tube is 2 3/16 in OD).
+
 ## Open items
 
-1. **Chute redesign** (catch cup under the whole hopper outlet + support leg). Found 2026-11-26; not designed yet.
-2. Vibration motors not bought; trays can be mounted but not tested.
-3. Next guides to write: Identify (scanner plate, doors, camera) and Indicate (funnel, scoop), electronics wiring.
+1. Vibration motors not bought; trays can be mounted but not tested.
+2. Pin map in `electronics.md` is a proposal: confirm with Ethan, Vivek and Marshall before soldering.
+3. Motion code (`poc_run.py`) not written yet.
 
 ## Asking Claude to pick this up
 
-Say "read `docs/poc-build`" (this branch or `main` once merged). Source CAD: `cad-v14-deck5` (deck), `cad-v14-frame5` (frame), `cad-v14-all` (plates, print log, integration).
+Say "read `docs/poc-build`" (branch `poc-build-guides`, or `main` once merged). Source CAD: `cad-v14-deck5` (deck), `cad-v14-frame5` (frame and skin), `cad-v14-all` (scoop, plates, print log, integration).

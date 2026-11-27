@@ -1,6 +1,6 @@
 # Isolate: mounting on the deck
 
-Drum, drive, V1/V2 trays and the feed (hopper + chute). Everything here is printed (P11–P19).
+Drum, drive, V1/V2 trays and the feed (hopper + chute). Everything here is printed (P11–P19). The chute is used as printed, with a scrap block and a card deflector (section 5).
 CAD: branch `cad-v14-deck5`, `cad/v14/deck/` (`parts.json` has every screw position).
 
 Sides are named the same way everywhere below:
@@ -25,6 +25,8 @@ Sides are named the same way everywhere below:
 | M3 × 8 | 4 | NEMA17 to bracket 56 |
 | M3 × 12 flat head + nut | 8 | leaf spring pads to the tray floors |
 | #6 × 3/4 in wood screw | 20 | cradles 8, motor wall 4, springs 8 |
+| M3 × 8 flat head | 4 | hopper flange into the stud inserts |
+| 1x2 offcut (~9 in), thin card, hot glue | | chute support block and deflector |
 | Drill bits | | 3/32 in (pilots), 1/8 in (M3 through the tray floors) |
 
 ## 0. Centre lines
@@ -92,17 +94,35 @@ Spring foot holes from the centre lines, in inches (check only; place by steps 2
 
 Vibration motor saddles (62/63) go on the tray undersides when the motors arrive (see `buy-list.md`).
 
-## 5. Feed (hopper + chute): on hold
+## 5. Feed (hopper + chute): as printed, no redesign
 
 ![feed](img/isolate-4-feed.png)
 
-**Problem found 2026-11-26:** the printed chute (P12) only covers part of the hopper outlet. Seen from below, the white area is open: about **38 %** of the outlet has nothing under it, so pieces fall straight onto the motor and the deck. The chute also has nothing holding it up (its ring only sits against the hopper).
+The printed chute (P12) has two gaps. Both are fixed here with scrap, no reprint:
+- About **38 %** of the hopper outlet has no chute under it (white area below, seen from underneath). Pieces there would fall onto the motor.
+- Nothing holds the chute up. Its ring only sits under the hopper.
 
 ![chute gap](img/isolate-chute-gap.png)
 
-Fix needs a new chute (closed catch cup under the whole outlet, then the trough into the drum) and a support leg from the deck, with a slotted foot and a few mm of gap to the hopper. Not designed yet; ask Claude to do it before mounting the chute.
+![chute setup](img/isolate-5-chute-setup.png)
 
-Until then: the hopper still goes in the stud (4 × M3 × 8 flat head), and pieces can be poured straight into the back of the drum for testing.
+**Support block** (tan above)
+1. 1x2 offcut, on end, about **9 in** tall.
+2. Stand it on the drum axis line (1 9/16 in toward the front of the Y line), **8 13/16 to 9 9/16 in** toward the hopper end from the X line. The 1 1/2 in face runs front to back.
+3. It stays about **3/8 in** clear of the drum motor.
+4. Set the chute in place: its ring sits on the block top and the trough tip goes just inside the drum's back opening. The tip must not touch the turning drum.
+5. Trim the block until the ring top sits **about 1/8 in under** the hopper outlet with the hopper in.
+6. Hot glue the block to the deck and the ring to the block.
+
+**Deflector** (blue above)
+1. Thin card or plastic, about **1 1/2 × 2 1/4 in**. Trim one end to the hopper's curve.
+2. Glue it inside the hopper outlet on the hopper-end side, sloping down about **45°** toward the drum.
+3. Its low edge sits about **1/4 in behind the outlet centre** (toward the hopper end). That puts the edge right over the start of the chute floor.
+4. Big plates may jam in the smaller opening. Test with your largest pieces.
+
+**Hopper:** in the stud, 4 × M3 × 8 flat head.
+
+**Check:** drop 20 mixed pieces into the hopper with the drum turning. All 20 must land in the drum. Look up from below through the outlet: you should only see chute.
 
 ## 6. Checks (roof back on)
 

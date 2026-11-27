@@ -1,6 +1,6 @@
 # POC buy list and parts check (2026-11-26)
 
-POC demo: Wed Dec 2. Built from the CAD parts lists (`cad-v14-all:cad/v14/integration/buy_list.md`, the deck and scoop `parts.json`) checked against what is on file as owned (Mnemosyne `inventory/parts-owned.md`).
+POC demo: Wed Dec 2. Updated with the build guides in this folder. Built from the CAD parts lists (`cad-v14-all:cad/v14/integration/buy_list.md`, the deck and scoop `parts.json`) checked against what is on file as owned (Mnemosyne `inventory/parts-owned.md`).
 
 ## Buy
 
@@ -14,12 +14,10 @@ POC demo: Wed Dec 2. Built from the CAD parts lists (`cad-v14-all:cad/v14/integr
 
 | Item | Qty needed | For |
 |---|---|---|
-| 625ZZ bearings | 16 | drum rollers 8, scoop 8 |
+| 625ZZ bearings | 20 | drum rollers 8, scoop 12 (carriage 8, cup pivots 2, idler 1–2) |
 | GT2 6 mm belt | ~1.3 m | scoop |
 | GT2 20T pulley, 5 mm bore + idler | 1 + 1 | scoop |
 | M5 nyloc nuts | 11 | drum axles 4, scoop 7 |
-| M5 × 25 | 5 | scoop (kit on file stops at 20 mm; M5 × 30 may work, check each spot) |
-| M3 × 30 | 1 | scoop |
 | NEMA17 | **2** | drum + scoop (only one is on file) |
 | TMC2209 | 2 | drum + scoop steppers (DRV8825s on file would also work) |
 | KW11-3Z limit switch | 1 | scoop home |
@@ -29,10 +27,13 @@ POC demo: Wed Dec 2. Built from the CAD parts lists (`cad-v14-all:cad/v14/integr
 | Slim 12 V 10 A PSU (142 × 40 × 28) | 1 | electronics tray 1a |
 | IEC C14 fused + switched inlet | 1 | back wall tile |
 | PTFE film or wax | | drum thrust ring |
+| #6 × 1 1/4 wood screws | 16 | electronics tray legs (on file, count not known) |
+| M3 × 35 + nut | 2 | scoop beam joints (or CA the plugs) |
+| 2 1/4 in hole saw | 1 | funnel hole in the deck, if not cut yet |
 
 ## On file as owned (no need to buy)
 
-#6 × 3/4 in wood screws (400), #6 × 1 1/4, #9 × 2 1/2; M5 × 30 (50 sets), M5 × 50 (30 sets); M3 flat head kit 8–25 mm; M3 socket head assortment; M2–M5 kit 8–20 mm; M3 and M5 heat-set inserts; 3 × MG996R; 5 × DRV8825; 12 V 20 A PSU; DROK 12 V → 5 V bucks; XT30/60/90; limit switches; one NEMA17.
+#6 × 3/4 in wood screws (400; the build uses about 260), #6 × 1 1/4, #9 × 2 1/2; M5 × 30 (50 sets; also fit the scoop's side rollers), M5 × 50 (30 sets); M3 flat head kit 8–25 mm; M3 socket head assortment; M2–M5 kit 8–20 mm; M3 and M5 heat-set inserts; 3 × MG996R; 5 × DRV8825; 12 V 20 A PSU; DROK 12 V → 5 V bucks; XT30/60/90; limit switches; one NEMA17.
 
 ## After it arrives
 
