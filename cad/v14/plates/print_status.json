@@ -3,48 +3,48 @@
  "updated": "2026-11-25 19:26 PT",
  "summary": {
   "total": {
-   "grams": 10654,
-   "hours": 200.6
+   "grams": 10575,
+   "hours": 199.6
   },
   "done": {
-   "grams": 6243,
-   "hours": 122.2
+   "grams": 5662,
+   "hours": 114.5
   },
   "printing": {
    "grams": 0,
    "hours": 0.0
   },
   "left": {
-   "grams": 4411,
-   "hours": 78.4
+   "grams": 4913,
+   "hours": 85.1
   }
  },
  "poc": {
   "total": {
-   "grams": 5963,
-   "hours": 116.1
+   "grams": 5883,
+   "hours": 115.1
   },
   "done": {
-   "grams": 5963,
-   "hours": 116.1
+   "grams": 5381,
+   "hours": 108.4
   },
   "printing": {
    "grams": 0,
    "hours": 0.0
   },
   "left": {
-   "grams": 0,
-   "hours": 0.0
+   "grams": 503,
+   "hours": 6.7
   }
  },
  "cost": {
   "used": 60.92,
-  "left_poc": 0.0,
-  "left_machine": 48.2,
+  "left_poc": 5.49,
+  "left_machine": 53.69,
   "note": "USD incl. 9.375 % tax; PLA $9.99/kg, PETG $10.00/kg (Micro Center)"
  },
- "pace_factor": 0.98,
- "left_at_pace_hours": 77,
+ "pace_factor": 1.05,
+ "left_at_pace_hours": 89,
  "used_so_far": {
   "grams": 5575,
   "hours": 149.9,
@@ -53,11 +53,11 @@
  "printing_now": [],
  "modules": {
   "Frame and skin": {
-   "total_g": 3458.8,
-   "left_g": 2307.6,
-   "left_h": 31.0,
-   "parts": 316,
-   "parts_left": 269
+   "total_g": 3379.4,
+   "left_g": 2810.1,
+   "left_h": 37.7,
+   "parts": 292,
+   "parts_left": 276
   },
   "Deck": {
    "total_g": 1540.8,
@@ -785,11 +785,11 @@
    "part": "114_roof_tile_c1_r1",
    "material": "PLA",
    "qty": 1,
-   "g_each": 67.8,
-   "h_each": 0.9,
-   "done": 1,
+   "g_each": 64.2,
+   "h_each": 0.86,
+   "done": 0,
    "printing": 0,
-   "left": 0,
+   "left": 1,
    "scope": "poc",
    "dims": [
     180.0,
@@ -803,11 +803,11 @@
    "part": "114_roof_tile_c1_r2",
    "material": "PLA",
    "qty": 1,
-   "g_each": 67.8,
-   "h_each": 0.9,
-   "done": 1,
+   "g_each": 64.2,
+   "h_each": 0.86,
+   "done": 0,
    "printing": 0,
-   "left": 0,
+   "left": 1,
    "scope": "poc",
    "dims": [
     180.0,
@@ -821,11 +821,11 @@
    "part": "114_roof_tile_c2_r1",
    "material": "PLA",
    "qty": 1,
-   "g_each": 68.3,
-   "h_each": 0.91,
-   "done": 1,
+   "g_each": 65.4,
+   "h_each": 0.87,
+   "done": 0,
    "printing": 0,
-   "left": 0,
+   "left": 1,
    "scope": "poc",
    "dims": [
     180.0,
@@ -839,11 +839,11 @@
    "part": "114_roof_tile_c2_r2",
    "material": "PLA",
    "qty": 1,
-   "g_each": 68.3,
-   "h_each": 0.91,
-   "done": 1,
+   "g_each": 65.4,
+   "h_each": 0.87,
+   "done": 0,
    "printing": 0,
-   "left": 0,
+   "left": 1,
    "scope": "poc",
    "dims": [
     180.0,
@@ -857,11 +857,11 @@
    "part": "114_roof_tile_c3_r1",
    "material": "PLA",
    "qty": 1,
-   "g_each": 84.0,
-   "h_each": 1.12,
-   "done": 1,
+   "g_each": 81.5,
+   "h_each": 1.09,
+   "done": 0,
    "printing": 0,
-   "left": 0,
+   "left": 1,
    "scope": "poc",
    "dims": [
     180.0,
@@ -875,11 +875,11 @@
    "part": "114_roof_tile_c3_r2",
    "material": "PLA",
    "qty": 1,
-   "g_each": 84.0,
-   "h_each": 1.12,
-   "done": 1,
+   "g_each": 81.5,
+   "h_each": 1.09,
+   "done": 0,
    "printing": 0,
-   "left": 0,
+   "left": 1,
    "scope": "poc",
    "dims": [
     180.0,
@@ -893,11 +893,11 @@
    "part": "114_roof_tile_c4_r1",
    "material": "PLA",
    "qty": 1,
-   "g_each": 83.4,
-   "h_each": 1.11,
-   "done": 1,
+   "g_each": 80.3,
+   "h_each": 1.07,
+   "done": 0,
    "printing": 0,
-   "left": 0,
+   "left": 1,
    "scope": "poc",
    "dims": [
     180.0,
@@ -911,8 +911,8 @@
    "part": "114_roof_tile_c4_r2",
    "material": "PLA",
    "qty": 1,
-   "g_each": 83.4,
-   "h_each": 1.11,
+   "g_each": 80.3,
+   "h_each": 1.07,
    "done": 1,
    "printing": 0,
    "left": 0,
@@ -1378,10 +1378,10 @@
    "module": "Frame and skin",
    "part": "123_clip_C3_roof",
    "material": "PLA",
-   "qty": 24,
+   "qty": 0,
    "g_each": 2.3,
    "h_each": 0.03,
-   "done": 24,
+   "done": 0,
    "printing": 0,
    "left": 0,
    "scope": "poc",
@@ -3250,13 +3250,13 @@
  "bom_value": {
   "sections": {
    "Wood": 46.66,
-   "Filament": 102.01,
+   "Filament": 101.21,
    "Motion": 56.6,
    "Electronics": 93.0,
    "Power + wiring": 38.0,
    "Fasteners": 17.38
   },
-  "total": 353.65,
+  "total": 352.85,
   "note": "rough value of what is used (qty x typical unit price, not whole packs), full machine, before tax"
  }
 }

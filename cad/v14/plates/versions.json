@@ -170,20 +170,13 @@
  "_folders": "done = printed (kept for reprints); 1_now = what the semester-1 POC still needs; 3_semester2 = the finished machine only (back drawer, drawer bars, faces, corner caps, walls, drawers); vac = the vacuum canister accessory (wanted for the December demo, not part of the machine)",
  "_naming": "Material in the file name is what to load: PETG (functional, any colour), PLAred (visible red shell parts: studs, hopper, corner caps, drawer faces with black lettering in slot 2), TPU, PLA (PLA calibration only). Renamed 2026-11-15, no geometry change.",
  "P22": {
-  "v": 1,
-  "folder": "done",
-  "what": "Roof tiles: 8 DIFFERENT files, print each once (one 180 x 180 tile per plate, ~1 h each), red PLA, face down, no supports. c1/c2 have the quarter cutout around the funnel stud (screw hole r 104), c3/c4 go under the capped stud (hole r 102). Layout: c1..c4, r1 back / r2 front. All 8 printed by 2026-11-21; roof + studs assembled.",
-  "log": [],
-  "done_files": [
-   "P22_PLAred_roof_tile_c1_r1.3mf",
-   "P22_PLAred_roof_tile_c2_r1.3mf",
-   "P22_PLAred_roof_tile_c2_r2.3mf",
-   "P22_PLAred_roof_tile_c3_r1.3mf",
-   "P22_PLAred_roof_tile_c3_r2.3mf",
-   "P22_PLAred_roof_tile_c1_r2.3mf",
-   "P22_PLAred_roof_tile_c4_r1.3mf",
-   "P22_PLAred_roof_tile_c4_r2.3mf"
-  ]
+  "v": 2,
+  "folder": "1_now",
+  "what": "Roof tiles v2: 8 DIFFERENT files, print each once (one 180 x 180 tile per plate), red PLA, face down, no supports. They screw straight down into the wood: #6 x 3/4 flat head through slotted countersinks (+-2 mm over the top rails, +-3 over the cross rails). No C3 clips or hanging ribs. c1 6 screws, c2 4, c3 2, c4 4 (x2 rows = 32). Studs still bolt on from below as before. Layout: c1..c4, r1 back / r2 front.",
+  "log": [
+   "v2 2026-11-26: BJ wants the roof screwed down instead of clipped. Slotted countersunk #6 holes over the rail centre lines, hanging ribs and cross-rail locator ribs removed, seam stiffener ribs kept 5 mm off all wood. v1 tiles (all 8 printed) work only with the C3 clips; reprint all 8"
+  ],
+  "done_files": []
  },
  "P23": {
   "v": 1,
