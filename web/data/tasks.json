@@ -156,35 +156,6 @@
    "detail": "Decided 2026-11-20: plain plates count as bricks (floor 1). Site V1.034."
   },
   {
-   "id": "bins-04",
-   "milestone": "bins",
-   "title": "Decide bin sizes from the loose volume of one 10696 set",
-   "status": "blocked",
-   "size": "M",
-   "phase": "poc",
-   "owner": "Branden",
-   "detail": "Open question q27."
-  },
-  {
-   "id": "isolate-01",
-   "milestone": "isolate",
-   "title": "Cardboard feeder: vibratory tray that lines parts up",
-   "status": "todo",
-   "size": "L",
-   "phase": "poc",
-   "owner": "Vivek",
-   "detail": "Semester 1 proof of concept, cardboard and tape. The printed version is in Final: Isolate."
-  },
-  {
-   "id": "isolate-02",
-   "milestone": "isolate",
-   "title": "Cardboard feeder test: one piece at a time to the camera",
-   "status": "todo",
-   "size": "L",
-   "phase": "poc",
-   "owner": "Vivek"
-  },
-  {
    "id": "identify-01",
    "milestone": "identify",
    "title": "/identify endpoint on CT 150",
@@ -234,16 +205,6 @@
    "owner": "Ethan"
   },
   {
-   "id": "indicate-01",
-   "milestone": "indicate",
-   "title": "Chute geometry: Z rods, floor heights, yaw mechanism",
-   "status": "in_progress",
-   "size": "L",
-   "phase": "poc",
-   "owner": "Marshall",
-   "detail": "12 mm rods and a NEMA17 for yaw are picked; the V11 CAD has the full geometry. Still open: lift travel (needs about 400 mm rods, see cad-ind-03)."
-  },
-  {
    "id": "indicate-02",
    "milestone": "indicate",
    "title": "Build the bin-code lookup table for Indicate",
@@ -271,16 +232,6 @@
    "size": "M",
    "phase": "poc",
    "owner": "Marshall"
-  },
-  {
-   "id": "indicate-05",
-   "milestone": "indicate",
-   "title": "Cardboard chute: aim at all 16 bins",
-   "status": "todo",
-   "size": "L",
-   "phase": "poc",
-   "owner": "Marshall",
-   "detail": "Semester 1 proof of concept. The printed lift and scoop are in Final: Indicate."
   },
   {
    "id": "dash-01",
@@ -313,15 +264,6 @@
    "detail": "Settled: CT 150 sends each piece to the Live service; no live.json file."
   },
   {
-   "id": "dash-04",
-   "milestone": "dashboard",
-   "title": "Swap the demo for real Kratos data",
-   "status": "todo",
-   "size": "L",
-   "phase": "poc",
-   "owner": "Branden"
-  },
-  {
    "id": "hw-01",
    "milestone": "hardware",
    "title": "Full BOM for the Indicate stage",
@@ -340,15 +282,6 @@
    "phase": "final",
    "owner": "Branden",
    "detail": "V14: wood frame with a 2 mm red PLA skin. Frame built 2026-11-26. Roof tiles v2 (screw-down) printing; wall tiles v2 and corner caps designed (screw-down, \"Bricked Sorting\" lettering on the front), to print after the proof of concept."
-  },
-  {
-   "id": "hw-03",
-   "milestone": "hardware",
-   "title": "Decide prototype controller (Arduino vs Pi)",
-   "status": "todo",
-   "size": "S",
-   "phase": "poc",
-   "owner": "Branden"
   },
   {
    "id": "course-01",
@@ -378,16 +311,6 @@
    "size": "S",
    "phase": "poc",
    "owner": "Marshall"
-  },
-  {
-   "id": "bins-05",
-   "milestone": "bins",
-   "title": "Cardboard method to size the bins (q27): box the biggest color group per floor, double it",
-   "status": "todo",
-   "size": "M",
-   "phase": "poc",
-   "owner": "Marshall",
-   "detail": "One size per floor, not a box per bin. Steps: 1) Count this set's pieces by color group, separately for floor 1 (bricks) and floor 2 (other) -- web/data/bins.json plus web/data/set-10696.json already give this. 2) Find the LARGEST color group on each floor; that is the worst case every bin on that floor must fit. From the real 10696 counts: floor 1's biggest group is blue (44 pieces); floor 2's biggest is black (72 pieces). 3) Pack only that one group's real pieces into a cardboard box, no bigger than needed to fit them. Do this once for floor 1 (the blue bricks) and once for floor 2 (the black other-pieces). 4) Record each box's length, width, height and volume. 5) Double each volume (for 2 sets; earlier note said 2 to 3 sets, confirm with BJ). 6) That doubled size becomes the ONE standard bin size for every bin on that floor -- every other color group is smaller, so it already fits. Floor 1 gets one bin size, floor 2 gets a different (bigger) one."
   },
   {
    "id": "hw-04",
@@ -430,24 +353,14 @@
    "detail": "Settled by the V10 bins: both floors are 140 mm tall, one size per floor. Floor 1 takes parts over a 70 mm sill; floor 2 holds about 65% of the volume."
   },
   {
-   "id": "identify-06",
-   "milestone": "identify",
-   "title": "Agree the camera design with Ethan before touching the running Pi service",
-   "status": "blocked",
-   "size": "S",
-   "phase": "poc",
-   "owner": "Ethan",
-   "detail": "The current Pi service still feeds /snapshot and /stream to the dashboard. His new camera script does not have those yet and would fight it for the camera if swapped in now."
-  },
-  {
    "id": "repo-06",
    "milestone": "repo",
    "title": "Finish the CT 150 access lockdown for Ethan",
-   "status": "in_progress",
+   "status": "done",
    "size": "M",
    "phase": "poc",
    "owner": "Branden",
-   "detail": "Login and firewall checks for teammate access to the inference container. Private details are in Mnemosyne, not here."
+   "detail": "Login and firewall checks for teammate access to the inference container done. Private details are in Mnemosyne, not here."
   },
   {
    "id": "course-05",
@@ -561,7 +474,7 @@
    "size": "L",
    "phase": "poc",
    "owner": "Branden",
-   "detail": "live.html and the Live service built and tested locally. Next: turn it on in the bots container."
+   "detail": "live.html and the Live service built and tested locally. Next: turn it on in the bots container. Real Kratos data reaches it through identify-07 (Live hook) and identify-08 (camera to /identify)."
   },
   {
    "id": "identify-07",
@@ -632,16 +545,6 @@
    "phase": "final",
    "owner": "Branden",
    "detail": "Parts 54, 55, 56 and 70; folded path from the V9 study. Modeled in the V11 CAD; not test-printed yet."
-  },
-  {
-   "id": "cad-iso-04",
-   "milestone": "cad_isolate",
-   "title": "Print one V tray with two leaf springs and a motor: does it move parts?",
-   "status": "todo",
-   "size": "M",
-   "phase": "final",
-   "owner": "Branden",
-   "detail": "Test before printing the rest. Needs a vibration motor (Parts page)."
   },
   {
    "id": "cad-iso-05",
@@ -824,26 +727,6 @@
    "detail": "V12 part 76: two tray tiles in the +X end bay with standoff bosses for the PSU, buck, two XIAO boards, TMC2209 carrier and MCP23017. Board sizes are placeholders. Done in the V12 CAD (2026-11-03); not test-printed."
   },
   {
-   "id": "identify-09",
-   "milestone": "identify",
-   "title": "Cardboard scanner box: camera, lights and one fixed spot for the part",
-   "status": "todo",
-   "size": "M",
-   "phase": "poc",
-   "owner": "Ethan",
-   "detail": "Semester 1 proof of concept. Same 128 mm camera height as the final scanner if you can."
-  },
-  {
-   "id": "bins-06",
-   "milestone": "bins",
-   "title": "Cardboard bins: 16 bins at the sizes from bins-05",
-   "status": "todo",
-   "size": "M",
-   "phase": "poc",
-   "owner": "Marshall",
-   "detail": "Semester 1 proof of concept. 8 per floor, labeled with the bin code."
-  },
-  {
    "id": "hw-06",
    "milestone": "hardware",
    "title": "Proof of concept run: a few pieces from feeder to scoop",
@@ -866,7 +749,7 @@
   {
    "id": "fin-iso-02",
    "milestone": "cad_isolate",
-   "title": "Feeder firmware: drum stepper and tray vibration on the XIAO boards",
+   "title": "Feeder firmware: drum stepper and tray vibration on the Pi",
    "status": "todo",
    "size": "M",
    "phase": "final",
@@ -884,26 +767,6 @@
    "detail": "V14: scanner plate, trapdoors, camera bridge, LED holders and webcam mount printed. Next: mount on the deck and wire the servo."
   },
   {
-   "id": "fin-id-02",
-   "milestone": "cad_identify",
-   "title": "XIAO ESP32-S3 Sense firmware: capture and send to /identify",
-   "status": "todo",
-   "size": "L",
-   "phase": "final",
-   "owner": "Ethan",
-   "detail": "Replaces the Pi camera service. Same /identify endpoint on Kratos."
-  },
-  {
-   "id": "fin-id-03",
-   "milestone": "cad_identify",
-   "title": "Camera test: the same 20 pieces with the Pi camera and the Sense",
-   "status": "todo",
-   "size": "M",
-   "phase": "final",
-   "owner": "Ethan",
-   "detail": "Accuracy and seconds per piece, before dropping the Pi."
-  },
-  {
    "id": "fin-ind-01",
    "milestone": "cad_indicate",
    "title": "Print and assemble the scoop, then 16 bins and drawers",
@@ -916,17 +779,17 @@
   {
    "id": "fin-ind-02",
    "milestone": "cad_indicate",
-   "title": "Wire the final electronics: TMC2209 drivers, MCP23017, 16 bin switches, homing switches",
+   "title": "Wire the final electronics: TMC2209 drivers, 16 bin switches, homing switches",
    "status": "todo",
    "size": "L",
    "phase": "final",
    "owner": "Branden",
-   "detail": "Pin map from the GPIO plan (C3 and Sense, all 11 pins each)."
+   "detail": "Pin map from the Pi GPIO plan (the XIAO boards and MCP23017 expanders were dropped)."
   },
   {
    "id": "fin-ind-03",
    "milestone": "cad_indicate",
-   "title": "Indicate firmware on the XIAO ESP32-C3: lift, yaw, doors, bin switches",
+   "title": "Indicate firmware on the Pi: slide, tilt, doors, bin switches",
    "status": "todo",
    "size": "L",
    "phase": "final",
@@ -1011,7 +874,17 @@
    "size": "M",
    "phase": "poc",
    "owner": "Branden",
-   "detail": "The printed saddles fit a 24 mm motor. Run one tray on its leaf springs with real bricks before the full flow test."
+   "detail": "The printed saddles fit a 24 mm motor and the V trays are printed. Run one tray on its leaf springs with real bricks: does it move parts one at a time? Then the full flow test."
+  },
+  {
+   "id": "hw-13",
+   "milestone": "hardware",
+   "title": "Heat-set inserts in the V14 printed parts",
+   "status": "in_progress",
+   "size": "M",
+   "phase": "poc",
+   "owner": "Branden",
+   "detail": "M3 inserts (hole 4.3 in PLA, 4.4 in PETG). Frame studs done. Still to do: deck tray, slide rails, scoop slider and the vacuum shell, funnel, lid and port."
   }
  ]
 }
